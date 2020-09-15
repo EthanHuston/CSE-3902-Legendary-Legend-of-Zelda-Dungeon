@@ -27,6 +27,7 @@ namespace Sprint0
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            // TEST COMMENT FROM NATHAN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             textSprite = new NonMovingNonAnimatedTextSprite(this.Content);
             keyboardController = new KeyboardController(this);
             controllerList = new List<object>();
