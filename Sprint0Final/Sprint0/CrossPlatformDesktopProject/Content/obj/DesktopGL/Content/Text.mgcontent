@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>D:/OSU Junior Year/CSE 3902/Sprint0/Sprint0/CrossPlatformDesktopProject/Content/Text.spritefont</SourceFile>
+  <SourceTime>2020-09-04T11:35:53.2522373-04:00</SourceTime>
+  <DestFile>D:/OSU Junior Year/CSE 3902/Sprint0/Sprint0/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Text.xnb</DestFile>
+  <DestTime>2020-09-04T11:46:59.986808-04:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
