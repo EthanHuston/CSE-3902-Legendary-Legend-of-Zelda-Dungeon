@@ -31,6 +31,7 @@ namespace Sprint0
             // UWU THANKS FOR THE BIG PP NATHAN ;););) -BIG PP CHRIS
             // big cringe moment - S.P.
             // im "git"ing sad right now, big tuff moment here - sadboi
+            // crying tears of joy - we all committed
             textSprite = new NonMovingNonAnimatedTextSprite(this.Content);
             keyboardController = new KeyboardController(this);
             controllerList = new List<object>();
