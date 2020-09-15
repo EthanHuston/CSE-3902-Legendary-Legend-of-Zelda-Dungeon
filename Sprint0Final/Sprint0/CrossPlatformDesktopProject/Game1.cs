@@ -29,6 +29,7 @@ namespace Sprint0
             // TODO: Add your initialization logic here
             // TEST COMMENT FROM NATHAN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             // UWU THANKS FOR THE BIG PP NATHAN ;););) -BIG PP CHRIS
+            // big cringe moment - S.P.
             textSprite = new NonMovingNonAnimatedTextSprite(this.Content);
             keyboardController = new KeyboardController(this);
             controllerList = new List<object>();
