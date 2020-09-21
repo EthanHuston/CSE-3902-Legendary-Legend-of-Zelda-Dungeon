@@ -8,6 +8,7 @@ namespace Sprint0
 {
     class Link : IPlayer
     {
+<<<<<<< HEAD
         private int health;
         private ILinkState state;
         private Game1 game;
@@ -17,5 +18,7 @@ namespace Sprint0
             this.game = game;
             // state = someInitialStateClass
         }
+=======
+>>>>>>> link-class
     }
 }
