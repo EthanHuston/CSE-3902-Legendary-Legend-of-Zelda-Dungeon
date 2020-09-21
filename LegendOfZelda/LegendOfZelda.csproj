@@ -57,9 +57,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Interface1.cs" />
+    <Compile Include="Link.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IPlayer.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="MouseController.cs" />
