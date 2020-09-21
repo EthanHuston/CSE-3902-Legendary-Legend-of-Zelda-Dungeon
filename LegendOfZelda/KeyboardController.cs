@@ -17,6 +17,16 @@ namespace Sprint0
         {
             this.myGame = game1;
             controllerMappings = new Dictionary<Keys, ICommand>();
+            this.RegisterCommand(Keys.NumPad0, new QuitGameCommand(game1));
+            this.RegisterCommand(Keys.NumPad1, new SetStillSpriteCommand(game1));
+            this.RegisterCommand(Keys.NumPad2, new SetWalkingStillSpriteCommand(game1));
+            this.RegisterCommand(Keys.NumPad3, new SetDeadSpriteCommand(game1));
+            this.RegisterCommand(Keys.NumPad4, new SetFullWalkingSpriteCommand(game1));
+            this.RegisterCommand(Keys.D0, new QuitGameCommand(game1));
+            this.RegisterCommand(Keys.D1, new SetStillSpriteCommand(game1));
+            this.RegisterCommand(Keys.D2, new SetWalkingStillSpriteCommand(game1));
+            this.RegisterCommand(Keys.D3, new SetDeadSpriteCommand(game1));
+            this.RegisterCommand(Keys.D4, new SetFullWalkingSpriteCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)

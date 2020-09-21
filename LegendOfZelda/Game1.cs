@@ -38,17 +38,6 @@ namespace Sprint0
             controllerList.Add(keyboardController);
             controllerList.Add(new MouseController(this));
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            //Register Keyboard Commands
-            keyboardController.RegisterCommand(Keys.NumPad0, new QuitGameCommand(this));
-            keyboardController.RegisterCommand(Keys.NumPad1, new SetStillSpriteCommand(this));
-            keyboardController.RegisterCommand(Keys.NumPad2, new SetWalkingStillSpriteCommand(this));
-            keyboardController.RegisterCommand(Keys.NumPad3, new SetDeadSpriteCommand(this));
-            keyboardController.RegisterCommand(Keys.NumPad4, new SetFullWalkingSpriteCommand(this));
-            keyboardController.RegisterCommand(Keys.D0, new QuitGameCommand(this));
-            keyboardController.RegisterCommand(Keys.D1, new SetStillSpriteCommand(this));
-            keyboardController.RegisterCommand(Keys.D2, new SetWalkingStillSpriteCommand(this));
-            keyboardController.RegisterCommand(Keys.D3, new SetDeadSpriteCommand(this));
-            keyboardController.RegisterCommand(Keys.D4, new SetFullWalkingSpriteCommand(this));
 
             base.Initialize();
         }
@@ -71,8 +60,6 @@ namespace Sprint0
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
 
             foreach(IController controller in controllerList)
             {
