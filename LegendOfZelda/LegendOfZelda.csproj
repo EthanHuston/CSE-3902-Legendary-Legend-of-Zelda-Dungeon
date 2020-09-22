@@ -62,6 +62,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IInteractiveEnviornment.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="MouseController.cs" />
