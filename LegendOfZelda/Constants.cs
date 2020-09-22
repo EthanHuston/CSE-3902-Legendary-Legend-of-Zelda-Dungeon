@@ -8,6 +8,6 @@ namespace Sprint0
 {
     public static class Constants
     {
-        public static const int Number = 69;
+        public static int Number = 69;
     }
 }
