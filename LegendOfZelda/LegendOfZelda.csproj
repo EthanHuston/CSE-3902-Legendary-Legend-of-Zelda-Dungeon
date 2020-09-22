@@ -57,16 +57,22 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Interface1.cs" />
-    <Compile Include="Link.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Link\LinkDamagedState.cs" />
+    <Compile Include="Link\ILinkState.cs" />
+    <Compile Include="IPlayer.cs" />
+    <Compile Include="Link\Link.cs" />
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
-    <Compile Include="IPlayer.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="KeyboardController.cs" />
+    <Compile Include="Link\LinkWalkingDownState.cs" />
+    <Compile Include="Link\LinkWalkingLeftState.cs" />
+    <Compile Include="Link\LinkWalkingRightState.cs" />
+    <Compile Include="Link\LinkWalkingUpState.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="MovingAnimatedSprite.cs" />
     <Compile Include="MovingNonAnimatedSprite.cs" />
