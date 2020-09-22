@@ -59,18 +59,25 @@
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="BombedOpening.cs" />
+    <Compile Include="BrickTile.cs" />
+    <Compile Include="Fire.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="GapTile.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="KeyboardController.cs" />
+    <Compile Include="LadderTile.cs" />
+    <Compile Include="LockedDoor.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="MovingAnimatedSprite.cs" />
     <Compile Include="MovingNonAnimatedSprite.cs" />
     <Compile Include="NonMovingAnimatedSprite.cs" />
     <Compile Include="NonMovingNonAnimatedSprite.cs" />
     <Compile Include="NonMovingNonAnimatedTextSprite.cs" />
+    <Compile Include="OpenDoor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuitGameCommand.cs" />
@@ -78,6 +85,11 @@
     <Compile Include="SetFullWalkingSpriteCommand.cs" />
     <Compile Include="SetStillSpriteCommand.cs" />
     <Compile Include="SetWalkingStillSpriteCommand.cs" />
+    <Compile Include="ShutDoor.cs" />
+    <Compile Include="Square.cs" />
+    <Compile Include="Stairs.cs" />
+    <Compile Include="Statues.cs" />
+    <Compile Include="Walls.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
