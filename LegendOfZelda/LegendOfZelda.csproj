@@ -57,6 +57,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AnimatedSprite.cs" />
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
