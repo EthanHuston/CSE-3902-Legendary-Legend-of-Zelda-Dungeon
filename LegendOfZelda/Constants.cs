@@ -9,5 +9,6 @@ namespace Sprint0
     public static class Constants
     {
         public static int Number = 69;
+        public static int LinkHealth = 100;
     }
 }

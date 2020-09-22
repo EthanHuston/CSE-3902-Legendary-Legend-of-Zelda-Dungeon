@@ -17,5 +17,25 @@ namespace Sprint0
             this.game = game;
             // state = someInitialStateClass
         }
+
+        public void Draw()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Heal(int healAmount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TakeDamage(int damage)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
