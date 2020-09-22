@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,32 +8,14 @@ namespace Sprint0
 {
     class Link : IPlayer
     {
-        int health;
-        
+        private int health;
+        private ILinkState state;
+        private Game1 game;
 
-        public Link()
-        {
-
-        }
-
-        public void Draw()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Heal(int healAmount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TakeDamage(int damage)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new NotImplementedException();
+        public Link(Game1 game) {
+            // health = PLAYER_HEALTH_START
+            this.game = game;
+            // state = someInitialStateClass
         }
     }
 }
