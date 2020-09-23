@@ -86,6 +86,7 @@
     <Compile Include="SetStillSpriteCommand.cs" />
     <Compile Include="SetWalkingStillSpriteCommand.cs" />
     <Compile Include="ShutDoor.cs" />
+    <Compile Include="SpriteFactory.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="Stairs.cs" />
     <Compile Include="Statues.cs" />
