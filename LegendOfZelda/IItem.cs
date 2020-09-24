@@ -9,8 +9,6 @@ namespace Sprint0
 {
     interface IItem
     {
-        void Update();
-
-        void Draw(SpriteBatch spriteBatch);
+        void itemAction();
     }
 }
