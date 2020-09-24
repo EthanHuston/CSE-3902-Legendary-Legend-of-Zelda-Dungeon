@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    interface IItem
+    public interface IItem
     {
         void itemAction();
     }

@@ -68,6 +68,7 @@
     <Compile Include="BowSprite.cs" />
     <Compile Include="BrickTile.cs" />
     <Compile Include="ClockSprite.cs" />
+    <Compile Include="Compass.cs" />
     <Compile Include="CompassSprite.cs" />
     <Compile Include="DogLikeMonsterSprite.cs" />
     <Compile Include="DragonBreathingSprite.cs" />
