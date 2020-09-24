@@ -14,5 +14,6 @@ namespace Sprint0.Link
         void MoveUp();
         void BeDamaged();
         void BeHealthy();
+        void StopMoving();
     }
 }
