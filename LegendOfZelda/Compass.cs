@@ -10,15 +10,15 @@ namespace Sprint0
     class Compass : IItem
     {
         private int itemIndex = 0; // For the itemList action in Sprint2.
-        // TODO - Add private fields for Compass object (for Compass Sprite).
+        private CompassSprite compassSprite;
         public Compass()
         {
-            // TODO - Create Compass object.
+            compassSprite = (CompassSprite)SpriteFactory.Instance.CreateCompassSprite();
         }
 
         public void itemAction()
         {
-            // TODO - Draw Compass object on screen.
+            compassSprite.Draw(new SpriteBatch);
         }
     }
 }
