@@ -10,5 +10,6 @@ namespace Sprint0
     {
         public static int Number = 69;
         public static int LinkHealth = 100;
+        public const int LinkDamageEffectTimeMs = 2000;
     }
 }

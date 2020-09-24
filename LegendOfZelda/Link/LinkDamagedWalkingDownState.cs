@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Link
 {
-    class LinkWalkingDownState : ILinkState
+    class LinkDamagedWalkingDownState : ILinkState
     {
         private Link link;
+        private DateTime healthyDateTime;
 
-        public LinkWalkingDownState(Link link)
+
+        public LinkDamagedWalkingDownState(Link link)
         {
             this.link = link;
+            healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 
         public void MoveDown()
@@ -22,31 +25,32 @@ namespace Sprint0.Link
 
         public void MoveLeft()
         {
-            link.State = new LinkWalkingLeftState(link);
+            link.State = new LinkDamagedWalkingLeftState(link);
         }
 
         public void MoveRight()
         {
-            link.State = new LinkWalkingRightState(link);
+            link.State = new LinkDamagedWalkingRightState(link);
         }
 
         public void MoveUp()
         {
-            link.State = new LinkWalkingUpState(link);
+            link.State = new LinkDamagedWalkingUpState(link);
         }
 
         public void BeDamaged()
         {
-            // link.State = new LinkDamagedWalkingDownState(link);
+            // Already damaged, do nothing
         }
 
         public void BeHealthy()
         {
-            // Already in healthy state, do nothing
+            link.State = new LinkWalkingDownState(link);
         }
 
         public void Update()
         {
+            if (DateTime.Compare(DateTime.Now, healthyDateTime) > 0) link.State = new LinkWalkingDownState(link);
         }
     }
 }
