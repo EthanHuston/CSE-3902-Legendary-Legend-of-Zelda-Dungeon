@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
+    //Sprite Factory based of model found in slides
     class SpriteFactory
     {
         private Texture2D batSprite;
@@ -104,6 +106,167 @@ namespace Sprint0
             walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
             walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
             walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
+            //Load NPC Sprites
+            oldManSprite = content.Load<Texture2D>("NPC/OldMan");
+            merchantSprite = content.Load<Texture2D>("NPC/Merchant");
+        }
+
+        public ISprite CreateBatSprite()
+        {
+            return new BatSprite(batSprite);
+        }
+
+        public ISprite CreateDogLikeMonsterSprite()
+        {
+            return new DogLikeMonsterSprite(dogLikeMonsterSprite);
+        }
+        public ISprite CreateDragonBreathingSprite()
+        {
+            return new DragonBreathingSprite(dragonBreathingSprite);
+        }
+        public ISprite CreateDragonWalkingSprite()
+        {
+            return new DragonWalkingSprite(dragonWalkingSprite);
+        }
+        public ISprite CreateHandSprite()
+        {
+            return new HandSprite(handSprite);
+        }
+        public ISprite CreateJellySprite()
+        {
+            return new JellySprite(jellySprite);
+        }
+        public ISprite CreateSkeletonSprite()
+        {
+            return new SkeletonSprite(skeletonSprite);
+        }
+        public ISprite CreateSpikeTrapSprite()
+        {
+            return new SpikeTrapSprite(spikeTrapSprite);
+        }
+        public ISprite CreateBlockSprite()
+        {
+            return new BlockSprite(blockSprite);
+        }
+        public ISprite CreateStatueSprite()
+        {
+            return new StatueSprite(statueSprite);
+        }
+        public ISprite CreateArrowSprite()
+        {
+            return new ArrowSprite(arrowSprite);
+        }
+        public ISprite CreateBombSprite()
+        {
+            return new BombSprite(bombSprite);
+        }
+        public ISprite CreateExplodingBombSprite()
+        {
+            return new ExplodingBombSprite(explodingBombSprite);
+        }
+        public ISprite CreateBoomerangSprite()
+        {
+            return new BoomerangSprite(boomerangSprite);
+        }
+        public ISprite CreateBowSprite()
+        {
+            return new BowSprite(bowSprite);
+        }
+        public ISprite CreateClockSprite()
+        {
+            return new ClockSprite(clockSprite);
+        }
+        public ISprite CreateCompassSprite()
+        {
+            return new CompassSprite(compassSprite);
+        }
+        public ISprite CreateFairySprite()
+        {
+            return new FairySprite(fairySprite);
+        }
+        public ISprite CreateFireSprite()
+        {
+            return new FireSprite(fireSprite);
+        }
+        public ISprite CreateFireballSprite()
+        {
+            return new FireballSprite(fireballSprite);
+        }
+        public ISprite CreateHeartSprite()
+        {
+            return new HeartSprite(heartSprite);   
+        }
+        public ISprite CreateHeartContainerSprite()
+        {
+            return new HeartContainerSprite(heartContainerSprite);
+        }
+        public ISprite CreateKeySprite()
+        {
+            return new KeySprite(keySprite);
+        }
+        public ISprite CreateMapSprite()
+        {
+            return new MapSprite(mapSprite);
+        }
+        public ISprite CreateRupeeSprite()
+        {
+            return new RupeeSprite(rupeeSprite);
+        }
+        public ISprite CreateTriforceSprite()
+        {
+            return new TriforceSprite(triforceSprite);
+        }
+        public ISprite CreateIdleLinkSprite()
+        {
+            return new IdleLinkSprite(idleLinkSprite);
+        }
+        public ISprite CreateStrikingDownLinkSprite()
+        {
+            return new StrikingDownLinkSprite(strikingDownLinkSprite);
+        }
+        public ISprite CreateStrikingLeftLinkSprite()
+        {
+            return new StrikingLeftLinkSprite(strikingLeftLinkSprite);
+        }
+        public ISprite CreateStrikingRightLinkSprite()
+        {
+            return new StrikingRightLinkSprite(strikingRightLinkSprite);
+        }
+        public ISprite CreateStrikingUpLinkSprite()
+        {
+            return new StrikingUpLinkSprite(strikingUpLinkSprite);
+        }
+        public ISprite CreatePickingUpItemLinkSprite()
+        {
+            return new PickingUpItemLinkSprite(pickingUpItemLinkSprite);
+        }
+        public ISprite CreateUsingItemLinkSprite()
+        {
+            return new UsingItemLinkSprite(usingItemLinkSprite);
+        }
+        public ISprite CreateWalkingDownLinkSprite()
+        {
+            return new WalkingDownLinkSprite(walkingDownLinkSprite);
+        }
+        public ISprite CreateWalkingRightLinkSprite()
+        {
+            return new WalkingRightLinkSprite(walkingRightLinkSprite);
+        }
+        public ISprite CreateWalkingLeftLinkSprite()
+        {
+            return new WalkingLeftLinkSprite(walkingLeftLinkSprite);
+        }
+        public ISprite CreateWalkingUpLinkSprite()
+        {
+            return new WalkingUpLinkSprite(walkingUpLinkSprite);
+        }
+        public ISprite CreateOldManSprite()
+        {
+            return new OldManSprite(oldManSprite);
+        }
+        public ISprite CreateMerchantSprite()
+        {
+            return new MerchantSprite(merchantSprite);
         }
     }
 }
