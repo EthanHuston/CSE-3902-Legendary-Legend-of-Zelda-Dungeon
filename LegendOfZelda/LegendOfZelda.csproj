@@ -86,6 +86,7 @@
     <Compile Include="IController.cs" />
     <Compile Include="IdleLinkSprite.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
+    <Compile Include="IItem.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />
