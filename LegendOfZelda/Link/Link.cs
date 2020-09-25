@@ -10,6 +10,7 @@ namespace Sprint0.Link
     class Link : IPlayer
     {
         public ILinkState State;
+        public ISprite CurrentSprite;
         private int health;
         private Game1 game;
 
