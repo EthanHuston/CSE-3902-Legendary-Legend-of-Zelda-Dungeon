@@ -58,6 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
+    <Compile Include="Arrow.cs" />
     <Compile Include="ArrowSprite.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BatSprite.cs" />
