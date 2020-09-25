@@ -94,6 +94,7 @@
     <Compile Include="KeySprite.cs" />
     <Compile Include="LadderTile.cs" />
     <Compile Include="LockedDoor.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="MapSprite.cs" />
     <Compile Include="MerchantSprite.cs" />
     <Compile Include="MouseController.cs" />
