@@ -78,6 +78,7 @@
     <Compile Include="DragonBreathingSprite.cs" />
     <Compile Include="DragonWalkingSprite.cs" />
     <Compile Include="ExplodingBombSprite.cs" />
+    <Compile Include="Fairy.cs" />
     <Compile Include="FairySprite.cs" />
     <Compile Include="Fire.cs" />
     <Compile Include="FireballSprite.cs" />
