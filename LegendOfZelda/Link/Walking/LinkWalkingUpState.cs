@@ -20,16 +20,17 @@ namespace Sprint0.Link
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingUpLinkSprite();
         }
 
         public void Update()
         {
+            link.CurrentSprite.Update();
         }
 
         public void Draw()
         {
-            // TODO: Implement me
+            link.CurrentSprite.Draw(link.Game.SpriteBatch);
         }
 
         public void MoveDown()

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Link
+namespace Sprint0.Link.Walking
 {
     class LinkWalkingLeftState : ILinkState
     {
@@ -18,14 +18,15 @@ namespace Sprint0.Link
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingLeftLinkSprite();
         }
         public void Update()
         {
+            link.CurrentSprite.Update();
         }
         public void Draw()
         {
-            // TODO: Implement me
+            link.CurrentSprite.Draw(link.Game.SpriteBatch);
         }
         public void MoveDown()
         {

@@ -28,17 +28,18 @@ namespace Sprint0.Link.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingDownDamagedLinkSprite();
         }
 
         public void Update()
         {
             if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
+            this.link.CurrentSprite.Update();
         }
 
         public void Draw()
         {
-            // TODO: Implement me
+            link.CurrentSprite.Draw(link.Game.SpriteBatch);
         }
 
         public void MoveDown()

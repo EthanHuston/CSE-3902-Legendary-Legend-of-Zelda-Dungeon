@@ -20,17 +20,19 @@ namespace Sprint0.Link.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingDownLinkSprite();
         }
 
         public void Update()
         {
+            link.CurrentSprite.Update();
         }
 
         public void Draw()
         {
-            // TODO: Implement me
+            link.CurrentSprite.Draw(link.Game.SpriteBatch);
         }
+
         public void MoveDown()
         {
             // Already walking down, do nothing

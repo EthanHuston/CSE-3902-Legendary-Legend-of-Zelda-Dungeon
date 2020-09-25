@@ -29,7 +29,7 @@ namespace Sprint0.Link.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingUpDamagedLinkSprite();
         }
 
         public void Update()
@@ -39,7 +39,7 @@ namespace Sprint0.Link.Walking
 
         public void Draw()
         {
-            // TODO: Implement me
+            link.CurrentSprite.Draw(link.Game.SpriteBatch);
         }
 
         public void MoveDown()
