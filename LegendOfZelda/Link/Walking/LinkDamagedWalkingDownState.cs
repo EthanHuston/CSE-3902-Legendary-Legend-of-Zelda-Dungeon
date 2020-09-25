@@ -14,15 +14,31 @@ namespace Sprint0.Link.Walking
 
         public LinkDamagedWalkingDownState(Link link, int damage)
         {
-            this.link = link;
+            InitClass(link);
             this.link.SubtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 
         public LinkDamagedWalkingDownState(Link link, DateTime healthyDateTime)
         {
-            this.link = link;
+            InitClass(link);
             this.healthyDateTime = healthyDateTime;
+        }
+
+        private void InitClass(Link link)
+        {
+            this.link = link;
+            // TODO: draw sprite
+        }
+
+        public void Update()
+        {
+            if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
+        }
+
+        public void Draw()
+        {
+            // TODO: Implement me
         }
 
         public void MoveDown()
@@ -58,11 +74,6 @@ namespace Sprint0.Link.Walking
         public void StopMoving()
         {
             link.State = new LinkDamagedStandingStillDownState(link, healthyDateTime);
-        }
-
-        public void Update()
-        {
-            if (DateTime.Compare(DateTime.Now, healthyDateTime) > 0) BeHealthy();
         }
     }
 }

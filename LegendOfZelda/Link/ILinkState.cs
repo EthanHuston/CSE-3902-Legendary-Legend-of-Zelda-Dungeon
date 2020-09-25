@@ -15,5 +15,7 @@ namespace Sprint0.Link
         void BeDamaged(int damage);
         void BeHealthy();
         void StopMoving();
+        void Update();
+        void Draw();
     }
 }

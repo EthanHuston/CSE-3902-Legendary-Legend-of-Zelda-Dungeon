@@ -22,17 +22,18 @@ namespace Sprint0.Link
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            State.Draw();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            State.Update();
         }
 
         public void Heal(int healAmount)
         {
-            throw new NotImplementedException();
+            State.BeHealthy();
+            health += healAmount;
         }
 
         public void TakeDamage(int damage)
@@ -43,6 +44,29 @@ namespace Sprint0.Link
         public void SubtractHealth(int damage)
         {
             health -= damage;
+        }
+
+        public void MoveUp()
+        {
+            State.MoveUp();
+        }
+
+        public void MoveDown()
+        {
+            State.MoveDown();
+        }
+        public void MoveLeft()
+        {
+            State.MoveLeft();
+        }
+        public void MoveRight()
+        {
+            State.MoveRight();
+        }
+
+        public void StopMoving()
+        {
+            State.StopMoving();
         }
     }
 }

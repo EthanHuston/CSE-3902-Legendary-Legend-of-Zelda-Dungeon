@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Link
+namespace Sprint0.Link.Walking
 {
     class LinkWalkingDownState : ILinkState
     {
@@ -14,9 +14,23 @@ namespace Sprint0.Link
 
         public LinkWalkingDownState(Link link)
         {
-            this.link = link;
+            InitClass(link);
         }
 
+        private void InitClass(Link link)
+        {
+            this.link = link;
+            // TODO: draw sprite
+        }
+
+        public void Update()
+        {
+        }
+
+        public void Draw()
+        {
+            // TODO: Implement me
+        }
         public void MoveDown()
         {
             // Already walking down, do nothing
@@ -50,10 +64,6 @@ namespace Sprint0.Link
         public void StopMoving()
         {
             link.State = new LinkStandingStillDownState(link);
-        }
-
-        public void Update()
-        {
         }
     }
 }

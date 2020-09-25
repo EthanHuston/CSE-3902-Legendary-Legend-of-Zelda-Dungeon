@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprint0.Link.Walking;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,21 @@ namespace Sprint0.Link.NotMoving
 
         public LinkStandingStilLeftState(Link link)
         {
+            InitClass(link);
+        }
+        private void InitClass(Link link)
+        {
             this.link = link;
+            // TODO: draw sprite
+        }
+
+        public void Update()
+        {
+        }
+
+        public void Draw()
+        {
+            // TODO: Implement me
         }
 
         public void MoveDown()
@@ -48,10 +63,6 @@ namespace Sprint0.Link.NotMoving
         public void StopMoving()
         {
             // Already not moving, do nothing
-        }
-
-        public void Update()
-        {
         }
     }
 }

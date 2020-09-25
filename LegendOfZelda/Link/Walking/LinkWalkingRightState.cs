@@ -14,7 +14,22 @@ namespace Sprint0.Link
 
         public LinkWalkingRightState(Link link)
         {
+            InitClass(link);
+        }
+
+        private void InitClass(Link link)
+        {
             this.link = link;
+            // TODO: draw sprite
+        }
+
+        public void Update()
+        {
+        }
+
+        public void Draw()
+        {
+            // TODO: Implement me
         }
 
         public void MoveDown()
@@ -50,10 +65,6 @@ namespace Sprint0.Link
         public void StopMoving()
         {
             link.State = new LinkStandingStillRightState(link);
-        }
-
-        public void Update()
-        {
         }
     }
 }
