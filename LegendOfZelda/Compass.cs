@@ -20,7 +20,7 @@ namespace Sprint0
 
         public void itemAction()
         {
-            compassSprite.Draw(sb);
+            compassSprite.Draw(sb, Sprint2.itemX, Sprint2.itemY);
         }
     }
 }
