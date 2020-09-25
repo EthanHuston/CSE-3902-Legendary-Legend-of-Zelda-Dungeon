@@ -10,6 +10,8 @@ namespace Sprint0
     {
         public static int itemX = 20;
         public static int itemY = 20;
+        public static int enemyNPCX = 500;
+        public static int enemyNPCY = 200;
         public static int itemListCount = 0;
     }
 }

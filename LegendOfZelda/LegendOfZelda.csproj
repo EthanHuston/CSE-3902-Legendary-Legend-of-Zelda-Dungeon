@@ -88,6 +88,7 @@
     <Compile Include="IdleLinkSprite.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
     <Compile Include="IItem.cs" />
+    <Compile Include="INPC.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="LadderTile.cs" />
     <Compile Include="LockedDoor.cs" />
     <Compile Include="MapSprite.cs" />
+    <Compile Include="Merchant.cs" />
     <Compile Include="MerchantSprite.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="MovingAnimatedSprite.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="NonMovingAnimatedSprite.cs" />
     <Compile Include="NonMovingNonAnimatedSprite.cs" />
     <Compile Include="NonMovingNonAnimatedTextSprite.cs" />
+    <Compile Include="OldMan.cs" />
     <Compile Include="OldManSprite.cs" />
     <Compile Include="OpenDoor.cs" />
     <Compile Include="PickingUpItemLinkSprite.cs" />
