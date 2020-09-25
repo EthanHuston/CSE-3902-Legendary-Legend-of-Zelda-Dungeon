@@ -81,6 +81,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GapTile.cs" />
     <Compile Include="HandSprite.cs" />
+    <Compile Include="HeartContainer.cs" />
     <Compile Include="HeartContainerSprite.cs" />
     <Compile Include="HeartSprite.cs" />
     <Compile Include="ICommand.cs" />
