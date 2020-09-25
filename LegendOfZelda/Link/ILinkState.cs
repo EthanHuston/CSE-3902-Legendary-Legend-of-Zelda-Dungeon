@@ -12,7 +12,7 @@ namespace Sprint0.Link
         void MoveRight();
         void MoveDown();
         void MoveUp();
-        void BeDamaged();
+        void BeDamaged(int damage);
         void BeHealthy();
         void StopMoving();
     }
