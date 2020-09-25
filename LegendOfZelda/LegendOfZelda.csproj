@@ -66,6 +66,7 @@
     <Compile Include="BombSprite.cs" />
     <Compile Include="Boomerang.cs" />
     <Compile Include="BoomerangSprite.cs" />
+    <Compile Include="Bow.cs" />
     <Compile Include="BowSprite.cs" />
     <Compile Include="BrickTile.cs" />
     <Compile Include="ClockSprite.cs" />
