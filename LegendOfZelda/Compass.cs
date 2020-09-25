@@ -20,7 +20,10 @@ namespace Sprint0
 
         public void itemAction()
         {
-            compassSprite.Draw(sb, Sprint2.itemX, Sprint2.itemY);
+            if (Sprint2.itemListCount == itemIndex)
+            {
+                compassSprite.Draw(sb, Sprint2.itemX, Sprint2.itemY);
+            }
         }
     }
 }
