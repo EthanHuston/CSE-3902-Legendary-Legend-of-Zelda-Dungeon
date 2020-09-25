@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
@@ -58,12 +58,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="IdleDamagedLinkSprite.cs" />
     <Compile Include="Link\ILinkState.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Link\Link.cs" />
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="ArrowSprite.cs" />
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BatSprite.cs" />
     <Compile Include="BlockSprite.cs" />
     <Compile Include="BombedOpening.cs" />
@@ -122,6 +122,7 @@
     <Compile Include="NonMovingNonAnimatedTextSprite.cs" />
     <Compile Include="OldManSprite.cs" />
     <Compile Include="OpenDoor.cs" />
+    <Compile Include="PickingUpItemDamagedLinkSprite.cs" />
     <Compile Include="PickingUpItemLinkSprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,15 +140,24 @@
     <Compile Include="Stairs.cs" />
     <Compile Include="Statues.cs" />
     <Compile Include="StatueSprite.cs" />
+    <Compile Include="StrikingDownDamagedLinkSprite.cs" />
     <Compile Include="StrikingDownLinkSprite.cs" />
+    <Compile Include="StrikingLeftDamagedLinkSprite.cs" />
     <Compile Include="StrikingLeftLinkSprite.cs" />
+    <Compile Include="StrikingRightDamagedLinkSprite.cs" />
     <Compile Include="StrikingRightLinkSprite.cs" />
+    <Compile Include="StrikingUpDamagedLinkSprite.cs" />
     <Compile Include="StrikingUpLinkSprite.cs" />
     <Compile Include="TriforceSprite.cs" />
+    <Compile Include="UsingItemDamagedLinkSprite.cs" />
     <Compile Include="UsingItemLinkSprite.cs" />
+    <Compile Include="WalkingDownDamagedLinkSprite.cs" />
     <Compile Include="WalkingDownLinkSprite.cs" />
+    <Compile Include="WalkingLeftDamagedLinkSprite.cs" />
     <Compile Include="WalkingLeftLinkSprite.cs" />
+    <Compile Include="WalkingRightDamagedLinkSprite.cs" />
     <Compile Include="WalkingRightLinkSprite.cs" />
+    <Compile Include="WalkingUpDamagedLinkSprite.cs" />
     <Compile Include="WalkingUpLinkSprite.cs" />
     <Compile Include="Walls.cs" />
   </ItemGroup>
