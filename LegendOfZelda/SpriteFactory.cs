@@ -260,6 +260,50 @@ namespace Sprint0
         {
             return new WalkingUpLinkSprite(walkingUpLinkSprite);
         }
+        public ISprite CreateIdleDamagedLinkSprite()
+        {
+            return new IdleDamagedLinkSprite(idleLinkSprite);
+        }
+        public ISprite CreateStrikingDownDamagedLinkSprite()
+        {
+            return new StrikingDownDamagedLinkSprite(strikingDownLinkSprite);
+        }
+        public ISprite CreateStrikingLeftDamagedLinkSprite()
+        {
+            return new StrikingLeftDamagedLinkSprite(strikingLeftLinkSprite);
+        }
+        public ISprite CreateStrikingRightDamagedLinkSprite()
+        {
+            return new StrikingRightDamagedLinkSprite(strikingRightLinkSprite);
+        }
+        public ISprite CreateStrikingUpDamagedLinkSprite()
+        {
+            return new StrikingUpDamagedLinkSprite(strikingUpLinkSprite);
+        }
+        public ISprite CreatePickingUpItemDamagedLinkSprite()
+        {
+            return new PickingUpItemDamagedLinkSprite(pickingUpItemLinkSprite);
+        }
+        public ISprite CreateUsingItemDamagedLinkSprite()
+        {
+            return new UsingItemDamagedLinkSprite(usingItemLinkSprite);
+        }
+        public ISprite CreateWalkingDownDamagedLinkSprite()
+        {
+            return new WalkingDownDamagedLinkSprite(walkingDownLinkSprite);
+        }
+        public ISprite CreateWalkingRightDamagedLinkSprite()
+        {
+            return new WalkingRightDamagedLinkSprite(walkingRightLinkSprite);
+        }
+        public ISprite CreateWalkingLeftDamagedLinkSprite()
+        {
+            return new WalkingLeftDamagedLinkSprite(walkingLeftLinkSprite);
+        }
+        public ISprite CreateWalkingUpDamagedLinkSprite()
+        {
+            return new WalkingUpDamagedLinkSprite(walkingUpLinkSprite);
+        }
         public ISprite CreateOldManSprite()
         {
             return new OldManSprite(oldManSprite);
