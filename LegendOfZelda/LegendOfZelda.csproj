@@ -63,6 +63,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BatSprite.cs" />
     <Compile Include="BlockSprite.cs" />
+    <Compile Include="Bomb.cs" />
     <Compile Include="BombedOpening.cs" />
     <Compile Include="BombSprite.cs" />
     <Compile Include="Boomerang.cs" />
