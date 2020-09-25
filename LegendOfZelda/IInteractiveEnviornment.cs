@@ -10,8 +10,6 @@ namespace Sprint0
     /*Copy Nathan's Code*/
     interface IInteractiveEnviornment
     {
-        void Update();
-
-        void Draw(SpriteBatch spriteBatch);
+        void Interation();
     }
 }

@@ -9,12 +9,16 @@ namespace Sprint0
 {
     class Square : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private BlockSprite blockSprite;
+        private SpriteBatch sB;
+        public Square(SpriteBatch spriteBatch)
         {
-            
+            blockSprite = (BlockSprite)SpriteFactory.Instance.CreateBlockSprite();
+            sB = spriteBatch;
+            blockSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
         }
 
-        public void Update()
+        public void Interation()
         {
             
         }
