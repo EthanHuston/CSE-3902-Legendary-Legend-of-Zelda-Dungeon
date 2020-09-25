@@ -129,6 +129,7 @@
     <Compile Include="StrikingLeftLinkSprite.cs" />
     <Compile Include="StrikingRightLinkSprite.cs" />
     <Compile Include="StrikingUpLinkSprite.cs" />
+    <Compile Include="Triforce.cs" />
     <Compile Include="TriforceSprite.cs" />
     <Compile Include="UsingItemLinkSprite.cs" />
     <Compile Include="WalkingDownLinkSprite.cs" />
