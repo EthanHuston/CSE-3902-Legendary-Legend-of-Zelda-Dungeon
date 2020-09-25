@@ -11,13 +11,13 @@ namespace Sprint0.Link
     {
         public ILinkState State;
         public ISprite CurrentSprite;
+        public Game1 Game;
         private int health;
-        private Game1 game;
 
         public Link(Game1 game)
         {
             health = Constants.LinkHealth;
-            this.game = game;
+            this.Game = game;
             State = new LinkStandingStillDownState(this);
         }
 
