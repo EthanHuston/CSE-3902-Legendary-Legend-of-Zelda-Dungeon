@@ -9,16 +9,18 @@ namespace Sprint0
 {
     class Compass : IItem
     {
-        private int itemIndex = 0; // For the itemList action in Sprint2.
+        private int itemIndex = 0;
         private CompassSprite compassSprite;
-        public Compass()
+        private SpriteBatch sb;
+        public Compass(SpriteBatch spriteBatch)
         {
             compassSprite = (CompassSprite)SpriteFactory.Instance.CreateCompassSprite();
+            sb = spriteBatch;
         }
 
         public void itemAction()
         {
-            compassSprite.Draw(new SpriteBatch);
+            compassSprite.Draw(sb);
         }
     }
 }
