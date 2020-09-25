@@ -10,7 +10,7 @@ namespace Sprint0
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
+        public SpriteBatch SpriteBatch;
         public ISprite sprite;
         public ISprite textSprite;
         List<object> controllerList;
@@ -37,7 +37,7 @@ namespace Sprint0
             controllerList = new List<object>();
             controllerList.Add(keyboardController);
             controllerList.Add(new MouseController(this));
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             base.Initialize();
         }
@@ -77,8 +77,8 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            textSprite.Draw(spriteBatch);
-            sprite.Draw(spriteBatch);
+            textSprite.Draw(SpriteBatch);
+            sprite.Draw(SpriteBatch);
 
             // TODO: Add your drawing code here
 
