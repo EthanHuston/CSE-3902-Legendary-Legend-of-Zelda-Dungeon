@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class Map : IItem
+    class Key : IItem
     {
-        private int itemIndex = 1;
-        private MapSprite mapSprite;
+        private int itemIndex = 2;
+        private KeySprite keySprite;
         private SpriteBatch sb;
-        public Map(SpriteBatch spriteBatch)
+        public Key(SpriteBatch spriteBatch)
         {
-            mapSprite = (MapSprite)SpriteFactory.Instance.CreateMapSprite();
+            keySprite = (KeySprite)SpriteFactory.Instance.CreateKeySprite();
             sb = spriteBatch;
         }
 
@@ -22,7 +22,7 @@ namespace Sprint0
         {
             if (Sprint2.itemListCount == itemIndex)
             {
-                mapSprite.Draw(sb, Sprint2.itemX, Sprint2.itemY);
+                keySprite.Draw(sb, Sprint2.itemX, Sprint2.itemY);
             }
         }
     }

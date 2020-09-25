@@ -90,6 +90,7 @@
     <Compile Include="IItem.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="JellySprite.cs" />
+    <Compile Include="Key.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="KeySprite.cs" />
     <Compile Include="LadderTile.cs" />
