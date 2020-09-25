@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sprint0.Link.NotMoving;
+using Sprint0.Link.Walking;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,14 +37,19 @@ namespace Sprint0.Link
             // Already walking up, do nothing
         }
 
-        public void BeDamaged()
+        public void BeDamaged(int damage)
         {
-            // link.State = new LinkDamagedWalkingUpState(link)
+            link.State = new LinkDamagedWalkingUpState(link, damage);
         }
 
         public void BeHealthy()
         {
             // Already in health state, do nothing
+        }
+
+        public void StopMoving()
+        {
+            link.State = new LinkStandingStillUpState(link);
         }
 
         public void Update()

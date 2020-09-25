@@ -12,9 +12,10 @@ namespace Sprint0.Link.NotMoving
         private Link link;
         private DateTime healthyDateTime;
 
-        public LinkDamagedStandingStillDownState(Link link)
+        public LinkDamagedStandingStillDownState(Link link, int damage)
         {
-            this.link = link; 
+            this.link = link;
+            this.link.subtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 
@@ -44,7 +45,7 @@ namespace Sprint0.Link.NotMoving
             link.State = new LinkDamagedWalkingUpState(link, healthyDateTime);
         }
 
-        public void BeDamaged()
+        public void BeDamaged(int damage)
         {
             // Already damaged, do nothing
         }

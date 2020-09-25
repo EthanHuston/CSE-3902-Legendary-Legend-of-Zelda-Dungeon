@@ -13,9 +13,10 @@ namespace Sprint0.Link.Walking
         private Link link;
         private DateTime healthyDateTime;
 
-        public LinkDamagedWalkingUpState(Link link)
+        public LinkDamagedWalkingUpState(Link link, int damage)
         {
             this.link = link;
+            this.link.subtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 
@@ -45,7 +46,7 @@ namespace Sprint0.Link.Walking
             // Already walking up, do nothing
         }
 
-        public void BeDamaged()
+        public void BeDamaged(int damage)
         {
             // Already damaged, do nothing           
         }

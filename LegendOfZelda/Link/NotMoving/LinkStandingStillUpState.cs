@@ -35,9 +35,9 @@ namespace Sprint0.Link.NotMoving
             link.State = new LinkWalkingUpState(link);
         }
 
-        public void BeDamaged()
+        public void BeDamaged(int damage)
         {
-            link.State = new LinkDamagedStandingStillDownState(link);
+            link.State = new LinkDamagedStandingStillUpState(link, damage);
         }
 
         public void BeHealthy()
