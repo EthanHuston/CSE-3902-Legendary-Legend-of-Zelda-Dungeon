@@ -71,6 +71,7 @@
     <Compile Include="Bow.cs" />
     <Compile Include="BowSprite.cs" />
     <Compile Include="BrickTile.cs" />
+    <Compile Include="Clock.cs" />
     <Compile Include="ClockSprite.cs" />
     <Compile Include="Compass.cs" />
     <Compile Include="CompassSprite.cs" />
