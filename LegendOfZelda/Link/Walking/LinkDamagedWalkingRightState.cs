@@ -16,7 +16,7 @@ namespace Sprint0.Link.Walking
         public LinkDamagedWalkingRightState(Link link, int damage)
         {
             this.link = link;
-            this.link.subtractHealth(damage);
+            this.link.SubtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 

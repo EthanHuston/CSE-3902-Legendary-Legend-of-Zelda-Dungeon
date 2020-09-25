@@ -1,3 +1,4 @@
+using Sprint0.Link.NotMoving;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +9,23 @@ namespace Sprint0.Link
 {
     class Link : IPlayer
     {
+        public ILinkState State;
         private int health;
-        private ILinkState state;
         private Game1 game;
 
         public Link(Game1 game)
         {
-            // health = PLAYER_HEALTH_START
+            health = Constants.LinkHealth;
             this.game = game;
-            // state = someInitialStateClass
+            State = new LinkStandingStillDownState(this);
         }
 
         public void Draw()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
         {
             throw new NotImplementedException();
         }
@@ -31,12 +37,12 @@ namespace Sprint0.Link
 
         public void TakeDamage(int damage)
         {
-            throw new NotImplementedException();
+            State.BeDamaged(damage);
         }
 
-        public void Update()
+        public void SubtractHealth(int damage)
         {
-            throw new NotImplementedException();
+            health -= damage;
         }
     }
 }

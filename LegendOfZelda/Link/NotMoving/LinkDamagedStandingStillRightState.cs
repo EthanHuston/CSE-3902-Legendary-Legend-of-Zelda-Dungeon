@@ -15,7 +15,7 @@ namespace Sprint0.Link.NotMoving
         public LinkDamagedStandingStillRightState(Link link, int damage)
         {
             this.link = link;
-            this.link.subtractHealth(damage);
+            this.link.SubtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
         public LinkDamagedStandingStillRightState(Link link, DateTime healthyDateTime)
