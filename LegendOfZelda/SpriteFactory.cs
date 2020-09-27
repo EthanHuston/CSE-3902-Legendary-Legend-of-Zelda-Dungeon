@@ -38,7 +38,14 @@ namespace Sprint0
         private Texture2D mapSprite;
         private Texture2D rupeeSprite;
         private Texture2D triforceSprite;
-        private Texture2D idleLinkSprite;
+        private Texture2D idleLinkDownSprite;
+        private Texture2D idleLinkRightSprite;
+        private Texture2D idleLinkLeftSprite;
+        private Texture2D idleLinkUpSprite;
+        private Texture2D idleDamagedLinkDownSprite;
+        private Texture2D idleDamagedLinkRightSprite;
+        private Texture2D idleDamagedLinkLeftSprite;
+        private Texture2D idleDamagedLinkUpSprite;
         private Texture2D strikingDownLinkSprite;
         private Texture2D strikingUpLinkSprite;
         private Texture2D strikingLeftLinkSprite;
@@ -95,7 +102,14 @@ namespace Sprint0
             rupeeSprite = content.Load<Texture2D>("Items/Ruppee");
             triforceSprite = content.Load<Texture2D>("Items/TriforcePiece");
             //Load Link Sprites
-            idleLinkSprite = content.Load<Texture2D>("Link/IdleLink");
+            idleLinkDownSprite = content.Load<Texture2D>("Link/IdleLinkDown");
+            idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
+            idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
+            idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
+            idleDamagedLinkDownSprite = content.Load<Texture2D>("Link/IdleDamagedLinkDown");
+            idleDamagedLinkRightSprite = content.Load<Texture2D>("Link/IdleDamagedLinkRight");
+            idleDamagedLinkLeftSprite = content.Load<Texture2D>("Link/IdleDamagedLinkLeft");
+            idleDamagedLinkUpSprite = content.Load<Texture2D>("Link/IdleDamagedLinkUp");
             strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkStrikingDown");
             strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkStrikingLeft");
             strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkStrikingRight");
@@ -216,9 +230,37 @@ namespace Sprint0
         {
             return new TriforceSprite(triforceSprite);
         }
-        public ISprite CreateIdleLinkSprite()
+        public ISprite CreateIdleLinkDownSprite()
         {
-            return new IdleLinkSprite(idleLinkSprite);
+            return new IdleLinkSprite(idleLinkDownSprite);
+        }
+        public ISprite CreateIdleLinkLeftSprite()
+        {
+            return new IdleLinkSprite(idleLinkLeftSprite);
+        }
+        public ISprite CreateIdleLinkRightSprite()
+        {
+            return new IdleLinkSprite(idleLinkRightSprite);
+        }
+        public ISprite CreateIdleLinkUpSprite()
+        {
+            return new IdleDamagedLinkSprite(idleLinkUpSprite);
+        }
+        public ISprite CreateIdleDamagedLinkDownSprite()
+        {
+            return new IdleDamagedLinkSprite(idleLinkDownSprite);
+        }
+        public ISprite CreateIdleDamagedLinkLeftSprite()
+        {
+            return new IdleDamagedLinkSprite(idleLinkLeftSprite);
+        }
+        public ISprite CreateIdleDamagedLinkRightSprite()
+        {
+            return new IdleDamagedLinkSprite(idleLinkRightSprite);
+        }
+        public ISprite CreateIdleDamagedLinkUpSprite()
+        {
+            return new IdleDamagedLinkSprite(idleLinkUpSprite);
         }
         public ISprite CreateStrikingDownLinkSprite()
         {
