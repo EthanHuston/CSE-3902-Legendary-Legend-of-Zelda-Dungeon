@@ -1,21 +1,15 @@
 ﻿using Sprint0.Link.Walking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sprint0.Link.NotMoving
+namespace Sprint0.Link.State.NotMoving
 {
-    class LinkStandingStillUpState : ILinkState
+    class LinkStandingStilLeftState : ILinkState
     {
         private Link link;
 
-        public LinkStandingStillUpState(Link link)
+        public LinkStandingStilLeftState(Link link)
         {
             InitClass(link);
         }
-
         private void InitClass(Link link)
         {
             this.link = link;
@@ -53,7 +47,7 @@ namespace Sprint0.Link.NotMoving
 
         public void BeDamaged(int damage)
         {
-            link.State = new LinkDamagedStandingStillUpState(link, damage);
+            link.State = new LinkDamagedStandingStillLeftState(link, damage);
         }
 
         public void BeHealthy()

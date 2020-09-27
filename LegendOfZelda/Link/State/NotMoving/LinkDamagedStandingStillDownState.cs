@@ -1,24 +1,25 @@
 ﻿using Sprint0.Link.Walking;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sprint0.Link.NotMoving
+namespace Sprint0.Link.State.NotMoving
 {
-    class LinkDamagedStandingStillRightState : ILinkState
+    class LinkDamagedStandingStillDownState : ILinkState
     {
         private Link link;
         private DateTime healthyDateTime;
 
-        public LinkDamagedStandingStillRightState(Link link, int damage)
+        public LinkDamagedStandingStillDownState(Link link)
+        {
+            InitClass(link);
+        }
+        public LinkDamagedStandingStillDownState(Link link, int damage)
         {
             InitClass(link);
             this.link.SubtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
-        public LinkDamagedStandingStillRightState(Link link, DateTime healthyDateTime)
+
+        public LinkDamagedStandingStillDownState(Link link, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -29,14 +30,17 @@ namespace Sprint0.Link.NotMoving
             this.link = link;
             // TODO: draw sprite
         }
+
         public void Update()
         {
             if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
         }
+
         public void Draw()
         {
             // TODO: Implement me
         }
+
         public void MoveDown()
         {
             link.State = new LinkDamagedWalkingDownState(link, healthyDateTime);

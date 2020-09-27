@@ -1,26 +1,21 @@
-﻿using Sprint0.Link.NotMoving;
+﻿using Sprint0.Link.State.NotMoving;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sprint0.Link.Walking
+namespace Sprint0.Link.State.Walking
 {
-    class LinkDamagedWalkingRightState : ILinkState
+    class LinkDamagedWalkingDownState : ILinkState
     {
         private Link link;
         private DateTime healthyDateTime;
 
-
-        public LinkDamagedWalkingRightState(Link link, int damage)
+        public LinkDamagedWalkingDownState(Link link, int damage)
         {
             InitClass(link);
             this.link.SubtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 
-        public LinkDamagedWalkingRightState(Link link, DateTime healthyDateTime)
+        public LinkDamagedWalkingDownState(Link link, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -29,12 +24,13 @@ namespace Sprint0.Link.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingRightDamagedLinkSprite();
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingDownDamagedLinkSprite();
         }
 
         public void Update()
         {
             if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
+            this.link.CurrentSprite.Update();
         }
 
         public void Draw()
@@ -44,7 +40,7 @@ namespace Sprint0.Link.Walking
 
         public void MoveDown()
         {
-            link.State = new LinkDamagedWalkingDownState(link, healthyDateTime);
+            // Already walking down, do nothing
         }
 
         public void MoveLeft()
@@ -54,7 +50,7 @@ namespace Sprint0.Link.Walking
 
         public void MoveRight()
         {
-            // Already walking right, do nothing
+            link.State = new LinkDamagedWalkingRightState(link, healthyDateTime);
         }
 
         public void MoveUp()
@@ -69,12 +65,12 @@ namespace Sprint0.Link.Walking
 
         public void BeHealthy()
         {
-            link.State = new LinkWalkingRightState(link);
+            link.State = new LinkWalkingDownState(link);
         }
 
         public void StopMoving()
         {
-            link.State = new LinkDamagedStandingStillRightState(link, healthyDateTime);
+            link.State = new LinkDamagedStandingStillDownState(link, healthyDateTime);
         }
     }
 }

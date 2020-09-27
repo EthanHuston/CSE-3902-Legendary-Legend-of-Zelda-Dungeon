@@ -1,17 +1,12 @@
-﻿using Sprint0.Link.Walking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sprint0.Link.State.NotMoving;
 
-namespace Sprint0.Link.NotMoving
+namespace Sprint0.Link.State.Walking
 {
-    class LinkStandingStillRightState : ILinkState
+    class LinkWalkingDownState : ILinkState
     {
         private Link link;
 
-        public LinkStandingStillRightState(Link link)
+        public LinkWalkingDownState(Link link)
         {
             InitClass(link);
         }
@@ -19,22 +14,22 @@ namespace Sprint0.Link.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingDownLinkSprite();
         }
 
         public void Update()
         {
-
+            link.CurrentSprite.Update();
         }
 
         public void Draw()
         {
-            // TODO: Implement me
+            link.CurrentSprite.Draw(link.Game.SpriteBatch);
         }
 
         public void MoveDown()
         {
-            link.State = new LinkWalkingDownState(link);
+            // Already walking down, do nothing
         }
 
         public void MoveLeft()
@@ -54,7 +49,7 @@ namespace Sprint0.Link.NotMoving
 
         public void BeDamaged(int damage)
         {
-            link.State = new LinkDamagedStandingStillRightState(link, damage);
+            link.State = new LinkDamagedWalkingDownState(link, damage);
         }
 
         public void BeHealthy()
@@ -64,7 +59,7 @@ namespace Sprint0.Link.NotMoving
 
         public void StopMoving()
         {
-            // Already not moving, do nothing
+            link.State = new LinkStandingStillDownState(link);
         }
     }
 }

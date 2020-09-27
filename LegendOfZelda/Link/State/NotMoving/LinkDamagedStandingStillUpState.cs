@@ -1,29 +1,20 @@
-﻿using Sprint0.Link.Walking;
+﻿using Sprint0.Link.State.Walking;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sprint0.Link.NotMoving
+namespace Sprint0.Link.State.NotMoving
 {
-    class LinkDamagedStandingStillDownState : ILinkState
+    class LinkDamagedStandingStillUpState : ILinkState
     {
         private Link link;
         private DateTime healthyDateTime;
 
-        public LinkDamagedStandingStillDownState(Link link)
-        {
-            InitClass(link);
-        }
-        public LinkDamagedStandingStillDownState(Link link, int damage)
+        public LinkDamagedStandingStillUpState(Link link, int damage)
         {
             InitClass(link);
             this.link.SubtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
-
-        public LinkDamagedStandingStillDownState(Link link, DateTime healthyDateTime)
+        public LinkDamagedStandingStillUpState(Link link, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;

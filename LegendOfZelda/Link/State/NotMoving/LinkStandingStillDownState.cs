@@ -1,18 +1,12 @@
-﻿using Sprint0.Link.NotMoving;
-using Sprint0.Link.Walking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sprint0.Link.Walking;
 
-namespace Sprint0.Link
+namespace Sprint0.Link.State.NotMoving
 {
-    class LinkWalkingUpState : ILinkState
+    class LinkStandingStillDownState : ILinkState
     {
         private Link link;
 
-        public LinkWalkingUpState(Link link)
+        public LinkStandingStillDownState(Link link)
         {
             InitClass(link);
         }
@@ -20,17 +14,16 @@ namespace Sprint0.Link
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingUpLinkSprite();
+            // TODO: draw sprite
         }
 
         public void Update()
         {
-            link.CurrentSprite.Update();
         }
 
         public void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch);
+            // TODO: Implement me
         }
 
         public void MoveDown()
@@ -50,22 +43,22 @@ namespace Sprint0.Link
 
         public void MoveUp()
         {
-            // Already walking up, do nothing
+            link.State = new LinkWalkingUpState(link);
         }
 
         public void BeDamaged(int damage)
         {
-            link.State = new LinkDamagedWalkingUpState(link, damage);
+            link.State = new LinkDamagedStandingStillDownState(link, damage);
         }
 
         public void BeHealthy()
         {
-            // Already in health state, do nothing
+            // Already in healthy state, do nothing
         }
 
         public void StopMoving()
         {
-            link.State = new LinkStandingStillUpState(link);
+            // Already not moving, do nothing
         }
     }
 }

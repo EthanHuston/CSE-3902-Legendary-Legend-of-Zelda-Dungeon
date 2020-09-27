@@ -1,26 +1,21 @@
-﻿using Sprint0.Link.NotMoving;
+﻿using Sprint0.Link.State.NotMoving;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sprint0.Link.Walking
+namespace Sprint0.Link.State.Walking
 {
-    class LinkDamagedWalkingLeftState : ILinkState
+    class LinkDamagedWalkingUpState : ILinkState
     {
         private Link link;
         private DateTime healthyDateTime;
 
-
-        public LinkDamagedWalkingLeftState(Link link, int damage)
+        public LinkDamagedWalkingUpState(Link link, int damage)
         {
             InitClass(link);
             this.link.SubtractHealth(damage);
             healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 
-        public LinkDamagedWalkingLeftState(Link link, DateTime healthyDateTime)
+        public LinkDamagedWalkingUpState(Link link, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -29,7 +24,7 @@ namespace Sprint0.Link.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingLeftDamagedLinkSprite();
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingUpDamagedLinkSprite();
         }
 
         public void Update()
@@ -49,7 +44,7 @@ namespace Sprint0.Link.Walking
 
         public void MoveLeft()
         {
-            // Already walking left, do nothing
+            link.State = new LinkDamagedWalkingLeftState(link, healthyDateTime);
         }
 
         public void MoveRight()
@@ -59,22 +54,22 @@ namespace Sprint0.Link.Walking
 
         public void MoveUp()
         {
-            link.State = new LinkDamagedWalkingUpState(link, healthyDateTime);
+            // Already walking up, do nothing
         }
 
         public void BeDamaged(int damage)
         {
-            // Already damaged, do nothing
+            // Already damaged, do nothing           
         }
 
         public void BeHealthy()
         {
-            link.State = new LinkWalkingLeftState(link);
+            link.State = new LinkWalkingUpState(link);
         }
 
         public void StopMoving()
         {
-            link.State = new LinkDamagedStandingStillLeftState(link, healthyDateTime);
+            link.State = new LinkDamagedStandingStillUpState(link, healthyDateTime);
         }
     }
 }
