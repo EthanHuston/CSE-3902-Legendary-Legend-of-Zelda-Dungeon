@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0
@@ -10,18 +6,50 @@ namespace Sprint0
     class WalkingLeftLinkSprite : ISprite
     {
         private Texture2D sprite;
+        private int bufferFrame;
+        private int currentFrame;
+        private readonly int totalFrames;
+        private int xPos;
+        private int yPos;
+        private const int rows = 1;
+        private const int columns = 2;
+
         public WalkingLeftLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            totalFrames = rows * columns;
+            xPos = Constants.Sprint2LinkSpawnX;
+            yPos = Constants.Sprint2LinkSpawnY;
         }
         public void Update()
         {
+            bufferFrame++;
+            if (bufferFrame == Constants.FrameDelay)
+            {
+                currentFrame++;
+                bufferFrame = 0;
+            }
+            currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
 
+            // Update position - don't move if at edge of screen
+            /* Not needed for sprint 2
+            xPos -= xPos < Constants.MinXPos ? Constants.LinkWalkDistance : 0;
+            */
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            int width = sprite.Width / columns;
+            int height = sprite.Height / rows;
+            int row = 1;
+            int column = currentFrame;
 
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle(xPos, yPos, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
         }
     }
 }

@@ -13,37 +13,48 @@ namespace Sprint0
         private Texture2D sprite;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 2;
-        private const int frameDelay = 5;
+        private readonly int totalFrames;
+        private int xPos;
+        private int yPos;
+        private const int rows = 1;
+        private const int columns = 2;
+
         public WalkingDownDamagedLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            totalFrames = rows * columns;
+            xPos = Constants.Sprint2LinkSpawnX;
+            yPos = Constants.Sprint2LinkSpawnY;
         }
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == frameDelay)
+            if (bufferFrame == Constants.FrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
             currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
+
+            // Update position - don't move if at edge of screen
+            /* Not needed for sprint 2
+            yPos += yPos < Constants.MaxYPos ? Constants.LinkWalkDistance : 0;
+            */
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            int width = sprite.Width / columns;
+            int height = sprite.Height / rows;
+            int row = 1;
+            int column = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal, 2 * sprite.Width, 2 * sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(xPos, yPos, (int) (width * Constants.SpriteScaler), (int) (height * Constants.SpriteScaler));
 
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, currentFrame % 2 == 0 ? Color.White : Color.Red);
             spriteBatch.End();
-            spriteBatch.Draw(sprite, new Vector2(Constants.Sprint2LinkSpawnX, Constants.Sprint2LinkSpawnY), currentFrame == 0 ? Color.White : Color.Red);
         }
     }
 }
