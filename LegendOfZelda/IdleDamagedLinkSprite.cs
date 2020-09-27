@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0
@@ -15,7 +10,6 @@ namespace Sprint0
         private int currentFrame;
         private const int totalFrames = 2;
         private const int frameDelay = 5;
-        private Color currentColor;
         public IdleDamagedLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
@@ -28,16 +22,12 @@ namespace Sprint0
                 currentFrame++;
                 bufferFrame = 0;
             }
-            if (currentFrame == totalFrames)
-            {
-                currentFrame = 0;
-            }
-            currentColor = currentFrame == 0 ? Color.White : Color.Red;
+            currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, new Vector2(Constants.Sprint2LinkSpawnX, Constants.Sprint2LinkSpawnY), currentColor);
+            spriteBatch.Draw(sprite, new Vector2(Constants.Sprint2LinkSpawnX, Constants.Sprint2LinkSpawnY), currentFrame == 0 ? Color.White : Color.Red);
         }
     }
 }
