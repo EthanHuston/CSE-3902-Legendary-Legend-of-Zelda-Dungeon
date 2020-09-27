@@ -9,14 +9,17 @@ namespace Sprint0
 {
     class BombedOpening : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private DoorSprite doorSprite;
+        private SpriteBatch sB;
+        public BombedOpening(SpriteBatch spriteBatch)
         {
-            
+            doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
+            sB = spriteBatch;
+            doorSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
         }
-
-        public void Update()
+        public void Interaction()
         {
-            
+
         }
     }
 }

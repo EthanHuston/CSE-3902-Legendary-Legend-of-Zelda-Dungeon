@@ -18,7 +18,7 @@ namespace Sprint0
             fireSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
         }
 
-        public void Interation()
+        public void Interaction()
         {
             //Update
         }

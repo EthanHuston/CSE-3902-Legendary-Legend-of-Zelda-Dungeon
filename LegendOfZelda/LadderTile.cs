@@ -9,14 +9,17 @@ namespace Sprint0
 {
     class LadderTile : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private LadderSprite ladderSprite;
+        private SpriteBatch sB;
+        public LadderTile(SpriteBatch spriteBatch)
         {
-            
+            ladderSprite = (LadderSprite)SpriteFactory.Instance.CreateLadderSprite();
+            sB = spriteBatch;
+            ladderSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
         }
-
-        public void Update()
+        public void Interaction()
         {
-            
+
         }
     }
 }

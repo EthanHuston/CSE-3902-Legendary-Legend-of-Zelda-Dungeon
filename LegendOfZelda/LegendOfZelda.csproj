@@ -67,6 +67,9 @@
     <Compile Include="BoomerangSprite.cs" />
     <Compile Include="BowSprite.cs" />
     <Compile Include="BrickTile.cs" />
+    <Compile Include="LadderSprite.cs" />
+    <Compile Include="StairSprite.cs" />
+    <Compile Include="DoorSprite.cs" />
     <Compile Include="ClockSprite.cs" />
     <Compile Include="Compass.cs" />
     <Compile Include="CompassSprite.cs" />
