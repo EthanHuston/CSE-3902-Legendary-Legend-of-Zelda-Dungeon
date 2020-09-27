@@ -84,6 +84,7 @@
     <Compile Include="HeartSprite.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IdleDamagedLinkSprite.cs" />
     <Compile Include="IdleLinkSprite.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
     <Compile Include="ISprite.cs" />
