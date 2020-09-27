@@ -302,10 +302,6 @@ namespace Sprint0
         {
             return new WalkingUpLinkSprite(walkingUpLinkSprite);
         }
-        public ISprite CreateIdleDamagedLinkSprite()
-        {
-            return new IdleDamagedLinkSprite(idleLinkSprite);
-        }
         public ISprite CreateStrikingDownDamagedLinkSprite()
         {
             return new StrikingDownDamagedLinkSprite(strikingDownLinkSprite);
