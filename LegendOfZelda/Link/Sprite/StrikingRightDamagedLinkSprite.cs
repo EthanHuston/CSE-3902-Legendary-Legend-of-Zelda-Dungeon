@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint0.Sprite
+namespace Sprint0.Link.Sprite
 {
     class StrikingRightDamagedLinkSprite : ISprite
     {

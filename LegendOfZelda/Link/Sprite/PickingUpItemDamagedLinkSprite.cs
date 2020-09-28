@@ -2,10 +2,10 @@
 
 namespace Sprint0.Link.Sprite
 {
-    class UsingItemLinkSprite : ISprite
+    class PickingUpItemDamagedLinkSprite : ISprite
     {
         private Texture2D sprite;
-        public UsingItemLinkSprite(Texture2D sprite)
+        public PickingUpItemDamagedLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
         }
