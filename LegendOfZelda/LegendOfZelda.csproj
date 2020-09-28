@@ -98,6 +98,8 @@
     <Compile Include="ISprite.cs" />
     <Compile Include="JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />
+    <Compile Include="Link\Sprite\PickingUpItemDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\PickingUpItemLinkSprite.cs" />
     <Compile Include="Link\State\Attacking\LinkDamagedAttackingDownState.cs" />
     <Compile Include="Link\State\Attacking\LinkDamagedAttackingLeftState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingLeftState.cs" />
