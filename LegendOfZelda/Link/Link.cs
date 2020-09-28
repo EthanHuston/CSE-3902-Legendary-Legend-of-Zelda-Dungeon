@@ -18,7 +18,7 @@ namespace Sprint0.Link
 
         public void Draw()
         {
-            State.Draw();
+            CurrentSprite.Draw(Game.SpriteBatch);
         }
 
         public void Update()

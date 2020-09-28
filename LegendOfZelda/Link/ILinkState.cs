@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Sprint0.Link
 {
     interface ILinkState
@@ -16,7 +10,6 @@ namespace Sprint0.Link
         void BeHealthy();
         void StopMoving();
         void Update();
-        void Draw();
         void SwordRight();
         void SwordLeft();
         void SwordDown();
