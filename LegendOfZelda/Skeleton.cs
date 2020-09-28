@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint0
 {
-    class Jelly : IEnemy
+    class Skeleton : IEnemy
     {
-        private JellySprite sprite;
+        private SkeletonSprite sprite;
         private SpriteBatch spriteBatch;
         private int currentX = Sprint2.enemyNPCX;
         private int currentY = Sprint2.enemyNPCY;
@@ -20,9 +20,9 @@ namespace Sprint0
         private int maxYVal = 480;
         private int movementBuffer = 0;
 
-        public Jelly(SpriteBatch spriteBatch)
+        public Skeleton(SpriteBatch spriteBatch)
         {
-            sprite = (JellySprite)SpriteFactory.Instance.CreateJellySprite();
+            sprite = (SkeletonSprite)SpriteFactory.Instance.CreateSkeletonSprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()
@@ -32,34 +32,32 @@ namespace Sprint0
             int pn = rand.Next(0, 1); // 0 right/down. 1 for left/up
 
             movementBuffer++;
-            if (movementBuffer == 6)
+            if(movementBuffer == 6)
             {
-                //Simulate jelly moving
+                //Simulate skeleton moving
                 if (xy == 0 && pn == 0 && currentX < maxXVal)
                 {
-                    currentX = currentX + 16;
+                    currentX++;
                 }
                 else if (xy == 0 && pn == 1 && currentX > minXVal)
                 {
-                    currentX = currentX - 16;
+                    currentX--;
                 }
                 else if (xy == 1 && pn == 0 && currentY < maxYVal)
                 {
-                    currentY = currentY + 16;
+                    currentY++;
                 }
                 else
                 {
-                    currentY = currentY + 16;
+                    currentY++;
                 }
             }
             else
             {
-                movementBuffer++;
+                movementBuffer = 0;
             }
-
             sprite.Update();
             this.Draw();
-
         }
 
         public void Draw()

@@ -120,6 +120,7 @@
     <Compile Include="SetStillSpriteCommand.cs" />
     <Compile Include="SetWalkingStillSpriteCommand.cs" />
     <Compile Include="ShutDoor.cs" />
+    <Compile Include="Skeleton.cs" />
     <Compile Include="SkeletonSprite.cs" />
     <Compile Include="SpikeTrapSprite.cs" />
     <Compile Include="Sprint2.cs" />

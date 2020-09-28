@@ -60,6 +60,7 @@ namespace Sprint0
             {
                 currentY--;
             }
+            sprite.Update();
             this.Draw();
 
         }
