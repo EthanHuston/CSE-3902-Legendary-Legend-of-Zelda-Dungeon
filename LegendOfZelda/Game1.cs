@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using Sprint0.Link;
 
 namespace Sprint0
 {
@@ -13,6 +14,7 @@ namespace Sprint0
         public SpriteBatch SpriteBatch;
         public ISprite sprite;
         public ISprite textSprite;
+        public IPlayer link;
         List<object> controllerList;
         KeyboardController keyboardController;
         
