@@ -1,72 +1,82 @@
-﻿using System;
+﻿using Sprint0.Link.State.NotMoving;
+using Sprint0.Link.State.Walking;
+using System;
 
 namespace Sprint0.Link.State.Attacking
 {
     class LinkAttackingDownState : ILinkState
     {
-        public void BeDamaged(int damage)
+        private Link link;
+
+        public LinkAttackingDownState(Link link)
         {
-            throw new NotImplementedException();
+            InitState(link);
         }
 
-        public void BeHealthy()
+        private void InitState(Link link)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Draw()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveDown()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveLeft()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveRight()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveUp()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StopMoving()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SwordDown()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SwordLeft()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SwordRight()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SwordUp()
-        {
-            throw new NotImplementedException();
+            this.link = link;
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleDamagedLinkDownSprite();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            link.CurrentSprite.Update();
+            link.State = new LinkStandingStillDownState(link); // switch state after finishing animation
+        }
+
+        public void MoveDown()
+        {
+            link.State = new LinkWalkingDownState(link);
+        }
+
+        public void MoveLeft()
+        {
+            link.State = new LinkWalkingLeftState(link);
+        }
+
+        public void MoveRight()
+        {
+            link.State = new LinkWalkingRightState(link);
+        }
+
+        public void MoveUp()
+        {
+            link.State = new LinkWalkingUpState(link);
+        }
+
+        public void BeDamaged(int damage)
+        {
+            link.State = new LinkDamagedWalkingDownState(link, damage);
+        }
+
+        public void BeHealthy()
+        {
+            // Already in healthy state, do nothing
+        }
+
+        public void StopMoving()
+        {
+            link.State = new LinkStandingStillDownState(link);
+        }
+        public void SwordRight()
+        {
+            link.State = new LinkAttackingUpState(link);
+        }
+
+        public void SwordLeft()
+        {
+            link.State = new LinkAttackingLeftState(link);
+        }
+
+        public void SwordDown()
+        {
+            // Already attacking down, do nothing
+        }
+
+        public void SwordUp()
+        {
+            link.State = new LinkAttackingUpState(link);
         }
     }
 }
