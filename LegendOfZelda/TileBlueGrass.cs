@@ -25,7 +25,7 @@ namespace Sprint0
 
         public void Draw()
         {
-            floorSprite.Draw(sb, posX, posY);
+            sprite.Draw(sb, posX, posY);
         }
 
         public int getX()

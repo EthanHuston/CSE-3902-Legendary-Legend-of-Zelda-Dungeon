@@ -16,7 +16,7 @@ namespace Sprint0
 
         public TileVoid(SpriteBatch spriteBatch, int x, int y)
         {
-            floorSprite = (TileVoidSprite)SpriteFactory.Instance.CreateTileVoidSprite();
+            sprite = (TileVoidSprite)SpriteFactory.Instance.CreateTileVoidSprite();
             sb = spriteBatch;
             posX = x;
             posY = y;
@@ -25,7 +25,7 @@ namespace Sprint0
 
         public void Draw()
         {
-            floorSprite.Draw(sb, posX, posY);
+            sprite.Draw(sb, posX, posY);
         }
 
         public int getX()

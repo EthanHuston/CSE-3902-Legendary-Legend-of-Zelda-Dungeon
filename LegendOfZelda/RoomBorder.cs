@@ -12,7 +12,7 @@ namespace Sprint0
         private RoomBorderSprite roomSprite;
         private SpriteBatch sb;
         int posX, posY;
-        public FloorTile(SpriteBatch spriteBatch, int x, int y)
+        public RoomBorder(SpriteBatch spriteBatch, int x, int y)
         {
             roomSprite = (RoomBorderSprite)SpriteFactory.Instance.CreateRoomBorderSprite();
             sb = spriteBatch;

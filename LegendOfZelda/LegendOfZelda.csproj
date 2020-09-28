@@ -67,7 +67,11 @@
     <Compile Include="BoomerangSprite.cs" />
     <Compile Include="BowSprite.cs" />
     <Compile Include="BrickTile.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="INonInteractiveEnvironment.cs" />
     <Compile Include="LadderSprite.cs" />
+    <Compile Include="RoomBorder.cs" />
+    <Compile Include="RoomBorderSprite.cs" />
     <Compile Include="StairSprite.cs" />
     <Compile Include="DoorSprite.cs" />
     <Compile Include="ClockSprite.cs" />
@@ -129,6 +133,12 @@
     <Compile Include="StrikingLeftLinkSprite.cs" />
     <Compile Include="StrikingRightLinkSprite.cs" />
     <Compile Include="StrikingUpLinkSprite.cs" />
+    <Compile Include="TileBlueGrass.cs" />
+    <Compile Include="TileBlueGrassSprite.cs" />
+    <Compile Include="TileVoid.cs" />
+    <Compile Include="TileVoidSprite.cs" />
+    <Compile Include="TileWater.cs" />
+    <Compile Include="TileWaterSprite.cs" />
     <Compile Include="TriforceSprite.cs" />
     <Compile Include="UsingItemLinkSprite.cs" />
     <Compile Include="WalkingDownLinkSprite.cs" />

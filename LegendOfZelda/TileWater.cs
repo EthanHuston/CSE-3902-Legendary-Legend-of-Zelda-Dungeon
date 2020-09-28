@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class TileWater : ITile
+    class TileWater : INonInteractiveEnvironment
     {
-        private TileWaterSprite waterSprite;
+        private TileWaterSprite sprite;
         private SpriteBatch sb;
         private int posX, posY;
         bool canWalk;
 
         public TileWater(SpriteBatch spriteBatch, int x, int y)
         {
-            floorSprite = (TileWaterSprite)SpriteFactory.Instance.CreateTileWaterSprite();
+            sprite = (TileWaterSprite)SpriteFactory.Instance.CreateTileWaterSprite();
             sb = spriteBatch;
             posX = x;
             posY = y;
@@ -25,7 +25,7 @@ namespace Sprint0
 
         public void Draw()
         {
-            floorSprite.Draw(sb, posX, posY);
+            sprite.Draw(sb, posX, posY);
         }
 
         public int getX()
