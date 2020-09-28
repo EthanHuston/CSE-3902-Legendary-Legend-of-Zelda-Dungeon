@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Link.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace Sprint0
             this.RegisterCommand(Keys.D2, new SetWalkingStillSpriteCommand(game1));
             this.RegisterCommand(Keys.D3, new SetDeadSpriteCommand(game1));
             this.RegisterCommand(Keys.D4, new SetFullWalkingSpriteCommand(game1));
+            this.RegisterCommand(Keys.W, new WalkingForwardCommand(game1));
+            this.RegisterCommand(Keys.Up, new WalkingForwardCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
