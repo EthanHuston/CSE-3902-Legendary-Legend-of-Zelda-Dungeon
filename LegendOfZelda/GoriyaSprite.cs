@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0
 {
-    class DogLikeMonsterSprite : ISprite
+    class GoriyaSprite : ISprite
     {
         private Texture2D sprite;
-        public DogLikeMonsterSprite(Texture2D sprite)
+        public GoriyaSprite(Texture2D sprite)
         {
             this.sprite = sprite;
         }
