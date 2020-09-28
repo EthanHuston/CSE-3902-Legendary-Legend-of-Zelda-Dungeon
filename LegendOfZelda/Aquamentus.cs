@@ -14,7 +14,7 @@ namespace Sprint0
 
         public Aquamentus(SpriteBatch spriteBatch)
         {
-            this.sprite = SpriteFactory.Instance.CreateAquamentusSprite();
+            this.sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
             this.spriteBatch = spriteBatch;
         }
 

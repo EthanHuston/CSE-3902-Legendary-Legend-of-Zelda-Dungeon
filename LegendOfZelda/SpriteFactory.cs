@@ -14,8 +14,8 @@ namespace Sprint0
     {
         private Texture2D batSprite;
         private Texture2D dogLikeMonsterSprite;
-        private Texture2D dragonBreathingSprite;
-        private Texture2D dragonWalkingSprite;
+        private Texture2D aquamentusBreathingSprite;
+        private Texture2D aquamentusWalkingSprite;
         private Texture2D handSprite;
         private Texture2D jellySprite;
         private Texture2D skeletonSprite;
@@ -68,8 +68,8 @@ namespace Sprint0
             //Load Enemy Sprites
             batSprite = content.Load<Texture2D>("Enemies/Bat");
             dogLikeMonsterSprite = content.Load<Texture2D>("DogLikeMonster");
-            dragonBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
-            dragonWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
+            aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
+            aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
             handSprite = content.Load<Texture2D>("Enemies/Hand");
             jellySprite = content.Load<Texture2D>("Enemies/Jelly");
             skeletonSprite = content.Load<Texture2D>("Enemies/Skeleton");
@@ -120,13 +120,13 @@ namespace Sprint0
         {
             return new GoriyaSprite(dogLikeMonsterSprite);
         }
-        public ISprite CreateDragonBreathingSprite()
+        public ISprite CreateAquamentusBreathingSprite()
         {
-            return new AquamentusBreathingSprite(dragonBreathingSprite);
+            return new AquamentusBreathingSprite(aquamentusBreathingSprite);
         }
-        public ISprite CreateDragonWalkingSprite()
+        public ISprite CreateAquamentusWalkingSprite()
         {
-            return new AquamentusWalkingSprite(dragonWalkingSprite);
+            return new AquamentusWalkingSprite(aquamentusWalkingSprite);
         }
         public ISprite CreateHandSprite()
         {
