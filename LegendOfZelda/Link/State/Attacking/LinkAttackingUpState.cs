@@ -8,6 +8,18 @@ namespace Sprint0.Link.State.Attacking
 {
     class LinkAttackingUpState : ILinkState
     {
+        private Link link;
+        public LinkAttackingUpState(Link link)
+        {
+            InitClass(link);
+        }
+
+        private void InitClass(Link link)
+        {
+            this.link = link;
+            // TODO: draw sprite
+        }
+
         public void BeDamaged(int damage)
         {
             throw new NotImplementedException();
@@ -44,6 +56,26 @@ namespace Sprint0.Link.State.Attacking
         }
 
         public void StopMoving()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordDown()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordRight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordUp()
         {
             throw new NotImplementedException();
         }

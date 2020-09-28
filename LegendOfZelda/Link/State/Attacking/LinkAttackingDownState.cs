@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint0.Link.State.Attacking
 {
@@ -44,6 +40,26 @@ namespace Sprint0.Link.State.Attacking
         }
 
         public void StopMoving()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordDown()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordRight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwordUp()
         {
             throw new NotImplementedException();
         }

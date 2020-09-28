@@ -17,5 +17,9 @@ namespace Sprint0.Link
         void StopMoving();
         void Update();
         void Draw();
+        void SwordRight();
+        void SwordLeft();
+        void SwordDown();
+        void SwordUp();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Sprint0.Link.Walking;
+﻿using Sprint0.Link.State.Walking;
 using System;
 
 namespace Sprint0.Link.State.NotMoving
