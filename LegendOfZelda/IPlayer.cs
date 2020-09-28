@@ -13,5 +13,7 @@
         void MoveRight();
         void StopMoving();
         void SwordAttack();
+        void UseItem();
+        void PickUpItem();
     }
 }
