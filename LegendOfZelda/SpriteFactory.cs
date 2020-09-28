@@ -54,6 +54,11 @@ namespace Sprint0
         private Texture2D walkingRightLinkSprite;
         private Texture2D oldManSprite;
         private Texture2D merchantSprite;
+        private Texture2D tileBlackSprite;
+        private Texture2D tileWaterSprite;
+        private Texture2D tileBlueGrassSprite;
+        private Texture2D roomBorderSprite;
+
         private static SpriteFactory instance = new SpriteFactory();
         public static SpriteFactory Instance
         {
@@ -115,6 +120,11 @@ namespace Sprint0
             //Load NPC Sprites
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
             merchantSprite = content.Load<Texture2D>("NPC/Merchant");
+            //Load Tile Sprites
+            tileBlackSprite = content.Load<Texture2D>("Environment/BlackTile");
+            tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");
+            tileWaterSprite = content.Load<Texture2D>("Environment/WaterTile");
+            roomBorderSprite = content.Load<Texture2D>("Environment/RoomBorder");
         }
 
         public ISprite CreateBatSprite()
@@ -285,6 +295,22 @@ namespace Sprint0
         public ISprite CreateMerchantSprite()
         {
             return new MerchantSprite(merchantSprite);
+        }
+        public ISprite CreateTileBlackSprite()
+        {
+            return new TileBlackSprite(tileBlackSprite);
+        }
+        public ISprite CreateTileBlueGrassSprite()
+        {
+            return new TileBlueGrassSprite(tileBlueGrassSprite);
+        }
+        public ISprite CreateTileWaterSprite()
+        {
+            return new TileWaterSprite(tileWaterSprite);
+        }
+        public ISprite CreateRoomBorderSprite()
+        {
+            return new RoomBorderSprite(roomBorderSprite);
         }
     }
 }

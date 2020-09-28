@@ -135,8 +135,8 @@
     <Compile Include="StrikingUpLinkSprite.cs" />
     <Compile Include="TileBlueGrass.cs" />
     <Compile Include="TileBlueGrassSprite.cs" />
-    <Compile Include="TileVoid.cs" />
-    <Compile Include="TileVoidSprite.cs" />
+    <Compile Include="TileBlack.cs" />
+    <Compile Include="TileBlackSprite.cs" />
     <Compile Include="TileWater.cs" />
     <Compile Include="TileWaterSprite.cs" />
     <Compile Include="TriforceSprite.cs" />

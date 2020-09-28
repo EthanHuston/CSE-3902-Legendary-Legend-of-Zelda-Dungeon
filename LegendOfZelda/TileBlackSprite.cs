@@ -9,10 +9,10 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint0
 {
-    class TileVoidSprite : ISprite
+    class TileBlackSprite : ISprite
     {
         private Texture2D sprite;
-        public TileVoidSprite(Texture2D sprite)
+        public TileBlackSprite(Texture2D sprite)
         {
             this.sprite = sprite;
         }

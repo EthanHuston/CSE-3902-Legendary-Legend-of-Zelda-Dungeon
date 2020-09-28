@@ -109,6 +109,18 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/SpikeTrap.png
 
+#begin Environment/BlackTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/BlackTile.png
+
 #begin Environment/Block.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -120,6 +132,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Environment/Block.png
+
+#begin Environment/BlueGrassTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/BlueGrassTile.png
+
+#begin Environment/BlueTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/BlueTile.png
 
 #begin Environment/Doors.png
 /importer:TextureImporter
@@ -145,6 +181,18 @@
 /processorParam:TextureFormat=Color
 /build:Environment/Ladder.png
 
+#begin Environment/RoomWalls.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/RoomWalls.png;Environment/RoomBorder.png
+
 #begin Environment/Stairs.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -168,6 +216,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Environment/Statue.png
+
+#begin Environment/TileBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/TileBackground.png
+
+#begin Environment/WaterTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/WaterTile.png
 
 #begin Image/LuigiDead.png
 /importer:TextureImporter

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class TileVoid : INonInteractiveEnvironment
+    class TileBlack : INonInteractiveEnvironment
     {
-        private TileVoidSprite sprite;
+        private TileBlackSprite sprite;
         private SpriteBatch sb;
         private int posX, posY;
         bool canWalk;
 
-        public TileVoid(SpriteBatch spriteBatch, int x, int y)
+        public TileBlack(SpriteBatch spriteBatch, int x, int y)
         {
-            sprite = (TileVoidSprite)SpriteFactory.Instance.CreateTileVoidSprite();
+            sprite = (TileBlackSprite)SpriteFactory.Instance.CreateTileVoidSprite();
             sb = spriteBatch;
             posX = x;
             posY = y;
