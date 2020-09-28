@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint0
+namespace Sprint0.Sprite
 {
-    class StrikingDownDamagedLinkSprite : ISprite
+    class StrikingRightLinkSprite : ISprite
     {
         private Texture2D sprite;
-        public StrikingDownDamagedLinkSprite(Texture2D sprite)
+        public StrikingRightLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
         }

@@ -58,7 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="IdleDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\IdleDamagedLinkSprite.cs" />
     <Compile Include="Link\ILinkState.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Link\Link.cs" />
@@ -88,11 +88,15 @@
     <Compile Include="HeartSprite.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
-    <Compile Include="IdleLinkSprite.cs" />
+    <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingLeftState.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingRightState.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingUpState.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingDownState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillLeftState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillUpState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillRightState.cs" />
@@ -140,25 +144,25 @@
     <Compile Include="Stairs.cs" />
     <Compile Include="Statues.cs" />
     <Compile Include="StatueSprite.cs" />
-    <Compile Include="StrikingDownDamagedLinkSprite.cs" />
-    <Compile Include="StrikingDownLinkSprite.cs" />
-    <Compile Include="StrikingLeftDamagedLinkSprite.cs" />
-    <Compile Include="StrikingLeftLinkSprite.cs" />
-    <Compile Include="StrikingRightDamagedLinkSprite.cs" />
-    <Compile Include="StrikingRightLinkSprite.cs" />
-    <Compile Include="StrikingUpDamagedLinkSprite.cs" />
-    <Compile Include="StrikingUpLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingDownDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingDownLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingLeftDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingLeftLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingRightDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingRightLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingUpDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingUpLinkSprite.cs" />
     <Compile Include="TriforceSprite.cs" />
-    <Compile Include="UsingItemDamagedLinkSprite.cs" />
-    <Compile Include="UsingItemLinkSprite.cs" />
-    <Compile Include="WalkingDownDamagedLinkSprite.cs" />
-    <Compile Include="WalkingDownLinkSprite.cs" />
-    <Compile Include="WalkingLeftDamagedLinkSprite.cs" />
-    <Compile Include="WalkingLeftLinkSprite.cs" />
-    <Compile Include="WalkingRightDamagedLinkSprite.cs" />
-    <Compile Include="WalkingRightLinkSprite.cs" />
-    <Compile Include="WalkingUpDamagedLinkSprite.cs" />
-    <Compile Include="WalkingUpLinkSprite.cs" />
+    <Compile Include="Link\Sprite\UsingItemDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingDownDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingDownLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingLeftDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingLeftLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingRightDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingRightLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingUpDamagedLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingUpLinkSprite.cs" />
     <Compile Include="Walls.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +231,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
