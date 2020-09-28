@@ -81,6 +81,7 @@
     <Compile Include="FireSprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GapTile.cs" />
+    <Compile Include="Hand.cs" />
     <Compile Include="HandSprite.cs" />
     <Compile Include="HeartContainerSprite.cs" />
     <Compile Include="HeartSprite.cs" />
