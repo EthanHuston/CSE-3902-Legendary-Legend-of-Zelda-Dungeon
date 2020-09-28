@@ -106,6 +106,8 @@
     <Compile Include="Link\State\Attacking\LinkDamagedAttackingUpState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingUpState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingDownState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingItemState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpItemState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillLeftState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillUpState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillRightState.cs" />
