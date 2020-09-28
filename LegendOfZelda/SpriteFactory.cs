@@ -67,7 +67,7 @@ namespace Sprint0
         {
             //Load Enemy Sprites
             batSprite = content.Load<Texture2D>("Enemies/Bat");
-            dogLikeMonsterSprite = content.Load<Texture2D>("Enemies/DogLikeMonster");
+            dogLikeMonsterSprite = content.Load<Texture2D>("DogLikeMonster");
             dragonBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
             dragonWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
             handSprite = content.Load<Texture2D>("Enemies/Hand");
