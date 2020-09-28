@@ -1,6 +1,6 @@
 ﻿namespace Sprint0
 {
-    internal interface IPlayer
+    public interface IPlayer
     {
         void Draw();
         void Update();
