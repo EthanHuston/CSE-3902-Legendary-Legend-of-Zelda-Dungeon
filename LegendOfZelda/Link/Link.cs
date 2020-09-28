@@ -1,9 +1,4 @@
-using Sprint0.Link.NotMoving;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sprint0.Link.State.NotMoving;
 
 namespace Sprint0.Link
 {
@@ -68,6 +63,23 @@ namespace Sprint0.Link
         public void StopMoving()
         {
             State.StopMoving();
+        }
+
+        public void SwordRight()
+        {
+            State.SwordRight();
+        }
+        public void SwordLeft()
+        {
+            State.SwordLeft();
+        }
+        public void SwordDown()
+        {
+            State.SwordDown();
+        }
+        public void SwordUp()
+        {
+            State.SwordUp();
         }
     }
 }
