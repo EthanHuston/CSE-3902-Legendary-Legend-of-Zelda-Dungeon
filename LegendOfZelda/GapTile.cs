@@ -9,6 +9,14 @@ namespace Sprint0
 {
     class GapTile : IInteractiveEnviornment
     {
+        private TileBlackSprite tileBlackSprite;
+        private SpriteBatch sB;
+        public GapTile(SpriteBatch spriteBatch)
+        {
+            tileBlackSprite = (TileBlackSprite)SpriteFactory.Instance.CreateTileBlackSprite();
+            sB = spriteBatch;
+            tileBlackSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
+        }
         public void Interaction()
         {
             
