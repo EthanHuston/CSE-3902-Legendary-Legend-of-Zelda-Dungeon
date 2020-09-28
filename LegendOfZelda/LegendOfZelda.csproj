@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Link\Command\WalkingForwardCommand.cs" />
+    <Compile Include="Link\Command\WalkingLeftCommand.cs" />
     <Compile Include="Link\Sprite\IdleDamagedLinkSprite.cs" />
     <Compile Include="Link\ILinkState.cs" />
     <Compile Include="IPlayer.cs" />

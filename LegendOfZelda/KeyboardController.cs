@@ -30,6 +30,8 @@ namespace Sprint0
             this.RegisterCommand(Keys.D4, new SetFullWalkingSpriteCommand(game1));
             this.RegisterCommand(Keys.W, new WalkingForwardCommand(game1));
             this.RegisterCommand(Keys.Up, new WalkingForwardCommand(game1));
+            this.RegisterCommand(Keys.A, new WalkingLeftCommand(game1));
+            this.RegisterCommand(Keys.Left, new WalkingLeftCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
