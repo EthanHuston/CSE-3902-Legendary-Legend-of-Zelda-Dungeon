@@ -16,7 +16,7 @@ namespace Sprint0
 
         public TileBlack(SpriteBatch spriteBatch, int x, int y)
         {
-            sprite = (TileBlackSprite)SpriteFactory.Instance.CreateTileVoidSprite();
+            sprite = (TileBlackSprite)SpriteFactory.Instance.CreateTileBlackSprite();
             sb = spriteBatch;
             posX = x;
             posY = y;

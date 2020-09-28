@@ -9,7 +9,7 @@ namespace Sprint0
 {
     interface INonInteractiveEnvironment
     {
-        void Draw(SpriteBatch spriteBatch);
+        void Draw();
     }
 }
 

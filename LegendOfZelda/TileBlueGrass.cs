@@ -9,7 +9,7 @@ namespace Sprint0
 {
     class TileBlueGrass : INonInteractiveEnvironment
     {
-        private TileBlackSprite sprite;
+        private TileBlueGrassSprite sprite;
         private SpriteBatch sb;
         private int posX, posY;
         bool canWalk;
