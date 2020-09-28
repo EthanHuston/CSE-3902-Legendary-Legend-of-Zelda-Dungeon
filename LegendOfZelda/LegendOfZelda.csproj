@@ -94,8 +94,12 @@
     <Compile Include="ISprite.cs" />
     <Compile Include="JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />
+    <Compile Include="Link\State\Attacking\LinkDamagedAttackingDownState.cs" />
+    <Compile Include="Link\State\Attacking\LinkDamagedAttackingLeftState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingLeftState.cs" />
+    <Compile Include="Link\State\Attacking\LinkDamagedAttackingRightState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingRightState.cs" />
+    <Compile Include="Link\State\Attacking\LinkDamagedAttackingUpState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingUpState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingDownState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillLeftState.cs" />
