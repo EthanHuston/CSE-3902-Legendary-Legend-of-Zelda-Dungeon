@@ -69,5 +69,15 @@ namespace Sprint0.Link
         {
             State.SwordAttack();
         }
+
+        public void UseItem()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PickUpItem()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace Sprint0.Link
         void StopMoving();
         void Update();
         void SwordAttack();
+        void PickUpItem();
+        void UseItem();
     }
 }
