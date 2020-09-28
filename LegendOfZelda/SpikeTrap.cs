@@ -18,7 +18,9 @@ namespace Sprint0
         private int maxXVal = 800;
         private int minYVal = 0;
         private int maxYVal = 480;
-        private int maxDistance = 20;
+        private int maxDistance = 50;
+        private int currentDist = 0;
+        bool returning = false;
 
         public SpikeTrap(SpriteBatch spriteBatch)
         {
@@ -28,46 +30,25 @@ namespace Sprint0
 
         public void Update()
         {
-            Random rand = new Random();
-            int xy = rand.Next(0, 1); // 0 for x, 1 for y
-            int pn = rand.Next(0, 1); // 0 right/down. 1 for left/up
-
-            for(int i = 0; i < maxDistance; i++)
+            currentY--;
+            if (returning)
             {
-                if (currentX == minXVal)
+                currentY++;
+                currentDist--;
+                if(currentDist <= 0)
                 {
-                    break;
+                    returning = false;
                 }
-                else if (currentX == maxXVal)
+            }
+            else
+            {
+                currentY = currentY - 2;
+                currentDist = currentDist + 2;
+                if(currentDist >= maxDistance)
                 {
-                    break;
+                    returning = true;
                 }
-                else if (currentY == minYVal)
-                {
-                    break;
-                }
-                else if (currentY == maxYVal)
-                {
-                    break;
-                }
-
-                if (xy == 0 && pn == 0)
-                {
-                    currentX++;
-                }
-                else if (xy == 0 && pn == 1)
-                {
-                    currentX--;
-                }
-                else if (xy == 1 && pn == 0)
-                {
-                    currentY++;
-                }
-                else
-                {
-                    currentY--;
-                }
-                this.Draw();
+                
             }
         }
         public void Draw()

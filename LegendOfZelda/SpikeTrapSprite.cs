@@ -17,7 +17,6 @@ namespace Sprint0
         }
         public void Update()
         {
-
         }
 
         public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
