@@ -60,6 +60,7 @@
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="ArrowSprite.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Bat.cs" />
     <Compile Include="BatSprite.cs" />
     <Compile Include="BlockSprite.cs" />
     <Compile Include="BombedOpening.cs" />
@@ -86,10 +87,12 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IdleLinkSprite.cs" />
+    <Compile Include="IEnemy.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="INPC.cs" />
     <Compile Include="ISprite.cs" />
+    <Compile Include="Jelly.cs" />
     <Compile Include="JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="KeySprite.cs" />
