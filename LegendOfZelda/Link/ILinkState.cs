@@ -10,9 +10,6 @@ namespace Sprint0.Link
         void BeHealthy();
         void StopMoving();
         void Update();
-        void SwordRight();
-        void SwordLeft();
-        void SwordDown();
-        void SwordUp();
+        void SwordAttack();
     }
 }

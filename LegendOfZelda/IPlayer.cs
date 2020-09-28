@@ -12,9 +12,6 @@
         void MoveLeft();
         void MoveRight();
         void StopMoving();
-        void SwordRight();
-        void SwordLeft();
-        void SwordDown();
-        void SwordUp();
+        void SwordAttack();
     }
 }

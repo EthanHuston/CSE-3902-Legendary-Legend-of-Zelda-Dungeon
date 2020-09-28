@@ -1,4 +1,5 @@
-﻿using Sprint0.Link.State.Walking;
+﻿using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.Walking;
 
 namespace Sprint0.Link.State.NotMoving
 {
@@ -14,16 +15,12 @@ namespace Sprint0.Link.State.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleLinkUpSprite();
         }
 
         public void Update()
         {
-        }
-
-        public void Draw()
-        {
-            // TODO: Implement me
+            link.CurrentSprite.Update();
         }
 
         public void MoveDown()
@@ -59,6 +56,11 @@ namespace Sprint0.Link.State.NotMoving
         public void StopMoving()
         {
             // Already not moving, do nothing
+        }
+
+        public void SwordAttack()
+        {
+            link.State = new LinkAttackingUpState(link);
         }
     }
 }

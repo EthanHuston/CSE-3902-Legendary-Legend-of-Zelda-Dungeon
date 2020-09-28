@@ -1,4 +1,5 @@
-﻿using Sprint0.Link.State.NotMoving;
+﻿using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.NotMoving;
 
 namespace Sprint0.Link.State.Walking
 {
@@ -20,11 +21,6 @@ namespace Sprint0.Link.State.Walking
         public void Update()
         {
             link.CurrentSprite.Update();
-        }
-
-        public void Draw()
-        {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch);
         }
 
         public void MoveDown()
@@ -60,6 +56,11 @@ namespace Sprint0.Link.State.Walking
         public void StopMoving()
         {
             link.State = new LinkStandingStillDownState(link);
+        }
+
+        public void SwordAttack()
+        {
+            link.State = new LinkAttackingDownState(link);
         }
     }
 }

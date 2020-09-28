@@ -1,6 +1,5 @@
 ﻿using Sprint0.Link.State.NotMoving;
 using Sprint0.Link.State.Walking;
-using System;
 
 namespace Sprint0.Link.State.Attacking
 {
@@ -16,13 +15,13 @@ namespace Sprint0.Link.State.Attacking
         private void InitState(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleDamagedLinkDownSprite();
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateStrikingDownLinkSprite();
         }
 
         public void Update()
         {
             link.CurrentSprite.Update();
-            link.State = new LinkStandingStillDownState(link); // switch state after finishing animation
+            // TODO: switch state after finishing animation, but how????
         }
 
         public void MoveDown()
@@ -59,24 +58,10 @@ namespace Sprint0.Link.State.Attacking
         {
             link.State = new LinkStandingStillDownState(link);
         }
-        public void SwordRight()
-        {
-            link.State = new LinkAttackingUpState(link);
-        }
 
-        public void SwordLeft()
+        public void SwordAttack()
         {
-            link.State = new LinkAttackingLeftState(link);
-        }
-
-        public void SwordDown()
-        {
-            // Already attacking down, do nothing
-        }
-
-        public void SwordUp()
-        {
-            link.State = new LinkAttackingUpState(link);
+            // Already attacking, do nothing
         }
     }
 }

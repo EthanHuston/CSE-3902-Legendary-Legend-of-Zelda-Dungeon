@@ -20,7 +20,7 @@ namespace Sprint0.Link.State.Attacking
         private void InitState(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleDamagedLinkDownSprite();
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateStrikingUpLinkSprite();
         }
 
         public void Update()
@@ -63,24 +63,10 @@ namespace Sprint0.Link.State.Attacking
         {
             // Already not moving, do nothing
         }
-        public void SwordRight()
-        {
-            link.State = new LinkAttackingRightState(link);
-        }
 
-        public void SwordLeft()
+        public void SwordAttack()
         {
-            link.State = new LinkAttackingLeftState(link);
-        }
-
-        public void SwordDown()
-        {
-            link.State = new LinkAttackingDownState(link);
-        }
-
-        public void SwordUp()
-        {
-            // Already attacking up, do nothing
+            // Already attacking, do nothing
         }
     }
 }

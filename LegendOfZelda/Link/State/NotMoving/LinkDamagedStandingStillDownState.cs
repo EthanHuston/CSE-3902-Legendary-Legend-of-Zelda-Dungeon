@@ -1,4 +1,5 @@
-﻿using Sprint0.Link.State.Walking;
+﻿using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.Walking;
 using System;
 
 namespace Sprint0.Link.State.NotMoving
@@ -28,17 +29,13 @@ namespace Sprint0.Link.State.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleDamagedLinkDownSprite();
         }
 
         public void Update()
         {
+            link.CurrentSprite.Update();
             if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
-        }
-
-        public void Draw()
-        {
-            // TODO: Implement me
         }
 
         public void MoveDown()
@@ -74,6 +71,11 @@ namespace Sprint0.Link.State.NotMoving
         public void StopMoving()
         {
             // Already not moving, do nothing
+        }
+
+        public void SwordAttack()
+        {
+            link.State = new LinkDamagedAttackingDownState(link, healthyDateTime);
         }
     }
 }

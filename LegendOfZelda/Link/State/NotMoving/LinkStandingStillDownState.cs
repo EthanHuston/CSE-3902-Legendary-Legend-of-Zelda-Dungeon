@@ -15,16 +15,12 @@ namespace Sprint0.Link.State.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleLinkDownSprite();
         }
 
         public void Update()
         {
-        }
-
-        public void Draw()
-        {
-            // TODO: Implement me
+            link.CurrentSprite.Update();
         }
 
         public void MoveDown()
@@ -62,24 +58,9 @@ namespace Sprint0.Link.State.NotMoving
             // Already not moving, do nothing
         }
 
-        public void SwordRight()
-        {
-            link.State = new LinkAttackingUpState(link);
-        }
-
-        public void SwordLeft()
-        {
-            link.State = new LinkAttackingLeftState(link);
-        }
-
-        public void SwordDown()
+        public void SwordAttack()
         {
             link.State = new LinkAttackingDownState(link);
-        }
-
-        public void SwordUp()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

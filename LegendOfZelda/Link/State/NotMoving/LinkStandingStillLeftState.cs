@@ -1,28 +1,26 @@
-﻿using Sprint0.Link.Walking;
+﻿using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.Walking;
 
 namespace Sprint0.Link.State.NotMoving
 {
-    class LinkStandingStilLeftState : ILinkState
+    class LinkStandingStillLeftState : ILinkState
     {
         private Link link;
 
-        public LinkStandingStilLeftState(Link link)
+        public LinkStandingStillLeftState(Link link)
         {
             InitClass(link);
         }
+
         private void InitClass(Link link)
         {
             this.link = link;
-            // TODO: draw sprite
+            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleLinkLeftSprite();
         }
 
         public void Update()
         {
-        }
-
-        public void Draw()
-        {
-            // TODO: Implement me
+            link.CurrentSprite.Update();
         }
 
         public void MoveDown()
@@ -58,6 +56,11 @@ namespace Sprint0.Link.State.NotMoving
         public void StopMoving()
         {
             // Already not moving, do nothing
+        }
+
+        public void SwordAttack()
+        {
+            link.State = new LinkAttackingLeftState(link);
         }
     }
 }

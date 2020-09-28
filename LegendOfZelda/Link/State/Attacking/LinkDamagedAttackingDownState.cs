@@ -34,6 +34,7 @@ namespace Sprint0.Link.State.Attacking
 
         public void Update()
         {
+            link.CurrentSprite.Update();
             // Somehow we have to switch to healthy state after the damage time is up, but sword animation would restart
             // TODO: Could we use a constructor that takes in the current frame?
             // if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
@@ -75,24 +76,10 @@ namespace Sprint0.Link.State.Attacking
         {
             // Already not moving, do nothing
         }
-        public void SwordRight()
-        {
-            link.State = new LinkDamagedAttackingRightState(link, healthyDateTime);
-        }
 
-        public void SwordLeft()
+        public void SwordAttack()
         {
-            link.State = new LinkDamagedAttackingLeftState(link, healthyDateTime);
-        }
-
-        public void SwordDown()
-        {
-            // Already attacking down, do nothing
-        }
-
-        public void SwordUp()
-        {
-            link.State = new LinkDamagedAttackingUpState(link, healthyDateTime);
+            // Already attacking, do nothing
         }
     }
 }

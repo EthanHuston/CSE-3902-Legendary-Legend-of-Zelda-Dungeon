@@ -1,4 +1,5 @@
-﻿using Sprint0.Link.State.NotMoving;
+﻿using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.NotMoving;
 using System;
 
 namespace Sprint0.Link.State.Walking
@@ -30,12 +31,7 @@ namespace Sprint0.Link.State.Walking
         public void Update()
         {
             if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
-            this.link.CurrentSprite.Update();
-        }
-
-        public void Draw()
-        {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch);
+            link.CurrentSprite.Update();
         }
 
         public void MoveDown()
@@ -71,6 +67,11 @@ namespace Sprint0.Link.State.Walking
         public void StopMoving()
         {
             link.State = new LinkDamagedStandingStillDownState(link, healthyDateTime);
+        }
+
+        public void SwordAttack()
+        {
+            link.State = new LinkDamagedAttackingDownState(link, healthyDateTime);
         }
     }
 }

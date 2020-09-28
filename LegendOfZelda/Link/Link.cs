@@ -65,21 +65,9 @@ namespace Sprint0.Link
             State.StopMoving();
         }
 
-        public void SwordRight()
+        public void SwordAttack()
         {
-            State.SwordRight();
-        }
-        public void SwordLeft()
-        {
-            State.SwordLeft();
-        }
-        public void SwordDown()
-        {
-            State.SwordDown();
-        }
-        public void SwordUp()
-        {
-            State.SwordUp();
+            State.SwordAttack();
         }
     }
 }

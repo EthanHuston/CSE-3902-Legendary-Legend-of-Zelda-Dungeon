@@ -1,4 +1,5 @@
-﻿using Sprint0.Link.State.NotMoving;
+﻿using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.NotMoving;
 
 namespace Sprint0.Link.State.Walking
 {
@@ -45,7 +46,7 @@ namespace Sprint0.Link.State.Walking
 
         public void BeDamaged(int damage)
         {
-            // link.State = new LinkDamagedWalkingLeftState(link);
+            link.State = new LinkDamagedWalkingLeftState(link);
         }
 
         public void BeHealthy()
@@ -55,7 +56,12 @@ namespace Sprint0.Link.State.Walking
 
         public void StopMoving()
         {
-            link.State = new LinkStandingStilLeftState(link);
+            link.State = new LinkStandingStillLeftState(link);
+        }
+
+        public void SwordAttack()
+        {
+            link.State = new LinkAttackingLeftState(link);
         }
     }
 }
