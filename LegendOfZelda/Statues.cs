@@ -15,10 +15,10 @@ namespace Sprint0
         {
             statueSprite = (StatueSprite)SpriteFactory.Instance.CreateStatueSprite();
             sB = spriteBatch;
-            statueSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
+            statueSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
 
-        public void Interation()
+        public void Interaction()
         {
             
         }

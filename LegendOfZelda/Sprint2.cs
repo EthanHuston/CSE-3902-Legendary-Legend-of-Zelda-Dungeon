@@ -11,5 +11,7 @@ namespace Sprint0
         public static int itemX = 20;
         public static int itemY = 20;
         public static int itemListCount = 0;
+        public static int ieX = 20;
+        public static int ieY = 600;
     }
 }

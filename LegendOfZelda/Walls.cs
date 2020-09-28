@@ -9,12 +9,7 @@ namespace Sprint0
 {
     class Walls : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            
-        }
-
-        public void Update()
+        public void Interaction()
         {
             
         }

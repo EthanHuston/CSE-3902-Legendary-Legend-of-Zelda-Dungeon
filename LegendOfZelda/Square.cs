@@ -15,7 +15,7 @@ namespace Sprint0
         {
             blockSprite = (BlockSprite)SpriteFactory.Instance.CreateBlockSprite();
             sB = spriteBatch;
-            blockSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
+            blockSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
 
         public void Interaction()

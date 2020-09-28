@@ -15,7 +15,7 @@ namespace Sprint0
         {
             fireSprite = (FireSprite)SpriteFactory.Instance.CreateFireSprite();
             sB = spriteBatch;
-            fireSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
+            fireSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
 
         public void Interaction()

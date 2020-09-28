@@ -25,6 +25,7 @@ namespace Sprint0
         private Texture2D stairSprite;
         private Texture2D doorSprite;
         private Texture2D ladderSprite;
+        private Texture2D brickTileSprite;
         private Texture2D arrowSprite;
         private Texture2D bombSprite;
         private Texture2D explodingBombSprite;
@@ -83,6 +84,7 @@ namespace Sprint0
             stairSprite = content.Load<Texture2D>("Environment/Stairs");
             doorSprite = content.Load<Texture2D>("Environment/Doors");
             ladderSprite = content.Load<Texture2D>("Environment/Ladder");
+            brickTileSprite = content.Load<Texture2D>("Environment/BrickTile");
             //Load Item Sprites
             arrowSprite = content.Load<Texture2D>("Items/Arrow");
             bombSprite = content.Load<Texture2D>("Items/Bomb");
@@ -169,6 +171,10 @@ namespace Sprint0
         public ISprite CreateLadderSprite()
         {
             return new LadderSprite(ladderSprite);
+        }
+        public ISprite CreateBrickTileSprite()
+        {
+            return new BrickTileSprite(brickTileSprite);
         }
         public ISprite CreateArrowSprite()
         {

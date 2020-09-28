@@ -15,7 +15,7 @@ namespace Sprint0
         {
             doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
-            doorSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
+            doorSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
         public void Interaction()
         {

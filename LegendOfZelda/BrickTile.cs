@@ -9,12 +9,15 @@ namespace Sprint0
 {
     class BrickTile : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private BrickTileSprite brickTileSprite;
+        private SpriteBatch sB;
+        public BrickTile(SpriteBatch spriteBatch)
         {
-            
+            brickTileSprite = (BrickTileSprite)SpriteFactory.Instance.CreateBrickTileSprite();
+            sB = spriteBatch;
+            brickTileSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
-
-        public void Update()
+        public void Interaction()
         {
             
         }

@@ -15,7 +15,7 @@ namespace Sprint0
         {
             ladderSprite = (LadderSprite)SpriteFactory.Instance.CreateLadderSprite();
             sB = spriteBatch;
-            ladderSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
+            ladderSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
         public void Interaction()
         {

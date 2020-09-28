@@ -15,9 +15,9 @@ namespace Sprint0
         {
             stairSprite = (StairSprite)SpriteFactory.Instance.CreateStairSprite();
             sB = spriteBatch;
-            stairSprite.Draw(sB, Sprint2.itemX, Sprint2.itemY);
+            stairSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
-        public void Interation()
+        public void Interaction()
         {
 
         }
