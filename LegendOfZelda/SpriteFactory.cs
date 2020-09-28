@@ -1,11 +1,6 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sprint0.Link.Sprite;
 
 namespace Sprint0
 {
@@ -51,7 +46,10 @@ namespace Sprint0
         private Texture2D strikingLeftLinkSprite;
         private Texture2D strikingRightLinkSprite;
         private Texture2D pickingUpItemLinkSprite;
-        private Texture2D usingItemLinkSprite;
+        private Texture2D usingItemDownLinkSprite;
+        private Texture2D usingItemUpLinkSprite;
+        private Texture2D usingItemRightLinkSprite;
+        private Texture2D usingItemLeftLinkSprite;
         private Texture2D walkingDownLinkSprite;
         private Texture2D walkingUpLinkSprite;
         private Texture2D walkingLeftLinkSprite;
@@ -115,7 +113,10 @@ namespace Sprint0
             strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkStrikingRight");
             strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkStrikingUp");
             pickingUpItemLinkSprite = content.Load<Texture2D>("Link/PickingUpItemLink");
-            usingItemLinkSprite = content.Load<Texture2D>("Link/UsingItemLink");
+            usingItemDownLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemDown");
+            usingItemUpLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemUp");
+            usingItemRightLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemRight");
+            usingItemLeftLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemLeft");
             walkingDownLinkSprite = content.Load<Texture2D>("Link/WalkingDownLink");
             walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
             walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
@@ -129,7 +130,6 @@ namespace Sprint0
         {
             return new BatSprite(batSprite);
         }
-
         public ISprite CreateDogLikeMonsterSprite()
         {
             return new DogLikeMonsterSprite(dogLikeMonsterSprite);
@@ -282,9 +282,41 @@ namespace Sprint0
         {
             return new PickingUpItemLinkSprite(pickingUpItemLinkSprite);
         }
-        public ISprite CreateUsingItemLinkSprite()
+        public ISprite CreatePickingUpItemDamagedLinkSprite()
         {
-            return new UsingItemLinkSprite(usingItemLinkSprite);
+            return new PickingUpItemDamagedLinkSprite(pickingUpItemLinkSprite);
+        }
+        public ISprite CreateUsingItemLeftLinkSprite()
+        {
+            return new UsingItemLinkSprite(usingItemLeftLinkSprite);
+        }
+        public ISprite CreateUsingItemRightLinkSprite()
+        {
+            return new UsingItemLinkSprite(usingItemRightLinkSprite);
+        }
+        public ISprite CreateUsingItemUpLinkSprite()
+        {
+            return new UsingItemLinkSprite(usingItemUpLinkSprite);
+        }
+        public ISprite CreateUsingItemDownLinkSprite()
+        {
+            return new UsingItemLinkSprite(usingItemDownLinkSprite);
+        }
+        public ISprite CreateUsingItemLeftDamagedLinkSprite()
+        {
+            return new UsingItemDamagedLinkSprite(usingItemLeftLinkSprite);
+        }
+        public ISprite CreateUsingItemDamagedRightLinkSprite()
+        {
+            return new UsingItemDamagedLinkSprite(usingItemRightLinkSprite);
+        }
+        public ISprite CreateUsingItemUpDamagedLinkSprite()
+        {
+            return new UsingItemDamagedLinkSprite(usingItemUpLinkSprite);
+        }
+        public ISprite CreateUsingItemDownDamagedLinkSprite()
+        {
+            return new UsingItemDamagedLinkSprite(usingItemDownLinkSprite);
         }
         public ISprite CreateWalkingDownLinkSprite()
         {
@@ -317,14 +349,6 @@ namespace Sprint0
         public ISprite CreateStrikingUpDamagedLinkSprite()
         {
             return new StrikingUpDamagedLinkSprite(strikingUpLinkSprite);
-        }
-        public ISprite CreatePickingUpItemDamagedLinkSprite()
-        {
-            return new PickingUpItemDamagedLinkSprite(pickingUpItemLinkSprite);
-        }
-        public ISprite CreateUsingItemDamagedLinkSprite()
-        {
-            return new UsingItemDamagedLinkSprite(usingItemLinkSprite);
         }
         public ISprite CreateWalkingDownDamagedLinkSprite()
         {
