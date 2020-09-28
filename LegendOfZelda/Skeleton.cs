@@ -10,7 +10,7 @@ namespace Sprint0
 {
     class Skeleton : IEnemy
     {
-        private SkeletonSprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
         private int currentX = Sprint2.enemyNPCX;
         private int currentY = Sprint2.enemyNPCY;
@@ -22,7 +22,7 @@ namespace Sprint0
 
         public Skeleton(SpriteBatch spriteBatch)
         {
-            sprite = (SkeletonSprite)SpriteFactory.Instance.CreateSkeletonSprite();
+            sprite = SpriteFactory.Instance.CreateSkeletonSprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()

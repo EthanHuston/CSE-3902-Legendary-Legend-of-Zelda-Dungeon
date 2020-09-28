@@ -10,7 +10,7 @@ namespace Sprint0
 {
     class Jelly : IEnemy
     {
-        private JellySprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
         private int currentX = Sprint2.enemyNPCX;
         private int currentY = Sprint2.enemyNPCY;
@@ -22,7 +22,7 @@ namespace Sprint0
 
         public Jelly(SpriteBatch spriteBatch)
         {
-            sprite = (JellySprite)SpriteFactory.Instance.CreateJellySprite();
+            sprite = SpriteFactory.Instance.CreateJellySprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()

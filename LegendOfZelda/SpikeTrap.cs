@@ -10,7 +10,7 @@ namespace Sprint0
 {
     class SpikeTrap : IEnemy
     {
-        private SpikeTrapSprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
         private int currentX = Sprint2.enemyNPCX;
         private int currentY = Sprint2.enemyNPCY;
@@ -22,7 +22,7 @@ namespace Sprint0
 
         public SpikeTrap(SpriteBatch spriteBatch)
         {
-            sprite = (SpikeTrapSprite)SpriteFactory.Instance.CreateSpikeTrapSprite();
+            sprite = SpriteFactory.Instance.CreateSpikeTrapSprite();
             this.spriteBatch = spriteBatch;
         }
 

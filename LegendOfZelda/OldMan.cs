@@ -9,12 +9,12 @@ namespace Sprint0
 {
     class OldMan
     {
-        private OldManSprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
 
         public OldMan(SpriteBatch spriteBatch)
         {
-            sprite = (OldManSprite)SpriteFactory.Instance.CreateOldManSprite();
+            sprite = SpriteFactory.Instance.CreateOldManSprite();
 
         }
         public void Draw()

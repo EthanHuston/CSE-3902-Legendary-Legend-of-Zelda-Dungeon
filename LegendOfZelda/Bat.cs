@@ -9,7 +9,7 @@ namespace Sprint0
 {
     class Bat : IEnemy
     {
-        private BatSprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
         private int currentX = Sprint2.enemyNPCX;
         private int currentY = Sprint2.enemyNPCY;
@@ -20,7 +20,7 @@ namespace Sprint0
 
         public Bat(SpriteBatch spriteBatch)
         {
-            sprite = (BatSprite)SpriteFactory.Instance.CreateBatSprite();
+            sprite = SpriteFactory.Instance.CreateBatSprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()

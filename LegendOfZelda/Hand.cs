@@ -10,7 +10,7 @@ namespace Sprint0
 {
     class Hand : IEnemy
     {
-        private HandSprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
         private int currentX = Sprint2.enemyNPCX;
         private int currentY = Sprint2.enemyNPCY;
@@ -21,7 +21,7 @@ namespace Sprint0
 
         public Hand(SpriteBatch spriteBatch)
         {
-            sprite = (HandSprite)SpriteFactory.Instance.CreateHandSprite();
+            sprite = SpriteFactory.Instance.CreateHandSprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()
