@@ -1,10 +1,7 @@
-﻿using Sprint0.Link.State.NotMoving;
+﻿using Sprint0.Link.State.Item;
+using Sprint0.Link.State.NotMoving;
 using Sprint0.Link.State.Walking;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint0.Link.State.Attacking
 {
@@ -113,6 +110,11 @@ namespace Sprint0.Link.State.Attacking
         public void PickUpHeart()
         {
             link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
+        }
+
+        public void PickUpTriforce()
+        {
+            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
         }
     }
 }

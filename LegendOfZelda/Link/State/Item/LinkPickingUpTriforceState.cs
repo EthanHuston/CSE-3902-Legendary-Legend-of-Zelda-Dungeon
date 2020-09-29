@@ -1,24 +1,23 @@
-﻿using Sprint0.Link.State.Item;
-using Sprint0.Link.State.NotMoving;
+﻿using Sprint0.Link.State.Attacking;
 using Sprint0.Link.State.Walking;
 using System;
 
-namespace Sprint0.Link.State.Attacking
+namespace Sprint0.Link.State.Item
 {
-    class LinkAttackingUpState : ILinkState
+    class LinkPickingUpTriforceState : ILinkState
     {
         private Link link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkAttackingUpState(Link link)
+        public LinkPickingUpTriforceState(Link link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkAttackingUpState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkPickingUpTriforceState(Link link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -28,7 +27,7 @@ namespace Sprint0.Link.State.Attacking
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingUpLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpTriforceSprite();
             link.BlockStateChange = true;
         }
 
@@ -89,12 +88,12 @@ namespace Sprint0.Link.State.Attacking
 
         public void SwordAttack()
         {
-            // Already attacking, do nothing
+            link.SetState(new LinkAttackingDownState(link, damaged, healthyDateTime));
         }
 
         public void PickUpItem()
         {
-            link.SetState(new LinkPickingUpItemState(link, damaged, healthyDateTime));
+            // Already picking up item, do nothing
         }
 
         public void UseItem()
@@ -110,6 +109,11 @@ namespace Sprint0.Link.State.Attacking
         public void PickUpHeart()
         {
             link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
+        }
+
+        public void PickUpTriforce()
+        {
+            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
         }
 
         public void PickUpTriforce()
