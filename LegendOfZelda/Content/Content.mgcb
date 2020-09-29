@@ -373,6 +373,18 @@
 /processorParam:TextureFormat=Color
 /build:Items/Ruppee.png
 
+#begin Items/SwordWood.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/SwordWood.png
+
 #begin Items/TriforcePiece.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -432,6 +444,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Link/IdleLinkUp.png
+
+#begin Link/LinkPickingUpSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Link/LinkPickingUpSword.png
 
 #begin Link/LinkStrikingDown.png
 /importer:TextureImporter
