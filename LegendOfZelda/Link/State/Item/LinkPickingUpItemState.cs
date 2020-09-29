@@ -27,7 +27,7 @@ namespace Sprint0.Link.State.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingUpLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreatePickingUpItemLinkSprite();
             link.BlockStateChange = true;
         }
 
@@ -99,6 +99,11 @@ namespace Sprint0.Link.State.NotMoving
         public void UseItem()
         {
             link.SetState(new LinkUsingItemUpState(link, damaged, healthyDateTime));
+        }
+
+        public void PickUpSword()
+        {
+            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
         }
     }
 }

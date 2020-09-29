@@ -9,11 +9,7 @@ namespace Sprint0.Link.Sprite
         private bool animationIsDone;
         private bool flashRed;
         private int damageColorCounter;
-        private int currentFrame;
-        private int bufferFrame;
-        private const int totalFrames = 2;
-        private const int numRows = 1;
-        private const int numColumns = 2;
+        private int delayCounter;
 
         public PickingUpItemLinkSprite(Texture2D sprite)
         {
@@ -21,14 +17,13 @@ namespace Sprint0.Link.Sprite
             animationIsDone = false;
             flashRed = false;
             damageColorCounter = 0;
+            delayCounter = 0;
         }
 
         public void Update()
         {
+            animationIsDone = delayCounter >= Constants.LinkPickingUpItemPauseTicks;
             if (finishedAnimation()) return;
-
-            animationIsDone = currentFrame >= totalFrames + Constants.LinkPickingUpItemPauseTicks;
-            currentFrame += bufferFrame++ == Constants.FrameDelay ? 1 : 0;
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {
@@ -44,19 +39,7 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
-            if (finishedAnimation()) return;
-
-            int frameWidth = sprite.Width / numRows;
-            int frameHeight = sprite.Height / numColumns;
-            int currentRow = 1;
-            int currentColumn = currentFrame;
-
-            Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
-
-            spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.White : Color.Red);
-            spriteBatch.End();
+            spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
 
         public bool finishedAnimation()

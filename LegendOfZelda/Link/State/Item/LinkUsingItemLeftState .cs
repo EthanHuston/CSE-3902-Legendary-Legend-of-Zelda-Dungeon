@@ -99,5 +99,10 @@ namespace Sprint0.Link.State.NotMoving
         {
             // Already using item, do nothing
         }
+
+        public void PickUpSword()
+        {
+            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
+        }
     }
 }

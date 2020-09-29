@@ -105,5 +105,10 @@ namespace Sprint0.Link.State.Walking
         {
             link.SetState(new LinkUsingItemUpState(link, damaged, healthyDateTime));
         }
+
+        public void PickUpSword()
+        {
+            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
+        }
     }
 }

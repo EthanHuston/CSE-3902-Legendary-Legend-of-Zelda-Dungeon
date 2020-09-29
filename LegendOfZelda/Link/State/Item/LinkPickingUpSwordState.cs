@@ -4,20 +4,20 @@ using System;
 
 namespace Sprint0.Link.State.NotMoving
 {
-    class LinkStandingStillUpState : ILinkState
+    class LinkPickingUpSwordState : ILinkState
     {
         private Link link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkStandingStillUpState(Link link)
+        public LinkPickingUpSwordState(Link link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkStandingStillUpState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkPickingUpSwordState(Link link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -27,13 +27,19 @@ namespace Sprint0.Link.State.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpSwordSprite();
+            link.BlockStateChange = true;
         }
 
         public void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            if (link.CurrentSprite.finishedAnimation())
+            {
+                link.BlockStateChange = false;
+                StopMoving();
+            }
         }
 
         public void Draw()
@@ -73,22 +79,21 @@ namespace Sprint0.Link.State.NotMoving
         public void BeHealthy()
         {
             damaged = false;
-            healthyDateTime = DateTime.Now;
         }
 
         public void StopMoving()
         {
-            // Already not moving, do nothing
+            link.SetState(new LinkStandingStillUpState(link, damaged, healthyDateTime));
         }
 
         public void SwordAttack()
         {
-            link.SetState(new LinkAttackingUpState(link, damaged, healthyDateTime));
+            link.SetState(new LinkAttackingDownState(link, damaged, healthyDateTime));
         }
 
         public void PickUpItem()
         {
-            link.SetState(new LinkPickingUpItemState(link, damaged, healthyDateTime));
+            // Already picking up item, do nothing
         }
 
         public void UseItem()
