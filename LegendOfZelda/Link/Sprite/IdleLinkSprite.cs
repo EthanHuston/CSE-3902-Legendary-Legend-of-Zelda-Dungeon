@@ -34,5 +34,10 @@ namespace Sprint0.Link.Sprite
         {
             spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
+
+        public bool finishedAnimation()
+        {
+            return false; // because animation never finishes
+        }
     }
 }
