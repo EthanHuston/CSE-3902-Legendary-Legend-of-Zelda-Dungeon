@@ -108,12 +108,17 @@ namespace Sprint0.Link.State.Item
 
         public void PickUpHeart()
         {
-            link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
+            // Already picking up heart, do nothing
         }
 
         public void PickUpTriforce()
         {
             link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
+        }
+
+        public void PickUpBow()
+        {
+            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
         }
     }
 }

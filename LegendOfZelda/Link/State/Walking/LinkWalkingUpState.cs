@@ -121,5 +121,10 @@ namespace Sprint0.Link.State.Walking
         {
             link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
         }
+
+        public void PickUpBow()
+        {
+            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+        }
     }
 }

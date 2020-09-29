@@ -113,12 +113,12 @@ namespace Sprint0.Link.State.Item
 
         public void PickUpTriforce()
         {
-            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
+            // Already picking up triforce, do nothing
         }
 
-        public void PickUpTriforce()
+        public void PickUpBow()
         {
-            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
+            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
         }
     }
 }
