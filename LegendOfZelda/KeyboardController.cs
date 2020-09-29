@@ -38,6 +38,7 @@ namespace Sprint0
             this.RegisterCommand(Keys.Down, new WalkingDownCommand(game1));
             this.RegisterCommand(Keys.Z, new SwordAttackCommand(game1));
             this.RegisterCommand(Keys.N, new SwordAttackCommand(game1));
+            this.RegisterCommand(Keys.E, new DamageLinkCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
