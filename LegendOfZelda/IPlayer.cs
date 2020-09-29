@@ -1,4 +1,6 @@
-﻿namespace Sprint0
+﻿using Microsoft.Xna.Framework;
+
+namespace Sprint0
 {
     public interface IPlayer
     {
@@ -15,5 +17,6 @@
         void SwordAttack();
         void UseItem();
         void PickUpItem();
+        Vector2 GetPosition();
     }
 }

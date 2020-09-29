@@ -15,7 +15,7 @@ namespace Sprint0.Link.State.Attacking
         private void InitState(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateStrikingLeftLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingLeftLinkSprite();
         }
 
         public void Update()
@@ -26,22 +26,22 @@ namespace Sprint0.Link.State.Attacking
 
         public void MoveDown()
         {
-            link.State = new LinkWalkingDownState(link);
+            link.SetState(new LinkWalkingDownState(link);
         }
 
         public void MoveLeft()
         {
-            link.State = new LinkWalkingLeftState(link);
+            link.SetState(new LinkWalkingLeftState(link);
         }
 
         public void MoveRight()
         {
-            link.State = new LinkWalkingRightState(link);
+            link.SetState(new LinkWalkingRightState(link);
         }
 
         public void MoveUp()
         {
-            link.State = new LinkWalkingUpState(link);
+            link.SetState(new LinkWalkingUpState(link);
         }
 
         public void BeDamaged(int damage)

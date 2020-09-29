@@ -15,7 +15,7 @@ namespace Sprint0.Link.State.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateIdleLinkRightSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
         }
 
         public void Update()

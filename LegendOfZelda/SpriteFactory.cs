@@ -5,7 +5,7 @@ using Sprint0.Link.Sprite;
 namespace Sprint0
 {
     //Sprite Factory based of model found in slides
-    class SpriteFactory
+    class LinkSpriteFactory
     {
         private Texture2D batSprite;
         private Texture2D dogLikeMonsterSprite;
@@ -56,15 +56,15 @@ namespace Sprint0
         private Texture2D walkingRightLinkSprite;
         private Texture2D oldManSprite;
         private Texture2D merchantSprite;
-        private static SpriteFactory instance = new SpriteFactory();
-        public static SpriteFactory Instance
+        private static LinkSpriteFactory instance = new LinkSpriteFactory();
+        public static LinkSpriteFactory Instance
         {
             get
             {
                 return instance;
             }
         }
-        private SpriteFactory()
+        private LinkSpriteFactory()
         { 
         }
 
@@ -264,7 +264,7 @@ namespace Sprint0
         }
         public ISprite CreateStrikingDownLinkSprite()
         {
-            return new StrikingDownLinkSprite(strikingDownLinkSprite);
+            return new StrikingLinkSprite(strikingDownLinkSprite);
         }
         public ISprite CreateStrikingLeftLinkSprite()
         {
@@ -306,7 +306,7 @@ namespace Sprint0
         {
             return new UsingItemDamagedLinkSprite(usingItemLeftLinkSprite);
         }
-        public ISprite CreateUsingItemDamagedRightLinkSprite()
+        public ISprite CreateUsingItemRightDamagedLinkSprite()
         {
             return new UsingItemDamagedLinkSprite(usingItemRightLinkSprite);
         }
@@ -320,7 +320,7 @@ namespace Sprint0
         }
         public ISprite CreateWalkingDownLinkSprite()
         {
-            return new WalkingDownLinkSprite(walkingDownLinkSprite);
+            return new WalkingLinkSprite(walkingDownLinkSprite);
         }
         public ISprite CreateWalkingRightLinkSprite()
         {

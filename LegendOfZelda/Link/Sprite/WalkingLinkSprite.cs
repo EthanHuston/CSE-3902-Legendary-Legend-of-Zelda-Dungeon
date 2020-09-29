@@ -3,26 +3,32 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Link.Sprite
 {
-    class PickingUpItemLinkSprite : ILinkSprite
+    class WalkingLinkSprite : ILinkSprite
     {
         private Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
-        private int currentFrame;
         private int bufferFrame;
+        private int currentFrame;
+        private const int totalFrames = 2;
         private const int numRows = 1;
         private const int numColumns = 2;
 
-        public PickingUpItemLinkSprite(Texture2D sprite)
+        public WalkingLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             flashRed = false;
             damageColorCounter = 0;
         }
-
         public void Update()
         {
-            currentFrame += bufferFrame++ == Constants.FrameDelay ? 1 : 0;
+            bufferFrame++;
+            if (bufferFrame == Constants.FrameDelay)
+            {
+                currentFrame++;
+                bufferFrame = 0;
+            }
+            currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {
@@ -38,18 +44,16 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
-            spriteBatch.Draw(sprite, new Vector2(Constants.Sprint2LinkSpawnX, Constants.Sprint2LinkSpawnY), flashRed && drawWithDamage ? Color.Red : Color.White);
-
-            int frameWidth = sprite.Width / numRows;
-            int frameHeight = sprite.Height / numColumns;
+            int width = sprite.Width / numColumns;
+            int height = sprite.Height / numRows;
             int currentRow = 1;
             int currentColumn = currentFrame;
 
-            Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
+            Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
+            Rectangle destinationRectangle = new Rectangle((int) position.X, (int) position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.White : Color.Red);
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);
             spriteBatch.End();
         }
     }

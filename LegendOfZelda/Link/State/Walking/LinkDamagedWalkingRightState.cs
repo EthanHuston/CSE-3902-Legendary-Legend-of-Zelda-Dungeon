@@ -26,7 +26,7 @@ namespace Sprint0.Link.State.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingRightDamagedLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingRightDamagedLinkSprite();
         }
 
         public void Update()

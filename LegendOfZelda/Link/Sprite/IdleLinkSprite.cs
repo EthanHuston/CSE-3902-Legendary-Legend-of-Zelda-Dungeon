@@ -3,21 +3,36 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Link.Sprite
 {
-    class IdleLinkSprite : ISprite
+    class IdleLinkSprite : ILinkSprite
     {
         private Texture2D sprite;
+        private bool flashRed;
+        private int damageColorCounter;
+
         public IdleLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-        }
-        public void Update()
-        {
-            // TODO: Double check this, but I don't think we need to do anything here?
+            flashRed = false;
+            damageColorCounter = 0;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Update()
         {
-            spriteBatch.Draw(sprite, new Vector2(Constants.Sprint2LinkSpawnX, Constants.Sprint2LinkSpawnY), Color.White);
+            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
+            {
+                flashRed = !flashRed;
+                damageColorCounter = 0;
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        {
+            Draw(spriteBatch, position, false);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        {
+            spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
     }
 }

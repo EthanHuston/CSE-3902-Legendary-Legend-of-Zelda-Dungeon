@@ -25,7 +25,7 @@ namespace Sprint0.Link.State.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateWalkingDownDamagedLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingDownDamagedLinkSprite();
         }
 
         public void Update()
@@ -56,7 +56,7 @@ namespace Sprint0.Link.State.Walking
 
         public void BeDamaged(int damage)
         {
-            // Already damaged, do nothing
+            healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
         }
 
         public void BeHealthy()

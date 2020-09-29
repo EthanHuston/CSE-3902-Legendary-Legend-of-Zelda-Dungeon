@@ -20,7 +20,7 @@ namespace Sprint0.Link.State.Attacking
         private void InitState(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateStrikingRightLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingRightLinkSprite();
         }
 
         public void Update()

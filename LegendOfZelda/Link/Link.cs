@@ -1,13 +1,17 @@
+using Microsoft.Xna.Framework;
 using Sprint0.Link.State.NotMoving;
 
 namespace Sprint0.Link
 {
     class Link : IPlayer
     {
-        public ILinkState State;
-        public ISprite CurrentSprite;
+        private ILinkState state;
+
+        public ILinkSprite CurrentSprite { get; set; }
         public Game1 Game;
         private int health;
+        private int posX;
+        private int posY;
 
         public Link(Game1 game)
         {
@@ -78,6 +82,20 @@ namespace Sprint0.Link
         public void PickUpItem()
         {
             throw new System.NotImplementedException();
+        }
+
+        public Vector2 GetPosition()
+        {
+            return new Vector2(posX, posY);
+        }
+        public ILinkState GetState()
+        {
+            return state;
+        }
+
+        public void SetState(ILinkState newState)
+        {
+            state = newState;
         }
     }
 }

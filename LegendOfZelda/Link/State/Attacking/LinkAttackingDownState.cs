@@ -6,47 +6,53 @@ namespace Sprint0.Link.State.Attacking
     class LinkAttackingDownState : ILinkState
     {
         private Link link;
+        bool damaged;
 
         public LinkAttackingDownState(Link link)
         {
             InitState(link);
+            damaged = false;
         }
 
         private void InitState(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = SpriteFactory.Instance.CreateStrikingDownLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
         }
 
         public void Update()
         {
             link.CurrentSprite.Update();
-            // TODO: switch state after finishing animation, but how????
+        }
+
+        public void Draw()
+        {
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
         }
 
         public void MoveDown()
         {
-            link.State = new LinkWalkingDownState(link);
+            link.SetState(new LinkWalkingDownState(link));
         }
 
         public void MoveLeft()
         {
-            link.State = new LinkWalkingLeftState(link);
+            link.SetState(new LinkWalkingLeftState(link));
         }
 
         public void MoveRight()
         {
-            link.State = new LinkWalkingRightState(link);
+            link.SetState(new LinkWalkingRightState(link));
         }
 
         public void MoveUp()
         {
-            link.State = new LinkWalkingUpState(link);
+            link.SetState(new LinkWalkingUpState(link));
         }
 
         public void BeDamaged(int damage)
         {
-            link.State = new LinkDamagedWalkingDownState(link, damage);
+            link.SetState(new LinkDamagedWalkingDownState(link, damage));
         }
 
         public void BeHealthy()
@@ -56,12 +62,22 @@ namespace Sprint0.Link.State.Attacking
 
         public void StopMoving()
         {
-            link.State = new LinkStandingStillDownState(link);
+            link.SetState(new LinkStandingStillDownState(link));
         }
 
         public void SwordAttack()
         {
             // Already attacking, do nothing
+        }
+
+        public void PickUpItem()
+        {
+            link.SetState(new LinkPickingUpItemState(link));
+        }
+
+        public void UseItem()
+        {
+            link.SetState(new LinkUsingItemDownState(link));
         }
     }
 }

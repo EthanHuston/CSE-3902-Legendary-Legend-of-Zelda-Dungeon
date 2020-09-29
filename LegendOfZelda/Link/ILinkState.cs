@@ -2,6 +2,8 @@ namespace Sprint0.Link
 {
     interface ILinkState
     {
+        void Update();
+        void Draw();
         void MoveLeft();
         void MoveRight();
         void MoveDown();
@@ -9,7 +11,6 @@ namespace Sprint0.Link
         void BeDamaged(int damage);
         void BeHealthy();
         void StopMoving();
-        void Update();
         void SwordAttack();
         void PickUpItem();
         void UseItem();
