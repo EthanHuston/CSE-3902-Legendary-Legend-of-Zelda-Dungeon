@@ -110,8 +110,14 @@
     <Compile Include="Link\State\Attacking\LinkAttackingUpState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingDownState.cs" />
     <Compile Include="Link\State\Item\LinkDamagedPickingUpItemState.cs" />
-    <Compile Include="Link\State\Item\LinkDamagedUsingItemState.cs" />
-    <Compile Include="Link\State\Item\LinkUsingItemState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingItemDownState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingItemLeftState .cs" />
+    <Compile Include="Link\State\Item\LinkUsingItemRightState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingItemUpState.cs" />
+    <Compile Include="Link\State\Item\LinkDamagedUsingItemUpState.cs" />
+    <Compile Include="Link\State\Item\LinkDamagedUsingItemDownState.cs" />
+    <Compile Include="Link\State\Item\LinkDamagedUsingItemRightState.cs" />
+    <Compile Include="Link\State\Item\LinkDamagedUsingItemLeftState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpItemState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillLeftState.cs" />
     <Compile Include="Link\State\NotMoving\LinkDamagedStandingStillUpState.cs" />
