@@ -4,84 +4,101 @@ using System;
 
 namespace Sprint0.Link.State.NotMoving
 {
-    class LinkDamagedUsingItemState : ILinkState
+    class LinkUsingItemDownState : ILinkState
     {
         private Link link;
+        private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkDamagedUsingItemState(Link link)
+        public LinkUsingItemDownState(Link link)
         {
             InitClass(link);
-        }
-        public LinkDamagedUsingItemState(Link link, int damage)
-        {
-            InitClass(link);
-            this.link.SubtractHealth(damage);
-            healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
+            damaged = false;
+            healthyDateTime = DateTime.Now;
         }
 
-        public LinkDamagedUsingItemState(Link link, DateTime healthyDateTime)
+        public LinkUsingItemDownState(Link link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
+            this.damaged = damaged;
         }
 
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDamagedRightLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
+            link.BlockStateChange = true;
         }
 
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
-            if (DateTime.Compare(DateTime.Now, healthyDateTime) >= 0) BeHealthy();
+            if (link.CurrentSprite.finishedAnimation())
+            {
+                link.BlockStateChange = false;
+                StopMoving();
+            }
+        }
+
+        public void Draw()
+        {
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
         }
 
         public void MoveDown()
         {
-            link.State = new LinkDamagedWalkingDownState(link, healthyDateTime);
+            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
         }
 
         public void MoveLeft()
         {
-            link.State = new LinkDamagedWalkingLeftState(link, healthyDateTime);
+            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
         }
 
         public void MoveRight()
         {
-            link.State = new LinkDamagedWalkingRightState(link, healthyDateTime);
+            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
         }
 
         public void MoveUp()
         {
-            link.State = new LinkDamagedWalkingUpState(link, healthyDateTime);
+            link.SetState(new LinkWalkingUpState(link, damaged, healthyDateTime));
         }
 
         public void BeDamaged(int damage)
         {
-            // Already damaged, do nothing
+            if (!damaged)
+            {
+                this.link.SubtractHealth(damage);
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
+            }
         }
 
         public void BeHealthy()
         {
-            link.State = new LinkStandingStillDownState(link);
+            damaged = false;
         }
 
         public void StopMoving()
         {
-            // Already not moving, do nothing
+            link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
         }
 
         public void SwordAttack()
         {
-            link.State = new LinkDamagedAttackingDownState(link, healthyDateTime);
+            // Already attacking, do nothing
         }
 
         public void PickUpItem()
         {
-            link.State = new LinkDamagedPickingUpItemState(link, healthyDateTime);
+            link.SetState(new LinkPickingUpItemState(link, damaged, healthyDateTime));
+        }
+
+        public void UseItem()
+        {
+            // Already using item, do nothing
         }
     }
-}
 }

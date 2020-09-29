@@ -1,28 +1,45 @@
 ﻿using Sprint0.Link.State.NotMoving;
 using Sprint0.Link.State.Walking;
+using System;
 
 namespace Sprint0.Link.State.Attacking
 {
     class LinkAttackingDownState : ILinkState
     {
         private Link link;
-        bool damaged;
+        private bool damaged;
+        private DateTime healthyDateTime;
 
         public LinkAttackingDownState(Link link)
         {
-            InitState(link);
+            InitClass(link);
             damaged = false;
+            healthyDateTime = DateTime.Now;
         }
 
-        private void InitState(Link link)
+        public LinkAttackingDownState(Link link, bool damaged, DateTime healthyDateTime)
+        {
+            InitClass(link);
+            this.healthyDateTime = healthyDateTime;
+            this.damaged = damaged;
+        }
+
+        private void InitClass(Link link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
+            link.BlockStateChange = true;
         }
 
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            if(link.CurrentSprite.finishedAnimation())
+            {
+                link.BlockStateChange = false;
+                StopMoving();
+            }
         }
 
         public void Draw()
@@ -32,37 +49,41 @@ namespace Sprint0.Link.State.Attacking
 
         public void MoveDown()
         {
-            link.SetState(new LinkWalkingDownState(link));
+            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
         }
 
         public void MoveLeft()
         {
-            link.SetState(new LinkWalkingLeftState(link));
+            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
         }
 
         public void MoveRight()
         {
-            link.SetState(new LinkWalkingRightState(link));
+            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
         }
 
         public void MoveUp()
         {
-            link.SetState(new LinkWalkingUpState(link));
+            link.SetState(new LinkWalkingUpState(link, damaged, healthyDateTime));
         }
 
         public void BeDamaged(int damage)
         {
-            link.SetState(new LinkDamagedWalkingDownState(link, damage));
+            if (!damaged)
+            {
+                this.link.SubtractHealth(damage);
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
+            }
         }
 
         public void BeHealthy()
         {
-            // Already in healthy state, do nothing
+            damaged = false;
         }
 
         public void StopMoving()
         {
-            link.SetState(new LinkStandingStillDownState(link));
+            link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
         }
 
         public void SwordAttack()
@@ -72,12 +93,12 @@ namespace Sprint0.Link.State.Attacking
 
         public void PickUpItem()
         {
-            link.SetState(new LinkPickingUpItemState(link));
+            link.SetState(new LinkPickingUpItemState(link, damaged, healthyDateTime));
         }
 
         public void UseItem()
         {
-            link.SetState(new LinkUsingItemDownState(link));
+            link.SetState(new LinkUsingItemDownState(link, damaged, healthyDateTime));
         }
     }
 }
