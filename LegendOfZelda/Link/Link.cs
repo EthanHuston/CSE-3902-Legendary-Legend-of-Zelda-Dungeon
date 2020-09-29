@@ -8,37 +8,38 @@ namespace Sprint0.Link
         private ILinkState state;
 
         public ILinkSprite CurrentSprite { get; set; }
+        public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
         private int health;
-        private int posX;
-        private int posY;
+        private float posX;
+        private float posY;
 
         public Link(Game1 game)
         {
             health = Constants.LinkHealth;
             this.Game = game;
-            State = new LinkStandingStillDownState(this);
+            state = new LinkStandingStillDownState(this);
         }
 
         public void Draw()
         {
-            CurrentSprite.Draw(Game.SpriteBatch);
+            state.Draw();
         }
 
         public void Update()
         {
-            State.Update();
+            state.Update();
         }
 
-        public void Heal(int healAmount)
+        public void BeHealthy(int healAmount)
         {
-            State.BeHealthy();
-            health += healAmount;
+            Heal(healAmount);
+            state.BeHealthy();
         }
 
         public void TakeDamage(int damage)
         {
-            State.BeDamaged(damage);
+            state.BeDamaged(damage);
         }
 
         public void SubtractHealth(int damage)
@@ -46,56 +47,66 @@ namespace Sprint0.Link
             health -= damage;
         }
 
+        public void Heal(int healAmount)
+        {
+            health += healAmount;
+        }
+
         public void MoveUp()
         {
-            State.MoveUp();
+            state.MoveUp();
         }
 
         public void MoveDown()
         {
-            State.MoveDown();
+            state.MoveDown();
         }
         public void MoveLeft()
         {
-            State.MoveLeft();
+            state.MoveLeft();
         }
         public void MoveRight()
         {
-            State.MoveRight();
+            state.MoveRight();
         }
 
         public void StopMoving()
         {
-            State.StopMoving();
+            state.StopMoving();
         }
 
         public void SwordAttack()
         {
-            State.SwordAttack();
+            state.SwordAttack();
         }
 
         public void UseItem()
         {
-            throw new System.NotImplementedException();
+            state.UseItem();
         }
 
         public void PickUpItem()
         {
-            throw new System.NotImplementedException();
+            state.PickUpItem();
         }
 
         public Vector2 GetPosition()
         {
             return new Vector2(posX, posY);
         }
+
+        public void SetPosition(Vector2 newPosition)
+        {
+            posX = newPosition.X;
+            posY = newPosition.Y;
+        }
         public ILinkState GetState()
         {
             return state;
         }
-
         public void SetState(ILinkState newState)
         {
-            state = newState;
+            if(!BlockStateChange) state = newState;
         }
     }
 }
