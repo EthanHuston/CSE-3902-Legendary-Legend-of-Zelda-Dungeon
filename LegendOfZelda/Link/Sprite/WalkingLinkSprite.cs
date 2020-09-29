@@ -5,7 +5,7 @@ namespace Sprint0.Link.Sprite
 {
     class WalkingLinkSprite : ILinkSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
         private int bufferFrame;
@@ -22,8 +22,7 @@ namespace Sprint0.Link.Sprite
         }
         public void Update()
         {
-            bufferFrame++;
-            if (bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == Constants.FrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
@@ -55,6 +54,11 @@ namespace Sprint0.Link.Sprite
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);
             spriteBatch.End();
+        }
+
+        public bool finishedAnimation()
+        {
+            return true; // because animation can be exited at any time
         }
     }
 }

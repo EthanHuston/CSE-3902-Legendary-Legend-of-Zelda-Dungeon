@@ -6,6 +6,7 @@ namespace Sprint0.Link.Sprite
     class StrikingLinkSprite : ILinkSprite
     {
         private Texture2D sprite;
+        private bool animationIsDone;
         private bool flashRed;
         private int damageColorCounter;
         private int currentFrame;
@@ -18,12 +19,16 @@ namespace Sprint0.Link.Sprite
         public StrikingLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            animationIsDone = false;
             flashRed = false;
             damageColorCounter = 0;
         }
 
         public void Update()
         {
+            animationIsDone = currentFrame >= totalFrames + Constants.LinkStrikingPauseTicks;
+            if (finishedAnimation()) return;
+
             // Check to see if we're at total frames so animation doesn't loop
             if (currentFrame < totalFrames && ++bufferFrame == Constants.FrameDelay)
             {
@@ -45,6 +50,8 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
+            if (finishedAnimation()) return;
+
             int frameWidth = sprite.Width / numRows;
             int frameHeight = sprite.Height / numColumns;
             int currentRow = 1;
@@ -57,6 +64,10 @@ namespace Sprint0.Link.Sprite
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.White : Color.Red);
             spriteBatch.End();
         }
+
+        public bool finishedAnimation()
+        {
+            return animationIsDone;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Sprint0.Link.Sprite
 
         public bool finishedAnimation()
         {
-            return false; // because animation never finishes
+            return true; // because animation can be exited at any time
         }
     }
 }
