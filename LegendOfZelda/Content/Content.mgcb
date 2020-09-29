@@ -445,6 +445,18 @@
 /processorParam:TextureFormat=Color
 /build:Link/IdleLinkUp.png
 
+#begin Link/LinkPickingUpItem.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Link/LinkPickingUpItem.png
+
 #begin Link/LinkPickingUpSword.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -552,18 +564,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Link/LinkUsingItemUp.png
-
-#begin Link/PickingUpItemLink.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Link/PickingUpItemLink.png
 
 #begin Link/WalkingDownLink.png
 /importer:TextureImporter
