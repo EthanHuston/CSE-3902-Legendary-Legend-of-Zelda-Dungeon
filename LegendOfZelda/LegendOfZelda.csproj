@@ -114,14 +114,10 @@
     <Compile Include="Link\State\NotMoving\LinkStandingStillUpState.cs" />
     <Compile Include="Link\State\NotMoving\LinkStandingStillRightState.cs" />
     <Compile Include="Link\State\NotMoving\LinkStandingStillLeftState.cs" />
-    <Compile Include="Link\State\Walking\LinkDamagedWalkingDownState.cs" />
     <Compile Include="Link\State\NotMoving\LinkStandingStillDownState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingDownState.cs" />
-    <Compile Include="Link\State\Walking\LinkDamagedWalkingLeftState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingLeftState.cs" />
-    <Compile Include="Link\State\Walking\LinkDamagedWalkingRightState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingRightState.cs" />
-    <Compile Include="Link\State\Walking\LinkDamagedWalkingUpState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingUpState.cs" />
     <Compile Include="LadderTile.cs" />
     <Compile Include="LockedDoor.cs" />
