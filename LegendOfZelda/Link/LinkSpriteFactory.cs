@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Sprite;
-using Sprint0.Link.State.NotMoving;
 
 namespace Sprint0.Link
 {
@@ -27,6 +26,8 @@ namespace Sprint0.Link
         private Texture2D walkingRightLinkSprite; 
         private Texture2D linkPickingUpSwordSprite;
         private Texture2D linkPickingUpHeartSprite;
+        private Texture2D linkPickingUpTriforceSprite;
+        private Texture2D linkPickingUpBowSprite;
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
         public static LinkSpriteFactory Instance
@@ -62,6 +63,8 @@ namespace Sprint0.Link
             walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
             linkPickingUpSwordSprite = content.Load<Texture2D>("Link/LinkPickingUpSword");
             linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
+            linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
+            linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
         }
         public ILinkSprite CreateIdleLinkDownSprite()
         {
@@ -138,6 +141,14 @@ namespace Sprint0.Link
         public ILinkSprite CreateLinkPickingUpHeartSprite()
         {
             return new PickingUpItemLinkSprite(linkPickingUpHeartSprite);
+        }
+        public ILinkSprite CreateLinkPickingUpTriforceSprite()
+        {
+            return new PickingUpItemLinkSprite(linkPickingUpTriforceSprite);
+        }
+        public ILinkSprite CreateLinkPickingUpBowSprite()
+        {
+            return new PickingUpItemLinkSprite(linkPickingUpBowSprite);
         }
     }
 }
