@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Sprite;
+using Sprint0.Link.State.NotMoving;
 
 namespace Sprint0.Link
 {
@@ -11,10 +12,6 @@ namespace Sprint0.Link
         private Texture2D idleLinkRightSprite;
         private Texture2D idleLinkLeftSprite;
         private Texture2D idleLinkUpSprite;
-        private Texture2D idleDamagedLinkDownSprite;
-        private Texture2D idleDamagedLinkRightSprite;
-        private Texture2D idleDamagedLinkLeftSprite;
-        private Texture2D idleDamagedLinkUpSprite;
         private Texture2D strikingDownLinkSprite;
         private Texture2D strikingUpLinkSprite;
         private Texture2D strikingLeftLinkSprite;
@@ -27,7 +24,9 @@ namespace Sprint0.Link
         private Texture2D walkingDownLinkSprite;
         private Texture2D walkingUpLinkSprite;
         private Texture2D walkingLeftLinkSprite;
-        private Texture2D walkingRightLinkSprite;
+        private Texture2D walkingRightLinkSprite; 
+        private Texture2D linkPickingUpSwordSprite;
+
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
         public static LinkSpriteFactory Instance
         {
@@ -47,15 +46,11 @@ namespace Sprint0.Link
             idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
             idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
             idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
-            idleDamagedLinkDownSprite = content.Load<Texture2D>("Link/IdleDamagedLinkDown");
-            idleDamagedLinkRightSprite = content.Load<Texture2D>("Link/IdleDamagedLinkRight");
-            idleDamagedLinkLeftSprite = content.Load<Texture2D>("Link/IdleDamagedLinkLeft");
-            idleDamagedLinkUpSprite = content.Load<Texture2D>("Link/IdleDamagedLinkUp");
             strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkStrikingDown");
             strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkStrikingLeft");
             strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkStrikingRight");
             strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkStrikingUp");
-            pickingUpItemLinkSprite = content.Load<Texture2D>("Link/PickingUpItemLink");
+            pickingUpItemLinkSprite = content.Load<Texture2D>("Link/LinkPickingUpItem");
             usingItemDownLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemDown");
             usingItemUpLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemUp");
             usingItemRightLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemRight");
@@ -64,6 +59,7 @@ namespace Sprint0.Link
             walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
             walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
             walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
+            linkPickingUpSwordSprite = content.Load<Texture2D>("Link/LinkPickingUpSword");
         }
         public ILinkSprite CreateIdleLinkDownSprite()
         {
@@ -132,6 +128,10 @@ namespace Sprint0.Link
         public ILinkSprite CreateWalkingUpLinkSprite()
         {
             return new WalkingLinkSprite(walkingUpLinkSprite);
+        }
+        public ILinkSprite CreateLinkPickingUpSwordSprite()
+        {
+            return new PickingUpItemLinkSprite(linkPickingUpSwordSprite);
         }
     }
 }
