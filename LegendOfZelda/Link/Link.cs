@@ -21,6 +21,25 @@ namespace Sprint0.Link
             state = new LinkStandingStillDownState(this);
         }
 
+        public Vector2 GetPosition()
+        {
+            return new Vector2(posX, posY);
+        }
+
+        public void SetPosition(Vector2 newPosition)
+        {
+            posX = newPosition.X;
+            posY = newPosition.Y;
+        }
+        public ILinkState GetState()
+        {
+            return state;
+        }
+        public void SetState(ILinkState newState)
+        {
+            if (!BlockStateChange) state = newState;
+        }
+
         public void Draw()
         {
             state.Draw();
@@ -90,23 +109,14 @@ namespace Sprint0.Link
             state.PickUpItem();
         }
 
-        public Vector2 GetPosition()
+        public void PickUpSword()
         {
-            return new Vector2(posX, posY);
+            state.PickUpSword();
         }
 
-        public void SetPosition(Vector2 newPosition)
+        public void PickUpHeart()
         {
-            posX = newPosition.X;
-            posY = newPosition.Y;
-        }
-        public ILinkState GetState()
-        {
-            return state;
-        }
-        public void SetState(ILinkState newState)
-        {
-            if(!BlockStateChange) state = newState;
+            state.PickUpHeart();
         }
     }
 }

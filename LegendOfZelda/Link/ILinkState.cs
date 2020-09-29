@@ -15,5 +15,6 @@ namespace Sprint0.Link
         void PickUpItem();
         void UseItem();
         void PickUpSword();
+        void PickUpHeart();
     }
 }

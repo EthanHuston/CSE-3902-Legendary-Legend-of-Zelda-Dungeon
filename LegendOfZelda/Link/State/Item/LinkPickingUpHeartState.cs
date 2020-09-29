@@ -4,20 +4,20 @@ using System;
 
 namespace Sprint0.Link.State.NotMoving
 {
-    class LinkPickingUpItemState : ILinkState
+    class LinkPickingUpHeartState : ILinkState
     {
         private Link link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkPickingUpItemState(Link link)
+        public LinkPickingUpHeartState(Link link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkPickingUpItemState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkPickingUpHeartState(Link link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -27,7 +27,7 @@ namespace Sprint0.Link.State.NotMoving
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreatePickingUpItemLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpHeartSprite();
             link.BlockStateChange = true;
         }
 
