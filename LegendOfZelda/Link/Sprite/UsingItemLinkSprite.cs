@@ -24,7 +24,7 @@ namespace Sprint0.Link.Sprite
         public void Update()
         {
             animationIsDone = delayCounter >= Constants.LinkUsingItemPauseTicks;
-            if (finishedAnimation()) return;
+            if (FinishedAnimation()) return;
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {
@@ -43,7 +43,7 @@ namespace Sprint0.Link.Sprite
             spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
 
-        public bool finishedAnimation()
+        public bool FinishedAnimation()
         {
             return animationIsDone;
         }

@@ -48,7 +48,7 @@ namespace Sprint0.Link.Items
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, direction);
+            sprite.Draw(spriteBatch, position);
         }
 
         public bool SafeToDespawn()

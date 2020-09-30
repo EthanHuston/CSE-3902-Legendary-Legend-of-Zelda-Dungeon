@@ -34,6 +34,7 @@ namespace Sprint0.Link
         private Texture2D arrowDownSprite;
         private Texture2D arrowRightSprite;
         private Texture2D arrowLeftSprite;
+        private Texture2D bombExplodingSprite;
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
         public static LinkSpriteFactory Instance
@@ -78,6 +79,7 @@ namespace Sprint0.Link
             arrowUpSprite = content.Load<Texture2D>("Items/ArrowUp");
             arrowRightSprite = content.Load<Texture2D>("Items/ArrowRight");
             arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
+            bombExplodingSprite = content.Load<Texture2D>("Item/BombExploding");
         }
         // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()
@@ -185,6 +187,10 @@ namespace Sprint0.Link
         public ILinkItemSprite CreateArrowLeftSprite()
         {
             return new ArrowSprite(arrowLeftSprite);
+        }
+        public ILinkItemSprite CreateBombExplodingSprite()
+        {
+            return new BombExplodingSprite(bombExplodingSprite);
         }
     }
 }

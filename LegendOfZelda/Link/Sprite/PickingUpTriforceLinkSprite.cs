@@ -27,7 +27,7 @@ namespace Sprint0.Link.Sprite
         public void Update()
         {
             animationIsDone = currentFrame >= totalFrames + Constants.LinkPickingUpItemPauseTicks;
-            if (finishedAnimation()) return;
+            if (FinishedAnimation()) return;
 
             // Check to see if we're at total frames so animation doesn't loop
             if (currentFrame < totalFrames && ++bufferFrame == Constants.FrameDelay)
@@ -50,7 +50,7 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
-            if (finishedAnimation()) return;
+            if (FinishedAnimation()) return;
 
             int frameWidth = sprite.Width / numRows;
             int frameHeight = sprite.Height / numColumns;
@@ -65,7 +65,7 @@ namespace Sprint0.Link.Sprite
             spriteBatch.End();
         }
 
-        public bool finishedAnimation()
+        public bool FinishedAnimation()
         {
             return animationIsDone;
         }
