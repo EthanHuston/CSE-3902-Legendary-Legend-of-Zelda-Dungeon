@@ -15,8 +15,6 @@ namespace Sprint0
         void MoveRight();
         void StopMoving();
         void SwordAttack();
-        void UseItem();
-        void PickUpItem();
         Vector2 GetPosition();
     }
 }
