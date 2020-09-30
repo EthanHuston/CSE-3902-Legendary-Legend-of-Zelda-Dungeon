@@ -16,11 +16,31 @@ namespace Sprint0
         public const int LinkPickingUpItemPauseTicks = 5;
         public const int LinkUsingItemPauseTicks = 5;
         public const int LinkStrikingPauseTicks = 5;
+        public const int ArrowSpawnXOffsetFromLink = 0;
+        public const int ArrowSpawnYOffsetFromLink = 6;
 
         // Game screen
         public const int MaxXPos = 800;
         public const int MinXPos = 0;
         public const int MaxYPos = 480;
         public const int MinYPos = 0;
+
+        // Directions
+        public enum Directions
+        {
+            Right,
+            Left,
+            Up,
+            Down
+        }
+
+        // Items
+        public enum Items
+        {
+            Arrow,
+            Bomb,
+            Boomerang
+        }
+        public const int FlyingArrowDistanceIntervalPx = 5;
     }
 }
