@@ -28,12 +28,7 @@ namespace Sprint0
         
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-            // TEST COMMENT FROM NATHAN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // UWU THANKS FOR THE BIG PP NATHAN ;););) -BIG PP CHRIS
-            // big cringe moment - S.P.
-            // im "git"ing sad right now, big tuff moment here - sadboi
-            // crying tears of joy - we all committed
+            
             textSprite = new NonMovingNonAnimatedTextSprite(this.Content);
             keyboardController = new KeyboardController(this);
             controllerList = new List<object>();
@@ -78,9 +73,6 @@ namespace Sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            textSprite.Draw(SpriteBatch);
-            sprite.Draw(SpriteBatch);
 
             // TODO: Add your drawing code here
 
