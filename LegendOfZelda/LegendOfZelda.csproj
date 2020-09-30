@@ -58,6 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Link\Command\ArrowCommand.cs" />
     <Compile Include="Link\Command\BowCommand.cs" />
     <Compile Include="Link\Command\DamageLinkCommand.cs" />
     <Compile Include="Link\Command\HeartContainerCommand.cs" />
