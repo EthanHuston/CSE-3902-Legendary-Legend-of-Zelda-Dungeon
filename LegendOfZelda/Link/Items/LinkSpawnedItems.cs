@@ -18,26 +18,19 @@ namespace Sprint0.Link.Items
             };
         }
 
-        public bool AddNewArrow(ILinkItem item)
+        public bool SpawnNewItem(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Items.Arrow] == false) return false; // exit if it cannot be spawned right now
-            ToggleSpawnableForArrow();
-
-            return true;
-        }
-
-        public bool AddNewBomb(ILinkItem item)
-        {
-            if (ItemIsSpawnable[Constants.Items.Bomb] == false) return false; // exit if it cannot be spawned right now
-            ToggleSpawnableForBomb();
-            return true;
-        }
-
-        public bool AddNewBoomerang(ILinkItem item)
-        {
-            if (ItemIsSpawnable[Constants.Items.Boomerang] == false) return false; // exit if it cannot be spawned right now
-            ToggleSpawnableForBoomerang();
-            return true;
+            switch (item.GetItemType())
+            {
+                case Constants.Items.Arrow:
+                    return SpawnNewArrow(item);
+                case Constants.Items.Bomb:
+                    return SpawnNewBomb(item);
+                case Constants.Items.Boomerang:
+                    return SpawnNewBoomerang(item);
+                default:
+                    return false;
+            }
         }
 
         public void DrawAll()
@@ -66,6 +59,36 @@ namespace Sprint0.Link.Items
             {
                 spawnedItemList.RemoveAt(indicesToRemove[i]);
             }
+        }
+
+        private bool SpawnNewArrow(ILinkItem item)
+        {
+            if (ItemIsSpawnable[Constants.Items.Arrow] == false) return false; // exit if it cannot be spawned right now
+            ToggleSpawnableForArrow();
+
+            spawnedItemList.Add(item);
+
+            return true;
+        }
+
+        private bool SpawnNewBomb(ILinkItem item)
+        {
+            if (ItemIsSpawnable[Constants.Items.Bomb] == false) return false; // exit if it cannot be spawned right now
+            ToggleSpawnableForBomb();
+
+            spawnedItemList.Add(item);
+
+            return true;
+        }
+
+        private bool SpawnNewBoomerang(ILinkItem item)
+        {
+            if (ItemIsSpawnable[Constants.Items.Boomerang] == false) return false; // exit if it cannot be spawned right now
+            ToggleSpawnableForBoomerang();
+
+            spawnedItemList.Add(item);
+
+            return true;
         }
 
         private void ToggleSpawnable(Constants.Items itemType)
