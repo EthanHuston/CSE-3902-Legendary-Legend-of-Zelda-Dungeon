@@ -57,6 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Utility.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Link\Command\ArrowCommand.cs" />
     <Compile Include="Link\Command\BombCommand.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="Link\LinkSpriteFactory.cs" />
+    <Compile Include="Link\Sprite\BoomerangFlyingSprite.cs" />
     <Compile Include="Link\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Link\Sprite\ArrowSprite.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
