@@ -1,4 +1,4 @@
-namespace Sprint0.Link
+namespace Sprint0.Link.Interface
 {
     interface ILinkState
     {

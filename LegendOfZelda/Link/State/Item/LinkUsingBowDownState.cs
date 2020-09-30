@@ -1,4 +1,6 @@
-﻿using Sprint0.Link.State.Attacking;
+﻿using Microsoft.Xna.Framework;
+using Sprint0.Link.Interface;
+using Sprint0.Link.Items;
 using Sprint0.Link.State.Walking;
 using System;
 
@@ -9,6 +11,7 @@ namespace Sprint0.Link.State.Item
         private Link link;
         private bool damaged;
         private DateTime healthyDateTime;
+        private Vector2 spawnLocation;
 
         public LinkUsingItemDownState(Link link)
         {
@@ -29,6 +32,7 @@ namespace Sprint0.Link.State.Item
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
             link.BlockStateChange = true;
+            this.link.SpawnItem(new ArrowFlying(link.Game.SpriteBatch, Constants.Directions.Down, spawnLocation));
         }
 
         public void Update()
