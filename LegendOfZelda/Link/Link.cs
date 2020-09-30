@@ -127,5 +127,20 @@ namespace Sprint0.Link
         {
             state.PickUpTriforce();
         }
+
+        public void SpawnItem(ILinkItem item)
+        {
+            spawnedItems.SpawnNewItem(item);
+        }
+
+        public void UseBomb()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UseBoomerang()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

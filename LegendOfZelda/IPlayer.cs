@@ -21,5 +21,7 @@ namespace Sprint0
         void PickUpHeartContainer();
         void PickUpBow();
         void PickUpTriforce();
+        void UseBomb();
+        void UseBoomerang();
     }
 }
