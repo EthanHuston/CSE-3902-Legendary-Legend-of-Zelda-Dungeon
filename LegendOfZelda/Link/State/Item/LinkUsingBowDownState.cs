@@ -11,7 +11,6 @@ namespace Sprint0.Link.State.Item
         private Link link;
         private bool damaged;
         private DateTime healthyDateTime;
-        private Vector2 spawnLocation;
 
         public LinkUsingBowDownState(Link link)
         {
@@ -32,7 +31,7 @@ namespace Sprint0.Link.State.Item
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
             link.BlockStateChange = true;
-            this.link.SpawnItem(new ArrowFlying(link, Constants.Directions.Down, spawnLocation));
+            this.link.SpawnItem(new ArrowFlying(link, Constants.Directions.Down));
         }
 
         public void Update()

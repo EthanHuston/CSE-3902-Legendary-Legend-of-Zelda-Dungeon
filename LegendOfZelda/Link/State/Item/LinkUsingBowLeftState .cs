@@ -1,4 +1,5 @@
 ﻿using Sprint0.Link.Interface;
+using Sprint0.Link.Items;
 using Sprint0.Link.State.NotMoving;
 using Sprint0.Link.State.Walking;
 using System;
@@ -28,8 +29,9 @@ namespace Sprint0.Link.State.Item
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemLeftLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
             link.BlockStateChange = true;
+            this.link.SpawnItem(new ArrowFlying(link, Constants.Directions.Left));
         }
 
         public void Update()
@@ -50,22 +52,22 @@ namespace Sprint0.Link.State.Item
 
         public void MoveDown()
         {
-            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveLeft()
         {
-            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveRight()
         {
-            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveUp()
         {
-            link.SetState(new LinkWalkingUpState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void BeDamaged(int damage)
@@ -89,7 +91,11 @@ namespace Sprint0.Link.State.Item
 
         public void SwordAttack()
         {
-            // Already attacking, do nothing
+            // Cannot interupt state, do nothing
+        }
+        public void ShootBow()
+        {
+            // Already using bow, do nothing
         }
 
         public void PickUpItem()
@@ -102,7 +108,7 @@ namespace Sprint0.Link.State.Item
             // Cannot interupt state, do nothing
         }
 
-        public void PickUpHeart()
+        public void PickUpHeartContainer()
         {
             // Cannot interupt state, do nothing
         }
@@ -113,16 +119,6 @@ namespace Sprint0.Link.State.Item
         }
 
         public void PickUpBow()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void ShootBow()
-        {
-            // Already using bow, do nothing
-        }
-
-        public void PickUpHeartContainer()
         {
             // Cannot interupt state, do nothing
         }

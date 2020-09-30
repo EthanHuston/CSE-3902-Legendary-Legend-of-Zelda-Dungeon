@@ -1,4 +1,5 @@
 ﻿using Sprint0.Link.Interface;
+using Sprint0.Link.Items;
 using Sprint0.Link.State.Attacking;
 using Sprint0.Link.State.NotMoving;
 using Sprint0.Link.State.Walking;
@@ -29,8 +30,9 @@ namespace Sprint0.Link.State.Item
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemUpLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
             link.BlockStateChange = true;
+            this.link.SpawnItem(new ArrowFlying(link, Constants.Directions.Up));
         }
 
         public void Update()
@@ -92,33 +94,32 @@ namespace Sprint0.Link.State.Item
         {
             // Cannot interupt state, do nothing
         }
-
-        public void PickUpSword()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
-        public void PickUpHeart()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
-        public void PickUpTriforce()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
-        public void PickUpBow()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
         public void ShootBow()
         {
             // Already using bow, do nothing
         }
 
+        public void PickUpItem()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void PickUpSword()
+        {
+            // Cannot interupt state, do nothing
+        }
+
         public void PickUpHeartContainer()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void PickUpTriforce()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void PickUpBow()
         {
             // Cannot interupt state, do nothing
         }

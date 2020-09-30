@@ -24,7 +24,7 @@ namespace Sprint0.Link.Sprite
 
         public bool FinishedAnimation()
         {
-            throw new System.NotImplementedException();
+            return false; // not used
         }
     }
 }
