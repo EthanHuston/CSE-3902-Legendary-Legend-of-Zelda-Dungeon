@@ -1,4 +1,4 @@
-﻿using Sprint0.Link.Interface;
+using Sprint0.Link.Interface;
 using Sprint0.Link.Items;
 using Sprint0.Link.State.Attacking;
 using Sprint0.Link.State.NotMoving;
@@ -32,7 +32,7 @@ namespace Sprint0.Link.State.Item
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
             link.BlockStateChange = true;
-            this.link.SpawnItem(new ArrowFlying(link, Constants.Directions.Up));
+            this.link.SpawnItem(new ArrowFlyingItem(link, Constants.Directions.Up));
         }
 
         public void Update()
