@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Link.Interface;
 using Sprint0.Link.Sprite;
 
 namespace Sprint0.Link
@@ -28,6 +29,10 @@ namespace Sprint0.Link
         private Texture2D linkPickingUpHeartSprite;
         private Texture2D linkPickingUpTriforceSprite;
         private Texture2D linkPickingUpBowSprite;
+        private Texture2D arrowUpSprite;
+        private Texture2D arrowDownSprite;
+        private Texture2D arrowRightSprite;
+        private Texture2D arrowLeftSprite;
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
         public static LinkSpriteFactory Instance
@@ -43,7 +48,7 @@ namespace Sprint0.Link
 
         public void LoadAllTextures(ContentManager content)
         {
-            //Load Link Sprites
+            // Load Link sprites
             idleLinkDownSprite = content.Load<Texture2D>("Link/IdleLinkDown");
             idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
             idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
@@ -65,7 +70,14 @@ namespace Sprint0.Link
             linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
             linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
             linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
+
+            // Load Link's item sprites
+            arrowDownSprite = content.Load<Texture2D>("Items/ArrowDown");
+            arrowUpSprite = content.Load<Texture2D>("Items/ArrowUp");
+            arrowRightSprite = content.Load<Texture2D>("Items/ArrowRight");
+            arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
         }
+        // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()
         {
             return new IdleLinkSprite(idleLinkDownSprite);
@@ -149,6 +161,24 @@ namespace Sprint0.Link
         public ILinkSprite CreateLinkPickingUpBowSprite()
         {
             return new PickingUpItemLinkSprite(linkPickingUpBowSprite);
+        }
+
+        // Link item sprites
+        public ILinkItemSprite CreateArrowUpSprite()
+        {
+            return new ArrowSprite(arrowUpSprite);
+        }
+        public ILinkItemSprite CreateArrowDownSprite()
+        {
+            return new ArrowSprite(arrowDownSprite);
+        }
+        public ILinkItemSprite CreateArrowRightSprite()
+        {
+            return new ArrowSprite(arrowRightSprite);
+        }
+        public ILinkItemSprite CreateArrowLeftSprite()
+        {
+            return new ArrowSprite(arrowLeftSprite);
         }
     }
 }

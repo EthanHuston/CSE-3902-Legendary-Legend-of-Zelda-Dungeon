@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Link.State.Attacking;
+using Sprint0.Link.Interface;
 using Sprint0.Link.State.Item;
 using Sprint0.Link.State.NotMoving;
 using System;

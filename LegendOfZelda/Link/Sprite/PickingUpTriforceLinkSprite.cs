@@ -4,7 +4,7 @@ using Sprint0.Link.Interface;
 
 namespace Sprint0.Link.Sprite
 {
-    class StrikingLinkSprite : ILinkSprite
+    class PickingUpTriforceLinkSprite : ILinkSprite
     {
         private Texture2D sprite;
         private bool animationIsDone;
@@ -12,12 +12,11 @@ namespace Sprint0.Link.Sprite
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
-        private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
-        private const int totalFrames = 7;
+        private const int totalFrames = 16;
         private const int numRows = 1;
         private const int numColumns = 2;
 
-        public StrikingLinkSprite(Texture2D sprite)
+        public PickingUpTriforceLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             animationIsDone = false;
@@ -27,7 +26,7 @@ namespace Sprint0.Link.Sprite
 
         public void Update()
         {
-            animationIsDone = currentFrame >= totalFrames + Constants.LinkStrikingPauseTicks;
+            animationIsDone = currentFrame >= totalFrames + Constants.LinkPickingUpItemPauseTicks;
             if (finishedAnimation()) return;
 
             // Check to see if we're at total frames so animation doesn't loop
@@ -56,7 +55,7 @@ namespace Sprint0.Link.Sprite
             int frameWidth = sprite.Width / numRows;
             int frameHeight = sprite.Height / numColumns;
             int currentRow = 1;
-            int currentColumn = frameToCurrentColumnArray[currentFrame];
+            int currentColumn = currentFrame % 2;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
