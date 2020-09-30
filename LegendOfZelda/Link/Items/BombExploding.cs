@@ -7,7 +7,6 @@ namespace Sprint0.Link.Items
     class BombExploding : ILinkItem
     {
         private bool itemIsExpired;
-        private Vector2 direction;
         private Vector2 position;
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
