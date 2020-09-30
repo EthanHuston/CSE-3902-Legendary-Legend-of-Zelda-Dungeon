@@ -142,5 +142,10 @@ namespace Sprint0.Link
         {
             throw new System.NotImplementedException();
         }
+
+        public void PickUpBoomerang()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
