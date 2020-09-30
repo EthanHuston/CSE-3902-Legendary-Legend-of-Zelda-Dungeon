@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class OldMan
+    class OldMan : IEnemy
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
