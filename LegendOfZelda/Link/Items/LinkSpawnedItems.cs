@@ -6,15 +6,15 @@ namespace Sprint0.Link.Items
     class LinkSpawnedItems : ISpawnedItems
     {
         private List<ILinkItem> spawnedItemList = new List<ILinkItem>();
-        private Dictionary<Constants.Items, bool> ItemIsSpawnable; // key is an item, value is true if item can be spawned, else false
+        private Dictionary<Constants.Item, bool> ItemIsSpawnable; // key is an item, value is true if item can be spawned, else false
         public LinkSpawnedItems()
         {
-            ItemIsSpawnable = new Dictionary<Constants.Items, bool>()
+            ItemIsSpawnable = new Dictionary<Constants.Item, bool>()
             {
                 // initialize to true because nothing has been spawned yet
-                { Constants.Items.Arrow, true },
-                { Constants.Items.Bomb, true },
-                { Constants.Items.Boomerang, true }
+                { Constants.Item.Arrow, true },
+                { Constants.Item.Bomb, true },
+                { Constants.Item.Boomerang, true }
             };
         }
 
@@ -22,11 +22,11 @@ namespace Sprint0.Link.Items
         {
             switch (item.GetItemType())
             {
-                case Constants.Items.Arrow:
+                case Constants.Item.Arrow:
                     return SpawnNewArrow(item);
-                case Constants.Items.Bomb:
+                case Constants.Item.Bomb:
                     return SpawnNewBomb(item);
-                case Constants.Items.Boomerang:
+                case Constants.Item.Boomerang:
                     return SpawnNewBoomerang(item);
                 default:
                     return false;
@@ -63,7 +63,7 @@ namespace Sprint0.Link.Items
 
         private bool SpawnNewArrow(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Items.Arrow] == false) return false; // exit if it cannot be spawned right now
+            if (ItemIsSpawnable[Constants.Item.Arrow] == false) return false; // exit if it cannot be spawned right now
             ToggleSpawnableForArrow();
 
             spawnedItemList.Add(item);
@@ -73,7 +73,7 @@ namespace Sprint0.Link.Items
 
         private bool SpawnNewBomb(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Items.Bomb] == false) return false; // exit if it cannot be spawned right now
+            if (ItemIsSpawnable[Constants.Item.Bomb] == false) return false; // exit if it cannot be spawned right now
             ToggleSpawnableForBomb();
 
             spawnedItemList.Add(item);
@@ -83,7 +83,7 @@ namespace Sprint0.Link.Items
 
         private bool SpawnNewBoomerang(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Items.Boomerang] == false) return false; // exit if it cannot be spawned right now
+            if (ItemIsSpawnable[Constants.Item.Boomerang] == false) return false; // exit if it cannot be spawned right now
             ToggleSpawnableForBoomerang();
 
             spawnedItemList.Add(item);
@@ -91,17 +91,17 @@ namespace Sprint0.Link.Items
             return true;
         }
 
-        private void ToggleSpawnable(Constants.Items itemType)
+        private void ToggleSpawnable(Constants.Item itemType)
         {
             switch (itemType)
             {
-                case Constants.Items.Arrow:
+                case Constants.Item.Arrow:
                     ToggleSpawnableForArrow();
                     break;
-                case Constants.Items.Bomb:
+                case Constants.Item.Bomb:
                     ToggleSpawnableForBomb();
                     break;
-                case Constants.Items.Boomerang:
+                case Constants.Item.Boomerang:
                     ToggleSpawnableForBoomerang();
                     break;
             }
@@ -109,18 +109,18 @@ namespace Sprint0.Link.Items
 
         private void ToggleSpawnableForArrow()
         {
-            ItemIsSpawnable[Constants.Items.Arrow] = !ItemIsSpawnable[Constants.Items.Arrow];
-            ItemIsSpawnable[Constants.Items.Boomerang] = !ItemIsSpawnable[Constants.Items.Boomerang];
+            ItemIsSpawnable[Constants.Item.Arrow] = !ItemIsSpawnable[Constants.Item.Arrow];
+            ItemIsSpawnable[Constants.Item.Boomerang] = !ItemIsSpawnable[Constants.Item.Boomerang];
         }
         private void ToggleSpawnableForBoomerang()
         {
-            ItemIsSpawnable[Constants.Items.Boomerang] = !ItemIsSpawnable[Constants.Items.Boomerang];
-            ItemIsSpawnable[Constants.Items.Arrow] = !ItemIsSpawnable[Constants.Items.Arrow];
+            ItemIsSpawnable[Constants.Item.Boomerang] = !ItemIsSpawnable[Constants.Item.Boomerang];
+            ItemIsSpawnable[Constants.Item.Arrow] = !ItemIsSpawnable[Constants.Item.Arrow];
         }
 
         private void ToggleSpawnableForBomb()
         {
-            ItemIsSpawnable[Constants.Items.Bomb] = !ItemIsSpawnable[Constants.Items.Bomb];
+            ItemIsSpawnable[Constants.Item.Bomb] = !ItemIsSpawnable[Constants.Item.Bomb];
         }
     }
 }

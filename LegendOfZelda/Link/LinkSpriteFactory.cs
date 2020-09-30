@@ -176,19 +176,19 @@ namespace Sprint0.Link
         // Link item sprites
         public ILinkItemSprite CreateArrowUpSprite()
         {
-            return new ArrowSprite(arrowUpSprite);
+            return new ArrowFlyingSprite(arrowUpSprite);
         }
         public ILinkItemSprite CreateArrowDownSprite()
         {
-            return new ArrowSprite(arrowDownSprite);
+            return new ArrowFlyingSprite(arrowDownSprite);
         }
         public ILinkItemSprite CreateArrowRightSprite()
         {
-            return new ArrowSprite(arrowRightSprite);
+            return new ArrowFlyingSprite(arrowRightSprite);
         }
         public ILinkItemSprite CreateArrowLeftSprite()
         {
-            return new ArrowSprite(arrowLeftSprite);
+            return new ArrowFlyingSprite(arrowLeftSprite);
         }
         public ILinkItemSprite CreateBombExplodingSprite()
         {

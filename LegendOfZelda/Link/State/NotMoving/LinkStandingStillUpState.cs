@@ -1,6 +1,6 @@
 ﻿using Sprint0.Link.Interface;
-using Sprint0.Link.State.Item;
 using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.Item;
 using Sprint0.Link.State.Walking;
 using System;
 
@@ -83,19 +83,9 @@ namespace Sprint0.Link.State.NotMoving
             // Already not moving, do nothing
         }
 
-        public void SwordAttack()
+        public void UseSword()
         {
             link.SetState(new LinkAttackingUpState(link, damaged, healthyDateTime));
-        }
-
-        public void PickUpItem()
-        {
-            link.SetState(new LinkPickingUpItemState(link, damaged, healthyDateTime));
-        }
-
-        public void UseItem()
-        {
-            link.SetState(new LinkUsingItemUpState(link, damaged, healthyDateTime));
         }
 
         public void PickUpSword()
@@ -118,9 +108,24 @@ namespace Sprint0.Link.State.NotMoving
             link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
         }
 
-        public void ShootBow()
+        public void UseBow()
         {
-            throw new NotImplementedException();
+            link.SetState(new LinkUsingBowUpState(link, damaged, healthyDateTime));
+        }
+
+        public void PickUpBoomerang()
+        {
+            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
+        }
+
+        public void UseBomb()
+        {
+            link.SetState(new LinkUsingBombUpState(link, damaged, healthyDateTime));
+        }
+
+        public void UseBoomerang()
+        {
+            link.SetState(new LinkUsingBoomerangUpState(link, damaged, healthyDateTime));
         }
     }
 }

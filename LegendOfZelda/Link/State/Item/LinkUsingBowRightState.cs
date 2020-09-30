@@ -32,7 +32,7 @@ namespace Sprint0.Link.State.Item
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
             link.BlockStateChange = true;
-            this.link.SpawnItem(new ArrowFlyingItem(link, Constants.Directions.Right));
+            this.link.SpawnItem(new ArrowFlyingItem(link, Constants.Direction.Right));
         }
 
         public void Update()
@@ -90,11 +90,11 @@ namespace Sprint0.Link.State.Item
             link.SetState(new LinkStandingStillRightState(link, damaged, healthyDateTime));
         }
 
-        public void SwordAttack()
+        public void UseSword()
         {
             // Cannot interupt state, do nothing
         }
-        public void ShootBow()
+        public void UseBow()
         {
             // Already using bow, do nothing
         }

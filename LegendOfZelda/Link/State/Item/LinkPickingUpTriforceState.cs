@@ -85,10 +85,10 @@ namespace Sprint0.Link.State.Item
 
         public void StopMoving()
         {
-            link.SetState(new LinkStandingStillUpState(link, damaged, healthyDateTime));
+            link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
         }
 
-        public void SwordAttack()
+        public void UseSword()
         {
             // Cannot interupt state, do nothing
         }
@@ -118,7 +118,7 @@ namespace Sprint0.Link.State.Item
             // Cannot interupt state, do nothing
         }
 
-        public void ShootBow()
+        public void UseBow()
         {
             // Cannot interupt state, do nothing
         }

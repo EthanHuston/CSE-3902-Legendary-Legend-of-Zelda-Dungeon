@@ -9,7 +9,7 @@ namespace Sprint0.Link.Sprite
         private readonly Texture2D sprite;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 3;
+        private const int totalFrames = 7;
         private const int numRows = 1;
         private const int numColumns = 2;
 
@@ -24,10 +24,9 @@ namespace Sprint0.Link.Sprite
         {
             if (++bufferFrame == Constants.FrameDelay)
             {
-                currentFrame++;
+                currentFrame = currentFrame == totalFrames ? 0 : currentFrame + 1;
                 bufferFrame = 0;
             }
-            currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
@@ -45,9 +44,7 @@ namespace Sprint0.Link.Sprite
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

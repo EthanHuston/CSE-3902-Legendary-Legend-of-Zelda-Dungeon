@@ -1,6 +1,6 @@
 ﻿using Sprint0.Link.Interface;
-using Sprint0.Link.State.Item;
 using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.Item;
 using Sprint0.Link.State.Walking;
 using System;
 
@@ -83,7 +83,7 @@ namespace Sprint0.Link.State.NotMoving
             // Already not moving, do nothing
         }
 
-        public void SwordAttack()
+        public void UseSword()
         {
             link.SetState(new LinkAttackingDownState(link, damaged, healthyDateTime));
         }
@@ -108,24 +108,24 @@ namespace Sprint0.Link.State.NotMoving
             link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
         }
 
-        public void ShootBow()
+        public void UseBow()
         {
             link.SetState(new LinkUsingBowDownState(link, damaged, healthyDateTime));
         }
 
         public void PickUpBoomerang()
         {
-            throw new NotImplementedException();
+            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
         }
 
         public void UseBomb()
         {
-            throw new NotImplementedException();
+            link.SetState(new LinkUsingBombDownState(link, damaged, healthyDateTime));
         }
 
         public void UseBoomerang()
         {
-            throw new NotImplementedException();
+            link.SetState(new LinkUsingBoomerangDownState(link, damaged, healthyDateTime));
         }
     }
 }

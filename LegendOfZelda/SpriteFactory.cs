@@ -127,7 +127,7 @@ namespace Sprint0
         }
         public ISprite CreateArrowSprite()
         {
-            return new ArrowSprite(arrowSprite);
+            return new ArrowFlyingSprite(arrowSprite);
         }
         public ISprite CreateBombSprite()
         {

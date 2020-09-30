@@ -5,6 +5,6 @@
         void Update();
         void Draw();
         bool SafeToDespawn();
-        Constants.Items GetItemType();
+        Constants.Item GetItemType();
     }
 }

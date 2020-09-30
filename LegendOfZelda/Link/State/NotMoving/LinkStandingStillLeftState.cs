@@ -83,7 +83,7 @@ namespace Sprint0.Link.State.NotMoving
             // Already not moving, do nothing
         }
 
-        public void SwordAttack()
+        public void UseSword()
         {
             link.SetState(new LinkAttackingLeftState(link, damaged, healthyDateTime));
         }
@@ -118,9 +118,24 @@ namespace Sprint0.Link.State.NotMoving
             link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
         }
 
-        public void ShootBow()
+        public void UseBow()
         {
-            throw new NotImplementedException();
+            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+        }
+
+        public void PickUpBoomerang()
+        {
+            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
+        }
+
+        public void UseBomb()
+        {
+            link.SetState(new LinkUsingBombLeftState(link, damaged, healthyDateTime));
+        }
+
+        public void UseBoomerang()
+        {
+            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime);
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Sprint0.Link.Items
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
         private Link link;
-        private const Constants.Items type = Constants.Items.Boomerang;
+        private const Constants.Item type = Constants.Item.Boomerang;
 
-        public BoomerangFlyingItem(Link link, Constants.Directions direction)
+        public BoomerangFlyingItem(Link link, Constants.Direction direction)
         {
             this.link = link;
             this.spriteBatch = link.Game.SpriteBatch;
@@ -26,8 +26,7 @@ namespace Sprint0.Link.Items
         public void Update()
         {
             Vector2 linkPosition = link.GetPosition();
-            position.X += Constants.FlyingArrowDistanceIntervalPx * direction.X;
-            position.Y += Constants.FlyingArrowDistanceIntervalPx * direction.Y;
+            // TODO: update position logic here - work in progress
 
             itemIsExpired = ReturnedToLink(linkPosition); // or item hits enemy, but not yet implemented
         }
@@ -41,7 +40,7 @@ namespace Sprint0.Link.Items
             return itemIsExpired;
         }
 
-        public Constants.Items GetItemType()
+        public Constants.Item GetItemType()
         {
             return type;
         }

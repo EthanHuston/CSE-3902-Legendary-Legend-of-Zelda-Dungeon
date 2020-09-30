@@ -98,14 +98,14 @@ namespace Sprint0.Link
             state.StopMoving();
         }
 
-        public void SwordAttack()
+        public void UseSword()
         {
-            state.SwordAttack();
+            state.UseSword();
         }
 
-        public void ShootBow()
+        public void UseBow()
         {
-            state.ShootBow();
+            state.UseBow();
         }
 
         public void PickUpSword()

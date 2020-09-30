@@ -25,10 +25,9 @@ namespace Sprint0.Link.Sprite
         {
             if (++bufferFrame == Constants.FrameDelay)
             {
-                currentFrame++;
+                currentFrame = currentFrame == totalFrames ? 0 : currentFrame + 1;
                 bufferFrame = 0;
             }
-            currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {

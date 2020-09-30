@@ -4,10 +4,10 @@ using Sprint0.Link.Interface;
 
 namespace Sprint0.Link.Sprite
 {
-    class ArrowSprite : ILinkItemSprite
+    class ArrowFlyingSprite : ILinkItemSprite
     {
         private Texture2D sprite;
-        public ArrowSprite(Texture2D sprite)
+        public ArrowFlyingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
         }

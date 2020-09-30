@@ -11,27 +11,27 @@ namespace Sprint0.Link.Items
         private Vector2 position;
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
-        private const Constants.Items type = Constants.Items.Arrow;
+        private const Constants.Item type = Constants.Item.Arrow;
 
-        public ArrowFlyingItem(Link link, Constants.Directions direction)
+        public ArrowFlyingItem(Link link, Constants.Direction direction)
         {
             this.spriteBatch = link.Game.SpriteBatch;
             position.X = link.GetPosition().X + Constants.ArrowSpawnXOffsetFromLink;
             position.Y = link.GetPosition().Y + Constants.ArrowSpawnYOffsetFromLink;
             switch (direction) {
-                case Constants.Directions.Down:
+                case Constants.Direction.Down:
                     this.direction = new Vector2(0, 1);
                     sprite = LinkSpriteFactory.Instance.CreateArrowDownSprite();
                     break;
-                case Constants.Directions.Up:
+                case Constants.Direction.Up:
                     this.direction = new Vector2(0, -1);
                     sprite = LinkSpriteFactory.Instance.CreateArrowUpSprite();
                     break;
-                case Constants.Directions.Right:
+                case Constants.Direction.Right:
                     this.direction = new Vector2(1, 0);
                     sprite = LinkSpriteFactory.Instance.CreateArrowRightSprite();
                     break;
-                case Constants.Directions.Left:
+                case Constants.Direction.Left:
                     this.direction = new Vector2(1, 0);
                     sprite = LinkSpriteFactory.Instance.CreateArrowLeftSprite();
                     break;
@@ -55,7 +55,7 @@ namespace Sprint0.Link.Items
             return itemIsExpired;
         }
 
-        public Constants.Items GetItemType()
+        public Constants.Item GetItemType()
         {
             return type;
         }

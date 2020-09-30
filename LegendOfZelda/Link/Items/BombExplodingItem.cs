@@ -10,7 +10,7 @@ namespace Sprint0.Link.Items
         private Vector2 position;
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
-        private const Constants.Items type = Constants.Items.Arrow;
+        private const Constants.Item type = Constants.Item.Arrow;
 
         public BombExplodingItem(Link link)
         {
@@ -36,7 +36,7 @@ namespace Sprint0.Link.Items
             return itemIsExpired;
         }
 
-        public Constants.Items GetItemType()
+        public Constants.Item GetItemType()
         {
             return type;
         }

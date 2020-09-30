@@ -15,7 +15,7 @@ namespace Sprint0.Link.Command
         }
         public void Execute()
         {
-            loz.link.SwordAttack();
+            loz.link.UseSword();
         }
     }
 }

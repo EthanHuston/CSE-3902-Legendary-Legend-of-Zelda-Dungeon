@@ -1,7 +1,5 @@
 ﻿using Sprint0.Link.Interface;
-using Sprint0.Link.State.Item;
 using Sprint0.Link.State.NotMoving;
-using Sprint0.Link.State.Walking;
 using System;
 
 namespace Sprint0.Link.State.Attacking
@@ -85,10 +83,10 @@ namespace Sprint0.Link.State.Attacking
 
         public void StopMoving()
         {
-            // Cannot interupt state, do nothing
+            link.SetState(new LinkStandingStillLeftState(link, damaged, healthyDateTime));
         }
 
-        public void SwordAttack()
+        public void UseSword()
         {
             // Already attacking, do nothing
         }
@@ -123,7 +121,7 @@ namespace Sprint0.Link.State.Attacking
             // Cannot interupt state, do nothing
         }
 
-        public void ShootBow()
+        public void UseBow()
         {
             // Cannot interupt state, do nothing
         }

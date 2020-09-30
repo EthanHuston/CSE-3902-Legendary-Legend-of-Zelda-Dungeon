@@ -1,26 +1,24 @@
-﻿using Microsoft.Xna.Framework;
-using Sprint0.Link.State.Attacking;
 using Sprint0.Link.Interface;
-using Sprint0.Link.State.Item;
+using Sprint0.Link.Items;
 using Sprint0.Link.State.NotMoving;
 using System;
 
-namespace Sprint0.Link.State.Walking
+namespace Sprint0.Link.State.Item
 {
-    class LinkWalkingUpState : ILinkState
+    class LinkUsingBoomerangLeftState : ILinkState
     {
         private Link link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkWalkingUpState(Link link)
+        public LinkUsingBoomerangLeftState(Link link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkWalkingUpState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkUsingBoomerangLeftState(Link link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -30,22 +28,20 @@ namespace Sprint0.Link.State.Walking
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingUpLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemLeftLinkSprite();
+            link.BlockStateChange = true;
+            this.link.SpawnItem(new BoomerangFlyingItem(link, Constants.Direction.Left));
         }
 
         public void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            Vector2 position = link.GetPosition();
-            position.Y = position.Y - Constants.LinkWalkDistanceIntervalPx;
-            if (position.Y <= Constants.MaxYPos)
-            {
-                StopMoving();
-                return;
-            }
-            link.SetPosition(position);
-
             link.CurrentSprite.Update();
+            if (link.CurrentSprite.FinishedAnimation())
+            {
+                link.BlockStateChange = false;
+                StopMoving();
+            }
         }
 
         public void Draw()
@@ -55,22 +51,22 @@ namespace Sprint0.Link.State.Walking
 
         public void MoveDown()
         {
-            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveLeft()
         {
-            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveRight()
         {
-            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveUp()
         {
-            // Already walking up, do nothing
+            // Cannot interupt state, do nothing
         }
 
         public void BeDamaged(int damage)
@@ -85,57 +81,60 @@ namespace Sprint0.Link.State.Walking
         public void BeHealthy()
         {
             damaged = false;
-            healthyDateTime = DateTime.Now;
         }
 
         public void StopMoving()
         {
-            link.SetState(new LinkStandingStillUpState(link, damaged, healthyDateTime));
+            link.SetState(new LinkStandingStillLeftState(link, damaged, healthyDateTime));
         }
 
         public void UseSword()
         {
-            link.SetState(new LinkAttackingUpState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
+        }
+        public void UseBow()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void PickUpItem()
+        {
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpSword()
         {
-            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpHeartContainer()
         {
-            link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpTriforce()
         {
-            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpBow()
         {
-            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
-        }
-
-        public void UseBow()
-        {
-            link.SetState(new LinkUsingBowUpState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpBoomerang()
         {
-            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void UseBomb()
         {
-            link.SetState(new LinkUsingBombUpState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void UseBoomerang()
         {
-            link.SetState(new LinkUsingBoomerangUpState(link, damaged, healthyDateTime));
+            // Already using boomerang, do nothing
         }
     }
 }

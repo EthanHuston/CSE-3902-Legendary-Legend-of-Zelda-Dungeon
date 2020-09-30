@@ -30,7 +30,6 @@ namespace Sprint0.Link.Sprite
                 currentFrame++;
                 bufferFrame = 0;
             }
-            currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
 
             animationIsFinished = currentFrame > totalFrames;
         }
@@ -50,9 +49,7 @@ namespace Sprint0.Link.Sprite
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

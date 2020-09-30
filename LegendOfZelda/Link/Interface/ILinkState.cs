@@ -11,8 +11,6 @@ namespace Sprint0.Link.Interface
         void BeDamaged(int damage);
         void BeHealthy();
         void StopMoving();
-        void SwordAttack();
-        void ShootBow();
         void PickUpSword();
         void PickUpHeartContainer();
         void PickUpTriforce();
@@ -20,5 +18,7 @@ namespace Sprint0.Link.Interface
         void PickUpBoomerang();
         void UseBomb();
         void UseBoomerang();
+        void UseSword();
+        void UseBow();
     }
 }
