@@ -265,7 +265,7 @@
 /processorParam:TextureFormat=Color
 /build:Items/Bomb.png
 
-#begin Items/BombWithExplosion.png
+#begin Items/BombExploding.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -275,7 +275,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Items/BombWithExplosion.png
+/build:Items/BombExploding.png
 
 #begin Items/Boomerang.png
 /importer:TextureImporter
