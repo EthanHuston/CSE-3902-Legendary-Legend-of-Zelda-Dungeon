@@ -88,16 +88,6 @@ namespace Sprint0.Link.State.NotMoving
             link.SetState(new LinkAttackingLeftState(link, damaged, healthyDateTime));
         }
 
-        public void PickUpItem()
-        {
-            link.SetState(new LinkPickingUpItemState(link, damaged, healthyDateTime));
-        }
-
-        public void UseItem()
-        {
-            link.SetState(new LinkUsingItemLeftState(link, damaged, healthyDateTime));
-        }
-
         public void PickUpSword()
         {
             link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
@@ -135,7 +125,7 @@ namespace Sprint0.Link.State.NotMoving
 
         public void UseBoomerang()
         {
-            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime);
+            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime));
         }
     }
 }
