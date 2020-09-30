@@ -40,6 +40,7 @@ namespace Sprint0
             this.RegisterCommand(Keys.N, new SwordAttackCommand(game1));
             this.RegisterCommand(Keys.E, new DamageLinkCommand(game1));
             this.RegisterCommand(Keys.D1, new HeartContainerCommand(game1));
+            this.RegisterCommand(Keys.D2, new TriforcePieceCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
