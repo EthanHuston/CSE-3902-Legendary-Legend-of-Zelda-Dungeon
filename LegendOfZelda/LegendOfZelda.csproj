@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
@@ -96,7 +96,6 @@
     <Compile Include="Goriya.cs" />
     <Compile Include="Aquamentus.cs" />
     <Compile Include="ArrowSprite.cs" />
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Bat.cs" />
     <Compile Include="BatSprite.cs" />
     <Compile Include="BlockSprite.cs" />
@@ -105,7 +104,6 @@
     <Compile Include="BoomerangSprite.cs" />
     <Compile Include="BowSprite.cs" />
     <Compile Include="BrickTile.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="INonInteractiveEnvironment.cs" />
     <Compile Include="BrickTileSprite.cs" />
     <Compile Include="LadderSprite.cs" />
@@ -116,7 +114,6 @@
     <Compile Include="ClockSprite.cs" />
     <Compile Include="Compass.cs" />
     <Compile Include="CompassSprite.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="GoriyaRightSprite.cs" />
     <Compile Include="GoriyaLeftSprite.cs" />
     <Compile Include="GoriyaDownSprite.cs" />
