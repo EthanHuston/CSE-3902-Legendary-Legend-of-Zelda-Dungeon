@@ -14,8 +14,6 @@ namespace Sprint0
         void MoveLeft();
         void MoveRight();
         void StopMoving();
-        void SwordAttack();
-        void ShootBow();
         Vector2 GetPosition();
         void PickUpSword();
         void PickUpHeartContainer();
@@ -24,5 +22,7 @@ namespace Sprint0
         void PickUpBoomerang();
         void UseBomb();
         void UseBoomerang();
+        void UseSword();
+        void UseBow();
     }
 }
