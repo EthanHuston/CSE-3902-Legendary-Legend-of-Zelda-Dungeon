@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Link.Command
 {
-    class HeartContainerCommand : ICommand
+    class BowCommand : ICommand
     {
         private Game1 loz;
-        public HeartContainerCommand(Game1 game)
+        public BowCommand(Game1 game)
         {
             loz = game;
         }
         public void Execute()
         {
-            loz.link.PickUpHeartContainer();
+            loz.link.PickUpBow();
         }
     }
 }
