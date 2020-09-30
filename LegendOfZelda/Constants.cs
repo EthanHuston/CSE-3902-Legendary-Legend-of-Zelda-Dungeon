@@ -30,8 +30,6 @@ namespace Sprint0
         public const int BoomerangDespawnMaxYFromLink = 15;
         public const int BoomerangDespawnMinYFromLink = 0;
 
-
-
         // Game Screen
         public const int MaxXPos = 800;
         public const int MinXPos = 0;
@@ -39,7 +37,7 @@ namespace Sprint0
         public const int MinYPos = 0;
 
         // Directions
-        public enum Directions
+        public enum Direction
         {
             Right,
             Left,
@@ -48,7 +46,7 @@ namespace Sprint0
         }
 
         // Items
-        public enum Items
+        public enum Item
         {
             Arrow,
             Bomb,
