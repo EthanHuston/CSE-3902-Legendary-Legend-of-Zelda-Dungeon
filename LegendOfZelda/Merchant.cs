@@ -9,11 +9,11 @@ namespace Sprint0
 {
     class Merchant : INPC
     {
-        private MerchantSprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
         public Merchant(SpriteBatch spriteBatch)
         {
-            sprite = (MerchantSprite)SpriteFactory.Instance.CreateMerchantSprite();
+            sprite = SpriteFactory.Instance.CreateMerchantSprite();
             this.spriteBatch = spriteBatch;
 
         }

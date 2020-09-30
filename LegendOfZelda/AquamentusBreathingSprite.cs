@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace Sprint0
 {
-    class JellySprite : ISprite
+    class AquamentusBreathingSprite : ISprite
     {
         private Texture2D sprite;
         private int Rows { get; set; }
@@ -16,7 +17,8 @@ namespace Sprint0
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        public JellySprite(Texture2D sprite)
+
+        public AquamentusBreathingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             Rows = 1;
@@ -28,13 +30,13 @@ namespace Sprint0
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 6)
+            if(bufferFrame == 6)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
 
-            if (currentFrame == totalFrames)
+            if(currentFrame == totalFrames)
             {
                 currentFrame = 0;
             }
@@ -53,8 +55,6 @@ namespace Sprint0
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
-
-
         }
     }
 }
