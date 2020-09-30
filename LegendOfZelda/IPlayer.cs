@@ -15,6 +15,11 @@ namespace Sprint0
         void MoveRight();
         void StopMoving();
         void SwordAttack();
+        void ShootBow();
         Vector2 GetPosition();
+        void PickUpSword();
+        void PickUpHeartContainer();
+        void PickUpBow();
+        void PickUpTriforce();
     }
 }
