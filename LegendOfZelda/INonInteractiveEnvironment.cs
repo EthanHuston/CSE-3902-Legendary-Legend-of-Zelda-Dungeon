@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    
-    interface IInteractiveEnviornment
+    interface INonInteractiveEnvironment
     {
-        void Interaction();
+        void Draw();
     }
 }
+
