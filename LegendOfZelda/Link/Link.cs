@@ -38,6 +38,7 @@ namespace Sprint0.Link
         {
             return state;
         }
+
         public void SetState(ILinkState newState)
         {
             if (!BlockStateChange) state = newState;
@@ -102,14 +103,9 @@ namespace Sprint0.Link
             state.SwordAttack();
         }
 
-        public void UseItem()
+        public void ShootBow()
         {
-            state.UseItem();
-        }
-
-        public void PickUpItem()
-        {
-            state.PickUpItem();
+            state.ShootBow();
         }
 
         public void PickUpSword()
@@ -117,9 +113,19 @@ namespace Sprint0.Link
             state.PickUpSword();
         }
 
-        public void PickUpHeart()
+        public void PickUpHeartContainer()
         {
-            state.PickUpHeart();
+            state.PickUpHeartContainer();
+        }
+
+        public void PickUpBow()
+        {
+            state.PickUpBow();
+        }
+
+        public void PickUpTriforce()
+        {
+            state.PickUpTriforce();
         }
     }
 }

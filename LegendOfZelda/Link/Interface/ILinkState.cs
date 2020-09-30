@@ -12,10 +12,11 @@ namespace Sprint0.Link.Interface
         void BeHealthy();
         void StopMoving();
         void SwordAttack();
+        void ShootBow();
         void PickUpItem();
         void UseItem();
         void PickUpSword();
-        void PickUpHeart();
+        void PickUpHeartContainer();
         void PickUpTriforce();
         void PickUpBow();
     }
