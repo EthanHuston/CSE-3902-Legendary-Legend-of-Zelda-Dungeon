@@ -15,7 +15,7 @@ namespace Sprint0.Link.Command
         }
         public void Execute()
         {
-            // TODO
+            loz.link.PickUpHeartContainer();
         }
     }
 }
