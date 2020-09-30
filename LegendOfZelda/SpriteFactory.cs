@@ -159,10 +159,6 @@ namespace Sprint0
         {
             return new BrickTileSprite(brickTileSprite);
         }
-        public ISprite CreateArrowSprite()
-        {
-            return new ArrowFlyingSprite(arrowSprite);
-        }
         public ISprite CreateBombSprite()
         {
             return new BombSprite(bombSprite);
