@@ -13,13 +13,12 @@ namespace Sprint0.Link.Items
         private SpriteBatch spriteBatch;
         private const Constants.Items type = Constants.Items.Arrow;
 
-        public ArrowFlying(Link link, Constants.Directions direction, Vector2 spawnLocation)
+        public ArrowFlying(Link link, Constants.Directions direction)
         {
-            this.position = spawnLocation;
             this.spriteBatch = link.Game.SpriteBatch;
             position.X = link.GetPosition().X + Constants.ArrowSpawnXOffsetFromLink;
             position.Y = link.GetPosition().Y + Constants.ArrowSpawnYOffsetFromLink;
-            switch (direction){
+            switch (direction) {
                 case Constants.Directions.Down:
                     this.direction = new Vector2(0, 1);
                     sprite = LinkSpriteFactory.Instance.CreateArrowDownSprite();
@@ -44,7 +43,7 @@ namespace Sprint0.Link.Items
             position.X += Constants.FlyingArrowDistanceIntervalPx * direction.X;
             position.Y += Constants.FlyingArrowDistanceIntervalPx * direction.Y;
 
-            itemIsExpired = OutOfBounds(position); // or item hits enemy, but not yet implemented
+            itemIsExpired = Utility.ItemIsOutOfBounds(position); // or item hits enemy, but not yet implemented
         }
         public void Draw()
         {
@@ -59,11 +58,6 @@ namespace Sprint0.Link.Items
         public Constants.Items GetItemType()
         {
             return type;
-        }
-
-        private bool OutOfBounds(Vector2 position)
-        {
-            return position.X > Constants.MaxXPos || position.X < Constants.MinXPos || position.Y > Constants.MaxYPos || position.Y < Constants.MinYPos;
         }
     }
 }
