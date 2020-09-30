@@ -108,6 +108,7 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="Link\LinkSpriteFactory.cs" />
+    <Compile Include="Link\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Link\Sprite\ArrowSprite.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
@@ -121,15 +122,16 @@
     <Compile Include="Link\State\Attacking\LinkAttackingRightState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingUpState.cs" />
     <Compile Include="Link\State\Attacking\LinkAttackingDownState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpBoomerangState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpBowState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpTriforceState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpHeartState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpSwordState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpItemState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowLeftState .cs" />
     <Compile Include="Link\State\Item\LinkUsingBowRightState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowUpState.cs" />
-    <Compile Include="Link\State\Item\LinkPickingUpItemState.cs" />
     <Compile Include="Link\State\NotMoving\LinkStandingStillUpState.cs" />
     <Compile Include="Link\State\NotMoving\LinkStandingStillRightState.cs" />
     <Compile Include="Link\State\NotMoving\LinkStandingStillLeftState.cs" />
