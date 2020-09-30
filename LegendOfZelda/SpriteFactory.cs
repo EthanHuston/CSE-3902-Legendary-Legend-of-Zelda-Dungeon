@@ -118,7 +118,7 @@ namespace Sprint0
 
         public ISprite CreateDogLikeMonsterSprite()
         {
-            return new GoriyaSprite(dogLikeMonsterSprite);
+            return new GoriyaUpSprite(dogLikeMonsterSprite);
         }
         public ISprite CreateAquamentusBreathingSprite()
         {

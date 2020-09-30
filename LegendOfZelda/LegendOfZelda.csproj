@@ -74,7 +74,10 @@
     <Compile Include="Compass.cs" />
     <Compile Include="CompassSprite.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="GoriyaSprite.cs" />
+    <Compile Include="GoriyaRightSprite.cs" />
+    <Compile Include="GoriyaLeftSprite.cs" />
+    <Compile Include="GoriyaDownSprite.cs" />
+    <Compile Include="GoriyaUpSprite.cs" />
     <Compile Include="AquamentusBreathingSprite.cs" />
     <Compile Include="AquamentusWalkingSprite.cs" />
     <Compile Include="ExplodingBombSprite.cs" />
