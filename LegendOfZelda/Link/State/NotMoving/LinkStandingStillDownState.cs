@@ -1,13 +1,8 @@
 ﻿using Sprint0.Link.Interface;
-using Sprint0.Link.Interface;
-using Sprint0.Link.Interface;
-using Sprint0.Link.Interface;
-using Sprint0.Link.Interface;
 using Sprint0.Link.State.Item;
 using Sprint0.Link.State.Attacking;
 using Sprint0.Link.State.Walking;
 using System;
-using Sprint0.Link.Interface;
 
 namespace Sprint0.Link.State.NotMoving
 {
@@ -93,22 +88,12 @@ namespace Sprint0.Link.State.NotMoving
             link.SetState(new LinkAttackingDownState(link, damaged, healthyDateTime));
         }
 
-        public void PickUpItem()
-        {
-            link.SetState(new LinkPickingUpItemState(link, damaged, healthyDateTime));
-        }
-
-        public void UseItem()
-        {
-            link.SetState(new LinkUsingItemDownState(link, damaged, healthyDateTime));
-        }
-
         public void PickUpSword()
         {
             link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
         }
 
-        public void PickUpHeart()
+        public void PickUpHeartContainer()
         {
             link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
         }
@@ -121,6 +106,26 @@ namespace Sprint0.Link.State.NotMoving
         public void PickUpBow()
         {
             link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+        }
+
+        public void ShootBow()
+        {
+            link.SetState(new LinkUsingBowDownState(link, damaged, healthyDateTime));
+        }
+
+        public void PickUpBoomerang()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UseBomb()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UseBoomerang()
+        {
+            throw new NotImplementedException();
         }
     }
 }
