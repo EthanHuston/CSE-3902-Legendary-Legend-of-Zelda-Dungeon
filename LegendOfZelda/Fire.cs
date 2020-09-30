@@ -9,14 +9,19 @@ namespace Sprint0
 {
     class Fire : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private FireSprite fireSprite;
+        private SpriteBatch sB;
+        public Fire(SpriteBatch spriteBatch)
         {
-            
+            fireSprite = (FireSprite)SpriteFactory.Instance.CreateFireSprite();
+            sB = spriteBatch;
+            fireSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
 
-        public void Update()
+        public void Interaction()
         {
-            
+            //Update
         }
+
     }
 }

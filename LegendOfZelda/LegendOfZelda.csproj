@@ -58,20 +58,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
+    <Compile Include="Goriya.cs" />
+    <Compile Include="Aquamentus.cs" />
     <Compile Include="ArrowSprite.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Bat.cs" />
     <Compile Include="BatSprite.cs" />
     <Compile Include="BlockSprite.cs" />
-    <Compile Include="Bomb.cs" />
     <Compile Include="BombedOpening.cs" />
     <Compile Include="BombSprite.cs" />
-    <Compile Include="Boomerang.cs" />
     <Compile Include="BoomerangSprite.cs" />
-    <Compile Include="Bow.cs" />
     <Compile Include="BowSprite.cs" />
     <Compile Include="BrickTile.cs" />
-    <Compile Include="Clock.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="INonInteractiveEnvironment.cs" />
+    <Compile Include="BrickTileSprite.cs" />
+    <Compile Include="LadderSprite.cs" />
+    <Compile Include="RoomBorder.cs" />
+    <Compile Include="RoomBorderSprite.cs" />
+    <Compile Include="StairSprite.cs" />
+    <Compile Include="DoorSprite.cs" />
     <Compile Include="ClockSprite.cs" />
     <Compile Include="Compass.cs" />
     <Compile Include="CompassSprite.cs" />
@@ -83,7 +89,6 @@
     <Compile Include="AquamentusBreathingSprite.cs" />
     <Compile Include="AquamentusWalkingSprite.cs" />
     <Compile Include="ExplodingBombSprite.cs" />
-    <Compile Include="Fairy.cs" />
     <Compile Include="FairySprite.cs" />
     <Compile Include="Fire.cs" />
     <Compile Include="Fireball.cs" />
@@ -93,8 +98,6 @@
     <Compile Include="GapTile.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="HandSprite.cs" />
-    <Compile Include="Heart.cs" />
-    <Compile Include="HeartContainer.cs" />
     <Compile Include="HeartContainerSprite.cs" />
     <Compile Include="HeartSprite.cs" />
     <Compile Include="ICommand.cs" />
@@ -107,12 +110,10 @@
     <Compile Include="ISprite.cs" />
     <Compile Include="Jelly.cs" />
     <Compile Include="JellySprite.cs" />
-    <Compile Include="Key.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="KeySprite.cs" />
     <Compile Include="LadderTile.cs" />
     <Compile Include="LockedDoor.cs" />
-    <Compile Include="Map.cs" />
     <Compile Include="MapSprite.cs" />
     <Compile Include="Merchant.cs" />
     <Compile Include="MerchantSprite.cs" />
@@ -129,7 +130,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuitGameCommand.cs" />
-    <Compile Include="Rupee.cs" />
     <Compile Include="RupeeSprite.cs" />
     <Compile Include="SetDeadSpriteCommand.cs" />
     <Compile Include="SetFullWalkingSpriteCommand.cs" />
@@ -150,7 +150,12 @@
     <Compile Include="StrikingLeftLinkSprite.cs" />
     <Compile Include="StrikingRightLinkSprite.cs" />
     <Compile Include="StrikingUpLinkSprite.cs" />
-    <Compile Include="Triforce.cs" />
+    <Compile Include="TileBlueGrass.cs" />
+    <Compile Include="TileBlueGrassSprite.cs" />
+    <Compile Include="TileBlack.cs" />
+    <Compile Include="TileBlackSprite.cs" />
+    <Compile Include="TileWater.cs" />
+    <Compile Include="TileWaterSprite.cs" />
     <Compile Include="TriforceSprite.cs" />
     <Compile Include="UsingItemLinkSprite.cs" />
     <Compile Include="WalkingDownLinkSprite.cs" />
