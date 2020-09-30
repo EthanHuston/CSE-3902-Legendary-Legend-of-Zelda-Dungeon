@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using Sprint0.Link.Interface;
+using Sprint0.Link.Items;
 using Sprint0.Link.State.NotMoving;
 
 namespace Sprint0.Link
@@ -6,10 +8,10 @@ namespace Sprint0.Link
     class Link : IPlayer
     {
         private ILinkState state;
-
         public ILinkSprite CurrentSprite { get; set; }
         public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
+        private ISpawnedItems spawnedItems;
         private int health;
         private float posX;
         private float posY;
@@ -19,6 +21,7 @@ namespace Sprint0.Link
             health = Constants.LinkHealth;
             this.Game = game;
             state = new LinkStandingStillDownState(this);
+            spawnedItems = new LinkSpawnedItems();
         }
 
         public Vector2 GetPosition()
@@ -117,6 +120,11 @@ namespace Sprint0.Link
         public void PickUpHeart()
         {
             state.PickUpHeart();
+        }
+
+        public void SpawnItem(ILinkItem item)
+        {
+            spawnedItems.AddNew(item);
         }
     }
 }
