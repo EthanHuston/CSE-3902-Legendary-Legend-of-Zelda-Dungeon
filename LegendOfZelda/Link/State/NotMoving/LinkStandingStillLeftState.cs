@@ -1,4 +1,4 @@
-﻿using Sprint0.Link.Interface;
+using Sprint0.Link.Interface;
 using Sprint0.Link.State.Item;
 using Sprint0.Link.State.Attacking;
 using Sprint0.Link.State.Walking;
@@ -135,7 +135,7 @@ namespace Sprint0.Link.State.NotMoving
 
         public void UseBoomerang()
         {
-            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime);
+            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime));
         }
     }
 }
