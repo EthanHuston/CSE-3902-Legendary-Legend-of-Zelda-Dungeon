@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3363B47E-7523-41E5-B4C3-51E4A16DF98D}</ProjectGuid>
+    <ProjectGuid>{4E9C6D71-FF35-418D-822A-C922BA7543DB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sprint0</RootNamespace>
@@ -57,6 +57,41 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Link\Items\ArrowFlyingItem.cs" />
+    <Compile Include="Link\Items\BombExplodingItem.cs" />
+    <Compile Include="Link\Items\BoomerangFlyingItem.cs" />
+    <Compile Include="Link\Sprite\ArrowFlyingSprite.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBoomerangDownState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBombDownState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBoomerangLeftState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBombLeftState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBoomerangRightState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBombRightState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBoomerangUpState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Link\Command\ArrowCommand.cs" />
+    <Compile Include="Link\Command\BombCommand.cs" />
+    <Compile Include="Link\Command\BowCommand.cs" />
+    <Compile Include="Link\Command\DamageLinkCommand.cs" />
+    <Compile Include="Link\Command\HeartContainerCommand.cs" />
+    <Compile Include="Link\Command\SwordAttackCommand.cs" />
+    <Compile Include="Link\Command\TriforcePieceCommand.cs" />
+    <Compile Include="Link\Command\WalkingDownCommand.cs" />
+    <Compile Include="Link\Command\WalkingForwardCommand.cs" />
+    <Compile Include="Link\Command\WalkingLeftCommand.cs" />
+    <Compile Include="Link\Command\WalkingRightCommand.cs" />
+    <Compile Include="Link\Command\WoodenBoomerangCommand.cs" />
+    <Compile Include="Link\Command\WoodenBoomerangHoldCommand.cs" />
+    <Compile Include="Link\Interface\ILinkItemSprite.cs" />
+    <Compile Include="Link\Interface\ILinkSprite.cs" />
+    <Compile Include="Link\Interface\ILinkState.cs" />
+    <Compile Include="IPlayer.cs" />
+    <Compile Include="Link\Interface\ISpawnedItems.cs" />
+    <Compile Include="Link\Interface\ILinkItem.cs" />
+    <Compile Include="Link\Items\LinkSpawnedItems.cs" />
+    <Compile Include="Link\Link.cs" />
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Goriya.cs" />
     <Compile Include="Aquamentus.cs" />
@@ -102,7 +137,10 @@
     <Compile Include="HeartSprite.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
-    <Compile Include="IdleLinkSprite.cs" />
+    <Compile Include="Link\LinkSpriteFactory.cs" />
+    <Compile Include="Link\Sprite\BoomerangFlyingSprite.cs" />
+    <Compile Include="Link\Sprite\BombExplodingSprite.cs" />
+    <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="IEnemy.cs" />
     <Compile Include="IInteractiveEnviornment.cs" />
     <Compile Include="IItem.cs" />
@@ -111,12 +149,37 @@
     <Compile Include="Jelly.cs" />
     <Compile Include="JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />
-    <Compile Include="KeySprite.cs" />
+    <Compile Include="Link\Sprite\PickingUpItemLinkSprite.cs" />
+    <Compile Include="Link\Sprite\PickingUpTriforceLinkSprite.cs" />
+    <Compile Include="Link\Sprite\StrikingLinkSprite.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingLeftState.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingRightState.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingUpState.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingDownState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpBoomerangState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpBowState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpTriforceState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpHeartState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpSwordState.cs" />
+    <Compile Include="Link\State\Item\LinkPickingUpItemState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBowDownState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBowLeftState .cs" />
+    <Compile Include="Link\State\Item\LinkUsingBowRightState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingBowUpState.cs" />
+    <Compile Include="Link\State\NotMoving\LinkStandingStillUpState.cs" />
+    <Compile Include="Link\State\NotMoving\LinkStandingStillRightState.cs" />
+    <Compile Include="Link\State\NotMoving\LinkStandingStillLeftState.cs" />
+    <Compile Include="Link\State\NotMoving\LinkStandingStillDownState.cs" />
+    <Compile Include="Link\State\Walking\LinkWalkingDownState.cs" />
+    <Compile Include="Link\State\Walking\LinkWalkingLeftState.cs" />
+    <Compile Include="Link\State\Walking\LinkWalkingRightState.cs" />
+    <Compile Include="Link\State\Walking\LinkWalkingUpState.cs" />
     <Compile Include="LadderTile.cs" />
     <Compile Include="LockedDoor.cs" />
     <Compile Include="MapSprite.cs" />
     <Compile Include="Merchant.cs" />
     <Compile Include="MerchantSprite.cs" />
+    <Compile Include="KeySprite.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="MovingAnimatedSprite.cs" />
     <Compile Include="MovingNonAnimatedSprite.cs" />
@@ -126,7 +189,6 @@
     <Compile Include="OldMan.cs" />
     <Compile Include="OldManSprite.cs" />
     <Compile Include="OpenDoor.cs" />
-    <Compile Include="PickingUpItemLinkSprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuitGameCommand.cs" />
@@ -146,10 +208,6 @@
     <Compile Include="Stairs.cs" />
     <Compile Include="Statues.cs" />
     <Compile Include="StatueSprite.cs" />
-    <Compile Include="StrikingDownLinkSprite.cs" />
-    <Compile Include="StrikingLeftLinkSprite.cs" />
-    <Compile Include="StrikingRightLinkSprite.cs" />
-    <Compile Include="StrikingUpLinkSprite.cs" />
     <Compile Include="TileBlueGrass.cs" />
     <Compile Include="TileBlueGrassSprite.cs" />
     <Compile Include="TileBlack.cs" />
@@ -157,11 +215,8 @@
     <Compile Include="TileWater.cs" />
     <Compile Include="TileWaterSprite.cs" />
     <Compile Include="TriforceSprite.cs" />
-    <Compile Include="UsingItemLinkSprite.cs" />
-    <Compile Include="WalkingDownLinkSprite.cs" />
-    <Compile Include="WalkingLeftLinkSprite.cs" />
-    <Compile Include="WalkingRightLinkSprite.cs" />
-    <Compile Include="WalkingUpLinkSprite.cs" />
+    <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
+    <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
     <Compile Include="Walls.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +285,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
