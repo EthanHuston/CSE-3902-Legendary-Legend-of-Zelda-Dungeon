@@ -29,6 +29,7 @@ namespace Sprint0.Link
         private Texture2D linkPickingUpHeartSprite;
         private Texture2D linkPickingUpTriforceSprite;
         private Texture2D linkPickingUpBowSprite;
+        private Texture2D linkPickingUpBoomerangSprite;
         private Texture2D arrowUpSprite;
         private Texture2D arrowDownSprite;
         private Texture2D arrowRightSprite;
@@ -70,6 +71,7 @@ namespace Sprint0.Link
             linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
             linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
             linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
+            linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
 
             // Load Link's item sprites
             arrowDownSprite = content.Load<Texture2D>("Items/ArrowDown");
@@ -161,6 +163,10 @@ namespace Sprint0.Link
         public ILinkSprite CreateLinkPickingUpBowSprite()
         {
             return new PickingUpItemLinkSprite(linkPickingUpBowSprite);
+        }
+        public ILinkSprite CreateLinkPickingUpBoomerangSprite()
+        {
+            return new PickingUpItemLinkSprite(linkPickingUpBoomerangSprite);
         }
 
         // Link item sprites
