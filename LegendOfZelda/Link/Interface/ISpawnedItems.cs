@@ -4,8 +4,6 @@
     {
         void UpdateAll();
         void DrawAll();
-        bool AddNewBomb(ILinkItem item);
-        bool AddNewArrow(ILinkItem item);
-        bool AddNewBoomerang(ILinkItem item);
+        bool SpawnNewItem(ILinkItem item);
     }
 }

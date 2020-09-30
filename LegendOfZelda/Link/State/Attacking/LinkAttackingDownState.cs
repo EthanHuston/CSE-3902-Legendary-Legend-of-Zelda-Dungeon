@@ -35,7 +35,7 @@ namespace Sprint0.Link.State.Attacking
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
-            if(link.CurrentSprite.finishedAnimation())
+            if(link.CurrentSprite.FinishedAnimation())
             {
                 link.BlockStateChange = false;
                 StopMoving();

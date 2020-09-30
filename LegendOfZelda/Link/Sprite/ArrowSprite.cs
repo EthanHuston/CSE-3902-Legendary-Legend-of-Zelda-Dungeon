@@ -21,5 +21,10 @@ namespace Sprint0.Link.Sprite
         {
             // All updating is done in the class for this entity
         }
+
+        public bool FinishedAnimation()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

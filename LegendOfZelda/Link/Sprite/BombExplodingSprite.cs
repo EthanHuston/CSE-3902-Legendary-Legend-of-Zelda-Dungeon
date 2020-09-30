@@ -4,37 +4,35 @@ using Sprint0.Link.Interface;
 
 namespace Sprint0.Link.Sprite
 {
-    class WalkingLinkSprite : ILinkSprite
+    class BombExplodingSprite : ILinkItemSprite
     {
         private readonly Texture2D sprite;
-        private bool flashRed;
-        private int damageColorCounter;
+        private bool animationIsFinished;
+        private int delayBeforeExplosionCounter;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 2;
+        private const int totalFrames = 3;
         private const int numRows = 1;
         private const int numColumns = 2;
 
-        public WalkingLinkSprite(Texture2D sprite)
+        public BombExplodingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            flashRed = false;
-            damageColorCounter = 0;
+            delayBeforeExplosionCounter = 0;
+            bufferFrame = 0;
+            currentFrame = 0;
         }
+
         public void Update()
         {
-            if (++bufferFrame == Constants.FrameDelay)
+            if (++delayBeforeExplosionCounter > Constants.BombDelayBeforeExplosion && ++bufferFrame == Constants.FrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
             currentFrame = currentFrame == totalFrames ? 0 : currentFrame;
 
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
-            {
-                flashRed = !flashRed;
-                damageColorCounter = 0;
-            }
+            animationIsFinished = currentFrame > totalFrames;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
@@ -50,16 +48,16 @@ namespace Sprint0.Link.Sprite
             int currentColumn = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int) position.X, (int) position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
         }
 
         public bool FinishedAnimation()
         {
-            return true; // because animation can be exited at any time
+            return animationIsFinished;
         }
     }
 }

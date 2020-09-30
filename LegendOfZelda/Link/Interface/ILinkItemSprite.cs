@@ -7,5 +7,6 @@ namespace Sprint0.Link.Interface
     {
         void Update();
         void Draw(SpriteBatch spriteBatch, Vector2 position);
+        bool FinishedAnimation();
     }
 }

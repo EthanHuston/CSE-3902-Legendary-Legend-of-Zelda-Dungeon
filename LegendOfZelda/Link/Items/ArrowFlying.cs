@@ -44,12 +44,11 @@ namespace Sprint0.Link.Items
             position.X += Constants.FlyingArrowDistanceIntervalPx * direction.X;
             position.Y += Constants.FlyingArrowDistanceIntervalPx * direction.Y;
 
-            itemIsExpired = OutOfBounds(position);
-
+            itemIsExpired = OutOfBounds(position); // or item hits enemy, but not yet implemented
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, direction);
+            sprite.Draw(spriteBatch, position);
         }
 
         public bool SafeToDespawn()

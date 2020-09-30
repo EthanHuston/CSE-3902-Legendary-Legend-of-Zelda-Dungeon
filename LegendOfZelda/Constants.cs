@@ -18,6 +18,10 @@ namespace Sprint0
         public const int LinkStrikingPauseTicks = 5;
         public const int ArrowSpawnXOffsetFromLink = 0;
         public const int ArrowSpawnYOffsetFromLink = 6;
+        public const int BombSpawnXOffsetFromLink = 0;
+        public const int BombSpawnYOffsetFromLink = 6;
+        public const int BombDelayBeforeExplosion = 60;
+
 
         // Game screen
         public const int MaxXPos = 800;
