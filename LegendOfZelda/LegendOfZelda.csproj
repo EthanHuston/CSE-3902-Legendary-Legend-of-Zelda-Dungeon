@@ -68,6 +68,8 @@
     <Compile Include="Link\Command\WalkingForwardCommand.cs" />
     <Compile Include="Link\Command\WalkingLeftCommand.cs" />
     <Compile Include="Link\Command\WalkingRightCommand.cs" />
+    <Compile Include="Link\Command\WoodenBoomerangCommand.cs" />
+    <Compile Include="Link\Command\WoodenBoomerangHoldCommand.cs" />
     <Compile Include="Link\Interface\ILinkItemSprite.cs" />
     <Compile Include="Link\Interface\ILinkSprite.cs" />
     <Compile Include="Link\Interface\ILinkState.cs" />

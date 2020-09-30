@@ -43,6 +43,8 @@ namespace Sprint0
             this.RegisterCommand(Keys.D2, new TriforcePieceCommand(game1));
             this.RegisterCommand(Keys.D3, new BowCommand(game1));
             this.RegisterCommand(Keys.D4, new ArrowCommand(game1));
+            this.RegisterCommand(Keys.D5, new WoodenBoomerangHoldCommand(game1));
+            this.RegisterCommand(Keys.D6, new WoodenBoomerangCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
