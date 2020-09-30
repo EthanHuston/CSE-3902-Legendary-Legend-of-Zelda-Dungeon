@@ -103,7 +103,7 @@ namespace Sprint0.Link.State.NotMoving
             link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
         }
 
-        public void PickUpHeart()
+        public void PickUpHeartContainer()
         {
             link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
         }
@@ -116,6 +116,11 @@ namespace Sprint0.Link.State.NotMoving
         public void PickUpBow()
         {
             link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+        }
+
+        public void ShootBow()
+        {
+            throw new NotImplementedException();
         }
     }
 }

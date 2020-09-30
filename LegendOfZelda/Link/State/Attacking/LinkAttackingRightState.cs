@@ -108,7 +108,7 @@ namespace Sprint0.Link.State.Attacking
             link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
         }
 
-        public void PickUpHeart()
+        public void PickUpHeartContainer()
         {
             link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
         }

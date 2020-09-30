@@ -1,4 +1,6 @@
-﻿using Sprint0.Link.State.Attacking;
+﻿using Sprint0.Link.Interface;
+using Sprint0.Link.State.Attacking;
+using Sprint0.Link.State.NotMoving;
 using Sprint0.Link.State.Walking;
 using System;
 
@@ -49,22 +51,22 @@ namespace Sprint0.Link.State.Item
 
         public void MoveDown()
         {
-            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveLeft()
         {
-            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveRight()
         {
-            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void MoveUp()
         {
-            link.SetState(new LinkWalkingUpState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void BeDamaged(int damage)
@@ -88,27 +90,22 @@ namespace Sprint0.Link.State.Item
 
         public void SwordAttack()
         {
-            link.SetState(new LinkAttackingDownState(link, damaged, healthyDateTime));
-        }
-
-        public void PickUpItem()
-        {
-            // Already picking up item, do nothing
+            // Cannot interupt state, do nothing
         }
 
         public void UseItem()
         {
-            link.SetState(new LinkUsingItemUpState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpSword()
         {
-            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpHeart()
         {
-            link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpTriforce()
@@ -118,7 +115,32 @@ namespace Sprint0.Link.State.Item
 
         public void PickUpBow()
         {
-            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+            // Cannot interupt state, do nothing
+        }
+
+        public void ShootBow()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void PickUpHeartContainer()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void PickUpBoomerang()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void UseBomb()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void UseBoomerang()
+        {
+            // Cannot interupt state, do nothing
         }
     }
 }
