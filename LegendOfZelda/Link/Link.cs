@@ -121,10 +121,5 @@ namespace Sprint0.Link
         {
             state.PickUpHeart();
         }
-
-        public void SpawnItem(ILinkItem item)
-        {
-            spawnedItems.AddNew(item);
-        }
     }
 }
