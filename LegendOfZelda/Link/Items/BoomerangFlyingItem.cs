@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Interface;
 
 namespace Sprint0.Link.Items
 {
-    class BoomerangFlying : ILinkItem
+    class BoomerangFlyingItem : ILinkItem
     {
         private bool itemIsExpired;
         private Vector2 direction;
@@ -14,7 +14,7 @@ namespace Sprint0.Link.Items
         private Link link;
         private const Constants.Items type = Constants.Items.Boomerang;
 
-        public BoomerangFlying(Link link, Constants.Directions direction)
+        public BoomerangFlyingItem(Link link, Constants.Directions direction)
         {
             this.link = link;
             this.spriteBatch = link.Game.SpriteBatch;

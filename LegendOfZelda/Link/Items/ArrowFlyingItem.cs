@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Interface;
 
 namespace Sprint0.Link.Items
 {
-    class ArrowFlying : ILinkItem
+    class ArrowFlyingItem : ILinkItem
     {
         private bool itemIsExpired;
         private Vector2 direction;
@@ -13,7 +13,7 @@ namespace Sprint0.Link.Items
         private SpriteBatch spriteBatch;
         private const Constants.Items type = Constants.Items.Arrow;
 
-        public ArrowFlying(Link link, Constants.Directions direction)
+        public ArrowFlyingItem(Link link, Constants.Directions direction)
         {
             this.spriteBatch = link.Game.SpriteBatch;
             position.X = link.GetPosition().X + Constants.ArrowSpawnXOffsetFromLink;

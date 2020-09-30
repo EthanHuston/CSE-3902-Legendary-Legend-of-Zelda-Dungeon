@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Interface;
 
 namespace Sprint0.Link.Items
 {
-    class BombExploding : ILinkItem
+    class BombExplodingItem : ILinkItem
     {
         private bool itemIsExpired;
         private Vector2 position;
@@ -12,7 +12,7 @@ namespace Sprint0.Link.Items
         private SpriteBatch spriteBatch;
         private const Constants.Items type = Constants.Items.Arrow;
 
-        public BombExploding(Link link)
+        public BombExplodingItem(Link link)
         {
             this.position = new Vector2();
             this.spriteBatch = link.Game.SpriteBatch;
