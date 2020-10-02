@@ -9,7 +9,10 @@ namespace Sprint0
     class SpriteFactory
     {
         private Texture2D batSprite;
-        private Texture2D dogLikeMonsterSprite;
+        private Texture2D goriyaUpSprite;
+        private Texture2D goriyaDownSprite;
+        private Texture2D goriyaLeftSprite;
+        private Texture2D goriyaRightSprite;
         private Texture2D aquamentusBreathingSprite;
         private Texture2D aquamentusWalkingSprite;
         private Texture2D handSprite;
@@ -61,7 +64,10 @@ namespace Sprint0
         {
             //Load Enemy Sprites
             batSprite = content.Load<Texture2D>("Enemies/Bat");
-            dogLikeMonsterSprite = content.Load<Texture2D>("DogLikeMonster");
+            goriyaUpSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingUp");
+            goriyaDownSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingDown");
+            goriyaRightSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingRight");
+            goriyaLeftSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingLeft");
             aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
             aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
             handSprite = content.Load<Texture2D>("Enemies/Hand");
@@ -107,9 +113,21 @@ namespace Sprint0
         {
             return new BatSprite(batSprite);
         }
-        public ISprite CreateDogLikeMonsterSprite()
+        public ISprite CreateGoriyaUpSprite()
         {
-            return new GoriyaUpSprite(dogLikeMonsterSprite);
+            return new GoriyaUpSprite(goriyaUpSprite);
+        }
+        public ISprite CreateGoriyaDownSprite()
+        {
+            return new GoriyaUpSprite(goriyaUpSprite);
+        }
+        public ISprite CreateGoriyaRightSprite()
+        {
+            return new GoriyaUpSprite(goriyaUpSprite);
+        }
+        public ISprite CreateGoriyaLeftSprite()
+        {
+            return new GoriyaUpSprite(goriyaUpSprite);
         }
         public ISprite CreateAquamentusBreathingSprite()
         {
