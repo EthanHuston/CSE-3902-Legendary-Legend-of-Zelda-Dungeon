@@ -48,13 +48,18 @@ namespace Sprint0.Link.Items
 
         private bool ReturnedToLink(Vector2 linkPosition)
         {
-            return position.X < linkPosition.X + Constants.BoomerangDespawnMaxXFromLink && position.X > linkPosition.X + Constants.BoomerangDespawnMinXFromLink && position.Y < linkPosition.Y + Constants.BoomerangDespawnMaxYFromLink && position.Y > linkPosition.Y + Constants.BoomerangDespawnMinYFromLink;
+            return position.X < linkPosition.X + Constants.BoomerangDespawnMaxXFromLink &&
+            position.X > linkPosition.X + Constants.BoomerangDespawnMinXFromLink &&
+            position.Y < linkPosition.Y + Constants.BoomerangDespawnMaxYFromLink &&
+            position.Y > linkPosition.Y + Constants.BoomerangDespawnMinYFromLink;
         }
 
         private void MoveBoomerang()
         {
             returningToLink = GetDistanceFromLink() > Constants.BoomerangMaxDistanceFromLink;
-            switch (direction) {
+            returningToLink = Utility.ItemIsOutOfBounds(position);
+            switch (direction)
+            {
                 case Constants.Direction.Up:
                     position.X = link.GetPosition().X;
                     position.Y += Constants.ArrowFlyingDistanceInterval * returningToLink ? 1 : -1;
@@ -74,7 +79,8 @@ namespace Sprint0.Link.Items
             }
         }
 
-        private float GetDistanceFromLink() {
+        private float GetDistanceFromLink()
+        {
             return Utility.GetDistance(position, link.GetPosition());
         }
     }
