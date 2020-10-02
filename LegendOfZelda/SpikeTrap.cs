@@ -21,6 +21,8 @@ namespace Sprint0
         private int maxDistance = 50;
         private int currentDist = 0;
         bool returning = false;
+        bool going = false;
+        private int xOrYDir = 0;
 
         public SpikeTrap(SpriteBatch spriteBatch)
         {
@@ -30,30 +32,68 @@ namespace Sprint0
 
         public void Update()
         {
-            currentY--;
-            if (returning)
+            if (!going && !returning)
             {
-                currentY++;
-                currentDist--;
-                if(currentDist <= 0)
-                {
-                    returning = false;
-                }
+                ChooseDirection();
+                going = true;
+            }
+            else if (going)
+            {
+                MoveGoing();
             }
             else
             {
-                currentY = currentY - 2;
-                currentDist = currentDist + 2;
-                if(currentDist >= maxDistance)
-                {
-                    returning = true;
-                }
-                
+                MoveReturning();
             }
         }
         public void Draw()
         {
             sprite.Draw(spriteBatch, currentX, currentY);
+        }
+
+        private void ChooseDirection()
+        {
+            Random rand = new Random();
+            xOrYDir = rand.Next(0, 1); // 0 for x, 1 for y
+        }
+        private void MoveGoing()
+        {
+            if (xOrYDir == 0)
+            {
+                currentX = currentX + 2;
+                currentDist = currentDist + 2;
+            }
+            else
+            {
+                currentY = currentY - 2;
+                currentDist = currentDist + 2;
+            }
+            if (currentDist >= maxDistance)
+            {
+                returning = true;
+                going = false;
+                currentDist = 0;
+            }
+        }
+        private void MoveReturning()
+        {
+            if (xOrYDir == 0)
+            {
+                currentX = currentX--;
+                currentDist++;
+            }
+            else
+            {
+                currentY = currentY++;
+                currentDist++;
+            }
+
+            if (currentDist >= maxDistance)
+            {
+                returning = false;
+                currentDist = 0;
+            }
+
         }
     }
 }
