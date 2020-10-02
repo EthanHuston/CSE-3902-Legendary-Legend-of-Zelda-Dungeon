@@ -19,6 +19,8 @@ namespace Sprint0
         private int minYVal = 0;
         private int maxYVal = 480;
         private int movementBuffer = 0;
+        private int upDown = 0;
+        private int leftRight = 0;
 
         public Jelly(SpriteBatch spriteBatch)
         {
@@ -27,44 +29,47 @@ namespace Sprint0
         }
         public void Update()
         {
-            Random rand = new Random();
-            int xy = rand.Next(0, 1); // 0 for x, 1 for y
-            int pn = rand.Next(0, 1); // 0 right/down. 1 for left/up
-
             movementBuffer++;
-            if (movementBuffer == 6)
+            if (movementBuffer == 16)
             {
-                //Simulate jelly moving
-                if (xy == 0 && pn == 0 && currentX < maxXVal)
-                {
-                    currentX = currentX + 16;
-                }
-                else if (xy == 0 && pn == 1 && currentX > minXVal)
-                {
-                    currentX = currentX - 16;
-                }
-                else if (xy == 1 && pn == 0 && currentY < maxYVal)
-                {
-                    currentY = currentY + 16;
-                }
-                else
-                {
-                    currentY = currentY + 16;
-                }
+                movementBuffer = 0;
+                ChooseDirection();
             }
             else
             {
-                movementBuffer++;
+                Move();
             }
 
-            sprite.Update();
-            this.Draw();
-
         }
-
         public void Draw()
         {
             sprite.Draw(spriteBatch, currentX, currentY);
+        }
+        private void ChooseDirection()
+        {
+            Random rand = new Random();
+            upDown = rand.Next(0, 1); // 0 for x, 1 for y
+            leftRight = rand.Next(0, 1); // 0 right/down. 1 for left/up
+        }
+        private void Move()
+        {
+            //Simulate jelly moving
+            if (upDown == 0 && leftRight == 0 && currentX + 16 < maxXVal)
+            {
+                currentX++;
+            }
+            else if (upDown == 0 && leftRight== 1 && currentX - 16 > minXVal)
+            {
+                currentX--;
+            }
+            else if (upDown == 1 && leftRight == 0 && currentY + 16 < maxYVal)
+            {
+                currentY--;
+            }
+            else 
+            {
+                currentY++;
+            }
         }
     }
 }
