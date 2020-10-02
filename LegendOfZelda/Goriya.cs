@@ -13,7 +13,12 @@ namespace Sprint0
         private ISprite sprite;
         private SpriteBatch spriteBatch;
         private Vector2 pos;
-        private Vector2 velocity;
+        private int velocity;
+        private int updateCount = 0;
+        private int direction = 0;
+        private int changeDirection = 50;
+
+        private Random rand = new Random();
 
         public Goriya(SpriteBatch spriteBatch)
         {
@@ -21,16 +26,18 @@ namespace Sprint0
             this.spriteBatch = spriteBatch;
             pos.X = Sprint2.enemyNPCX;
             pos.Y = Sprint2.enemyNPCY;
-            velocity.X = 0;
-            velocity.Y = 0;
+            velocity = 5;
         }
 
         public void Update()
         {
+            updateCount++;
+            move();
         }
 
         public void Draw()
         {
+            sprite.Draw(spriteBatch, pos.X, pos.Y);
         }
 
         public Vector2 getPos()
@@ -43,24 +50,49 @@ namespace Sprint0
             this.pos = pos;
         }
 
-        public void setUpSprite()
+        private void move()
         {
+            if(updateCount % changeDirection == 0)
+                direction = rand.Next(0, 3);
+
+            switch (direction)
+            {
+                case 0: // Up
+                    pos.Y -= velocity;
+                    break;
+                case 1: // Down
+                    pos.Y += velocity;
+                    break;
+                case 2: // Left
+                    pos.X -= velocity;
+                    break;
+                case 3: // Right
+                    pos.X += velocity;
+                    break;
+                default:
+                    break;
+            }
 
         }
 
-        public void setDownSprite()
+        private void setUpSprite()
         {
-
+            sprite = SpriteFactory.Instance.CreateGoriyaUpSprite();
         }
 
-        public void setLeftSprite()
+        private void setDownSprite()
         {
-
+            sprite = SpriteFactory.Instance.CreateGoriyaDownSprite();
         }
 
-        public void setRightSprite()
+        private void setLeftSprite()
         {
+            sprite = SpriteFactory.Instance.CreateGoriyaLeftSprite();
+        }
 
+        private void setRightSprite()
+        {
+            sprite = SpriteFactory.Instance.CreateGoriyaRightSprite();
         }
     }
 }
