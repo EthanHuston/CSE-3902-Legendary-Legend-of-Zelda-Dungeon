@@ -64,12 +64,12 @@ namespace Sprint0.Link.Items
                     position.Y += Constants.ArrowFlyingDistanceInterval * returningToLink ? -1 : 1;
                     break;
                 case Constants.Direction.Right:
-                    position.Y = link.GetPosition().Y;
                     position.X += Constants.ArrowFlyingDistanceInterval * returningToLink ? -1 : 1;
+                    position.Y = link.GetPosition().Y;
                     break;
                 case Constants.Direction.Left:
-                    position.Y = link.GetPosition().Y;
                     position.X += Constants.ArrowFlyingDistanceInterval * returningToLink ? 1 : -1;
+                    position.Y = link.GetPosition().Y;
                     break;
             }
         }
