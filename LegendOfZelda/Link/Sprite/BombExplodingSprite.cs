@@ -25,6 +25,7 @@ namespace Sprint0.Link.Sprite
 
         public void Update()
         {
+            if (FinishedAnimation()) return;
             if (++delayBeforeExplosionCounter > Constants.BombDelayBeforeExplosion && ++bufferFrame == Constants.FrameDelay)
             {
                 currentFrame++;
@@ -36,6 +37,7 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
+            if (FinishedAnimation()) return;
             Draw(spriteBatch, position, false);
         }
 
