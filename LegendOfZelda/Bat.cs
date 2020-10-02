@@ -33,17 +33,21 @@ namespace Sprint0
             //Move based on current chosen direction for some time.
             if(xDir == 0 && yDir == 0)
             {
-                currentX++;
+                currentX--;
+                currentY--;
             } else if (xDir == 0 && yDir == 1)
             {
                 currentX--;
+                currentY++;
             } else if(xDir == 1 && yDir == 0)
             {
-                currentY++;
+                currentX++;
+                currentY--;
             }
             else
             {
-                currentY--;
+                currentY++;
+                currentX++;
             }
 
             if(movementBuffer > 10)
@@ -60,30 +64,31 @@ namespace Sprint0
 
         }
 
+        //Movement character away from edge of screen
         private void CheckBounds()
         {
             if (currentX == minXVal)
             {
-                currentX++;
+                currentX = currentX + 5;
             }
             else if (currentX == maxXVal)
             {
-                currentX--;
+                currentX = currentX - 5; ;
             }
             else if (currentY == minYVal)
             {
-                currentY++;
+                currentY = currentY + 5; ;
             }
             else if (currentY == maxYVal)
             {
-                currentY--;
+                currentY = currentY - 5;
             }
         }
         private void ChooseDirection()
         {
             Random rand = new Random();
-            int xDir = rand.Next(0, 1); // 0 for x, 1 for y
-            int yDir = rand.Next(0, 1); // 0 right/down. 1 for left/up
+            xDir = rand.Next(0, 1); // 0 for x, 1 for y
+            yDir = rand.Next(0, 1); // 0 right/down. 1 for left/up
         }
     }
 }
