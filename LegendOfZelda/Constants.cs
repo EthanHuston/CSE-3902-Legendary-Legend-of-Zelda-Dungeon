@@ -19,7 +19,8 @@ namespace Sprint0
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
-        public const int ArrowSpawnYOffsetFromLink = 6;
+        public const int ArrowSpawnYOffsetFromLink = 6;        
+        public const int ArrowFlyingDistanceInterval = 5;
         public const int BombSpawnXOffsetFromLink = 0;
         public const int BombSpawnYOffsetFromLink = 6;
         public const int BombDelayBeforeExplosion = 60;
@@ -29,6 +30,7 @@ namespace Sprint0
         public const int BoomerangDespawnMinXFromLink = 0;
         public const int BoomerangDespawnMaxYFromLink = 15;
         public const int BoomerangDespawnMinYFromLink = 0;
+        public const int BoomerangMaxDistanceFromLink = 300;
 
         // Game Screen
         public const int MaxXPos = 800;
@@ -52,6 +54,5 @@ namespace Sprint0
             Bomb,
             Boomerang
         }
-        public const int FlyingArrowDistanceIntervalPx = 5;
     }
 }

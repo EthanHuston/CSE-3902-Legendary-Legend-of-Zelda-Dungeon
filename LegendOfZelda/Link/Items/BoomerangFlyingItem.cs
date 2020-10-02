@@ -7,11 +7,12 @@ namespace Sprint0.Link.Items
     class BoomerangFlyingItem : ILinkItem
     {
         private bool itemIsExpired;
-        private Vector2 direction;
+        private bool returningToLink;
         private Vector2 position;
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
         private Link link;
+        private Constants.Direction direction;
         private const Constants.Item type = Constants.Item.Boomerang;
 
         public BoomerangFlyingItem(Link link, Constants.Direction direction)
@@ -20,14 +21,14 @@ namespace Sprint0.Link.Items
             this.spriteBatch = link.Game.SpriteBatch;
             position.X = link.GetPosition().X + Constants.BoomerangSpawnXOffsetFromLink;
             position.Y = link.GetPosition().Y + Constants.BoomerangSpawnYOffsetFromLink;
-            // do something here with the direction - could we define a function to track it??
+            this.direction = direction;
+            returningToLink = false;
         }
 
         public void Update()
         {
             Vector2 linkPosition = link.GetPosition();
-            // TODO: update position logic here - work in progress
-
+            MoveBoomerang();
             itemIsExpired = ReturnedToLink(linkPosition); // or item hits enemy, but not yet implemented
         }
         public void Draw()
@@ -48,6 +49,33 @@ namespace Sprint0.Link.Items
         private bool ReturnedToLink(Vector2 linkPosition)
         {
             return position.X < linkPosition.X + Constants.BoomerangDespawnMaxXFromLink && position.X > linkPosition.X + Constants.BoomerangDespawnMinXFromLink && position.Y < linkPosition.Y + Constants.BoomerangDespawnMaxYFromLink && position.Y > linkPosition.Y + Constants.BoomerangDespawnMinYFromLink;
+        }
+
+        private void MoveBoomerang()
+        {
+            returningToLink = GetDistanceFromLink() > Constants.BoomerangMaxDistanceFromLink;
+            switch (direction) {
+                case Constants.Direction.Up:
+                    position.X = link.GetPosition().X;
+                    position.Y += Constants.ArrowFlyingDistanceInterval * returningToLink ? 1 : -1;
+                    break;
+                case Constants.Direction.Down:
+                    position.X = link.GetPosition().X;
+                    position.Y += Constants.ArrowFlyingDistanceInterval * returningToLink ? -1 : 1;
+                    break;
+                case Constants.Direction.Right:
+                    position.Y = link.GetPosition().Y;
+                    position.X += Constants.ArrowFlyingDistanceInterval * returningToLink ? -1 : 1;
+                    break;
+                case Constants.Direction.Left:
+                    position.Y = link.GetPosition().Y;
+                    position.X += Constants.ArrowFlyingDistanceInterval * returningToLink ? 1 : -1;
+                    break;
+            }
+        }
+
+        private float GetDistanceFromLink() {
+            return Utility.GetDistance(position, link.GetPosition());
         }
     }
 }
