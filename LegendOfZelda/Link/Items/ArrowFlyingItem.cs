@@ -32,7 +32,7 @@ namespace Sprint0.Link.Items
                     sprite = LinkSpriteFactory.Instance.CreateArrowRightSprite();
                     break;
                 case Constants.Direction.Left:
-                    this.direction = new Vector2(1, 0);
+                    this.direction = new Vector2(-1, 0);
                     sprite = LinkSpriteFactory.Instance.CreateArrowLeftSprite();
                     break;
             }
