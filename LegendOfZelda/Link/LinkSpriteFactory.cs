@@ -24,7 +24,7 @@ namespace Sprint0.Link
         private Texture2D walkingDownLinkSprite;
         private Texture2D walkingUpLinkSprite;
         private Texture2D walkingLeftLinkSprite;
-        private Texture2D walkingRightLinkSprite; 
+        private Texture2D walkingRightLinkSprite;
         private Texture2D linkPickingUpSwordSprite;
         private Texture2D linkPickingUpHeartSprite;
         private Texture2D linkPickingUpTriforceSprite;
@@ -36,6 +36,11 @@ namespace Sprint0.Link
         private Texture2D arrowLeftSprite;
         private Texture2D bombExplodingSprite;
         private Texture2D boomerangFlyingSprite;
+        private Texture2D swordBeamUp;
+        private Texture2D swordBeamDown;
+        private Texture2D swordBeamRight;
+        private Texture2D swordBeamLeft;
+        private Texture2D swordBeamExploding;
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
         public static LinkSpriteFactory Instance
@@ -82,6 +87,11 @@ namespace Sprint0.Link
             arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
             bombExplodingSprite = content.Load<Texture2D>("Item/BombExploding");
             boomerangFlyingSprite = content.Load<Texture2D>("Item/BoomerangFlying");
+            swordBeamDown = content.Load<Texture2D>("Item/SwordBeamDown");
+            swordBeamUp = content.Load<Texture2D>("Item/SwordBeamUp");
+            swordBeamRight = content.Load<Texture2D>("Item/SwordBeamRight");
+            swordBeamLeft = content.Load<Texture2D>("Item/SwordBeamLeft");
+            swordBeamExploding = content.Load < Texture2D("Item/SwordBeamExplosion");
         }
         // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()
@@ -197,6 +207,26 @@ namespace Sprint0.Link
         public ILinkItemSprite CreateBoomerangFlyingSprite()
         {
             return new BoomerangFlyingSprite(boomerangFlyingSprite);
+        }
+        public ILinkItemSprite CreateSwordBeamDownSprite()
+        {
+            return new SwordBeamDownSprite(swordBeamDown);
+        }
+        public ILinkItemSprite CreateSwordBeamUpSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamUp);
+        }
+        public ILinkItemSprite CreateSwordBeamRightSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamRight);
+        }
+        public ILinkItemSprite CreateSwordBeamLeftSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamLeft);
+        }
+        public ILinkItemSprite CreateSwordBeamExplodingSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamExploding);
         }
     }
 }
