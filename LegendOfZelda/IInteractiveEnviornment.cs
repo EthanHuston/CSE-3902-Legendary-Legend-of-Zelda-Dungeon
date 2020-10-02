@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
+    
     interface IInteractiveEnviornment
     {
-        void Update();
-
-        void Draw(SpriteBatch spriteBatch);
+        void Interaction();
     }
 }

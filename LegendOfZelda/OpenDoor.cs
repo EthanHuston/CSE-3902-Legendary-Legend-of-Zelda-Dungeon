@@ -9,14 +9,17 @@ namespace Sprint0
 {
     class OpenDoor : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private DoorSprite doorSprite;
+        private SpriteBatch sB;
+        public OpenDoor(SpriteBatch spriteBatch)
         {
-            
+            doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
+            sB = spriteBatch;
+            doorSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
-
-        public void Update()
+        public void Interaction()
         {
-            
+
         }
     }
 }

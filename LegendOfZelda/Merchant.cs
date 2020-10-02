@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class Merchant : INPC
+    class Merchant : IEnemy
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

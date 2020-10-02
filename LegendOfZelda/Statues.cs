@@ -9,12 +9,16 @@ namespace Sprint0
 {
     class Statues : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private StatueSprite statueSprite;
+        private SpriteBatch sB;
+        public Statues(SpriteBatch spriteBatch)
         {
-            
+            statueSprite = (StatueSprite)SpriteFactory.Instance.CreateStatueSprite();
+            sB = spriteBatch;
+            statueSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
 
-        public void Update()
+        public void Interaction()
         {
             
         }

@@ -9,14 +9,17 @@ namespace Sprint0
 {
     class Stairs : IInteractiveEnviornment
     {
-        public void Draw(SpriteBatch spriteBatch)
+        private StairSprite stairSprite;
+        private SpriteBatch sB;
+        public Stairs(SpriteBatch spriteBatch)
         {
-            
+            stairSprite = (StairSprite)SpriteFactory.Instance.CreateStairSprite();
+            sB = spriteBatch;
+            stairSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
-
-        public void Update()
+        public void Interaction()
         {
-            
+
         }
     }
 }
