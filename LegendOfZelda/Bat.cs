@@ -17,6 +17,9 @@ namespace Sprint0
         private int maxXVal = 800;
         private int minYVal = 0;
         private int maxYVal = 480;
+        private int movementBuffer = 0;
+        private int xDir = 0;
+        private int yDir = 0;
 
         public Bat(SpriteBatch spriteBatch)
         {
@@ -25,34 +28,16 @@ namespace Sprint0
         }
         public void Update()
         {
-            if(currentX == minXVal)
+            movementBuffer++;
+            CheckBounds();
+            //Move based on current chosen direction for some time.
+            if(xDir == 0 && yDir == 0)
             {
                 currentX++;
-            }
-            else if(currentX == maxXVal)
+            } else if (xDir == 0 && yDir == 1)
             {
                 currentX--;
-            }
-            else if (currentY == minYVal)
-            {
-                currentY++;
-            }
-            else if(currentY == maxYVal)
-            {
-                currentY--;
-            }
-
-            Random rand = new Random();
-            int xy = rand.Next(0, 1); // 0 for x, 1 for y
-            int pn = rand.Next(0, 1); // 0 right/down. 1 for left/up
-
-            if(xy == 0 && pn == 0)
-            {
-                currentX++;
-            } else if (xy == 0 && pn == 1)
-            {
-                currentX--;
-            } else if(xy == 1 && pn == 0)
+            } else if(xDir == 1 && yDir == 0)
             {
                 currentY++;
             }
@@ -60,8 +45,12 @@ namespace Sprint0
             {
                 currentY--;
             }
-            sprite.Update();
-            this.Draw();
+
+            if(movementBuffer > 10)
+            {
+                movementBuffer = 0;
+                ChooseDirection();
+            }
 
         }
 
@@ -69,6 +58,32 @@ namespace Sprint0
         {
             sprite.Draw(spriteBatch, currentX, currentY);
 
+        }
+
+        private void CheckBounds()
+        {
+            if (currentX == minXVal)
+            {
+                currentX++;
+            }
+            else if (currentX == maxXVal)
+            {
+                currentX--;
+            }
+            else if (currentY == minYVal)
+            {
+                currentY++;
+            }
+            else if (currentY == maxYVal)
+            {
+                currentY--;
+            }
+        }
+        private void ChooseDirection()
+        {
+            Random rand = new Random();
+            int xDir = rand.Next(0, 1); // 0 for x, 1 for y
+            int yDir = rand.Next(0, 1); // 0 right/down. 1 for left/up
         }
     }
 }
