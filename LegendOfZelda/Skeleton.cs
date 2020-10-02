@@ -19,6 +19,8 @@ namespace Sprint0
         private int minYVal = 0;
         private int maxYVal = 480;
         private int movementBuffer = 0;
+        private int upDown = 0;
+        private int leftRight = 0;
 
         public Skeleton(SpriteBatch spriteBatch)
         {
@@ -27,42 +29,46 @@ namespace Sprint0
         }
         public void Update()
         {
-            Random rand = new Random();
-            int xy = rand.Next(0, 1); // 0 for x, 1 for y
-            int pn = rand.Next(0, 1); // 0 right/down. 1 for left/up
-
             movementBuffer++;
-            if(movementBuffer == 6)
+            if (movementBuffer == 6)
             {
-                //Simulate skeleton moving
-                if (xy == 0 && pn == 0 && currentX < maxXVal)
-                {
-                    currentX++;
-                }
-                else if (xy == 0 && pn == 1 && currentX > minXVal)
-                {
-                    currentX--;
-                }
-                else if (xy == 1 && pn == 0 && currentY < maxYVal)
-                {
-                    currentY++;
-                }
-                else
-                {
-                    currentY++;
-                }
+                movementBuffer = 0;
+                ChooseDirection();
             }
             else
             {
-                movementBuffer = 0;
+                Move();
             }
-            sprite.Update();
-            this.Draw();
         }
 
         public void Draw()
         {
             sprite.Draw(spriteBatch, currentX, currentY);
+        }
+        private void ChooseDirection()
+        {
+            Random rand = new Random();
+            upDown = rand.Next(0, 1); // 0 for x, 1 for y
+            leftRight = rand.Next(0, 1); // 0 right/down. 1 for left/up
+        }
+        private void Move()
+        {
+            if (upDown == 0 && leftRight == 0 && currentX + 1 < maxXVal)
+            {
+                currentX++;
+            }
+            else if (upDown == 0 && leftRight == 1 && currentX - 1 > minXVal)
+            {
+                currentX--;
+            }
+            else if (upDown == 1 && leftRight == 0 && currentY + 1 < maxYVal)
+            {
+                currentY--;
+            }
+            else
+            {
+                currentY++;
+            }
         }
     }
 }

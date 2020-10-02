@@ -48,7 +48,7 @@ namespace Sprint0
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * sprite.Width, 2 * sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
