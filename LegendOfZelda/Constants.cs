@@ -34,7 +34,9 @@ namespace Sprint0
         public const int SwordBeamSpawnXOffsetFromLink = 6;
         public const int SwordBeamSpawnYOffsetFromLink = 0;
         public const int SwordBeamFlyingDistanceInterval = 5;
-        public const int SwordBeamMaxDistanceFromLink = 60; // Only needed for Sprint 2
+        public const int SwordBeamMaxDistanceFromLink = 200; // Only needed for Sprint 2, i think
+        public const int SwordBeamExplodingDistanceInterval = 2;
+        public const int SwordBeamExplodingRange = 50;
 
         // Game Screen
         public const int MaxXPos = 800;

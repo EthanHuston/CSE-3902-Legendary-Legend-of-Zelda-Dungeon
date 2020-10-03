@@ -19,7 +19,7 @@ namespace Sprint0.Link.Sprite
 
         public void Update()
         {
-            // All updating is done in the class for this entity
+            // All updating is done in the class for this entity, SwordBeamFlying
         }
 
         public bool FinishedAnimation()

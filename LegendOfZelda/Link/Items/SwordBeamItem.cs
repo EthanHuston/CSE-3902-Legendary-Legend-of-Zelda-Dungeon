@@ -39,7 +39,7 @@ namespace Sprint0.Link.Items
                     sprite = LinkSpriteFactory.Instance.CreateSwordBeamRightSprite();
                     break;
                 case Constants.Direction.Left:
-                    this.direction = new Vector2(-11, 0);
+                    this.direction = new Vector2(-1, 0);
                     sprite = LinkSpriteFactory.Instance.CreateSwordBeamLeftSprite();
                     break;
             }
@@ -48,22 +48,22 @@ namespace Sprint0.Link.Items
         public void Update()
         {
             sprite.Update();
-            if (stopMovingAndExplode && !updatedSprite)
-            {
-                sprite = LinkSpriteFactory.Instance.CreateSwordBeamExplodingSprite();
-                updatedSprite = true;
-            }
-            else if (!stopMovingAndExplode)
+            if (!stopMovingAndExplode)
             {
                 position.X += Constants.SwordBeamFlyingDistanceInterval * direction.X;
                 position.Y += Constants.SwordBeamFlyingDistanceInterval * direction.Y;
                 // TODO: remove me after Sprint 2 - just so we can see the sword exploding
                 stopMovingAndExplode = Utility.GetDistance(position, link.GetPosition()) > Constants.SwordBeamMaxDistanceFromLink;
             }
+            else if (stopMovingAndExplode && !updatedSprite) // initial setup of sword beam explosion
+            {
+                sprite = LinkSpriteFactory.Instance.CreateSwordBeamExplodingSprite();
+                updatedSprite = true;
+            }
 
             // TODO: Uncomment me after Sprint 2
             // stopMovingAndExplode = Utility.ItemIsOutOfBounds(position); // or item hits enemy, but not yet implemented
-            itemIsExpired = sprite.FinishedAnimation();
+            itemIsExpired = sprite.FinishedAnimation(); // when explosion finishes animating
         }
         public void Draw()
         {
