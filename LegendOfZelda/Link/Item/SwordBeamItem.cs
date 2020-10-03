@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Items
+namespace Sprint0.Link.Item
 {
     class SwordBeamItem : ILinkItem
     {
