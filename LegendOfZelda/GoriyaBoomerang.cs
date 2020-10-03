@@ -13,10 +13,10 @@ namespace Sprint0
         private ISprite sprite;
         private SpriteBatch spriteBatch;
         private Vector2 pos, velocity;
-        private int retractRang = 20;
+        public int retractRang = 20;
         private int updateCount = 0;
 
-        public Fireball(SpriteBatch spriteBatch, Vector2 pos, Vector2 velocity)
+        public GoriyaBoomerang(SpriteBatch spriteBatch, Vector2 pos, Vector2 velocity)
         {
             this.spriteBatch = spriteBatch;
             this.sprite = SpriteFactory.Instance.CreateFireballSprite();

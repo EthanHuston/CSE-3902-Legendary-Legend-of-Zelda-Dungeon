@@ -13,6 +13,7 @@ namespace Sprint0
         private Texture2D goriyaDownSprite;
         private Texture2D goriyaLeftSprite;
         private Texture2D goriyaRightSprite;
+        private Texture2D goriyaBoomerangSprite;
         private Texture2D aquamentusBreathingSprite;
         private Texture2D aquamentusWalkingSprite;
         private Texture2D handSprite;
@@ -68,6 +69,7 @@ namespace Sprint0
             goriyaDownSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingDown");
             goriyaRightSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingRight");
             goriyaLeftSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingLeft");
+            goriyaBoomerangSprite = content.Load<Texture2D>("Items/BoomerangFlying");
             aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
             aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
             handSprite = content.Load<Texture2D>("Enemies/Hand");
@@ -119,15 +121,19 @@ namespace Sprint0
         }
         public ISprite CreateGoriyaDownSprite()
         {
-            return new GoriyaUpSprite(goriyaUpSprite);
+            return new GoriyaUpSprite(goriyaDownSprite);
         }
         public ISprite CreateGoriyaRightSprite()
         {
-            return new GoriyaUpSprite(goriyaUpSprite);
+            return new GoriyaRightSprite(goriyaRightSprite);
         }
         public ISprite CreateGoriyaLeftSprite()
         {
-            return new GoriyaUpSprite(goriyaUpSprite);
+            return new GoriyaLeftSprite(goriyaLeftSprite);
+        }
+        public ISprite CreateGoriyaBoomerangSprite()
+        {
+            return new GoriyaBoomerangSprite(goriyaBoomerangSprite);
         }
         public ISprite CreateAquamentusBreathingSprite()
         {
