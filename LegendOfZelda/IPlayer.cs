@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     public interface IPlayer
     {

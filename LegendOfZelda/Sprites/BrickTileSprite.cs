@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     class BrickTileSprite : ISprite
     {

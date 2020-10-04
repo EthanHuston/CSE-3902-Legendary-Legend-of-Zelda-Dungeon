@@ -1,8 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
+using LegendOfZelda.Link.Interface;
 
-namespace Sprint0.Link.Item
+namespace LegendOfZelda.Link.Item
 {
     class BombExplodingItem : ILinkItem
     {

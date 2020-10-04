@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
+using LegendOfZelda.Link.Interface;
 using System;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class SwordBeamExplodingSprite : ILinkItemSprite
     {

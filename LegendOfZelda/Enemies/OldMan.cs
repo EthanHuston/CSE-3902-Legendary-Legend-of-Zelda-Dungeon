@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint0.Enemies
+namespace LegendOfZelda.Enemies
 {
     class OldMan : IEnemy
     {

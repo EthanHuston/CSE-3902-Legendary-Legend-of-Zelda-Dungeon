@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Sprint0.Enemies
+namespace LegendOfZelda.Enemies
 {
     class Bat : IEnemy
     {

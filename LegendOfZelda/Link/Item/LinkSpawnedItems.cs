@@ -1,7 +1,7 @@
-﻿using Sprint0.Link.Interface;
+﻿using LegendOfZelda.Link.Interface;
 using System.Collections.Generic;
 
-namespace Sprint0.Link.Items
+namespace LegendOfZelda.Link.Items
 {
     class LinkSpawnedItems : ISpawnedItems
     {

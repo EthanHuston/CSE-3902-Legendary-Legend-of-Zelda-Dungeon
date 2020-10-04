@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint0.Enemies
+namespace LegendOfZelda.Enemies
 {
     class Goriya : IEnemy
     {

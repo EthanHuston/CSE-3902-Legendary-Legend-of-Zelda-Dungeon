@@ -9,8 +9,8 @@
     <ProjectGuid>{4E9C6D71-FF35-418D-822A-C922BA7543DB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sprint0</RootNamespace>
-    <AssemblyName>Sprint0</AssemblyName>
+    <RootNamespace>LegendOfZelda</RootNamespace>
+    <AssemblyName>LegendOfZelda</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>

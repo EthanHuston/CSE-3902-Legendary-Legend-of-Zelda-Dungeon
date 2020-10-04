@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     class GoriyaRightSprite : ISprite
     {

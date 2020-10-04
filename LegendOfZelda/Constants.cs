@@ -1,4 +1,4 @@
-namespace Sprint0
+namespace LegendOfZelda
 {
     public static class Constants
     {

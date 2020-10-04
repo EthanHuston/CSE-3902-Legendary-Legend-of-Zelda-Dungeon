@@ -1,4 +1,4 @@
-﻿namespace Sprint0.Enemies
+﻿namespace LegendOfZelda.Enemies
 {
     interface IEnemy
     {

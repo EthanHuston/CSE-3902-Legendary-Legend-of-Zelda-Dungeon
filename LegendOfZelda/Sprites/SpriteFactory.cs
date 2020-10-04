@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link;
-using Sprint0.Link.Sprite;
+using LegendOfZelda.Link;
+using LegendOfZelda.Link.Sprite;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     //Sprite Factory based of model found in slides
     class SpriteFactory

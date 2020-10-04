@@ -1,9 +1,9 @@
-using Sprint0.Link.Interface;
-using Sprint0.Link.Item;
-using Sprint0.Link.State.NotMoving;
+using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.Item;
+using LegendOfZelda.Link.State.NotMoving;
 using System;
 
-namespace Sprint0.Link.State.Item
+namespace LegendOfZelda.Link.State.Item
 {
     class LinkUsingBoomerangRightState : ILinkState
     {

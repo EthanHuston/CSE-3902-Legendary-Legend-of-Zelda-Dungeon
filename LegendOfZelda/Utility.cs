@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     static class Utility
     {

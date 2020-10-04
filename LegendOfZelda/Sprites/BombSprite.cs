@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     class BombSprite : ISprite
     {
