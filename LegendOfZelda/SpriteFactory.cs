@@ -10,8 +10,8 @@ namespace Sprint0
     {
         private Texture2D batSprite;
         private Texture2D dogLikeMonsterSprite;
-        private Texture2D dragonBreathingSprite;
-        private Texture2D dragonWalkingSprite;
+        private Texture2D aquamentusBreathingSprite;
+        private Texture2D aquamentusWalkingSprite;
         private Texture2D handSprite;
         private Texture2D jellySprite;
         private Texture2D skeletonSprite;
@@ -61,9 +61,9 @@ namespace Sprint0
         {
             //Load Enemy Sprites
             batSprite = content.Load<Texture2D>("Enemies/Bat");
-            dogLikeMonsterSprite = content.Load<Texture2D>("Enemies/DogLikeMonster");
-            dragonBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
-            dragonWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
+            dogLikeMonsterSprite = content.Load<Texture2D>("DogLikeMonster");
+            aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
+            aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
             handSprite = content.Load<Texture2D>("Enemies/Hand");
             jellySprite = content.Load<Texture2D>("Enemies/Jelly");
             skeletonSprite = content.Load<Texture2D>("Enemies/Skeleton");
@@ -111,15 +111,15 @@ namespace Sprint0
         }
         public ISprite CreateDogLikeMonsterSprite()
         {
-            return new DogLikeMonsterSprite(dogLikeMonsterSprite);
+            return new GoriyaUpSprite(dogLikeMonsterSprite);
         }
-        public ISprite CreateDragonBreathingSprite()
+        public ISprite CreateAquamentusBreathingSprite()
         {
-            return new DragonBreathingSprite(dragonBreathingSprite);
+            return new AquamentusBreathingSprite(aquamentusBreathingSprite);
         }
-        public ISprite CreateDragonWalkingSprite()
+        public ISprite CreateAquamentusWalkingSprite()
         {
-            return new DragonWalkingSprite(dragonWalkingSprite);
+            return new AquamentusWalkingSprite(aquamentusWalkingSprite);
         }
         public ISprite CreateHandSprite()
         {
@@ -160,10 +160,6 @@ namespace Sprint0
         public ISprite CreateBrickTileSprite()
         {
             return new BrickTileSprite(brickTileSprite);
-        }
-        public ISprite CreateArrowSprite()
-        {
-            return new ArrowFlyingSprite(arrowSprite);
         }
         public ISprite CreateBombSprite()
         {

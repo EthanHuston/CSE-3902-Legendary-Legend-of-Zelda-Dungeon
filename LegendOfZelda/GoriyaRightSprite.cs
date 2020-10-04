@@ -7,12 +7,23 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0
 {
-    class DogLikeMonsterSprite : ISprite
+    class GoriyaRightSprite : ISprite
     {
         private Texture2D sprite;
-        public DogLikeMonsterSprite(Texture2D sprite)
+        private int Rows { get; set; }
+        private int Columns { get; set; }
+        private int currentFrame;
+        private int bufferFrame;
+        private int totalFrames;
+
+        public GoriyaRightSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            Rows = 4;
+            Columns = 2;
+            currentFrame = 0;
+            bufferFrame = 6;
+            totalFrames = Columns;
         }
         public void Update()
         {
@@ -23,5 +34,6 @@ namespace Sprint0
         {
 
         }
+
     }
 }

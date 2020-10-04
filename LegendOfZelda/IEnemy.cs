@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    interface INPC
+    interface IEnemy
     {
         void Update();
 

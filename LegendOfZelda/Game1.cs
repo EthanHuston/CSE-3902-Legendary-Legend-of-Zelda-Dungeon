@@ -13,7 +13,6 @@ namespace Sprint0
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
         public ISprite sprite;
-        public ISprite textSprite;
         public IPlayer link;
         List<object> controllerList;
         KeyboardController keyboardController;
@@ -28,17 +27,9 @@ namespace Sprint0
         
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-            // TEST COMMENT FROM NATHAN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // UWU THANKS FOR THE BIG PP NATHAN ;););) -BIG PP CHRIS
-            // big cringe moment - S.P.
-            // im "git"ing sad right now, big tuff moment here - sadboi
-            // crying tears of joy - we all committed
-            textSprite = new NonMovingNonAnimatedTextSprite(this.Content);
             keyboardController = new KeyboardController(this);
             controllerList = new List<object>();
             controllerList.Add(keyboardController);
-            controllerList.Add(new MouseController(this));
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             base.Initialize();
@@ -46,8 +37,6 @@ namespace Sprint0
 
         protected override void LoadContent()
         {
-            SetStillSpriteCommand initialState = new SetStillSpriteCommand(this);
-            initialState.Execute();
             base.LoadContent();
             // TODO: use this.Content to load your game content here
         }
@@ -78,9 +67,6 @@ namespace Sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            textSprite.Draw(SpriteBatch);
-            sprite.Draw(SpriteBatch);
 
             // TODO: Add your drawing code here
 
