@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3363B47E-7523-41E5-B4C3-51E4A16DF98D}</ProjectGuid>
+    <ProjectGuid>{4E9C6D71-FF35-418D-822A-C922BA7543DB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sprint0</RootNamespace>
