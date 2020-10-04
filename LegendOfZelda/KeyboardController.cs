@@ -46,6 +46,7 @@ namespace Sprint0
             this.RegisterCommand(Keys.D5, new WoodenBoomerangHoldCommand(game1));
             this.RegisterCommand(Keys.D6, new WoodenBoomerangCommand(game1));
             this.RegisterCommand(Keys.D7, new BombCommand(game1));
+            this.RegisterCommand(Keys.D8, new SwordBeamCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
