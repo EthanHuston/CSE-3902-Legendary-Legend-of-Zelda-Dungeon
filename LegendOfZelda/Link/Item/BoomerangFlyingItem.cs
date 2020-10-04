@@ -18,7 +18,8 @@ namespace Sprint0.Link.Item
         public BoomerangFlyingItem(Link link, Constants.Direction direction)
         {
             this.link = link;
-            this.spriteBatch = link.Game.SpriteBatch;
+            spriteBatch = link.Game.SpriteBatch;
+            sprite = LinkSpriteFactory.Instance.CreateBoomerangFlyingSprite();
             position.X = link.GetPosition().X + Constants.BoomerangSpawnXOffsetFromLink;
             position.Y = link.GetPosition().Y + Constants.BoomerangSpawnYOffsetFromLink;
             this.direction = direction;
@@ -62,24 +63,24 @@ namespace Sprint0.Link.Item
             {
                 case Constants.Direction.Up:
                     position.X = link.GetPosition().X;
-                    position.Y += Constants.ArrowFlyingDistanceInterval * returningToLink ? 1 : -1;
+                    position.Y += Constants.ArrowFlyingDistanceInterval * (returningToLink ? 1 : -1);
                     break;
                 case Constants.Direction.Down:
                     position.X = link.GetPosition().X;
-                    position.Y += Constants.ArrowFlyingDistanceInterval * returningToLink ? -1 : 1;
+                    position.Y += Constants.ArrowFlyingDistanceInterval * (returningToLink ? -1 : 1);
                     break;
                 case Constants.Direction.Right:
-                    position.X += Constants.ArrowFlyingDistanceInterval * returningToLink ? -1 : 1;
+                    position.X += Constants.ArrowFlyingDistanceInterval * (returningToLink ? -1 : 1);
                     position.Y = link.GetPosition().Y;
                     break;
                 case Constants.Direction.Left:
-                    position.X += Constants.ArrowFlyingDistanceInterval * returningToLink ? 1 : -1;
+                    position.X += Constants.ArrowFlyingDistanceInterval * (returningToLink ? 1 : -1);
                     position.Y = link.GetPosition().Y;
                     break;
             }
         }
 
-        private float GetDistanceFromLink()
+        private double GetDistanceFromLink()
         {
             return Utility.GetDistance(position, link.GetPosition());
         }
