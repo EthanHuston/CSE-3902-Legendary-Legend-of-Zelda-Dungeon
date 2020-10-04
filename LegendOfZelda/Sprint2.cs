@@ -13,5 +13,7 @@ namespace Sprint0
         public static int enemyNPCX = 500;
         public static int enemyNPCY = 200;
         public static int itemListCount = 0;
+        public static int ieX = 20;
+        public static int ieY = 600;
     }
 }

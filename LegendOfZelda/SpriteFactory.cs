@@ -1,11 +1,7 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sprint0.Link;
+using Sprint0.Link.Sprite;
 
 namespace Sprint0
 {
@@ -14,14 +10,18 @@ namespace Sprint0
     {
         private Texture2D batSprite;
         private Texture2D dogLikeMonsterSprite;
-        private Texture2D dragonBreathingSprite;
-        private Texture2D dragonWalkingSprite;
+        private Texture2D aquamentusBreathingSprite;
+        private Texture2D aquamentusWalkingSprite;
         private Texture2D handSprite;
         private Texture2D jellySprite;
         private Texture2D skeletonSprite;
         private Texture2D spikeTrapSprite;
         private Texture2D blockSprite;
         private Texture2D statueSprite;
+        private Texture2D stairSprite;
+        private Texture2D doorSprite;
+        private Texture2D ladderSprite;
+        private Texture2D brickTileSprite;
         private Texture2D arrowSprite;
         private Texture2D bombSprite;
         private Texture2D explodingBombSprite;
@@ -38,19 +38,13 @@ namespace Sprint0
         private Texture2D mapSprite;
         private Texture2D rupeeSprite;
         private Texture2D triforceSprite;
-        private Texture2D idleLinkSprite;
-        private Texture2D strikingDownLinkSprite;
-        private Texture2D strikingUpLinkSprite;
-        private Texture2D strikingLeftLinkSprite;
-        private Texture2D strikingRightLinkSprite;
-        private Texture2D pickingUpItemLinkSprite;
-        private Texture2D usingItemLinkSprite;
-        private Texture2D walkingDownLinkSprite;
-        private Texture2D walkingUpLinkSprite;
-        private Texture2D walkingLeftLinkSprite;
-        private Texture2D walkingRightLinkSprite;
         private Texture2D oldManSprite;
         private Texture2D merchantSprite;
+        private Texture2D tileBlackSprite;
+        private Texture2D tileWaterSprite;
+        private Texture2D tileBlueGrassSprite;
+        private Texture2D roomBorderSprite;
+
         private static SpriteFactory instance = new SpriteFactory();
         public static SpriteFactory Instance
         {
@@ -67,9 +61,9 @@ namespace Sprint0
         {
             //Load Enemy Sprites
             batSprite = content.Load<Texture2D>("Enemies/Bat");
-            dogLikeMonsterSprite = content.Load<Texture2D>("Enemies/DogLikeMonster");
-            dragonBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
-            dragonWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
+            dogLikeMonsterSprite = content.Load<Texture2D>("DogLikeMonster");
+            aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
+            aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
             handSprite = content.Load<Texture2D>("Enemies/Hand");
             jellySprite = content.Load<Texture2D>("Enemies/Jelly");
             skeletonSprite = content.Load<Texture2D>("Enemies/Skeleton");
@@ -77,6 +71,10 @@ namespace Sprint0
             //Load Environment Sprites
             blockSprite = content.Load<Texture2D>("Environment/Block");
             statueSprite = content.Load<Texture2D>("Environment/Statue");
+            stairSprite = content.Load<Texture2D>("Environment/Stairs");
+            doorSprite = content.Load<Texture2D>("Environment/Doors");
+            ladderSprite = content.Load<Texture2D>("Environment/Ladder");
+            brickTileSprite = content.Load<Texture2D>("Environment/BrickTile");
             //Load Item Sprites
             arrowSprite = content.Load<Texture2D>("Items/Arrow");
             bombSprite = content.Load<Texture2D>("Items/Bomb");
@@ -94,39 +92,39 @@ namespace Sprint0
             mapSprite = content.Load<Texture2D>("Items/Map");
             rupeeSprite = content.Load<Texture2D>("Items/Ruppee");
             triforceSprite = content.Load<Texture2D>("Items/TriforcePiece");
-            //Load Link Sprites
-            idleLinkSprite = content.Load<Texture2D>("Link/IdleLink");
-            strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkStrikingDown");
-            strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkStrikingLeft");
-            strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkStrikingRight");
-            strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkStrikingUp");
-            pickingUpItemLinkSprite = content.Load<Texture2D>("Link/PickingUpItemLink");
-            usingItemLinkSprite = content.Load<Texture2D>("Link/UsingItemLink");
-            walkingDownLinkSprite = content.Load<Texture2D>("Link/WalkingDownLink");
-            walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
-            walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
-            walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
             //Load NPC Sprites
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
             merchantSprite = content.Load<Texture2D>("NPC/Merchant");
+            //Load Tile Sprites
+            tileBlackSprite = content.Load<Texture2D>("Environment/BlackTile");
+            tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");
+            tileWaterSprite = content.Load<Texture2D>("Environment/WaterTile");
+            roomBorderSprite = content.Load<Texture2D>("Environment/RoomBorder");
+            
+            // Load all other SpriteFactory
+            LinkSpriteFactory.Instance.LoadAllTextures(content);
+        }
+
+        public ISprite CreateArrowSprite()
+        {
+            return new ArrowSprite(arrowSprite);
         }
 
         public ISprite CreateBatSprite()
         {
             return new BatSprite(batSprite);
         }
-
         public ISprite CreateDogLikeMonsterSprite()
         {
-            return new DogLikeMonsterSprite(dogLikeMonsterSprite);
+            return new GoriyaUpSprite(dogLikeMonsterSprite);
         }
-        public ISprite CreateDragonBreathingSprite()
+        public ISprite CreateAquamentusBreathingSprite()
         {
-            return new DragonBreathingSprite(dragonBreathingSprite);
+            return new AquamentusBreathingSprite(aquamentusBreathingSprite);
         }
-        public ISprite CreateDragonWalkingSprite()
+        public ISprite CreateAquamentusWalkingSprite()
         {
-            return new DragonWalkingSprite(dragonWalkingSprite);
+            return new AquamentusWalkingSprite(aquamentusWalkingSprite);
         }
         public ISprite CreateHandSprite()
         {
@@ -152,9 +150,21 @@ namespace Sprint0
         {
             return new StatueSprite(statueSprite);
         }
-        public ISprite CreateArrowSprite()
+        public ISprite CreateStairSprite()
         {
-            return new ArrowSprite(arrowSprite);
+            return new StairSprite(stairSprite);
+        }
+        public ISprite CreateDoorSprite()
+        {
+            return new DoorSprite(doorSprite);
+        }
+        public ISprite CreateLadderSprite()
+        {
+            return new LadderSprite(ladderSprite);
+        }
+        public ISprite CreateBrickTileSprite()
+        {
+            return new BrickTileSprite(brickTileSprite);
         }
         public ISprite CreateBombSprite()
         {
@@ -216,50 +226,6 @@ namespace Sprint0
         {
             return new TriforceSprite(triforceSprite);
         }
-        public ISprite CreateIdleLinkSprite()
-        {
-            return new IdleLinkSprite(idleLinkSprite);
-        }
-        public ISprite CreateStrikingDownLinkSprite()
-        {
-            return new StrikingDownLinkSprite(strikingDownLinkSprite);
-        }
-        public ISprite CreateStrikingLeftLinkSprite()
-        {
-            return new StrikingLeftLinkSprite(strikingLeftLinkSprite);
-        }
-        public ISprite CreateStrikingRightLinkSprite()
-        {
-            return new StrikingRightLinkSprite(strikingRightLinkSprite);
-        }
-        public ISprite CreateStrikingUpLinkSprite()
-        {
-            return new StrikingUpLinkSprite(strikingUpLinkSprite);
-        }
-        public ISprite CreatePickingUpItemLinkSprite()
-        {
-            return new PickingUpItemLinkSprite(pickingUpItemLinkSprite);
-        }
-        public ISprite CreateUsingItemLinkSprite()
-        {
-            return new UsingItemLinkSprite(usingItemLinkSprite);
-        }
-        public ISprite CreateWalkingDownLinkSprite()
-        {
-            return new WalkingDownLinkSprite(walkingDownLinkSprite);
-        }
-        public ISprite CreateWalkingRightLinkSprite()
-        {
-            return new WalkingRightLinkSprite(walkingRightLinkSprite);
-        }
-        public ISprite CreateWalkingLeftLinkSprite()
-        {
-            return new WalkingLeftLinkSprite(walkingLeftLinkSprite);
-        }
-        public ISprite CreateWalkingUpLinkSprite()
-        {
-            return new WalkingUpLinkSprite(walkingUpLinkSprite);
-        }
         public ISprite CreateOldManSprite()
         {
             return new OldManSprite(oldManSprite);
@@ -267,6 +233,22 @@ namespace Sprint0
         public ISprite CreateMerchantSprite()
         {
             return new MerchantSprite(merchantSprite);
+        }
+        public ISprite CreateTileBlackSprite()
+        {
+            return new TileBlackSprite(tileBlackSprite);
+        }
+        public ISprite CreateTileBlueGrassSprite()
+        {
+            return new TileBlueGrassSprite(tileBlueGrassSprite);
+        }
+        public ISprite CreateTileWaterSprite()
+        {
+            return new TileWaterSprite(tileWaterSprite);
+        }
+        public ISprite CreateRoomBorderSprite()
+        {
+            return new RoomBorderSprite(roomBorderSprite);
         }
     }
 }
