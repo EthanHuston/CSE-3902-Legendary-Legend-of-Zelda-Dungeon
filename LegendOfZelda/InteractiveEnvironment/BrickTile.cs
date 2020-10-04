@@ -15,8 +15,13 @@ namespace LegendOfZelda
         {
             brickTileSprite = (BrickTileSprite)SpriteFactory.Instance.CreateBrickTileSprite();
             sB = spriteBatch;
+        }
+
+        public void Draw()
+        {
             brickTileSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
+
         public void Interaction()
         {
             

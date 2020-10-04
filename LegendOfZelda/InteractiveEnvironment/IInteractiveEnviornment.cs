@@ -11,5 +11,7 @@ namespace LegendOfZelda
     interface IInteractiveEnviornment
     {
         void Interaction();
+
+        void Draw();
     }
 }
