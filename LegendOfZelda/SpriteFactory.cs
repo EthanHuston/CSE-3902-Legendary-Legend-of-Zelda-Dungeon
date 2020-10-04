@@ -18,6 +18,10 @@ namespace Sprint0
         private Texture2D spikeTrapSprite;
         private Texture2D blockSprite;
         private Texture2D statueSprite;
+        private Texture2D stairSprite;
+        private Texture2D doorSprite;
+        private Texture2D ladderSprite;
+        private Texture2D brickTileSprite;
         private Texture2D arrowSprite;
         private Texture2D bombSprite;
         private Texture2D explodingBombSprite;
@@ -36,6 +40,11 @@ namespace Sprint0
         private Texture2D triforceSprite;
         private Texture2D oldManSprite;
         private Texture2D merchantSprite;
+        private Texture2D tileBlackSprite;
+        private Texture2D tileWaterSprite;
+        private Texture2D tileBlueGrassSprite;
+        private Texture2D roomBorderSprite;
+
         private static SpriteFactory instance = new SpriteFactory();
         public static SpriteFactory Instance
         {
@@ -62,6 +71,10 @@ namespace Sprint0
             //Load Environment Sprites
             blockSprite = content.Load<Texture2D>("Environment/Block");
             statueSprite = content.Load<Texture2D>("Environment/Statue");
+            stairSprite = content.Load<Texture2D>("Environment/Stairs");
+            doorSprite = content.Load<Texture2D>("Environment/Doors");
+            ladderSprite = content.Load<Texture2D>("Environment/Ladder");
+            brickTileSprite = content.Load<Texture2D>("Environment/BrickTile");
             //Load Item Sprites
             arrowSprite = content.Load<Texture2D>("Items/Arrow");
             bombSprite = content.Load<Texture2D>("Items/Bomb");
@@ -82,6 +95,13 @@ namespace Sprint0
             //Load NPC Sprites
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
             merchantSprite = content.Load<Texture2D>("NPC/Merchant");
+            //Load Tile Sprites
+            tileBlackSprite = content.Load<Texture2D>("Environment/BlackTile");
+            tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");
+            tileWaterSprite = content.Load<Texture2D>("Environment/WaterTile");
+            roomBorderSprite = content.Load<Texture2D>("Environment/RoomBorder");
+            
+            // Load all other SpriteFactory
             LinkSpriteFactory.Instance.LoadAllTextures(content);
         }
 
@@ -124,6 +144,22 @@ namespace Sprint0
         public ISprite CreateStatueSprite()
         {
             return new StatueSprite(statueSprite);
+        }
+        public ISprite CreateStairSprite()
+        {
+            return new StairSprite(stairSprite);
+        }
+        public ISprite CreateDoorSprite()
+        {
+            return new DoorSprite(doorSprite);
+        }
+        public ISprite CreateLadderSprite()
+        {
+            return new LadderSprite(ladderSprite);
+        }
+        public ISprite CreateBrickTileSprite()
+        {
+            return new BrickTileSprite(brickTileSprite);
         }
         public ISprite CreateArrowSprite()
         {
@@ -196,6 +232,22 @@ namespace Sprint0
         public ISprite CreateMerchantSprite()
         {
             return new MerchantSprite(merchantSprite);
+        }
+        public ISprite CreateTileBlackSprite()
+        {
+            return new TileBlackSprite(tileBlackSprite);
+        }
+        public ISprite CreateTileBlueGrassSprite()
+        {
+            return new TileBlueGrassSprite(tileBlueGrassSprite);
+        }
+        public ISprite CreateTileWaterSprite()
+        {
+            return new TileWaterSprite(tileWaterSprite);
+        }
+        public ISprite CreateRoomBorderSprite()
+        {
+            return new RoomBorderSprite(roomBorderSprite);
         }
     }
 }

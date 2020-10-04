@@ -11,6 +11,6 @@ namespace Sprint0
     public interface ISprite
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, int XValue, int YValue);
     }
 }
