@@ -40,8 +40,8 @@ namespace Sprint0.Link.Item
 
         public void Update()
         {
-            position.X += Constants.FlyingArrowDistanceIntervalPx * direction.X;
-            position.Y += Constants.FlyingArrowDistanceIntervalPx * direction.Y;
+            position.X += Constants.ArrowFlyingDistanceInterval * direction.X;
+            position.Y += Constants.ArrowFlyingDistanceInterval * direction.Y;
 
             itemIsExpired = Utility.ItemIsOutOfBounds(position); // or item hits enemy, but not yet implemented
         }

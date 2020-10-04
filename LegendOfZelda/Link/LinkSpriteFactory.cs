@@ -40,7 +40,10 @@ namespace Sprint0.Link
         private Texture2D swordBeamDown;
         private Texture2D swordBeamRight;
         private Texture2D swordBeamLeft;
-        private Texture2D swordBeamExploding;
+        private Texture2D swordBeamExplodingDownLeft;
+        private Texture2D swordBeamExplodingDownRight;
+        private Texture2D swordBeamExplodingUpLeft;
+        private Texture2D swordBeamExplodingUpRight;
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
         public static LinkSpriteFactory Instance
@@ -91,7 +94,10 @@ namespace Sprint0.Link
             swordBeamUp = content.Load<Texture2D>("Item/SwordBeamUp");
             swordBeamRight = content.Load<Texture2D>("Item/SwordBeamRight");
             swordBeamLeft = content.Load<Texture2D>("Item/SwordBeamLeft");
-            swordBeamExploding = content.Load < Texture2D("Item/SwordBeamExplosion");
+            swordBeamExplodingDownLeft = content.Load <Texture2D>("Item/SwordBeamExplosionDownLeft");
+            swordBeamExplodingDownRight = content.Load <Texture2D>("Item/SwordBeamExplosionDownRight");
+            swordBeamExplodingUpLeft = content.Load <Texture2D>("Item/SwordBeamExplosionUpLeft");
+            swordBeamExplodingUpRight = content.Load <Texture2D>("Item/SwordBeamExplosionUpRight");
         }
         // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()
@@ -210,7 +216,7 @@ namespace Sprint0.Link
         }
         public ILinkItemSprite CreateSwordBeamDownSprite()
         {
-            return new SwordBeamDownSprite(swordBeamDown);
+            return new SwordBeamFlyingSprite(swordBeamDown);
         }
         public ILinkItemSprite CreateSwordBeamUpSprite()
         {
@@ -226,7 +232,7 @@ namespace Sprint0.Link
         }
         public ILinkItemSprite CreateSwordBeamExplodingSprite()
         {
-            return new SwordBeamFlyingSprite(swordBeamExploding);
+            return new SwordBeamExplodingSprite(swordBeamExplodingDownLeft, swordBeamExplodingDownRight, swordBeamExplodingUpLeft, swordBeamExplodingUpRight);
         }
     }
 }

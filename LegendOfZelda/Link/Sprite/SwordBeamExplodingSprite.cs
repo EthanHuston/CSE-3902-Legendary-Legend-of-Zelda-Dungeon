@@ -1,12 +1,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Interface;
+using System;
 
 namespace Sprint0.Link.Sprite
 {
     class SwordBeamExplodingSprite : ILinkItemSprite
     {
-        private Texture2D spriteUpLeft, spriteDownLeft, spriteUpRight, spriteDownRight;
+        private Texture2D upLeftSprite, upRightSprite, downLeftSprite, downRightSprite;
         private Vector2 originPosition;
         private bool animationIsFinished;
         private bool obtainedStartingPosition;
@@ -18,9 +19,12 @@ namespace Sprint0.Link.Sprite
         private const int numRows = 1;
         private const int numColumns = 2;
 
-        public SwordBeamExplodingSprite(Texture2D sprite)
+        public SwordBeamExplodingSprite(Texture2D upLeftSprite, Texture2D upRightSprite, Texture2D downLeftSprite, Texture2D downRightSprite)
         {
-            this.sprite = sprite;
+            this.upLeftSprite = upLeftSprite;
+            this.upRightSprite = upRightSprite;
+            this.downLeftSprite = downLeftSprite;
+            this.downRightSprite = downRightSprite;
             animationIsFinished = false;
             bufferFrame = 0;
             currentFrame = 0;

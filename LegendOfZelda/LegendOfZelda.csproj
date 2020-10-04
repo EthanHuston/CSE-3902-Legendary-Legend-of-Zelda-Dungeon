@@ -57,16 +57,24 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Link\Items\ArrowFlyingItem.cs" />
-    <Compile Include="Link\Items\BombExplodingItem.cs" />
-    <Compile Include="Link\Items\BoomerangFlyingItem.cs" />
+    <Compile Include="Link\Command\SwordBeamCommand.cs" />
+    <Compile Include="Link\Item\ArrowFlyingItem.cs" />
+    <Compile Include="Link\Item\BombExplodingItem.cs" />
+    <Compile Include="Link\Item\BoomerangFlyingItem.cs" />
+    <Compile Include="Link\Item\SwordBeamItem.cs" />
     <Compile Include="Link\Sprite\ArrowFlyingSprite.cs" />
+    <Compile Include="Link\Sprite\SwordBeamExplodingSprite.cs" />
+    <Compile Include="Link\Sprite\SwordBeamFlyingSprite.cs" />
+    <Compile Include="Link\State\Item\LinkUsingSwordBeamDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombDownState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingSwordBeamLeftState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangLeftState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombLeftState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingSwordBeamRightState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangRightState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombRightState.cs" />
+    <Compile Include="Link\State\Item\LinkUsingSwordBeamUpState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangUpState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
     <Compile Include="Utility.cs" />
@@ -90,7 +98,7 @@
     <Compile Include="IPlayer.cs" />
     <Compile Include="Link\Interface\ISpawnedItems.cs" />
     <Compile Include="Link\Interface\ILinkItem.cs" />
-    <Compile Include="Link\Items\LinkSpawnedItems.cs" />
+    <Compile Include="Link\Item\LinkSpawnedItems.cs" />
     <Compile Include="Link\Link.cs" />
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="BatSprite.cs" />

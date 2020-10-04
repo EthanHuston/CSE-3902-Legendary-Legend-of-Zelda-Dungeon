@@ -5,20 +5,20 @@ using System;
 
 namespace Sprint0.Link.State.Item
 {
-    class LinkUsingBowLeftState : ILinkState
+    class LinkUsingSwordBeamLeftState : ILinkState
     {
         private Link link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkUsingBowLeftState(Link link)
+        public LinkUsingSwordBeamLeftState(Link link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkUsingBowLeftState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkUsingSwordBeamLeftState(Link link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
@@ -28,9 +28,9 @@ namespace Sprint0.Link.State.Item
         private void InitClass(Link link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemLeftLinkSprite();
             link.BlockStateChange = true;
-            this.link.SpawnItem(new ArrowFlyingItem(link, Constants.Direction.Left));
+            this.link.SpawnItem(new SwordBeamItem(link, Constants.Direction.Left));
         }
 
         public void Update()
@@ -94,7 +94,7 @@ namespace Sprint0.Link.State.Item
         }
         public void UseBow()
         {
-            // Already using bow, do nothing
+            // Cannot interupt state, do nothing
         }
 
         public void PickUpItem()
@@ -139,7 +139,7 @@ namespace Sprint0.Link.State.Item
 
         public void UseSwordBeam()
         {
-            // Cannot interupt state, do nothing
+            // Already using sword beam, do nothing
         }
     }
 }
