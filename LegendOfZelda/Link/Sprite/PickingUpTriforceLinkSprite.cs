@@ -29,8 +29,7 @@ namespace Sprint0.Link.Sprite
             animationIsDone = currentFrame >= totalFrames + Constants.LinkPickingUpItemPauseTicks;
             if (FinishedAnimation()) return;
 
-            // Check to see if we're at total frames so animation doesn't loop
-            if (currentFrame < totalFrames && ++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == Constants.FrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;

@@ -140,5 +140,10 @@ namespace Sprint0.Link.State.Attacking
         {
             // Cannot interupt state, do nothing
         }
+
+        public void UseSwordBeam()
+        {
+            // Cannot interupt state, do nothing
+        }
     }
 }

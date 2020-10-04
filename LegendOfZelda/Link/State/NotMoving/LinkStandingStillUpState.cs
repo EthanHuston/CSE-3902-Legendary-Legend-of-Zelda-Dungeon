@@ -127,5 +127,10 @@ namespace Sprint0.Link.State.NotMoving
         {
             link.SetState(new LinkUsingBoomerangUpState(link, damaged, healthyDateTime));
         }
+
+        public void UseSwordBeam()
+        {
+            link.SetState(new LinkUsingSwordBeamUpState(link, damaged, healthyDateTime));
+        }
     }
 }

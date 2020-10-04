@@ -1,7 +1,5 @@
 ﻿using Sprint0.Link.Interface;
-using Sprint0.Link.State.Attacking;
 using Sprint0.Link.State.NotMoving;
-using Sprint0.Link.State.Walking;
 using System;
 
 namespace Sprint0.Link.State.Item
@@ -134,6 +132,11 @@ namespace Sprint0.Link.State.Item
         }
 
         public void UseBoomerang()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void UseSwordBeam()
         {
             // Cannot interupt state, do nothing
         }

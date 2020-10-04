@@ -20,5 +20,6 @@ namespace Sprint0.Link.Interface
         void UseBoomerang();
         void UseSword();
         void UseBow();
+        void UseSwordBeam();
     }
 }
