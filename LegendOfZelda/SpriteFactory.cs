@@ -105,6 +105,11 @@ namespace Sprint0
             LinkSpriteFactory.Instance.LoadAllTextures(content);
         }
 
+        public ISprite CreateArrowSprite()
+        {
+            return new ArrowSprite(arrowSprite);
+        }
+
         public ISprite CreateBatSprite()
         {
             return new BatSprite(batSprite);

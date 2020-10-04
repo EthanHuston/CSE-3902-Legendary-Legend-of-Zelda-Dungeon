@@ -10,8 +10,8 @@ namespace Sprint0
             return position.X > Constants.MaxXPos || position.X < Constants.MinXPos || position.Y > Constants.MaxYPos || position.Y < Constants.MinYPos;
         }
 
-        public static float GetDistance(Vector2 position1, Vector2 position2) {
-            return Math.Sqrt(Math.Exp(position1.X - position2.X, 2) + Math.Exp(position1.Y - position2.Y));
+        public static double GetDistance(Vector2 position1, Vector2 position2) {
+            return Math.Sqrt(Math.Pow(position1.X - position2.X, 2) + Math.Pow(position1.Y - position2.Y, 2));
         }
     }
 }
