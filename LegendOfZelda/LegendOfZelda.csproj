@@ -57,6 +57,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bomb.cs" />
+    <Compile Include="Boomerang.cs" />
+    <Compile Include="Bow.cs" />
+    <Compile Include="Fairy.cs" />
+    <Compile Include="Heart.cs" />
+    <Compile Include="HeartContainer.cs" />
+    <Compile Include="Key.cs" />
     <Compile Include="Link\Command\SwordBeamCommand.cs" />
     <Compile Include="Link\Item\ArrowFlyingItem.cs" />
     <Compile Include="Link\Item\BombExplodingItem.cs" />
@@ -77,6 +84,8 @@
     <Compile Include="Link\State\Item\LinkUsingSwordBeamUpState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangUpState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="Rupee.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Link\Command\ArrowCommand.cs" />
@@ -102,7 +111,6 @@
     <Compile Include="Link\Link.cs" />
     <Compile Include="Goriya.cs" />
     <Compile Include="Aquamentus.cs" />
-    <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Arrow.cs" />
     <Compile Include="ArrowSprite.cs" />
     <Compile Include="Bat.cs" />
