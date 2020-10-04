@@ -57,13 +57,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bomb.cs" />
-    <Compile Include="Boomerang.cs" />
-    <Compile Include="Bow.cs" />
-    <Compile Include="Fairy.cs" />
-    <Compile Include="Heart.cs" />
-    <Compile Include="HeartContainer.cs" />
-    <Compile Include="Key.cs" />
+    <Compile Include="Item\Bomb.cs" />
+    <Compile Include="Item\Boomerang.cs" />
+    <Compile Include="Item\Bow.cs" />
+    <Compile Include="Item\Fairy.cs" />
+    <Compile Include="Item\Heart.cs" />
+    <Compile Include="Item\HeartContainer.cs" />
+    <Compile Include="Item\Key.cs" />
     <Compile Include="Link\Command\SwordBeamCommand.cs" />
     <Compile Include="Link\Item\ArrowFlyingItem.cs" />
     <Compile Include="Link\Item\BombExplodingItem.cs" />
@@ -84,8 +84,8 @@
     <Compile Include="Link\State\Item\LinkUsingSwordBeamUpState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangUpState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="Rupee.cs" />
+    <Compile Include="Item\Map.cs" />
+    <Compile Include="Item\Rupee.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\ArrowCommand.cs" />
     <Compile Include="Link\Command\BombCommand.cs" />
@@ -110,7 +110,7 @@
     <Compile Include="Link\Link.cs" />
     <Compile Include="Enemies\Goriya.cs" />
     <Compile Include="Enemies\Aquamentus.cs" />
-    <Compile Include="Arrow.cs" />
+    <Compile Include="Item\Arrow.cs" />
     <Compile Include="Sprites\ArrowSprite.cs" />
     <Compile Include="Enemies\Bat.cs" />
     <Compile Include="Sprites\BatSprite.cs" />
@@ -128,9 +128,9 @@
     <Compile Include="Sprites\RoomBorderSprite.cs" />
     <Compile Include="Sprites\StairSprite.cs" />
     <Compile Include="InteractiveEnvironment\DoorSprite.cs" />
-    <Compile Include="Clock.cs" />
+    <Compile Include="Item\Clock.cs" />
     <Compile Include="Sprites\ClockSprite.cs" />
-    <Compile Include="Compass.cs" />
+    <Compile Include="Item\Compass.cs" />
     <Compile Include="Sprites\CompassSprite.cs" />
     <Compile Include="Sprites\GoriyaRightSprite.cs" />
     <Compile Include="Sprites\GoriyaLeftSprite.cs" />
@@ -158,7 +158,7 @@
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="Enemies\IEnemy.cs" />
     <Compile Include="InteractiveEnvironment\IInteractiveEnviornment.cs" />
-    <Compile Include="IItem.cs" />
+    <Compile Include="Item\IItem.cs" />
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />
     <Compile Include="Sprites\JellySprite.cs" />
@@ -218,7 +218,7 @@
     <Compile Include="Sprites\TileBlackSprite.cs" />
     <Compile Include="TileWater.cs" />
     <Compile Include="Sprites\TileWaterSprite.cs" />
-    <Compile Include="Triforce.cs" />
+    <Compile Include="Item\Triforce.cs" />
     <Compile Include="Sprites\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
