@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
@@ -103,7 +103,6 @@
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Arrow.cs" />
     <Compile Include="ArrowSprite.cs" />
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BatSprite.cs" />
     <Compile Include="BlockSprite.cs" />
     <Compile Include="Bomb.cs" />
@@ -215,10 +214,6 @@
     <Compile Include="Stairs.cs" />
     <Compile Include="Statues.cs" />
     <Compile Include="StatueSprite.cs" />
-    <Compile Include="StrikingDownLinkSprite.cs" />
-    <Compile Include="StrikingLeftLinkSprite.cs" />
-    <Compile Include="StrikingRightLinkSprite.cs" />
-    <Compile Include="StrikingUpLinkSprite.cs" />
     <Compile Include="TileBlueGrass.cs" />
     <Compile Include="TileBlueGrassSprite.cs" />
     <Compile Include="TileBlack.cs" />
