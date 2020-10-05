@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class LadderTile : IInteractiveEnviornment
+    class LadderTile : IInteractiveEnvironment
     {
         private LadderSprite ladderSprite;
         private SpriteBatch sB;

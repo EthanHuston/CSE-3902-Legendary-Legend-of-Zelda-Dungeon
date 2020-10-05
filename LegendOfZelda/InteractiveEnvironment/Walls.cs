@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class Walls : IInteractiveEnviornment
+    class Walls : IInteractiveEnvironment
     {
         private RoomBorderSprite roomBorderSprite;
         private SpriteBatch sB;

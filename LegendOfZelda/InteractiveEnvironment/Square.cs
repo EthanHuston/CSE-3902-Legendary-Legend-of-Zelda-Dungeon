@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class Square : IInteractiveEnviornment
+    class Square : IInteractiveEnvironment
     {
         private BlockSprite blockSprite;
         private SpriteBatch sB;

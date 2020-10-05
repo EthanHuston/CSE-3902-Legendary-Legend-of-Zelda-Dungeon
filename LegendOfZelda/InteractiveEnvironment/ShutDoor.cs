@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class ShutDoor : IInteractiveEnviornment
+    class ShutDoor : IInteractiveEnvironment
     {
         private DoorSprite doorSprite;
         private SpriteBatch sB;

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.InteractiveEnvironment
 {
-    class GapTile : IInteractiveEnviornment
+    class GapTile : IInteractiveEnvironment
     {
         private TileBlackSprite tileBlackSprite;
         private SpriteBatch sB;

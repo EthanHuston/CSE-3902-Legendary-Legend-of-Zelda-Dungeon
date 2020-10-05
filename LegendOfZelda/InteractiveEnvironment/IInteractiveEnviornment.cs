@@ -1,7 +1,7 @@
 ﻿namespace LegendOfZelda
 {
 
-    interface IInteractiveEnviornment : IBlock
+    interface IInteractiveEnvironment : IBlock
     {
         void Interaction();
     }
