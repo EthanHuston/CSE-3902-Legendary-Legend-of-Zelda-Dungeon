@@ -104,7 +104,7 @@ namespace LegendOfZelda
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal, 2 * sprite.Width, 2 * sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal,(int) (1.25 * sprite.Width), (int)(1.25 * sprite.Height));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
