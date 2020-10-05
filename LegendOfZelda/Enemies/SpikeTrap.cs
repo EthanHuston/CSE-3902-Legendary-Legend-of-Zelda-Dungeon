@@ -49,7 +49,7 @@ namespace LegendOfZelda.Enemies
         private void ChooseDirection()
         {
             Random rand = new Random();
-            xOrYDir = rand.Next(0, 1); // 0 for x, 1 for y
+            xOrYDir = rand.Next(0, 2); // 0 for x, 1 for y
         }
         private void MoveGoing()
         {
