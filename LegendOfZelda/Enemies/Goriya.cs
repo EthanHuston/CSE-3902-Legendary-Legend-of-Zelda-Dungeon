@@ -15,8 +15,10 @@ namespace LegendOfZelda.Enemies
         private int updateCount = 0;
         private int direction = 1;
         private int changeDirection = 50;
-        private bool boomerangThrown = false;
-        private int attackTime = 110;
+        private bool boomerangInitialized = false;
+        private bool boomerangActive = false;
+        private int attackWaitTime = 110;
+        private int attackTime;
 
         private Random rand = new Random();
 
@@ -35,14 +37,11 @@ namespace LegendOfZelda.Enemies
             if (updateCount >= 1000)
                 updateCount = 0;
 
-            if (!boomerangThrown)
+            if (!boomerangActive)
                 move();
 
-            if (updateCount % attackTime == 0)
-            {
-                boomerangThrown = true;
+            if (updateCount % attackWaitTime == 0)
                 Attack();
-            }
 
             if (boomerangThrown)
                 boomer.Update();
@@ -117,6 +116,9 @@ namespace LegendOfZelda.Enemies
 
         private void Attack()
         {
+            boomerangActive = true;
+            boomerangInitialized = true;
+            attackTime = updateCount;
             Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
@@ -162,10 +164,6 @@ namespace LegendOfZelda.Enemies
         private void setRightSprite()
         {
             sprite = SpriteFactory.Instance.CreateGoriyaRightSprite();
-        }
-        public void ResetPosition()
-        {
-
         }
     }
 }

@@ -10,6 +10,7 @@ namespace LegendOfZelda.Enemies
         private Vector2 pos, velocity;
         public int retractRang = 20;
         private int updateCount = 0;
+        public bool isActive;
 
         public GoriyaBoomerang(SpriteBatch spriteBatch, Vector2 pos, Vector2 velocity)
         {
@@ -17,6 +18,7 @@ namespace LegendOfZelda.Enemies
             this.sprite = SpriteFactory.Instance.CreateGoriyaBoomerangSprite();
             this.pos = pos;
             this.velocity = velocity;
+            isActive = true;
         }
 
         public void Update()
@@ -32,12 +34,15 @@ namespace LegendOfZelda.Enemies
                 pos.X -= velocity.X;
                 pos.Y -= velocity.Y;
             }
+            else
+                isActive = false;
 
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
+            if (isActive)
+                sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
         }
         public void ResetPosition()
         {
