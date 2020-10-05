@@ -6,37 +6,46 @@ namespace LegendOfZelda.Sprites
     class GoriyaBoomerangSprite : ISprite
     {
         private readonly Texture2D sprite;
-        private int bufferFrame;
+        private int Rows { get; set; }
+        private int Columns { get; set; }
         private int currentFrame;
-        private const int totalFrames = 8;
-        private const int numRows = 1;
-        private const int numColumns = 8;
+        private int bufferFrame;
+        private int totalFrames;
 
         public GoriyaBoomerangSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            Rows = 1;
+            Columns = 8;
             bufferFrame = 0;
             currentFrame = 0;
+            totalFrames = Rows * Columns;
         }
 
         public void Update()
         {
-            if (++bufferFrame == Constants.FrameDelay)
+            bufferFrame++;
+            if (bufferFrame == 3)
             {
-                currentFrame = currentFrame == totalFrames ? 0 : currentFrame + 1;
+                currentFrame++;
                 bufferFrame = 0;
+            }
+
+            if (currentFrame == totalFrames)
+            {
+                currentFrame = 0;
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int posX, int posY)
+        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
         {
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
-            int currentRow = 1;
-            int currentColumn = currentFrame;
+            int width = sprite.Width / Columns;
+            int height = sprite.Height / Rows;
+            int row = (int)((float)currentFrame / (float)Columns);
+            int column = currentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle(posX, posY, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);

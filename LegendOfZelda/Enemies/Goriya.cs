@@ -17,7 +17,7 @@ namespace LegendOfZelda.Enemies
         private int changeDirection = 50;
         private bool boomerangInitialized = false;
         private bool boomerangActive = false;
-        private int attackWaitTime = 110;
+        private int attackWaitTime = 150;
         private int attackTime;
 
         private Random rand = new Random();
@@ -127,16 +127,16 @@ namespace LegendOfZelda.Enemies
             switch (direction)
             {
                 case 0: // Up
-                    v = new Vector2(-5, 0);
-                    break;
-                case 1: // Down
-                    v = new Vector2(5, 0);
-                    break;
-                case 2: // Left
                     v = new Vector2(0, -5);
                     break;
-                case 3: // Right
+                case 1: // Down
                     v = new Vector2(0, 5);
+                    break;
+                case 2: // Left
+                    v = new Vector2(-5, 0);
+                    break;
+                case 3: // Right
+                    v = new Vector2(5, 0);
                     break;
                 default:
                     break;
@@ -174,6 +174,9 @@ namespace LegendOfZelda.Enemies
         {
             pos.X = ConstantsSprint2.enemyNPCX;
             pos.Y = ConstantsSprint2.enemyNPCY;
+            boomerangInitialized = false;
+            boomerangActive = false;
+            updateCount = 0;
         }
 
     }
