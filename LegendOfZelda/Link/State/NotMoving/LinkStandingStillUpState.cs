@@ -67,6 +67,7 @@ namespace LegendOfZelda.Link.State.NotMoving
         {
             if (!damaged)
             {
+                damaged = true;
                 this.link.SubtractHealth(damage);
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
             }

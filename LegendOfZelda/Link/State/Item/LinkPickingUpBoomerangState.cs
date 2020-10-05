@@ -77,6 +77,7 @@ namespace LegendOfZelda.Link.State.Item
         {
             if (!damaged)
             {
+                damaged = true;
                 this.link.SubtractHealth(damage);
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
             }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -23,6 +24,7 @@ namespace LegendOfZelda
 
         public void ResetGame()
         {
+            link = new LinkPlayer(this);
             sprint2 = new Sprint2(this);
         }
 
@@ -34,7 +36,7 @@ namespace LegendOfZelda
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
             sprint2 = new Sprint2(this);
-            link = new Link.LinkPlayer(this);
+            link = new LinkPlayer(this);
 
             base.Initialize();
         }
