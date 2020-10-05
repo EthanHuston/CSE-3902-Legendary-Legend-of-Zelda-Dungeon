@@ -49,19 +49,19 @@ namespace LegendOfZelda.Enemies
         }
         private void Move()
         {
-            if (upDown == 0 && leftRight == 0 && currentX + 1 < maxXVal)
+            if (upDown == 0 && leftRight == 0 && currentX + 32 < maxXVal)
             {
                 currentX++;
             }
-            else if (upDown == 0 && leftRight == 1 && currentX - 1 > minXVal)
+            else if (upDown == 0 && leftRight == 1 && currentX - 32 > minXVal)
             {
                 currentX--;
             }
-            else if (upDown == 1 && leftRight == 0 && currentY + 1 < maxYVal)
+            else if (upDown == 1 && leftRight == 0 && currentY + 32 < maxYVal)
             {
                 currentY--;
             }
-            else
+            else if(currentY - 32 > minYVal)
             {
                 currentY++;
             }
