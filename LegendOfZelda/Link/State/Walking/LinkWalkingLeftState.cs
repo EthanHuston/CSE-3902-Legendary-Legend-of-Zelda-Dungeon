@@ -61,7 +61,7 @@ namespace LegendOfZelda.Link.State.Walking
 
         public void MoveDown()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
         }
 
         public void MoveLeft()
@@ -71,12 +71,12 @@ namespace LegendOfZelda.Link.State.Walking
 
         public void MoveRight()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
         }
 
         public void MoveUp()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkWalkingUpState(link, damaged, healthyDateTime));
         }
 
         public void BeDamaged(int damage)
@@ -101,52 +101,52 @@ namespace LegendOfZelda.Link.State.Walking
 
         public void UseSword()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkAttackingLeftState(link, damaged, healthyDateTime));
         }
 
         public void PickUpSword()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
         }
 
         public void PickUpHeartContainer()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
         }
 
         public void PickUpTriforce()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
         }
 
         public void PickUpBow()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
         }
 
         public void UseBow()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkUsingBowLeftState(link, damaged, healthyDateTime));
         }
 
         public void PickUpBoomerang()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
         }
 
         public void UseBomb()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkUsingBombLeftState(link, damaged, healthyDateTime));
         }
 
         public void UseBoomerang()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime));
         }
 
         public void UseSwordBeam()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkUsingSwordBeamLeftState(link, damaged, healthyDateTime));
         }
     }
 }
