@@ -9,9 +9,9 @@ namespace LegendOfZelda.Link.Sprite
         private readonly Texture2D sprite;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 7;
+        private const int totalFrames = 8;
         private const int numRows = 1;
-        private const int numColumns = 2;
+        private const int numColumns = 8;
 
         public BoomerangFlyingSprite(Texture2D sprite)
         {
@@ -24,7 +24,7 @@ namespace LegendOfZelda.Link.Sprite
         {
             if (++bufferFrame == Constants.FrameDelay)
             {
-                currentFrame = currentFrame == totalFrames ? 0 : currentFrame + 1;
+                currentFrame = currentFrame == totalFrames - 1 ? 0 : currentFrame + 1;
                 bufferFrame = 0;
             }
         }

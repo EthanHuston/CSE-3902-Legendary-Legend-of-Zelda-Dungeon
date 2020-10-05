@@ -31,6 +31,7 @@ namespace LegendOfZelda.Link.Item
             Vector2 linkPosition = link.GetPosition();
             MoveBoomerang();
             itemIsExpired = ReturnedToLink(linkPosition); // or item hits enemy, but not yet implemented
+            sprite.Update();
         }
         public void Draw()
         {
@@ -49,10 +50,11 @@ namespace LegendOfZelda.Link.Item
 
         private bool ReturnedToLink(Vector2 linkPosition)
         {
-            return position.X < linkPosition.X + Constants.BoomerangDespawnMaxXFromLink &&
-            position.X > linkPosition.X + Constants.BoomerangDespawnMinXFromLink &&
-            position.Y < linkPosition.Y + Constants.BoomerangDespawnMaxYFromLink &&
-            position.Y > linkPosition.Y + Constants.BoomerangDespawnMinYFromLink;
+            return returningToLink &&
+                position.X <= linkPosition.X + Constants.BoomerangDespawnMaxXFromLink &&
+                position.X >= linkPosition.X + Constants.BoomerangDespawnMinXFromLink &&
+                position.Y <= linkPosition.Y + Constants.BoomerangDespawnMaxYFromLink &&
+                position.Y >= linkPosition.Y + Constants.BoomerangDespawnMinYFromLink;
         }
 
         private void MoveBoomerang()
