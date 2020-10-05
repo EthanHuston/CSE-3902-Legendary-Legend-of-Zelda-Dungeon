@@ -26,7 +26,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Update()
         {
-            animationIsDone = currentFrame >= totalFrames + Constants.LinkPickingUpItemPauseTicks;
+            animationIsDone = currentFrame >= totalFrames;
             if (FinishedAnimation()) return;
 
             if (++bufferFrame == Constants.FrameDelay)
@@ -51,16 +51,16 @@ namespace LegendOfZelda.Link.Sprite
         {
             if (FinishedAnimation()) return;
 
-            int frameWidth = sprite.Width / numRows;
-            int frameHeight = sprite.Height / numColumns;
-            int currentRow = 1;
+            int frameWidth = sprite.Width / numColumns;
+            int frameHeight = sprite.Height / numRows;
+            int currentRow = 0;
             int currentColumn = currentFrame % 2;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
 
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.White : Color.Red);
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
             spriteBatch.End();
         }
 

@@ -41,15 +41,15 @@ namespace LegendOfZelda.Link.Sprite
 
             xOffset += Constants.SwordBeamExplodingDistanceInterval;
             yOffset += Constants.SwordBeamExplodingDistanceInterval;
+
+            animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > Constants.SwordBeamExplodingRange;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             int width, height;
-            int currentRow = 1;
+            int currentRow = 0;
             int currentColumn = currentFrame;
-
-            animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > Constants.SwordBeamExplodingRange;
 
             spriteBatch.Begin();
 

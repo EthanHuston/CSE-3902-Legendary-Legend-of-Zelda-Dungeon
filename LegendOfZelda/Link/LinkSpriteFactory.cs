@@ -178,7 +178,7 @@ namespace LegendOfZelda.Link
         }
         public ILinkSprite CreateLinkPickingUpTriforceSprite()
         {
-            return new PickingUpItemLinkSprite(linkPickingUpTriforceSprite);
+            return new PickingUpTriforceLinkSprite(linkPickingUpTriforceSprite);
         }
         public ILinkSprite CreateLinkPickingUpBowSprite()
         {
