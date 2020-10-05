@@ -1,4 +1,4 @@
-# Link.Sprite
+# LegendOfZelda.Link.Sprite
 Holds all sprites for Link and any item he uses.
 
 TODO:
