@@ -34,6 +34,8 @@ namespace LegendOfZelda
             AddItemsToList();
 
             currentItem = listOfItems[0];
+            currentBlock = listOfBlocks[0];
+            currentEnemy = listOfEnemies[0];
         }
 
         private void AddBlocksToList()
@@ -88,7 +90,7 @@ namespace LegendOfZelda
             {
                 itemIndex = 0;
             }
-            currentItem = listOfItems(itemIndex);
+            currentItem = listOfItems[itemIndex];
         }
         public void PreviousItem()
         {
@@ -97,6 +99,43 @@ namespace LegendOfZelda
             {
                 itemIndex = 12;
             }
+            currentItem = listOfItems[itemIndex];
+        }
+        public void NextEnemy()
+        {
+            enemyIndex++;
+            if(enemyIndex == 9)
+            {
+                enemyIndex = 0;
+            }
+            currentEnemy = listOfEnemies[enemyIndex];
+        }
+        public void PreviousEnemy()
+        {
+            enemyIndex--;
+            if(enemyIndex == -1)
+            {
+                enemyIndex = 8;
+            }
+            currentEnemy = listOfEnemies[enemyIndex];
+        }
+        public void NextBlock()
+        {
+            blockIndex++;
+            if (blockIndex == 11)
+            {
+                blockIndex = 0;
+            }
+            currentBlock = listOfBlocks[blockIndex];
+        }
+        public void PreviousBlock()
+        {
+            blockIndex--;
+            if (blockIndex == -1)
+            {
+                blockIndex = 10;
+            }
+            currentBlock = listOfBlocks[blockIndex];
         }
     }
 }

@@ -57,6 +57,7 @@ namespace LegendOfZelda
             {
                 controller.Update();
             }
+            sprint2.currentEnemy.Update();
 
             base.Update(gameTime);
         }
@@ -68,7 +69,7 @@ namespace LegendOfZelda
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            sprint2.currentEnemy.Draw();
 
             base.Draw(gameTime);
 
