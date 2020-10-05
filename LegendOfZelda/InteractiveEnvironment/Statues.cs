@@ -15,6 +15,10 @@ namespace LegendOfZelda
         {
             statueSprite = (StatueSprite)SpriteFactory.Instance.CreateStatueSprite();
             sB = spriteBatch;
+        }
+
+        public void Draw()
+        {
             statueSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
 

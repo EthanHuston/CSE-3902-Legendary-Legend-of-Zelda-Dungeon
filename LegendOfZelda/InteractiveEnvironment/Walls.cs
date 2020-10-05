@@ -16,8 +16,13 @@ namespace LegendOfZelda
         {
             roomBorderSprite = (RoomBorderSprite)SpriteFactory.Instance.CreateRoomBorderSprite();
             sB = spriteBatch;
+        }
+
+        public void Draw()
+        {
             roomBorderSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
+
         public void Interaction()
         {
             

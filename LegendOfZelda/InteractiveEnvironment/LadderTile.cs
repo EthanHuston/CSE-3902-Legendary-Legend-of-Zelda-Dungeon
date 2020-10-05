@@ -15,8 +15,13 @@ namespace LegendOfZelda
         {
             ladderSprite = (LadderSprite)SpriteFactory.Instance.CreateLadderSprite();
             sB = spriteBatch;
+        }
+
+        public void Draw()
+        {
             ladderSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
+
         public void Interaction()
         {
 

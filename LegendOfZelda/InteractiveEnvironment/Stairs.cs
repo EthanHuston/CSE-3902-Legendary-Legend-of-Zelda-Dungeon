@@ -15,8 +15,13 @@ namespace LegendOfZelda
         {
             stairSprite = (StairSprite)SpriteFactory.Instance.CreateStairSprite();
             sB = spriteBatch;
+        }
+
+        public void Draw()
+        {
             stairSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
+
         public void Interaction()
         {
 

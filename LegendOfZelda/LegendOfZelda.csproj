@@ -128,7 +128,7 @@
     <Compile Include="RoomBorder.cs" />
     <Compile Include="Sprites\RoomBorderSprite.cs" />
     <Compile Include="Sprites\StairSprite.cs" />
-    <Compile Include="InteractiveEnvironment\DoorSprite.cs" />
+    <Compile Include="Sprites\DoorSprite.cs" />
     <Compile Include="Item\Clock.cs" />
     <Compile Include="Sprites\ClockSprite.cs" />
     <Compile Include="Item\Compass.cs" />

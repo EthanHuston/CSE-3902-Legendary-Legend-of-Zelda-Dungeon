@@ -15,6 +15,10 @@ namespace LegendOfZelda
         {
             fireSprite = (FireSprite)SpriteFactory.Instance.CreateFireSprite();
             sB = spriteBatch;
+        }
+
+        public void Draw()
+        {
             fireSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
 

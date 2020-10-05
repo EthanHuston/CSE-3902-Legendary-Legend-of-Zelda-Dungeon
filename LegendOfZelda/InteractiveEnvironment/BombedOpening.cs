@@ -15,8 +15,13 @@ namespace LegendOfZelda
         {
             doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
+        }
+
+        public void Draw()
+        {
             doorSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
+
         public void Interaction()
         {
 
