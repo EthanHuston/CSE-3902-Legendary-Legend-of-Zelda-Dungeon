@@ -1,7 +1,7 @@
 ﻿using LegendOfZelda.Enemies;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Enemies
 {
     class Fireball : IEnemy
     {

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Interface;
 
-namespace Sprint0
+namespace LegendOfZelda.Sprites
 {
     class BoomerangFlyingSprite : ISprite
     {
