@@ -126,16 +126,16 @@ namespace LegendOfZelda.Enemies
             Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
-                case 0:
+                case 0: // Up
                     v = new Vector2(-5, 0);
                     break;
-                case 1:
+                case 1: // Down
                     v = new Vector2(5, 0);
                     break;
-                case 2:
+                case 2: // Left
                     v = new Vector2(0, -5);
                     break;
-                case 3:
+                case 3: // Right
                     v = new Vector2(0, 5);
                     break;
                 default:
