@@ -1,9 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.InteractiveEnvironment
 {
@@ -15,11 +11,21 @@ namespace LegendOfZelda.InteractiveEnvironment
         {
             tileBlackSprite = (TileBlackSprite)SpriteFactory.Instance.CreateTileBlackSprite();
             sB = spriteBatch;
-            tileBlackSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
         }
+
+        public void Draw()
+        {
+            tileBlackSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
+        }
+
         public void Interaction()
         {
             
+        }
+
+        public void Update()
+        {
+            // No updates necessary
         }
     }
 }
