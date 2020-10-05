@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using LegendOfZelda.Link.Interface;
 
@@ -15,7 +15,7 @@ namespace LegendOfZelda.Link.Sprite
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
         private const int totalFrames = 7;
         private const int numRows = 1;
-        private const int numColumns = 2;
+        private const int numColumns = 4;
 
         public StrikingLinkSprite(Texture2D sprite)
         {
@@ -53,8 +53,6 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
-            if (FinishedAnimation()) return;
-
             int frameWidth = sprite.Width / numRows;
             int frameHeight = sprite.Height / numColumns;
             int currentRow = 1;
