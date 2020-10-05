@@ -11,5 +11,9 @@
         public const int itemListCount = 0;
         public const int ieX = 200;
         public const int ieY = 100;
+
+        // Linka
+        public const int Sprint2LinkSpawnX = 100;
+        public const int Sprint2LinkSpawnY = 300;
     }
 }

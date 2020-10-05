@@ -3,8 +3,6 @@ namespace LegendOfZelda
     public static class Constants
     {
         public const int Number = 69;
-        public const int Sprint2LinkSpawnX = 0;
-        public const int Sprint2LinkSpawnY = 0;
         public const int FrameDelay = 6;
         public const double SpriteScaler = 1;
 

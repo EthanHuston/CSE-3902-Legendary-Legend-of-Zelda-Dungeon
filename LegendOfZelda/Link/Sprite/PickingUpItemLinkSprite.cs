@@ -25,6 +25,7 @@ namespace LegendOfZelda.Link.Sprite
         {
             animationIsDone = delayCounter >= Constants.LinkPickingUpItemPauseTicks;
             if (FinishedAnimation()) return;
+            delayCounter++;
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {

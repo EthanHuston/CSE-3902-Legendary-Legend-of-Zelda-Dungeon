@@ -22,6 +22,8 @@ namespace LegendOfZelda.Link
             this.Game = game;
             state = new LinkStandingStillDownState(this);
             spawnedItems = new LinkSpawnedItems();
+            posX = ConstantsSprint2.Sprint2LinkSpawnX;
+            posY = ConstantsSprint2.Sprint2LinkSpawnY;
         }
 
         public Vector2 GetPosition()

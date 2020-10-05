@@ -29,19 +29,22 @@ namespace LegendOfZelda.Link.State.Item
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemRightLinkSprite();
-            link.BlockStateChange = true;
             this.link.SpawnItem(new SwordBeamItem(link, Constants.Direction.Right));
         }
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            link.CurrentSprite.Update();
             if (link.CurrentSprite.FinishedAnimation())
             {
                 link.BlockStateChange = false;
                 StopMoving();
             }
+            else
+            {
+                link.BlockStateChange = true;
+            }
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            link.CurrentSprite.Update();
         }
 
         public void Draw()
