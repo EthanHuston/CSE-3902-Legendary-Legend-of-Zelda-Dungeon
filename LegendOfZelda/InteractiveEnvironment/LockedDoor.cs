@@ -26,5 +26,8 @@ namespace LegendOfZelda
         {
             
         }
+        public void Update()
+        {
+        }
     }
 }
