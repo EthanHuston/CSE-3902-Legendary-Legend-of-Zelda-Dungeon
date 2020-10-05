@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Boomerang : IItem
     {
-        private int itemIndex = 5;
         private BoomerangSprite boomerangSprite;
         private SpriteBatch sb;
         public Boomerang(SpriteBatch spriteBatch)

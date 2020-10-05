@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Fairy : IItem
     {
-        private int itemIndex = 11;
         private FairySprite fairySprite;
         private SpriteBatch sb;
         public Fairy(SpriteBatch spriteBatch)

@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Bomb : IItem
     {
-        private int itemIndex = 10;
         private BombSprite bombSprite;
         private SpriteBatch sb;
         public Bomb(SpriteBatch spriteBatch)

@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Heart : IItem
     {
-        private int itemIndex = 7;
         private HeartSprite heartSprite;
         private SpriteBatch sb;
         public Heart(SpriteBatch spriteBatch)

@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Bow : IItem
     {
-        private int itemIndex = 6;
         private BowSprite bowSprite;
         private SpriteBatch sb;
         public Bow(SpriteBatch spriteBatch)

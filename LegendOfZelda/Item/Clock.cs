@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Clock : IItem
     {
-        private int itemIndex = 12;
         private ClockSprite clockSprite;
         private SpriteBatch sb;
         public Clock(SpriteBatch spriteBatch)

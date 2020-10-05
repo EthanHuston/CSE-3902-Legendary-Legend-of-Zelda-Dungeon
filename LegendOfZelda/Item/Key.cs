@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Key : IItem
     {
-        private int itemIndex = 2;
         private KeySprite keySprite;
         private SpriteBatch sb;
         public Key(SpriteBatch spriteBatch)

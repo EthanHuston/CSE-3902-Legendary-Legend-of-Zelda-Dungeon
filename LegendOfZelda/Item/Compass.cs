@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Compass : IItem
     {
-        private int itemIndex = 0;
         private CompassSprite compassSprite;
         private SpriteBatch sb;
         public Compass(SpriteBatch spriteBatch)

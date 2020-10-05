@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Arrow : IItem
     {
-        private int itemIndex = 9;
         private ArrowSprite arrowSprite;
         private SpriteBatch sb;
         public Arrow(SpriteBatch spriteBatch)

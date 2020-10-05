@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Triforce : IItem
     {
-        private int itemIndex = 4;
         private TriforceSprite triforceSprite;
         private SpriteBatch sb;
         public Triforce(SpriteBatch spriteBatch)

@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Rupee : IItem
     {
-        private int itemIndex = 8;
         private RupeeSprite rupeeSprite;
         private SpriteBatch sb;
         public Rupee(SpriteBatch spriteBatch)

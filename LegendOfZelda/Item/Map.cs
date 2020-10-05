@@ -9,7 +9,6 @@ namespace LegendOfZelda.Item
 {
     class Map : IItem
     {
-        private int itemIndex = 1;
         private MapSprite mapSprite;
         private SpriteBatch sb;
         public Map(SpriteBatch spriteBatch)
