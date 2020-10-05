@@ -4,4 +4,7 @@ Overall, Sprint 2 went okay. We did not plan out the tasks and timing all that g
 
 ---
 ## Contents
-- ["Code Reflection.md"](Code Reflection.md)
+- [Team Reflection.md](Team-Reflection.md)
+- [Code Reflection.md](Code-Reflection.md)
+- [Moving Forward.md](Moving-Forward.md)
+- [Bugs.md](Bugs.md)
