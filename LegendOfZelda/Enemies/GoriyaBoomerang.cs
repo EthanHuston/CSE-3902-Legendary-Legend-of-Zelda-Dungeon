@@ -22,17 +22,17 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             updateCount++;
-            if(updateCount < retractRang)
+            if (updateCount < retractRang)
             {
                 pos.X += velocity.X;
                 pos.Y += velocity.Y;
             }
-            else if(updateCount < 2 * retractRang)
+            else if (updateCount < 2 * retractRang)
             {
                 pos.X -= velocity.X;
                 pos.Y -= velocity.Y;
             }
-            
+
         }
 
         public void Draw()

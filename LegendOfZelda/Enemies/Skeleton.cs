@@ -62,7 +62,7 @@ namespace LegendOfZelda.Enemies
             {
                 currentY--;
             }
-            else if(currentY - 32 > minYVal)
+            else if (currentY - 32 > minYVal)
             {
                 currentY++;
             }

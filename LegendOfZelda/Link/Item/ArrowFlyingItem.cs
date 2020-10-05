@@ -1,6 +1,6 @@
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Item
 {
@@ -18,7 +18,8 @@ namespace LegendOfZelda.Link.Item
             this.spriteBatch = link.Game.SpriteBatch;
             position.X = link.GetPosition().X + Constants.ArrowSpawnXOffsetFromLink;
             position.Y = link.GetPosition().Y + Constants.ArrowSpawnYOffsetFromLink;
-            switch (direction) {
+            switch (direction)
+            {
                 case Constants.Direction.Down:
                     this.direction = new Vector2(0, 1);
                     sprite = LinkSpriteFactory.Instance.CreateArrowDownSprite();

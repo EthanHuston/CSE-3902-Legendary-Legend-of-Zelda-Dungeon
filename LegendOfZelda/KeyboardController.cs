@@ -1,12 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using LegendOfZelda.Link.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using LegendOfZelda.Link.Command;
 using LegendOfZelda.Sprint2;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
@@ -29,12 +24,12 @@ namespace LegendOfZelda
         public void Update()
         {
             bufferFrame++;
-            if(bufferFrame == 6)
+            if (bufferFrame == 6)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
-            if(currentFrame == totalFrames)
+            if (currentFrame == totalFrames)
             {
                 currentFrame = 0;
             }

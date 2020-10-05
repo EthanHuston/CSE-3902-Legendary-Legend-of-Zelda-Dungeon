@@ -1,6 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Sprite
 {
@@ -49,7 +49,7 @@ namespace LegendOfZelda.Link.Sprite
             int currentColumn = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int) position.X, (int) position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);

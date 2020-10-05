@@ -28,15 +28,17 @@ namespace LegendOfZelda.Enemies
             movementBuffer++;
             CheckBounds();
             //Move based on current chosen direction for some time.
-            if(xDir == 0 && yDir == 0)
+            if (xDir == 0 && yDir == 0)
             {
                 currentX--;
                 currentY--;
-            } else if (xDir == 0 && yDir == 1)
+            }
+            else if (xDir == 0 && yDir == 1)
             {
                 currentX--;
                 currentY++;
-            } else if(xDir == 1 && yDir == 0)
+            }
+            else if (xDir == 1 && yDir == 0)
             {
                 currentX++;
                 currentY--;
@@ -47,7 +49,7 @@ namespace LegendOfZelda.Enemies
                 currentX++;
             }
 
-            if(movementBuffer > 10)
+            if (movementBuffer > 10)
             {
                 movementBuffer = 0;
                 ChooseDirection();

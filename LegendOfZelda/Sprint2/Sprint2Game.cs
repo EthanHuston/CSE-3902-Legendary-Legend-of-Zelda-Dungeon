@@ -1,10 +1,6 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Item;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.Sprint2
 {
@@ -86,7 +82,7 @@ namespace LegendOfZelda.Sprint2
         public void NextItem()
         {
             itemIndex++;
-            if(itemIndex == 13)
+            if (itemIndex == 13)
             {
                 itemIndex = 0;
             }
@@ -95,7 +91,7 @@ namespace LegendOfZelda.Sprint2
         public void PreviousItem()
         {
             itemIndex--;
-            if(itemIndex == -1)
+            if (itemIndex == -1)
             {
                 itemIndex = 12;
             }
@@ -104,7 +100,7 @@ namespace LegendOfZelda.Sprint2
         public void NextEnemy()
         {
             enemyIndex++;
-            if(enemyIndex == 9)
+            if (enemyIndex == 9)
             {
                 enemyIndex = 0;
             }
@@ -114,7 +110,7 @@ namespace LegendOfZelda.Sprint2
         public void PreviousEnemy()
         {
             enemyIndex--;
-            if(enemyIndex == -1)
+            if (enemyIndex == -1)
             {
                 enemyIndex = 8;
             }

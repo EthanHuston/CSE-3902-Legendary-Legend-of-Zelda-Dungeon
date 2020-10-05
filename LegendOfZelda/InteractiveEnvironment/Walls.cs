@@ -20,7 +20,7 @@ namespace LegendOfZelda
 
         public void Interaction()
         {
-            
+
         }
         public void Update()
         {

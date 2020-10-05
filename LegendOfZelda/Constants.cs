@@ -19,7 +19,7 @@ namespace LegendOfZelda
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
-        public const int ArrowSpawnYOffsetFromLink = 6;        
+        public const int ArrowSpawnYOffsetFromLink = 6;
         public const int ArrowFlyingDistanceInterval = 5;
         public const int BombSpawnXOffsetFromLink = 0;
         public const int BombSpawnYOffsetFromLink = 6;

@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.Sprite;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link
 {
@@ -94,10 +94,10 @@ namespace LegendOfZelda.Link
             swordBeamUp = content.Load<Texture2D>("Items/SwordBeamUp");
             swordBeamRight = content.Load<Texture2D>("Items/SwordBeamRight");
             swordBeamLeft = content.Load<Texture2D>("Items/SwordBeamLeft");
-            swordBeamExplodingDownLeft = content.Load <Texture2D>("Items/SwordBeamExplosionDownLeft");
-            swordBeamExplodingDownRight = content.Load <Texture2D>("Items/SwordBeamExplosionDownRight");
-            swordBeamExplodingUpLeft = content.Load <Texture2D>("Items/SwordBeamExplosionUpLeft");
-            swordBeamExplodingUpRight = content.Load <Texture2D>("Items/SwordBeamExplosionUpRight");
+            swordBeamExplodingDownLeft = content.Load<Texture2D>("Items/SwordBeamExplosionDownLeft");
+            swordBeamExplodingDownRight = content.Load<Texture2D>("Items/SwordBeamExplosionDownRight");
+            swordBeamExplodingUpLeft = content.Load<Texture2D>("Items/SwordBeamExplosionUpLeft");
+            swordBeamExplodingUpRight = content.Load<Texture2D>("Items/SwordBeamExplosionUpRight");
         }
         // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()

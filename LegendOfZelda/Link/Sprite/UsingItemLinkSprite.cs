@@ -1,6 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Sprite
 {

@@ -57,6 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="InteractiveEnvironment\GapTile.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Enemies\FireBall.cs" />
     <Compile Include="Enemies\GoriyaBoomerang.cs" />

@@ -27,14 +27,14 @@ namespace LegendOfZelda.Enemies
         {
             //updateCount++;
 
-            if(!attacked)
+            if (!attacked)
                 updateDirection();
 
-            if(updateCount % attackTime == 0)
+            if (updateCount % attackTime == 0)
                 Attack();
 
             //if (attacked)
-                updateBalls();
+            updateBalls();
 
             updateSprite();
 
@@ -52,7 +52,7 @@ namespace LegendOfZelda.Enemies
             {
                 spicyBalls[i].Draw();
             }
-            
+
         }
 
         public int getX()
@@ -76,9 +76,9 @@ namespace LegendOfZelda.Enemies
 
         private void updateDirection()
         {
-            if(updateCount < switchDirection)
+            if (updateCount < switchDirection)
                 posX -= vx;
-            else if(updateCount < 2 * switchDirection)
+            else if (updateCount < 2 * switchDirection)
                 posX += vx;
             else
                 updateCount = 0;
@@ -86,19 +86,19 @@ namespace LegendOfZelda.Enemies
 
         private void updateBalls()
         {
-            for(int i = 0; i < 3; i++)
-                {
-                    spicyBalls[i].Update();
-                }
+            for (int i = 0; i < 3; i++)
+            {
+                spicyBalls[i].Update();
+            }
         }
 
         private void updateSprite()
         {
-            if(updateCount - attackUpdate <= 4)
+            if (updateCount - attackUpdate <= 4)
             {
                 setBreathingSprite();
             }
-            else if(attacked)
+            else if (attacked)
             {
                 setWalkingSprite();
                 attacked = false;

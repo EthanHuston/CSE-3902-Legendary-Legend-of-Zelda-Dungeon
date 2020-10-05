@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda
 {
@@ -95,7 +90,7 @@ namespace LegendOfZelda
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal,(int) (1.25 * sprite.Width), (int)(1.25 * sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal, (int)(1.25 * sprite.Width), (int)(1.25 * sprite.Height));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);

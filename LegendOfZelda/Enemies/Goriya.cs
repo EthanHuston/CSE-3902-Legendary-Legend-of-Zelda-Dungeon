@@ -32,13 +32,13 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             updateCount++;
-            if(updateCount >= 1000)
+            if (updateCount >= 1000)
                 updateCount = 0;
 
-            if(!boomerangThrown)
+            if (!boomerangThrown)
                 move();
 
-            if(updateCount % attackTime == 0)
+            if (updateCount % attackTime == 0)
             {
                 boomerangThrown = true;
                 Attack();
@@ -48,7 +48,7 @@ namespace LegendOfZelda.Enemies
                 boomerangThrown = false;
             }
 
-            if(boomerangThrown)
+            if (boomerangThrown)
                 boomer.Update();
 
             sprite.Update();
@@ -71,7 +71,7 @@ namespace LegendOfZelda.Enemies
 
         private void move()
         {
-            if((updateCount % changeDirection) == 0)
+            if ((updateCount % changeDirection) == 0)
                 ChangeDirection();
 
             switch (direction)
@@ -143,7 +143,7 @@ namespace LegendOfZelda.Enemies
 
         private void keepInBounds()
         {
-            
+
         }
 
         private void setUpSprite()

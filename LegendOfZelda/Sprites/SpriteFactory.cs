@@ -1,8 +1,7 @@
-﻿using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using LegendOfZelda.Link;
-using LegendOfZelda.Link.Sprite;
+﻿using LegendOfZelda.Link;
 using LegendOfZelda.Sprites;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
@@ -58,8 +57,8 @@ namespace LegendOfZelda
                 return instance;
             }
         }
-         public SpriteFactory()
-        { 
+        public SpriteFactory()
+        {
         }
 
         public void LoadAllTextures(ContentManager content)
@@ -109,7 +108,7 @@ namespace LegendOfZelda
             tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");
             tileWaterSprite = content.Load<Texture2D>("Environment/WaterTile");
             roomBorderSprite = content.Load<Texture2D>("Environment/RoomBorder");
-            
+
             // Load all other SpriteFactory
             LinkSpriteFactory.Instance.LoadAllTextures(content);
         }
@@ -229,7 +228,7 @@ namespace LegendOfZelda
         }
         public ISprite CreateHeartSprite()
         {
-            return new HeartSprite(heartSprite);   
+            return new HeartSprite(heartSprite);
         }
         public ISprite CreateHeartContainerSprite()
         {

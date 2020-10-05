@@ -20,7 +20,7 @@ namespace LegendOfZelda.InteractiveEnvironment
 
         public void Interaction()
         {
-            
+
         }
 
         public void Update()

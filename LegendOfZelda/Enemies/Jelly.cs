@@ -50,7 +50,7 @@ namespace LegendOfZelda.Enemies
             {
                 currentX++;
             }
-            else if (upDown == 0 && leftRight== 1 && currentX - 16 > Constants.MinXPos)
+            else if (upDown == 0 && leftRight == 1 && currentX - 16 > Constants.MinXPos)
             {
                 currentX--;
             }
@@ -58,7 +58,7 @@ namespace LegendOfZelda.Enemies
             {
                 currentY--;
             }
-            else 
+            else
             {
                 currentY++;
             }

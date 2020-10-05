@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
@@ -41,7 +36,7 @@ namespace LegendOfZelda
             {
                 currentFrame = 0;
             }
-            
+
         }
 
         public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
@@ -57,7 +52,7 @@ namespace LegendOfZelda
             {
                 row = leftRow;
             }
-            
+
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);

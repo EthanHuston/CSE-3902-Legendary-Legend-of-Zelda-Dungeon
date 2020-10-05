@@ -1,8 +1,8 @@
 ﻿using LegendOfZelda.Link;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using LegendOfZelda.Sprint2;
 
 namespace LegendOfZelda
 {
@@ -15,7 +15,7 @@ namespace LegendOfZelda
         List<object> controllerList;
         KeyboardController keyboardController;
         public Sprint2Game sprint2;
-        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -43,13 +43,13 @@ namespace LegendOfZelda
         }
 
         protected override void LoadContent()
-        {   
+        {
             SpriteFactory.Instance.LoadAllTextures(this.Content);
             base.LoadContent();
             // TODO: use this.Content to load your game content here
-            
+
         }
-        
+
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
@@ -58,7 +58,7 @@ namespace LegendOfZelda
         protected override void Update(GameTime gameTime)
         {
 
-            foreach(IController controller in controllerList)
+            foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
@@ -69,7 +69,7 @@ namespace LegendOfZelda
             base.Update(gameTime);
         }
 
-       
+
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
