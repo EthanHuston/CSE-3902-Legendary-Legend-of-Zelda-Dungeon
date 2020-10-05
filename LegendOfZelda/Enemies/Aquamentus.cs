@@ -12,8 +12,9 @@ namespace LegendOfZelda.Enemies
         private int updateCount = 0;
         private int switchDirection = 50;
         private int attackTime = 33;
+        private int attackUpdate = 0;
         private bool attacked = false;
-        Fireball[] spicyBalls = new Fireball[3];
+        public Fireball[] spicyBalls = new Fireball[3];
 
         public Aquamentus(SpriteBatch spriteBatch)
         {
@@ -24,32 +25,16 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             updateCount++;
-            if (updateCount < switchDirection)
-            {
-                posX -= vx;
-            }
-            else if(updateCount < 2 * switchDirection)
-            {
-                posX += vx;
-            }
-            else
-            {
-                updateCount = 0;
-            }
+
+            updateDirection();
 
             if(updateCount % attackTime == 0)
-            {
                 Attack();
-                attacked = true;
-            }
 
             if (attacked)
-            {
-                for(int i = 0; i < 3; i++)
-                {
-                    spicyBalls[i].Update();
-                }
-            }
+                updateBalls();
+
+            updateSprite();
 
             sprite.Update();
 
@@ -84,6 +69,39 @@ namespace LegendOfZelda.Enemies
             spicyBalls[0] = new Fireball(spriteBatch, posX, posY, -1);
             spicyBalls[1] = new Fireball(spriteBatch, posX, posY, 0);
             spicyBalls[2] = new Fireball(spriteBatch, posX, posY, 1);
+            attacked = true;
+            attackUpdate = updateCount;
+        }
+
+        private void updateDirection()
+        {
+            if(updateCount < switchDirection)
+                posX -= vx;
+            else if(updateCount < 2 * switchDirection)
+                posX += vx;
+            else
+                updateCount = 0;
+        }
+
+        private void updateBalls()
+        {
+            for(int i = 0; i < 3; i++)
+                {
+                    spicyBalls[i].Update();
+                }
+        }
+
+        private void updateSprite()
+        {
+            if(updateCount - attackUpdate <= 4)
+            {
+                setBreathingSprite();
+            }
+            else if(attacked)
+            {
+                setWalkingSprite();
+                attacked = false;
+            }
         }
 
         private void setBreathingSprite()

@@ -27,12 +27,31 @@ namespace LegendOfZelda
         }
         public void Update()
         {
-
+            bufferFrame++;
+            if(bufferFrame == 6)
+            {
+                currentFrame++;
+                bufferFrame = 0;
+            }
+            if(currentFrame == totalFrames)
+            {
+                currentFrame = 0;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
         {
+            int width = sprite.Width / Columns;
+            int height = sprite.Height / Rows;
+            int row = (int)((float)currentFrame / (float)Columns);
+            int column = currentFrame % Columns;
 
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * height);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
         }
 
     }
