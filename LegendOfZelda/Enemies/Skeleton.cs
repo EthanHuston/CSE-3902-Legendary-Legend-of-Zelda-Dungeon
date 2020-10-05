@@ -25,7 +25,7 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             movementBuffer++;
-            if (movementBuffer == 6)
+            if (movementBuffer == 20)
             {
                 movementBuffer = 0;
                 ChooseDirection();
