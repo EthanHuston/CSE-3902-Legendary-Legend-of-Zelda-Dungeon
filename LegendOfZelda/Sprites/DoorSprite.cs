@@ -17,13 +17,18 @@ namespace LegendOfZelda
         }
         public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
         {
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * sprite.Width, 2 * sprite.Height);
-            Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue, int row, int column)
+        {
+            int width = sprite.Width / 4;
+            int height = sprite.Height / 4;
+            Rectangle destinationRectangle = new Rectangle(XValue, YValue, sprite.Width, sprite.Height);
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
         }
-
         public void Update()
         {
             

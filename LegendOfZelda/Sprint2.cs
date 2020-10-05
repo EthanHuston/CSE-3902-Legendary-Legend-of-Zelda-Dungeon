@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +6,39 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public static class Sprint2
+    public class Sprint2
     {
-        public static int itemX = 20;
-        public static int itemY = 20;
-        public static int enemyNPCX = 500;
-        public static int enemyNPCY = 200;
-        public static int itemListCount = 0;
-        public static int ieX = 20;
-        public static int ieY = 600;
+        public int itemX = 20;
+        public int itemY = 20;
+        public int enemyNPCX = 500;
+        public int enemyNPCY = 200;
+        public int itemListCount = 0;
+        public int ieX = 20;
+        public int ieY = 600;
+        public Game1 game;
+
+        private LinkedList<IBlock> listOfBlocks;
+
+        public Sprint2(Game1 game)
+        {
+            this.game = game;
+            AddBlocksToList();
+        }
+
+        private void AddBlocksToList()
+        {
+            listOfBlocks = new LinkedList<IBlock>();
+            listOfBlocks.AddLast(new BombedOpening(game.SpriteBatch));
+            listOfBlocks.AddLast(new BrickTile(game.SpriteBatch));
+            listOfBlocks.AddLast(new Fire(game.SpriteBatch));
+            listOfBlocks.AddLast(new LadderTile(game.SpriteBatch));
+            listOfBlocks.AddLast(new LockedDoor(game.SpriteBatch));
+            listOfBlocks.AddLast(new OpenDoor(game.SpriteBatch));
+            listOfBlocks.AddLast(new ShutDoor(game.SpriteBatch));
+            listOfBlocks.AddLast(new Square(game.SpriteBatch));
+            listOfBlocks.AddLast(new Stairs(game.SpriteBatch));
+            listOfBlocks.AddLast(new Statues(game.SpriteBatch));
+            listOfBlocks.AddLast(new Walls(game.SpriteBatch, ConstantsSprint2.WallSpawnLocationX, ConstantsSprint2.WallSpawnLocationY));
+        }
     }
 }
