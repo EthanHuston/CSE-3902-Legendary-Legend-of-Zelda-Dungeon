@@ -8,10 +8,10 @@ namespace LegendOfZelda.Enemies
         private SpriteBatch spriteBatch;
         private int posX = ConstantsSprint2.enemyNPCX;
         private int posY = ConstantsSprint2.enemyNPCY;
-        private int vx = 5;
+        private int vx = 1;
         private int updateCount = 0;
-        private int switchDirection = 50;
-        private int attackTime = 33;
+        private int switchDirection = 100;
+        private int attackTime = 110;
         private int attackUpdate = 0;
         private bool attacked = false;
         public Fireball[] spicyBalls = new Fireball[3];
@@ -24,19 +24,22 @@ namespace LegendOfZelda.Enemies
 
         public void Update()
         {
-            updateCount++;
+            //updateCount++;
 
-            updateDirection();
+            if(!attacked)
+                updateDirection();
 
             if(updateCount % attackTime == 0)
                 Attack();
 
-            if (attacked)
+            //if (attacked)
                 updateBalls();
 
             updateSprite();
 
             sprite.Update();
+
+            updateCount++;
 
         }
 
@@ -44,12 +47,9 @@ namespace LegendOfZelda.Enemies
         {
             sprite.Draw(spriteBatch, posX, posY);
 
-            if (attacked)
+            for (int i = 0; i < 3; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    spicyBalls[i].Draw();
-                }
+                spicyBalls[i].Draw();
             }
             
         }
@@ -66,9 +66,9 @@ namespace LegendOfZelda.Enemies
 
         private void Attack()
         {
-            spicyBalls[0] = new Fireball(spriteBatch, posX, posY, -1);
+            spicyBalls[0] = new Fireball(spriteBatch, posX, posY, -3);
             spicyBalls[1] = new Fireball(spriteBatch, posX, posY, 0);
-            spicyBalls[2] = new Fireball(spriteBatch, posX, posY, 1);
+            spicyBalls[2] = new Fireball(spriteBatch, posX, posY, 3);
             attacked = true;
             attackUpdate = updateCount;
         }
