@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LegendOfZelda")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ryan Stuckey")]
+[assembly: AssemblyCompany("Team 1")]
 [assembly: AssemblyProduct("LegendOfZelda")]
-[assembly: AssemblyCopyright("Copyright © Ryan Stuckey 2020")]
+[assembly: AssemblyCopyright("Copyright © Team 1 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
