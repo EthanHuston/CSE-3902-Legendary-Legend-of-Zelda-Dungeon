@@ -21,10 +21,14 @@ namespace LegendOfZelda
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            this.IsMouseVisible = true;
+            IsMouseVisible = true;
         }
 
-        
+        public void ResetGame()
+        {
+            sprint2 = new Sprint2(this);
+        }
+
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
@@ -41,15 +45,12 @@ namespace LegendOfZelda
             base.LoadContent();
             // TODO: use this.Content to load your game content here
         }
-
         
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
         }
 
-        
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
 
@@ -57,7 +58,8 @@ namespace LegendOfZelda
             {
                 controller.Update();
             }
-            sprint2.currentEnemy.Update();
+
+            sprint2.Update();
 
             base.Update(gameTime);
         }
@@ -68,12 +70,7 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            sprint2.currentEnemy.Draw();
-
-            base.Draw(gameTime);
-
-            
+            sprint2.Draw();
         }
     }
 }

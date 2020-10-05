@@ -58,8 +58,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ConstantsSprint2.cs" />
-    <Compile Include="GoriyaBoomerang.cs" />
-    <Compile Include="GoriyaBoomerangSprite.cs" />
+    <Compile Include="Enemies\FireBall.cs" />
+    <Compile Include="Enemies\GoriyaBoomerang.cs" />
     <Compile Include="IBlock.cs" />
     <Compile Include="Item\Bomb.cs" />
     <Compile Include="Item\Boomerang.cs" />
@@ -96,6 +96,11 @@
     <Compile Include="PreviousBlockCommand.cs" />
     <Compile Include="PreviousEnemyCommand.cs" />
     <Compile Include="PreviousItemCommand.cs" />
+    <Compile Include="NonInteractiveEnvironment\INonInteractiveEnvironment.cs" />
+    <Compile Include="NonInteractiveEnvironment\RoomBorder.cs" />
+    <Compile Include="NonInteractiveEnvironment\TileBlack.cs" />
+    <Compile Include="NonInteractiveEnvironment\TileBlueGrass.cs" />
+    <Compile Include="NonInteractiveEnvironment\TileWater.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\ArrowCommand.cs" />
     <Compile Include="Link\Command\BombCommand.cs" />
@@ -131,10 +136,8 @@
     <Compile Include="Sprites\BowSprite.cs" />
     <Compile Include="InteractiveEnvironment\BrickTile.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="INonInteractiveEnvironment.cs" />
     <Compile Include="Sprites\BrickTileSprite.cs" />
     <Compile Include="Sprites\LadderSprite.cs" />
-    <Compile Include="RoomBorder.cs" />
     <Compile Include="Sprites\RoomBorderSprite.cs" />
     <Compile Include="Sprites\StairSprite.cs" />
     <Compile Include="Sprites\DoorSprite.cs" />
@@ -151,11 +154,9 @@
     <Compile Include="Sprites\ExplodingBombSprite.cs" />
     <Compile Include="Sprites\FairySprite.cs" />
     <Compile Include="InteractiveEnvironment\Fire.cs" />
-    <Compile Include="Fireball.cs" />
     <Compile Include="Sprites\FireballSprite.cs" />
     <Compile Include="Sprites\FireSprite.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="GapTile.cs" />
     <Compile Include="Enemies\Hand.cs" />
     <Compile Include="Sprites\HandSprite.cs" />
     <Compile Include="Sprites\HeartContainerSprite.cs" />
@@ -222,11 +223,8 @@
     <Compile Include="InteractiveEnvironment\Stairs.cs" />
     <Compile Include="InteractiveEnvironment\Statues.cs" />
     <Compile Include="Sprites\StatueSprite.cs" />
-    <Compile Include="TileBlueGrass.cs" />
     <Compile Include="Sprites\TileBlueGrassSprite.cs" />
-    <Compile Include="TileBlack.cs" />
     <Compile Include="Sprites\TileBlackSprite.cs" />
-    <Compile Include="TileWater.cs" />
     <Compile Include="Sprites\TileWaterSprite.cs" />
     <Compile Include="Item\Triforce.cs" />
     <Compile Include="Sprites\TriforceSprite.cs" />
