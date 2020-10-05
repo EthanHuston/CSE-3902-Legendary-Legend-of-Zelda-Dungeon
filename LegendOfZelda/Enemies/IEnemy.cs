@@ -11,5 +11,6 @@ namespace LegendOfZelda.Enemies
         void Update();
 
         void Draw();
+        void ResetPosition();
     }
 }

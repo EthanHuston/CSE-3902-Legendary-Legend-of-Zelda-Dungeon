@@ -20,5 +20,9 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
         }
+        public void ResetPosition()
+        {
+
+        }
     }
 }
