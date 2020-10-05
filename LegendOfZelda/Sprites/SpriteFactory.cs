@@ -58,7 +58,7 @@ namespace LegendOfZelda
                 return instance;
             }
         }
-        private SpriteFactory()
+         public SpriteFactory()
         { 
         }
 
