@@ -5,8 +5,8 @@ Overall, Sprint 2 went okay. We did not plan out the tasks and timing all that g
 ---
 ## Contents
 - [Team Reflection.md](Team-Reflection.md)
-- [Code Reflection.md](Code-Reflection.md)
-- [Moving Forward.md](Moving-Forward.md)
-- [Bugs.md](Bugs.md)
 - [BurndownChart.PNG](BurndownChart.PNG)
+- [Code Reflection.md](Code-Reflection.md)
 - [Code Reviews](https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dungeon/tree/master/docs/sprint2/code-reviews)
+- [Bugs.md](Bugs.md)
+- [Moving Forward.md](Moving-Forward.md)
