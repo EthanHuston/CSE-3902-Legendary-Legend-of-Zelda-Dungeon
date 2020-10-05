@@ -19,7 +19,7 @@ namespace LegendOfZelda
 
         public void Draw()
         {
-            doorSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
+            doorSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY, 1, 4);
         }
 
         public void Interaction()

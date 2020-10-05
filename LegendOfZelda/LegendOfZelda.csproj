@@ -57,6 +57,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ConstantsSprint2.cs" />
+    <Compile Include="GoriyaBoomerang.cs" />
+    <Compile Include="GoriyaBoomerangSprite.cs" />
     <Compile Include="IBlock.cs" />
     <Compile Include="Item\Bomb.cs" />
     <Compile Include="Item\Boomerang.cs" />
