@@ -23,6 +23,9 @@ namespace LegendOfZelda
         private int maxYVal;
         private int minXVal;
         private int minYVal;
+        private int movementBuffer = 0;
+        private int xDir = 0;
+        private int yDir = 0;
         public FairySprite(Texture2D sprite)
         {
             this.sprite = sprite;
@@ -42,48 +45,35 @@ namespace LegendOfZelda
         }
         public void Update()
         {
-            // "Random" movement of the Fairy:
-            if (currentXVal == minXVal)
-            {
-                currentXVal++;
-            }
-            else if (currentXVal == maxXVal)
+            movementBuffer++;
+            CheckBounds();
+            //Move based on current chosen direction for some time.
+            if (xDir == 0 && yDir == 0)
             {
                 currentXVal--;
+                currentYVal--;
             }
-            else if (currentYVal == minYVal)
+            else if (xDir == 0 && yDir == 1)
             {
+                currentXVal--;
                 currentYVal++;
             }
-            else if(currentYVal == maxYVal)
+            else if (xDir == 1 && yDir == 0)
             {
+                currentXVal++;
                 currentYVal--;
             }
             else
             {
-                Random rand = new Random();
-                int xy = rand.Next(0, 2); // 0 for x, 1 for y
-                int pn = rand.Next(0, 2); // 0 right/down. 1 for left/up
-
-                if (xy == 0 && pn == 0)
-                {
-                    currentXVal++;
-                }
-                else if (xy == 0 && pn == 1)
-                {
-                    currentXVal--;
-                }
-                else if (xy == 1 && pn == 0)
-                {
-                    currentYVal++;
-                }
-                else
-                {
-                    currentYVal--;
-                }
+                currentYVal++;
+                currentXVal++;
             }
 
-            // For frame rate of the Fairy:
+            if (movementBuffer > 10)
+            {
+                movementBuffer = 0;
+                ChooseDirection();
+            }
             bufferFrame++;
             if (bufferFrame == 6)
             {
@@ -109,6 +99,31 @@ namespace LegendOfZelda
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+        }
+        private void CheckBounds()
+        {
+            if (currentXVal == minXVal)
+            {
+                currentXVal = currentXVal + 5;
+            }
+            else if (currentXVal == maxXVal)
+            {
+                currentXVal = currentXVal - 5; ;
+            }
+            else if (currentYVal == minYVal)
+            {
+                currentYVal = currentYVal + 5; ;
+            }
+            else if (currentYVal == maxYVal)
+            {
+                currentYVal = currentYVal - 5;
+            }
+        }
+        private void ChooseDirection()
+        {
+            Random rand = new Random();
+            xDir = rand.Next(0, 2); // 0 for x, 1 for y
+            yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
     }
 }
