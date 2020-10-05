@@ -10,15 +10,7 @@ namespace LegendOfZelda
 {
     public class Sprint2
     {
-        public int itemX = 20;
-        public int itemY = 20;
-        public int enemyNPCX = 500;
-        public int enemyNPCY = 200;
-        public int itemListCount = 0;
-        public int ieX = 20;
-        public int ieY = 600;
-        public Game1 game;
-
+        private Game1 game;
         private LinkedList<IBlock> listOfBlocks;
         private LinkedList<IEnemy> listOfEnemies;
         private LinkedList<IItem> listOfItems;
