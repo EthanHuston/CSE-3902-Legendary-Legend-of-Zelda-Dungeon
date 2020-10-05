@@ -56,7 +56,7 @@ namespace LegendOfZelda.Link.State.Walking
 
         public void Draw()
         {
-            // Cannot interupt, do nothing
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
         }
 
         public void MoveDown()
@@ -96,7 +96,7 @@ namespace LegendOfZelda.Link.State.Walking
 
         public void StopMoving()
         {
-            // Cannot interupt, do nothing
+            link.SetState(new LinkStandingStillUpState(link, damaged, healthyDateTime));
         }
 
         public void UseSword()
