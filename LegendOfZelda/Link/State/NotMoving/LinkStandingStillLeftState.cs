@@ -111,7 +111,7 @@ namespace LegendOfZelda.Link.State.NotMoving
 
         public void UseBow()
         {
-            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+            link.SetState(new LinkUsingBowLeftState(link, damaged, healthyDateTime));
         }
 
         public void PickUpBoomerang()

@@ -38,7 +38,7 @@ namespace LegendOfZelda
         public const int SwordBeamExplodingRange = 50;
         public const int SwordBeamExplodingFrameDelay = 2;
 
-        // Picking Up Item Spawn Offsets
+        // Link Item Spawn Offsets
         public const int LinkPickingUpBoomerangSpawnOffsetX = 0;
         public const int LinkPickingUpBoomerangSpawnOffsetY = -9;
         public const int LinkPickingUpBowSpawnOffsetX = 0;
@@ -49,6 +49,14 @@ namespace LegendOfZelda
         public const int LinkPickingUpHeartSpawnOffsetY = -14;
         public const int LinkPickingUpSwordSpawnOffsetX = 0;
         public const int LinkPickingUpSwordSpawnOffsetY = -12;
+        public const int LinkUsingSwordUpSpawnOffsetX = 0;
+        public const int LinkUsingSwordUpSpawnOffsetY = -12;
+        public const int LinkUsingSwordDownSpawnOffsetX = 0;
+        public const int LinkUsingSwordDownSpawnOffsetY = 0;
+        public const int LinkUsingSwordRightSpawnOffsetX = 0;
+        public const int LinkUsingSwordRightSpawnOffsetY = 0;
+        public const int LinkUsingSwordLeftSpawnOffsetX = -12;
+        public const int LinkUsingSwordLeftSpawnOffsetY = 0;
 
         // Game Screen
         public const int MaxXPos = 800;
