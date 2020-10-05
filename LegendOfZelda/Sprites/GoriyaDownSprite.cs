@@ -24,7 +24,7 @@ namespace LegendOfZelda
             Columns = 2;
             currentFrame = 0;
             bufferFrame = 6;
-            totalFrames = Columns;
+            totalFrames = Columns * Rows;
         }
         public void Update()
         {
