@@ -33,7 +33,9 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
+            spriteBatch.Begin();
             spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
+            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

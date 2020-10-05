@@ -32,9 +32,9 @@ namespace LegendOfZelda
             controllerList = new List<object>();
             controllerList.Add(keyboardController);
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            link = new Link.LinkPlayer(this);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
             sprint2 = new Sprint2(this);
+            link = new Link.LinkPlayer(this);
 
             base.Initialize();
         }
