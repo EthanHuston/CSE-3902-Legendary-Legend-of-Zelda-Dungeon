@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
+using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Sprites
 {
-    class BoomerangFlyingSprite : ISprite
+    class GoriyaBoomerangSprite : ISprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
@@ -13,7 +13,7 @@ namespace LegendOfZelda.Sprites
         private const int numRows = 1;
         private const int numColumns = 2;
 
-        public BoomerangFlyingSprite(Texture2D sprite)
+        public GoriyaBoomerangSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             bufferFrame = 0;
@@ -29,7 +29,7 @@ namespace LegendOfZelda.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, int posX, int posY)
         {
             int width = sprite.Width / numColumns;
             int height = sprite.Height / numRows;
@@ -37,7 +37,7 @@ namespace LegendOfZelda.Sprites
             int currentColumn = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            Rectangle destinationRectangle = new Rectangle(posX, posY, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

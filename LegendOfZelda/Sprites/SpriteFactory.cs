@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Sprite;
+using LegendOfZelda.Sprites;
 
 namespace LegendOfZelda
 {

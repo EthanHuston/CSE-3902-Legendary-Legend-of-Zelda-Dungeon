@@ -19,7 +19,7 @@ namespace LegendOfZelda.Enemies
         public GoriyaBoomerang(SpriteBatch spriteBatch, Vector2 pos, Vector2 velocity)
         {
             this.spriteBatch = spriteBatch;
-            this.sprite = SpriteFactory.Instance.CreateFireballSprite();
+            this.sprite = SpriteFactory.Instance.CreateGoriyaBoomerangSprite();
             this.pos = pos;
             this.velocity = velocity;
         }
