@@ -5,7 +5,7 @@ using LegendOfZelda.Link.State.NotMoving;
 
 namespace LegendOfZelda.Link
 {
-    class Link : IPlayer
+    class LinkPlayer : IPlayer
     {
         private ILinkState state;
         public ILinkSprite CurrentSprite { get; set; }
@@ -16,7 +16,7 @@ namespace LegendOfZelda.Link
         private float posX;
         private float posY;
 
-        public Link(Game1 game)
+        public LinkPlayer(Game1 game)
         {
             health = Constants.LinkHealth;
             this.Game = game;

@@ -6,25 +6,25 @@ namespace LegendOfZelda.Link.State.Item
 {
     class LinkPickingUpHeartState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkPickingUpHeartState(Link link)
+        public LinkPickingUpHeartState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkPickingUpHeartState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkPickingUpHeartState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpHeartSprite();

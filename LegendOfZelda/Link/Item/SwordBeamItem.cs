@@ -13,10 +13,10 @@ namespace LegendOfZelda.Link.Item
         private Vector2 position;
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
-        private Link link;
+        private LinkPlayer link;
         private const Constants.Item type = Constants.Item.SwordBeam;
 
-        public SwordBeamItem(Link link, Constants.Direction direction)
+        public SwordBeamItem(LinkPlayer link, Constants.Direction direction)
         {
             this.link = link;
             this.spriteBatch = link.Game.SpriteBatch;
