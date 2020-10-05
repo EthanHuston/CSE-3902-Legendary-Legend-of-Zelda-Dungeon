@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda
+﻿namespace LegendOfZelda.Sprint2
 {
     internal class ResetGameCommand : ICommand
     {

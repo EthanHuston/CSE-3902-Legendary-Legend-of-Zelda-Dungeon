@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda
+namespace LegendOfZeldanamespace LegendOfZelda.Sprint2
+
 {
     class PreviousItemCommand : ICommand
     {

@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda
+﻿namespace LegendOfZelda.Sprint2
 {
     static class ConstantsSprint2
     {

@@ -57,7 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ConstantsSprint2.cs" />
+    <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Enemies\FireBall.cs" />
     <Compile Include="Enemies\GoriyaBoomerang.cs" />
     <Compile Include="IBlock.cs" />
@@ -91,18 +91,18 @@
     <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
     <Compile Include="Item\Map.cs" />
     <Compile Include="Item\Rupee.cs" />
-    <Compile Include="NextBlockCommand.cs" />
-    <Compile Include="NextEnemyCommand.cs" />
-    <Compile Include="NextItemCommand.cs" />
-    <Compile Include="PreviousBlockCommand.cs" />
-    <Compile Include="PreviousEnemyCommand.cs" />
-    <Compile Include="PreviousItemCommand.cs" />
+    <Compile Include="Sprint2\NextBlockCommand.cs" />
+    <Compile Include="Sprint2\NextEnemyCommand.cs" />
+    <Compile Include="Sprint2\NextItemCommand.cs" />
+    <Compile Include="Sprint2\PreviousBlockCommand.cs" />
+    <Compile Include="Sprint2\PreviousEnemyCommand.cs" />
+    <Compile Include="Sprint2\PreviousItemCommand.cs" />
     <Compile Include="NonInteractiveEnvironment\INonInteractiveEnvironment.cs" />
     <Compile Include="NonInteractiveEnvironment\RoomBorder.cs" />
     <Compile Include="NonInteractiveEnvironment\TileBlack.cs" />
     <Compile Include="NonInteractiveEnvironment\TileBlueGrass.cs" />
     <Compile Include="NonInteractiveEnvironment\TileWater.cs" />
-    <Compile Include="ResetGameCommand.cs" />
+    <Compile Include="Sprint2\ResetGameCommand.cs" />
     <Compile Include="Sprites\GoriyaBoomerangSprite.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\UseBowCommand.cs" />
@@ -211,14 +211,14 @@
     <Compile Include="InteractiveEnvironment\OpenDoor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuitGameCommand.cs" />
+    <Compile Include="Sprint2\QuitGameCommand.cs" />
     <Compile Include="Sprites\RupeeSprite.cs" />
     <Compile Include="InteractiveEnvironment\ShutDoor.cs" />
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Sprites\SkeletonSprite.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
     <Compile Include="Sprites\SpikeTrapSprite.cs" />
-    <Compile Include="Sprint2.cs" />
+    <Compile Include="Sprint2\Sprint2.cs" />
     <Compile Include="Sprites\SpriteFactory.cs" />
     <Compile Include="InteractiveEnvironment\Square.cs" />
     <Compile Include="InteractiveEnvironment\Stairs.cs" />
