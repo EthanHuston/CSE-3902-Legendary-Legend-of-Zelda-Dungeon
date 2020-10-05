@@ -31,12 +31,12 @@ namespace LegendOfZelda
         public const int BoomerangDespawnMaxYFromLink = 15;
         public const int BoomerangDespawnMinYFromLink = 0;
         public const int BoomerangMaxDistanceFromLink = 300;
-        public const int SwordBeamSpawnXOffsetFromLink = 6;
-        public const int SwordBeamSpawnYOffsetFromLink = 0;
+        public const int SwordBeamSpawnXOffsetFromLink = 4;
+        public const int SwordBeamSpawnYOffsetFromLink = 5;
         public const int SwordBeamFlyingDistanceInterval = 5;
-        public const int SwordBeamMaxDistanceFromLink = 200; // Only needed for Sprint 2, i think
-        public const int SwordBeamExplodingDistanceInterval = 2;
+        public const int SwordBeamExplodingDistanceInterval = 1;
         public const int SwordBeamExplodingRange = 50;
+        public const int SwordBeamExplodingFrameDelay = 2;
 
         // Game Screen
         public const int MaxXPos = 800;

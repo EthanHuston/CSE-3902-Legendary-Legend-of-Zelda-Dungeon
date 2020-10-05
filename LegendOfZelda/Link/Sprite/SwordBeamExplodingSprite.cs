@@ -13,9 +13,9 @@ namespace LegendOfZelda.Link.Sprite
         private int yOffset;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 4;
+        private int totalFrames;
         private const int numRows = 1;
-        private const int numColumns = 2;
+        private const int numColumns = 4;
 
         public SwordBeamExplodingSprite(Texture2D upLeftSprite, Texture2D upRightSprite, Texture2D downLeftSprite, Texture2D downRightSprite)
         {
@@ -28,12 +28,13 @@ namespace LegendOfZelda.Link.Sprite
             currentFrame = 0;
             xOffset = 0;
             yOffset = 0;
+            totalFrames = numRows * numColumns;
         }
 
         public void Update()
         {
             if (FinishedAnimation()) return;
-            if (++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == Constants.SwordBeamExplodingFrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
@@ -49,7 +50,7 @@ namespace LegendOfZelda.Link.Sprite
         {
             int width, height;
             int currentRow = 0;
-            int currentColumn = currentFrame;
+            int currentColumn = currentFrame % totalFrames;
 
             spriteBatch.Begin();
 

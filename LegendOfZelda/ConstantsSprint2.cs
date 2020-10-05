@@ -15,5 +15,6 @@
         // Linka
         public const int Sprint2LinkSpawnX = 100;
         public const int Sprint2LinkSpawnY = 300;
+        public const int SwordBeamMaxDistanceFromLink = 200; // Only needed for Sprint 2, i think
     }
 }

@@ -232,7 +232,7 @@ namespace LegendOfZelda.Link
         }
         public ILinkItemSprite CreateSwordBeamExplodingSprite()
         {
-            return new SwordBeamExplodingSprite(swordBeamExplodingDownLeft, swordBeamExplodingDownRight, swordBeamExplodingUpLeft, swordBeamExplodingUpRight);
+            return new SwordBeamExplodingSprite(swordBeamExplodingUpLeft, swordBeamExplodingUpRight, swordBeamExplodingDownLeft, swordBeamExplodingDownRight);
         }
     }
 }

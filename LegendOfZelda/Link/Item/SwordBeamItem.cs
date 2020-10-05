@@ -53,7 +53,7 @@ namespace LegendOfZelda.Link.Item
                 position.X += Constants.SwordBeamFlyingDistanceInterval * direction.X;
                 position.Y += Constants.SwordBeamFlyingDistanceInterval * direction.Y;
                 // TODO: remove me after Sprint 2 - just so we can see the sword exploding
-                stopMovingAndExplode = Utility.GetDistance(position, link.GetPosition()) > Constants.SwordBeamMaxDistanceFromLink;
+                stopMovingAndExplode = Utility.GetDistance(position, link.GetPosition()) > ConstantsSprint2.SwordBeamMaxDistanceFromLink;
             }
             else if (stopMovingAndExplode && !updatedSprite) // initial setup of sword beam explosion
             {
