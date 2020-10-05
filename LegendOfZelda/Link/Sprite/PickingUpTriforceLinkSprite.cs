@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
+using LegendOfZelda.Link.Interface;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class PickingUpTriforceLinkSprite : ILinkSprite
     {
@@ -29,8 +29,7 @@ namespace Sprint0.Link.Sprite
             animationIsDone = currentFrame >= totalFrames + Constants.LinkPickingUpItemPauseTicks;
             if (FinishedAnimation()) return;
 
-            // Check to see if we're at total frames so animation doesn't loop
-            if (currentFrame < totalFrames && ++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == Constants.FrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;

@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using Sprint0.Link;
+using LegendOfZelda.Link;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
 
     public class Game1 : Game

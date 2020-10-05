@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     public interface IPlayer
     {
@@ -24,5 +24,6 @@ namespace Sprint0
         void UseBoomerang();
         void UseSword();
         void UseBow();
+        void UseSwordBeam();
     }
 }

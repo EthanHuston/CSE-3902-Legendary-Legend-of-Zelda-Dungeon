@@ -1,4 +1,4 @@
-namespace Sprint0.Link.Interface
+namespace LegendOfZelda.Link.Interface
 {
     interface ILinkState
     {
@@ -20,5 +20,6 @@ namespace Sprint0.Link.Interface
         void UseBoomerang();
         void UseSword();
         void UseBow();
+        void UseSwordBeam();
     }
 }

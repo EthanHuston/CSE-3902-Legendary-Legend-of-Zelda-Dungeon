@@ -1,4 +1,4 @@
-﻿namespace Sprint0.Link.Command
+﻿namespace LegendOfZelda.Link.Command
 {
     class BombCommand : ICommand
     {

@@ -1,8 +1,8 @@
-﻿using Sprint0.Link.Interface;
-using Sprint0.Link.State.NotMoving;
+﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State.NotMoving;
 using System;
 
-namespace Sprint0.Link.State.Attacking
+namespace LegendOfZelda.Link.State.Attacking
 {
     class LinkAttackingRightState : ILinkState
     {
@@ -127,6 +127,11 @@ namespace Sprint0.Link.State.Attacking
         }
 
         public void UseBow()
+        {
+            // Cannot interupt state, do nothing
+        }
+
+        public void UseSwordBeam()
         {
             // Cannot interupt state, do nothing
         }

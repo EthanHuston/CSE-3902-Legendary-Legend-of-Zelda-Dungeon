@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using LegendOfZelda.Enemies;
 using Microsoft.Xna.Framework.Graphics;
-namespace Sprint0
+
+namespace LegendOfZelda
 {
     class Fireball : IEnemy
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sprint0
+namespace LegendOfZelda
 {
     /// <summary>
     /// The main class.

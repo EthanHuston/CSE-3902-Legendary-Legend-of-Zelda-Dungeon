@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
-using Sprint0.Link.Interface;
-using Sprint0.Link.Items;
-using Sprint0.Link.State.NotMoving;
+using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.Items;
+using LegendOfZelda.Link.State.NotMoving;
 
-namespace Sprint0.Link
+namespace LegendOfZelda.Link
 {
     class Link : IPlayer
     {
@@ -135,17 +135,22 @@ namespace Sprint0.Link
 
         public void UseBomb()
         {
-            throw new System.NotImplementedException();
+            state.UseBomb();
         }
 
         public void UseBoomerang()
         {
-            throw new System.NotImplementedException();
+            state.UseBoomerang();
         }
 
         public void PickUpBoomerang()
         {
-            throw new System.NotImplementedException();
+            state.PickUpBoomerang();
+        }
+
+        public void UseSwordBeam()
+        {
+            state.UseSwordBeam();
         }
     }
 }

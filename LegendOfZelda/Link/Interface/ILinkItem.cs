@@ -1,4 +1,4 @@
-﻿namespace Sprint0.Link.Interface
+﻿namespace LegendOfZelda.Link.Interface
 {
     interface ILinkItem
     {
