@@ -28,18 +28,21 @@ namespace LegendOfZelda.Link.State.Attacking
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingUpLinkSprite();
-            link.BlockStateChange = true;
         }
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            link.CurrentSprite.Update();
             if (link.CurrentSprite.FinishedAnimation())
             {
                 link.BlockStateChange = false;
                 StopMoving();
             }
+            else
+            {
+                link.BlockStateChange = true;
+            }
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            link.CurrentSprite.Update();
         }
 
         public void Draw()

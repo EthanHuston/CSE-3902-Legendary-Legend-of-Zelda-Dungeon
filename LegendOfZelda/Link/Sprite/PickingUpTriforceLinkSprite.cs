@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link.Sprite
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
-        private const int totalFrames = 16;
+        private int delayCounter;
         private const int numRows = 1;
         private const int numColumns = 2;
 
@@ -22,12 +22,14 @@ namespace LegendOfZelda.Link.Sprite
             animationIsDone = false;
             flashRed = false;
             damageColorCounter = 0;
+            delayCounter = 0;
         }
 
         public void Update()
         {
-            animationIsDone = currentFrame >= totalFrames;
+            animationIsDone = delayCounter >= Constants.LinkPickingUpItemPauseTicks;
             if (FinishedAnimation()) return;
+            delayCounter++;
 
             if (++bufferFrame == Constants.FrameDelay)
             {

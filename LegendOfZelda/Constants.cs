@@ -12,7 +12,7 @@ namespace LegendOfZelda
         public const int LinkHealth = 100;
         public const int LinkDamageEffectTimeMs = 2000;
         public const int LinkDamageFlashDelayTicks = 5;
-        public const int LinkPickingUpItemPauseTicks = 5;
+        public const int LinkPickingUpItemPauseTicks = 60;
         public const int LinkUsingItemPauseTicks = 5;
         public const int LinkStrikingPauseTicks = 5;
         public const int LinkWalkingFrameDelay = 10;
