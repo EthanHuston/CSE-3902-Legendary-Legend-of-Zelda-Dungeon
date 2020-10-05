@@ -2,7 +2,6 @@
 Team Project for CSE 3902, creating the first dungeon of Legend of Zelda.
 
 ## Controls
----
 ### General
 |Action | Control |
 |:-|:-:|
