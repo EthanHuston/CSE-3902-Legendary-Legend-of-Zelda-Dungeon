@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.Enemies;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {

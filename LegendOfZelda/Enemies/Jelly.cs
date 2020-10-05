@@ -1,6 +1,6 @@
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using LegendOfZelda.Sprint2;
 
 namespace LegendOfZelda.Enemies
 {
