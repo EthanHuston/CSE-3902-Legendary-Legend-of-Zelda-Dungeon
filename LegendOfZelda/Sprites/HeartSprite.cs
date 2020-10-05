@@ -42,7 +42,7 @@ namespace LegendOfZelda
 
         public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
         {
-            int width = sprite.Width / Columns;
+            int width = sprite.Width / (Columns * 3);
             int height = sprite.Height / Rows;
             int row = (int)((float)currentFrame / (float)Columns);
             int column = currentFrame % Columns;
