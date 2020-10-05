@@ -28,7 +28,6 @@ namespace LegendOfZelda.Link.State.Item
         private void InitClass(LinkPlayer link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
             this.link.SpawnItem(new BoomerangFlyingItem(link, Constants.Direction.Down));
         }
 

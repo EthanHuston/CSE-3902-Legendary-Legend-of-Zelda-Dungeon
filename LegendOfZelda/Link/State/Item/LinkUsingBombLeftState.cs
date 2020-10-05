@@ -28,7 +28,6 @@ namespace LegendOfZelda.Link.State.Item
         private void InitClass(LinkPlayer link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemLeftLinkSprite();
             this.link.SpawnItem(new BombExplodingItem(link));
         }
 
