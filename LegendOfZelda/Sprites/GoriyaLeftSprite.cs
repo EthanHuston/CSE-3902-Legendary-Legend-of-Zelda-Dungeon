@@ -20,7 +20,7 @@ namespace LegendOfZelda
         public GoriyaLeftSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            Rows = 4;
+            Rows = 1;
             Columns = 2;
             currentFrame = 0;
             bufferFrame = 6;

@@ -25,7 +25,7 @@ namespace LegendOfZelda.Enemies
             this.spriteBatch = spriteBatch;
             pos.X = ConstantsSprint2.enemyNPCX;
             pos.Y = ConstantsSprint2.enemyNPCY;
-            velocity = 5;
+            velocity = 2;
         }
 
         public void Update()
@@ -138,6 +138,11 @@ namespace LegendOfZelda.Enemies
             }
 
             boomer = new GoriyaBoomerang(spriteBatch, pos, v);
+        }
+
+        private void keepInBounds()
+        {
+            
         }
 
         private void setUpSprite()

@@ -23,6 +23,7 @@ namespace LegendOfZelda.Enemies
         {
             posX += vx;
             posY += vy;
+            sprite.Update();
         }
 
         public void Draw()

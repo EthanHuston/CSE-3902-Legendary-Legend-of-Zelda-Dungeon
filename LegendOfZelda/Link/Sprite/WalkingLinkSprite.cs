@@ -23,7 +23,7 @@ namespace LegendOfZelda.Link.Sprite
         }
         public void Update()
         {
-            if (++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == Constants.LinkWalkingFrameDelay)
             {
                 currentFrame = currentFrame == totalFrames ? 0 : currentFrame + 1;
                 bufferFrame = 0;
@@ -45,7 +45,7 @@ namespace LegendOfZelda.Link.Sprite
         {
             int width = sprite.Width / numColumns;
             int height = sprite.Height / numRows;
-            int currentRow = 1;
+            int currentRow = 0;
             int currentColumn = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);

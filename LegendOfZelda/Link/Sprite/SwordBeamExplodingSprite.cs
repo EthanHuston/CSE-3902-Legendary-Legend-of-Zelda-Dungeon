@@ -51,6 +51,8 @@ namespace LegendOfZelda.Link.Sprite
 
             animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > Constants.SwordBeamExplodingRange;
 
+            spriteBatch.Begin();
+
             width = upLeftSprite.Width / numColumns;
             height = upLeftSprite.Height / numRows;
             spriteBatch.Draw(upLeftSprite, new Rectangle((int)position.X - xOffset, (int)position.Y - yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
@@ -66,6 +68,8 @@ namespace LegendOfZelda.Link.Sprite
             width = downRightSprite.Width / numColumns;
             height = downRightSprite.Height / numRows;
             spriteBatch.Draw(downRightSprite, new Rectangle((int)position.X + xOffset, (int)position.Y + yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
+
+            spriteBatch.End();
         }
 
         public bool FinishedAnimation()
