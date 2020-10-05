@@ -88,16 +88,16 @@ namespace LegendOfZelda.Link
             arrowUpSprite = content.Load<Texture2D>("Items/ArrowUp");
             arrowRightSprite = content.Load<Texture2D>("Items/ArrowRight");
             arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
-            bombExplodingSprite = content.Load<Texture2D>("Item/BombExploding");
-            boomerangFlyingSprite = content.Load<Texture2D>("Item/BoomerangFlying");
-            swordBeamDown = content.Load<Texture2D>("Item/SwordBeamDown");
-            swordBeamUp = content.Load<Texture2D>("Item/SwordBeamUp");
-            swordBeamRight = content.Load<Texture2D>("Item/SwordBeamRight");
-            swordBeamLeft = content.Load<Texture2D>("Item/SwordBeamLeft");
-            swordBeamExplodingDownLeft = content.Load <Texture2D>("Item/SwordBeamExplosionDownLeft");
-            swordBeamExplodingDownRight = content.Load <Texture2D>("Item/SwordBeamExplosionDownRight");
-            swordBeamExplodingUpLeft = content.Load <Texture2D>("Item/SwordBeamExplosionUpLeft");
-            swordBeamExplodingUpRight = content.Load <Texture2D>("Item/SwordBeamExplosionUpRight");
+            bombExplodingSprite = content.Load<Texture2D>("Items/BombExploding");
+            boomerangFlyingSprite = content.Load<Texture2D>("Items/BoomerangFlying");
+            swordBeamDown = content.Load<Texture2D>("Items/SwordBeamDown");
+            swordBeamUp = content.Load<Texture2D>("Items/SwordBeamUp");
+            swordBeamRight = content.Load<Texture2D>("Items/SwordBeamRight");
+            swordBeamLeft = content.Load<Texture2D>("Items/SwordBeamLeft");
+            swordBeamExplodingDownLeft = content.Load <Texture2D>("Items/SwordBeamExplosionDownLeft");
+            swordBeamExplodingDownRight = content.Load <Texture2D>("Items/SwordBeamExplosionDownRight");
+            swordBeamExplodingUpLeft = content.Load <Texture2D>("Items/SwordBeamExplosionUpLeft");
+            swordBeamExplodingUpRight = content.Load <Texture2D>("Items/SwordBeamExplosionUpRight");
         }
         // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()

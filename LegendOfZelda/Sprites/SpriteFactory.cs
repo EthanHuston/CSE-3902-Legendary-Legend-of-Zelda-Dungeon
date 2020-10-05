@@ -87,7 +87,7 @@ namespace LegendOfZelda
             //Load Item Sprites
             arrowSprite = content.Load<Texture2D>("Items/Arrow");
             bombSprite = content.Load<Texture2D>("Items/Bomb");
-            explodingBombSprite = content.Load<Texture2D>("Items/BombWithExplosion");
+            explodingBombSprite = content.Load<Texture2D>("Items/BombExploding");
             boomerangSprite = content.Load<Texture2D>("Items/Boomerang");
             bowSprite = content.Load<Texture2D>("Items/Bow");
             clockSprite = content.Load<Texture2D>("Items/Clock");
