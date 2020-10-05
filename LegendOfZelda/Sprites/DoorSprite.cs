@@ -23,7 +23,7 @@ namespace LegendOfZelda
         {
             int width = sprite.Width / 4;
             int height = sprite.Height / 4;
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, sprite.Width, sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(XValue, YValue, width, height);
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
