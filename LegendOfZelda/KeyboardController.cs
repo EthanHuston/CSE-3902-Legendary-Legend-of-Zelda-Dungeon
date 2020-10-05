@@ -9,10 +9,14 @@ namespace LegendOfZelda
     {
         private Game1 myGame;
         private Dictionary<Keys, ICommand> controllerMappings;
+        private List<Keys> oldKbState;
+        private List<Keys> repeatableKeys;
 
         public KeyboardController(Game1 game1)
         {
             myGame = game1;
+            oldKbState = new List<Keys>();
+            InitRepeatableKeys();
             controllerMappings = new Dictionary<Keys, ICommand>();
             RegisterCommand(Keys.Q, new QuitGameCommand(game1));
             RegisterCommand(Keys.R, new ResetGameCommand(game1));
@@ -51,16 +55,29 @@ namespace LegendOfZelda
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+
+            List<Keys> newKbState = new List<Keys>();
             foreach (Keys key in pressedKeys)
             {
-                if (controllerMappings.ContainsKey(key))
+                bool inOldKbState = oldKbState.Contains(key);
+                if (!repeatableKeys.Contains(key)) newKbState.Add(key);
+                if (controllerMappings.ContainsKey(key) && !inOldKbState)
                 {
                     controllerMappings[key].Execute();
                 }
             }
+            oldKbState = newKbState;
+        }
 
-            // TODO: Implement old state - if key is in old state and new state, don't execute
-
+        private void InitRepeatableKeys()
+        {
+            repeatableKeys = new List<Keys>()
+            {
+                { Keys.W },
+                { Keys.S },
+                { Keys.A },
+                { Keys.D },
+            };
         }
     }
 }
