@@ -14,7 +14,8 @@ namespace LegendOfZelda.Link.Items
                 // initialize to true because nothing has been spawned yet
                 { Constants.Item.Arrow, true },
                 { Constants.Item.Bomb, true },
-                { Constants.Item.Boomerang, true }
+                { Constants.Item.Boomerang, true },
+                { Constants.Item.SwordBeam, true }
             };
         }
 
@@ -28,6 +29,8 @@ namespace LegendOfZelda.Link.Items
                     return SpawnNewBomb(item);
                 case Constants.Item.Boomerang:
                     return SpawnNewBoomerang(item);
+                case Constants.Item.SwordBeam:
+                    return SpawnNewSwordBeam(item);
                 default:
                     return false;
             }
@@ -81,6 +84,16 @@ namespace LegendOfZelda.Link.Items
             return true;
         }
 
+        private bool SpawnNewSwordBeam(ILinkItem item)
+        {
+            if (ItemIsSpawnable[Constants.Item.SwordBeam] == false) return false; // exit if it cannot be spawned right now
+            ToggleSpawnableForSwordBeam();
+
+            spawnedItemList.Add(item);
+
+            return true;
+        }
+
         private bool SpawnNewBoomerang(ILinkItem item)
         {
             if (ItemIsSpawnable[Constants.Item.Boomerang] == false) return false; // exit if it cannot be spawned right now
@@ -104,6 +117,9 @@ namespace LegendOfZelda.Link.Items
                 case Constants.Item.Boomerang:
                     ToggleSpawnableForBoomerang();
                     break;
+                case Constants.Item.SwordBeam:
+                    ToggleSpawnableForSwordBeam();
+                    break;
             }
         }
 
@@ -121,6 +137,11 @@ namespace LegendOfZelda.Link.Items
         private void ToggleSpawnableForBomb()
         {
             ItemIsSpawnable[Constants.Item.Bomb] = !ItemIsSpawnable[Constants.Item.Bomb];
+        }
+
+        private void ToggleSpawnableForSwordBeam()
+        {
+            ItemIsSpawnable[Constants.Item.SwordBeam] = !ItemIsSpawnable[Constants.Item.SwordBeam];
         }
     }
 }

@@ -29,7 +29,7 @@ namespace LegendOfZelda.Link.State.NotMoving
         private void InitClass(LinkPlayer link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
+            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkUpSprite();
         }
 
         public void Update()

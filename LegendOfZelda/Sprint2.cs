@@ -143,6 +143,7 @@ namespace LegendOfZelda
         public void Update()
         {
             currentEnemy.Update();
+            currentBlock.Update();
         }
         public void Draw()
         {

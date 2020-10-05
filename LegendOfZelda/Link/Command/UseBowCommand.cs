@@ -1,9 +1,9 @@
 ﻿namespace LegendOfZelda.Link.Command
 {
-    class ArrowCommand : ICommand
+    class UseBowCommand : ICommand
     {
         private Game1 loz;
-        public ArrowCommand(Game1 game)
+        public UseBowCommand(Game1 game)
         {
             loz = game;
         }

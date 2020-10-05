@@ -12,6 +12,7 @@ namespace LegendOfZelda.Link.State.Walking
         private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
+        private int distanceWalked;
 
         public LinkWalkingDownState(LinkPlayer link)
         {
@@ -39,12 +40,17 @@ namespace LegendOfZelda.Link.State.Walking
             if (position.Y < Constants.MaxYPos)
             {
                 damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-                position.Y = position.Y + Constants.LinkWalkDistanceIntervalPx;
+                position.Y = position.Y + Constants.LinkWalkStepDistanceInterval;
+                distanceWalked += Constants.LinkWalkStepDistanceInterval;
                 link.SetPosition(position);
 
                 link.CurrentSprite.Update();
             }
-            StopMoving();
+
+            if (distanceWalked > Constants.LinkWalkDistanceInterval)
+            {
+                StopMoving();
+            }
         }
 
         public void Draw()

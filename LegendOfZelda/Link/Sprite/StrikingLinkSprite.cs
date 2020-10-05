@@ -46,7 +46,9 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
+            spriteBatch.Begin();
             Draw(spriteBatch, position, false);
+            spriteBatch.End();
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)

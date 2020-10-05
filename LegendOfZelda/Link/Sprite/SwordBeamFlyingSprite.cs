@@ -14,7 +14,9 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
+            spriteBatch.Begin();
             spriteBatch.Draw(sprite, position, Color.White);
+            spriteBatch.End();
         }
 
         public void Update()

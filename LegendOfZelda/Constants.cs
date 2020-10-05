@@ -9,13 +9,15 @@ namespace LegendOfZelda
         public const double SpriteScaler = 1;
 
         // Link
-        public const int LinkWalkDistanceIntervalPx = 5;
+        public const int LinkWalkStepDistanceInterval = 1;
+        public const int LinkWalkDistanceInterval = 20;
         public const int LinkHealth = 100;
         public const int LinkDamageEffectTimeMs = 2000;
         public const int LinkDamageFlashDelayTicks = 5;
         public const int LinkPickingUpItemPauseTicks = 5;
         public const int LinkUsingItemPauseTicks = 5;
         public const int LinkStrikingPauseTicks = 5;
+        public const int LinkWalkingFrameDelay = 10;
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;

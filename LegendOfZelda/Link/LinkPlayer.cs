@@ -47,11 +47,13 @@ namespace LegendOfZelda.Link
         public void Draw()
         {
             state.Draw();
+            spawnedItems.DrawAll();
         }
 
         public void Update()
         {
             state.Update();
+            spawnedItems.UpdateAll();
         }
 
         public void BeHealthy(int healAmount)

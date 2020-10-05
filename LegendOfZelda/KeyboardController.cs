@@ -34,7 +34,7 @@ namespace LegendOfZelda
             RegisterCommand(Keys.D1, new HeartContainerCommand(game1));
             RegisterCommand(Keys.D2, new TriforcePieceCommand(game1));
             RegisterCommand(Keys.D3, new BowCommand(game1));
-            RegisterCommand(Keys.D4, new ArrowCommand(game1));
+            RegisterCommand(Keys.D4, new UseBowCommand(game1));
             RegisterCommand(Keys.D5, new WoodenBoomerangHoldCommand(game1));
             RegisterCommand(Keys.D6, new WoodenBoomerangCommand(game1));
             RegisterCommand(Keys.D7, new BombCommand(game1));
