@@ -1,0 +1,15 @@
+Chris Lenart
+10/5/2020
+Sprint 2
+Fairy.cs and FairySprite.cs
+Nathan Murphy
+15 minutes
+Readability:
+Your code is clean and your variable names are specific and concise which makes your code easy to read.
+For FairySprite.cs in the Update() method, consider moving the logic that moves the fairy's position into a helper method like you 
+did with ChooseDirection() and CheckBounds() to make Update() a little easier to understand.
+Maintainability:
+Consider using the variables in the constants class for the min and max values for X and Y incase we change the screen size.
+You may want to move the logic that deals with the fairy's movement into the Fairy class instead of the FairySprite class because
+the FairySprite class should only deal with animating the sprite. Then when you call fairySprite.Draw() in the Fairy class, you
+just pass the x and y values as parameters.
