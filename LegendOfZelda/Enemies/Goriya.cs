@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.Enemies
 {
@@ -20,7 +21,7 @@ namespace LegendOfZelda.Enemies
 
         public Goriya(SpriteBatch spriteBatch)
         {
-            this.sprite = SpriteFactory.Instance.CreateDogLikeMonsterSprite();
+            this.sprite = SpriteFactory.Instance.CreateGoriyaDownSprite();
             this.spriteBatch = spriteBatch;
             pos.X = ConstantsSprint2.enemyNPCX;
             pos.Y = ConstantsSprint2.enemyNPCY;
@@ -39,7 +40,7 @@ namespace LegendOfZelda.Enemies
             if(updateCount % attackTime == 0)
             {
                 boomerangThrown = true;
-                attack();
+                Attack();
             }
             else if (boomerangThrown)
             {
@@ -49,7 +50,7 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, pos.X, pos.Y);
+            sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
         }
 
         public Vector2 getPos()
@@ -64,10 +65,10 @@ namespace LegendOfZelda.Enemies
 
         private void move()
         {
-            if(updateCount % changeDirection == 0)
+            if((updateCount % changeDirection) == 0)
             {
                 direction = rand.Next(0, 3);
-                changeDirection();
+                ChangeDirection();
             }      
 
             switch (direction)
@@ -94,7 +95,7 @@ namespace LegendOfZelda.Enemies
 
         }
 
-        private void changeDirection()
+        private void ChangeDirection()
         {
             switch (direction)
             {
@@ -115,9 +116,9 @@ namespace LegendOfZelda.Enemies
             }
         }
 
-        private void attack()
+        private void Attack()
         {
-            Vector2 v;
+            Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
                 case 0:

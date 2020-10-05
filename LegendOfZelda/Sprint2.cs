@@ -137,5 +137,16 @@ namespace LegendOfZelda
             }
             currentBlock = listOfBlocks[blockIndex];
         }
+
+        public void Update()
+        {
+            currentEnemy.Update();
+        }
+        public void Draw()
+        {
+            currentItem.itemAction();
+            currentEnemy.Draw();
+            currentBlock.Draw();
+        }
     }
 }
