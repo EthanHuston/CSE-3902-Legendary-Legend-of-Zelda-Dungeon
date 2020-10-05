@@ -62,8 +62,8 @@ namespace LegendOfZelda
             else
             {
                 Random rand = new Random();
-                int xy = rand.Next(0, 1); // 0 for x, 1 for y
-                int pn = rand.Next(0, 1); // 0 right/down. 1 for left/up
+                int xy = rand.Next(0, 2); // 0 for x, 1 for y
+                int pn = rand.Next(0, 2); // 0 right/down. 1 for left/up
 
                 if (xy == 0 && pn == 0)
                 {
