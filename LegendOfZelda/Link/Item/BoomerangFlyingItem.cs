@@ -57,8 +57,10 @@ namespace LegendOfZelda.Link.Item
 
         private void MoveBoomerang()
         {
-            returningToLink = GetDistanceFromLink() > Constants.BoomerangMaxDistanceFromLink;
-            returningToLink = Utility.ItemIsOutOfBounds(position);
+            if (!returningToLink)
+            {
+                returningToLink = GetDistanceFromLink() > Constants.BoomerangMaxDistanceFromLink || Utility.ItemIsOutOfBounds(position);
+            }
             switch (direction)
             {
                 case Constants.Direction.Up:
