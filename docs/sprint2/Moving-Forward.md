@@ -8,3 +8,7 @@ Finally, we can close stories after we implement them and make a general debuggi
 Currently, Link uses its own items container to keep track of items that it spawns, like arrows, boomerangs, and bombs. Moving forward, it would be easier to make a container in Game1 (or someplace similar) that holds and keeps track of all items. This would improve code readability, as we will only need to update items in one place. In addition, it would improve maintainability, as it will help later when we are implementing collision detection.
 
 Additionally, we need to use more helper/utility methods to clean up code and improve readability and reusability. This will also allow us to shorten the amount of code we have, as we can move frequently reused code unto the Utility class.
+
+Finally, there are several places where we could create abstract classes to help cut down and reuse more code. One of these places in for Link's states, which repeat a lot of code because the call to change a state does nothing in many instances. We could create an abstract class to solve this and then only override the methods we need to change.
+
+Overall, though, we are happy with our code and the amount of cohesion and coupling that we have.
