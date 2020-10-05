@@ -1,6 +1,6 @@
 # Moving Forward
 ### Agile and Team Planning
-For Sprint 3, we need to do a better job at planning out stories an estimating how long they will take. With Sprint 2 behind us, we think we have a better idea of how long each story will take to implement, which will allow us to better estimate how many story points to give it. In addition, now that we are more familiar with Azure Boards, we will be able to create Sprint 3 and the stories more towards the beginning of the sprint, allowing us to follow the ideal trendline on the [[burndown chart](BurndownChart.jpg)](BurndownChart.jpg).
+For Sprint 3, we need to do a better job at planning out stories an estimating how long they will take. With Sprint 2 behind us, we think we have a better idea of how long each story will take to implement, which will allow us to better estimate how many story points to give it. In addition, now that we are more familiar with Azure Boards, we will be able to create Sprint 3 and the stories more towards the beginning of the sprint, allowing us to follow the ideal trendline on the [burndown chart](BurndownChart.jpg).
 
 Finally, we can close stories after we implement them and make a general debugging story later that will be saved for the end of the sprint. We will close the stories as we finish them and start teh debugging story towards the end of the sprint once we merge everything to master and start debugging the game. This will allow the [burndown chart](BurndownChart.jpg) of more closely follow the trendline.
 
