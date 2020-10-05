@@ -14,7 +14,7 @@ namespace LegendOfZelda.Enemies
         private int velocity;
         private int updateCount = 0;
         private int direction = 1;
-        private int changeDirection = 50;
+        private int changeDirection = 100;
         private bool boomerangInitialized = false;
         private bool boomerangActive = false;
         private int attackWaitTime = 150;
@@ -39,6 +39,8 @@ namespace LegendOfZelda.Enemies
 
             if (!boomerangActive)
                 move();
+
+            keepInBounds();
 
             if (updateCount % attackWaitTime == 0)
                 Attack();
@@ -118,6 +120,29 @@ namespace LegendOfZelda.Enemies
             }
         }
 
+        private void ChangeDirection(int dir)
+        {
+            direction = dir;
+
+            switch (direction)
+            {
+                case 0: // Up
+                    setUpSprite();
+                    break;
+                case 1: // Down
+                    setDownSprite();
+                    break;
+                case 2: // Left
+                    setLeftSprite();
+                    break;
+                case 3: // Right
+                    setRightSprite();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void Attack()
         {
             boomerangActive = true;
@@ -147,7 +172,30 @@ namespace LegendOfZelda.Enemies
 
         private void keepInBounds()
         {
-
+            if (pos.X < Constants.MinXPos)
+            {
+                pos.X += velocity;
+                ChangeDirection(3); // Right
+            }
+                
+            else if (pos.X > Constants.MaxXPos)
+            {
+                pos.X -= velocity;
+                ChangeDirection(2); // Left
+            }
+                
+            if (pos.Y < Constants.MinYPos)
+            {
+                pos.Y += velocity;
+                ChangeDirection(1); // Down
+            }
+                
+            else if (pos.Y > Constants.MaxYPos)
+            {
+                pos.Y -= velocity;
+                ChangeDirection(0); // Up
+            }
+                
         }
 
         private void setUpSprite()

@@ -25,7 +25,7 @@ namespace LegendOfZelda.Sprites
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 3)
+            if (bufferFrame == 2)
             {
                 currentFrame++;
                 bufferFrame = 0;
