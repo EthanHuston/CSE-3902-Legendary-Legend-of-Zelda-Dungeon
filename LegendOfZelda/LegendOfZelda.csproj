@@ -57,6 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IBlock.cs" />
     <Compile Include="Item\Bomb.cs" />
     <Compile Include="Item\Boomerang.cs" />
     <Compile Include="Item\Bow.cs" />
