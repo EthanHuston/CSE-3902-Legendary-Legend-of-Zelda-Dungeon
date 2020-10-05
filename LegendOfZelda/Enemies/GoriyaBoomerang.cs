@@ -44,6 +44,10 @@ namespace LegendOfZelda.Enemies
         {
             sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
         }
+        public void ResetPosition()
+        {
+
+        }
 
     }
 }

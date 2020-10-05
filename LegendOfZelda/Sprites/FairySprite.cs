@@ -62,8 +62,8 @@ namespace LegendOfZelda
             else
             {
                 Random rand = new Random();
-                int xy = rand.Next(0, 1); // 0 for x, 1 for y
-                int pn = rand.Next(0, 1); // 0 right/down. 1 for left/up
+                int xy = rand.Next(0, 2); // 0 for x, 1 for y
+                int pn = rand.Next(0, 2); // 0 right/down. 1 for left/up
 
                 if (xy == 0 && pn == 0)
                 {
@@ -104,7 +104,7 @@ namespace LegendOfZelda
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal, 2 * sprite.Width, 2 * sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal,(int) (1.25 * sprite.Width), (int)(1.25 * sprite.Height));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);

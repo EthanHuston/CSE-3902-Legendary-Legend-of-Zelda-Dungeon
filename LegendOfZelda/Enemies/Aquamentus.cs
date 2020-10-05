@@ -113,5 +113,9 @@ namespace LegendOfZelda.Enemies
         {
             sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
         }
+        public void ResetPosition()
+        {
+
+        }
     }
 }

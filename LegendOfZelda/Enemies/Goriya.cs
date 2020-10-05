@@ -164,5 +164,9 @@ namespace LegendOfZelda.Enemies
         {
             sprite = SpriteFactory.Instance.CreateGoriyaRightSprite();
         }
+        public void ResetPosition()
+        {
+
+        }
     }
 }

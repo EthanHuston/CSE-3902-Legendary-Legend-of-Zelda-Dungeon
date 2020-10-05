@@ -37,5 +37,8 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             return posY;
         }
+        public void Update()
+        {
+        }
     }
 }

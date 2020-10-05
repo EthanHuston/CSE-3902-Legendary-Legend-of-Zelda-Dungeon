@@ -24,5 +24,8 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             roomSprite.Draw(sb, posX, posY);
         }
+        public void Update()
+        {
+        }
     }
 }
