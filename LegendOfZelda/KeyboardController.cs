@@ -19,7 +19,6 @@ namespace LegendOfZelda
             this.myGame = game1;
             controllerMappings = new Dictionary<Keys, ICommand>();
             this.RegisterCommand(Keys.Q, new QuitGameCommand(game1));
-            this.RegisterCommand(Keys.D0, new QuitGameCommand(game1));
             this.RegisterCommand(Keys.W, new WalkingForwardCommand(game1));
             this.RegisterCommand(Keys.Up, new WalkingForwardCommand(game1));
             this.RegisterCommand(Keys.A, new WalkingLeftCommand(game1));

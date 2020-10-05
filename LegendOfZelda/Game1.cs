@@ -16,6 +16,9 @@ namespace LegendOfZelda
         public IPlayer link;
         List<object> controllerList;
         KeyboardController keyboardController;
+        private int enemyIndex = 0;
+        private int itemIndex = 0;
+        private int blockIndex = 0;
         
         public Game1()
         {

@@ -11,66 +11,66 @@ namespace LegendOfZelda
     public class Sprint2
     {
         private Game1 game;
-        private LinkedList<IBlock> listOfBlocks;
-        private LinkedList<IEnemy> listOfEnemies;
-        private LinkedList<IItem> listOfItems;
+        private List<IBlock> listOfBlocks;
+        private List<IEnemy> listOfEnemies;
+        private List<IItem> listOfItems;
 
         public Sprint2(Game1 game)
         {
             this.game = game;
-            listOfBlocks = new LinkedList<IBlock>();
+            listOfBlocks = new List<IBlock>();
             AddBlocksToList();
 
-            listOfEnemies = new LinkedList<IEnemy>();
+            listOfEnemies = new List<IEnemy>();
             AddEnemiesToList();
 
-            listOfItems = new LinkedList<IItem>();
+            listOfItems = new List<IItem>();
             AddItemsToList();
         }
 
         private void AddBlocksToList()
         {
-            listOfBlocks.AddLast(new BombedOpening(game.SpriteBatch));
-            listOfBlocks.AddLast(new BrickTile(game.SpriteBatch));
-            listOfBlocks.AddLast(new Fire(game.SpriteBatch));
-            listOfBlocks.AddLast(new LadderTile(game.SpriteBatch));
-            listOfBlocks.AddLast(new LockedDoor(game.SpriteBatch));
-            listOfBlocks.AddLast(new OpenDoor(game.SpriteBatch));
-            listOfBlocks.AddLast(new ShutDoor(game.SpriteBatch));
-            listOfBlocks.AddLast(new Square(game.SpriteBatch));
-            listOfBlocks.AddLast(new Stairs(game.SpriteBatch));
-            listOfBlocks.AddLast(new Statues(game.SpriteBatch));
-            listOfBlocks.AddLast(new Walls(game.SpriteBatch, ConstantsSprint2.WallSpawnLocationX, ConstantsSprint2.WallSpawnLocationY)); 
+            listOfBlocks.Add(new BombedOpening(game.SpriteBatch));
+            listOfBlocks.Add(new BrickTile(game.SpriteBatch));
+            listOfBlocks.Add(new Fire(game.SpriteBatch));
+            listOfBlocks.Add(new LadderTile(game.SpriteBatch));
+            listOfBlocks.Add(new LockedDoor(game.SpriteBatch));
+            listOfBlocks.Add(new OpenDoor(game.SpriteBatch));
+            listOfBlocks.Add(new ShutDoor(game.SpriteBatch));
+            listOfBlocks.Add(new Square(game.SpriteBatch));
+            listOfBlocks.Add(new Stairs(game.SpriteBatch));
+            listOfBlocks.Add(new Statues(game.SpriteBatch));
+            listOfBlocks.Add(new Walls(game.SpriteBatch, ConstantsSprint2.WallSpawnLocationX, ConstantsSprint2.WallSpawnLocationY));
         }
 
         private void AddEnemiesToList()
         {
-            listOfEnemies.AddLast(new Aquamentus(game.SpriteBatch));
-            listOfEnemies.AddLast(new Bat(game.SpriteBatch));
-            listOfEnemies.AddLast(new Goriya(game.SpriteBatch));
-            listOfEnemies.AddLast(new Hand(game.SpriteBatch));
-            listOfEnemies.AddLast(new Jelly(game.SpriteBatch));
-            listOfEnemies.AddLast(new Merchant(game.SpriteBatch));
-            listOfEnemies.AddLast(new OldMan(game.SpriteBatch));
-            listOfEnemies.AddLast(new Skeleton(game.SpriteBatch));
-            listOfEnemies.AddLast(new SpikeTrap(game.SpriteBatch));
+            listOfEnemies.Add(new Aquamentus(game.SpriteBatch));
+            listOfEnemies.Add(new Bat(game.SpriteBatch));
+            listOfEnemies.Add(new Goriya(game.SpriteBatch));
+            listOfEnemies.Add(new Hand(game.SpriteBatch));
+            listOfEnemies.Add(new Jelly(game.SpriteBatch));
+            listOfEnemies.Add(new Merchant(game.SpriteBatch));
+            listOfEnemies.Add(new OldMan(game.SpriteBatch));
+            listOfEnemies.Add(new Skeleton(game.SpriteBatch));
+            listOfEnemies.Add(new SpikeTrap(game.SpriteBatch));
         }
 
         private void AddItemsToList()
         {
-            listOfItems.AddLast(new Arrow(game.SpriteBatch));
-            listOfItems.AddLast(new Bomb(game.SpriteBatch));
-            listOfItems.AddLast(new Boomerang(game.SpriteBatch));
-            listOfItems.AddLast(new Bow(game.SpriteBatch));
-            listOfItems.AddLast(new Clock(game.SpriteBatch));
-            listOfItems.AddLast(new Compass(game.SpriteBatch));
-            listOfItems.AddLast(new Fairy(game.SpriteBatch));
-            listOfItems.AddLast(new Heart(game.SpriteBatch));
-            listOfItems.AddLast(new HeartContainer(game.SpriteBatch));
-            listOfItems.AddLast(new Key(game.SpriteBatch));
-            listOfItems.AddLast(new Map(game.SpriteBatch));
-            listOfItems.AddLast(new Rupee(game.SpriteBatch));
-            listOfItems.AddLast(new Triforce(game.SpriteBatch));
+            listOfItems.Add(new Arrow(game.SpriteBatch));
+            listOfItems.Add(new Bomb(game.SpriteBatch));
+            listOfItems.Add(new Boomerang(game.SpriteBatch));
+            listOfItems.Add(new Bow(game.SpriteBatch));
+            listOfItems.Add(new Clock(game.SpriteBatch));
+            listOfItems.Add(new Compass(game.SpriteBatch));
+            listOfItems.Add(new Fairy(game.SpriteBatch));
+            listOfItems.Add(new Heart(game.SpriteBatch));
+            listOfItems.Add(new HeartContainer(game.SpriteBatch));
+            listOfItems.Add(new Key(game.SpriteBatch));
+            listOfItems.Add(new Map(game.SpriteBatch));
+            listOfItems.Add(new Rupee(game.SpriteBatch));
+            listOfItems.Add(new Triforce(game.SpriteBatch));
         }
     }
 }
