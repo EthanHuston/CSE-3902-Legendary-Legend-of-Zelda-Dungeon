@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link.Item
         private SpriteBatch spriteBatch;
         private const Constants.Item type = Constants.Item.Arrow;
 
-        public BombExplodingItem(Link link)
+        public BombExplodingItem(LinkPlayer link)
         {
             this.position = new Vector2();
             this.spriteBatch = link.Game.SpriteBatch;

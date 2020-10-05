@@ -6,25 +6,25 @@ namespace LegendOfZelda.Link.State.Attacking
 {
     class LinkAttackingDownState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkAttackingDownState(Link link)
+        public LinkAttackingDownState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkAttackingDownState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkAttackingDownState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();

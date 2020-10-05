@@ -11,11 +11,11 @@ namespace LegendOfZelda.Link.Item
         private Vector2 position;
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
-        private Link link;
+        private LinkPlayer link;
         private Constants.Direction direction;
         private const Constants.Item type = Constants.Item.Boomerang;
 
-        public BoomerangFlyingItem(Link link, Constants.Direction direction)
+        public BoomerangFlyingItem(LinkPlayer link, Constants.Direction direction)
         {
             this.link = link;
             spriteBatch = link.Game.SpriteBatch;
