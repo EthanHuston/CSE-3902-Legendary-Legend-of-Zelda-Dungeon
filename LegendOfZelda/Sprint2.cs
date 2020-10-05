@@ -14,6 +14,9 @@ namespace LegendOfZelda
         private List<IBlock> listOfBlocks;
         private List<IEnemy> listOfEnemies;
         private List<IItem> listOfItems;
+        private int enemyIndex = 0;
+        private int itemIndex = 0;
+        private int blockIndex = 0;
 
         public Sprint2(Game1 game)
         {
@@ -71,6 +74,23 @@ namespace LegendOfZelda
             listOfItems.Add(new Map(game.SpriteBatch));
             listOfItems.Add(new Rupee(game.SpriteBatch));
             listOfItems.Add(new Triforce(game.SpriteBatch));
+        }
+
+        public void NextItem()
+        {
+            itemIndex++;
+            if(itemIndex == 13)
+            {
+                itemIndex = 0;
+            }
+        }
+        public void PreviousItem()
+        {
+            itemIndex--;
+            if(itemIndex == -1)
+            {
+                itemIndex = 12;
+            }
         }
     }
 }

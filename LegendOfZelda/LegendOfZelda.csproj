@@ -90,6 +90,8 @@
     <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
     <Compile Include="Item\Map.cs" />
     <Compile Include="Item\Rupee.cs" />
+    <Compile Include="NextItemCommand.cs" />
+    <Compile Include="PreviousItemCommand.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\ArrowCommand.cs" />
     <Compile Include="Link\Command\BombCommand.cs" />

@@ -12,13 +12,10 @@ namespace LegendOfZelda
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
-        public ISprite sprite;
         public IPlayer link;
         List<object> controllerList;
         KeyboardController keyboardController;
-        private int enemyIndex = 0;
-        private int itemIndex = 0;
-        private int blockIndex = 0;
+        public Sprint2 sprint2;
         
         public Game1()
         {
@@ -34,6 +31,7 @@ namespace LegendOfZelda
             controllerList = new List<object>();
             controllerList.Add(keyboardController);
             SpriteBatch = new SpriteBatch(GraphicsDevice);
+            sprint2 = new Sprint2(this);
 
             base.Initialize();
         }
