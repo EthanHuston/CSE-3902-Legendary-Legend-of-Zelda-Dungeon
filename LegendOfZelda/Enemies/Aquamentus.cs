@@ -6,8 +6,8 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private int posX = Sprint2.enemyNPCX;
-        private int posY = Sprint2.enemyNPCY;
+        private int posX = ConstantsSprint2.enemyNPCX;
+        private int posY = ConstantsSprint2.enemyNPCY;
         private int vx = 5;
         private int updateCount = 0;
         private int switchDirection = 50;

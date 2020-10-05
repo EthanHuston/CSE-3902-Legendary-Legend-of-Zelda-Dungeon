@@ -14,7 +14,7 @@ namespace LegendOfZelda.Enemies
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, Sprint2.enemyNPCX, Sprint2.enemyNPCY);
+            sprite.Draw(spriteBatch, ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         }
 
         public void Update()

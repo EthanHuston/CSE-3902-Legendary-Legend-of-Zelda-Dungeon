@@ -22,8 +22,8 @@ namespace LegendOfZelda.Enemies
         {
             this.sprite = SpriteFactory.Instance.CreateDogLikeMonsterSprite();
             this.spriteBatch = spriteBatch;
-            pos.X = Sprint2.enemyNPCX;
-            pos.Y = Sprint2.enemyNPCY;
+            pos.X = ConstantsSprint2.enemyNPCX;
+            pos.Y = ConstantsSprint2.enemyNPCY;
             velocity = 5;
         }
 
