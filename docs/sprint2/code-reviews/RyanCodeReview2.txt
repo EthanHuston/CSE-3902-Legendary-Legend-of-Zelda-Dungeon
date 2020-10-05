@@ -3,7 +3,7 @@ Ryan Stuckey
 Sprint 2
 Fire.cs and FireSprite.cs
 Saumyah Patel
-TODO: time taken
+12 minutes
 Readability:
 Fire.cs: code is very easy to read. Nothing too fancy going on here and I can see what is going on just by glancing at the code.
 FireSprite.cs: Again, code is easy to understand. Variables have good names and code is written so it can be read and interpreted easily.
