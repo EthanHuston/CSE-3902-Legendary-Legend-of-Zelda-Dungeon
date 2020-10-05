@@ -98,7 +98,7 @@ namespace LegendOfZelda
             heartContainerSprite = content.Load<Texture2D>("Items/HeartContainer");
             keySprite = content.Load<Texture2D>("Items/Key");
             mapSprite = content.Load<Texture2D>("Items/Map");
-            rupeeSprite = content.Load<Texture2D>("Items/Ruppee");
+            rupeeSprite = content.Load<Texture2D>("Items/Rupee");
             triforceSprite = content.Load<Texture2D>("Items/TriforcePiece");
             //Load NPC Sprites
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
