@@ -102,6 +102,7 @@
     <Compile Include="NonInteractiveEnvironment\TileBlueGrass.cs" />
     <Compile Include="NonInteractiveEnvironment\TileWater.cs" />
     <Compile Include="ResetGameCommand.cs" />
+    <Compile Include="Sprites\GoriyaBoomerangSprite.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\ArrowCommand.cs" />
     <Compile Include="Link\Command\BombCommand.cs" />
