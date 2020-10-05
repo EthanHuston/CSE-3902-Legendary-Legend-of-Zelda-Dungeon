@@ -1,0 +1,12 @@
+Ryan Stuckey
+10/5/20
+Sprint 2
+Fire.cs and FireSprite.cs
+Saumyah Patel
+TODO: time taken
+Readability:
+Fire.cs: code is very easy to read. Nothing too fancy going on here and I can see what is going on just by glancing at the code.
+FireSprite.cs: Again, code is easy to understand. Variables have good names and code is written so it can be read and interpreted easily.
+Maintainability:
+Fire.cs: Overall pretty good. We might want to avoid casting if possible and make fireSprite be of type ISprite. This will make spawning it easy down the road as Game1 can just have a list of ISprites.
+FireSprite.cs: Consider making Rows and Columns private as we shouldn't need to access them outside of FireSprite (I could be wrong on this, I didn't check for references to it outside of FireSprite.cs). But maintainability is good; makes use of ISprite so it should be easy to use this sprite later.

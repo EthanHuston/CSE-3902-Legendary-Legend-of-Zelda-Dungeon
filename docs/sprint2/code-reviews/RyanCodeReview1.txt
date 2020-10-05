@@ -3,7 +3,7 @@ Ryan Stuckey
 Sprint 2
 Goriya.cs, GoriyaDownSprite.cs, GoriyaUpSprite, GoriyaRightSprite.cs, GoriyaLeftSprite.cs
 Chris Lenart
-15 minutes
+13 minutes
 Readability:
 Great. Methods are short and easy to understand what is going on. If there are more complex parts, Chris broke them off into methods to make code easier to read/understand.
 Maintainability:
