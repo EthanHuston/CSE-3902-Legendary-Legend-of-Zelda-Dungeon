@@ -19,6 +19,7 @@ namespace LegendOfZelda.Item
 
         public void itemAction()
         {
+            heartSprite.Update();
             heartSprite.Draw(sb, ConstantsSprint2.itemX, ConstantsSprint2.itemY);
         }
     }
