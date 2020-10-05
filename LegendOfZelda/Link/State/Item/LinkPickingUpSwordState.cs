@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.NotMoving;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State.Item
@@ -47,7 +48,9 @@ namespace LegendOfZelda.Link.State.Item
 
         public void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            float posX = link.GetPosition().X + Constants.LinkPickingUpSwordSpawnOffsetX;
+            float posY = link.GetPosition().Y + Constants.LinkPickingUpSwordSpawnOffsetY;
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Vector2(posX, posY), damaged);
         }
 
         public void MoveDown()

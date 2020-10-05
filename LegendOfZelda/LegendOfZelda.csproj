@@ -188,7 +188,6 @@
     <Compile Include="Link\State\Item\LinkPickingUpTriforceState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpHeartState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpSwordState.cs" />
-    <Compile Include="Link\State\Item\LinkPickingUpItemState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowLeftState .cs" />
     <Compile Include="Link\State\Item\LinkUsingBowRightState.cs" />
