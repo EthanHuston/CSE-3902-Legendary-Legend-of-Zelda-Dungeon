@@ -33,17 +33,7 @@ namespace LegendOfZelda.Link.State.Item
 
         public void Update()
         {
-            if (link.CurrentSprite.FinishedAnimation())
-            {
-                link.BlockStateChange = false;
-                StopMoving();
-            }
-            else
-            {
-                link.BlockStateChange = true;
-            }
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            link.CurrentSprite.Update();
+            StopMoving(); // because after we spawn the boomerang return to non-moving state
         }
 
         public void Draw()
