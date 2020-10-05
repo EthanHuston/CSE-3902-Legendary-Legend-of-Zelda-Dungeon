@@ -51,7 +51,7 @@ namespace LegendOfZelda.Enemies
                 movementBuffer = 0;
                 ChooseDirection();
             }
-
+            sprite.Update();
         }
 
         public void Draw()
@@ -83,8 +83,8 @@ namespace LegendOfZelda.Enemies
         private void ChooseDirection()
         {
             Random rand = new Random();
-            xDir = rand.Next(0, 1); // 0 for x, 1 for y
-            yDir = rand.Next(0, 1); // 0 right/down. 1 for left/up
+            xDir = rand.Next(0, 2); // 0 for x, 1 for y
+            yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
     }
 }

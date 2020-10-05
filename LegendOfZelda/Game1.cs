@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using LegendOfZelda.Link;
 
 namespace LegendOfZelda
 {
@@ -37,6 +34,7 @@ namespace LegendOfZelda
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
             sprint2 = new Sprint2(this);
+            link = new Link.LinkPlayer(this);
 
             base.Initialize();
         }
@@ -62,6 +60,7 @@ namespace LegendOfZelda
                 controller.Update();
             }
 
+            link.Update();
             sprint2.Update();
 
             base.Update(gameTime);
@@ -73,6 +72,7 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            link.Draw();
             sprint2.Draw();
         }
     }

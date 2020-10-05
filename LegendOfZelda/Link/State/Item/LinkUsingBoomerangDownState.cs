@@ -7,25 +7,25 @@ namespace LegendOfZelda.Link.State.Item
 {
     class LinkUsingBoomerangDownState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkUsingBoomerangDownState(Link link)
+        public LinkUsingBoomerangDownState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkUsingBoomerangDownState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkUsingBoomerangDownState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();

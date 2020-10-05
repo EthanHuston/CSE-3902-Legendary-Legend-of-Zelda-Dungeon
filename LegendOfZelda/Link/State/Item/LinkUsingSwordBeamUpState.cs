@@ -7,25 +7,25 @@ namespace LegendOfZelda.Link.State.Item
 {
     class LinkUsingSwordBeamUpState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkUsingSwordBeamUpState(Link link)
+        public LinkUsingSwordBeamUpState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkUsingSwordBeamUpState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkUsingSwordBeamUpState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemUpLinkSprite();

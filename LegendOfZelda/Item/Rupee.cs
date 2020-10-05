@@ -19,6 +19,7 @@ namespace LegendOfZelda.Item
 
         public void itemAction()
         {
+            rupeeSprite.Update();
             rupeeSprite.Draw(sb, ConstantsSprint2.itemX, ConstantsSprint2.itemY);
         }
     }

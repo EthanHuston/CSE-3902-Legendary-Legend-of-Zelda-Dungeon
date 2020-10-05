@@ -25,7 +25,7 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             movementBuffer++;
-            if (movementBuffer == 6)
+            if (movementBuffer == 20)
             {
                 movementBuffer = 0;
                 ChooseDirection();
@@ -34,6 +34,7 @@ namespace LegendOfZelda.Enemies
             {
                 Move();
             }
+            sprite.Update();
         }
 
         public void Draw()
@@ -43,8 +44,8 @@ namespace LegendOfZelda.Enemies
         private void ChooseDirection()
         {
             Random rand = new Random();
-            upDown = rand.Next(0, 1); // 0 for x, 1 for y
-            leftRight = rand.Next(0, 1); // 0 right/down. 1 for left/up
+            upDown = rand.Next(0, 2); // 0 for x, 1 for y
+            leftRight = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
         private void Move()
         {

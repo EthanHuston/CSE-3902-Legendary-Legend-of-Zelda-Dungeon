@@ -8,25 +8,25 @@ namespace LegendOfZelda.Link.State.NotMoving
 {
     class LinkStandingStillUpState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkStandingStillUpState(Link link)
+        public LinkStandingStillUpState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkStandingStillUpState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkStandingStillUpState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();

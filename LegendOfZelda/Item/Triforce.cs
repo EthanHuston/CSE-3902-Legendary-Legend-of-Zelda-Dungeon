@@ -19,6 +19,7 @@ namespace LegendOfZelda.Item
 
         public void itemAction()
         {
+            triforceSprite.Update();
             triforceSprite.Draw(sb, ConstantsSprint2.itemX, ConstantsSprint2.itemY);
         }
     }

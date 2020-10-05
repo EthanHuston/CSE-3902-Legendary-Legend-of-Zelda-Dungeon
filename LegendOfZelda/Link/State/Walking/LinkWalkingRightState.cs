@@ -9,25 +9,25 @@ namespace LegendOfZelda.Link.State.Walking
 {
     class LinkWalkingRightState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkWalkingRightState(Link link)
+        public LinkWalkingRightState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkWalkingRightState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkWalkingRightState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingRightLinkSprite();
