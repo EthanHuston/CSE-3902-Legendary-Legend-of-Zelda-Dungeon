@@ -8,9 +8,9 @@ namespace LegendOfZelda.Sprites
         private readonly Texture2D sprite;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 7;
+        private const int totalFrames = 8;
         private const int numRows = 1;
-        private const int numColumns = 2;
+        private const int numColumns = 8;
 
         public GoriyaBoomerangSprite(Texture2D sprite)
         {
@@ -38,7 +38,9 @@ namespace LegendOfZelda.Sprites
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
             Rectangle destinationRectangle = new Rectangle(posX, posY, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
+            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
         }
 
 
