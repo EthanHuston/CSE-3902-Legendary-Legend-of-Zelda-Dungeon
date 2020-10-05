@@ -17,6 +17,9 @@ namespace LegendOfZelda
         private int enemyIndex = 0;
         private int itemIndex = 0;
         private int blockIndex = 0;
+        public IBlock currentBlock;
+        public IEnemy currentEnemy;
+        public IItem currentItem;
 
         public Sprint2(Game1 game)
         {
@@ -29,6 +32,8 @@ namespace LegendOfZelda
 
             listOfItems = new List<IItem>();
             AddItemsToList();
+
+            currentItem = listOfItems[0];
         }
 
         private void AddBlocksToList()
@@ -83,6 +88,7 @@ namespace LegendOfZelda
             {
                 itemIndex = 0;
             }
+            currentItem = listOfItems(itemIndex);
         }
         public void PreviousItem()
         {

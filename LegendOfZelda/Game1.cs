@@ -58,8 +58,6 @@ namespace LegendOfZelda
                 controller.Update();
             }
 
-            sprite.Update();
-
             base.Update(gameTime);
         }
 
