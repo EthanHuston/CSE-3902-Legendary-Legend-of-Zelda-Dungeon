@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Item;
+using LegendOfZelda.Link;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,12 @@ namespace LegendOfZelda
         public IBlock currentBlock;
         public IEnemy currentEnemy;
         public IItem currentItem;
+        private IPlayer link;
 
         public Sprint2(Game1 game)
         {
             this.game = game;
+            link = new LinkPlayer(this.game);
             listOfBlocks = new List<IBlock>();
             AddBlocksToList();
 
@@ -140,10 +143,12 @@ namespace LegendOfZelda
 
         public void Update()
         {
+            link.Update();
             currentEnemy.Update();
         }
         public void Draw()
         {
+            link.Draw();
             currentItem.itemAction();
             currentEnemy.Draw();
             currentBlock.Draw();
