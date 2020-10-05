@@ -60,6 +60,7 @@ namespace LegendOfZelda
                 controller.Update();
             }
 
+            link.Update();
             sprint2.Update();
 
             base.Update(gameTime);
@@ -71,6 +72,7 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            link.Draw();
             sprint2.Draw();
         }
     }
