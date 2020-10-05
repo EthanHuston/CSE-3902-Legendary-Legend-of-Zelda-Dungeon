@@ -9,7 +9,7 @@
         public const int enemyNPCX = 500;
         public const int enemyNPCY = 200;
         public const int itemListCount = 0;
-        public const int ieX = 20;
-        public const int ieY = 600;
+        public const int ieX = 200;
+        public const int ieY = 100;
     }
 }
