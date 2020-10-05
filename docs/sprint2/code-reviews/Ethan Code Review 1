@@ -1,0 +1,11 @@
+Ethan Huston
+9/27/2020
+Sprint 2
+MapSprite.cs and Map.cs
+Nathan Murphy
+10 minutes
+Readability:
+Readability of the classes is great, since logic for the Map and Map Sprites are very simple there is not much extra code needed
+Maintainability:
+Maintainabilty of the code can be interpreted from the standpoint of collision handling needing to be implemented for Sprint3, these classes
+may need some changes when this occurs so that the location logic of the Map can be handled correctly.
