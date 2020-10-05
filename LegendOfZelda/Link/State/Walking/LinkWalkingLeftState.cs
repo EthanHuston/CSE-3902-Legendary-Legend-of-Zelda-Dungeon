@@ -35,17 +35,16 @@ namespace LegendOfZelda.Link.State.Walking
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             Vector2 position = link.GetPosition();
-            position.X = position.X - Constants.LinkWalkDistanceIntervalPx;
-            if (position.X <= Constants.MinXPos)
+            if (position.Y < Constants.MaxYPos)
             {
-                StopMoving();
-                return;
-            }
-            link.SetPosition(position);
+                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+                position.X = position.X - Constants.LinkWalkDistanceIntervalPx;
+                link.SetPosition(position);
 
-            link.CurrentSprite.Update();
+                link.CurrentSprite.Update();
+            }
+            StopMoving();
         }
 
         public void Draw()

@@ -58,7 +58,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public bool FinishedAnimation()
         {
-            return true; // because animation can be exited at any time
+            return false; // because animation can be exited at any time
         }
     }
 }
