@@ -589,7 +589,7 @@
 /processorParam:TextureFormat=Color
 /build:Items/Map.png
 
-#begin Items/Ruppee.png
+#begin Items/Rupee.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -599,7 +599,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Items/Ruppee.png
+/build:Items/Rupee.png
 
 #begin Items/SwordBeamDown.png
 /importer:TextureImporter
