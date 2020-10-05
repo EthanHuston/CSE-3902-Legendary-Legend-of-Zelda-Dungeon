@@ -19,10 +19,7 @@ namespace LegendOfZelda.Item
 
         public void itemAction()
         {
-            if (Sprint2.itemListCount == itemIndex)
-            {
-                bombSprite.Draw(sb, Sprint2.itemX, Sprint2.itemY);
-            }
+            bombSprite.Draw(sb, ConstantsSprint2.itemX, ConstantsSprint2.itemY);
         }
     }
 }
