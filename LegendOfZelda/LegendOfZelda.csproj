@@ -73,6 +73,7 @@
     <Compile Include="Link\Item\BombExplodingItem.cs" />
     <Compile Include="Link\Item\BoomerangFlyingItem.cs" />
     <Compile Include="Link\Item\SwordBeamItem.cs" />
+    <Compile Include="Link\LinkPlayer.cs" />
     <Compile Include="Link\Sprite\ArrowFlyingSprite.cs" />
     <Compile Include="Link\Sprite\SwordBeamExplodingSprite.cs" />
     <Compile Include="Link\Sprite\SwordBeamFlyingSprite.cs" />
@@ -124,7 +125,6 @@
     <Compile Include="Link\Interface\ISpawnedItems.cs" />
     <Compile Include="Link\Interface\ILinkItem.cs" />
     <Compile Include="Link\Item\LinkSpawnedItems.cs" />
-    <Compile Include="Link\Link.cs" />
     <Compile Include="Enemies\Goriya.cs" />
     <Compile Include="Enemies\Aquamentus.cs" />
     <Compile Include="Item\Arrow.cs" />
