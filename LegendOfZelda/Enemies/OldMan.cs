@@ -10,6 +10,7 @@ namespace LegendOfZelda.Enemies
         public OldMan(SpriteBatch spriteBatch)
         {
             sprite = SpriteFactory.Instance.CreateOldManSprite();
+            this.spriteBatch = spriteBatch;
 
         }
         public void Draw()
