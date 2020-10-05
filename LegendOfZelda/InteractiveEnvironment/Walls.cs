@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace LegendOfZelda
     {
         private RoomBorderSprite roomBorderSprite;
         private SpriteBatch sB;
-        int posX, posY;
         public Walls(SpriteBatch spriteBatch, int x, int y)
         {
             roomBorderSprite = (RoomBorderSprite)SpriteFactory.Instance.CreateRoomBorderSprite();
@@ -20,7 +20,7 @@ namespace LegendOfZelda
 
         public void Draw()
         {
-            roomBorderSprite.Draw(sB, ConstantsSprint2.ieX, ConstantsSprint2.ieY);
+            roomBorderSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
         }
 
         public void Interaction()

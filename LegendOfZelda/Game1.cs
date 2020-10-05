@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using LegendOfZelda.Sprint2;
 
 namespace LegendOfZelda
 {
@@ -13,7 +14,7 @@ namespace LegendOfZelda
         public IPlayer link;
         List<object> controllerList;
         KeyboardController keyboardController;
-        public Sprint2 sprint2;
+        public Sprint2Game sprint2;
         
         public Game1()
         {
@@ -25,7 +26,7 @@ namespace LegendOfZelda
         public void ResetGame()
         {
             link = new LinkPlayer(this);
-            sprint2 = new Sprint2(this);
+            sprint2 = new Sprint2Game(this);
         }
 
         protected override void Initialize()
@@ -35,7 +36,7 @@ namespace LegendOfZelda
             controllerList.Add(keyboardController);
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
-            sprint2 = new Sprint2(this);
+            sprint2 = new Sprint2Game(this);
             link = new LinkPlayer(this);
 
             base.Initialize();

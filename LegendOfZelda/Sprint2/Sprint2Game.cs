@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Sprint2
 {
-    public class Sprint2
+    public class Sprint2Game
     {
         private Game1 game;
         private List<IBlock> listOfBlocks;
@@ -21,7 +21,7 @@ namespace LegendOfZelda.Sprint2
         public IEnemy currentEnemy;
         public IItem currentItem;
 
-        public Sprint2(Game1 game)
+        public Sprint2Game(Game1 game)
         {
             this.game = game;
             listOfBlocks = new List<IBlock>();

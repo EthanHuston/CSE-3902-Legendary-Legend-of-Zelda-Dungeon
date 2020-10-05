@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +26,8 @@ namespace LegendOfZelda
             currentFrame = 0;
             bufferFrame = 0;
             currentDir = true;
+            rightRow = 0;
+            leftRow = 0;
         }
         public void Update()
         {

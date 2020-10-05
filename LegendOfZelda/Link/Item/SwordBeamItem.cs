@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using LegendOfZelda.Sprint2;
 using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Item

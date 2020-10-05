@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using LegendOfZelda.Sprint2;
 
 namespace LegendOfZelda.Enemies
 {
@@ -9,10 +10,6 @@ namespace LegendOfZelda.Enemies
         private SpriteBatch spriteBatch;
         private int currentX = ConstantsSprint2.enemyNPCX;
         private int currentY = ConstantsSprint2.enemyNPCY;
-        private int minXVal = 0;
-        private int maxXVal = 800;
-        private int minYVal = 0;
-        private int maxYVal = 480;
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
@@ -49,15 +46,15 @@ namespace LegendOfZelda.Enemies
         private void Move()
         {
             //Simulate jelly moving
-            if (upDown == 0 && leftRight == 0 && currentX + 16 < maxXVal)
+            if (upDown == 0 && leftRight == 0 && currentX + 16 < Constants.MaxXPos)
             {
                 currentX++;
             }
-            else if (upDown == 0 && leftRight== 1 && currentX - 16 > minXVal)
+            else if (upDown == 0 && leftRight== 1 && currentX - 16 > Constants.MinXPos)
             {
                 currentX--;
             }
-            else if (upDown == 1 && leftRight == 0 && currentY + 16 < maxYVal)
+            else if (upDown == 1 && leftRight == 0 && currentY + 16 < Constants.MaxYPos)
             {
                 currentY--;
             }

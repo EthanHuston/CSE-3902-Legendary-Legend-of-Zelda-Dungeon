@@ -218,7 +218,7 @@
     <Compile Include="Sprites\SkeletonSprite.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
     <Compile Include="Sprites\SpikeTrapSprite.cs" />
-    <Compile Include="Sprint2\Sprint2.cs" />
+    <Compile Include="Sprint2\Sprint2Game.cs" />
     <Compile Include="Sprites\SpriteFactory.cs" />
     <Compile Include="InteractiveEnvironment\Square.cs" />
     <Compile Include="InteractiveEnvironment\Stairs.cs" />

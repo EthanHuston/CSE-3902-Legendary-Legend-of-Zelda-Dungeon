@@ -9,8 +9,8 @@
         public const int enemyNPCX = 500;
         public const int enemyNPCY = 200;
         public const int itemListCount = 0;
-        public const int ieX = 200;
-        public const int ieY = 100;
+        public const int InteractiveEnvironmentSpawnX = 200;
+        public const int InteractiveEnvironmentSpawnY = 100;
 
         // Linka
         public const int Sprint2LinkSpawnX = 100;

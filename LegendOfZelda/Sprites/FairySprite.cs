@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda

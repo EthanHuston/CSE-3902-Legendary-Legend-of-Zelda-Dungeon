@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using LegendOfZelda.Sprint2;
 using System;
 
 namespace LegendOfZelda.Enemies
@@ -9,10 +10,6 @@ namespace LegendOfZelda.Enemies
         private SpriteBatch spriteBatch;
         private int currentX = ConstantsSprint2.enemyNPCX;
         private int currentY = ConstantsSprint2.enemyNPCY;
-        private int minXVal = 0;
-        private int maxXVal = 800;
-        private int minYVal = 0;
-        private int maxYVal = 480;
         private int maxDistance = 50;
         private int currentDist = 0;
         bool returning = false;
