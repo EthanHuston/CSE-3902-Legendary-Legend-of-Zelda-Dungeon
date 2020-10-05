@@ -44,6 +44,7 @@ namespace LegendOfZelda
         {
             base.LoadContent();
             // TODO: use this.Content to load your game content here
+            SpriteFactory.Instance.LoadAllTextures(this.Content);
         }
         
         protected override void UnloadContent()
