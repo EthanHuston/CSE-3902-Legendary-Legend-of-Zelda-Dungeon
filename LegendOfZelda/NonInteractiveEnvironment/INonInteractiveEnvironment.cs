@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda
+﻿namespace LegendOfZelda.NonInteractiveEnvironment
 {
     interface INonInteractiveEnvironment : IBlock
     {
