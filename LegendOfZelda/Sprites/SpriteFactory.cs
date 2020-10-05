@@ -94,7 +94,7 @@ namespace LegendOfZelda
             compassSprite = content.Load<Texture2D>("Items/Compass");
             fairySprite = content.Load<Texture2D>("Items/Fairy");
             fireSprite = content.Load<Texture2D>("Items/Fire");
-            fireballSprite = content.Load<Texture2D>("Items/Fireball");
+            fireballSprite = content.Load<Texture2D>("Items/FireBall");
             heartSprite = content.Load<Texture2D>("Items/Heart");
             heartContainerSprite = content.Load<Texture2D>("Items/HeartContainer");
             keySprite = content.Load<Texture2D>("Items/Key");

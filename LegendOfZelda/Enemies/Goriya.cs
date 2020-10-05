@@ -12,10 +12,10 @@ namespace LegendOfZelda.Enemies
         private GoriyaBoomerang boomer;
         private int velocity;
         private int updateCount = 0;
-        private int direction = 0;
+        private int direction = 1;
         private int changeDirection = 50;
         private bool boomerangThrown = false;
-        private int attackTime = 100;
+        private int attackTime = 110;
 
         private Random rand = new Random();
 
@@ -46,6 +46,11 @@ namespace LegendOfZelda.Enemies
             {
                 boomerangThrown = false;
             }
+
+            if(boomerangThrown)
+                boomer.Update();
+
+            sprite.Update();
         }
 
         public void Draw()
@@ -66,28 +71,21 @@ namespace LegendOfZelda.Enemies
         private void move()
         {
             if((updateCount % changeDirection) == 0)
-            {
-                direction = rand.Next(0, 4);
                 ChangeDirection();
-            }      
 
             switch (direction)
             {
                 case 0: // Up
                     pos.Y -= velocity;
-                    setUpSprite();
                     break;
                 case 1: // Down
                     pos.Y += velocity;
-                    setDownSprite();
                     break;
                 case 2: // Left
                     pos.X -= velocity;
-                    setLeftSprite();
                     break;
                 case 3: // Right
                     pos.X += velocity;
-                    setRightSprite();
                     break;
                 default:
                     break;
@@ -97,6 +95,8 @@ namespace LegendOfZelda.Enemies
 
         private void ChangeDirection()
         {
+            direction = rand.Next(0, 4);
+
             switch (direction)
             {
                 case 0: // Up
