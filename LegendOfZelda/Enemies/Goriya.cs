@@ -43,10 +43,6 @@ namespace LegendOfZelda.Enemies
                 boomerangThrown = true;
                 Attack();
             }
-            else if (boomerangThrown)
-            {
-                boomerangThrown = false;
-            }
 
             if (boomerangThrown)
                 boomer.Update();
@@ -57,6 +53,8 @@ namespace LegendOfZelda.Enemies
         public void Draw()
         {
             sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
+            if(boomerangThrown)
+                boomer.Draw();
         }
 
         public Vector2 getPos()
