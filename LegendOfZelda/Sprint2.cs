@@ -108,6 +108,7 @@ namespace LegendOfZelda
             {
                 enemyIndex = 0;
             }
+            currentEnemy.ResetPosition();
             currentEnemy = listOfEnemies[enemyIndex];
         }
         public void PreviousEnemy()
@@ -117,6 +118,7 @@ namespace LegendOfZelda
             {
                 enemyIndex = 8;
             }
+            currentEnemy.ResetPosition();
             currentEnemy = listOfEnemies[enemyIndex];
         }
         public void NextBlock()

@@ -29,5 +29,9 @@ namespace LegendOfZelda.Enemies
         {
             sprite.Draw(spriteBatch, posX, posY);
         }
+        public void ResetPosition()
+        {
+
+        }
     }
 }

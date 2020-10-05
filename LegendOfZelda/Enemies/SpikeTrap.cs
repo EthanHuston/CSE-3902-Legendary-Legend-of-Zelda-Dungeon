@@ -90,5 +90,10 @@ namespace LegendOfZelda.Enemies
             }
 
         }
+        public void ResetPosition()
+        {
+            currentX = ConstantsSprint2.enemyNPCX;
+            currentY = ConstantsSprint2.enemyNPCY;
+        }
     }
 }
