@@ -5,22 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.NonInteractiveEnvironment
 {
-    class TileBlueGrass : INonInteractiveEnvironment
+    class TileWater : INonInteractiveEnvironment
     {
-        private TileBlueGrassSprite sprite;
+        private TileWaterSprite sprite;
         private SpriteBatch sb;
         private int posX, posY;
         bool canWalk;
 
-        public TileBlueGrass(SpriteBatch spriteBatch, int x, int y)
+        public TileWater(SpriteBatch spriteBatch, int x, int y)
         {
-            sprite = (TileBlueGrassSprite)SpriteFactory.Instance.CreateTileBlueGrassSprite();
+            sprite = (TileWaterSprite)SpriteFactory.Instance.CreateTileWaterSprite();
             sb = spriteBatch;
             posX = x;
             posY = y;
-            canWalk = true;
+            canWalk = false;
         }
 
         public void Draw()
@@ -37,6 +37,5 @@ namespace LegendOfZelda
         {
             return posY;
         }
-
     }
 }
