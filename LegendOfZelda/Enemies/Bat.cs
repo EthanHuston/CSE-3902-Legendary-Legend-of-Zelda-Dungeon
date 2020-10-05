@@ -51,7 +51,7 @@ namespace LegendOfZelda.Enemies
                 movementBuffer = 0;
                 ChooseDirection();
             }
-
+            sprite.Update();
         }
 
         public void Draw()

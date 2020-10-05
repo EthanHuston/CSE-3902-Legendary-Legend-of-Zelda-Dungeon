@@ -34,6 +34,7 @@ namespace LegendOfZelda.Enemies
             {
                 Move();
             }
+            sprite.Update();
         }
 
         public void Draw()
