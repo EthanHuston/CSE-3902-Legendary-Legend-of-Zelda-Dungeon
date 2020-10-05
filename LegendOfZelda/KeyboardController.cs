@@ -77,6 +77,10 @@ namespace LegendOfZelda
                 { Keys.S },
                 { Keys.A },
                 { Keys.D },
+                { Keys.Up },
+                { Keys.Left },
+                { Keys.Down },
+                { Keys.Right }
             };
         }
     }
