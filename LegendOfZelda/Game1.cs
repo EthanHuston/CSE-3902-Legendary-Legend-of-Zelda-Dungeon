@@ -46,13 +46,10 @@ namespace LegendOfZelda
         {
             SpriteFactory.Instance.LoadAllTextures(this.Content);
             base.LoadContent();
-            // TODO: use this.Content to load your game content here
-
         }
 
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         protected override void Update(GameTime gameTime)
@@ -69,8 +66,6 @@ namespace LegendOfZelda
             base.Update(gameTime);
         }
 
-
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
