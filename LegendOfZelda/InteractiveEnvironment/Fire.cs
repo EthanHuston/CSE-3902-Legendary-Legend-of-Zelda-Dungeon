@@ -27,5 +27,9 @@ namespace LegendOfZelda
             //Update
         }
 
+        public void Update()
+        {
+            fireSprite.Update();
+        }
     }
 }
