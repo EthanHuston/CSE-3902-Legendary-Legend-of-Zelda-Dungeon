@@ -9,6 +9,7 @@ namespace LegendOfZelda
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
+        public IPlayer link;
         List<object> controllerList;
         KeyboardController keyboardController;
         public Sprint2 sprint2;
@@ -31,6 +32,7 @@ namespace LegendOfZelda
             controllerList = new List<object>();
             controllerList.Add(keyboardController);
             SpriteBatch = new SpriteBatch(GraphicsDevice);
+            link = new Link.LinkPlayer(this);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
             sprint2 = new Sprint2(this);
 
