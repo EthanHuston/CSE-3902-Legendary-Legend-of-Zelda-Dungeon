@@ -43,8 +43,12 @@ namespace LegendOfZelda.Enemies
             if (updateCount % attackWaitTime == 0)
                 Attack();
 
-            if (boomerangThrown)
+            if (boomerangInitialized)
+            {
                 boomer.Update();
+                boomerangActive = boomer.isActive;
+            }
+                
 
             sprite.Update();
         }
@@ -52,7 +56,7 @@ namespace LegendOfZelda.Enemies
         public void Draw()
         {
             sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
-            if(boomerangThrown)
+            if(boomerangActive)
                 boomer.Draw();
         }
 
@@ -165,5 +169,12 @@ namespace LegendOfZelda.Enemies
         {
             sprite = SpriteFactory.Instance.CreateGoriyaRightSprite();
         }
+
+        public void ResetPosition()
+        {
+            pos.X = ConstantsSprint2.enemyNPCX;
+            pos.Y = ConstantsSprint2.enemyNPCY;
+        }
+
     }
 }
