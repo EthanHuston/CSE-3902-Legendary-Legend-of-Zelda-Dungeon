@@ -1,15 +1,15 @@
 ﻿namespace LegendOfZelda.Link.Command
 {
-    class BowCommand : ICommand
+    class UseSwordBeamCommand : ICommand
     {
         private Game1 loz;
-        public BowCommand(Game1 game)
+        public UseSwordBeamCommand(Game1 game)
         {
             loz = game;
         }
         public void Execute()
         {
-            loz.link.PickUpBow();
+            loz.link.UseSwordBeam();
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿namespace LegendOfZelda.Link.Command
 {
-    class WoodenBoomerangCommand : ICommand
+    class PickUpHeartContainerCommand : ICommand
     {
         private Game1 loz;
-        public WoodenBoomerangCommand(Game1 game)
+        public PickUpHeartContainerCommand(Game1 game)
         {
             loz = game;
         }
         public void Execute()
         {
-            loz.link.UseBoomerang();
+            loz.link.PickUpHeartContainer();
         }
     }
 }

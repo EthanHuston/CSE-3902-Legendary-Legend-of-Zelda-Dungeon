@@ -31,14 +31,14 @@ namespace LegendOfZelda
             RegisterCommand(Keys.Z, new SwordAttackCommand(game1));
             RegisterCommand(Keys.N, new SwordAttackCommand(game1));
             RegisterCommand(Keys.E, new DamageLinkCommand(game1));
-            RegisterCommand(Keys.D1, new HeartContainerCommand(game1));
-            RegisterCommand(Keys.D2, new TriforcePieceCommand(game1));
-            RegisterCommand(Keys.D3, new BowCommand(game1));
+            RegisterCommand(Keys.D1, new PickUpHeartContainerCommand(game1));
+            RegisterCommand(Keys.D2, new PickUpTriforcePieceCommand(game1));
+            RegisterCommand(Keys.D3, new PickUpBowCommand(game1));
             RegisterCommand(Keys.D4, new UseBowCommand(game1));
-            RegisterCommand(Keys.D5, new WoodenBoomerangHoldCommand(game1));
-            RegisterCommand(Keys.D6, new WoodenBoomerangCommand(game1));
-            RegisterCommand(Keys.D7, new BombCommand(game1));
-            RegisterCommand(Keys.D8, new SwordBeamCommand(game1));
+            RegisterCommand(Keys.D5, new PickUpBoomerangCommand(game1));
+            RegisterCommand(Keys.D6, new UseBoomerangCommand(game1));
+            RegisterCommand(Keys.D7, new UseBombCommand(game1));
+            RegisterCommand(Keys.D8, new UseSwordBeamCommand(game1));
             RegisterCommand(Keys.T, new PreviousBlockCommand(game1));
             RegisterCommand(Keys.Y, new NextBlockCommand(game1));
             RegisterCommand(Keys.U, new PreviousItemCommand(game1));
@@ -61,8 +61,9 @@ namespace LegendOfZelda
                 {
                     controllerMappings[key].Execute();
                 }
-                
             }
+
+            // TODO: Implement old state - if key is in old state and new state, don't execute
 
         }
     }

@@ -1,15 +1,15 @@
 ﻿namespace LegendOfZelda.Link.Command
 {
-    class BombCommand : ICommand
+    class UseBoomerangCommand : ICommand
     {
         private Game1 loz;
-        public BombCommand(Game1 game)
+        public UseBoomerangCommand(Game1 game)
         {
             loz = game;
         }
         public void Execute()
         {
-            loz.link.UseBomb();
+            loz.link.UseBoomerang();
         }
     }
 }
