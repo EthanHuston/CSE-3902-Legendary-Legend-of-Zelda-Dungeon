@@ -20,7 +20,7 @@ namespace LegendOfZelda
 
         public void Draw()
         {
-            roomBorderSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
+            roomBorderSprite.Draw(sB, ConstantsSprint2.ieX, ConstantsSprint2.ieY);
         }
 
         public void Interaction()

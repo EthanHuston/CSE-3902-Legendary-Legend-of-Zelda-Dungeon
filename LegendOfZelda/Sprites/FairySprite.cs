@@ -32,8 +32,8 @@ namespace LegendOfZelda
             bufferFrame = 0;
             totalFrames = Rows * Columns;
 
-            currentXVal = Sprint2.itemX;
-            currentYVal = Sprint2.itemY;
+            currentXVal = ConstantsSprint2.itemX;
+            currentYVal = ConstantsSprint2.itemY;
 
             maxXVal = 800;
             maxYVal = 480;

@@ -19,7 +19,7 @@ namespace LegendOfZelda
 
         public void Draw()
         {
-            blockSprite.Draw(sB, Sprint2.ieX, Sprint2.ieY);
+            blockSprite.Draw(sB, ConstantsSprint2.ieX, ConstantsSprint2.ieY);
         }
 
         public void Interaction()

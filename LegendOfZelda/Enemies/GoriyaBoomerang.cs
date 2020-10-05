@@ -42,7 +42,7 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, posX, posY);
+            sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
         }
 
     }
