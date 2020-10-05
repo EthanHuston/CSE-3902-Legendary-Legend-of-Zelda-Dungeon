@@ -1,0 +1,13 @@
+Nathan Murphy
+10/5/2020
+Sprint 2
+Skeleton.cs, SkeletonSprite.cs
+Ethan Huston
+15 Minutes
+Readability:
+Overall both files are great. Methods are kept as short as possible (Update() method for Skeleton.cs definitely was handled well in this regard by using
+helper methods). On top of the briefness, it is clear to the reader what functions are being perofrmed on each line. Logic choices for the RNG are clearly
+labeled as well.
+Maintainability:
+The only apperent issue with the maintainability of the code is the advent of collision handeling in the next sprint (Sprint 3). There may need to be
+some overhall on certain aspects of the postioning for Skeleton. Other than that, both classes look great in this regard.
