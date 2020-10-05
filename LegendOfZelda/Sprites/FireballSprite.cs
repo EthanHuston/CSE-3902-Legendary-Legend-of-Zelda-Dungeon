@@ -35,10 +35,11 @@ namespace LegendOfZelda
             {
                 bufferFrame = 0;
                 currentFrame++;
-                if(currentFrame == totalFrames)
-                {
-                    currentFrame = 0;
-                }
+            }
+
+            if(currentFrame == totalFrames)
+            {
+                currentFrame = 0;
             }
 
         }

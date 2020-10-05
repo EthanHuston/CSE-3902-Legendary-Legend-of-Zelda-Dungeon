@@ -67,7 +67,7 @@ namespace LegendOfZelda.Enemies
         {
             if((updateCount % changeDirection) == 0)
             {
-                direction = rand.Next(0, 3);
+                direction = rand.Next(0, 4);
                 ChangeDirection();
             }      
 

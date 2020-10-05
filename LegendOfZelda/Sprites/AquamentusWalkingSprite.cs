@@ -30,7 +30,7 @@ namespace LegendOfZelda
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 6)
+            if (bufferFrame == 10)
             {
                 currentFrame++;
                 bufferFrame = 0;
