@@ -14,10 +14,10 @@ namespace LegendOfZelda.Enemies
         private int velocity;
         private int updateCount = 0;
         private int direction = 1;
-        private int changeDirection = 50;
+        private int changeDirection = 100;
         private bool boomerangInitialized = false;
         private bool boomerangActive = false;
-        private int attackWaitTime = 110;
+        private int attackWaitTime = 150;
         private int attackTime;
 
         private Random rand = new Random();
@@ -39,6 +39,8 @@ namespace LegendOfZelda.Enemies
 
             if (!boomerangActive)
                 move();
+
+            keepInBounds();
 
             if (updateCount % attackWaitTime == 0)
                 Attack();
@@ -118,6 +120,29 @@ namespace LegendOfZelda.Enemies
             }
         }
 
+        private void ChangeDirection(int dir)
+        {
+            direction = dir;
+
+            switch (direction)
+            {
+                case 0: // Up
+                    setUpSprite();
+                    break;
+                case 1: // Down
+                    setDownSprite();
+                    break;
+                case 2: // Left
+                    setLeftSprite();
+                    break;
+                case 3: // Right
+                    setRightSprite();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void Attack()
         {
             boomerangActive = true;
@@ -126,17 +151,17 @@ namespace LegendOfZelda.Enemies
             Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
-                case 0:
-                    v = new Vector2(-5, 0);
-                    break;
-                case 1:
-                    v = new Vector2(5, 0);
-                    break;
-                case 2:
+                case 0: // Up
                     v = new Vector2(0, -5);
                     break;
-                case 3:
+                case 1: // Down
                     v = new Vector2(0, 5);
+                    break;
+                case 2: // Left
+                    v = new Vector2(-5, 0);
+                    break;
+                case 3: // Right
+                    v = new Vector2(5, 0);
                     break;
                 default:
                     break;
@@ -147,7 +172,30 @@ namespace LegendOfZelda.Enemies
 
         private void keepInBounds()
         {
-
+            if (pos.X < Constants.MinXPos)
+            {
+                pos.X += velocity;
+                ChangeDirection(3); // Right
+            }
+                
+            else if (pos.X > Constants.MaxXPos)
+            {
+                pos.X -= velocity;
+                ChangeDirection(2); // Left
+            }
+                
+            if (pos.Y < Constants.MinYPos)
+            {
+                pos.Y += velocity;
+                ChangeDirection(1); // Down
+            }
+                
+            else if (pos.Y > Constants.MaxYPos)
+            {
+                pos.Y -= velocity;
+                ChangeDirection(0); // Up
+            }
+                
         }
 
         private void setUpSprite()
@@ -174,6 +222,9 @@ namespace LegendOfZelda.Enemies
         {
             pos.X = ConstantsSprint2.enemyNPCX;
             pos.Y = ConstantsSprint2.enemyNPCY;
+            boomerangInitialized = false;
+            boomerangActive = false;
+            updateCount = 0;
         }
 
     }

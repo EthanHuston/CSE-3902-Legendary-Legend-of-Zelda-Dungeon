@@ -15,6 +15,7 @@ namespace LegendOfZelda.Enemies
         private int attackTime = 110;
         private int attackUpdate = 0;
         private bool attacked = false;
+        private bool ballsInitialized = false;
         public Fireball[] spicyBalls = new Fireball[3];
 
         public Aquamentus(SpriteBatch spriteBatch)
@@ -33,8 +34,8 @@ namespace LegendOfZelda.Enemies
             if (updateCount % attackTime == 0)
                 Attack();
 
-            //if (attacked)
-            updateBalls();
+            if (ballsInitialized)
+                updateBalls();
 
             updateSprite();
 
@@ -48,10 +49,14 @@ namespace LegendOfZelda.Enemies
         {
             sprite.Draw(spriteBatch, posX, posY);
 
-            for (int i = 0; i < 3; i++)
+            if (ballsInitialized)
             {
-                spicyBalls[i].Draw();
+                for (int i = 0; i < 3; i++)
+                {
+                    spicyBalls[i].Draw();
+                }
             }
+            
 
         }
 
@@ -70,6 +75,7 @@ namespace LegendOfZelda.Enemies
             spicyBalls[0] = new Fireball(spriteBatch, posX, posY, -3);
             spicyBalls[1] = new Fireball(spriteBatch, posX, posY, 0);
             spicyBalls[2] = new Fireball(spriteBatch, posX, posY, 3);
+            ballsInitialized = true;
             attacked = true;
             attackUpdate = updateCount;
         }
@@ -116,7 +122,10 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetPosition()
         {
-
+            posX = ConstantsSprint2.enemyNPCX;
+            posY = ConstantsSprint2.enemyNPCY;
+            ballsInitialized = false;
+            updateCount = 0;
         }
     }
 }

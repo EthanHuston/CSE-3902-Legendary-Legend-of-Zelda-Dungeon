@@ -8,7 +8,7 @@ namespace LegendOfZelda.Enemies
         private ISprite sprite;
         private SpriteBatch spriteBatch;
         private Vector2 pos, velocity;
-        public int retractRang = 20;
+        public int retractRang = 30;
         private int updateCount = 0;
         public bool isActive;
 
@@ -36,6 +36,8 @@ namespace LegendOfZelda.Enemies
             }
             else
                 isActive = false;
+
+            sprite.Update();
 
         }
 
