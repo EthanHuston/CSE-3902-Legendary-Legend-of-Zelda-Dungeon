@@ -1009,10 +1009,3 @@
 /processorParam:TextureFormat=Color
 /build:NPC/OldMan.png
 
-#begin Text.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Text.spritefont
-
