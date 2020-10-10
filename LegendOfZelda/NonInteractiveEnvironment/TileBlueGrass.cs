@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
-    class TileBlueGrass : INonInteractiveEnvironment
+    class TileBlueGrass : IBlock
     {
         private TileBlueGrassSprite sprite;
         private SpriteBatch sb;

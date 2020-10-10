@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
-    class RoomBorder : INonInteractiveEnvironment
+    class RoomBorder : IBlock
     {
         private RoomBorderSprite roomSprite;
         private SpriteBatch sb;

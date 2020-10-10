@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class BombedOpening : IInteractiveEnvironment
+    class BombedOpening : IBlock
     {
         private DoorSprite doorSprite;
         private SpriteBatch sB;

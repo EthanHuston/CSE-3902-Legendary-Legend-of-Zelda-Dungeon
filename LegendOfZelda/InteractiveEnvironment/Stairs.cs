@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class Stairs : IInteractiveEnvironment
+    class Stairs : IBlock
     {
         private StairSprite stairSprite;
         private SpriteBatch sB;

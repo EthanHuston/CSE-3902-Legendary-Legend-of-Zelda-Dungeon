@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class BrickTile : IInteractiveEnvironment
+    class BrickTile : IBlock
     {
         private BrickTileSprite brickTileSprite;
         private SpriteBatch sB;

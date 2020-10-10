@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
-    class TileBlack : INonInteractiveEnvironment
+    class TileBlack : IBlock
     {
         private TileBlackSprite sprite;
         private SpriteBatch sb;

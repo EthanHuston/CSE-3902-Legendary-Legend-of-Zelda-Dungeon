@@ -98,7 +98,6 @@
     <Compile Include="Sprint2\PreviousBlockCommand.cs" />
     <Compile Include="Sprint2\PreviousEnemyCommand.cs" />
     <Compile Include="Sprint2\PreviousItemCommand.cs" />
-    <Compile Include="NonInteractiveEnvironment\INonInteractiveEnvironment.cs" />
     <Compile Include="NonInteractiveEnvironment\RoomBorder.cs" />
     <Compile Include="NonInteractiveEnvironment\TileBlack.cs" />
     <Compile Include="NonInteractiveEnvironment\TileBlueGrass.cs" />
@@ -171,7 +170,6 @@
     <Compile Include="Link\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="Enemies\IEnemy.cs" />
-    <Compile Include="InteractiveEnvironment\IInteractiveEnviornment.cs" />
     <Compile Include="Item\IItem.cs" />
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />

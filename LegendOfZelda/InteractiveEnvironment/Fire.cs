@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class Fire : IInteractiveEnvironment
+    class Fire : IBlock
     {
         private FireSprite fireSprite;
         private SpriteBatch sB;
