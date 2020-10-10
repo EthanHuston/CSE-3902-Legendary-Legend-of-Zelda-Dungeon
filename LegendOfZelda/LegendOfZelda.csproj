@@ -58,10 +58,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="InteractiveEnvironment\GapTile.cs" />
+    <Compile Include="Interface\IBlock.cs" />
+    <Compile Include="Interface\ICommand.cs" />
+    <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\IItem.cs" />
+    <Compile Include="Interface\INpc.cs" />
+    <Compile Include="Interface\IPlayer.cs" />
+    <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Enemies\FireBall.cs" />
     <Compile Include="Enemies\GoriyaBoomerang.cs" />
-    <Compile Include="IBlock.cs" />
     <Compile Include="Item\Bomb.cs" />
     <Compile Include="Item\Boomerang.cs" />
     <Compile Include="Item\Bow.cs" />
@@ -121,7 +127,6 @@
     <Compile Include="Link\Interface\ILinkItemSprite.cs" />
     <Compile Include="Link\Interface\ILinkSprite.cs" />
     <Compile Include="Link\Interface\ILinkState.cs" />
-    <Compile Include="IPlayer.cs" />
     <Compile Include="Link\Interface\ISpawnedItems.cs" />
     <Compile Include="Link\Interface\ILinkItem.cs" />
     <Compile Include="Link\Item\LinkSpawnedItems.cs" />
@@ -163,15 +168,10 @@
     <Compile Include="Sprites\HandSprite.cs" />
     <Compile Include="Sprites\HeartContainerSprite.cs" />
     <Compile Include="Sprites\HeartSprite.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IController.cs" />
     <Compile Include="Link\LinkSpriteFactory.cs" />
     <Compile Include="Link\Sprite\BoomerangFlyingSprite.cs" />
     <Compile Include="Link\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
-    <Compile Include="Enemies\IEnemy.cs" />
-    <Compile Include="Item\IItem.cs" />
-    <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />
     <Compile Include="Sprites\JellySprite.cs" />
     <Compile Include="KeyboardController.cs" />

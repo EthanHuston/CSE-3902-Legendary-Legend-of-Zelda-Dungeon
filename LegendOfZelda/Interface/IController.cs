@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda
+﻿namespace LegendOfZelda.Interface
 {
     public interface IController
     {

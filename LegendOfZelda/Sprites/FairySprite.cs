@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Sprint2;
+using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

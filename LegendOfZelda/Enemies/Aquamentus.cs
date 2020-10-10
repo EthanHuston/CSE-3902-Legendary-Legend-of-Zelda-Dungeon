@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
@@ -56,7 +57,7 @@ namespace LegendOfZelda.Enemies
                     spicyBalls[i].Draw();
                 }
             }
-            
+
 
         }
 

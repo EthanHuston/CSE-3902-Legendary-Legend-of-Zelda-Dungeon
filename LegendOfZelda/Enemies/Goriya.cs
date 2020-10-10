@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -50,7 +51,7 @@ namespace LegendOfZelda.Enemies
                 boomer.Update();
                 boomerangActive = boomer.isActive;
             }
-                
+
 
             sprite.Update();
         }
@@ -58,7 +59,7 @@ namespace LegendOfZelda.Enemies
         public void Draw()
         {
             sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
-            if(boomerangActive)
+            if (boomerangActive)
                 boomer.Draw();
         }
 
@@ -177,25 +178,25 @@ namespace LegendOfZelda.Enemies
                 pos.X += velocity;
                 ChangeDirection(3); // Right
             }
-                
+
             else if (pos.X > Constants.MaxXPos)
             {
                 pos.X -= velocity;
                 ChangeDirection(2); // Left
             }
-                
+
             if (pos.Y < Constants.MinYPos)
             {
                 pos.Y += velocity;
                 ChangeDirection(1); // Down
             }
-                
+
             else if (pos.Y > Constants.MaxYPos)
             {
                 pos.Y -= velocity;
                 ChangeDirection(0); // Up
             }
-                
+
         }
 
         private void setUpSprite()

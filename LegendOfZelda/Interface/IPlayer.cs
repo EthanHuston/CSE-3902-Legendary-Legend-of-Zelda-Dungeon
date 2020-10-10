@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Interface
 {
     public interface IPlayer
     {

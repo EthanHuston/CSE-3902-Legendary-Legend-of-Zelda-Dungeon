@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
