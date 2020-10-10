@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class OldMan : IEnemy
+    class OldMan : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

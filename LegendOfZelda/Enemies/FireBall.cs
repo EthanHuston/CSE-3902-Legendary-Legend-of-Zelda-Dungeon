@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Enemies
 {
-    class Fireball : IEnemy
+    class Fireball : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

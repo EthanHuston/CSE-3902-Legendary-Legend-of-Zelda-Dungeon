@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.Enemies
 {
-    public interface IEnemy
+    public interface INpc
     {
         void Update();
 

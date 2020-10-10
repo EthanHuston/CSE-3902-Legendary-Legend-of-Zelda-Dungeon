@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class Aquamentus : IEnemy
+    class Aquamentus : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

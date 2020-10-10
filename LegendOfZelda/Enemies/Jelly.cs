@@ -4,7 +4,7 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Jelly : IEnemy
+    class Jelly : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

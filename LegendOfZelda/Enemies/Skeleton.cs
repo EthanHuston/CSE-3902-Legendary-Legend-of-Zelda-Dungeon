@@ -4,7 +4,7 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Skeleton : IEnemy
+    class Skeleton : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

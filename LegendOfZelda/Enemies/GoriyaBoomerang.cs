@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class GoriyaBoomerang : IEnemy
+    class GoriyaBoomerang : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

@@ -4,7 +4,7 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class SpikeTrap : IEnemy
+    class SpikeTrap : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

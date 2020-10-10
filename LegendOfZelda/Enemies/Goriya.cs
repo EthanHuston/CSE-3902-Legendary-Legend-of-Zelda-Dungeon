@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Goriya : IEnemy
+    class Goriya : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
