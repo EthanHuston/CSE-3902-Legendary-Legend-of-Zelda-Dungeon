@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Interface
 {
     public interface ISprite
     {

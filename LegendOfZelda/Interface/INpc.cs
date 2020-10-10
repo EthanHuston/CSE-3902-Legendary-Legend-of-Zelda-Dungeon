@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda.Enemies
+﻿namespace LegendOfZelda.Interface
 {
     public interface INpc
     {
