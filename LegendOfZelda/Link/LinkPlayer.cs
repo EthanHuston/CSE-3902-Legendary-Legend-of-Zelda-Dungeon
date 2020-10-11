@@ -6,23 +6,26 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link
 {
-    class LinkPlayer : IPlayer
+    class LinkPlayer : ILinkPlayer
     {
         private ILinkState state;
         public ILinkSprite CurrentSprite { get; set; }
         public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
-        private ISpawnedItems spawnedItems;
         private int health;
         private float posX;
         private float posY;
 
-        public LinkPlayer(Game1 game)
+        public LinkPlayer(Game1 game) : this(game, new Vector2(ConstantsSprint2.Sprint2LinkSpawnX, ConstantsSprint2.Sprint2LinkSpawnY))
+        {
+            // handle with other constructor
+        }
+
+        public LinkPlayer(Game1 game, Vector2 spawnPosition)
         {
             health = Constants.LinkHealth;
             this.Game = game;
             state = new LinkStandingStillDownState(this);
-            spawnedItems = new LinkSpawnedItems();
             posX = ConstantsSprint2.Sprint2LinkSpawnX;
             posY = ConstantsSprint2.Sprint2LinkSpawnY;
         }
@@ -50,22 +53,20 @@ namespace LegendOfZelda.Link
         public void Draw()
         {
             state.Draw();
-            spawnedItems.DrawAll();
         }
 
         public void Update()
         {
             state.Update();
-            spawnedItems.UpdateAll();
         }
 
         public void BeHealthy(int healAmount)
         {
-            Heal(healAmount);
+            AddHealth(healAmount);
             state.BeHealthy();
         }
 
-        public void TakeDamage(int damage)
+        public void BeDamaged(int damage)
         {
             state.BeDamaged(damage);
         }
@@ -75,7 +76,7 @@ namespace LegendOfZelda.Link
             health -= damage;
         }
 
-        public void Heal(int healAmount)
+        public void AddHealth(int healAmount)
         {
             health += healAmount;
         }
@@ -135,7 +136,7 @@ namespace LegendOfZelda.Link
 
         public void SpawnItem(ILinkItem item)
         {
-            spawnedItems.SpawnNewItem(item);
+            throw new System.NotImplementedException();
         }
 
         public void UseBomb()
@@ -156,6 +157,21 @@ namespace LegendOfZelda.Link
         public void UseSwordBeam()
         {
             state.UseSwordBeam();
+        }
+
+        public Vector2 GetVelocity()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Move(Vector2 distance)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Rectangle GetRectangle()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
