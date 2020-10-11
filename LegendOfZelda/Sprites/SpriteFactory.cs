@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Link;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 using LegendOfZelda.Sprites;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -49,14 +50,7 @@ namespace LegendOfZelda
         private Texture2D tileBlueGrassSprite;
         private Texture2D roomBorderSprite;
 
-        private static SpriteFactory instance = new SpriteFactory();
-        public static SpriteFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static SpriteFactory Instance { get; } = new SpriteFactory();
         public SpriteFactory()
         {
         }
