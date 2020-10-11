@@ -9,7 +9,7 @@ namespace LegendOfZelda.Link.Interface
         void MoveDown();
         void MoveUp();
         void BeDamaged(int damage);
-        void BeHealthy();
+        void BeHealthy(int healAmount);
         void StopMoving();
         void PickUpSword();
         void PickUpHeartContainer();

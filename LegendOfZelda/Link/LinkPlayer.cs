@@ -62,8 +62,7 @@ namespace LegendOfZelda.Link
 
         public void BeHealthy(int healAmount)
         {
-            AddHealth(healAmount);
-            state.BeHealthy();
+            state.BeHealthy(healAmount);
         }
 
         public void BeDamaged(int damage)
