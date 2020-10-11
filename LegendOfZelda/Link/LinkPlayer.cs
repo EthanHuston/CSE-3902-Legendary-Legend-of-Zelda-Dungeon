@@ -1,5 +1,4 @@
 using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Link.Items;
 using LegendOfZelda.Link.State.NotMoving;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;

@@ -1,16 +1,15 @@
 ﻿using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Link.State.NotMoving;
 using System;
 
 namespace LegendOfZelda.Link.State
 {
-    abstract class LinkGenericState : ILinkState
+    abstract class LinkLazyAbstractState : ILinkState
     {
         protected LinkPlayer link;
         protected bool damaged;
         protected DateTime healthyDateTime;
 
-        public LinkGenericState(LinkPlayer link)
+        public LinkLazyAbstractState(LinkPlayer link)
         {
             this.link = link;
             healthyDateTime = DateTime.Now;
@@ -18,7 +17,7 @@ namespace LegendOfZelda.Link.State
             InitClass();
         }
 
-        public LinkGenericState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
+        public LinkLazyAbstractState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             this.link = link;
             this.healthyDateTime = healthyDateTime;
@@ -31,6 +30,8 @@ namespace LegendOfZelda.Link.State
         public abstract void Draw();
 
         public abstract void Update();
+
+        public abstract void StopMoving();
 
         public void BeDamaged(int damage)
         {
@@ -48,77 +49,72 @@ namespace LegendOfZelda.Link.State
             link.AddHealth(healAmount);
         }
 
-        public void StopMoving()
-        {
-            link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
-        }
-
-        public void MoveDown()
+        public virtual void MoveDown()
         {
             // Does nothing by default since most states do this
         }
 
-        public void MoveLeft()
+        public virtual void MoveLeft()
         {
             // Does nothing by default since most states do this
         }
 
-        public void MoveRight()
+        public virtual void MoveRight()
         {
             // Does nothing by default since most states do this
         }
 
-        public void MoveUp()
+        public virtual void MoveUp()
         {
             // Does nothing by default since most states do this
         }
 
-        public void PickUpBoomerang()
+        public virtual void PickUpBoomerang()
         {
             // Does nothing by default since most states do this
         }
 
-        public void PickUpBow()
+        public virtual void PickUpBow()
         {
             // Does nothing by default since most states do this
         }
 
-        public void PickUpHeartContainer()
+        public virtual void PickUpHeartContainer()
         {
             // Does nothing by default since most states do this
         }
 
-        public void PickUpSword()
+        public virtual void PickUpSword()
         {
             // Does nothing by default since most states do this
         }
 
-        public void PickUpTriforce()
+        public virtual void PickUpTriforce()
         {
             // Does nothing by default since most states do this
         }
 
-        public void UseBomb()
+        public virtual void UseBomb()
         {
             // Does nothing by default since most states do this
         }
 
-        public void UseBoomerang()
+        public virtual void UseBoomerang()
         {
             // Does nothing by default since most states do this
         }
 
-        public void UseBow()
+        public virtual void UseBow()
         {
             // Does nothing by default since most states do this
         }
 
-        public void UseSword()
+        public virtual void UseSword()
         {
             // Does nothing by default since most states do this
         }
 
-        public void UseSwordBeam()
+        public virtual void UseSwordBeam()
         {
             // Does nothing by default since most states do this
         }

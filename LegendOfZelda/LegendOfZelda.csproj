@@ -63,8 +63,13 @@
     <Compile Include="Interface\IController.cs" />
     <Compile Include="Interface\IItem.cs" />
     <Compile Include="Interface\INpc.cs" />
+    <Compile Include="Interface\IDynamic.cs" />
+    <Compile Include="Interface\ISpawnable.cs" />
     <Compile Include="Interface\IPlayer.cs" />
     <Compile Include="Interface\ISprite.cs" />
+    <Compile Include="Link\Interface\ILinkPlayer.cs" />
+    <Compile Include="Link\State\LinkActiveAbstractState.cs" />
+    <Compile Include="Link\State\LinkLazyAbstractState.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Enemies\FireBall.cs" />
     <Compile Include="Enemies\GoriyaBoomerang.cs" />
