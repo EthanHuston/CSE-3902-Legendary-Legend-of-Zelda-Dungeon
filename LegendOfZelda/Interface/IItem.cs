@@ -1,7 +1,7 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    public interface IItem
+    interface IItem : IDynamic
     {
-        void itemAction();
+        Constants.ItemOwner GetItemOwner();
     }
 }

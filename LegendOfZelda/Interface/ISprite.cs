@@ -1,10 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Interface
 {
     public interface ISprite
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch, int XValue, int YValue);
+        void Draw(SpriteBatch spriteBatch, Point position);
+        Rectangle GetSizeRectangle();
     }
 }

@@ -7,8 +7,9 @@ namespace LegendOfZelda.Interface
         void Update();
         void Draw();
         void Move(Vector2 distance);
-        void SetPosition(Vector2 position);
-        Vector2 GetPosition();
+        void SetPosition(Point position);
+        bool SafeToDespawn();
+        Point GetPosition();
         Rectangle GetRectangle();
     }
 }
