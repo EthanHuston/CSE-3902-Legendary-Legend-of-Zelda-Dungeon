@@ -20,23 +20,13 @@ namespace LegendOfZelda
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
         public const int ArrowSpawnYOffsetFromLink = 6;
-        public const int ArrowFlyingDistanceInterval = 5;
         public const int BombSpawnXOffsetFromLink = 0;
         public const int BombSpawnYOffsetFromLink = 6;
-        public const int BombDelayBeforeExplosion = 60;
         public const int BoomerangSpawnXOffsetFromLink = 0;
         public const int BoomerangSpawnYOffsetFromLink = 6;
-        public const int BoomerangDespawnMaxXFromLink = 15;
-        public const int BoomerangDespawnMinXFromLink = 0;
-        public const int BoomerangDespawnMaxYFromLink = 15;
-        public const int BoomerangDespawnMinYFromLink = 0;
         public const int BoomerangMaxDistanceFromLink = 300;
         public const int SwordBeamSpawnXOffsetFromLink = 4;
         public const int SwordBeamSpawnYOffsetFromLink = 5;
-        public const int SwordBeamFlyingDistanceInterval = 5;
-        public const int SwordBeamExplodingDistanceInterval = 1;
-        public const int SwordBeamExplodingRange = 50;
-        public const int SwordBeamExplodingFrameDelay = 2;
 
         // Game Screen
         public const int MaxXPos = 800;
@@ -56,10 +46,16 @@ namespace LegendOfZelda
         // Items
         public enum Item
         {
-            Arrow,
-            Bomb,
-            Boomerang,
-            SwordBeam
+            ArrowFlying,
+            BombExploding,
+            BoomerangFlying,
+            SwordBeamFlying
+        }
+
+        public enum ItemOwner
+        {
+            Link,
+            Game
         }
     }
 }
