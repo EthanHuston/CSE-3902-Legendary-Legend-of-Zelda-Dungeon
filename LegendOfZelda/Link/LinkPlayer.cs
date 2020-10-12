@@ -14,6 +14,7 @@ namespace LegendOfZelda.Link
         private int health;
         private float posX;
         private float posY;
+        private Vector2 oldPosition;
 
         public LinkPlayer(Game1 game) : this(game, new Vector2(ConstantsSprint2.Sprint2LinkSpawnX, ConstantsSprint2.Sprint2LinkSpawnY))
         {
@@ -23,10 +24,11 @@ namespace LegendOfZelda.Link
         public LinkPlayer(Game1 game, Vector2 spawnPosition)
         {
             health = Constants.LinkHealth;
-            this.Game = game;
+            Game = game;
             state = new LinkStandingStillDownState(this);
             posX = ConstantsSprint2.Sprint2LinkSpawnX;
             posY = ConstantsSprint2.Sprint2LinkSpawnY;
+            oldPosition = new Vector2(posX, posY);
         }
 
         public Vector2 GetPosition()
@@ -36,6 +38,7 @@ namespace LegendOfZelda.Link
 
         public void SetPosition(Vector2 newPosition)
         {
+            oldPosition = new Vector2(posX, posY);
             posX = newPosition.X;
             posY = newPosition.Y;
         }
@@ -159,17 +162,22 @@ namespace LegendOfZelda.Link
 
         public Vector2 GetVelocity()
         {
-            throw new System.NotImplementedException();
+            return Vector2.Subtract(GetPosition(), oldPosition);
         }
 
         public void Move(Vector2 distance)
         {
-            throw new System.NotImplementedException();
+            SetPosition(new Vector2(posX + distance.X, posY + distance.Y));
         }
 
         public Rectangle GetRectangle()
         {
-            throw new System.NotImplementedException();
+            return CurrentSprite.GetRectangle();
+        }
+
+        public bool SafeToDespawn()
+        {
+            return false; // Link can only despawn when game ends
         }
     }
 }
