@@ -1,13 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Interface
 {
-    interface ILinkSprite
+    interface ILinkSprite : ISprite
     {
-        void Update();
-        void Draw(SpriteBatch spriteBatch, Vector2 position);
-        void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage);
+        void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage);
         bool FinishedAnimation();
+        Rectangle GetRectangle();
     }
 }
