@@ -5,17 +5,17 @@ namespace LegendOfZelda.Link.Items
 {
     class LinkSpawnedItems : ISpawnedItems
     {
-        private List<ILinkItem> spawnedItemList = new List<ILinkItem>();
+        private List<ILinkItem> spawnedItemList;
         private Dictionary<Constants.Item, bool> ItemIsSpawnable; // key is an item, value is true if item can be spawned, else false
         public LinkSpawnedItems()
         {
             ItemIsSpawnable = new Dictionary<Constants.Item, bool>()
             {
                 // initialize to true because nothing has been spawned yet
-                { Constants.Item.Arrow, true },
-                { Constants.Item.Bomb, true },
-                { Constants.Item.Boomerang, true },
-                { Constants.Item.SwordBeam, true }
+                { Constants.Item.ArrowFlying, true },
+                { Constants.Item.BombExploding, true },
+                { Constants.Item.BoomerangFlying, true },
+                { Constants.Item.SwordBeamFlying, true }
             };
         }
 
@@ -23,13 +23,13 @@ namespace LegendOfZelda.Link.Items
         {
             switch (item.GetItemType())
             {
-                case Constants.Item.Arrow:
+                case Constants.Item.ArrowFlying:
                     return SpawnNewArrow(item);
-                case Constants.Item.Bomb:
+                case Constants.Item.BombExploding:
                     return SpawnNewBomb(item);
-                case Constants.Item.Boomerang:
+                case Constants.Item.BoomerangFlying:
                     return SpawnNewBoomerang(item);
-                case Constants.Item.SwordBeam:
+                case Constants.Item.SwordBeamFlying:
                     return SpawnNewSwordBeam(item);
                 default:
                     return false;
@@ -66,7 +66,7 @@ namespace LegendOfZelda.Link.Items
 
         private bool SpawnNewArrow(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Item.Arrow] == false) return false; // exit if it cannot be spawned right now
+            if (ItemIsSpawnable[Constants.Item.ArrowFlying] == false) return false; // exit if it cannot be spawned right now
             ToggleSpawnableForArrow();
 
             spawnedItemList.Add(item);
@@ -76,7 +76,7 @@ namespace LegendOfZelda.Link.Items
 
         private bool SpawnNewBomb(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Item.Bomb] == false) return false; // exit if it cannot be spawned right now
+            if (ItemIsSpawnable[Constants.Item.BombExploding] == false) return false; // exit if it cannot be spawned right now
             ToggleSpawnableForBomb();
 
             spawnedItemList.Add(item);
@@ -86,7 +86,7 @@ namespace LegendOfZelda.Link.Items
 
         private bool SpawnNewSwordBeam(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Item.SwordBeam] == false) return false; // exit if it cannot be spawned right now
+            if (ItemIsSpawnable[Constants.Item.SwordBeamFlying] == false) return false; // exit if it cannot be spawned right now
             ToggleSpawnableForSwordBeam();
 
             spawnedItemList.Add(item);
@@ -96,7 +96,7 @@ namespace LegendOfZelda.Link.Items
 
         private bool SpawnNewBoomerang(ILinkItem item)
         {
-            if (ItemIsSpawnable[Constants.Item.Boomerang] == false) return false; // exit if it cannot be spawned right now
+            if (ItemIsSpawnable[Constants.Item.BoomerangFlying] == false) return false; // exit if it cannot be spawned right now
             ToggleSpawnableForBoomerang();
 
             spawnedItemList.Add(item);
@@ -108,16 +108,16 @@ namespace LegendOfZelda.Link.Items
         {
             switch (itemType)
             {
-                case Constants.Item.Arrow:
+                case Constants.Item.ArrowFlying:
                     ToggleSpawnableForArrow();
                     break;
-                case Constants.Item.Bomb:
+                case Constants.Item.BombExploding:
                     ToggleSpawnableForBomb();
                     break;
-                case Constants.Item.Boomerang:
+                case Constants.Item.BoomerangFlying:
                     ToggleSpawnableForBoomerang();
                     break;
-                case Constants.Item.SwordBeam:
+                case Constants.Item.SwordBeamFlying:
                     ToggleSpawnableForSwordBeam();
                     break;
             }
@@ -125,23 +125,23 @@ namespace LegendOfZelda.Link.Items
 
         private void ToggleSpawnableForArrow()
         {
-            ItemIsSpawnable[Constants.Item.Arrow] = !ItemIsSpawnable[Constants.Item.Arrow];
-            ItemIsSpawnable[Constants.Item.Boomerang] = !ItemIsSpawnable[Constants.Item.Boomerang];
+            ItemIsSpawnable[Constants.Item.ArrowFlying] = !ItemIsSpawnable[Constants.Item.ArrowFlying];
+            ItemIsSpawnable[Constants.Item.BoomerangFlying] = !ItemIsSpawnable[Constants.Item.BoomerangFlying];
         }
         private void ToggleSpawnableForBoomerang()
         {
-            ItemIsSpawnable[Constants.Item.Boomerang] = !ItemIsSpawnable[Constants.Item.Boomerang];
-            ItemIsSpawnable[Constants.Item.Arrow] = !ItemIsSpawnable[Constants.Item.Arrow];
+            ItemIsSpawnable[Constants.Item.BoomerangFlying] = !ItemIsSpawnable[Constants.Item.BoomerangFlying];
+            ItemIsSpawnable[Constants.Item.ArrowFlying] = !ItemIsSpawnable[Constants.Item.ArrowFlying];
         }
 
         private void ToggleSpawnableForBomb()
         {
-            ItemIsSpawnable[Constants.Item.Bomb] = !ItemIsSpawnable[Constants.Item.Bomb];
+            ItemIsSpawnable[Constants.Item.BombExploding] = !ItemIsSpawnable[Constants.Item.BombExploding];
         }
 
         private void ToggleSpawnableForSwordBeam()
         {
-            ItemIsSpawnable[Constants.Item.SwordBeam] = !ItemIsSpawnable[Constants.Item.SwordBeam];
+            ItemIsSpawnable[Constants.Item.SwordBeamFlying] = !ItemIsSpawnable[Constants.Item.SwordBeamFlying];
         }
     }
 }
