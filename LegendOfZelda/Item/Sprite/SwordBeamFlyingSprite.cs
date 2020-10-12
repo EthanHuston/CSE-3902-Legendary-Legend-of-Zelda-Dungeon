@@ -1,23 +1,28 @@
-﻿using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Link.Sprite
+namespace LegendOfZelda.Item.Sprite
 {
-    class BoomerangFlyingSprite : ILinkItemSprite
+    class SwordBeamFlyingSprite : IItemSprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 8;
+        private int totalFrames;
+        private int frameWidth;
+        private int frameHeight;
         private const int numRows = 1;
-        private const int numColumns = 8;
+        private const int numColumns = 4;
 
-        public BoomerangFlyingSprite(Texture2D sprite)
+        public SwordBeamFlyingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             bufferFrame = 0;
             currentFrame = 0;
+            totalFrames = numColumns * numRows;
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
@@ -29,20 +34,13 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Draw(spriteBatch, position, false);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
-        {
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
             int currentRow = 0;
             int currentColumn = currentFrame;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
@@ -52,6 +50,11 @@ namespace LegendOfZelda.Link.Sprite
         public bool FinishedAnimation()
         {
             return false; // not used, BoomerangFlying class keeps track of this
+        }
+
+        public Rectangle GetSizeRectangle()
+        {
+            return sprite.Bounds;
         }
     }
 }

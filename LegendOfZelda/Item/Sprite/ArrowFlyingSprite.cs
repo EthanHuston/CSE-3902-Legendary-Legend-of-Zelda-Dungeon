@@ -1,10 +1,10 @@
-﻿using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Link.Sprite
+namespace LegendOfZelda.Item.Sprite
 {
-    class ArrowFlyingSprite : ILinkItemSprite
+    class ArrowFlyingSprite : IItemSprite
     {
         private Texture2D sprite;
         public ArrowFlyingSprite(Texture2D sprite)
@@ -12,10 +12,10 @@ namespace LegendOfZelda.Link.Sprite
             this.sprite = sprite;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, position, Color.White);
+            spriteBatch.Draw(sprite, position.ToVector2(), Color.White);
             spriteBatch.End();
         }
 
@@ -27,6 +27,11 @@ namespace LegendOfZelda.Link.Sprite
         public bool FinishedAnimation()
         {
             return false; // not used
+        }
+
+        public Rectangle GetSizeRectangle()
+        {
+            return sprite.Bounds;
         }
     }
 }

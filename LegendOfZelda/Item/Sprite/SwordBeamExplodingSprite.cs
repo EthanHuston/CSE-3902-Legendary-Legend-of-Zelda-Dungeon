@@ -1,11 +1,11 @@
-using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace LegendOfZelda.Link.Sprite
+namespace LegendOfZelda.Item.Sprite
 {
-    class SwordBeamExplodingSprite : ILinkItemSprite
+    class SwordBeamExplodingSprite : IItemSprite
     {
         private Texture2D upLeftSprite, upRightSprite, downLeftSprite, downRightSprite;
         private bool animationIsFinished;
@@ -76,6 +76,11 @@ namespace LegendOfZelda.Link.Sprite
         public bool FinishedAnimation()
         {
             return animationIsFinished;
+        }
+
+        public Rectangle GetSizeRectangle()
+        {
+            return new Rectangle(); // because we do not need to check collisions for these
         }
     }
 }
