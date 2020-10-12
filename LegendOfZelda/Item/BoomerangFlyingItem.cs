@@ -10,6 +10,7 @@ namespace LegendOfZelda.Link.Item
         private Constants.Direction direction;
         private ISpawnable itemToTrack;
         private Point oldPosition;
+        private const int moveDistanceInterval = 5;
         private const int despawnMaxXFromOwner = 15;
         private const int despawnMinXFromOwner = 0;
         private const int despawnMaxYFromOwner = 15;
@@ -45,18 +46,18 @@ namespace LegendOfZelda.Link.Item
             {
                 case Constants.Direction.Up:
                     position.X = itemToTrack.GetPosition().X;
-                    position.Y += Constants.ArrowFlyingDistanceInterval * (returningToLink ? 1 : -1);
+                    position.Y += moveDistanceInterval * (returningToLink ? 1 : -1);
                     break;
                 case Constants.Direction.Down:
                     position.X = itemToTrack.GetPosition().X;
-                    position.Y += Constants.ArrowFlyingDistanceInterval * (returningToLink ? -1 : 1);
+                    position.Y += moveDistanceInterval * (returningToLink ? -1 : 1);
                     break;
                 case Constants.Direction.Right:
-                    position.X += Constants.ArrowFlyingDistanceInterval * (returningToLink ? -1 : 1);
+                    position.X += moveDistanceInterval * (returningToLink ? -1 : 1);
                     position.Y = itemToTrack.GetPosition().Y;
                     break;
                 case Constants.Direction.Left:
-                    position.X += Constants.ArrowFlyingDistanceInterval * (returningToLink ? 1 : -1);
+                    position.X += moveDistanceInterval * (returningToLink ? 1 : -1);
                     position.Y = itemToTrack.GetPosition().Y;
                     break;
             }

@@ -14,8 +14,11 @@ namespace LegendOfZelda.Item.Sprite
         private int bufferFrame;
         private int currentFrame;
         private int totalFrames;
+        private const int frameDelay = 2;
         private const int numRows = 1;
         private const int numColumns = 4;
+        private const int explosionDistanceInterval = 1;
+        private const int explosionRange = 50;
 
         public SwordBeamExplodingSprite(Texture2D upLeftSprite, Texture2D upRightSprite, Texture2D downLeftSprite, Texture2D downRightSprite)
         {
@@ -34,16 +37,16 @@ namespace LegendOfZelda.Item.Sprite
         public void Update()
         {
             if (FinishedAnimation()) return;
-            if (++bufferFrame == Constants.SwordBeamExplodingFrameDelay)
+            if (++bufferFrame == frameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
 
-            xOffset += Constants.SwordBeamExplodingDistanceInterval;
-            yOffset += Constants.SwordBeamExplodingDistanceInterval;
+            xOffset += explosionDistanceInterval;
+            yOffset += explosionDistanceInterval;
 
-            animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > Constants.SwordBeamExplodingRange;
+            animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > explosionRange;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
