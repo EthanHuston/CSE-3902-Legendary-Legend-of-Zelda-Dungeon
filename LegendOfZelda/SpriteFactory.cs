@@ -100,6 +100,8 @@ namespace Sprint0
             tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");
             tileWaterSprite = content.Load<Texture2D>("Environment/WaterTile");
             roomBorderSprite = content.Load<Texture2D>("Environment/RoomBorder");
+            
+            // Load all other SpriteFactory
             LinkSpriteFactory.Instance.LoadAllTextures(content);
         }
 

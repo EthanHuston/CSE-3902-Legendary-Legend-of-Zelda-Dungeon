@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint0.Link.State.Attacking;
 using Sprint0.Link.Interface;
+using Sprint0.Link.State.Attacking;
 using Sprint0.Link.State.Item;
 using Sprint0.Link.State.NotMoving;
 using System;
@@ -136,6 +136,11 @@ namespace Sprint0.Link.State.Walking
         public void UseBoomerang()
         {
             link.SetState(new LinkUsingBoomerangUpState(link, damaged, healthyDateTime));
+        }
+
+        public void UseSwordBeam()
+        {
+            link.SetState(new LinkUsingSwordBeamUpState(link, damaged, healthyDateTime));
         }
     }
 }

@@ -24,5 +24,6 @@ namespace Sprint0
         void UseBoomerang();
         void UseSword();
         void UseBow();
+        void UseSwordBeam();
     }
 }

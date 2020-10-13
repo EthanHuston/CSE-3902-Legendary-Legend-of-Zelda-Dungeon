@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Items
+namespace Sprint0.Link.Item
 {
     class ArrowFlyingItem : ILinkItem
     {
@@ -32,7 +32,7 @@ namespace Sprint0.Link.Items
                     sprite = LinkSpriteFactory.Instance.CreateArrowRightSprite();
                     break;
                 case Constants.Direction.Left:
-                    this.direction = new Vector2(1, 0);
+                    this.direction = new Vector2(-1, 0);
                     sprite = LinkSpriteFactory.Instance.CreateArrowLeftSprite();
                     break;
             }
@@ -40,8 +40,8 @@ namespace Sprint0.Link.Items
 
         public void Update()
         {
-            position.X += Constants.FlyingArrowDistanceIntervalPx * direction.X;
-            position.Y += Constants.FlyingArrowDistanceIntervalPx * direction.Y;
+            position.X += Constants.ArrowFlyingDistanceInterval * direction.X;
+            position.Y += Constants.ArrowFlyingDistanceInterval * direction.Y;
 
             itemIsExpired = Utility.ItemIsOutOfBounds(position); // or item hits enemy, but not yet implemented
         }

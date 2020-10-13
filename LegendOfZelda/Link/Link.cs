@@ -135,17 +135,22 @@ namespace Sprint0.Link
 
         public void UseBomb()
         {
-            throw new System.NotImplementedException();
+            state.UseBomb();
         }
 
         public void UseBoomerang()
         {
-            throw new System.NotImplementedException();
+            state.UseBoomerang();
         }
 
         public void PickUpBoomerang()
         {
-            throw new System.NotImplementedException();
+            state.PickUpBoomerang();
+        }
+
+        public void UseSwordBeam()
+        {
+            state.UseSwordBeam();
         }
     }
 }
