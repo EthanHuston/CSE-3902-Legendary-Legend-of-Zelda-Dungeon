@@ -102,7 +102,6 @@
     <Compile Include="Link\Link.cs" />
     <Compile Include="Goriya.cs" />
     <Compile Include="Aquamentus.cs" />
-    <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Arrow.cs" />
     <Compile Include="ArrowSprite.cs" />
     <Compile Include="Bat.cs" />
