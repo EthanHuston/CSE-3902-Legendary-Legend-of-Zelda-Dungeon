@@ -10,7 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private Vector2 pos;
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private GoriyaBoomerang boomer;
         private int velocity;
         private int updateCount = 0;
@@ -20,6 +20,7 @@ namespace LegendOfZelda.Enemies
         private bool boomerangActive = false;
         private int attackWaitTime = 150;
         private int attackTime;
+        private double health = 3;
 
         private Random rand = new Random();
 
@@ -27,8 +28,6 @@ namespace LegendOfZelda.Enemies
         {
             this.sprite = SpriteFactory.Instance.CreateGoriyaDownSprite();
             this.spriteBatch = spriteBatch;
-            pos.X = ConstantsSprint2.enemyNPCX;
-            pos.Y = ConstantsSprint2.enemyNPCY;
             velocity = 2;
         }
 
@@ -58,19 +57,9 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, (int)pos.X, (int)pos.Y);
+            sprite.Draw(spriteBatch, position);
             if (boomerangActive)
                 boomer.Draw();
-        }
-
-        public Vector2 getPos()
-        {
-            return pos;
-        }
-
-        public void setPos(Vector2 pos)
-        {
-            this.pos = pos;
         }
 
         private void move()
@@ -81,16 +70,16 @@ namespace LegendOfZelda.Enemies
             switch (direction)
             {
                 case 0: // Up
-                    pos.Y -= velocity;
+                    position.Y -= velocity;
                     break;
                 case 1: // Down
-                    pos.Y += velocity;
+                    position.Y += velocity;
                     break;
                 case 2: // Left
-                    pos.X -= velocity;
+                    position.X -= velocity;
                     break;
                 case 3: // Right
-                    pos.X += velocity;
+                    position.X += velocity;
                     break;
                 default:
                     break;
@@ -168,32 +157,32 @@ namespace LegendOfZelda.Enemies
                     break;
             }
 
-            boomer = new GoriyaBoomerang(spriteBatch, pos, v);
+            boomer = new GoriyaBoomerang(spriteBatch, position, v);
         }
 
         private void keepInBounds()
         {
-            if (pos.X < Constants.MinXPos)
+            if (position.X < Constants.MinXPos)
             {
-                pos.X += velocity;
+                position.X += velocity;
                 ChangeDirection(3); // Right
             }
 
-            else if (pos.X > Constants.MaxXPos)
+            else if (position.X > Constants.MaxXPos)
             {
-                pos.X -= velocity;
+                position.X -= velocity;
                 ChangeDirection(2); // Left
             }
 
-            if (pos.Y < Constants.MinYPos)
+            if (position.Y < Constants.MinYPos)
             {
-                pos.Y += velocity;
+                position.Y += velocity;
                 ChangeDirection(1); // Down
             }
 
-            else if (pos.Y > Constants.MaxYPos)
+            else if (position.Y > Constants.MaxYPos)
             {
-                pos.Y -= velocity;
+                position.Y -= velocity;
                 ChangeDirection(0); // Up
             }
 
@@ -221,11 +210,15 @@ namespace LegendOfZelda.Enemies
 
         public void ResetPosition()
         {
-            pos.X = ConstantsSprint2.enemyNPCX;
-            pos.Y = ConstantsSprint2.enemyNPCY;
+            position.X = ConstantsSprint2.enemyNPCX;
+            position.Y = ConstantsSprint2.enemyNPCY;
             boomerangInitialized = false;
             boomerangActive = false;
             updateCount = 0;
+        }
+        public void TakeDamage(float damage)
+        {
+            health = health - damage;
         }
 
     }

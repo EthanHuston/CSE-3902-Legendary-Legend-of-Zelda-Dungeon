@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -9,8 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private int currentX = ConstantsSprint2.enemyNPCX;
-        private int currentY = ConstantsSprint2.enemyNPCY;
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int minXVal = 0;
         private int maxXVal = 800;
         private int minYVal = 0;
@@ -18,6 +18,7 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
+        private double health = 0.5;
 
         public Bat(SpriteBatch spriteBatch)
         {
@@ -31,23 +32,23 @@ namespace LegendOfZelda.Enemies
             //Move based on current chosen direction for some time.
             if (xDir == 0 && yDir == 0)
             {
-                currentX--;
-                currentY--;
+                position.X--;
+                position.Y--;
             }
             else if (xDir == 0 && yDir == 1)
             {
-                currentX--;
-                currentY++;
+                position.X--;
+                position.Y++;
             }
             else if (xDir == 1 && yDir == 0)
             {
-                currentX++;
-                currentY--;
+                position.X++;
+                position.Y--;
             }
             else
             {
-                currentY++;
-                currentX++;
+                position.Y++;
+                position.X++;
             }
 
             if (movementBuffer > 10)
@@ -60,28 +61,28 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, currentX, currentY);
+            sprite.Draw(spriteBatch, position);
 
         }
 
         //Movement character away from edge of screen
         private void CheckBounds()
         {
-            if (currentX == minXVal)
+            if (position.X == minXVal)
             {
-                currentX = currentX + 5;
+                position.X = position.X + 5;
             }
-            else if (currentX == maxXVal)
+            else if (position.X == maxXVal)
             {
-                currentX = currentX - 5; ;
+                position.X = position.X - 5; ;
             }
-            else if (currentY == minYVal)
+            else if (position.Y == minYVal)
             {
-                currentY = currentY + 5; ;
+                position.Y = position.Y + 5; ;
             }
-            else if (currentY == maxYVal)
+            else if (position.Y == maxYVal)
             {
-                currentY = currentY - 5;
+                position.Y = position.Y - 5;
             }
         }
         private void ChooseDirection()
@@ -92,8 +93,12 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetPosition()
         {
-            currentX = ConstantsSprint2.enemyNPCX;
-            currentY = ConstantsSprint2.enemyNPCY;
+            position.X = ConstantsSprint2.enemyNPCX;
+            position.Y = ConstantsSprint2.enemyNPCY;
+        }
+        public void TakeDamage(float damage)
+        {
+            health = health - damage;
         }
     }
 }

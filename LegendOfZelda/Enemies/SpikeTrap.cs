@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -9,8 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private int currentX = ConstantsSprint2.enemyNPCX;
-        private int currentY = ConstantsSprint2.enemyNPCY;
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int maxDistance = 50;
         private int currentDist = 0;
         bool returning = false;
@@ -25,23 +25,11 @@ namespace LegendOfZelda.Enemies
 
         public void Update()
         {
-            if (!going && !returning)
-            {
-                ChooseDirection();
-                going = true;
-            }
-            else if (going)
-            {
-                MoveGoing();
-            }
-            else
-            {
-                MoveReturning();
-            }
+            //Needs new implementation with Link knowledge
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, currentX, currentY);
+            sprite.Draw(spriteBatch,position);
         }
 
         private void ChooseDirection()
@@ -53,12 +41,12 @@ namespace LegendOfZelda.Enemies
         {
             if (xOrYDir == 0)
             {
-                currentX = currentX + 2;
+                position.X = position.X + 2;
                 currentDist = currentDist + 2;
             }
             else
             {
-                currentY = currentY - 2;
+                position.Y = position.Y - 2;
                 currentDist = currentDist + 2;
             }
             if (currentDist >= maxDistance)
@@ -72,12 +60,12 @@ namespace LegendOfZelda.Enemies
         {
             if (xOrYDir == 0)
             {
-                currentX = currentX--;
+                position.X = position.X--;
                 currentDist++;
             }
             else
             {
-                currentY = currentY++;
+                position.Y = position.Y++;
                 currentDist++;
             }
 
@@ -90,8 +78,8 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetPosition()
         {
-            currentX = ConstantsSprint2.enemyNPCX;
-            currentY = ConstantsSprint2.enemyNPCY;
+            position.X = ConstantsSprint2.enemyNPCX;
+            position.Y = ConstantsSprint2.enemyNPCY;
         }
     }
 }

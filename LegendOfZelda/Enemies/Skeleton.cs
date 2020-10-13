@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -9,8 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private int currentX = ConstantsSprint2.enemyNPCX;
-        private int currentY = ConstantsSprint2.enemyNPCY;
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int minXVal = 0;
         private int maxXVal = 800;
         private int minYVal = 0;
@@ -18,6 +18,7 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
+        private double health = 2;
 
         public Skeleton(SpriteBatch spriteBatch)
         {
@@ -41,7 +42,7 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, currentX, currentY);
+            sprite.Draw(spriteBatch, position);
         }
         private void ChooseDirection()
         {
@@ -51,27 +52,31 @@ namespace LegendOfZelda.Enemies
         }
         private void Move()
         {
-            if (upDown == 0 && leftRight == 0 && currentX + 32 < maxXVal)
+            if (upDown == 0 && leftRight == 0 && position.X + 32 < maxXVal)
             {
-                currentX++;
+                position.X++;
             }
-            else if (upDown == 0 && leftRight == 1 && currentX - 32 > minXVal)
+            else if (upDown == 0 && leftRight == 1 && position.X - 32 > minXVal)
             {
-                currentX--;
+                position.X++;
             }
-            else if (upDown == 1 && leftRight == 0 && currentY + 32 < maxYVal)
+            else if (upDown == 1 && leftRight == 0 && position.Y + 32 < maxYVal)
             {
-                currentY--;
+                position.Y--;
             }
-            else if (currentY - 32 > minYVal)
+            else if (position.Y - 32 > minYVal)
             {
-                currentY++;
+                position.Y++;
             }
         }
         public void ResetPosition()
         {
-            currentX = ConstantsSprint2.enemyNPCX;
-            currentY = ConstantsSprint2.enemyNPCY;
+            position.X = ConstantsSprint2.enemyNPCX;
+            position.Y = ConstantsSprint2.enemyNPCY;
+        }
+        public void TakeDamage(float damage)
+        {
+            health = health - damage;
         }
     }
 }

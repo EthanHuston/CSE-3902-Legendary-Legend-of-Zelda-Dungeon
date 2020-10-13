@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    public interface INpc
+    public interface INpc : ISpawnable
     {
         void Update();
 

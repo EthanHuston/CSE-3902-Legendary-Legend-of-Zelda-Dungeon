@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Interface
 {
-    interface ISpawnable
+    public interface ISpawnable
     {
         void Update();
         void Draw();
