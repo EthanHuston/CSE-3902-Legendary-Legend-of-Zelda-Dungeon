@@ -1,9 +1,10 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class Fire : IInteractiveEnvironment
+    class Fire : IBlock
     {
         private FireSprite fireSprite;
         private SpriteBatch sB;

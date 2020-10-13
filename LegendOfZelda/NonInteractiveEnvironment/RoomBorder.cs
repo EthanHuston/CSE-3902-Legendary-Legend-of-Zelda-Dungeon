@@ -1,8 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
-    class RoomBorder : INonInteractiveEnvironment
+    class RoomBorder : IBlock
     {
         private RoomBorderSprite roomSprite;
         private SpriteBatch sb;

@@ -1,30 +1,34 @@
 using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Link.Items;
 using LegendOfZelda.Link.State.NotMoving;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link
 {
-    class LinkPlayer : IPlayer
+    class LinkPlayer : ILinkPlayer
     {
         private ILinkState state;
         public ILinkSprite CurrentSprite { get; set; }
         public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
-        private ISpawnedItems spawnedItems;
         private int health;
         private float posX;
         private float posY;
+        private Vector2 oldPosition;
 
-        public LinkPlayer(Game1 game)
+        public LinkPlayer(Game1 game) : this(game, new Vector2(ConstantsSprint2.Sprint2LinkSpawnX, ConstantsSprint2.Sprint2LinkSpawnY))
+        {
+            // handle with other constructor
+        }
+
+        public LinkPlayer(Game1 game, Vector2 spawnPosition)
         {
             health = Constants.LinkHealth;
-            this.Game = game;
+            Game = game;
             state = new LinkStandingStillDownState(this);
-            spawnedItems = new LinkSpawnedItems();
             posX = ConstantsSprint2.Sprint2LinkSpawnX;
             posY = ConstantsSprint2.Sprint2LinkSpawnY;
+            oldPosition = new Vector2(posX, posY);
         }
 
         public Vector2 GetPosition()
@@ -34,6 +38,7 @@ namespace LegendOfZelda.Link
 
         public void SetPosition(Vector2 newPosition)
         {
+            oldPosition = new Vector2(posX, posY);
             posX = newPosition.X;
             posY = newPosition.Y;
         }
@@ -50,22 +55,19 @@ namespace LegendOfZelda.Link
         public void Draw()
         {
             state.Draw();
-            spawnedItems.DrawAll();
         }
 
         public void Update()
         {
             state.Update();
-            spawnedItems.UpdateAll();
         }
 
         public void BeHealthy(int healAmount)
         {
-            Heal(healAmount);
-            state.BeHealthy();
+            state.BeHealthy(healAmount);
         }
 
-        public void TakeDamage(int damage)
+        public void BeDamaged(int damage)
         {
             state.BeDamaged(damage);
         }
@@ -75,7 +77,7 @@ namespace LegendOfZelda.Link
             health -= damage;
         }
 
-        public void Heal(int healAmount)
+        public void AddHealth(int healAmount)
         {
             health += healAmount;
         }
@@ -135,7 +137,7 @@ namespace LegendOfZelda.Link
 
         public void SpawnItem(ILinkItem item)
         {
-            spawnedItems.SpawnNewItem(item);
+            throw new System.NotImplementedException();
         }
 
         public void UseBomb()
@@ -156,6 +158,26 @@ namespace LegendOfZelda.Link
         public void UseSwordBeam()
         {
             state.UseSwordBeam();
+        }
+
+        public Vector2 GetVelocity()
+        {
+            return Vector2.Subtract(GetPosition(), oldPosition);
+        }
+
+        public void Move(Vector2 distance)
+        {
+            SetPosition(new Vector2(posX + distance.X, posY + distance.Y));
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return CurrentSprite.GetRectangle();
+        }
+
+        public bool SafeToDespawn()
+        {
+            return false; // Link can only despawn when game ends
         }
     }
 }

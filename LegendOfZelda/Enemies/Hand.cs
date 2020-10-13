@@ -1,10 +1,11 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Hand : IEnemy
+    class Hand : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
@@ -17,6 +18,7 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
+        private double health = 4;
 
 
         public Hand(SpriteBatch spriteBatch)
@@ -90,6 +92,10 @@ namespace LegendOfZelda.Enemies
         {
             currentX = ConstantsSprint2.enemyNPCX;
             currentY = ConstantsSprint2.enemyNPCY;
+        }
+        public void TakeDamage(float damage)
+        {
+            health = health - damage;
         }
     }
 }

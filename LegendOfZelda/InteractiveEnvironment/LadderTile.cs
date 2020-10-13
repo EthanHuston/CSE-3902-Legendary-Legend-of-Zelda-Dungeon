@@ -1,9 +1,11 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
+
 
 namespace LegendOfZelda
 {
-    class LadderTile : IInteractiveEnvironment
+    class LadderTile : IBlock
     {
         private LadderSprite ladderSprite;
         private SpriteBatch sB;

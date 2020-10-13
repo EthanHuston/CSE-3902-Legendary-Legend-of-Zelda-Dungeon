@@ -30,20 +30,6 @@ namespace LegendOfZelda.Link
         private Texture2D linkPickingUpTriforceSprite;
         private Texture2D linkPickingUpBowSprite;
         private Texture2D linkPickingUpBoomerangSprite;
-        private Texture2D arrowUpSprite;
-        private Texture2D arrowDownSprite;
-        private Texture2D arrowRightSprite;
-        private Texture2D arrowLeftSprite;
-        private Texture2D bombExplodingSprite;
-        private Texture2D boomerangFlyingSprite;
-        private Texture2D swordBeamUp;
-        private Texture2D swordBeamDown;
-        private Texture2D swordBeamRight;
-        private Texture2D swordBeamLeft;
-        private Texture2D swordBeamExplodingDownLeft;
-        private Texture2D swordBeamExplodingDownRight;
-        private Texture2D swordBeamExplodingUpLeft;
-        private Texture2D swordBeamExplodingUpRight;
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
         public static LinkSpriteFactory Instance
@@ -82,22 +68,6 @@ namespace LegendOfZelda.Link
             linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
             linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
             linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
-
-            // Load Link's item sprites
-            arrowDownSprite = content.Load<Texture2D>("Items/ArrowDown");
-            arrowUpSprite = content.Load<Texture2D>("Items/ArrowUp");
-            arrowRightSprite = content.Load<Texture2D>("Items/ArrowRight");
-            arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
-            bombExplodingSprite = content.Load<Texture2D>("Items/BombExploding");
-            boomerangFlyingSprite = content.Load<Texture2D>("Items/BoomerangFlying");
-            swordBeamDown = content.Load<Texture2D>("Items/SwordBeamDown");
-            swordBeamUp = content.Load<Texture2D>("Items/SwordBeamUp");
-            swordBeamRight = content.Load<Texture2D>("Items/SwordBeamRight");
-            swordBeamLeft = content.Load<Texture2D>("Items/SwordBeamLeft");
-            swordBeamExplodingDownLeft = content.Load<Texture2D>("Items/SwordBeamExplosionDownLeft");
-            swordBeamExplodingDownRight = content.Load<Texture2D>("Items/SwordBeamExplosionDownRight");
-            swordBeamExplodingUpLeft = content.Load<Texture2D>("Items/SwordBeamExplosionUpLeft");
-            swordBeamExplodingUpRight = content.Load<Texture2D>("Items/SwordBeamExplosionUpRight");
         }
         // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()
@@ -187,52 +157,6 @@ namespace LegendOfZelda.Link
         public ILinkSprite CreateLinkPickingUpBoomerangSprite()
         {
             return new PickingUpItemLinkSprite(linkPickingUpBoomerangSprite);
-        }
-
-        // Link item sprites
-        public ILinkItemSprite CreateArrowUpSprite()
-        {
-            return new ArrowFlyingSprite(arrowUpSprite);
-        }
-        public ILinkItemSprite CreateArrowDownSprite()
-        {
-            return new ArrowFlyingSprite(arrowDownSprite);
-        }
-        public ILinkItemSprite CreateArrowRightSprite()
-        {
-            return new ArrowFlyingSprite(arrowRightSprite);
-        }
-        public ILinkItemSprite CreateArrowLeftSprite()
-        {
-            return new ArrowFlyingSprite(arrowLeftSprite);
-        }
-        public ILinkItemSprite CreateBombExplodingSprite()
-        {
-            return new BombExplodingSprite(bombExplodingSprite);
-        }
-        public ILinkItemSprite CreateBoomerangFlyingSprite()
-        {
-            return new BoomerangFlyingSprite(boomerangFlyingSprite);
-        }
-        public ILinkItemSprite CreateSwordBeamDownSprite()
-        {
-            return new SwordBeamFlyingSprite(swordBeamDown);
-        }
-        public ILinkItemSprite CreateSwordBeamUpSprite()
-        {
-            return new SwordBeamFlyingSprite(swordBeamUp);
-        }
-        public ILinkItemSprite CreateSwordBeamRightSprite()
-        {
-            return new SwordBeamFlyingSprite(swordBeamRight);
-        }
-        public ILinkItemSprite CreateSwordBeamLeftSprite()
-        {
-            return new SwordBeamFlyingSprite(swordBeamLeft);
-        }
-        public ILinkItemSprite CreateSwordBeamExplodingSprite()
-        {
-            return new SwordBeamExplodingSprite(swordBeamExplodingUpLeft, swordBeamExplodingUpRight, swordBeamExplodingDownLeft, swordBeamExplodingDownRight);
         }
     }
 }

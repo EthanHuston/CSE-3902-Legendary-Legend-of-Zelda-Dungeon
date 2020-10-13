@@ -1,9 +1,11 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
+
 
 namespace LegendOfZelda
 {
-    class Square : IInteractiveEnvironment
+    class Square : IBlock
     {
         private BlockSprite blockSprite;
         private SpriteBatch sB;

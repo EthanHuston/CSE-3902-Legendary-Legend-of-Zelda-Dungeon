@@ -1,8 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
-    class TileWater : INonInteractiveEnvironment
+    class TileWater : IBlock
     {
         private TileWaterSprite sprite;
         private SpriteBatch sb;

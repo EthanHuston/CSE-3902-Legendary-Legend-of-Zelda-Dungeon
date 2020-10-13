@@ -1,9 +1,10 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class Merchant : IEnemy
+    class Merchant : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;

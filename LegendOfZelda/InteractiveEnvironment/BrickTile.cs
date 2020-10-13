@@ -1,9 +1,10 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class BrickTile : IInteractiveEnvironment
+    class BrickTile : IBlock
     {
         private BrickTileSprite brickTileSprite;
         private SpriteBatch sB;

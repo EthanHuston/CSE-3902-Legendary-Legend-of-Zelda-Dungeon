@@ -1,9 +1,11 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
+
 
 namespace LegendOfZelda
 {
-    class OpenDoor : IInteractiveEnvironment
+    class OpenDoor : IBlock
     {
         private DoorSprite doorSprite;
         private SpriteBatch sB;

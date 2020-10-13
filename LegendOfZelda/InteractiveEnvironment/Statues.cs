@@ -1,9 +1,11 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
+
 
 namespace LegendOfZelda
 {
-    class Statues : IInteractiveEnvironment
+    class Statues : IBlock
     {
         private StatueSprite statueSprite;
         private SpriteBatch sB;

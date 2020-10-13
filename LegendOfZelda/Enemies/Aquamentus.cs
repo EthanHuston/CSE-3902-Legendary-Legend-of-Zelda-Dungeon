@@ -1,14 +1,15 @@
-﻿using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class Aquamentus : IEnemy
+    class Aquamentus : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private int posX = ConstantsSprint2.enemyNPCX;
-        private int posY = ConstantsSprint2.enemyNPCY;
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY)
         private int vx = 1;
         private int updateCount = 0;
         private int switchDirection = 100;
@@ -16,6 +17,7 @@ namespace LegendOfZelda.Enemies
         private int attackUpdate = 0;
         private bool attacked = false;
         private bool ballsInitialized = false;
+        private double health = 6;
         public Fireball[] spicyBalls = new Fireball[3];
 
         public Aquamentus(SpriteBatch spriteBatch)
@@ -47,7 +49,7 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, posX, posY);
+            sprite.Draw(spriteBatch, position);
 
             if (ballsInitialized)
             {
@@ -56,25 +58,25 @@ namespace LegendOfZelda.Enemies
                     spicyBalls[i].Draw();
                 }
             }
-            
+
 
         }
 
         public int getX()
         {
-            return posX;
+            return position.X;
         }
 
         public int getY()
         {
-            return posY;
+            return position.Y;
         }
 
         private void Attack()
         {
-            spicyBalls[0] = new Fireball(spriteBatch, posX, posY, -3);
-            spicyBalls[1] = new Fireball(spriteBatch, posX, posY, 0);
-            spicyBalls[2] = new Fireball(spriteBatch, posX, posY, 3);
+            spicyBalls[0] = new Fireball(spriteBatch, position.X, position.Y, -3);
+            spicyBalls[1] = new Fireball(spriteBatch, position.X, position.Y, 0);
+            spicyBalls[2] = new Fireball(spriteBatch, position.X, position.Y, 3);
             ballsInitialized = true;
             attacked = true;
             attackUpdate = updateCount;
@@ -83,9 +85,9 @@ namespace LegendOfZelda.Enemies
         private void updateDirection()
         {
             if (updateCount < switchDirection)
-                posX -= vx;
+                position.X -= vx;
             else if (updateCount < 2 * switchDirection)
-                posX += vx;
+                position.X += vx;
             else
                 updateCount = 0;
         }
@@ -122,10 +124,14 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetPosition()
         {
-            posX = ConstantsSprint2.enemyNPCX;
-            posY = ConstantsSprint2.enemyNPCY;
+            position.X = ConstantsSprint2.enemyNPCX;
+            position.Y = ConstantsSprint2.enemyNPCY;
             ballsInitialized = false;
             updateCount = 0;
+        }
+        public void TakeDamage(double damage)
+        {
+            health = health - damage;
         }
     }
 }
