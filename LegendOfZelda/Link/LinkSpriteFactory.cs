@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.Sprite;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
-using Sprint0.Link.Sprite;
 
-namespace Sprint0.Link
+namespace LegendOfZelda.Link
 {
     //Sprite Factory based of model found in slides
     class LinkSpriteFactory
@@ -88,16 +88,16 @@ namespace Sprint0.Link
             arrowUpSprite = content.Load<Texture2D>("Items/ArrowUp");
             arrowRightSprite = content.Load<Texture2D>("Items/ArrowRight");
             arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
-            bombExplodingSprite = content.Load<Texture2D>("Item/BombExploding");
-            boomerangFlyingSprite = content.Load<Texture2D>("Item/BoomerangFlying");
-            swordBeamDown = content.Load<Texture2D>("Item/SwordBeamDown");
-            swordBeamUp = content.Load<Texture2D>("Item/SwordBeamUp");
-            swordBeamRight = content.Load<Texture2D>("Item/SwordBeamRight");
-            swordBeamLeft = content.Load<Texture2D>("Item/SwordBeamLeft");
-            swordBeamExplodingDownLeft = content.Load <Texture2D>("Item/SwordBeamExplosionDownLeft");
-            swordBeamExplodingDownRight = content.Load <Texture2D>("Item/SwordBeamExplosionDownRight");
-            swordBeamExplodingUpLeft = content.Load <Texture2D>("Item/SwordBeamExplosionUpLeft");
-            swordBeamExplodingUpRight = content.Load <Texture2D>("Item/SwordBeamExplosionUpRight");
+            bombExplodingSprite = content.Load<Texture2D>("Items/BombExploding");
+            boomerangFlyingSprite = content.Load<Texture2D>("Items/BoomerangFlying");
+            swordBeamDown = content.Load<Texture2D>("Items/SwordBeamDown");
+            swordBeamUp = content.Load<Texture2D>("Items/SwordBeamUp");
+            swordBeamRight = content.Load<Texture2D>("Items/SwordBeamRight");
+            swordBeamLeft = content.Load<Texture2D>("Items/SwordBeamLeft");
+            swordBeamExplodingDownLeft = content.Load<Texture2D>("Items/SwordBeamExplosionDownLeft");
+            swordBeamExplodingDownRight = content.Load<Texture2D>("Items/SwordBeamExplosionDownRight");
+            swordBeamExplodingUpLeft = content.Load<Texture2D>("Items/SwordBeamExplosionUpLeft");
+            swordBeamExplodingUpRight = content.Load<Texture2D>("Items/SwordBeamExplosionUpRight");
         }
         // Link Sprites
         public ILinkSprite CreateIdleLinkDownSprite()
@@ -178,7 +178,7 @@ namespace Sprint0.Link
         }
         public ILinkSprite CreateLinkPickingUpTriforceSprite()
         {
-            return new PickingUpItemLinkSprite(linkPickingUpTriforceSprite);
+            return new PickingUpTriforceLinkSprite(linkPickingUpTriforceSprite);
         }
         public ILinkSprite CreateLinkPickingUpBowSprite()
         {
@@ -232,7 +232,7 @@ namespace Sprint0.Link
         }
         public ILinkItemSprite CreateSwordBeamExplodingSprite()
         {
-            return new SwordBeamExplodingSprite(swordBeamExplodingDownLeft, swordBeamExplodingDownRight, swordBeamExplodingUpLeft, swordBeamExplodingUpRight);
+            return new SwordBeamExplodingSprite(swordBeamExplodingUpLeft, swordBeamExplodingUpRight, swordBeamExplodingDownLeft, swordBeamExplodingDownRight);
         }
     }
 }

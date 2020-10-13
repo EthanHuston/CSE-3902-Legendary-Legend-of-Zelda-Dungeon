@@ -1,0 +1,6 @@
+Saumyah Patel
+9/27/2020
+Sprint Dos
+Fairy.cs and FairySprite.cs
+Nathan Murphy
+Good implementation of random movement, but using too many lines of code to declare and define instance variables. Delete empty spaces and you'll be fine.

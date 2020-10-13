@@ -1,51 +1,57 @@
-﻿using Microsoft.Xna.Framework;
-using Sprint0.Link.Interface;
-using Sprint0.Link.State.Attacking;
-using Sprint0.Link.State.Item;
-using Sprint0.Link.State.NotMoving;
+﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State.Attacking;
+using LegendOfZelda.Link.State.Item;
+using LegendOfZelda.Link.State.NotMoving;
+using Microsoft.Xna.Framework;
 using System;
 
-namespace Sprint0.Link.State.Walking
+namespace LegendOfZelda.Link.State.Walking
 {
     class LinkWalkingLeftState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
+        int distanceWalked;
 
-        public LinkWalkingLeftState(Link link)
+        public LinkWalkingLeftState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkWalkingLeftState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkWalkingLeftState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingLeftLinkSprite();
+            distanceWalked = 0;
         }
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             Vector2 position = link.GetPosition();
-            position.X = position.X - Constants.LinkWalkDistanceIntervalPx;
-            if (position.X <= Constants.MinXPos)
+            if (position.Y < Constants.MaxYPos)
+            {
+                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+                position.X = position.X - Constants.LinkWalkStepDistanceInterval;
+                distanceWalked += Constants.LinkWalkStepDistanceInterval;
+                link.SetPosition(position);
+
+                link.CurrentSprite.Update();
+            }
+
+            if (distanceWalked > Constants.LinkWalkDistanceInterval)
             {
                 StopMoving();
-                return;
             }
-            link.SetPosition(position);
-
-            link.CurrentSprite.Update();
         }
 
         public void Draw()
@@ -77,6 +83,7 @@ namespace Sprint0.Link.State.Walking
         {
             if (!damaged)
             {
+                damaged = true;
                 this.link.SubtractHealth(damage);
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
             }

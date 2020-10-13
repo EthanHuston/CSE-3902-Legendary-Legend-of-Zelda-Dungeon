@@ -1,0 +1,12 @@
+Chris Lenart
+10/5/2020
+Sprint 2
+Bat.cs and BatSprite.cs
+Ethan Huston
+15 minutes
+Readability:
+Your code is clean and your variable names are specific and concise which makes your code easy to read.
+For Bat.cs in the Update() method, consider moving the logic that updates the bat's position into a helper method like you did with ChooseDirection() and CheckBounds() to make Update() a little easier to understand.
+BatSprite.cs looks good.
+Maintainability:
+It might be a good idea to use the variables in the constants class for the min and max values for X and Y incase we change the screen size.

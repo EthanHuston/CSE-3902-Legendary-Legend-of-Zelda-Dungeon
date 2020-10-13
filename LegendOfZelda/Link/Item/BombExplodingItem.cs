@@ -1,8 +1,8 @@
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Item
+namespace LegendOfZelda.Link.Item
 {
     class BombExplodingItem : ILinkItem
     {
@@ -12,7 +12,7 @@ namespace Sprint0.Link.Item
         private SpriteBatch spriteBatch;
         private const Constants.Item type = Constants.Item.Arrow;
 
-        public BombExplodingItem(Link link)
+        public BombExplodingItem(LinkPlayer link)
         {
             this.position = new Vector2();
             this.spriteBatch = link.Game.SpriteBatch;

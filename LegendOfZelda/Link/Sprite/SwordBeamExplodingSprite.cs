@@ -1,23 +1,21 @@
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 using System;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class SwordBeamExplodingSprite : ILinkItemSprite
     {
         private Texture2D upLeftSprite, upRightSprite, downLeftSprite, downRightSprite;
-        private Vector2 originPosition;
         private bool animationIsFinished;
-        private bool obtainedStartingPosition;
         private int xOffset;
         private int yOffset;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 4;
+        private int totalFrames;
         private const int numRows = 1;
-        private const int numColumns = 2;
+        private const int numColumns = 4;
 
         public SwordBeamExplodingSprite(Texture2D upLeftSprite, Texture2D upRightSprite, Texture2D downLeftSprite, Texture2D downRightSprite)
         {
@@ -30,12 +28,13 @@ namespace Sprint0.Link.Sprite
             currentFrame = 0;
             xOffset = 0;
             yOffset = 0;
+            totalFrames = numRows * numColumns;
         }
 
         public void Update()
         {
             if (FinishedAnimation()) return;
-            if (++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == Constants.SwordBeamExplodingFrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
@@ -43,27 +42,35 @@ namespace Sprint0.Link.Sprite
 
             xOffset += Constants.SwordBeamExplodingDistanceInterval;
             yOffset += Constants.SwordBeamExplodingDistanceInterval;
+
+            animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > Constants.SwordBeamExplodingRange;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
-            int currentRow = 1;
-            int currentColumn = currentFrame;
+            int width, height;
+            int currentRow = 0;
+            int currentColumn = currentFrame % totalFrames;
 
-            animationIsFinished = Math.Sqrt(Math.Exp(xOffset, 2) + Math.Exp(yOffset, 2)) > Constants.SwordBeamExplodingRange;
+            spriteBatch.Begin();
 
-            Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            width = upLeftSprite.Width / numColumns;
+            height = upLeftSprite.Height / numRows;
+            spriteBatch.Draw(upLeftSprite, new Rectangle((int)position.X - xOffset, (int)position.Y - yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
 
-            spriteBatch.Draw(spriteUpLeft, new Rectangle((int)position.X - xOffset, (int)position.Y - yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), sourceRectangle, Color.White);
+            width = downLeftSprite.Width / numColumns;
+            height = downLeftSprite.Height / numRows;
+            spriteBatch.Draw(downLeftSprite, new Rectangle((int)position.X - xOffset, (int)position.Y + yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
 
-            spriteBatch.Draw(spriteDownLeft, new Rectangle((int)position.X - xOffset, (int)position.Y + yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), sourceRectangle, Color.White);
+            width = upRightSprite.Width / numColumns;
+            height = upRightSprite.Height / numRows;
+            spriteBatch.Draw(upRightSprite, new Rectangle((int)position.X + xOffset, (int)position.Y - yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
 
-            spriteBatch.Draw(spriteUpRight, new Rectangle((int)position.X + xOffset, (int)position.Y - yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), sourceRectangle, Color.White);
+            width = downRightSprite.Width / numColumns;
+            height = downRightSprite.Height / numRows;
+            spriteBatch.Draw(downRightSprite, new Rectangle((int)position.X + xOffset, (int)position.Y + yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
 
-            spriteBatch.Draw(spriteDownRight, new Rectangle((int)position.X + xOffset, (int)position.Y + yOffset, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler)), sourceRectangle, Color.White);
+            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

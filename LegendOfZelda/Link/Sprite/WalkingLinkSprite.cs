@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class WalkingLinkSprite : ILinkSprite
     {
@@ -23,7 +23,7 @@ namespace Sprint0.Link.Sprite
         }
         public void Update()
         {
-            if (++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == Constants.LinkWalkingFrameDelay)
             {
                 currentFrame = currentFrame == totalFrames ? 0 : currentFrame + 1;
                 bufferFrame = 0;
@@ -45,11 +45,11 @@ namespace Sprint0.Link.Sprite
         {
             int width = sprite.Width / numColumns;
             int height = sprite.Height / numRows;
-            int currentRow = 1;
+            int currentRow = 0;
             int currentColumn = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int) position.X, (int) position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);
@@ -58,7 +58,7 @@ namespace Sprint0.Link.Sprite
 
         public bool FinishedAnimation()
         {
-            return true; // because animation can be exited at any time
+            return false; // because animation can be exited at any time
         }
     }
 }

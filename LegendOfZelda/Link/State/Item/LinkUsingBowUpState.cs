@@ -1,47 +1,39 @@
-using Sprint0.Link.Interface;
-using Sprint0.Link.Item;
-using Sprint0.Link.State.NotMoving;
+using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.Item;
+using LegendOfZelda.Link.State.NotMoving;
 using System;
 
-namespace Sprint0.Link.State.Item
+namespace LegendOfZelda.Link.State.Item
 {
     class LinkUsingBowUpState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkUsingBowUpState(Link link)
+        public LinkUsingBowUpState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkUsingBowUpState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkUsingBowUpState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateUsingItemDownLinkSprite();
-            link.BlockStateChange = true;
             this.link.SpawnItem(new ArrowFlyingItem(link, Constants.Direction.Up));
         }
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            link.CurrentSprite.Update();
-            if (link.CurrentSprite.FinishedAnimation())
-            {
-                link.BlockStateChange = false;
-                StopMoving();
-            }
+            StopMoving(); // because after we spawn the boomerang return to non-moving state
         }
 
         public void Draw()
@@ -73,6 +65,7 @@ namespace Sprint0.Link.State.Item
         {
             if (!damaged)
             {
+                damaged = true;
                 this.link.SubtractHealth(damage);
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
             }

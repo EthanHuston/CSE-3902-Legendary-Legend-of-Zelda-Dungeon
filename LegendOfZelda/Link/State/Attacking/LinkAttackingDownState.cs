@@ -1,50 +1,56 @@
-﻿using Sprint0.Link.Interface;
-using Sprint0.Link.State.NotMoving;
+﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State.NotMoving;
+using Microsoft.Xna.Framework;
 using System;
 
-namespace Sprint0.Link.State.Attacking
+namespace LegendOfZelda.Link.State.Attacking
 {
     class LinkAttackingDownState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkAttackingDownState(Link link)
+        public LinkAttackingDownState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkAttackingDownState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkAttackingDownState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
-            link.BlockStateChange = true;
         }
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            link.CurrentSprite.Update();
-            if(link.CurrentSprite.FinishedAnimation())
+            if (link.CurrentSprite.FinishedAnimation())
             {
                 link.BlockStateChange = false;
                 StopMoving();
             }
+            else
+            {
+                link.BlockStateChange = true;
+            }
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            link.CurrentSprite.Update();
         }
 
         public void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            float posX = link.GetPosition().X + Constants.LinkUsingSwordDownSpawnOffsetX;
+            float posY = link.GetPosition().Y + Constants.LinkUsingSwordDownSpawnOffsetY;
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Vector2(posX, posY), damaged);
         }
 
         public void MoveDown()
@@ -71,6 +77,7 @@ namespace Sprint0.Link.State.Attacking
         {
             if (!damaged)
             {
+                damaged = true;
                 this.link.SubtractHealth(damage);
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
             }

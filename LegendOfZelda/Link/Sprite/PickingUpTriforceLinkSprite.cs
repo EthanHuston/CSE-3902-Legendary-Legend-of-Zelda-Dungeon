@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class PickingUpTriforceLinkSprite : ILinkSprite
     {
@@ -12,7 +12,7 @@ namespace Sprint0.Link.Sprite
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
-        private const int totalFrames = 16;
+        private int delayCounter;
         private const int numRows = 1;
         private const int numColumns = 2;
 
@@ -22,12 +22,14 @@ namespace Sprint0.Link.Sprite
             animationIsDone = false;
             flashRed = false;
             damageColorCounter = 0;
+            delayCounter = 0;
         }
 
         public void Update()
         {
-            animationIsDone = currentFrame >= totalFrames + Constants.LinkPickingUpItemPauseTicks;
+            animationIsDone = delayCounter >= Constants.LinkPickingUpItemPauseTicks;
             if (FinishedAnimation()) return;
+            delayCounter++;
 
             if (++bufferFrame == Constants.FrameDelay)
             {
@@ -51,16 +53,16 @@ namespace Sprint0.Link.Sprite
         {
             if (FinishedAnimation()) return;
 
-            int frameWidth = sprite.Width / numRows;
-            int frameHeight = sprite.Height / numColumns;
-            int currentRow = 1;
+            int frameWidth = sprite.Width / numColumns;
+            int frameHeight = sprite.Height / numRows;
+            int currentRow = 0;
             int currentColumn = currentFrame % 2;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
 
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.White : Color.Red);
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
             spriteBatch.End();
         }
 

@@ -1,0 +1,13 @@
+Nathan Murphy
+10/5/2020
+Sprint 2
+LinkPlayer.cs
+Ryan Stucky
+10 Minutes
+Readability:
+This was very well done in terms of readability. Everything is well-named and clearly conveys on what that thing is supposed to do. A good example of this
+can be found in the constructer; simple on what constitutes Link as a IPlayer. Methods are also very short and to the point.
+Maintainability:
+As with other class implementations for Sprint 2, the main issue comes up when collision detection gets introduced. This is especially apparent with Link,
+as this is the main way the player interacts with the game. Other than that notion, everything seems to be in order when looking at LinkPlayer.cs for
+maintainability.

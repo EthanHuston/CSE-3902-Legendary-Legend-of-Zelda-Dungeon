@@ -1,0 +1,15 @@
+Ethan Huston
+10/5/20
+Sprint 2
+LinkPlayer.cs
+Ryan Stuckey
+15 minutes
+Readability:
+The readability of Ryans code for LinkPlayer is great, many of the methods are very short and simple allowing for quick understanding
+of their responsibilties and functionality. He implemented the State pattern very well to keep the bulk of logic code in many places 
+so as not to clutter any one method. Overall very clean code.
+Maintainability:
+The maintainability of the code is also fairly good as well. Given that there is extensive use of constants for quick global changes 
+in the project if the group needs them. Also, he has essentially provided link with full functionality minus the required collision detection to be added in Sprint3,
+So the code will not have to be altered too extensivly for the upcoming sprints and is also in a good spot to have collisioon detection added in later. Similarly
+LinkPlayer is a part of IPlayer, meaning potential multiplayer in Sprint5 is also just a few steps away.

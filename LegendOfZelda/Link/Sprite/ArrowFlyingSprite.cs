@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class ArrowFlyingSprite : ILinkItemSprite
     {
@@ -14,7 +14,9 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
+            spriteBatch.Begin();
             spriteBatch.Draw(sprite, position, Color.White);
+            spriteBatch.End();
         }
 
         public void Update()

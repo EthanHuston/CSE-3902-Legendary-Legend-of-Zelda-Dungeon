@@ -1,8 +1,9 @@
+using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Item
+namespace LegendOfZelda.Link.Item
 {
     class SwordBeamItem : ILinkItem
     {
@@ -13,10 +14,10 @@ namespace Sprint0.Link.Item
         private Vector2 position;
         private ILinkItemSprite sprite;
         private SpriteBatch spriteBatch;
-        private Link link;
+        private LinkPlayer link;
         private const Constants.Item type = Constants.Item.SwordBeam;
 
-        public SwordBeamItem(Link link, Constants.Direction direction)
+        public SwordBeamItem(LinkPlayer link, Constants.Direction direction)
         {
             this.link = link;
             this.spriteBatch = link.Game.SpriteBatch;
@@ -53,7 +54,7 @@ namespace Sprint0.Link.Item
                 position.X += Constants.SwordBeamFlyingDistanceInterval * direction.X;
                 position.Y += Constants.SwordBeamFlyingDistanceInterval * direction.Y;
                 // TODO: remove me after Sprint 2 - just so we can see the sword exploding
-                stopMovingAndExplode = Utility.GetDistance(position, link.GetPosition()) > Constants.SwordBeamMaxDistanceFromLink;
+                stopMovingAndExplode = Utility.GetDistance(position, link.GetPosition()) > ConstantsSprint2.SwordBeamMaxDistanceFromLink;
             }
             else if (stopMovingAndExplode && !updatedSprite) // initial setup of sword beam explosion
             {

@@ -1,32 +1,32 @@
-﻿using Sprint0.Link.Interface;
-using Sprint0.Link.State.Attacking;
-using Sprint0.Link.State.Item;
-using Sprint0.Link.State.Walking;
+﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State.Attacking;
+using LegendOfZelda.Link.State.Item;
+using LegendOfZelda.Link.State.Walking;
 using System;
 
-namespace Sprint0.Link.State.NotMoving
+namespace LegendOfZelda.Link.State.NotMoving
 {
     class LinkStandingStillRightState : ILinkState
     {
-        private Link link;
+        private LinkPlayer link;
         private bool damaged;
         private DateTime healthyDateTime;
 
-        public LinkStandingStillRightState(Link link)
+        public LinkStandingStillRightState(LinkPlayer link)
         {
             InitClass(link);
             damaged = false;
             healthyDateTime = DateTime.Now;
         }
 
-        public LinkStandingStillRightState(Link link, bool damaged, DateTime healthyDateTime)
+        public LinkStandingStillRightState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
         {
             InitClass(link);
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
         }
 
-        private void InitClass(Link link)
+        private void InitClass(LinkPlayer link)
         {
             this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
@@ -67,6 +67,7 @@ namespace Sprint0.Link.State.NotMoving
         {
             if (!damaged)
             {
+                damaged = true;
                 this.link.SubtractHealth(damage);
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
             }

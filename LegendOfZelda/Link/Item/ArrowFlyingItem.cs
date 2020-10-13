@@ -1,8 +1,8 @@
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Item
+namespace LegendOfZelda.Link.Item
 {
     class ArrowFlyingItem : ILinkItem
     {
@@ -13,12 +13,13 @@ namespace Sprint0.Link.Item
         private SpriteBatch spriteBatch;
         private const Constants.Item type = Constants.Item.Arrow;
 
-        public ArrowFlyingItem(Link link, Constants.Direction direction)
+        public ArrowFlyingItem(LinkPlayer link, Constants.Direction direction)
         {
             this.spriteBatch = link.Game.SpriteBatch;
             position.X = link.GetPosition().X + Constants.ArrowSpawnXOffsetFromLink;
             position.Y = link.GetPosition().Y + Constants.ArrowSpawnYOffsetFromLink;
-            switch (direction) {
+            switch (direction)
+            {
                 case Constants.Direction.Down:
                     this.direction = new Vector2(0, 1);
                     sprite = LinkSpriteFactory.Instance.CreateArrowDownSprite();

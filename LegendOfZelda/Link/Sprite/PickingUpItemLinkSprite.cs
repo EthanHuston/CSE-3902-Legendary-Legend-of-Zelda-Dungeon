@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class PickingUpItemLinkSprite : ILinkSprite
     {
@@ -25,6 +25,7 @@ namespace Sprint0.Link.Sprite
         {
             animationIsDone = delayCounter >= Constants.LinkPickingUpItemPauseTicks;
             if (FinishedAnimation()) return;
+            delayCounter++;
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {
@@ -40,7 +41,9 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
+            spriteBatch.Begin();
             spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
+            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

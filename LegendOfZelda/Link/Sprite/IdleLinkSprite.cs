@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class IdleLinkSprite : ILinkSprite
     {
@@ -28,12 +28,16 @@ namespace Sprint0.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
+            spriteBatch.Begin();
             Draw(spriteBatch, position, false);
+            spriteBatch.End();
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
+            spriteBatch.Begin();
             spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
+            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

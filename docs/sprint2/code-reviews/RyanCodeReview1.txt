@@ -1,0 +1,10 @@
+Ryan Stuckey
+10/5/20
+Sprint 2
+Goriya.cs, GoriyaDownSprite.cs, GoriyaUpSprite, GoriyaRightSprite.cs, GoriyaLeftSprite.cs
+Chris Lenart
+13 minutes
+Readability:
+Great. Methods are short and easy to understand what is going on. If there are more complex parts, Chris broke them off into methods to make code easier to read/understand.
+Maintainability:
+Not too bad. Goriya's sprite class is broken into four different classes, with a different direction for each. There is a lot of extra code that is repeated, so Goriya sprite could be one class with different texture2D passed into the constructors in SpriteFactory for each direction. But, other than that, maintainability is good. Code makes ample use of interfaces to ensure it can easily be used in other classes.

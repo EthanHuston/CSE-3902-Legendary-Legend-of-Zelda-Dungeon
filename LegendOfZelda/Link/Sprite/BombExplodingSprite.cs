@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Link.Interface;
 
-namespace Sprint0.Link.Sprite
+namespace LegendOfZelda.Link.Sprite
 {
     class BombExplodingSprite : ILinkItemSprite
     {
@@ -11,9 +11,9 @@ namespace Sprint0.Link.Sprite
         private int delayBeforeExplosionCounter;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 3;
+        private int totalFrames;
         private const int numRows = 1;
-        private const int numColumns = 2;
+        private const int numColumns = 4;
 
         public BombExplodingSprite(Texture2D sprite)
         {
@@ -21,6 +21,7 @@ namespace Sprint0.Link.Sprite
             delayBeforeExplosionCounter = 0;
             bufferFrame = 0;
             currentFrame = 0;
+            totalFrames = numColumns * numRows;
         }
 
         public void Update()
@@ -32,21 +33,24 @@ namespace Sprint0.Link.Sprite
                 bufferFrame = 0;
             }
 
-            animationIsFinished = currentFrame > totalFrames;
+            animationIsFinished = currentFrame >= totalFrames - 1;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            if (FinishedAnimation()) return;
+            spriteBatch.Begin();
             Draw(spriteBatch, position, false);
+            spriteBatch.End();
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
         {
+            if (FinishedAnimation()) return;
+
             int width = sprite.Width / numColumns;
             int height = sprite.Height / numRows;
-            int currentRow = 1;
-            int currentColumn = currentFrame;
+            int currentRow = 0;
+            int currentColumn = currentFrame % totalFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
