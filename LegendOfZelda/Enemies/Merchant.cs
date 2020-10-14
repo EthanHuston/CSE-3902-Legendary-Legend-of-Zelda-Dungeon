@@ -14,7 +14,7 @@ namespace LegendOfZelda.Enemies
         {
             sprite = SpriteFactory.Instance.CreateMerchantSprite();
             this.spriteBatch = spriteBatch;
-            position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY)
+            position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
 
         }
         public void Draw()

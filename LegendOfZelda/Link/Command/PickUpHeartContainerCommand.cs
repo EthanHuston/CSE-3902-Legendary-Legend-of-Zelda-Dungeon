@@ -1,4 +1,5 @@
-﻿namespace LegendOfZelda.Link.Command
+﻿using LegendOfZelda.Interface;
+namespace LegendOfZelda.Link.Command
 {
     class PickUpHeartContainerCommand : ICommand
     {
