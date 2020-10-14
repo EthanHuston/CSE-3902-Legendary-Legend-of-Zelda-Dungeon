@@ -3,7 +3,7 @@ using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace LegendOfZelda
+namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class Walls : IBlock
     {

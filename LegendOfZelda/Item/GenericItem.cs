@@ -10,7 +10,6 @@ namespace LegendOfZelda.Item
         protected bool itemIsExpired;
         protected Point position;
         protected SpriteBatch spriteBatch;
-        protected Constants.ItemOwner owner;
 
         public GenericItem(SpriteBatch spriteBatch, Point spawnPosition)
         {
@@ -31,16 +30,6 @@ namespace LegendOfZelda.Item
         public virtual void Draw()
         {
             sprite.Draw(spriteBatch, position);
-        }
-
-        public virtual Vector2 GetVelocity()
-        {
-            return Vector2.Zero;
-        }
-
-        public Constants.ItemOwner GetItemOwner()
-        {
-            return owner;
         }
 
         public Point GetPosition()

@@ -2,13 +2,14 @@
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda
+
+namespace LegendOfZelda.NonInteractiveEnvironment
 {
-    class BombedOpening : IBlock
+    class ShutDoor : IBlock
     {
         private DoorSprite doorSprite;
         private SpriteBatch sB;
-        public BombedOpening(SpriteBatch spriteBatch)
+        public ShutDoor(SpriteBatch spriteBatch)
         {
             doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
@@ -16,14 +17,13 @@ namespace LegendOfZelda
 
         public void Draw()
         {
-            doorSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY, 1, 4);
+            doorSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY, 1, 3);
         }
 
         public void Interaction()
         {
 
         }
-
         public void Update()
         {
         }
