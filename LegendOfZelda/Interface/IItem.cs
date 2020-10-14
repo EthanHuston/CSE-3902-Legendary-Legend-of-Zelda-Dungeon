@@ -1,7 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    interface IItem : IDynamic
+    interface IItem : ISpawnable
     {
-        Constants.ItemOwner GetItemOwner();
     }
 }
