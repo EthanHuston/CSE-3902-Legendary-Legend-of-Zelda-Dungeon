@@ -1,37 +1,28 @@
-﻿using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Link.State.NotMoving;
+﻿using LegendOfZelda.Link.State.NotMoving;
 using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State.Item
 {
-    class LinkPickingUpBoomerangState : ILinkState
+    class LinkPickingUpBoomerangState : LinkLazyAbstractState
     {
-        private LinkPlayer link;
-        private bool damaged;
-        private DateTime healthyDateTime;
+        private const int spawnOffsetX = 0;
+        private const int spawnOffsetY = -9;
 
-        public LinkPickingUpBoomerangState(LinkPlayer link)
+        public LinkPickingUpBoomerangState(LinkPlayer link) : base(link)
         {
-            InitClass(link);
-            damaged = false;
-            healthyDateTime = DateTime.Now;
         }
 
-        public LinkPickingUpBoomerangState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
+        public LinkPickingUpBoomerangState(LinkPlayer link, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
         {
-            InitClass(link);
-            this.healthyDateTime = healthyDateTime;
-            this.damaged = damaged;
         }
 
-        private void InitClass(LinkPlayer link)
+        protected override void InitClass()
         {
-            this.link = link;
             this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
         }
 
-        public void Update()
+        public override void Update()
         {
             if (link.CurrentSprite.FinishedAnimation())
             {
@@ -46,116 +37,16 @@ namespace LegendOfZelda.Link.State.Item
             link.CurrentSprite.Update();
         }
 
-        public void Draw()
+        public override void Draw()
         {
-            float posX = link.GetPosition().X + Constants.LinkPickingUpBoomerangSpawnOffsetX;
-            float posY = link.GetPosition().Y + Constants.LinkPickingUpBoomerangSpawnOffsetY;
+            float posX = link.GetPosition().X + spawnOffsetX;
+            float posY = link.GetPosition().Y + spawnOffsetY;
             link.CurrentSprite.Draw(link.Game.SpriteBatch, new Vector2(posX, posY), damaged);
         }
 
-        public void MoveDown()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void MoveLeft()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void MoveRight()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void MoveUp()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void BeDamaged(int damage)
-        {
-            if (!damaged)
-            {
-                damaged = true;
-                this.link.SubtractHealth(damage);
-                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
-            }
-        }
-
-        public void BeHealthy()
-        {
-            damaged = false;
-        }
-
-        public void StopMoving()
+        public override void StopMoving()
         {
             link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
-        }
-
-        public void UseSword()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void PickUpItem()
-        {
-            // Already picking up item, do nothing
-        }
-
-        public void UseItem()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void PickUpSword()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void PickUpHeart()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void PickUpTriforce()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void PickUpBow()
-        {
-            // Already picking up bow, do nothing
-        }
-
-        public void UseBow()
-        {
-            // Cannot interupt state, do nothing
-        }
-
-        public void PickUpHeartContainer()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
-        public void PickUpBoomerang()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
-        public void UseBomb()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
-        public void UseBoomerang()
-        {
-            // Cannot interrupt state, do nothing
-        }
-
-        public void UseSwordBeam()
-        {
-            // Cannot interupt state, do nothing
         }
     }
 }

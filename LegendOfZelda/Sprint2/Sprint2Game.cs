@@ -64,19 +64,19 @@ namespace LegendOfZelda.Sprint2
 
         private void AddItemsToList()
         {
-            listOfItems.Add(new Arrow(game.SpriteBatch));
-            listOfItems.Add(new Bomb(game.SpriteBatch));
-            listOfItems.Add(new Boomerang(game.SpriteBatch));
-            listOfItems.Add(new Bow(game.SpriteBatch));
-            listOfItems.Add(new Clock(game.SpriteBatch));
-            listOfItems.Add(new Compass(game.SpriteBatch));
-            listOfItems.Add(new Fairy(game.SpriteBatch));
-            listOfItems.Add(new Heart(game.SpriteBatch));
+            listOfItems.Add(new ArrowItem(game.SpriteBatch));
+            listOfItems.Add(new BombItem(game.SpriteBatch));
+            listOfItems.Add(new BoomerangItem(game.SpriteBatch));
+            listOfItems.Add(new BowItem(game.SpriteBatch));
+            listOfItems.Add(new ClockItem(game.SpriteBatch));
+            listOfItems.Add(new CompassItem(game.SpriteBatch));
+            listOfItems.Add(new FairyItem(game.SpriteBatch));
+            listOfItems.Add(new HeartItem(game.SpriteBatch));
             listOfItems.Add(new HeartContainer(game.SpriteBatch));
-            listOfItems.Add(new Key(game.SpriteBatch));
-            listOfItems.Add(new Map(game.SpriteBatch));
-            listOfItems.Add(new Rupee(game.SpriteBatch));
-            listOfItems.Add(new Triforce(game.SpriteBatch));
+            listOfItems.Add(new KeyItem(game.SpriteBatch));
+            listOfItems.Add(new MapItem(game.SpriteBatch));
+            listOfItems.Add(new RupeeItem(game.SpriteBatch));
+            listOfItems.Add(new TriforceItem(game.SpriteBatch));
         }
 
         public void NextItem()

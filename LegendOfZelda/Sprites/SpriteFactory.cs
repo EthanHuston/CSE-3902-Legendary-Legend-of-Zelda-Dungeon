@@ -1,4 +1,6 @@
-﻿using LegendOfZelda.Link;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Item.Sprite;
+using LegendOfZelda.Link;
 using LegendOfZelda.Sprites;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -48,15 +50,22 @@ namespace LegendOfZelda
         private Texture2D tileWaterSprite;
         private Texture2D tileBlueGrassSprite;
         private Texture2D roomBorderSprite;
+        private Texture2D arrowUpSprite;
+        private Texture2D arrowDownSprite;
+        private Texture2D arrowRightSprite;
+        private Texture2D arrowLeftSprite;
+        private Texture2D bombExplodingSprite;
+        private Texture2D boomerangFlyingSprite;
+        private Texture2D swordBeamUp;
+        private Texture2D swordBeamDown;
+        private Texture2D swordBeamRight;
+        private Texture2D swordBeamLeft;
+        private Texture2D swordBeamExplodingDownLeft;
+        private Texture2D swordBeamExplodingDownRight;
+        private Texture2D swordBeamExplodingUpLeft;
+        private Texture2D swordBeamExplodingUpRight;
 
-        private static SpriteFactory instance = new SpriteFactory();
-        public static SpriteFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static SpriteFactory Instance { get; } = new SpriteFactory();
         public SpriteFactory()
         {
         }
@@ -100,6 +109,20 @@ namespace LegendOfZelda
             mapSprite = content.Load<Texture2D>("Items/Map");
             rupeeSprite = content.Load<Texture2D>("Items/Rupee");
             triforceSprite = content.Load<Texture2D>("Items/TriforcePiece");
+            arrowDownSprite = content.Load<Texture2D>("Items/ArrowDown");
+            arrowUpSprite = content.Load<Texture2D>("Items/ArrowUp");
+            arrowRightSprite = content.Load<Texture2D>("Items/ArrowRight");
+            arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
+            bombExplodingSprite = content.Load<Texture2D>("Items/BombExploding");
+            boomerangFlyingSprite = content.Load<Texture2D>("Items/BoomerangFlying");
+            swordBeamDown = content.Load<Texture2D>("Items/SwordBeamDown");
+            swordBeamUp = content.Load<Texture2D>("Items/SwordBeamUp");
+            swordBeamRight = content.Load<Texture2D>("Items/SwordBeamRight");
+            swordBeamLeft = content.Load<Texture2D>("Items/SwordBeamLeft");
+            swordBeamExplodingDownLeft = content.Load<Texture2D>("Items/SwordBeamExplosionDownLeft");
+            swordBeamExplodingDownRight = content.Load<Texture2D>("Items/SwordBeamExplosionDownRight");
+            swordBeamExplodingUpLeft = content.Load<Texture2D>("Items/SwordBeamExplosionUpLeft");
+            swordBeamExplodingUpRight = content.Load<Texture2D>("Items/SwordBeamExplosionUpRight");
             //Load NPC Sprites
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
             merchantSprite = content.Load<Texture2D>("NPC/Merchant");
@@ -113,7 +136,7 @@ namespace LegendOfZelda
             LinkSpriteFactory.Instance.LoadAllTextures(content);
         }
 
-        public ISprite CreateArrowSprite()
+        public IItemSprite CreateArrowSprite()
         {
             return new ArrowSprite(arrowSprite);
         }
@@ -190,7 +213,7 @@ namespace LegendOfZelda
         {
             return new BrickTileSprite(brickTileSprite);
         }
-        public ISprite CreateBombSprite()
+        public IItemSprite CreateBombSprite()
         {
             return new BombSprite(bombSprite);
         }
@@ -198,23 +221,23 @@ namespace LegendOfZelda
         {
             return new ExplodingBombSprite(explodingBombSprite);
         }
-        public ISprite CreateBoomerangSprite()
+        public IItemSprite CreateBoomerangSprite()
         {
             return new BoomerangSprite(boomerangSprite);
         }
-        public ISprite CreateBowSprite()
+        public IItemSprite CreateBowSprite()
         {
             return new BowSprite(bowSprite);
         }
-        public ISprite CreateClockSprite()
+        public IItemSprite CreateClockSprite()
         {
             return new ClockSprite(clockSprite);
         }
-        public ISprite CreateCompassSprite()
+        public IItemSprite CreateCompassSprite()
         {
             return new CompassSprite(compassSprite);
         }
-        public ISprite CreateFairySprite()
+        public IItemSprite CreateFairySprite()
         {
             return new FairySprite(fairySprite);
         }
@@ -226,27 +249,27 @@ namespace LegendOfZelda
         {
             return new FireballSprite(fireballSprite);
         }
-        public ISprite CreateHeartSprite()
+        public IItemSprite CreateHeartSprite()
         {
             return new HeartSprite(heartSprite);
         }
-        public ISprite CreateHeartContainerSprite()
+        public IItemSprite CreateHeartContainerSprite()
         {
             return new HeartContainerSprite(heartContainerSprite);
         }
-        public ISprite CreateKeySprite()
+        public IItemSprite CreateKeySprite()
         {
             return new KeySprite(keySprite);
         }
-        public ISprite CreateMapSprite()
+        public IItemSprite CreateMapSprite()
         {
             return new MapSprite(mapSprite);
         }
-        public ISprite CreateRupeeSprite()
+        public IItemSprite CreateRupeeSprite()
         {
             return new RupeeSprite(rupeeSprite);
         }
-        public ISprite CreateTriforceSprite()
+        public IItemSprite CreateTriforceSprite()
         {
             return new TriforceSprite(triforceSprite);
         }
@@ -273,6 +296,50 @@ namespace LegendOfZelda
         public ISprite CreateRoomBorderSprite()
         {
             return new RoomBorderSprite(roomBorderSprite);
+        }
+        public IItemSprite CreateArrowUpSprite()
+        {
+            return new ArrowFlyingSprite(arrowUpSprite);
+        }
+        public IItemSprite CreateArrowDownSprite()
+        {
+            return new ArrowFlyingSprite(arrowDownSprite);
+        }
+        public IItemSprite CreateArrowRightSprite()
+        {
+            return new ArrowFlyingSprite(arrowRightSprite);
+        }
+        public IItemSprite CreateArrowLeftSprite()
+        {
+            return new ArrowFlyingSprite(arrowLeftSprite);
+        }
+        public IItemSprite CreateBombExplodingSprite()
+        {
+            return new BombExplodingSprite(bombExplodingSprite);
+        }
+        public IItemSprite CreateBoomerangFlyingSprite()
+        {
+            return new BoomerangFlyingSprite(boomerangFlyingSprite);
+        }
+        public IItemSprite CreateSwordBeamDownSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamDown);
+        }
+        public IItemSprite CreateSwordBeamUpSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamUp);
+        }
+        public IItemSprite CreateSwordBeamRightSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamRight);
+        }
+        public IItemSprite CreateSwordBeamLeftSprite()
+        {
+            return new SwordBeamFlyingSprite(swordBeamLeft);
+        }
+        public IItemSprite CreateSwordBeamExplodingSprite()
+        {
+            return new SwordBeamExplodingSprite(swordBeamExplodingUpLeft, swordBeamExplodingUpRight, swordBeamExplodingDownLeft, swordBeamExplodingDownRight);
         }
     }
 }

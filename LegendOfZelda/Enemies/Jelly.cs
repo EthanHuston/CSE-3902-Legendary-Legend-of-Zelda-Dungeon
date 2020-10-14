@@ -1,10 +1,11 @@
+using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Jelly : IEnemy
+    class Jelly : INpc
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
@@ -13,6 +14,7 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
+        private double health = .5;
 
         public Jelly(SpriteBatch spriteBatch)
         {
@@ -67,6 +69,10 @@ namespace LegendOfZelda.Enemies
         {
             currentX = ConstantsSprint2.enemyNPCX;
             currentY = ConstantsSprint2.enemyNPCY;
+        }
+        public void TakeDamage(float damage)
+        {
+            health = health - damage;
         }
     }
 }

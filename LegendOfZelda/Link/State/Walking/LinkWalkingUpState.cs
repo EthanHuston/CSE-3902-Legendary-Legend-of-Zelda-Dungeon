@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Link.State.Attacking;
+﻿using LegendOfZelda.Link.State.Attacking;
 using LegendOfZelda.Link.State.Item;
 using LegendOfZelda.Link.State.NotMoving;
 using Microsoft.Xna.Framework;
@@ -7,35 +6,25 @@ using System;
 
 namespace LegendOfZelda.Link.State.Walking
 {
-    class LinkWalkingUpState : ILinkState
+    class LinkWalkingUpState : LinkActiveAbstractState
     {
-        private LinkPlayer link;
-        private bool damaged;
-        private DateTime healthyDateTime;
         int distanceWalked;
 
-        public LinkWalkingUpState(LinkPlayer link)
+        public LinkWalkingUpState(LinkPlayer link) : base(link)
         {
-            InitClass(link);
-            damaged = false;
-            healthyDateTime = DateTime.Now;
         }
 
-        public LinkWalkingUpState(LinkPlayer link, bool damaged, DateTime healthyDateTime)
+        public LinkWalkingUpState(LinkPlayer link, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
         {
-            InitClass(link);
-            this.healthyDateTime = healthyDateTime;
-            this.damaged = damaged;
         }
 
-        private void InitClass(LinkPlayer link)
+        protected override void InitClass()
         {
-            this.link = link;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingUpLinkSprite();
             distanceWalked = 0;
+            link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingUpLinkSprite();
         }
 
-        public void Update()
+        public override void Update()
         {
             Vector2 position = link.GetPosition();
             if (position.Y < Constants.MaxYPos)
@@ -54,98 +43,37 @@ namespace LegendOfZelda.Link.State.Walking
             }
         }
 
-        public void Draw()
+        public override void Draw()
         {
             link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
         }
 
-        public void MoveDown()
-        {
-            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
-        }
-
-        public void MoveLeft()
-        {
-            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
-        }
-
-        public void MoveRight()
-        {
-            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
-        }
-
-        public void MoveUp()
-        {
-            // Already walking up, do nothing
-        }
-
-        public void BeDamaged(int damage)
-        {
-            if (!damaged)
-            {
-                damaged = true;
-                this.link.SubtractHealth(damage);
-                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.LinkDamageEffectTimeMs);
-            }
-        }
-
-        public void BeHealthy()
-        {
-            damaged = false;
-            healthyDateTime = DateTime.Now;
-        }
-
-        public void StopMoving()
+        public override void StopMoving()
         {
             link.SetState(new LinkStandingStillUpState(link, damaged, healthyDateTime));
         }
 
-        public void UseSword()
+        public override void UseSword()
         {
             link.SetState(new LinkAttackingUpState(link, damaged, healthyDateTime));
         }
 
-        public void PickUpSword()
-        {
-            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
-        }
-
-        public void PickUpHeartContainer()
-        {
-            link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
-        }
-
-        public void PickUpTriforce()
-        {
-            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
-        }
-
-        public void PickUpBow()
-        {
-            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
-        }
-
-        public void UseBow()
+        public override void UseBow()
         {
             link.SetState(new LinkUsingBowUpState(link, damaged, healthyDateTime));
         }
 
-        public void PickUpBoomerang()
-        {
-            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
-        }
-
-        public void UseBomb()
+        public override void UseBomb()
         {
             link.SetState(new LinkUsingBombUpState(link, damaged, healthyDateTime));
         }
 
-        public void UseBoomerang()
+        public override void UseBoomerang()
         {
             link.SetState(new LinkUsingBoomerangUpState(link, damaged, healthyDateTime));
         }
 
-        public void UseSwordBeam()
+        public override void UseSwordBeam()
         {
             link.SetState(new LinkUsingSwordBeamUpState(link, damaged, healthyDateTime));
         }

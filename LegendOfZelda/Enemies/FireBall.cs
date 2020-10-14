@@ -1,9 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Item;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class Fireball : IEnemy
+    class Fireball : GenericProjectileItem
     {
+        // TODO: needs converted to generic projectile item and moved to items folder I think
         private ISprite sprite;
         private SpriteBatch spriteBatch;
         private int posX, posY, vx, vy;
@@ -15,7 +18,7 @@ namespace LegendOfZelda.Enemies
             this.posX = posX;
             this.posY = posY;
             this.vy = vy;
-            this.vx = -5;
+            this.vx = -5; // make constant within class
         }
 
         public void Update()
