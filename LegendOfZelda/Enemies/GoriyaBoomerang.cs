@@ -6,6 +6,7 @@ namespace LegendOfZelda.Enemies
 {
     class GoriyaBoomerang : INpc
     {
+        // TODO: I think we can combine this class and Items.BoomerangFlyingItem?
         private ISprite sprite;
         private SpriteBatch spriteBatch;
         private Vector2 pos, velocity;
