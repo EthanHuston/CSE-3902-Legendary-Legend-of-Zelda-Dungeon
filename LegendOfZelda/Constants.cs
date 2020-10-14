@@ -55,7 +55,8 @@ namespace LegendOfZelda
         public enum ItemOwner
         {
             Link,
-            Game
+            Room,
+            Enemy
         }
     }
 }
