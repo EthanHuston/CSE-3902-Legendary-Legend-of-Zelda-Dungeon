@@ -4,6 +4,6 @@
     {
         void UpdateAll();
         void DrawAll();
-        bool SpawnNewItem(ILinkItem item);
+        void SpawnNewSpawnable(ISpawnable spawnable);
     }
 }
