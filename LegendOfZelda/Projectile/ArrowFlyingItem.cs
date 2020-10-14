@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Item
 {
-    class ArrowFlyingItem : GenericProjectileItem
+    class ArrowFlyingItem : GenericProjectile
     {
         private const int moveDistanceInterval = 5;
 

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Item
 {
-    class BombExplodingItem : GenericProjectileItem
+    class BombExplodingItem : GenericProjectile
     {
         public BombExplodingItem(Game1 link, Point spawnPosition, Constants.ItemOwner owner) : base(link, spawnPosition, owner)
         {

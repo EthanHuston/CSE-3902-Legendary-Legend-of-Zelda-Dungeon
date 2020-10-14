@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    abstract class GenericProjectileItem : IProjectile
+    abstract class GenericProjectile : IProjectile
     {
         protected Vector2 velocity;
 
-        public GenericProjectileItem(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition)
+        public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition)
         {
             this.spriteBatch = spriteBatch;
             position.X = spawnPosition.X;

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Item
 {
-    class BoomerangFlyingItem : GenericProjectileItem
+    class BoomerangFlyingItem : GenericProjectile
     {
         private bool returningToLink;
         private Constants.Direction direction;

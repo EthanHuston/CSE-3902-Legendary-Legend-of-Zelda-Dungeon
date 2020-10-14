@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class Fireball : GenericProjectileItem
+    class Fireball : GenericProjectile
     {
         // TODO: needs converted to generic projectile item and moved to items folder I think
         private ISprite sprite;
