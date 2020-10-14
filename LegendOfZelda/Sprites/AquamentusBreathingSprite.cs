@@ -12,6 +12,12 @@ namespace LegendOfZelda
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
+        private int width;
+        private int height;
+        private int row;
+        private int column;
+        private Rectangle sourceRectangle;
+        private Rectangle destinationRectangle;
 
         public AquamentusBreathingSprite(Texture2D sprite)
         {
@@ -21,6 +27,11 @@ namespace LegendOfZelda
             currentFrame = 0;
             bufferFrame = 0;
             totalFrames = Rows * Columns;
+
+            width = sprite.Width / Columns;
+            height = sprite.Height / Rows;
+            row = (int)((float)currentFrame / (float)Columns);
+            column = currentFrame % Columns;
         }
         public void Update()
         {
@@ -37,19 +48,32 @@ namespace LegendOfZelda
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            width = sprite.Width / Columns;
+            height = sprite.Height / Rows;
+            row = (int)((float)currentFrame / (float)Columns);
+            column = currentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * height);
+            sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            if (damaged)
+            {
+                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Red);
+
+            }
+            else
+            {
+                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            }
+            
             spriteBatch.End();
+        }
+        public Rectangle GetSizeRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }

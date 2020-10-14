@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class Square : IBlock
+    class Square : IDynamic
     {
         private BlockSprite blockSprite;
         private SpriteBatch sB;

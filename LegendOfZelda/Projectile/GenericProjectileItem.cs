@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    abstract class GenericProjectileItem : GenericItem
+    abstract class GenericProjectileItem : IProjectile
     {
         protected Vector2 velocity;
 

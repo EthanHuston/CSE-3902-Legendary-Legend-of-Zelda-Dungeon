@@ -3,13 +3,13 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Item
 {
-    class SwordBeamItem : GenericProjectileItem
+    class SwordBeamFlyingItem : GenericProjectileItem
     {
         private bool stopMovingAndExplode;
         private bool updatedSprite;
         private const int moveDistanceInterval = 5;
 
-        public SwordBeamItem(Game1 game, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(game, spawnPosition, owner)
+        public SwordBeamFlyingItem(Game1 game, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(game, spawnPosition, owner)
         {
             updatedSprite = false; // true we update sword beam to be exploding -- just so we don't update it more than once
             stopMovingAndExplode = false; // true the sword beam hits an enemy or gets to edge of screen
