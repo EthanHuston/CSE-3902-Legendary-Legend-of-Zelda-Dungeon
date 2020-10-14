@@ -57,7 +57,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="InteractiveEnvironment\GapTile.cs" />
     <Compile Include="Interface\IBlock.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
@@ -65,14 +64,35 @@
     <Compile Include="Interface\INpc.cs" />
     <Compile Include="Interface\IDynamic.cs" />
     <Compile Include="Interface\IItemSprite.cs" />
+    <Compile Include="Interface\IProjectile.cs" />
     <Compile Include="Interface\ISpawnable.cs" />
     <Compile Include="Interface\IPlayer.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
-    <Compile Include="Item\GenericProjectileItem.cs" />
     <Compile Include="Link\Interface\ILinkPlayer.cs" />
     <Compile Include="Link\State\LinkActiveAbstractState.cs" />
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />
+    <Compile Include="NonInteractiveEnvironment\BombedOpening.cs" />
+    <Compile Include="NonInteractiveEnvironment\BrickTile.cs" />
+    <Compile Include="NonInteractiveEnvironment\Fire.cs" />
+    <Compile Include="NonInteractiveEnvironment\GapTile.cs" />
+    <Compile Include="NonInteractiveEnvironment\LadderTile.cs" />
+    <Compile Include="NonInteractiveEnvironment\LockedDoor.cs" />
+    <Compile Include="NonInteractiveEnvironment\OpenDoor.cs" />
+    <Compile Include="NonInteractiveEnvironment\ShutDoor.cs" />
+    <Compile Include="NonInteractiveEnvironment\Stairs.cs" />
+    <Compile Include="NonInteractiveEnvironment\Statues.cs" />
+    <Compile Include="NonInteractiveEnvironment\Walls.cs" />
+    <Compile Include="Projectile\ArrowFlyingItem.cs" />
+    <Compile Include="Projectile\BombExplodingItem.cs" />
+    <Compile Include="Projectile\BoomerangFlyingItem.cs" />
+    <Compile Include="Projectile\GenericProjectileItem.cs" />
+    <Compile Include="Projectile\Sprite\ArrowFlyingSprite.cs" />
+    <Compile Include="Projectile\Sprite\BombExplodingSprite.cs" />
+    <Compile Include="Projectile\Sprite\BoomerangFlyingSprite.cs" />
+    <Compile Include="Projectile\Sprite\SwordBeamExplodingSprite.cs" />
+    <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
+    <Compile Include="Projectile\SwordBeamFlyingItem.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Enemies\FireBall.cs" />
     <Compile Include="Enemies\GoriyaBoomerang.cs" />
@@ -84,10 +104,6 @@
     <Compile Include="Item\HeartContainer.cs" />
     <Compile Include="Item\KeyItem.cs" />
     <Compile Include="Link\Command\UseSwordBeamCommand.cs" />
-    <Compile Include="Item\ArrowFlyingItem.cs" />
-    <Compile Include="Item\BombExplodingItem.cs" />
-    <Compile Include="Item\BoomerangFlyingItem.cs" />
-    <Compile Include="Item\SwordBeamItem.cs" />
     <Compile Include="Link\LinkPlayer.cs" />
     <Compile Include="Item\Sprite\ArrowFlyingSprite.cs" />
     <Compile Include="Item\Sprite\SwordBeamExplodingSprite.cs" />
@@ -143,11 +159,9 @@
     <Compile Include="Enemies\Bat.cs" />
     <Compile Include="Sprites\BatSprite.cs" />
     <Compile Include="Sprites\BlockSprite.cs" />
-    <Compile Include="InteractiveEnvironment\BombedOpening.cs" />
     <Compile Include="Sprites\BombSprite.cs" />
     <Compile Include="Sprites\BoomerangSprite.cs" />
     <Compile Include="Sprites\BowSprite.cs" />
-    <Compile Include="InteractiveEnvironment\BrickTile.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Sprites\BrickTileSprite.cs" />
     <Compile Include="Sprites\LadderSprite.cs" />
@@ -166,7 +180,6 @@
     <Compile Include="Sprites\AquamentusWalkingSprite.cs" />
     <Compile Include="Sprites\ExplodingBombSprite.cs" />
     <Compile Include="Sprites\FairySprite.cs" />
-    <Compile Include="InteractiveEnvironment\Fire.cs" />
     <Compile Include="Sprites\FireballSprite.cs" />
     <Compile Include="Sprites\FireSprite.cs" />
     <Compile Include="Game1.cs" />
@@ -205,20 +218,16 @@
     <Compile Include="Link\State\Walking\LinkWalkingLeftState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingRightState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingUpState.cs" />
-    <Compile Include="InteractiveEnvironment\LadderTile.cs" />
-    <Compile Include="InteractiveEnvironment\LockedDoor.cs" />
     <Compile Include="Sprites\MapSprite.cs" />
     <Compile Include="Enemies\Merchant.cs" />
     <Compile Include="Sprites\MerchantSprite.cs" />
     <Compile Include="Sprites\KeySprite.cs" />
     <Compile Include="Enemies\OldMan.cs" />
     <Compile Include="Sprites\OldManSprite.cs" />
-    <Compile Include="InteractiveEnvironment\OpenDoor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprint2\QuitGameCommand.cs" />
     <Compile Include="Sprites\RupeeSprite.cs" />
-    <Compile Include="InteractiveEnvironment\ShutDoor.cs" />
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Sprites\SkeletonSprite.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
@@ -226,8 +235,6 @@
     <Compile Include="Sprint2\Sprint2Game.cs" />
     <Compile Include="Sprites\SpriteFactory.cs" />
     <Compile Include="InteractiveEnvironment\Square.cs" />
-    <Compile Include="InteractiveEnvironment\Stairs.cs" />
-    <Compile Include="InteractiveEnvironment\Statues.cs" />
     <Compile Include="Sprites\StatueSprite.cs" />
     <Compile Include="Sprites\TileBlueGrassSprite.cs" />
     <Compile Include="Sprites\TileBlackSprite.cs" />
@@ -236,7 +243,6 @@
     <Compile Include="Sprites\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
-    <Compile Include="InteractiveEnvironment\Walls.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
