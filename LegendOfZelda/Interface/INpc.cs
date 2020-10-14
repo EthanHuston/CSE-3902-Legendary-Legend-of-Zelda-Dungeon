@@ -1,11 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    public interface INpc
-    {
-        void Update();
-
-        void Draw();
-
+    interface INpc : IDynamic { 
         void ResetPosition();
     }
 }
