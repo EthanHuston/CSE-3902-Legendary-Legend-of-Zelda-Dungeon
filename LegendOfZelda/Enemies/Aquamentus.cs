@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY)
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int vx = 1;
         private int updateCount = 0;
         private int switchDirection = 100;
