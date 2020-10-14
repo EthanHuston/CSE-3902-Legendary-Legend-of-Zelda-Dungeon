@@ -105,8 +105,6 @@
     <Compile Include="Item\KeyItem.cs" />
     <Compile Include="Link\Command\UseSwordBeamCommand.cs" />
     <Compile Include="Link\LinkPlayer.cs" />
-    <Compile Include="Item\Sprite\SwordBeamExplodingSprite.cs" />
-    <Compile Include="Item\Sprite\SwordBeamFlyingSprite.cs" />
     <Compile Include="Link\State\Item\LinkUsingSwordBeamDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombDownState.cs" />
@@ -186,8 +184,6 @@
     <Compile Include="Sprites\HeartContainerSprite.cs" />
     <Compile Include="Sprites\HeartSprite.cs" />
     <Compile Include="Link\LinkSpriteFactory.cs" />
-    <Compile Include="Item\Sprite\BoomerangFlyingSprite.cs" />
-    <Compile Include="Item\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />
     <Compile Include="Sprites\JellySprite.cs" />
