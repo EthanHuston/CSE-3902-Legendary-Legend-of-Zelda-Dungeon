@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY)
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int vx = 1;
         private int updateCount = 0;
         private int switchDirection = 100;
@@ -62,14 +62,29 @@ namespace LegendOfZelda.Enemies
 
         }
 
-        public int getX()
+        public Point GetPosition()
         {
-            return position.X;
+            return position;
         }
 
-        public int getY()
+        public Rectangle GetRectangle()
         {
-            return position.Y;
+            //Not implemented yet.
+            return new Rectangle();
+        }
+
+        public void Move(Vector2 distance)
+        {
+
+        }
+        public void SetPosition(Point position)
+        {
+            this.position = position;
+        }
+
+        public bool SafeToDespawn()
+        {
+            return health <= 0;
         }
 
         private void Attack()

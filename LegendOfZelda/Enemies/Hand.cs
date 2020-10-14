@@ -97,5 +97,26 @@ namespace LegendOfZelda.Enemies
         {
             health = health - damage;
         }
+        public void Move(Vector2 distance)
+        {
+
+        }
+        public void SetPosition(Point position)
+        {
+            this.position = position;
+        }
+        public bool SafeToDespawn()
+        {
+            return health <= 0;
+        }
+        public Point GetPosition()
+        {
+            return position;
+        }
+        public Rectangle GetRectangle()
+        {
+            //Not implemented yet.
+            return new Rectangle();
+        }
     }
 }

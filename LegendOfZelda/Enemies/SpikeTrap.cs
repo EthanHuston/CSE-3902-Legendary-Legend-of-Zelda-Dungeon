@@ -81,5 +81,26 @@ namespace LegendOfZelda.Enemies
             position.X = ConstantsSprint2.enemyNPCX;
             position.Y = ConstantsSprint2.enemyNPCY;
         }
+        public void Move(Vector2 distance)
+        {
+
+        }
+        public void SetPosition(Point position)
+        {
+            this.position = position;
+        }
+        public bool SafeToDespawn()
+        {
+            return false;
+        }
+        public Point GetPosition()
+        {
+            return position;
+        }
+        public Rectangle GetRectangle()
+        {
+            //Not implemented yet.
+            return new Rectangle();
+        }
     }
 }
