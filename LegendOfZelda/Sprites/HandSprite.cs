@@ -46,6 +46,10 @@ namespace LegendOfZelda
 
         }
 
+        public void Draw(SpriteBatch spriteBatch, Point position)
+        {
+            //Not needed for this object.
+        }
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
             int width = sprite.Width / Columns;

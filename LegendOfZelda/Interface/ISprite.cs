@@ -6,7 +6,7 @@ namespace LegendOfZelda.Interface
     public interface ISprite
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch, Point position, bool damaged);
+        void Draw(SpriteBatch spriteBatch, Point position);
         Rectangle GetSizeRectangle();
     }
 }

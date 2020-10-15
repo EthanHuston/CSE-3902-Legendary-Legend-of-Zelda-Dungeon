@@ -38,6 +38,10 @@ namespace LegendOfZelda.Sprites
             }
         }
 
+        public void Draw(SpriteBatch spriteBatch, Point position)
+        {
+            //Not needed for this object.
+        }
         public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
         {
             int width = sprite.Width / Columns;

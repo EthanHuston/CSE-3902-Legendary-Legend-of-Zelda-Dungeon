@@ -35,7 +35,7 @@ namespace LegendOfZelda
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int width = sprite.Width / (Columns * 3);
             int height = sprite.Height / Rows;
@@ -43,7 +43,7 @@ namespace LegendOfZelda
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);

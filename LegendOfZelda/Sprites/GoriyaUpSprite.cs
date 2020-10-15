@@ -50,7 +50,7 @@ namespace LegendOfZelda
             int column = currentFrame % Columns;
 
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y 2 * width, 2 * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
 
             spriteBatch.Begin();
             if (damaged)
