@@ -11,8 +11,6 @@ namespace LegendOfZelda.Link.Items
         private List<IBlock> blockList;
         private List<IPlayer> playerList;
 
-        private Dictionary<System.Type, List<ISpawnable> spawnableToList;
-
         public SpawnedItems()
         {
             itemList = new List<ISpawnedItems>();
@@ -20,15 +18,11 @@ namespace LegendOfZelda.Link.Items
             npcList = new List<INpc>();
             blockList = new List<IBlock>();
             playerList = new List<IPlayer>();
-
-            spawnableToList = new Dictionary<System.Type, List<ISpawnable>() 
-            {
-                
-            }
         }
 
-        public void SpawnNewSpawnable(ISpawnable spawnable) {
-
+        public void SpawnNewSpawnable(ISpawnable spawnable)
+        {
+            Spawn(spawnable);
         }
 
         public void DrawAll()
@@ -76,6 +70,29 @@ namespace LegendOfZelda.Link.Items
             }
         }
 
+        private void Spawn(INpc spawnable)
+        {
+            npcList.Add(spawnable);
+        }
 
+        private void Spawn(IItem spawnable)
+        {
+            npcList.Add(spawnable);
+        }
+
+        private void Spawn(IProjectile spawnable)
+        {
+            npcList.Add(spawnable);
+        }
+        
+        private void Spawn(IBlock spawnable)
+        {
+            npcList.Add(spawnable);
+        }
+        
+        private void Spawn(IPlayer spawnable)
+        {
+            npcList.Add(spawnable);
+        }
     }
 }
