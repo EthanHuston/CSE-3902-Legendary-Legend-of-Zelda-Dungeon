@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,70 +12,172 @@ namespace LegendOfZelda.Enemies
         private ISprite sprite;
         private SpriteBatch spriteBatch;
         private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
-        private int maxDistance = 50;
+        private int maxDistance = Constants.SpikeTrapMaxDist;
         private int currentDist = 0;
+        private int goingVelocity = Constants.SpikeTrapGoingVelocity;
+        private int returningVelocity = Constants.SpikeTrapReturningVelocity;
         bool returning = false;
         bool going = false;
-        private int xOrYDir = 0;
+        private ILinkPlayer link;
+        Rectangle LinkPosition;
+        Rectangle TrapPosition;
+        Constants.Direction currentDirection;
 
-        public SpikeTrap(SpriteBatch spriteBatch)
+        public SpikeTrap(SpriteBatch spriteBatch, ILinkPlayer link)
         {
             sprite = SpriteFactory.Instance.CreateSpikeTrapSprite();
             this.spriteBatch = spriteBatch;
+            this.link = link;
         }
 
         public void Update()
         {
-            //Needs new implementation with Link knowledge
+            sprite.Update();
+            LinkPosition = link.GetRectangle();
+            TrapPosition = sprite.GetSizeRectangle();
+            if (!returning)
+            {
+                CheckOverlap();
+            }
+            else if(going)
+            {
+                if(currentDirection == Constants.Direction.Left)
+                {
+                    GoingLeft();
+                } else if(currentDirection == Constants.Direction.Right)
+                {
+                    GoingRight();
+                } else if(currentDirection == Constants.Direction.Up)
+                {
+                    GoingUp();
+                }
+                else
+                {
+                    GoingDown();
+                }
+            } else 
+            {
+                if (currentDirection == Constants.Direction.Left)
+                {
+                    ReturningRight();
+                }
+                else if (currentDirection == Constants.Direction.Right)
+                {
+                    ReturningLeft();
+                }
+                else if (currentDirection == Constants.Direction.Up)
+                {
+                    ReturningDown();
+                }
+                else
+                {
+                    ReturningUp();
+                }
+            }
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch,position);
+            sprite.Draw(spriteBatch, position);
         }
+        private void CheckOverlap()
+        {
+            if((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Left >= TrapPosition.Right)
+            {
+                currentDirection = Constants.Direction.Right;
+                going = true;
 
-        private void ChooseDirection()
-        {
-            Random rand = new Random();
-            xOrYDir = rand.Next(0, 2); // 0 for x, 1 for y
+            } else if((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Right <= TrapPosition.Left)
+            {
+                currentDirection = Constants.Direction.Left;
+                going = true;
+
+            } else if(LinkPosition.Bottom <= TrapPosition.Top && (LinkPosition.Left <= TrapPosition.Right || LinkPosition.Right >= TrapPosition.Left))
+            {
+                currentDirection = Constants.Direction.Up;
+                going = true;
+
+            } else if(LinkPosition.Top >= TrapPosition.Bottom && (LinkPosition.Right <= TrapPosition.Left || LinkPosition.Left <= TrapPosition.Right))
+            {
+                currentDirection = Constants.Direction.Down;
+                going = true;
+            }
         }
-        private void MoveGoing()
+        private void GoingRight()
         {
-            if (xOrYDir == 0)
+            position.X += goingVelocity;
+            currentDist += goingVelocity;
+            if(currentDist >= maxDistance)
             {
-                position.X = position.X + 2;
-                currentDist = currentDist + 2;
+                returning = true;
+                going = false;
             }
-            else
+            
+        }
+        private void ReturningLeft()
+        {
+            position.X -= returningVelocity;
+            currentDist -= returningVelocity;
+            if(currentDist <= 0)
             {
-                position.Y = position.Y - 2;
-                currentDist = currentDist + 2;
+                returning = false;
             }
+        }
+        private void ReturningRight()
+        {
+            position.X += returningVelocity;
+            currentDist -= returningVelocity;
+            if (currentDist <= 0)
+            {
+                returning = false;
+            }
+        }
+        private void ReturningUp()
+        {
+            position.Y -= returningVelocity;
+            currentDist -= returningVelocity;
+            if (currentDist <= 0)
+            {
+                returning = false;
+            }
+        }
+        private void ReturningDown()
+        {
+            position.Y += returningVelocity;
+            currentDist -= returningVelocity;
+            if (currentDist <= 0)
+            {
+                returning = false;
+            }
+        }
+        private void GoingLeft()
+        {
+            position.X -= goingVelocity;
+            currentDist += goingVelocity;
             if (currentDist >= maxDistance)
             {
                 returning = true;
                 going = false;
-                currentDist = 0;
             }
         }
-        private void MoveReturning()
+        private void GoingUp()
         {
-            if (xOrYDir == 0)
-            {
-                position.X = position.X--;
-                currentDist++;
-            }
-            else
-            {
-                position.Y = position.Y++;
-                currentDist++;
-            }
-
+            position.Y -= goingVelocity;
+            currentDist += goingVelocity;
             if (currentDist >= maxDistance)
             {
-                returning = false;
-                currentDist = 0;
+                returning = true;
+                going = false;
             }
-
+        }
+        private void GoingDown()
+        {
+            position.Y += goingVelocity;
+            currentDist += goingVelocity;
+            if (currentDist >= maxDistance)
+            {
+                returning = true;
+                going = false;
+            }
         }
         public void ResetPosition()
         {
@@ -100,7 +203,7 @@ namespace LegendOfZelda.Enemies
         public Rectangle GetRectangle()
         {
             //Not implemented yet.
-            return new Rectangle();
+            return sprite.GetSizeRectangle();
         }
     }
 }
