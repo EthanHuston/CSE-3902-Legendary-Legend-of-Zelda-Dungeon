@@ -58,5 +58,10 @@ namespace LegendOfZelda
             Room,
             Enemy
         }
+
+        //Enemy Constants
+        public const int SpikeTrapMaxDist = 50;
+        public const int SpikeTrapGoingVelocity = 4;
+        public const int SpikeTrapReturningVelocity = 2;
     }
 }

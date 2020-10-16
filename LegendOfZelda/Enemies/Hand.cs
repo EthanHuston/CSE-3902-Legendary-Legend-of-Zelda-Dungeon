@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Enemies
@@ -96,6 +97,27 @@ namespace LegendOfZelda.Enemies
         public void TakeDamage(float damage)
         {
             health = health - damage;
+        }
+        public void Move(Vector2 distance)
+        {
+
+        }
+        public void SetPosition(Point position)
+        {
+            this.position = position;
+        }
+        public bool SafeToDespawn()
+        {
+            return health <= 0;
+        }
+        public Point GetPosition()
+        {
+            return position;
+        }
+        public Rectangle GetRectangle()
+        {
+            //Not implemented yet.
+            return new Rectangle();
         }
     }
 }

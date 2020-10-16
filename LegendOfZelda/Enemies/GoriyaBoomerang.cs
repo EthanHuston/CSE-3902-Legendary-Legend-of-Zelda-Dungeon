@@ -53,6 +53,27 @@ namespace LegendOfZelda.Enemies
         {
 
         }
+        public void Move(Vector2 distance)
+        {
+
+        }
+        public void SetPosition(Point position)
+        {
+            this.position = position;
+        }
+        public bool SafeToDespawn()
+        {
+            return false;
+        }
+        public Point GetPosition()
+        {
+            return position;
+        }
+        public Rectangle GetRectangle()
+        {
+            //Not implemented yet.
+            return new Rectangle();
+        }
 
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace LegendOfZelda.Sprint2
+﻿using LegendOfZelda.Interface;
+namespace LegendOfZelda.Sprint2
 {
     class QuitGameCommand : ICommand
     {
