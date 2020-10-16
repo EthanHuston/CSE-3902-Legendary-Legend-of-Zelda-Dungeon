@@ -149,7 +149,6 @@
     <Compile Include="Link\Command\PickUpBoomerangCommand.cs" />
     <Compile Include="Link\Interface\ILinkSprite.cs" />
     <Compile Include="Link\Interface\ILinkState.cs" />
-    <Compile Include="Link\Item\LinkSpawnedItems.cs" />
     <Compile Include="Enemies\Goriya.cs" />
     <Compile Include="Enemies\Aquamentus.cs" />
     <Compile Include="Sprites\ArrowSprite.cs" />
