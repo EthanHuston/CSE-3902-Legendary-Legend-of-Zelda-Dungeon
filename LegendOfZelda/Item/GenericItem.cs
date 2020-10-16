@@ -16,7 +16,6 @@ namespace LegendOfZelda.Item
             this.spriteBatch = spriteBatch;
             position.X = spawnPosition.X;
             position.Y = spawnPosition.Y;
-            owner = Constants.ItemOwner.Game;
         }
 
         protected abstract void CheckItemIsExpired();
