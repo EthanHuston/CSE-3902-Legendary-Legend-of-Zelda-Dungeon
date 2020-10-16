@@ -1,12 +1,13 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Item
 {
     class BoomerangFlyingItem : GenericProjectile
     {
-        private bool returningToLink;
+        private bool returningToOwner;
         private Constants.Direction direction;
         private ISpawnable itemToTrack;
         private Point oldPosition;
@@ -17,11 +18,11 @@ namespace LegendOfZelda.Link.Item
         private const int despawnMinYFromOwner = 0;
         private const int maxDistanceFromOwner = 300;
 
-        public BoomerangFlyingItem(Game1 game, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Constants.Direction direction) : base(game, spawnPosition, owner)
+        public BoomerangFlyingItem(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = SpriteFactory.Instance.CreateBoomerangFlyingSprite();
             this.direction = direction;
-            returningToLink = false;
+            returningToOwner = false;
             this.itemToTrack = itemToTrack;
         }
 
@@ -34,9 +35,9 @@ namespace LegendOfZelda.Link.Item
 
         private void MoveBoomerang()
         {
-            if (!returningToLink)
+            if (!returningToOwner)
             {
-                returningToLink = GetDistanceFromLink() > maxDistanceFromOwner || Utility.ItemIsOutOfBounds(position);
+                returningToOwner = GetDistanceFromLink() > maxDistanceFromOwner || Utility.ItemIsOutOfBounds(position);
             }
 
             oldPosition.X = position.X;
@@ -46,18 +47,18 @@ namespace LegendOfZelda.Link.Item
             {
                 case Constants.Direction.Up:
                     position.X = itemToTrack.GetPosition().X;
-                    position.Y += moveDistanceInterval * (returningToLink ? 1 : -1);
+                    position.Y += moveDistanceInterval * (returningToOwner ? 1 : -1);
                     break;
                 case Constants.Direction.Down:
                     position.X = itemToTrack.GetPosition().X;
-                    position.Y += moveDistanceInterval * (returningToLink ? -1 : 1);
+                    position.Y += moveDistanceInterval * (returningToOwner ? -1 : 1);
                     break;
                 case Constants.Direction.Right:
-                    position.X += moveDistanceInterval * (returningToLink ? -1 : 1);
+                    position.X += moveDistanceInterval * (returningToOwner ? -1 : 1);
                     position.Y = itemToTrack.GetPosition().Y;
                     break;
                 case Constants.Direction.Left:
-                    position.X += moveDistanceInterval * (returningToLink ? 1 : -1);
+                    position.X += moveDistanceInterval * (returningToOwner ? 1 : -1);
                     position.Y = itemToTrack.GetPosition().Y;
                     break;
             }
@@ -71,7 +72,7 @@ namespace LegendOfZelda.Link.Item
         protected override void CheckItemIsExpired()
         {
             Point ownerPosition = itemToTrack.GetPosition();
-            itemIsExpired = returningToLink &&
+            itemIsExpired = returningToOwner &&
                 position.X <= ownerPosition.X + despawnMaxXFromOwner &&
                 position.X >= ownerPosition.X + despawnMinXFromOwner &&
                 position.Y <= ownerPosition.Y + despawnMaxYFromOwner &&

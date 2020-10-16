@@ -41,9 +41,7 @@ namespace LegendOfZelda.Link.Item
             {
                 position.X += (int)velocity.X;
                 position.Y += (int)velocity.Y;
-                // TODO: remove me after Sprint 2 - just so we can see the sword exploding
-                // Really, we'd want sword beam to explode once it a) hits wall OR b) hits enemy
-                stopMovingAndExplode = Utility.ItemIsOutOfBounds(position); // or item hits enemy, but not yet implemented
+                stopMovingAndExplode = Utility.ItemIsOutOfBounds(position);
             }
             else if (stopMovingAndExplode && !updatedSprite) // initial setup of sword beam explosion
             {
@@ -61,6 +59,11 @@ namespace LegendOfZelda.Link.Item
         public override Vector2 GetVelocity()
         {
             return new Vector2(velocity.X, velocity.Y);
+        }
+
+        public void ExplodeSword()
+        {
+            stopMovingAndExplode = true;
         }
     }
 }

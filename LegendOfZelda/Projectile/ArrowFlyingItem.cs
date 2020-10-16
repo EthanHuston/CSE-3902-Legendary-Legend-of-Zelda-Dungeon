@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
@@ -6,7 +7,7 @@ namespace LegendOfZelda.Item
     {
         private const int moveDistanceInterval = 5;
 
-        public ArrowFlyingItem(Game1 game, Point spawnPosition, Constants.Direction direction, Constants.ItemOwner owner) : base(game, spawnPosition, owner)
+        public ArrowFlyingItem(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             switch (direction)
             {
