@@ -57,6 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GameplayLogic\SpawnedItems.cs" />
     <Compile Include="Interface\IBlock.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Interface\IProjectile.cs" />
     <Compile Include="Interface\ISpawnable.cs" />
     <Compile Include="Interface\IPlayer.cs" />
+    <Compile Include="Interface\ISpawnedItems.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Link\Interface\ILinkPlayer.cs" />
@@ -147,7 +149,6 @@
     <Compile Include="Link\Command\PickUpBoomerangCommand.cs" />
     <Compile Include="Link\Interface\ILinkSprite.cs" />
     <Compile Include="Link\Interface\ILinkState.cs" />
-    <Compile Include="Link\Interface\ISpawnedItems.cs" />
     <Compile Include="Link\Item\LinkSpawnedItems.cs" />
     <Compile Include="Enemies\Goriya.cs" />
     <Compile Include="Enemies\Aquamentus.cs" />
