@@ -1,9 +1,17 @@
-﻿namespace LegendOfZelda.Link.Interface
+﻿namespace LegendOfZelda.Interface
 {
     interface ISpawnedItems
     {
         void UpdateAll();
         void DrawAll();
-        void SpawnNewSpawnable(ISpawnable spawnable);
+        void Spawn(INpc spawnable);
+
+        void Spawn(IItem spawnable);
+
+        void Spawn(IProjectile spawnable);
+
+        void Spawn(IBlock spawnable);
+
+        void Spawn(IPlayer spawnable);
     }
 }

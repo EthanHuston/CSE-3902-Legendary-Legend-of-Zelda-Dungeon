@@ -1,10 +1,11 @@
-﻿using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Interface;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Link.Items
 {
     class SpawnedItems : ISpawnedItems
     {
+        private List<List<ISpawnable>> spawnableList;
         private List<IItem> itemList;
         private List<IProjectile> projectileList;
         private List<INpc> npcList;
@@ -13,16 +14,36 @@ namespace LegendOfZelda.Link.Items
 
         public SpawnedItems()
         {
-            itemList = new List<ISpawnedItems>();
+            itemList = new List<IItem>();
             projectileList = new List<IProjectile>();
             npcList = new List<INpc>();
             blockList = new List<IBlock>();
             playerList = new List<IPlayer>();
         }
 
-        public void SpawnNewSpawnable(ISpawnable spawnable)
+        public void Spawn(INpc spawnable)
         {
-            Spawn(spawnable);
+            npcList.Add(spawnable);
+        }
+
+        public void Spawn(IItem spawnable)
+        {
+            itemList.Add(spawnable);
+        }
+
+        public void Spawn(IProjectile spawnable)
+        {
+            projectileList.Add(spawnable);
+        }
+
+        public void Spawn(IBlock spawnable)
+        {
+            blockList.Add(spawnable);
+        }
+
+        public void Spawn(IPlayer spawnable)
+        {
+            playerList.Add(spawnable);
         }
 
         public void DrawAll()
@@ -34,11 +55,12 @@ namespace LegendOfZelda.Link.Items
             DrawList(projectileList);
         }
 
-        private void DrawList(List<ISpawnable> list)
+        private void DrawList<T>(List<T> list)
         {
-            foreach (ISpawnable element in List)
+            for (int i = 0; i < list.Count; i++)
             {
-                element.Draw();
+                ISpawnable spawnable = (ISpawnable)list[i];
+                spawnable.Draw();
             }
         }
 
@@ -51,12 +73,12 @@ namespace LegendOfZelda.Link.Items
             UpdateList(projectileList);
         }
 
-        private void UpdateList(List<ISpawnable> list)
+        private void UpdateList<T>(List<T> list)
         {
             List<int> indicesToRemove = new List<int>();
-            for (int i = 0; i < spawnedItemList.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                ILinkItem item = spawnedItemList[i];
+                ISpawnable item = (ISpawnable) list[i];
                 item.Update();
                 if (item.SafeToDespawn())
                 {
@@ -66,33 +88,8 @@ namespace LegendOfZelda.Link.Items
 
             for (int i = 0; i < indicesToRemove.Count; i++)
             {
-                spawnedItemList.RemoveAt(indicesToRemove[i]);
+                list.RemoveAt(indicesToRemove[i]);
             }
-        }
-
-        private void Spawn(INpc spawnable)
-        {
-            npcList.Add(spawnable);
-        }
-
-        private void Spawn(IItem spawnable)
-        {
-            npcList.Add(spawnable);
-        }
-
-        private void Spawn(IProjectile spawnable)
-        {
-            npcList.Add(spawnable);
-        }
-        
-        private void Spawn(IBlock spawnable)
-        {
-            npcList.Add(spawnable);
-        }
-        
-        private void Spawn(IPlayer spawnable)
-        {
-            npcList.Add(spawnable);
         }
     }
 }
