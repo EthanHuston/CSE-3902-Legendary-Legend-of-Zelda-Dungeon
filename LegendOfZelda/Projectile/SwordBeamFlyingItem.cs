@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Item
 {
-    class SwordBeamFlyingItem : GenericProjectileItem
+    class SwordBeamFlyingItem : GenericProjectile
     {
         private bool stopMovingAndExplode;
         private bool updatedSprite;

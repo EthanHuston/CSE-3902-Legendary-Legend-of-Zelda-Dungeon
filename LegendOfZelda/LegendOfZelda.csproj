@@ -86,7 +86,7 @@
     <Compile Include="Projectile\ArrowFlyingItem.cs" />
     <Compile Include="Projectile\BombExplodingItem.cs" />
     <Compile Include="Projectile\BoomerangFlyingItem.cs" />
-    <Compile Include="Projectile\GenericProjectileItem.cs" />
+    <Compile Include="Projectile\GenericProjectile.cs" />
     <Compile Include="Projectile\Sprite\ArrowFlyingSprite.cs" />
     <Compile Include="Projectile\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Projectile\Sprite\BoomerangFlyingSprite.cs" />
@@ -105,9 +105,6 @@
     <Compile Include="Item\KeyItem.cs" />
     <Compile Include="Link\Command\UseSwordBeamCommand.cs" />
     <Compile Include="Link\LinkPlayer.cs" />
-    <Compile Include="Item\Sprite\ArrowFlyingSprite.cs" />
-    <Compile Include="Item\Sprite\SwordBeamExplodingSprite.cs" />
-    <Compile Include="Item\Sprite\SwordBeamFlyingSprite.cs" />
     <Compile Include="Link\State\Item\LinkUsingSwordBeamDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBoomerangDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBombDownState.cs" />
@@ -154,7 +151,6 @@
     <Compile Include="Link\Item\LinkSpawnedItems.cs" />
     <Compile Include="Enemies\Goriya.cs" />
     <Compile Include="Enemies\Aquamentus.cs" />
-    <Compile Include="Item\ArrowItem.cs" />
     <Compile Include="Sprites\ArrowSprite.cs" />
     <Compile Include="Enemies\Bat.cs" />
     <Compile Include="Sprites\BatSprite.cs" />
@@ -188,8 +184,6 @@
     <Compile Include="Sprites\HeartContainerSprite.cs" />
     <Compile Include="Sprites\HeartSprite.cs" />
     <Compile Include="Link\LinkSpriteFactory.cs" />
-    <Compile Include="Item\Sprite\BoomerangFlyingSprite.cs" />
-    <Compile Include="Item\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />
     <Compile Include="Sprites\JellySprite.cs" />
