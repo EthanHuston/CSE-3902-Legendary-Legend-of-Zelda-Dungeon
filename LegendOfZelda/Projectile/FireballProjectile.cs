@@ -11,8 +11,7 @@ namespace LegendOfZelda.Projectile
         public FireballProjectile(SpriteBatch spriteBatch, Point spawnPosition, Vector2 velocity, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = SpriteFactory.Instance.CreateFireballSprite();
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             this.velocity.X = velocity.X;
             this.velocity.Y = velocity.Y;
         }
