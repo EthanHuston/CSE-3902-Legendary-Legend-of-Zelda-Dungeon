@@ -56,7 +56,7 @@ namespace LegendOfZelda.Item.Sprite
             return animationIsFinished;
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
             return sprite.Bounds;
         }

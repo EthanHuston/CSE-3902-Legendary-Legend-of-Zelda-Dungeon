@@ -29,7 +29,7 @@ namespace LegendOfZelda.Item.Sprite
             return false; // not used
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
             return sprite.Bounds;
         }

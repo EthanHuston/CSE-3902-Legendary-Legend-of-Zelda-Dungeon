@@ -18,12 +18,12 @@ namespace LegendOfZelda.Enemies
         private int returningVelocity = Constants.SpikeTrapReturningVelocity;
         bool returning = false;
         bool going = false;
-        private ILinkPlayer link;
+        private IPlayer link;
         Rectangle LinkPosition;
         Rectangle TrapPosition;
         Constants.Direction currentDirection;
 
-        public SpikeTrap(SpriteBatch spriteBatch, ILinkPlayer link)
+        public SpikeTrap(SpriteBatch spriteBatch, IPlayer link)
         {
             sprite = SpriteFactory.Instance.CreateSpikeTrapSprite();
             this.spriteBatch = spriteBatch;
@@ -34,7 +34,7 @@ namespace LegendOfZelda.Enemies
         {
             sprite.Update();
             LinkPosition = link.GetRectangle();
-            TrapPosition = sprite.GetSizeRectangle();
+            TrapPosition = sprite.GetPositionRectangle();
             if (!returning)
             {
                 CheckOverlap();
@@ -203,7 +203,7 @@ namespace LegendOfZelda.Enemies
         public Rectangle GetRectangle()
         {
             //Not implemented yet.
-            return sprite.GetSizeRectangle();
+            return sprite.GetPositionRectangle();
         }
     }
 }

@@ -81,7 +81,7 @@ namespace LegendOfZelda.Item.Sprite
             return animationIsFinished;
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
             return new Rectangle(); // because we do not need to check collisions for these
         }

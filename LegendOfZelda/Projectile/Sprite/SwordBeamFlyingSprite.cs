@@ -52,7 +52,7 @@ namespace LegendOfZelda.Item.Sprite
             return false; // not used, BoomerangFlying class keeps track of this
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
             return sprite.Bounds;
         }

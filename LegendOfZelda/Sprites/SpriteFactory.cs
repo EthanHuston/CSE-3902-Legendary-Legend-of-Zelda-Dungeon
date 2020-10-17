@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Item.Sprite;
 using LegendOfZelda.Link;
+using LegendOfZelda.Projectile.Sprite;
 using LegendOfZelda.Sprites;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -245,7 +246,7 @@ namespace LegendOfZelda
         {
             return new FireSprite(fireSprite);
         }
-        public ISprite CreateFireballSprite()
+        public IItemSprite CreateFireballSprite()
         {
             return new FireballSprite(fireballSprite);
         }

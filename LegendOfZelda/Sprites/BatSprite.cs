@@ -74,7 +74,7 @@ namespace LegendOfZelda
             spriteBatch.End();
 
         }
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
         }

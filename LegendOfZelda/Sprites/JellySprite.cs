@@ -67,7 +67,7 @@ namespace LegendOfZelda
 
 
         }
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
         }
