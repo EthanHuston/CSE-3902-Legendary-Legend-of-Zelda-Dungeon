@@ -1,9 +1,9 @@
 ﻿using LegendOfZelda.Interface;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Link.Items
+namespace LegendOfZelda.GameplayLogic
 {
-    class SpawnedItems : ISpawnedItems
+    class ItemSpawner : IItemSpawner
     {
         private List<List<ISpawnable>> spawnableList;
         private List<IItem> itemList;
@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link.Items
         private List<IBlock> blockList;
         private List<IPlayer> playerList;
 
-        public SpawnedItems()
+        public ItemSpawner()
         {
             itemList = new List<IItem>();
             projectileList = new List<IProjectile>();

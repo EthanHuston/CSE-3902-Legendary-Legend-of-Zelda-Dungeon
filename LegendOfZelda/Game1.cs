@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameplayLogic;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
@@ -12,10 +13,10 @@ namespace LegendOfZelda
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
-        public IPlayer link;
         List<object> controllerList;
         KeyboardController keyboardController;
         public Sprint2Game sprint2;
+        public IItemSpawner SpawnedItems;
 
         public Game1()
         {
@@ -26,7 +27,6 @@ namespace LegendOfZelda
 
         public void ResetGame()
         {
-            link = new LinkPlayer(this);
             sprint2 = new Sprint2Game(this);
         }
 
@@ -38,7 +38,9 @@ namespace LegendOfZelda
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
             sprint2 = new Sprint2Game(this);
-            link = new LinkPlayer(this);
+            SpawnedItems = new ItemSpawner();
+            IPlayer link = new LinkPlayer(this, Point.Zero); // TODO: change me
+            SpawnedItems.Spawn(link);
 
             base.Initialize();
         }
@@ -61,7 +63,7 @@ namespace LegendOfZelda
                 controller.Update();
             }
 
-            link.Update();
+            SpawnedItems.UpdateAll();
             sprint2.Update();
 
             base.Update(gameTime);
@@ -71,7 +73,7 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            link.Draw();
+            SpawnedItems.DrawAll();
             sprint2.Draw();
         }
     }

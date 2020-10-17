@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    interface ISpawnedItems
+    public interface IItemSpawner
     {
         void UpdateAll();
         void DrawAll();
