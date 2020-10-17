@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    interface IItem : ISpawnable
+    public interface IItem : ISpawnable
     {
     }
 }

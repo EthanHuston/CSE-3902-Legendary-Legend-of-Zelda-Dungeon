@@ -1,3 +1,4 @@
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.NotMoving;
 using LegendOfZelda.Sprint2;
@@ -5,42 +6,36 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link
 {
-    class LinkPlayer : ILinkPlayer
+    class LinkPlayer : IPlayer
     {
-        private ILinkState state;
         public ILinkSprite CurrentSprite { get; set; }
         public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
+        private ILinkState state;
+        private Point position;
+        private Point oldPosition;
         private int health;
-        private float posX;
-        private float posY;
-        private Vector2 oldPosition;
 
-        public LinkPlayer(Game1 game) : this(game, new Vector2(ConstantsSprint2.Sprint2LinkSpawnX, ConstantsSprint2.Sprint2LinkSpawnY))
-        {
-            // handle with other constructor
-        }
-
-        public LinkPlayer(Game1 game, Vector2 spawnPosition)
+        public LinkPlayer(Game1 game, Point spawnPosition)
         {
             health = Constants.LinkHealth;
             Game = game;
             state = new LinkStandingStillDownState(this);
-            posX = ConstantsSprint2.Sprint2LinkSpawnX;
-            posY = ConstantsSprint2.Sprint2LinkSpawnY;
-            oldPosition = new Vector2(posX, posY);
+            position.X = ConstantsSprint2.Sprint2LinkSpawnX;
+            position.Y = ConstantsSprint2.Sprint2LinkSpawnY;
+            oldPosition = new Point(position.X, position.Y);
         }
 
-        public Vector2 GetPosition()
+        public Point GetPosition()
         {
-            return new Vector2(posX, posY);
+            return new Point(position.X, position.Y);
         }
 
-        public void SetPosition(Vector2 newPosition)
+        public void SetPosition(Point newPosition)
         {
-            oldPosition = new Vector2(posX, posY);
-            posX = newPosition.X;
-            posY = newPosition.Y;
+            oldPosition = new Point(position.X, position.Y);
+            position.X = newPosition.X;
+            position.Y = newPosition.Y;
         }
         public ILinkState GetState()
         {
@@ -135,9 +130,9 @@ namespace LegendOfZelda.Link
             state.PickUpTriforce();
         }
 
-        public void SpawnItem(ILinkItem item)
+        public void SpawnItem(IItem item)
         {
-            throw new System.NotImplementedException();
+            Game.SpawnedItems.Spawn(item);
         }
 
         public void UseBomb()
@@ -162,17 +157,17 @@ namespace LegendOfZelda.Link
 
         public Vector2 GetVelocity()
         {
-            return Vector2.Subtract(GetPosition(), oldPosition);
+            return Vector2.Subtract(GetPosition().ToVector2(), oldPosition.ToVector2());
         }
 
         public void Move(Vector2 distance)
         {
-            SetPosition(new Vector2(posX + distance.X, posY + distance.Y));
+            SetPosition(new Point((int) (position.X + distance.X), (int) (position.Y + distance.Y)));
         }
 
         public Rectangle GetRectangle()
         {
-            return CurrentSprite.GetRectangle();
+            return CurrentSprite.GetPositionRectangle();
         }
 
         public bool SafeToDespawn()

@@ -1,29 +1,25 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Interface;
 
 namespace LegendOfZelda.Interface
 {
-    public interface IPlayer
+    public interface IPlayer : IDynamic
     {
-        void Draw();
-        void Update();
-        void Heal(int healAmount);
-        void TakeDamage(int damage);
-        void SubtractHealth(int damage);
+        void BeHealthy(int healAmount);
+        void BeDamaged(int damage);
         void MoveUp();
         void MoveDown();
         void MoveLeft();
         void MoveRight();
         void StopMoving();
-        Vector2 GetPosition();
+        void UseSword();
+        void UseBow();
         void PickUpSword();
         void PickUpHeartContainer();
         void PickUpBow();
         void PickUpTriforce();
-        void PickUpBoomerang();
         void UseBomb();
         void UseBoomerang();
-        void UseSword();
-        void UseBow();
+        void PickUpBoomerang();
         void UseSwordBeam();
     }
 }

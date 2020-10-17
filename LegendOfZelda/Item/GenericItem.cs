@@ -38,7 +38,7 @@ namespace LegendOfZelda.Item
 
         public Rectangle GetRectangle()
         {
-            Rectangle size = sprite.GetSizeRectangle();
+            Rectangle size = sprite.GetPositionRectangle();
             return new Rectangle(position.X, position.Y, size.Width, size.Height);
         }
 

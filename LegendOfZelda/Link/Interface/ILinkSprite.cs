@@ -6,8 +6,6 @@ namespace LegendOfZelda.Link.Interface
 {
     interface ILinkSprite : ISprite
     {
-        void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage);
         bool FinishedAnimation();
-        Rectangle GetRectangle();
     }
 }
