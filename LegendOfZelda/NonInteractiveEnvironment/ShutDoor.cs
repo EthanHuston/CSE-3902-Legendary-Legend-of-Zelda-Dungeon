@@ -9,10 +9,12 @@ namespace LegendOfZelda.NonInteractiveEnvironment
     {
         private DoorSprite doorSprite;
         private SpriteBatch sB;
-        public ShutDoor(SpriteBatch spriteBatch)
+        private Point position;
+        public ShutDoor(SpriteBatch spriteBatch, Point position)
         {
             doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
+            this.position = position;
         }
 
         public void Draw()

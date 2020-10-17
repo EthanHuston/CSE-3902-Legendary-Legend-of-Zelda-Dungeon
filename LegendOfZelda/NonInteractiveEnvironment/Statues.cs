@@ -9,15 +9,17 @@ namespace LegendOfZelda.NonInteractiveEnvironment
     {
         private StatueSprite statueSprite;
         private SpriteBatch sB;
-        public Statues(SpriteBatch spriteBatch)
+        private Point position;
+        public Statues(SpriteBatch spriteBatch, Point Position)
         {
             statueSprite = (StatueSprite)SpriteFactory.Instance.CreateStatueSprite();
             sB = spriteBatch;
+            this.position = position;
         }
 
         public void Draw()
         {
-            statueSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
+            statueSprite.Draw(sB, position);
         }
 
         public void Interaction()

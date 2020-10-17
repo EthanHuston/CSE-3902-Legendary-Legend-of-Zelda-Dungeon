@@ -9,15 +9,17 @@ namespace LegendOfZelda.NonInteractiveEnvironment
     {
         private LadderSprite ladderSprite;
         private SpriteBatch sB;
-        public LadderTile(SpriteBatch spriteBatch)
+        private Point position;
+        public LadderTile(SpriteBatch spriteBatch, Point position)
         {
             ladderSprite = (LadderSprite)SpriteFactory.Instance.CreateLadderSprite();
             sB = spriteBatch;
+            this.position = position;
         }
 
         public void Draw()
         {
-            ladderSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
+            ladderSprite.Draw(sB, position);
         }
 
         public void Interaction()

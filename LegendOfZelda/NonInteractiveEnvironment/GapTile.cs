@@ -9,15 +9,18 @@ namespace LegendOfZelda.NonInteractiveEnvironment
     {
         private TileBlackSprite tileBlackSprite;
         private SpriteBatch sB;
-        public GapTile(SpriteBatch spriteBatch)
+        private Point position;
+
+        public GapTile(SpriteBatch spriteBatch, Point spawnPosition)
         {
             tileBlackSprite = (TileBlackSprite)SpriteFactory.Instance.CreateTileBlackSprite();
             sB = spriteBatch;
+            position = spawnPosition;
         }
 
         public void Draw()
         {
-            tileBlackSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
+            tileBlackSprite.Draw(sB, position);
         }
 
         public void Interaction()
