@@ -7,6 +7,7 @@ namespace LegendOfZelda.Link.Sprite
     class WalkingLinkSprite : ILinkSprite
     {
         private readonly Texture2D sprite;
+        private Rectangle destinationRectangle;
         private bool flashRed;
         private int damageColorCounter;
         private int bufferFrame;
@@ -20,7 +21,9 @@ namespace LegendOfZelda.Link.Sprite
             this.sprite = sprite;
             flashRed = false;
             damageColorCounter = 0;
+            destinationRectangle = sprite.Bounds;
         }
+
         public void Update()
         {
             if (++bufferFrame == Constants.LinkWalkingFrameDelay)
@@ -36,12 +39,12 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             Draw(spriteBatch, position, false);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
             int width = sprite.Width / numColumns;
             int height = sprite.Height / numRows;
@@ -49,7 +52,7 @@ namespace LegendOfZelda.Link.Sprite
             int currentColumn = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);
@@ -59,6 +62,11 @@ namespace LegendOfZelda.Link.Sprite
         public bool FinishedAnimation()
         {
             return false; // because animation can be exited at any time
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }

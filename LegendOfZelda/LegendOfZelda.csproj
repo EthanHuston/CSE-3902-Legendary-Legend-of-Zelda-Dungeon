@@ -61,6 +61,8 @@
     <Compile Include="Interface\IBlock.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\ITextureAtlasSprite.cs" />
+    <Compile Include="Interface\IDamageableSprite.cs" />
     <Compile Include="Interface\IItem.cs" />
     <Compile Include="Interface\INpc.cs" />
     <Compile Include="Interface\IDynamic.cs" />
@@ -84,18 +86,18 @@
     <Compile Include="NonInteractiveEnvironment\Stairs.cs" />
     <Compile Include="NonInteractiveEnvironment\Statues.cs" />
     <Compile Include="NonInteractiveEnvironment\Walls.cs" />
-    <Compile Include="Projectile\ArrowFlyingItem.cs" />
-    <Compile Include="Projectile\BombExplodingItem.cs" />
-    <Compile Include="Projectile\BoomerangFlyingItem.cs" />
+    <Compile Include="Projectile\ArrowFlyingProjectile.cs" />
+    <Compile Include="Projectile\BombExplodingProjectile.cs" />
+    <Compile Include="Projectile\BoomerangFlyingProjectile.cs" />
     <Compile Include="Projectile\GenericProjectile.cs" />
     <Compile Include="Projectile\Sprite\ArrowFlyingSprite.cs" />
     <Compile Include="Projectile\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Projectile\Sprite\BoomerangFlyingSprite.cs" />
     <Compile Include="Projectile\Sprite\SwordBeamExplodingSprite.cs" />
     <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
-    <Compile Include="Projectile\SwordBeamFlyingItem.cs" />
+    <Compile Include="Projectile\SwordBeamFlyingProjectile.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
-    <Compile Include="Projectile\FireBall.cs" />
+    <Compile Include="Projectile\FireballProjectile.cs" />
     <Compile Include="Item\BombItem.cs" />
     <Compile Include="Item\BoomerangItem.cs" />
     <Compile Include="Item\BowItem.cs" />
@@ -130,7 +132,6 @@
     <Compile Include="NonInteractiveEnvironment\TileBlueGrass.cs" />
     <Compile Include="NonInteractiveEnvironment\TileWater.cs" />
     <Compile Include="Sprint2\ResetGameCommand.cs" />
-    <Compile Include="Sprites\GoriyaBoomerangSprite.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\UseBowCommand.cs" />
     <Compile Include="Link\Command\UseBombCommand.cs" />
@@ -152,7 +153,7 @@
     <Compile Include="Sprites\ArrowSprite.cs" />
     <Compile Include="Enemies\Bat.cs" />
     <Compile Include="Sprites\BatSprite.cs" />
-    <Compile Include="Sprites\BlockSprite.cs" />
+    <Compile Include="InteractiveEnvironment\Sprite\SquareSprite.cs" />
     <Compile Include="Sprites\BombSprite.cs" />
     <Compile Include="Sprites\BoomerangSprite.cs" />
     <Compile Include="Sprites\BowSprite.cs" />
@@ -172,7 +173,6 @@
     <Compile Include="Sprites\GoriyaUpSprite.cs" />
     <Compile Include="Sprites\AquamentusBreathingSprite.cs" />
     <Compile Include="Sprites\AquamentusWalkingSprite.cs" />
-    <Compile Include="Sprites\ExplodingBombSprite.cs" />
     <Compile Include="Sprites\FairySprite.cs" />
     <Compile Include="Projectile\Sprite\FireballSprite.cs" />
     <Compile Include="Sprites\FireSprite.cs" />

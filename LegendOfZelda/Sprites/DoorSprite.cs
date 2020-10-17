@@ -4,27 +4,37 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class DoorSprite : ISprite
+    class DoorSprite : ITextureAtlasSprite
     {
         private Texture2D sprite;
+        private Rectangle destinationRectangle;
+
         public DoorSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            destinationRectangle = sprite.Bounds;
         }
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
+            Draw(spriteBatch, position, Point.Zero);
         }
 
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue, int row, int column)
+        public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation)
         {
             int width = sprite.Width / 4;
             int height = sprite.Height / 4;
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, width, height);
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            destinationRectangle = new Rectangle(position.X, position.Y, width, height);
+            Rectangle sourceRectangle = new Rectangle(width * textureLocation.X, height * textureLocation.Y, width, height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
         }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
+        }
+
         public void Update()
         {
 

@@ -1,9 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    public interface IBlock
+    public interface IBlock : ISpawnable
     {
-        void Draw();
-
-        void Update();
     }
 }

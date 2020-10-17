@@ -1,30 +1,60 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class BrickTile : IBlock
     {
-        private BrickTileSprite brickTileSprite;
+        private ISprite brickTileSprite;
         private SpriteBatch sB;
-        public BrickTile(SpriteBatch spriteBatch)
+        private Point position;
+        private bool safeToDespawn;
+
+        public BrickTile(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            brickTileSprite = (BrickTileSprite)SpriteFactory.Instance.CreateBrickTileSprite();
+            brickTileSprite = SpriteFactory.Instance.CreateBrickTileSprite();
             sB = spriteBatch;
+            position.X = spawnPosition.X;
+            position.Y = spawnPosition.Y;
+            safeToDespawn = false;
         }
 
         public void Draw()
         {
-            brickTileSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
+            brickTileSprite.Draw(sB, position);
         }
 
-        public void Interaction()
+        public Point GetPosition()
         {
-
+            return new Point(position.X, position.Y);
         }
+
+        public Rectangle GetRectangle()
+        {
+            return brickTileSprite.GetPositionRectangle();
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public void SetPosition(Point position)
+        {
+            position = new Point(position.X, position.Y);
+        }
+
         public void Update()
         {
+            safeToDespawn = !safeToDespawn && false; // put a condition here to change to true when we want to despawn
         }
     }
 }

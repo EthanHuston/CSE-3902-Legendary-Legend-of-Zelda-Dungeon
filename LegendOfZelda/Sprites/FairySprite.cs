@@ -8,37 +8,32 @@ namespace LegendOfZelda
 {
     class FairySprite : ISprite
     {
+        private const int numRows = 1;
+        private const int numColumns = 2;
         private Texture2D sprite;
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private int totalFrames;
+        private int frameWidth;
+        private int frameHeight;
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
-        private int currentXVal;
-        private int currentYVal;
-        private int maxXVal;
-        private int maxYVal;
-        private int minXVal;
-        private int minYVal;
+        private Point position;
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
-        public FairySprite(Texture2D sprite)
+        private Rectangle destinationRectangle;
+
+        public FairySprite(Texture2D sprite, Point spawnPosition)
         {
             this.sprite = sprite;
-            Rows = 1;
-            Columns = 2;
             currentFrame = 0;
             bufferFrame = 0;
-            totalFrames = Rows * Columns;
+            totalFrames = numRows * numColumns;
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
+            destinationRectangle = new Rectangle(position.X, position.Y, frameWidth, frameHeight);
 
-            currentXVal = ConstantsSprint2.itemX;
-            currentYVal = ConstantsSprint2.itemY;
-
-            maxXVal = 800;
-            maxYVal = 480;
-            minXVal = 0;
-            minYVal = 0;
+            position.X = spawnPosition.X;
+            position.Y = spawnPosition.Y;
         }
         public void Update()
         {
@@ -47,23 +42,23 @@ namespace LegendOfZelda
             //Move based on current chosen direction for some time.
             if (xDir == 0 && yDir == 0)
             {
-                currentXVal--;
-                currentYVal--;
+                position.X--;
+                position.Y--;
             }
             else if (xDir == 0 && yDir == 1)
             {
-                currentXVal--;
-                currentYVal++;
+                position.X--;
+                position.Y++;
             }
             else if (xDir == 1 && yDir == 0)
             {
-                currentXVal++;
-                currentYVal--;
+                position.X++;
+                position.Y--;
             }
             else
             {
-                currentYVal++;
-                currentXVal++;
+                position.X++;
+                position.Y++;
             }
 
             if (movementBuffer > 10)
@@ -83,15 +78,13 @@ namespace LegendOfZelda
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            int row = (int)((float)currentFrame / (float)numColumns);
+            int column = currentFrame % numColumns;
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(currentXVal, currentYVal, (int)(1.25 * sprite.Width), (int)(1.25 * sprite.Height));
+            Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
+            destinationRectangle = new Rectangle(position.X, position.Y, (int)(1.25 * sprite.Width), (int)(1.25 * sprite.Height));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
@@ -99,21 +92,21 @@ namespace LegendOfZelda
         }
         private void CheckBounds()
         {
-            if (currentXVal == minXVal)
+            if (position.X <= Constants.MinXPos)
             {
-                currentXVal = currentXVal + 5;
+                position.X += 5;
             }
-            else if (currentXVal == maxXVal)
+            else if (position.X >= Constants.MaxXPos)
             {
-                currentXVal = currentXVal - 5; ;
+                position.X -= 5; ;
             }
-            else if (currentYVal == minYVal)
+            else if (position.Y <= Constants.MinYPos)
             {
-                currentYVal = currentYVal + 5; ;
+                position.Y += 5; ;
             }
-            else if (currentYVal == maxYVal)
+            else if (position.Y >= Constants.MaxYPos)
             {
-                currentYVal = currentYVal - 5;
+                position.Y -= 5;
             }
         }
         private void ChooseDirection()
@@ -121,6 +114,11 @@ namespace LegendOfZelda
             Random rand = new Random();
             xDir = rand.Next(0, 2); // 0 for x, 1 for y
             yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }

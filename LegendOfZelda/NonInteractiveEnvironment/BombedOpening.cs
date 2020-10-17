@@ -1,27 +1,59 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class BombedOpening : IBlock
     {
-        private DoorSprite doorSprite;
+        private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
-        public BombedOpening(SpriteBatch spriteBatch)
+        private Point position;
+        private const int textureMapRow = 1;
+        private const int textureMapColumn = 4;
+
+        public BombedOpening(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
+            doorSprite = SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
+            position.X = spawnPosition.X;
+            position.Y = spawnPosition.Y;
         }
 
         public void Draw()
         {
-            doorSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY, 1, 4);
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+        }
+
+        public Point GetPosition()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Rectangle GetRectangle()
+        {
+            throw new System.NotImplementedException();
         }
 
         public void Interaction()
         {
 
+        }
+
+        public void Move(Vector2 distance)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool SafeToDespawn()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetPosition(Point position)
+        {
+            throw new System.NotImplementedException();
         }
 
         public void Update()

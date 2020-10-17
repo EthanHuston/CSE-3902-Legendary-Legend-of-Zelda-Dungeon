@@ -1,32 +1,61 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class Fire : IBlock
     {
-        private FireSprite fireSprite;
+        private ISprite fireSprite;
         private SpriteBatch sB;
-        public Fire(SpriteBatch spriteBatch)
+        private Point position;
+        private bool safeToDespawn;
+
+        public Fire(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            fireSprite = (FireSprite)SpriteFactory.Instance.CreateFireSprite();
+            fireSprite = SpriteFactory.Instance.CreateFireSprite();
             sB = spriteBatch;
+            position.X = spawnPosition.X;
+            position.Y = spawnPosition.Y;
+            safeToDespawn = false;
         }
 
         public void Draw()
         {
-            fireSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
+            fireSprite.Draw(sB, position);
         }
 
-        public void Interaction()
+        public Point GetPosition()
         {
-            //Update
+            return new Point(position.X, position.Y);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return fireSprite.GetPositionRectangle();
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public void SetPosition(Point position)
+        {
+            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()
         {
             fireSprite.Update();
+            safeToDespawn = !safeToDespawn && false; // some condition here to determine when to despawn
         }
     }
 }

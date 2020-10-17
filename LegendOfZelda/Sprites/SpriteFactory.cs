@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.InteractiveEnvironment.Sprite;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Item.Sprite;
 using LegendOfZelda.Link;
 using LegendOfZelda.Projectile.Sprite;
@@ -23,7 +24,7 @@ namespace LegendOfZelda
         private Texture2D jellySprite;
         private Texture2D skeletonSprite;
         private Texture2D spikeTrapSprite;
-        private Texture2D blockSprite;
+        private Texture2D squareSprite;
         private Texture2D statueSprite;
         private Texture2D stairSprite;
         private Texture2D doorSprite;
@@ -87,7 +88,7 @@ namespace LegendOfZelda
             skeletonSprite = content.Load<Texture2D>("Enemies/Skeleton");
             spikeTrapSprite = content.Load<Texture2D>("Enemies/SpikeTrap");
             //Load Environment Sprites
-            blockSprite = content.Load<Texture2D>("Environment/Block");
+            squareSprite = content.Load<Texture2D>("Environment/Block");
             statueSprite = content.Load<Texture2D>("Environment/Statue");
             stairSprite = content.Load<Texture2D>("Environment/Stairs");
             doorSprite = content.Load<Texture2D>("Environment/Doors");
@@ -162,10 +163,6 @@ namespace LegendOfZelda
         {
             return new GoriyaLeftSprite(goriyaLeftSprite);
         }
-        public IDamageableSprite CreateGoriyaBoomerangSprite()
-        {
-            return new GoriyaBoomerangSprite(goriyaBoomerangSprite);
-        }
         public IDamageableSprite CreateAquamentusBreathingSprite()
         {
             return new AquamentusBreathingSprite(aquamentusBreathingSprite);
@@ -192,7 +189,7 @@ namespace LegendOfZelda
         }
         public ISprite CreateBlockSprite()
         {
-            return new BlockSprite(blockSprite);
+            return new SquareSprite(squareSprite);
         }
         public ISprite CreateStatueSprite()
         {
@@ -202,7 +199,7 @@ namespace LegendOfZelda
         {
             return new StairSprite(stairSprite);
         }
-        public ISprite CreateDoorSprite()
+        public ITextureAtlasSprite CreateDoorSprite()
         {
             return new DoorSprite(doorSprite);
         }

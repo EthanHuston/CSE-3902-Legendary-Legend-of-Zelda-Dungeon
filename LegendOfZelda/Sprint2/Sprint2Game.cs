@@ -1,5 +1,8 @@
 ﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.InteractiveEnvironment;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
+using LegendOfZelda.NonInteractiveEnvironment;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Sprint2
@@ -8,13 +11,13 @@ namespace LegendOfZelda.Sprint2
     {
         private Game1 game;
         private List<IBlock> listOfBlocks;
-        private List<IEnemy> listOfEnemies;
+        private List<INpc> listOfEnemies;
         private List<IItem> listOfItems;
         private int enemyIndex = 0;
         private int itemIndex = 0;
         private int blockIndex = 0;
         public IBlock currentBlock;
-        public IEnemy currentEnemy;
+        public INpc currentEnemy;
         public IItem currentItem;
 
         public Sprint2Game(Game1 game)
@@ -23,7 +26,7 @@ namespace LegendOfZelda.Sprint2
             listOfBlocks = new List<IBlock>();
             AddBlocksToList();
 
-            listOfEnemies = new List<IEnemy>();
+            listOfEnemies = new List<INpc>();
             AddEnemiesToList();
 
             listOfItems = new List<IItem>();
