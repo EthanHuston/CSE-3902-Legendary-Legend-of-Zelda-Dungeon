@@ -63,5 +63,9 @@ namespace LegendOfZelda
         public const int SpikeTrapMaxDist = 50;
         public const int SpikeTrapGoingVelocity = 4;
         public const int SpikeTrapReturningVelocity = 2;
+
+        //Room Constants
+        public const int roomWidth = 12;
+        public const int roomHeight = 7;
     }
 }
