@@ -17,14 +17,19 @@ namespace LegendOfZelda
             // No update needed for an unchanging object.
         }
 
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int width = (int)((float)sprite.Width / (float)3);
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, width, sprite.Height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            throw new NotImplementedException();
         }
     }
 }

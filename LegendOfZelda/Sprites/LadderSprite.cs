@@ -32,7 +32,7 @@ namespace LegendOfZelda
 
         public void Update()
         {
-
+            // ladder does not need to update
         }
     }
 }

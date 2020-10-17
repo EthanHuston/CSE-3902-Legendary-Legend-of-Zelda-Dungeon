@@ -11,9 +11,9 @@ namespace LegendOfZelda
         {
             this.sprite = sprite;
         }
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * sprite.Width, 2 * sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
@@ -23,6 +23,11 @@ namespace LegendOfZelda
         public void Update()
         {
 
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            throw new NotImplementedException();
         }
     }
 }
