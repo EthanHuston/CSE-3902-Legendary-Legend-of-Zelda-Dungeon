@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Item
 {
-    class BombExplodingItem : GenericProjectile
+    class BombExplodingProjectile : GenericProjectile
     {
-        public BombExplodingItem(Game1 link, Point spawnPosition, Constants.ItemOwner owner) : base(link, spawnPosition, owner)
+        public BombExplodingProjectile(Game1 link, Point spawnPosition, Constants.ItemOwner owner) : base(link, spawnPosition, owner)
         {
             sprite = SpriteFactory.Instance.CreateBombExplodingSprite();
         }

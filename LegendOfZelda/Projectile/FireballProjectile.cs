@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class Fireball : GenericProjectile
+    class FireballProjectile : GenericProjectile
     {
 
-        public Fireball(SpriteBatch spriteBatch, Point spawnPosition, Vector2 velocity, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
+        public FireballProjectile(SpriteBatch spriteBatch, Point spawnPosition, Vector2 velocity, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = SpriteFactory.Instance.CreateFireballSprite();
             position.X = spawnPosition.X;

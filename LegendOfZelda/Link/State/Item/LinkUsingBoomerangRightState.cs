@@ -16,7 +16,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            link.SpawnItem(new BoomerangFlyingItem(link, Constants.Direction.Right));
+            link.SpawnItem(new BoomerangFlyingProjectile(link, Constants.Direction.Right));
         }
 
         public override void Update()

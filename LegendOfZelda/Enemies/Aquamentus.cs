@@ -82,9 +82,9 @@ namespace LegendOfZelda.Enemies
         private void Attack()
         {
             Point spawnPosition = new Point(position.X, position.Y);
-            itemSpawner.Spawn(new Fireball(spriteBatch, spawnPosition, new Vector2(xVelocity, -3), Constants.ItemOwner.Enemy));
-            itemSpawner.Spawn(new Fireball(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ItemOwner.Enemy));
-            itemSpawner.Spawn(new Fireball(spriteBatch, spawnPosition, new Vector2(xVelocity, 3), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -3), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 3), Constants.ItemOwner.Enemy));
             ballsInitialized = true;
             attacked = true;
             attackUpdate = updateCount;

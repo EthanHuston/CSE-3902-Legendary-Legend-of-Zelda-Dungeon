@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Item
 {
-    class BoomerangFlyingItem : GenericProjectile
+    class BoomerangFlyingProjectile : GenericProjectile
     {
         private bool returningToOwner;
         private ISpawnable itemToTrack;
@@ -15,7 +15,7 @@ namespace LegendOfZelda.Link.Item
         private const int despawnMinYFromOwner = 0;
         private const int maxDistanceFromOwner = 300;
 
-        public BoomerangFlyingItem(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
+        public BoomerangFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = SpriteFactory.Instance.CreateBoomerangFlyingSprite();
             this.velocity.X = velocity.X;

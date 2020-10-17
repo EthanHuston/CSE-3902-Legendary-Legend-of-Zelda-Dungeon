@@ -16,7 +16,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            this.link.SpawnItem(new BombExplodingItem(link));
+            this.link.SpawnItem(new BombExplodingProjectile(link));
         }
 
         public override void Update()

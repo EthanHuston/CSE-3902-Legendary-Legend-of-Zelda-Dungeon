@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    class ArrowFlyingItem : GenericProjectile
+    class ArrowFlyingProjectile : GenericProjectile
     {
         private const int moveDistanceInterval = 5;
 
-        public ArrowFlyingItem(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
+        public ArrowFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             switch (direction)
             {
