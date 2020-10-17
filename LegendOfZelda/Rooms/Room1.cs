@@ -8,10 +8,10 @@ namespace LegendOfZelda.Rooms
 {
     class Room1
     {
-        private CVSReader cvsReader;
+        private CSVReader csvReader;
         public Room1()
         {
-            cvsReader = new CVSReader("Room1.txt");
+            csvReader = new CSVReader("Room1.txt");
         }
 
     }

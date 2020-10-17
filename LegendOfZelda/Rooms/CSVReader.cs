@@ -7,34 +7,36 @@ using Microsoft.VisualBasic.FileIO;
 
 namespace LegendOfZelda.Rooms
 {
-    class CVSReader
+    class CSVReader
     {
-        string[,] roomString = new string[Constants.roomWidth, Constants.roomHeight];
         ItemSpawner spawner = new ItemSpawner();
         private SpriteBatch spriteBatch;
         private const int tileLength = 16;
         //String Abbreviations from CSV File
+        string Block = "block";
         string BlueTile = "---";
-        string BrickTile = "";
-        string GapTile = "";
-        string LadderTile = "";
-        string Stairs = "";
-        string Statue = "";
-        string BlueGrass = "";
-        string Water = "";
+        string BrickTile = "brick";
+        string Fire = "fire";
+        string GapTile = "black";
+        string LadderTile = "lad";
+        string Stairs = "stairs";
+        string Statue = "stat";
+        string BlueGrass = "bg";
+        string Water = "water";
 
-        public CVSReader(SpriteBatch spriteBatch, string fileName)
+        public CSVReader(SpriteBatch spriteBatch, string fileName)
         {
             this.spriteBatch = spriteBatch;
             TextFieldParser parser = new TextFieldParser(fileName);
             parser.Delimiters = new string[] { "," }; //Delimiters are like separators in NextWordOrSeparator
             int j = 0;
+            //Read each line of the file
             while (!parser.EndOfData)
             {
                 string[] fields = parser.ReadFields();
                 for(int i = 0; i < fields.Length; i++)
                 {
-                    roomString[i, j] = fields[i];
+                    spawnFromString(fields[i], i, j);
                 }
             }
         }
@@ -46,6 +48,8 @@ namespace LegendOfZelda.Rooms
 
             switch (spawnType)
             {
+                case Block:
+                    break;
                 case BlueTile:
                     break;
                 case BrickTile:
@@ -54,6 +58,10 @@ namespace LegendOfZelda.Rooms
                     break;
                 case GapTile:
                     blockType = new GapTile(spriteBatch, position);
+                    spawner.Spawn(blockType);
+                    break;
+                case Fire:
+                    blockType = new Fire(spriteBatch, position);
                     spawner.Spawn(blockType);
                     break;
                 case LadderTile:
@@ -75,6 +83,8 @@ namespace LegendOfZelda.Rooms
                 case Water:
                     blockType = new Water(spriteBatch, position);
                     spawner.Spawn(blockType);
+                    break;
+                default:
                     break;
 
             }
