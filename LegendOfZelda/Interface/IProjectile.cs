@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    interface IProjectile : IDynamic
+    public interface IProjectile : IDynamic
     {
         Constants.ItemOwner GetItemOwner();
     }

@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Projectile.Sprite
 {
-    class FireballSprite : ISprite
+    class FireballSprite : IItemSprite
     {
         private Texture2D sprite;
         private int Rows { get; set; }
@@ -39,7 +39,7 @@ namespace LegendOfZelda
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int width = sprite.Width / Columns;
             int height = sprite.Height / Rows;
@@ -47,11 +47,26 @@ namespace LegendOfZelda
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
+        {
+            Draw(spriteBatch, position);
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // animation does not finish
         }
     }
 }

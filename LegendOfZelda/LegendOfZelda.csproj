@@ -57,7 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GameplayLogic\SpawnedItems.cs" />
+    <Compile Include="GameplayLogic\ItemSpawner.cs" />
     <Compile Include="Interface\IBlock.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
@@ -67,11 +67,10 @@
     <Compile Include="Interface\IItemSprite.cs" />
     <Compile Include="Interface\IProjectile.cs" />
     <Compile Include="Interface\ISpawnable.cs" />
-    <Compile Include="Interface\IPlayer.cs" />
-    <Compile Include="Interface\ISpawnedItems.cs" />
+    <Compile Include="Interface\IItemSpawner.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
-    <Compile Include="Link\Interface\ILinkPlayer.cs" />
+    <Compile Include="Interface\IPlayer.cs" />
     <Compile Include="Link\State\LinkActiveAbstractState.cs" />
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />
     <Compile Include="NonInteractiveEnvironment\BombedOpening.cs" />
@@ -96,8 +95,7 @@
     <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
     <Compile Include="Projectile\SwordBeamFlyingItem.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
-    <Compile Include="Enemies\FireBall.cs" />
-    <Compile Include="Enemies\GoriyaBoomerang.cs" />
+    <Compile Include="Projectile\FireBall.cs" />
     <Compile Include="Item\BombItem.cs" />
     <Compile Include="Item\BoomerangItem.cs" />
     <Compile Include="Item\BowItem.cs" />
@@ -176,7 +174,7 @@
     <Compile Include="Sprites\AquamentusWalkingSprite.cs" />
     <Compile Include="Sprites\ExplodingBombSprite.cs" />
     <Compile Include="Sprites\FairySprite.cs" />
-    <Compile Include="Sprites\FireballSprite.cs" />
+    <Compile Include="Projectile\Sprite\FireballSprite.cs" />
     <Compile Include="Sprites\FireSprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Enemies\Hand.cs" />

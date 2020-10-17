@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Projectile;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
+        private Point position;
         private int vx = 1;
         private int updateCount = 0;
         private int switchDirection = 100;
@@ -18,12 +19,16 @@ namespace LegendOfZelda.Enemies
         private bool attacked = false;
         private bool ballsInitialized = false;
         private double health = 6;
-        public Fireball[] spicyBalls = new Fireball[3];
+        private const int xVelocity = -5;
+        private IItemSpawner itemSpawner;
 
-        public Aquamentus(SpriteBatch spriteBatch)
+        public Aquamentus(Game1 game, Point spawnPosition)
         {
-            this.sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
-            this.spriteBatch = spriteBatch;
+            sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
+            spriteBatch = game.SpriteBatch;
+            itemSpawner = game.SpawnedItems;
+            position.X = spawnPosition.X;
+            position.Y = spawnPosition.Y;
         }
 
         public void Update()
@@ -31,15 +36,12 @@ namespace LegendOfZelda.Enemies
             //updateCount++;
 
             if (!attacked)
-                updateDirection();
+                UpdateDirection();
 
             if (updateCount % attackTime == 0)
                 Attack();
 
-            if (ballsInitialized)
-                updateBalls();
-
-            updateSprite();
+            UpdateSprite();
 
             sprite.Update();
 
@@ -50,16 +52,6 @@ namespace LegendOfZelda.Enemies
         public void Draw()
         {
             sprite.Draw(spriteBatch, position);
-
-            if (ballsInitialized)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    spicyBalls[i].Draw();
-                }
-            }
-
-
         }
 
         public Point GetPosition()
@@ -89,15 +81,16 @@ namespace LegendOfZelda.Enemies
 
         private void Attack()
         {
-            spicyBalls[0] = new Fireball(spriteBatch, position.X, position.Y, -3);
-            spicyBalls[1] = new Fireball(spriteBatch, position.X, position.Y, 0);
-            spicyBalls[2] = new Fireball(spriteBatch, position.X, position.Y, 3);
+            Point spawnPosition = new Point(position.X, position.Y);
+            itemSpawner.Spawn(new Fireball(spriteBatch, spawnPosition, new Vector2(xVelocity, -3), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new Fireball(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new Fireball(spriteBatch, spawnPosition, new Vector2(xVelocity, 3), Constants.ItemOwner.Enemy));
             ballsInitialized = true;
             attacked = true;
             attackUpdate = updateCount;
         }
 
-        private void updateDirection()
+        private void UpdateDirection()
         {
             if (updateCount < switchDirection)
                 position.X -= vx;
@@ -107,33 +100,25 @@ namespace LegendOfZelda.Enemies
                 updateCount = 0;
         }
 
-        private void updateBalls()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                spicyBalls[i].Update();
-            }
-        }
-
-        private void updateSprite()
+        private void UpdateSprite()
         {
             if (updateCount - attackUpdate <= 4)
             {
-                setBreathingSprite();
+                SetBreathingSprite();
             }
             else if (attacked)
             {
-                setWalkingSprite();
+                SetWalkingSprite();
                 attacked = false;
             }
         }
 
-        private void setBreathingSprite()
+        private void SetBreathingSprite()
         {
             sprite = SpriteFactory.Instance.CreateAquamentusBreathingSprite();
         }
 
-        private void setWalkingSprite()
+        private void SetWalkingSprite()
         {
             sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
         }
