@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.Item.Sprite
 {
@@ -46,12 +47,17 @@ namespace LegendOfZelda.Item.Sprite
             spriteBatch.End();
         }
 
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
+        {
+            Draw(spriteBatch, position);
+        }
+
         public bool FinishedAnimation()
         {
             return false; // not used, BoomerangFlying class keeps track of this
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
             return sprite.Bounds;
         }

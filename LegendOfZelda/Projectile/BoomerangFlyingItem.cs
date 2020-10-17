@@ -8,20 +8,18 @@ namespace LegendOfZelda.Link.Item
     class BoomerangFlyingItem : GenericProjectile
     {
         private bool returningToOwner;
-        private Constants.Direction direction;
         private ISpawnable itemToTrack;
-        private Point oldPosition;
-        private const int moveDistanceInterval = 5;
         private const int despawnMaxXFromOwner = 15;
         private const int despawnMinXFromOwner = 0;
         private const int despawnMaxYFromOwner = 15;
         private const int despawnMinYFromOwner = 0;
         private const int maxDistanceFromOwner = 300;
 
-        public BoomerangFlyingItem(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
+        public BoomerangFlyingItem(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = SpriteFactory.Instance.CreateBoomerangFlyingSprite();
-            this.direction = direction;
+            this.velocity.X = velocity.X;
+            this.velocity.Y = velocity.Y;
             returningToOwner = false;
             this.itemToTrack = itemToTrack;
         }
@@ -35,36 +33,18 @@ namespace LegendOfZelda.Link.Item
 
         private void MoveBoomerang()
         {
-            if (!returningToOwner)
+            if (GetDistanceFromOwner() > maxDistanceFromOwner || Utility.ItemIsOutOfBounds(position))
             {
-                returningToOwner = GetDistanceFromLink() > maxDistanceFromOwner || Utility.ItemIsOutOfBounds(position);
+                returningToOwner = true;
+                velocity.X *= -1;
+                velocity.Y *= -1;
             }
 
-            oldPosition.X = position.X;
-            oldPosition.Y = position.Y;
-
-            switch (direction)
-            {
-                case Constants.Direction.Up:
-                    position.X = itemToTrack.GetPosition().X;
-                    position.Y += moveDistanceInterval * (returningToOwner ? 1 : -1);
-                    break;
-                case Constants.Direction.Down:
-                    position.X = itemToTrack.GetPosition().X;
-                    position.Y += moveDistanceInterval * (returningToOwner ? -1 : 1);
-                    break;
-                case Constants.Direction.Right:
-                    position.X += moveDistanceInterval * (returningToOwner ? -1 : 1);
-                    position.Y = itemToTrack.GetPosition().Y;
-                    break;
-                case Constants.Direction.Left:
-                    position.X += moveDistanceInterval * (returningToOwner ? 1 : -1);
-                    position.Y = itemToTrack.GetPosition().Y;
-                    break;
-            }
+            position.X = position.X == 0 ? itemToTrack.GetPosition().X : (int)(position.X + velocity.X);
+            position.Y = position.Y == 0 ? itemToTrack.GetPosition().Y : (int)(position.Y + velocity.Y);
         }
 
-        private double GetDistanceFromLink()
+        private double GetDistanceFromOwner()
         {
             return Utility.GetDistance(position, itemToTrack.GetPosition());
         }
@@ -81,7 +61,8 @@ namespace LegendOfZelda.Link.Item
 
         public override Vector2 GetVelocity()
         {
-            return Vector2.Subtract(position.ToVector2(), oldPosition.ToVector2());
+            // this is not true velocity, as X xor Y will always be 0; but shouldn't matter :)
+            return new Vector2(velocity.X, velocity.Y); 
         }
     }
 }
