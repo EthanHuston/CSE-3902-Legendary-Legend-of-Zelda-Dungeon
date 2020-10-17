@@ -12,6 +12,7 @@ namespace LegendOfZelda
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
+
         public HeartSprite(Texture2D sprite)
         {
             this.sprite = sprite;
@@ -48,6 +49,11 @@ namespace LegendOfZelda
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
+        {
+            Draw(spriteBatch, position);
         }
     }
 }
