@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class OldManSprite : ISprite
+    class OldManSprite : IDamageableSprite
     {
         private Texture2D sprite;
         public OldManSprite(Texture2D sprite)

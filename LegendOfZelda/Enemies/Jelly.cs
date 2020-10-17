@@ -8,7 +8,7 @@ namespace LegendOfZelda.Enemies
 {
     class Jelly : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private int currentX = ConstantsSprint2.enemyNPCX;
         private int currentY = ConstantsSprint2.enemyNPCY;

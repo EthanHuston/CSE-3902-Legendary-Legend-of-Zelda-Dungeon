@@ -142,47 +142,47 @@ namespace LegendOfZelda
             return new ArrowSprite(arrowSprite);
         }
 
-        public ISprite CreateBatSprite()
+        public IDamageableSprite CreateBatSprite()
         {
             return new BatSprite(batSprite);
         }
-        public ISprite CreateGoriyaUpSprite()
+        public IDamageableSprite CreateGoriyaUpSprite()
         {
             return new GoriyaUpSprite(goriyaUpSprite);
         }
-        public ISprite CreateGoriyaDownSprite()
+        public IDamageableSprite CreateGoriyaDownSprite()
         {
             return new GoriyaUpSprite(goriyaDownSprite);
         }
-        public ISprite CreateGoriyaRightSprite()
+        public IDamageableSprite CreateGoriyaRightSprite()
         {
             return new GoriyaRightSprite(goriyaRightSprite);
         }
-        public ISprite CreateGoriyaLeftSprite()
+        public IDamageableSprite CreateGoriyaLeftSprite()
         {
             return new GoriyaLeftSprite(goriyaLeftSprite);
         }
-        public ISprite CreateGoriyaBoomerangSprite()
+        public IDamageableSprite CreateGoriyaBoomerangSprite()
         {
             return new GoriyaBoomerangSprite(goriyaBoomerangSprite);
         }
-        public ISprite CreateAquamentusBreathingSprite()
+        public IDamageableSprite CreateAquamentusBreathingSprite()
         {
             return new AquamentusBreathingSprite(aquamentusBreathingSprite);
         }
-        public ISprite CreateAquamentusWalkingSprite()
+        public IDamageableSprite CreateAquamentusWalkingSprite()
         {
             return new AquamentusWalkingSprite(aquamentusWalkingSprite);
         }
-        public ISprite CreateHandSprite()
+        public IDamageableSprite CreateHandSprite()
         {
             return new HandSprite(handSprite);
         }
-        public ISprite CreateJellySprite()
+        public IDamageableSprite CreateJellySprite()
         {
             return new JellySprite(jellySprite);
         }
-        public ISprite CreateSkeletonSprite()
+        public IDamageableSprite CreateSkeletonSprite()
         {
             return new SkeletonSprite(skeletonSprite);
         }

@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
 {
     class Bat : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int minXVal = 0;

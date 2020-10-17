@@ -7,7 +7,7 @@ namespace LegendOfZelda.Enemies
 {
     class Merchant : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position;
         public Merchant(SpriteBatch spriteBatch)

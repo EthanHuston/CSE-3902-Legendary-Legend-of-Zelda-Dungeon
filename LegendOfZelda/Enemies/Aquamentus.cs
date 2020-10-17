@@ -8,7 +8,7 @@ namespace LegendOfZelda.Enemies
 {
     class Aquamentus : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position;
         private int vx = 1;

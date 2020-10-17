@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
 {
     class Goriya : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position;
         private IItemSpawner itemSpawner;

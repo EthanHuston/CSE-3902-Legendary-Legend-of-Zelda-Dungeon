@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class AquamentusWalkingSprite : ISprite
+    class AquamentusWalkingSprite : IDamageableSprite
     {
         private Texture2D sprite;
         private int Rows { get; set; }
