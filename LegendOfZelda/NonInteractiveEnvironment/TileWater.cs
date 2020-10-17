@@ -8,31 +8,30 @@ namespace LegendOfZelda.NonInteractiveEnvironment
     {
         private TileWaterSprite sprite;
         private SpriteBatch sb;
-        private int posX, posY;
+        private Point position;
         bool canWalk;
 
-        public TileWater(SpriteBatch spriteBatch, int x, int y)
+        public TileWater(SpriteBatch spriteBatch, Point position)
         {
             sprite = (TileWaterSprite)SpriteFactory.Instance.CreateTileWaterSprite();
             sb = spriteBatch;
-            posX = x;
-            posY = y;
+            this.position = position;
             canWalk = false;
         }
 
         public void Draw()
         {
-            sprite.Draw(sb, posX, posY);
+            sprite.Draw(sb, position);
         }
 
         public int getX()
         {
-            return posX;
+            return position.X;
         }
 
         public int getY()
         {
-            return posY;
+            return position.Y;
         }
         public void Update()
         {

@@ -9,15 +9,17 @@ namespace LegendOfZelda.NonInteractiveEnvironment
     {
         private StairSprite stairSprite;
         private SpriteBatch sB;
-        public Stairs(SpriteBatch spriteBatch)
+        private Point position;
+        public Stairs(SpriteBatch spriteBatch, Point position)
         {
             stairSprite = (StairSprite)SpriteFactory.Instance.CreateStairSprite();
             sB = spriteBatch;
+            this.position = position;
         }
 
         public void Draw()
         {
-            stairSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY);
+            stairSprite.Draw(sB, position);
         }
 
         public void Interaction()

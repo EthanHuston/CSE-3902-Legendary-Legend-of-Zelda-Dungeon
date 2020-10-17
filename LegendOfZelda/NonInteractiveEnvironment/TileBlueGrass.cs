@@ -8,31 +8,30 @@ namespace LegendOfZelda.NonInteractiveEnvironment
     {
         private TileBlueGrassSprite sprite;
         private SpriteBatch sb;
-        private int posX, posY;
+        private Point position;
         bool canWalk;
 
-        public TileBlueGrass(SpriteBatch spriteBatch, int x, int y)
+        public TileBlueGrass(SpriteBatch spriteBatch, Point position)
         {
             sprite = (TileBlueGrassSprite)SpriteFactory.Instance.CreateTileBlueGrassSprite();
             sb = spriteBatch;
-            posX = x;
-            posY = y;
+            this.position = position;
             canWalk = true;
         }
 
         public void Draw()
         {
-            sprite.Draw(sb, posX, posY);
+            sprite.Draw(sb, position);
         }
 
         public int getX()
         {
-            return posX;
+            return position.X;
         }
 
         public int getY()
         {
-            return posY;
+            return position.Y;
         }
         public void Update()
         {
