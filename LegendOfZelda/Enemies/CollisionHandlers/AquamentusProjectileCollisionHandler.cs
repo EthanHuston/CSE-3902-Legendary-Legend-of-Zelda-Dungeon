@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class AquamentusProjectileCollisionHandler
+    class AquamentusProjectileCollisionHandler : ICollision
     {
+        public void HandleCollison()
+        {
+        }
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class GoriyaProjectileCollisionHandler
+    class GoriyaProjectileCollisionHandler : ICollision
     {
+        public void HandleCollison()
+        {
+        }
     }
 }
