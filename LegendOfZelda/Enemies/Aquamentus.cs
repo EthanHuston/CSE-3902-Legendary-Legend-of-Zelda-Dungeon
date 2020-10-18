@@ -27,8 +27,7 @@ namespace LegendOfZelda.Enemies
             sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
             spriteBatch = game.SpriteBatch;
             itemSpawner = game.SpawnedItems;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
         }
 
         public void Update()

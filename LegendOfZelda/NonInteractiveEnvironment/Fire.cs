@@ -16,8 +16,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             fireSprite = SpriteFactory.Instance.CreateFireSprite();
             sB = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             safeToDespawn = false;
         }
 

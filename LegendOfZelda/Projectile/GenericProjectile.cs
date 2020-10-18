@@ -16,8 +16,7 @@ namespace LegendOfZelda.Item
         public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner)
         {
             this.spriteBatch = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             this.owner = owner;
             velocity = Vector2.Zero;
         }

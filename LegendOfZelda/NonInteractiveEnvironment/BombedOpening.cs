@@ -17,8 +17,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             doorSprite = SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
         }
 
         public void Draw()

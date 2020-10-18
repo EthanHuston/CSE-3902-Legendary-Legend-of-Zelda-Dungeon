@@ -17,8 +17,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             roomBorderSprite = SpriteFactory.Instance.CreateRoomBorderSprite();
             sB = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             safeToDespawn = false;
         }
 

@@ -32,8 +32,7 @@ namespace LegendOfZelda
             frameHeight = sprite.Height / numRows;
             destinationRectangle = new Rectangle(position.X, position.Y, frameWidth, frameHeight);
 
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
         }
         public void Update()
         {
