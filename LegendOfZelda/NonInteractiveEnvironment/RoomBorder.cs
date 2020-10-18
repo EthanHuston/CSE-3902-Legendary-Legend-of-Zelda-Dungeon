@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -6,23 +7,55 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class RoomBorder : IBlock
     {
-        private RoomBorderSprite roomSprite;
+        private ISprite roomSprite;
         private SpriteBatch sb;
-        int posX, posY;
-        public RoomBorder(SpriteBatch spriteBatch, int x, int y)
+        private Point position;
+        private Rectangle destinationRectangle;
+        private bool safeToDespawn;
+
+        public RoomBorder(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            roomSprite = (RoomBorderSprite)SpriteFactory.Instance.CreateRoomBorderSprite();
+            roomSprite = SpriteFactory.Instance.CreateRoomBorderSprite();
             sb = spriteBatch;
-            posX = x;
-            posY = y;
+            position = spawnPosition;
+            destinationRectangle = Rectangle.Empty;
+            safeToDespawn = false;
         }
 
         public void Draw()
         {
-            roomSprite.Draw(sb, posX, posY);
+            roomSprite.Draw(sb, position);
         }
+
+        public Point GetPosition()
+        {
+            return new Point(position.X, position.Y);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return destinationRectangle;
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public void SetPosition(Point position)
+        {
+            this.position = new Point(position.X, position.Y);
+        }
+
         public void Update()
         {
+            safeToDespawn = !safeToDespawn && false; // condition to despawn
         }
     }
 }

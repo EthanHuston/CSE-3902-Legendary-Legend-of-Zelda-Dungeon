@@ -10,6 +10,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
         private Point position;
+        private bool safeToDespawn;
         private const int textureMapRow = 1;
         private const int textureMapColumn = 4;
 
@@ -18,6 +19,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
             doorSprite = SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             position = spawnPosition;
+            safeToDespawn = false;
         }
 
         public void Draw()
@@ -27,36 +29,33 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 
         public Point GetPosition()
         {
-            throw new System.NotImplementedException();
+            return new Point(position.X, position.Y);
         }
 
         public Rectangle GetRectangle()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void Interaction()
-        {
-
+            return doorSprite.GetPositionRectangle();
         }
 
         public void Move(Vector2 distance)
         {
-            throw new System.NotImplementedException();
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
 
         public bool SafeToDespawn()
         {
-            throw new System.NotImplementedException();
+            return safeToDespawn;
         }
 
         public void SetPosition(Point position)
         {
-            throw new System.NotImplementedException();
+            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()
         {
+            safeToDespawn = !safeToDespawn && false; // change false to condition if you want to despawn me
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -7,25 +8,55 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class OpenDoor : IBlock
     {
-        private DoorSprite doorSprite;
+        private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
-        public OpenDoor(SpriteBatch spriteBatch)
+        private bool safeToDespawn;
+        private Point position;
+        private const int textureMapRow = 1;
+        private const int textureMapColumn = 1;
+
+        public OpenDoor(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
+            doorSprite = SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
+            safeToDespawn = false;
+            position = spawnPosition;
         }
 
         public void Draw()
         {
-            doorSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY, 1, 1);
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
-        public void Interaction()
+        public Point GetPosition()
         {
-
+            return new Point(position.X, position.Y);
         }
+
+        public Rectangle GetRectangle()
+        {
+            return doorSprite.GetPositionRectangle();
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public void SetPosition(Point position)
+        {
+            this.position = new Point(position.X, position.Y);
+        }
+
         public void Update()
         {
+            safeToDespawn = !safeToDespawn && false; // condition goes here to despawn if we want
         }
     }
 }
