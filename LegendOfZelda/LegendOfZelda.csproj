@@ -111,6 +111,8 @@
     <Compile Include="Projectile\Sprite\SwordBeamExplodingSprite.cs" />
     <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
     <Compile Include="Projectile\SwordBeamFlyingProjectile.cs" />
+    <Compile Include="Rooms\CVSReader.cs" />
+    <Compile Include="Rooms\Room1.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Projectile\FireballProjectile.cs" />
     <Compile Include="Item\BombItem.cs" />
