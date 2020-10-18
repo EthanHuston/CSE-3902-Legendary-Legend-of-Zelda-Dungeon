@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Interface
 {
-    class AquamentusCollisionHandler
+    class AquamentusCollisionHandler : ICollision
     {
+        public void HandleCollison()
+        {
+        }
     }
 }

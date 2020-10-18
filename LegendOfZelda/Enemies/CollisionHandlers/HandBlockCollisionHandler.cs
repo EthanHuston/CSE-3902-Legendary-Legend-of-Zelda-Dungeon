@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class HandBlockCollisionHandler
+    class HandBlockCollisionHandler : ICollision
     {
+        public void HandleCollison()
+        {
+        }
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class SpikeTrapBlockCollisionHandler
+    class SpikeTrapBlockCollisionHandler : ICollision
     {
+        public void HandleCollison()
+        {
+        }
     }
 }
