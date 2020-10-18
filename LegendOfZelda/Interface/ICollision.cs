@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LegendOfZelda.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace LegendOfZelda
 {
     interface ICollision
     {
-        void HandleCollison();
+        void HandleCollison(INpc Enemy, IBlock block, Constants.Direction side);
     }
 }
