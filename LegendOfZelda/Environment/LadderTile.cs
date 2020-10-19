@@ -20,6 +20,11 @@ namespace LegendOfZelda.Environment
             safeToDespawn = false;
         }
 
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
         public void Draw()
         {
             ladderSprite.Draw(sB, position);

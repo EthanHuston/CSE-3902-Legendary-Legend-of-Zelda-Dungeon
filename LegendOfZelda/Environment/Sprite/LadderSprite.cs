@@ -28,11 +28,6 @@ namespace LegendOfZelda.Environment.Sprite
             Draw(spriteBatch, position);
         }
 
-        public bool FinishedAnimation()
-        {
-            return false; // animation never finishes
-        }
-
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;

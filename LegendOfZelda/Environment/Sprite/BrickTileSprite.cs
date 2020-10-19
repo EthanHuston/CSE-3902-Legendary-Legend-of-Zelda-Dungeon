@@ -34,9 +34,5 @@ namespace LegendOfZelda.Environment.Sprite
             return destinationRectangle;
         }
 
-        public bool FinishedAnimation()
-        {
-            return false; // never finishes animation
-        }
     }
 }

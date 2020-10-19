@@ -22,7 +22,7 @@ namespace LegendOfZelda.Environment
 
         public void Despawn()
         {
-            safeToDespawn = false;
+            safeToDespawn = true;
         }
 
         public void Draw()
@@ -60,5 +60,6 @@ namespace LegendOfZelda.Environment
         {
             safeToDespawn = !safeToDespawn && false; // some condition here if we want to despawn
         }
+
     }
 }

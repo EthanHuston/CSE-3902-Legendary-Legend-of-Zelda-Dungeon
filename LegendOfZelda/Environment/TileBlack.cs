@@ -10,6 +10,7 @@ namespace LegendOfZelda.Environment
         private ISprite sprite;
         private SpriteBatch sb;
         private Point position;
+        private bool safeToDespawn;
         bool canWalk;
 
         public TileBlack(SpriteBatch spriteBatch, Point position)
@@ -20,20 +21,42 @@ namespace LegendOfZelda.Environment
             canWalk = false;
         }
 
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
         public void Draw()
         {
             sprite.Draw(sb, position);
         }
 
-        public int getX()
+        public Point GetPosition()
         {
-            return position.X;
+            return position;
         }
 
-        public int getY()
+        public Rectangle GetRectangle()
         {
-            return position.Y;
+            return sprite.GetPositionRectangle();
         }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public void SetPosition(Point position)
+        {
+            this.position = position;
+        }
+
         public void Update()
         {
             sprite.Update();

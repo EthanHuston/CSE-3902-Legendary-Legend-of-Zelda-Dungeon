@@ -7,9 +7,12 @@ namespace LegendOfZelda.Environment.Sprite
     class TileBlueGrassSprite : ISprite
     {
         private Texture2D sprite;
+        private Rectangle destinationRectangle;
+
         public TileBlueGrassSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            destinationRectangle = Rectangle.Empty;
         }
         public void Update()
         {
@@ -18,11 +21,16 @@ namespace LegendOfZelda.Environment.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }
