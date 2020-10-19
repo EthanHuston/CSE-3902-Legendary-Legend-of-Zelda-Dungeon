@@ -6,7 +6,7 @@ namespace LegendOfZelda.Item
 {
     abstract class GenericItem : IItem
     {
-        protected IItemSprite sprite;
+        protected ISprite sprite;
         protected bool itemIsExpired;
         protected Point position;
         protected SpriteBatch spriteBatch;

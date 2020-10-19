@@ -1,6 +1,6 @@
-﻿using LegendOfZelda.Link.Command;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Command;
 using LegendOfZelda.Sprint2;
-using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 

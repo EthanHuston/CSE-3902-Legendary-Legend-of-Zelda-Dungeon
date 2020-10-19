@@ -1,14 +1,13 @@
-using LegendOfZelda.Item;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Link.Item
+namespace LegendOfZelda.Projectile
 {
     class BombExplodingProjectile : GenericProjectile
     {
         public BombExplodingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
-            sprite = SpriteFactory.Instance.CreateBombExplodingSprite();
+            sprite = ProjectileSpriteFactory.Instance.CreateBombExplodingSprite();
         }
 
         public override void Update()

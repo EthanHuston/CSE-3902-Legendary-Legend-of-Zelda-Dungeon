@@ -1,6 +1,4 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -10,12 +8,12 @@ namespace LegendOfZelda.Item
     {
         public RupeeItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateRupeeSprite();
+            sprite = ItemSpriteFactory.Instance.CreateRupeeSprite();
         }
 
         protected override void CheckItemIsExpired()
         {
-            itemIsExpired = false; // add condition to determine when to despawn item
+            itemIsExpired = !itemIsExpired && false;
         }
     }
 }

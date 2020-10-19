@@ -1,4 +1,3 @@
-using LegendOfZelda.Link.Item;
 using LegendOfZelda.Link.State.NotMoving;
 using System;
 

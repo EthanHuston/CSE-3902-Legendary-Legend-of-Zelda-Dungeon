@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Link.Item;
+using LegendOfZelda.Projectile;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,7 +27,7 @@ namespace LegendOfZelda.Enemies
 
         public Goriya(Game1 game, Point spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaDownSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
             spriteBatch = game.SpriteBatch;
             velocity = 2;
             position = spawnPosition;
@@ -140,7 +140,6 @@ namespace LegendOfZelda.Enemies
         {
             boomerangActive = true;
             boomerangInitialized = true;
-            attackTime = updateCount;
             Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
@@ -194,22 +193,22 @@ namespace LegendOfZelda.Enemies
 
         private void SetUpSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaUpSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
         }
 
         private void SetDownSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaDownSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
         }
 
         private void SetLeftSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaLeftSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
         }
 
         private void SetRightSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaRightSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
         }
 
         public void ResetPosition()

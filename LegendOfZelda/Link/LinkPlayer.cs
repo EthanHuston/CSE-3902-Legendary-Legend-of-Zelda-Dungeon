@@ -162,7 +162,7 @@ namespace LegendOfZelda.Link
 
         public void Move(Vector2 distance)
         {
-            SetPosition(new Point((int) (position.X + distance.X), (int) (position.Y + distance.Y)));
+            SetPosition(new Point((int)(position.X + distance.X), (int)(position.Y + distance.Y)));
         }
 
         public Rectangle GetRectangle()

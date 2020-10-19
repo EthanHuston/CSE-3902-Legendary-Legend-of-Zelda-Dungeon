@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
-using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -25,7 +24,7 @@ namespace LegendOfZelda.Enemies
 
         public Aquamentus(Game1 game, Point spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
+            sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
             spriteBatch = game.SpriteBatch;
             itemSpawner = game.SpawnedItems;
             position = spawnPosition;
@@ -123,12 +122,12 @@ namespace LegendOfZelda.Enemies
 
         private void SetBreathingSprite()
         {
-            sprite = SpriteFactory.Instance.CreateAquamentusBreathingSprite();
+            sprite = EnemySpriteFactory.Instance.CreateAquamentusBreathingSprite();
         }
 
         private void SetWalkingSprite()
         {
-            sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
+            sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
         }
         public void ResetPosition()
         {

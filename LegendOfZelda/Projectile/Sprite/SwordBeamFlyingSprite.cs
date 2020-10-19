@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
     class SwordBeamFlyingSprite : IItemSprite
     {

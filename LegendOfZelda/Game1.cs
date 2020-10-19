@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.GameplayLogic;
-using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;

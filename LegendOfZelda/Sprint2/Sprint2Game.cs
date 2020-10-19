@@ -1,8 +1,6 @@
 ﻿using LegendOfZelda.Enemies;
-using LegendOfZelda.InteractiveEnvironment;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
-using LegendOfZelda.NonInteractiveEnvironment;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Sprint2

@@ -1,9 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Threading;
-using Microsoft.VisualBasic.FileIO;
 
 namespace LegendOfZelda.Rooms
 {
@@ -32,7 +29,7 @@ namespace LegendOfZelda.Rooms
             while (!parser.EndOfData)
             {
                 string[] fields = parser.ReadFields();
-                for(int i = 0; i < fields.Length; i++)
+                for (int i = 0; i < fields.Length; i++)
                 {
                     roomString[i, j] = fields[i];
                 }

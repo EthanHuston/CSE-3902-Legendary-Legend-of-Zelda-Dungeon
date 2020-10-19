@@ -22,7 +22,7 @@ namespace LegendOfZelda.Enemies
 
         public Skeleton(SpriteBatch spriteBatch)
         {
-            sprite = SpriteFactory.Instance.CreateSkeletonSprite();
+            sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()

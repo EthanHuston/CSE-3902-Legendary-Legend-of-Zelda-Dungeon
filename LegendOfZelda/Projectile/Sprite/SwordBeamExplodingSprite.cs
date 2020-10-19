@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace LegendOfZelda.Item.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
     class SwordBeamExplodingSprite : IItemSprite
     {
@@ -49,7 +49,7 @@ namespace LegendOfZelda.Item.Sprite
             animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > explosionRange;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int width, height;
             int currentRow = 0;
