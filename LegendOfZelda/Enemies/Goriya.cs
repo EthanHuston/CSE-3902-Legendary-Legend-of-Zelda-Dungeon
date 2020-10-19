@@ -247,5 +247,14 @@ namespace LegendOfZelda.Enemies
             return sprite.GetPositionRectangle();
         }
 
+        public void TakeDamage(double damage)
+        {
+            health -= damage;
+        }
+
+        public void Despawn()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
