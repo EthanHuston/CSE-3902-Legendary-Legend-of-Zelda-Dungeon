@@ -97,18 +97,6 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/DragonWalking.png
 
-#begin Enemies/Fireball.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Fireball.png
-
 #begin Enemies/Hand.png
 /importer:TextureImporter
 /processor:TextureProcessor
