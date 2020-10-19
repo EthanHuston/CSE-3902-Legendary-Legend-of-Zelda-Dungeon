@@ -17,6 +17,14 @@ namespace LegendOfZelda.Interface
         void PickUpHeartContainer();
         void PickUpBow();
         void PickUpTriforce();
+        void PickupMap();
+        void PickupBomb();
+        void PickupKey();
+        void PickupCompass();
+        void PickupHeart();
+        void PickupRupee();
+        void PickupFairy();
+        void PickupClock();
         void UseBomb();
         void UseBoomerang();
         void PickUpBoomerang();
