@@ -24,5 +24,10 @@ namespace LegendOfZelda.Link.Item
         {
             return Vector2.Zero;
         }
+
+        public bool IsExploded()
+        {
+            return sprite.FinishedAnimation();
+        }
     }
 }
