@@ -1,7 +1,7 @@
-using LegendOfZelda.Item;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Link.Item
+namespace LegendOfZelda.Projectile
 {
     class SwordBeamFlyingProjectile : GenericProjectile
     {
@@ -9,7 +9,7 @@ namespace LegendOfZelda.Link.Item
         private bool updatedSprite;
         private const int moveDistanceInterval = 5;
 
-        public SwordBeamFlyingProjectile(Game1 game, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(game, spawnPosition, owner)
+        public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
         {
             updatedSprite = false; // true we update sword beam to be exploding -- just so we don't update it more than once
             stopMovingAndExplode = false; // true the sword beam hits an enemy or gets to edge of screen
@@ -17,19 +17,19 @@ namespace LegendOfZelda.Link.Item
             {
                 case Constants.Direction.Down:
                     velocity = new Vector2(0, moveDistanceInterval);
-                    sprite = SpriteFactory.Instance.CreateSwordBeamDownSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamDownSprite();
                     break;
                 case Constants.Direction.Up:
                     velocity = new Vector2(0, -1 * moveDistanceInterval);
-                    sprite = SpriteFactory.Instance.CreateSwordBeamUpSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamUpSprite();
                     break;
                 case Constants.Direction.Right:
                     velocity = new Vector2(moveDistanceInterval, 0);
-                    sprite = SpriteFactory.Instance.CreateSwordBeamRightSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamRightSprite();
                     break;
                 case Constants.Direction.Left:
                     velocity = new Vector2(-1 * moveDistanceInterval, 0);
-                    sprite = SpriteFactory.Instance.CreateSwordBeamLeftSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamLeftSprite();
                     break;
             }
         }
@@ -45,7 +45,7 @@ namespace LegendOfZelda.Link.Item
             }
             else if (stopMovingAndExplode && !updatedSprite) // initial setup of sword beam explosion
             {
-                sprite = SpriteFactory.Instance.CreateSwordBeamExplodingSprite();
+                sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamExplodingSprite();
                 updatedSprite = true;
             }
             CheckItemIsExpired();

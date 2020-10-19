@@ -2,12 +2,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item
+namespace LegendOfZelda.Projectile
 {
     abstract class GenericProjectile : IProjectile
     {
         protected Vector2 velocity;
-        protected IItemSprite sprite;
+        protected IProjectileSprite sprite;
         protected bool itemIsExpired;
         protected Point position;
         protected SpriteBatch spriteBatch;
@@ -26,6 +26,8 @@ namespace LegendOfZelda.Item
         public abstract void Update();
 
         public abstract Vector2 GetVelocity();
+
+        public abstract double DamageAmount();
 
         public virtual void Draw()
         {
@@ -68,7 +70,5 @@ namespace LegendOfZelda.Item
         {
             itemIsExpired = true;
         }
-
-        public abstract double DamageAmount();
     }
 }

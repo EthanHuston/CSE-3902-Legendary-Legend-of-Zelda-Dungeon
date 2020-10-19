@@ -1,9 +1,8 @@
 using LegendOfZelda.Interface;
-using LegendOfZelda.Item;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Link.Item
+namespace LegendOfZelda.Projectile
 {
     class BoomerangFlyingProjectile : GenericProjectile
     {
@@ -17,7 +16,7 @@ namespace LegendOfZelda.Link.Item
 
         public BoomerangFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
-            sprite = SpriteFactory.Instance.CreateBoomerangFlyingSprite();
+            sprite = ProjectileSpriteFactory.Instance.CreateBoomerangFlyingSprite();
             this.velocity.X = velocity.X;
             this.velocity.Y = velocity.Y;
             returningToOwner = false;
@@ -62,7 +61,7 @@ namespace LegendOfZelda.Link.Item
         public override Vector2 GetVelocity()
         {
             // this is not true velocity, as X xor Y will always be 0; but shouldn't matter :)
-            return new Vector2(velocity.X, velocity.Y); 
+            return new Vector2(velocity.X, velocity.Y);
         }
         public override double DamageAmount()
         {

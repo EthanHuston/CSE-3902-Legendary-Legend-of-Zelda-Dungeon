@@ -31,17 +31,7 @@ namespace LegendOfZelda.Link
         private Texture2D linkPickingUpBowSprite;
         private Texture2D linkPickingUpBoomerangSprite;
 
-        private static LinkSpriteFactory instance = new LinkSpriteFactory();
-        public static LinkSpriteFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-        private LinkSpriteFactory()
-        {
-        }
+        public static LinkSpriteFactory Instance { get; } = new LinkSpriteFactory();
 
         public void LoadAllTextures(ContentManager content)
         {
@@ -69,7 +59,7 @@ namespace LegendOfZelda.Link
             linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
             linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
         }
-        // Link Sprites
+
         public ILinkSprite CreateIdleLinkDownSprite()
         {
             return new IdleLinkSprite(idleLinkDownSprite);

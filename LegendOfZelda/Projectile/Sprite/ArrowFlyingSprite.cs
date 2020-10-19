@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
-    class ArrowFlyingSprite : IItemSprite
+    class ArrowFlyingSprite : IProjectileSprite
     {
         private Texture2D sprite;
         public ArrowFlyingSprite(Texture2D sprite)

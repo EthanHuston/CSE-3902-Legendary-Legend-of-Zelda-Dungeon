@@ -1,5 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
-
 namespace LegendOfZelda
 {
     public static class Constants
@@ -63,6 +61,16 @@ namespace LegendOfZelda
             Link,
             Room,
             Enemy
+        }
+
+        public enum LinkInventory
+        {
+            Arrow,
+            Bomb,
+            Map,
+            Key,
+            Compass
+            // add mode
         }
 
         //Enemy Constants

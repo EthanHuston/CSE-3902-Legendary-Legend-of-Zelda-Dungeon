@@ -1,7 +1,7 @@
-﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace LegendOfZelda.Enemies
@@ -23,7 +23,7 @@ namespace LegendOfZelda.Enemies
 
         public Hand(SpriteBatch spriteBatch)
         {
-            sprite = SpriteFactory.Instance.CreateHandSprite();
+            sprite = EnemySpriteFactory.Instance.CreateHandSprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()

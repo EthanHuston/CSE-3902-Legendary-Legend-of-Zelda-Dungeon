@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -7,14 +6,14 @@ namespace LegendOfZelda.Enemies
 {
     class Merchant : INpc
     {
-        private IDamageableSprite sprite;
+        private ISprite sprite;
         private SpriteBatch spriteBatch;
         private Point position;
         protected bool itemIsExpired;
 
         public Merchant(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateMerchantSprite();
+            sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.spriteBatch = spriteBatch;
             position = spawnPosition;
 
