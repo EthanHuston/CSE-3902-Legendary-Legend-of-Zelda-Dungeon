@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -7,7 +8,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class GapTile : IBlock
     {
-        private TileBlackSprite tileBlackSprite;
+        private ISprite tileBlackSprite;
         private SpriteBatch sB;
         private Point position;
 
@@ -31,6 +32,27 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         public void Update()
         {
             // No updates necessary
+        }
+
+        void Move(Vector2 distance)
+        {
+
+        }
+        void SetPosition(Point position)
+        {
+
+        }
+        bool SafeToDespawn()
+        {
+            return false;
+        }
+        Point GetPosition()
+        {
+            return position;
+        }
+        Rectangle GetRectangle()
+        {
+            return tileBlackSprite.GetPositionRectangle();
         }
     }
 }

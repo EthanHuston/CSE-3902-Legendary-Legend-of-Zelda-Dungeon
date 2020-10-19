@@ -96,6 +96,8 @@
     <Compile Include="Projectile\Sprite\SwordBeamExplodingSprite.cs" />
     <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
     <Compile Include="Projectile\SwordBeamFlyingProjectile.cs" />
+    <Compile Include="Rooms\CSVReader.cs" />
+    <Compile Include="Rooms\Room1.cs" />
     <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Projectile\FireballProjectile.cs" />
     <Compile Include="Item\BombItem.cs" />
@@ -237,6 +239,7 @@
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
     </Reference>

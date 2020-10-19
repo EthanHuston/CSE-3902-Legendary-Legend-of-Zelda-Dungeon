@@ -4,25 +4,27 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Threading;
 using Microsoft.VisualBasic.FileIO;
+using LegendOfZelda.GameplayLogic;
+using LegendOfZelda.NonInteractiveEnvironment;
 
 namespace LegendOfZelda.Rooms
 {
     class CSVReader
     {
-        ItemSpawner allObjects = new ItemSpawner();
+        IItemSpawner allObjects = new ItemSpawner();
         private SpriteBatch spriteBatch;
         private const int tileLength = 16;
         //String Abbreviations from CSV File
-        string Block = "block";
-        string BlueTile = "---";
-        string BrickTile = "brick";
-        string Fire = "fire";
-        string GapTile = "black";
-        string LadderTile = "lad";
-        string Stairs = "stairs";
-        string Statue = "stat";
-        string BlueGrass = "bg";
-        string Water = "water";
+        const string Block = "block";
+        const string BlueTile = "---";
+        const string BrickTile = "brick";
+        const string Fire = "fire";
+        const string GapTile = "black";
+        const string LadderTile = "lad";
+        const string Stairs = "stairs";
+        const string Statue = "stat";
+        const string BlueGrass = "bg";
+        const string Water = "water";
 
         public CSVReader(SpriteBatch spriteBatch, string fileName)
         {
@@ -72,16 +74,16 @@ namespace LegendOfZelda.Rooms
                     blockType = new Stairs(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case Statues:
+                case Statue:
                     blockType = new Statues(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case BlueGrass:
-                    blockType = new BlueGrass(spriteBatch, position);
+                    blockType = new TileBlueGrass(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case Water:
-                    blockType = new Water(spriteBatch, position);
+                    blockType = new TileWater(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 default:
