@@ -14,8 +14,7 @@ namespace LegendOfZelda.Item
         public GenericItem(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
         }
 
         protected abstract void CheckItemIsExpired();
@@ -56,6 +55,11 @@ namespace LegendOfZelda.Item
         {
             this.position.X = position.X;
             this.position.Y = position.Y;
+        }
+
+        public void Despawn()
+        {
+            itemIsExpired = true;
         }
     }
 }

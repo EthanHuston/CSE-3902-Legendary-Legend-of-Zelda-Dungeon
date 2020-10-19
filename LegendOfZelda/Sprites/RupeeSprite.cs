@@ -4,22 +4,23 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class RupeeSprite : IDamageableSprite
+    class RupeeSprite : IItemSprite
     {
         private Texture2D sprite;
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private const int numRows = 2;
+        private const int numColumns = 1;
+        private const int spriteScaler = 2;
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
+        private Rectangle destinationRectangle;
+
         public RupeeSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            Rows = 2;
-            Columns = 1;
             currentFrame = 0;
             bufferFrame = 0;
-            totalFrames = Rows * Columns;
+            totalFrames = numRows * numColumns;
         }
         public void Update()
         {
@@ -35,19 +36,24 @@ namespace LegendOfZelda
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int XValue, int YValue)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            int width = sprite.Width / numColumns;
+            int height = sprite.Height / numRows;
+            int row = (int)(currentFrame / numColumns);
+            int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(XValue, YValue, 2 * width, 2 * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }

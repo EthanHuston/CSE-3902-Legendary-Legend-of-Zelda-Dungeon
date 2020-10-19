@@ -6,7 +6,7 @@ using System;
 
 namespace LegendOfZelda
 {
-    class FairySprite : ISprite
+    class FairySprite : IItemSprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;
@@ -32,8 +32,7 @@ namespace LegendOfZelda
             frameHeight = sprite.Height / numRows;
             destinationRectangle = new Rectangle(position.X, position.Y, frameWidth, frameHeight);
 
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
         }
         public void Update()
         {
@@ -119,6 +118,11 @@ namespace LegendOfZelda
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // animation never finishes
         }
     }
 }

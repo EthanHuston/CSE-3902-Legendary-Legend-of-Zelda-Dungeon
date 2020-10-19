@@ -9,12 +9,14 @@ namespace LegendOfZelda.Link.Sprite
         private Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
+        private Rectangle destinationRectangle;
 
         public IdleLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             flashRed = false;
             damageColorCounter = 0;
+            destinationRectangle = Rectangle.Empty;
         }
 
         public void Update()
@@ -26,23 +28,28 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            spriteBatch.Begin();
             Draw(spriteBatch, position, false);
-            spriteBatch.End();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
+            destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
+
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
+            spriteBatch.Draw(sprite, destinationRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
             spriteBatch.End();
         }
 
         public bool FinishedAnimation()
         {
             return true; // because animation can be exited at any time
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }

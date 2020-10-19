@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class TileBlackSprite : ISprite
+    class TileBlackSprite : IItemSprite
     {
         private Texture2D sprite;
         Rectangle destinationRectangle;

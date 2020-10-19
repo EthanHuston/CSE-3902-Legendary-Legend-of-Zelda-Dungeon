@@ -57,7 +57,21 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Enemies\CollisionHandlers\AquamentusProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\BatProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\GoriyaBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\GoriyaProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\HandBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\HandProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\JellyBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\JellyProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\SkeletonBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\SkeletonProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\SpikeTrapBlockCollisionHandler.cs" />
     <Compile Include="GameplayLogic\ItemSpawner.cs" />
+    <Compile Include="Enemies\CollisionHandlers\BatBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\AquamentusBlockCollisionHandler.cs" />
+    <Compile Include="Interface\ICollision.cs" />
     <Compile Include="Interface\IBlock.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
@@ -73,6 +87,9 @@
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Interface\IPlayer.cs" />
+    <Compile Include="Link\CollisionHandler\LinkBoomerangItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\LinkBowItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\LinkMapItemCollisionHandler.cs" />
     <Compile Include="Link\State\LinkActiveAbstractState.cs" />
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />
     <Compile Include="NonInteractiveEnvironment\BombedOpening.cs" />

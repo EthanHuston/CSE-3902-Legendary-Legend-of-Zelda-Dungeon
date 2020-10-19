@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class StatueSprite : ISprite
+    class StatueSprite : IItemSprite
     {
         private Texture2D sprite;
         public StatueSprite(Texture2D sprite)

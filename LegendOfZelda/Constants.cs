@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace LegendOfZelda
 {
     public static class Constants
@@ -27,6 +29,10 @@ namespace LegendOfZelda
         public const int BoomerangMaxDistanceFromLink = 300;
         public const int SwordBeamSpawnXOffsetFromLink = 4;
         public const int SwordBeamSpawnYOffsetFromLink = 5;
+        public const double ArrowDamage = 2.0;
+        public const double BombDamage = 4.0;
+        public const double BoomerangDamage = .5;
+        public const double SwordBeamDamage = 1.0;
 
         // Game Screen
         public const int MaxXPos = 800;
@@ -63,6 +69,11 @@ namespace LegendOfZelda
         public const int SpikeTrapMaxDist = 50;
         public const int SpikeTrapGoingVelocity = 4;
         public const int SpikeTrapReturningVelocity = 2;
+        public const float EnemyMoveUp = -1;
+        public const float EnemyMoveDown = 1;
+        public const float EnemyMoveRight = 1;
+        public const float EnemyMoveLeft = -1;
+        public const float EnemyNoMove = 0;
 
         //Room Constants
         public const int roomWidth = 12;

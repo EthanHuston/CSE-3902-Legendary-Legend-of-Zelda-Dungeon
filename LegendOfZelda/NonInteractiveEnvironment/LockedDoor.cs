@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -7,25 +8,55 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class LockedDoor : IBlock
     {
-        private DoorSprite doorSprite;
+        private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
-        public LockedDoor(SpriteBatch spriteBatch)
+        private Point position;
+        private bool safeToDespawn;
+        private const int textureMapRow = 2;
+        private const int textureMapColumn = 1;
+
+        public LockedDoor(SpriteBatch spriteBatch, Point spawnPosition)
         {
             doorSprite = (DoorSprite)SpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
+            position = spawnPosition;
+            safeToDespawn = false;
         }
 
         public void Draw()
         {
-            doorSprite.Draw(sB, ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY, 1, 2);
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
-        public void Interaction()
-        {
-
-        }
         public void Update()
         {
+            safeToDespawn = !safeToDespawn && false; // put condition here for when door can be despawned
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+
+        public void SetPosition(Point position)
+        {
+            this.position = new Point(position.X, position.Y);
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public Point GetPosition()
+        {
+            return new Point(position.X, position.Y);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return doorSprite.GetPositionRectangle();
         }
     }
 }

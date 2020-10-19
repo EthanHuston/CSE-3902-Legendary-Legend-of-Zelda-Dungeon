@@ -51,5 +51,9 @@ namespace LegendOfZelda.Item
         {
             itemIsExpired = Utility.ItemIsOutOfBounds(position); // or item hits enemy, but not yet implemented
         }
+        public override double DamageAmount()
+        {
+            return Constants.ArrowDamage;
+        }
     }
 }

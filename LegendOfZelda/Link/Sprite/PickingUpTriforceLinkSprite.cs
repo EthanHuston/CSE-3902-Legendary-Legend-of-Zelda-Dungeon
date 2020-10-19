@@ -13,6 +13,7 @@ namespace LegendOfZelda.Link.Sprite
         private int currentFrame;
         private int bufferFrame;
         private int delayCounter;
+        private Rectangle destinationRectangle;
         private const int numRows = 1;
         private const int numColumns = 2;
 
@@ -23,6 +24,7 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             delayCounter = 0;
+            destinationRectangle = Rectangle.Empty;
         }
 
         public void Update()
@@ -44,12 +46,12 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             Draw(spriteBatch, position, false);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
             if (FinishedAnimation()) return;
 
@@ -59,7 +61,7 @@ namespace LegendOfZelda.Link.Sprite
             int currentColumn = currentFrame % 2;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
+            destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
@@ -69,6 +71,11 @@ namespace LegendOfZelda.Link.Sprite
         public bool FinishedAnimation()
         {
             return animationIsDone;
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }

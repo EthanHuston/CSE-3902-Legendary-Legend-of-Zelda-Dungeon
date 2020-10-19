@@ -37,7 +37,7 @@ namespace LegendOfZelda
 
         public void Update()
         {
-
+            // no update needed
         }
     }
 }

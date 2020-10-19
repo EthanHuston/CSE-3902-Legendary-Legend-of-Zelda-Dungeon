@@ -8,7 +8,7 @@ namespace LegendOfZelda.InteractiveEnvironment
 {
     class Square : IDynamic
     {
-        private ISprite blockSprite;
+        private IItemSprite blockSprite;
         private SpriteBatch spriteBatch;
         private Point position;
         private bool safeToDespawn;
@@ -17,8 +17,7 @@ namespace LegendOfZelda.InteractiveEnvironment
         {
             blockSprite = SpriteFactory.Instance.CreateBlockSprite();
             this.spriteBatch = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             safeToDespawn = false;
         }
 

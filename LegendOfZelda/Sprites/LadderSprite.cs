@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class LadderSprite : ISprite
+    class LadderSprite : IItemSprite
     {
         private Texture2D sprite;
         public LadderSprite(Texture2D sprite)

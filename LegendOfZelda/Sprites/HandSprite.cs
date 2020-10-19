@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class HandSprite : ISprite
+    class HandSprite : IItemSprite
     {
         private Texture2D sprite;
         private int Rows { get; set; }
@@ -14,10 +14,6 @@ namespace LegendOfZelda
         private bool currentDir;
         private int rightRow;
         private int leftRow;
-        private int width;
-        private int height;
-        private int row;
-        private int column;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         public HandSprite(Texture2D sprite)
@@ -48,8 +44,9 @@ namespace LegendOfZelda
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            //Not needed for this object.
+            Draw(spriteBatch, position, false);
         }
+
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
             int width = sprite.Width / Columns;
@@ -83,6 +80,11 @@ namespace LegendOfZelda
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // never finishes animating
         }
     }
 }

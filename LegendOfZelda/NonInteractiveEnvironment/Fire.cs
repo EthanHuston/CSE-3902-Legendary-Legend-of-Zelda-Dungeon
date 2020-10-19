@@ -7,7 +7,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class Fire : IBlock
     {
-        private ISprite fireSprite;
+        private IItemSprite fireSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;
@@ -16,9 +16,13 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             fireSprite = SpriteFactory.Instance.CreateFireSprite();
             sB = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             safeToDespawn = false;
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
 
         public void Draw()
@@ -55,7 +59,6 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         public void Update()
         {
             fireSprite.Update();
-            safeToDespawn = !safeToDespawn && false; // some condition here to determine when to despawn
         }
     }
 }

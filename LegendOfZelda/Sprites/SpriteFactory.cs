@@ -4,6 +4,7 @@ using LegendOfZelda.Item.Sprite;
 using LegendOfZelda.Link;
 using LegendOfZelda.Projectile.Sprite;
 using LegendOfZelda.Sprites;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -183,19 +184,19 @@ namespace LegendOfZelda
         {
             return new SkeletonSprite(skeletonSprite);
         }
-        public ISprite CreateSpikeTrapSprite()
+        public IItemSprite CreateSpikeTrapSprite()
         {
             return new SpikeTrapSprite(spikeTrapSprite);
         }
-        public ISprite CreateBlockSprite()
+        public IItemSprite CreateBlockSprite()
         {
             return new SquareSprite(squareSprite);
         }
-        public ISprite CreateStatueSprite()
+        public IItemSprite CreateStatueSprite()
         {
             return new StatueSprite(statueSprite);
         }
-        public ISprite CreateStairSprite()
+        public IItemSprite CreateStairSprite()
         {
             return new StairSprite(stairSprite);
         }
@@ -203,11 +204,11 @@ namespace LegendOfZelda
         {
             return new DoorSprite(doorSprite);
         }
-        public ISprite CreateLadderSprite()
+        public IItemSprite CreateLadderSprite()
         {
             return new LadderSprite(ladderSprite);
         }
-        public ISprite CreateBrickTileSprite()
+        public IItemSprite CreateBrickTileSprite()
         {
             return new BrickTileSprite(brickTileSprite);
         }
@@ -215,9 +216,9 @@ namespace LegendOfZelda
         {
             return new BombSprite(bombSprite);
         }
-        public ISprite CreateExplodingBombSprite()
+        public IItemSprite CreateExplodingBombSprite()
         {
-            return new ExplodingBombSprite(explodingBombSprite);
+            return new BombExplodingSprite(explodingBombSprite);
         }
         public IItemSprite CreateBoomerangSprite()
         {
@@ -235,11 +236,11 @@ namespace LegendOfZelda
         {
             return new CompassSprite(compassSprite);
         }
-        public IItemSprite CreateFairySprite()
+        public IItemSprite CreateFairySprite(Point spawnPosition)
         {
-            return new FairySprite(fairySprite);
+            return new FairySprite(fairySprite, spawnPosition);
         }
-        public ISprite CreateFireSprite()
+        public IItemSprite CreateFireSprite()
         {
             return new FireSprite(fireSprite);
         }
@@ -271,27 +272,27 @@ namespace LegendOfZelda
         {
             return new TriforceSprite(triforceSprite);
         }
-        public ISprite CreateOldManSprite()
+        public IItemSprite CreateOldManSprite()
         {
             return new OldManSprite(oldManSprite);
         }
-        public ISprite CreateMerchantSprite()
+        public IDamageableSprite CreateMerchantSprite()
         {
             return new MerchantSprite(merchantSprite);
         }
-        public ISprite CreateTileBlackSprite()
+        public IItemSprite CreateTileBlackSprite()
         {
             return new TileBlackSprite(tileBlackSprite);
         }
-        public ISprite CreateTileBlueGrassSprite()
+        public IItemSprite CreateTileBlueGrassSprite()
         {
             return new TileBlueGrassSprite(tileBlueGrassSprite);
         }
-        public ISprite CreateTileWaterSprite()
+        public IItemSprite CreateTileWaterSprite()
         {
             return new TileWaterSprite(tileWaterSprite);
         }
-        public ISprite CreateRoomBorderSprite()
+        public IItemSprite CreateRoomBorderSprite()
         {
             return new RoomBorderSprite(roomBorderSprite);
         }

@@ -8,7 +8,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class Walls : IBlock
     {
-        private ISprite roomBorderSprite;
+        private IItemSprite roomBorderSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;
@@ -17,8 +17,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             roomBorderSprite = SpriteFactory.Instance.CreateRoomBorderSprite();
             sB = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             safeToDespawn = false;
         }
 

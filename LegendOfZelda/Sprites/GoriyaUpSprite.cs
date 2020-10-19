@@ -12,10 +12,6 @@ namespace LegendOfZelda
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        private int width;
-        private int height;
-        private int row;
-        private int column;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
 
@@ -40,6 +36,11 @@ namespace LegendOfZelda
             {
                 currentFrame = 0;
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position)
+        {
+            Draw(spriteBatch, position, false);
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
@@ -67,6 +68,5 @@ namespace LegendOfZelda
         {
             return destinationRectangle;
         }
-
     }
 }

@@ -7,7 +7,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class BrickTile : IBlock
     {
-        private ISprite brickTileSprite;
+        private IItemSprite brickTileSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;
@@ -16,9 +16,13 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             brickTileSprite = SpriteFactory.Instance.CreateBrickTileSprite();
             sB = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            position = spawnPosition;
             safeToDespawn = false;
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
 
         public void Draw()
@@ -49,12 +53,11 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 
         public void SetPosition(Point position)
         {
-            position = new Point(position.X, position.Y);
+            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && false; // put a condition here to change to true when we want to despawn
         }
     }
 }
