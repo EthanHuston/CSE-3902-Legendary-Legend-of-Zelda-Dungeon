@@ -11,5 +11,6 @@ namespace LegendOfZelda.Interface
         bool SafeToDespawn();
         Point GetPosition();
         Rectangle GetRectangle();
+        void Despawn();
     }
 }
