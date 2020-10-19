@@ -6,9 +6,8 @@ namespace LegendOfZelda.Link.CollisionHandler
     {
         public void HandleCollison(IPlayer link, IItem bow, Constants.Direction side)
         {
-
-            // call methods to make link pick up bow
-            // call methods to despawn bow
+            link.PickUpBow();
+            bow.Despawn();
         }
     }
 }
