@@ -63,5 +63,10 @@ namespace LegendOfZelda.Enemies
         {
             itemIsExpired = true;
         }
+
+        public void TakeDamage(double damage)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

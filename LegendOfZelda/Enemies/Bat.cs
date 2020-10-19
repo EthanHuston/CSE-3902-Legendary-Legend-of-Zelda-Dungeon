@@ -97,13 +97,14 @@ namespace LegendOfZelda.Enemies
             position.X = ConstantsSprint2.enemyNPCX;
             position.Y = ConstantsSprint2.enemyNPCY;
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(double damage)
         {
             health = health - damage;
         }
         public void Move(Vector2 distance)
         {
-
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
         public void SetPosition(Point position)
         {
@@ -121,6 +122,11 @@ namespace LegendOfZelda.Enemies
         {
 
             return sprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            throw new NotImplementedException();
         }
     }
 }
