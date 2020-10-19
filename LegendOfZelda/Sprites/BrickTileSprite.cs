@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class BrickTileSprite : IItemSprite
+    class BrickTileSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;
@@ -34,9 +34,5 @@ namespace LegendOfZelda
             return destinationRectangle;
         }
 
-        public bool FinishedAnimation()
-        {
-            return false; // never finishes animation
-        }
     }
 }

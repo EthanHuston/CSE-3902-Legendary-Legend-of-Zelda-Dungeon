@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class LadderSprite : IItemSprite
+    class LadderSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;
@@ -26,11 +26,6 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
             Draw(spriteBatch, position);
-        }
-
-        public bool FinishedAnimation()
-        {
-            return false; // animation never finishes
         }
 
         public Rectangle GetPositionRectangle()

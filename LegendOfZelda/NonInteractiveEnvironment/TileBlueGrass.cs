@@ -10,6 +10,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         private TileBlueGrassSprite sprite;
         private SpriteBatch sb;
         private Point position;
+        private bool safeToDespawn;
         bool canWalk;
 
         public TileBlueGrass(SpriteBatch spriteBatch, Point position)
@@ -22,7 +23,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 
         public void Despawn()
         {
-            throw new System.NotImplementedException();
+            safeToDespawn = true;
         }
 
         public void Draw()
@@ -32,22 +33,12 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 
         public Point GetPosition()
         {
-            throw new System.NotImplementedException();
+            return position;
         }
 
         public Rectangle GetRectangle()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public int getX()
-        {
-            return position.X;
-        }
-
-        public int getY()
-        {
-            return position.Y;
+            return sprite.GetPositionRectangle();
         }
 
         public void Move(Vector2 distance)
@@ -57,12 +48,12 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 
         public bool SafeToDespawn()
         {
-            throw new System.NotImplementedException();
+            return safeToDespawn;
         }
 
         public void SetPosition(Point position)
         {
-            throw new System.NotImplementedException();
+            this.position = position;
         }
 
         public void Update()

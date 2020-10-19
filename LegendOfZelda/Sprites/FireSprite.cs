@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class FireSprite : IItemSprite
+    class FireSprite : ISprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;
@@ -59,9 +59,5 @@ namespace LegendOfZelda
             return destinationRectangle;
         }
 
-        public bool FinishedAnimation()
-        {
-            return false; // never finishes animation
-        }
     }
 }

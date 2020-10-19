@@ -8,7 +8,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class GapTile : IBlock
     {
-        private ISprite tileBlackSprite;
+        private IItemSprite tileBlackSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;
@@ -23,7 +23,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 
         public void Despawn()
         {
-            safeToDespawn = false;
+            safeToDespawn = true;
         }
 
         public void Draw()
@@ -62,25 +62,5 @@ namespace LegendOfZelda.NonInteractiveEnvironment
             safeToDespawn = !safeToDespawn && false; // some condition here if we want to despawn
         }
 
-        void Move(Vector2 distance)
-        {
-
-        }
-        void SetPosition(Point position)
-        {
-
-        }
-        bool SafeToDespawn()
-        {
-            return false;
-        }
-        Point GetPosition()
-        {
-            return position;
-        }
-        Rectangle GetRectangle()
-        {
-            return tileBlackSprite.GetPositionRectangle();
-        }
     }
 }

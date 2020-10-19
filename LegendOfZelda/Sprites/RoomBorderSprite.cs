@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class RoomBorderSprite : IItemSprite
+    class RoomBorderSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;
