@@ -10,6 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
+
         private int currentX = ConstantsSprint2.enemyNPCX;
         private int currentY = ConstantsSprint2.enemyNPCY;
         private int minXVal = 0;
@@ -100,7 +101,8 @@ namespace LegendOfZelda.Enemies
         }
         public void Move(Vector2 distance)
         {
-
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
         public void SetPosition(Point position)
         {

@@ -10,8 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private int currentX = ConstantsSprint2.enemyNPCX;
-        private int currentY = ConstantsSprint2.enemyNPCY;
+        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
@@ -38,7 +37,7 @@ namespace LegendOfZelda.Enemies
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, currentX, currentY);
+            sprite.Draw(spriteBatch, position, false);
         }
         private void ChooseDirection()
         {
@@ -49,27 +48,27 @@ namespace LegendOfZelda.Enemies
         private void Move()
         {
             //Simulate jelly moving
-            if (upDown == 0 && leftRight == 0 && currentX + 16 < Constants.MaxXPos)
+            if (upDown == 0 && leftRight == 0 && position.X + 16 < Constants.MaxXPos)
             {
-                currentX++;
+                position.X++;
             }
-            else if (upDown == 0 && leftRight == 1 && currentX - 16 > Constants.MinXPos)
+            else if (upDown == 0 && leftRight == 1 && position.X - 16 > Constants.MinXPos)
             {
-                currentX--;
+                position.X--;
             }
-            else if (upDown == 1 && leftRight == 0 && currentY + 16 < Constants.MaxYPos)
+            else if (upDown == 1 && leftRight == 0 && position.Y + 16 < Constants.MaxYPos)
             {
-                currentY--;
+                position.Y--;
             }
             else
             {
-                currentY++;
+                position.Y++;
             }
         }
         public void ResetPosition()
         {
-            currentX = ConstantsSprint2.enemyNPCX;
-            currentY = ConstantsSprint2.enemyNPCY;
+            position.X = ConstantsSprint2.enemyNPCX;
+            position.Y = ConstantsSprint2.enemyNPCY;
         }
         public void TakeDamage(float damage)
         {
@@ -77,7 +76,8 @@ namespace LegendOfZelda.Enemies
         }
         public void Move(Vector2 distance)
         {
-
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
         public void SetPosition(Point position)
         {

@@ -65,7 +65,8 @@ namespace LegendOfZelda.Enemies
 
         public void Move(Vector2 distance)
         {
-
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
         public void SetPosition(Point position)
         {
@@ -130,6 +131,11 @@ namespace LegendOfZelda.Enemies
         public void TakeDamage(double damage)
         {
             health = health - damage;
+        }
+
+        public void Despawn()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
