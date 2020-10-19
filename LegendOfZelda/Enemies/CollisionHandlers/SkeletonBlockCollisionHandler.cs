@@ -38,5 +38,4 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 
         }
     }
-    }
 }

@@ -65,5 +65,9 @@ namespace LegendOfZelda.Link.Item
         {
             stopMovingAndExplode = true;
         }
+        public override double DamageAmount()
+        {
+            return Constants.SwordBeamDamage;
+        }
     }
 }

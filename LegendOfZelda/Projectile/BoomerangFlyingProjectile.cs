@@ -64,5 +64,9 @@ namespace LegendOfZelda.Link.Item
             // this is not true velocity, as X xor Y will always be 0; but shouldn't matter :)
             return new Vector2(velocity.X, velocity.Y); 
         }
+        public override double DamageAmount()
+        {
+            return Constants.BoomerangDamage;
+        }
     }
 }
