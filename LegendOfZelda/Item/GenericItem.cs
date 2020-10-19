@@ -56,5 +56,10 @@ namespace LegendOfZelda.Item
             this.position.X = position.X;
             this.position.Y = position.Y;
         }
+
+        public void Despawn()
+        {
+            itemIsExpired = true;
+        }
     }
 }
