@@ -5,13 +5,17 @@ using System;
 
 namespace LegendOfZelda
 {
-    class ArrowSprite : ISprite
+    class ArrowSprite : IItemSprite
     {
         private Texture2D sprite;
+        private Rectangle destinationRectangle;
+
         public ArrowSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            destinationRectangle = Rectangle.Empty;
         }
+
         public void Update()
         {
             // No update needed for an unchanging object.
@@ -19,7 +23,7 @@ namespace LegendOfZelda
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
@@ -28,7 +32,12 @@ namespace LegendOfZelda
 
         public Rectangle GetPositionRectangle()
         {
-            throw new NotImplementedException();
+            return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // animation never finishes
         }
     }
 }

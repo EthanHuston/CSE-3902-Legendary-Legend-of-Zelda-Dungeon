@@ -8,7 +8,7 @@ namespace LegendOfZelda.InteractiveEnvironment
 {
     class Square : IDynamic
     {
-        private ISprite blockSprite;
+        private IItemSprite blockSprite;
         private SpriteBatch spriteBatch;
         private Point position;
         private bool safeToDespawn;

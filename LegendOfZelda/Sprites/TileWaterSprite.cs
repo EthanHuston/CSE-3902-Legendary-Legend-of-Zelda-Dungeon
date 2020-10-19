@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class TileWaterSprite : ISprite
+    class TileWaterSprite : IItemSprite
     {
         private Texture2D sprite;
         public TileWaterSprite(Texture2D sprite)

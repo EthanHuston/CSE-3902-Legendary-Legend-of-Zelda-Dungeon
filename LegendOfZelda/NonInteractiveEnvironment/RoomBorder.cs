@@ -7,7 +7,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class RoomBorder : IBlock
     {
-        private ISprite roomSprite;
+        private IItemSprite roomSprite;
         private SpriteBatch sb;
         private Point position;
         private Rectangle destinationRectangle;

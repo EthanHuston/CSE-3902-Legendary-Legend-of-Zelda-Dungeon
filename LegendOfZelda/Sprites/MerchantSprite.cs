@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class MerchantSprite : ISprite
+    class MerchantSprite : IItemSprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;
@@ -13,6 +13,7 @@ namespace LegendOfZelda
         {
             this.sprite = sprite;
         }
+
         public void Update()
         {
             // no update needed
@@ -22,6 +23,7 @@ namespace LegendOfZelda
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Width);
+
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
