@@ -10,10 +10,10 @@ namespace LegendOfZelda.Rooms
     class Room1
     {
         private CSVReader csvReader;
-        ItemSpawner allObjects;
-        public Room1()
+        IItemSpawner allObjects;
+        public Room1(SpriteBatch spriteBatch)
         {
-            csvReader = new CSVReader("Room1.txt");
+            csvReader = new CSVReader(spriteBatch, "Room1.txt");
             allObjects = csvReader.allObjects;
         }
 
