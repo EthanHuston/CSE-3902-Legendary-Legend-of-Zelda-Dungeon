@@ -10,11 +10,13 @@ namespace LegendOfZelda.Enemies
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position;
-        public Merchant(SpriteBatch spriteBatch)
+        protected bool itemIsExpired;
+
+        public Merchant(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = SpriteFactory.Instance.CreateMerchantSprite();
             this.spriteBatch = spriteBatch;
-            position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
+            position = spawnPosition;
 
         }
         public void Draw()
@@ -24,31 +26,42 @@ namespace LegendOfZelda.Enemies
 
         public void Update()
         {
+            sprite.Update();
         }
+
         public void ResetPosition()
         {
 
         }
+
         public void Move(Vector2 distance)
         {
-
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
+
         public void SetPosition(Point position)
         {
-            this.position = position;
+            this.position = new Point(position.X, position.Y);
         }
+
         public bool SafeToDespawn()
         {
-            return false;
+            return itemIsExpired;
         }
+
         public Point GetPosition()
         {
             return position;
         }
         public Rectangle GetRectangle()
         {
-            //Not implemented yet.
-            return new Rectangle();
+            return sprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            itemIsExpired = true;
         }
     }
 }

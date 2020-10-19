@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class CompassSprite : ISprite
+    class CompassSprite : IItemSprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;
@@ -12,8 +12,9 @@ namespace LegendOfZelda
         public CompassSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            destinationRectangle = sprite.Bounds;
+            destinationRectangle = Rectangle.Empty;
         }
+
         public void Update()
         {
             // No update needed for an unchanging object.
@@ -31,6 +32,11 @@ namespace LegendOfZelda
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // never finishes animating
         }
     }
 }

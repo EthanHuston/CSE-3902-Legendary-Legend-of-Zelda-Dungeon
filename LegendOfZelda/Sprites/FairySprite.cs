@@ -6,7 +6,7 @@ using System;
 
 namespace LegendOfZelda
 {
-    class FairySprite : ISprite
+    class FairySprite : IItemSprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;
@@ -118,6 +118,11 @@ namespace LegendOfZelda
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // animation never finishes
         }
     }
 }

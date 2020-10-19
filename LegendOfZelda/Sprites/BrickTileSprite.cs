@@ -4,16 +4,20 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class BrickTileSprite : ISprite
+    class BrickTileSprite : IItemSprite
     {
         private Texture2D sprite;
+        private Rectangle destinationRectangle;
+
         public BrickTileSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            destinationRectangle = Rectangle.Empty;
         }
+
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
@@ -27,7 +31,12 @@ namespace LegendOfZelda
 
         public Rectangle GetPositionRectangle()
         {
-            throw new NotImplementedException();
+            return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // never finishes animation
         }
     }
 }

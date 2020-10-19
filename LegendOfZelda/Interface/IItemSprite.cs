@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    interface IItemSprite : ISprite
+    interface IItemSprite : IItemSprite
     {
         bool FinishedAnimation();
     }
