@@ -68,5 +68,7 @@ namespace LegendOfZelda.Item
         {
             itemIsExpired = true;
         }
+
+        public abstract double DamageAmount();
     }
 }

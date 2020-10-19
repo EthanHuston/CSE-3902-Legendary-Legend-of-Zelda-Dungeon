@@ -1,4 +1,6 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Item;
+using LegendOfZelda.Link.Item;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
     {
         public void HandleCollison(INpc enemy, IProjectile projectile, Constants.Direction side)
         {
-
+            enemy.TakeDamage(projectile.DamageAmount());
         }
     }
 }

@@ -30,5 +30,9 @@ namespace LegendOfZelda.Link.Item
         {
             return sprite.FinishedAnimation();
         }
+        public override double DamageAmount()
+        {
+            return Constants.BombDamage;
+        }
     }
 }
