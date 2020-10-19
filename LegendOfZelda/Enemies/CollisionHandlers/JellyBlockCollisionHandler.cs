@@ -8,8 +8,9 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class JellyBlockCollisionHandler : ICollision
     {
-        public void HandleCollison()
+        public void HandleCollison<INpc, IBlock>(INpc spikeTrap, IBlock block, Constants.Direction side)
         {
+
         }
     }
 }

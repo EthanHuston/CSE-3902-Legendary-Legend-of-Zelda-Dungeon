@@ -8,8 +8,9 @@ namespace LegendOfZelda.Interface
 {
     class BatCollisionHandler : ICollision
     {
-        public void HandleCollison()
+        public void HandleCollison<INpc, IBlock>(INpc spikeTrap, IBlock block, Constants.Direction side)
         {
+
         }
     }
 }

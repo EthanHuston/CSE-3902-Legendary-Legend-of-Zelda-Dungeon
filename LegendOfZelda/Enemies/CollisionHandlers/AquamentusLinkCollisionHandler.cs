@@ -8,8 +8,9 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class AquamentusLinkCollisionHandler : ICollision
     {
-        public void HandleCollison()
+        public void HandleCollison<INpc, IPlayer>(INpc spikeTrap, IPlayer link, Constants.Direction side)
         {
+
         }
     }
 }

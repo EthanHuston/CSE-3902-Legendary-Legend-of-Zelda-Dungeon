@@ -8,8 +8,10 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class SkeletonBlockCollisionHandler : ICollision
     {
-        public void HandleCollison()
+        public void HandleCollison<INpc, IBlock>(INpc spikeTrap, IBlock block, Constants.Direction side)
         {
+
         }
+    }
     }
 }
