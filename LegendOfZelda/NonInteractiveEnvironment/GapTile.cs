@@ -8,7 +8,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class GapTile : IBlock
     {
-        private ISprite tileBlackSprite;
+        private IItemSprite tileBlackSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;
@@ -18,6 +18,11 @@ namespace LegendOfZelda.NonInteractiveEnvironment
             tileBlackSprite = SpriteFactory.Instance.CreateTileBlackSprite();
             sB = spriteBatch;
             position = spawnPosition;
+            safeToDespawn = false;
+        }
+
+        public void Despawn()
+        {
             safeToDespawn = false;
         }
 
@@ -49,7 +54,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 
         public void SetPosition(Point position)
         {
-            throw new System.NotImplementedException();
+            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()

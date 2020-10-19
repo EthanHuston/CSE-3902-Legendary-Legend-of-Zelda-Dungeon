@@ -7,15 +7,16 @@ namespace LegendOfZelda.Enemies
 {
     class OldMan : INpc
     {
-        private ISprite sprite;
+        private IItemSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position;
+        private bool itemIsExpired;
 
-        public OldMan(SpriteBatch spriteBatch)
+        public OldMan(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = SpriteFactory.Instance.CreateOldManSprite();
             this.spriteBatch = spriteBatch;
-            position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
+            position = spawnPosition;
 
         }
         public void Draw()
@@ -25,24 +26,30 @@ namespace LegendOfZelda.Enemies
 
         public void Update()
         {
+            // TODO: implement me
         }
 
         public void ResetPosition()
         {
 
         }
+
         public void Move(Vector2 distance)
         {
-
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
+
         public void SetPosition(Point position)
         {
             this.position = position;
         }
+
         public bool SafeToDespawn()
         {
-            return false;
+            return itemIsExpired;
         }
+
         public Point GetPosition()
         {
             return position;
@@ -50,6 +57,11 @@ namespace LegendOfZelda.Enemies
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

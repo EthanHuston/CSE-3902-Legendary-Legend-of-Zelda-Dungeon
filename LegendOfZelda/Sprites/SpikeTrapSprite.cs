@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class SpikeTrapSprite : ISprite
+    class SpikeTrapSprite : IItemSprite
     {
         private Texture2D sprite;
         public SpikeTrapSprite(Texture2D sprite)

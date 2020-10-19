@@ -89,6 +89,7 @@
     <Compile Include="Interface\IPlayer.cs" />
     <Compile Include="Link\CollisionHandler\LinkBoomerangItemCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\LinkBowItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\LinkHeartContainerItemCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\LinkMapItemCollisionHandler.cs" />
     <Compile Include="Link\State\LinkActiveAbstractState.cs" />
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />

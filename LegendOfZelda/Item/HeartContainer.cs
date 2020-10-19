@@ -7,7 +7,7 @@ namespace LegendOfZelda.Item
 {
     class HeartContainer : IItem
     {
-        private ISprite heartContainerSprite;
+        private IItemSprite heartContainerSprite;
         private SpriteBatch sb;
         private Point position;
         private bool safeToDespawn;

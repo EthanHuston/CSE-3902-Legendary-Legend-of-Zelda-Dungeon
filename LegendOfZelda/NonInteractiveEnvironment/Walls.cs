@@ -8,7 +8,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class Walls : IBlock
     {
-        private ISprite roomBorderSprite;
+        private IItemSprite roomBorderSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;

@@ -8,7 +8,7 @@ namespace LegendOfZelda.NonInteractiveEnvironment
 {
     class LadderTile : IBlock
     {
-        private ISprite ladderSprite;
+        private IItemSprite ladderSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;

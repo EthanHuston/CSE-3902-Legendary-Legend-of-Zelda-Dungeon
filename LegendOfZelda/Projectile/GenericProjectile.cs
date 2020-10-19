@@ -64,6 +64,11 @@ namespace LegendOfZelda.Item
             return owner;
         }
 
+        public void Despawn()
+        {
+            itemIsExpired = true;
+        }
+
         public abstract double DamageAmount();
     }
 }

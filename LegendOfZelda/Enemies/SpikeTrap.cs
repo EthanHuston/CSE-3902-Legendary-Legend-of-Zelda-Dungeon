@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
 {
     class SpikeTrap : INpc
     {
-        private ISprite sprite;
+        private IItemSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int maxDistance = Constants.SpikeTrapMaxDist;

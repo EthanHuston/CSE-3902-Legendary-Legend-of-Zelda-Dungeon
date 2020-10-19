@@ -5,9 +5,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class BoomerangSprite : ISprite
+    class BoomerangSprite : IItemSprite
     {
         private Texture2D sprite;
+        private Rectangle destinationRectangle;
+
         public BoomerangSprite(Texture2D sprite)
         {
             this.sprite = sprite;
@@ -29,7 +31,12 @@ namespace LegendOfZelda
 
         public Rectangle GetPositionRectangle()
         {
-            throw new NotImplementedException();
+            return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // animation never finishes
         }
     }
 }
