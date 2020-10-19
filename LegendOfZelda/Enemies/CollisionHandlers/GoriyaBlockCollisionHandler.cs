@@ -8,7 +8,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class GoriyaBlockCollisionHandler : ICollision
     {
-        public void HandleCollison<INpc, IBlock>(INpc spikeTrap, IBlock block, Constants.Direction side)
+        public void HandleCollison<INpc, IBlock>(INpc enemy, IBlock block, Constants.Direction side)
         {
 
         }

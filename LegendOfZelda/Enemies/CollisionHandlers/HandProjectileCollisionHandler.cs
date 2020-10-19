@@ -8,8 +8,9 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class HandProjectileCollisionHandler : ICollision
     {
-        public void HandleCollison()
+        public void HandleCollison<INpc, IProjectile>(INpc enemy, IProjectile projectile, Constants.Direction side)
         {
+
         }
     }
 }

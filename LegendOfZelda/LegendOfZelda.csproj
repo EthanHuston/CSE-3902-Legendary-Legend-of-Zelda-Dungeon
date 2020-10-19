@@ -57,24 +57,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Enemies\CollisionHandlers\AquamentusLinkCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\AquamentusProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\BatLinkCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\BatProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\GoriyaBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\GoriyaLinkCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\GoriyaProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\HandBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\HandLinkCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\HandProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\JellyBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\JellyLinkCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\JellyProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\SkeletonBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\SkeletonLinkCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\SkeletonProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\SpikeTrapBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\SpikeTrapLinkCollisionHandler.cs" />
     <Compile Include="GameplayLogic\ItemSpawner.cs" />
     <Compile Include="Enemies\CollisionHandlers\BatBlockCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\AquamentusBlockCollisionHandler.cs" />
