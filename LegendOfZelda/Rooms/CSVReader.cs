@@ -13,6 +13,7 @@ namespace LegendOfZelda.Rooms
     {
         IItemSpawner allObjects = new ItemSpawner();
         private SpriteBatch spriteBatch;
+        private string v;
         private const int tileLength = 16;
         //String Abbreviations from CSV File
         const string Block = "block";
@@ -41,6 +42,11 @@ namespace LegendOfZelda.Rooms
                     spawnFromString(fields[i], i, j);
                 }
             }
+        }
+
+        public CSVReader(string v)
+        {
+            this.v = v;
         }
 
         private void spawnFromString(string spawnType, int gridX, int gridY)

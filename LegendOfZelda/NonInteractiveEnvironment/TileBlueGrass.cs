@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -19,9 +20,24 @@ namespace LegendOfZelda.NonInteractiveEnvironment
             canWalk = true;
         }
 
+        public void Despawn()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Draw()
         {
             sprite.Draw(sb, position);
+        }
+
+        public Point GetPosition()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Rectangle GetRectangle()
+        {
+            throw new System.NotImplementedException();
         }
 
         public int getX()
@@ -33,6 +49,22 @@ namespace LegendOfZelda.NonInteractiveEnvironment
         {
             return position.Y;
         }
+
+        public void Move(Vector2 distance)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool SafeToDespawn()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetPosition(Point position)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Update()
         {
         }
