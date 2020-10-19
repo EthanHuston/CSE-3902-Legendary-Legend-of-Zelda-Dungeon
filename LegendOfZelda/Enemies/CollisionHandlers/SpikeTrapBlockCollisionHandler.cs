@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LegendOfZelda.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class SpikeTrapBlockCollisionHandler : ICollision
     {
-        public void HandleCollison<T, U>(T spikeTrap, U block, Constants.Direction side)
+        public void HandleCollison(INpc spikeTrap, IBlock block, Constants.Direction side)
         {
            // spikeTrap.Move() or something like that
         }
