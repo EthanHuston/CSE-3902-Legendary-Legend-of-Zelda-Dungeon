@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Interface
 {
-    class BatCollisionHandler : ICollision
+    class BatCollisionHandler : ICollision <INpc, IBlock>
     {
-        public void HandleCollison<INpc, IBlock>(INpc enemy, IBlock block, Constants.Direction side)
+        public void HandleCollison(INpc enemy, IBlock block, Constants.Direction side)
         {
 
         }

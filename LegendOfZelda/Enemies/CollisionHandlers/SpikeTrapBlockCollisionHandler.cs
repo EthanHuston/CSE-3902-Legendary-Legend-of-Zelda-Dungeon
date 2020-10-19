@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class SpikeTrapBlockCollisionHandler : ICollision
+    class SpikeTrapBlockCollisionHandler : ICollision<INpc, IBlock>
     {
-        public void HandleCollison<INpc, IBlock>(INpc enemy, IBlock block, Constants.Direction side)
-        { }
+        public void HandleCollison(INpc enemy, IBlock block, Constants.Direction side)
+        {
         }
     }
 }

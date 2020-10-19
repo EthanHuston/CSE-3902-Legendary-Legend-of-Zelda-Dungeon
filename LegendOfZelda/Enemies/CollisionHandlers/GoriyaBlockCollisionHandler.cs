@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LegendOfZelda.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class GoriyaBlockCollisionHandler : ICollision
+    class GoriyaBlockCollisionHandler : ICollision <INpc, IBlock>
     {
-        public void HandleCollison<INpc, IBlock>(INpc enemy, IBlock block, Constants.Direction side)
+        public void HandleCollison(INpc enemy, IBlock block, Constants.Direction side)
         {
 
         }
