@@ -9,7 +9,7 @@ namespace LegendOfZelda.Rooms
 {
     class CSVReader
     {
-        ItemSpawner spawner = new ItemSpawner();
+        ItemSpawner allObjects = new ItemSpawner();
         private SpriteBatch spriteBatch;
         private const int tileLength = 16;
         //String Abbreviations from CSV File
@@ -54,35 +54,35 @@ namespace LegendOfZelda.Rooms
                     break;
                 case BrickTile:
                     blockType = new BrickTile(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 case GapTile:
                     blockType = new GapTile(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 case Fire:
                     blockType = new Fire(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 case LadderTile:
                     blockType = new LadderTile(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 case Stairs:
                     blockType = new Stairs(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 case Statues:
                     blockType = new Statues(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 case BlueGrass:
                     blockType = new BlueGrass(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 case Water:
                     blockType = new Water(spriteBatch, position);
-                    spawner.Spawn(blockType);
+                    allObjects.Spawn(blockType);
                     break;
                 default:
                     break;
