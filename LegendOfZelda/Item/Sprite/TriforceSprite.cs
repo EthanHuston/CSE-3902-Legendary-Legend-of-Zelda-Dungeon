@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class TriforceSprite : IItemSprite
+    class TriforceSprite : ISprite
     {
         private Texture2D sprite;
         public int Rows { get; set; }

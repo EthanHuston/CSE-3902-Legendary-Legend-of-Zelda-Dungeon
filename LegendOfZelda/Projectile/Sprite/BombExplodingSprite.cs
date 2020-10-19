@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class BombExplodingSprite : IItemSprite
+    class BombExplodingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private bool animationIsFinished;

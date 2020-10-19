@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class FireballSprite : IItemSprite
+    class FireballSprite : IProjectileSprite
     {
         private Texture2D sprite;
         private int Rows { get; set; }

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Item.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -44,59 +45,55 @@ namespace LegendOfZelda.Item
             triforceSprite = content.Load<Texture2D>("Items/TriforcePiece");
         }
 
-        public IItemSprite CreateArrowSprite()
+        public ISprite CreateArrowSprite()
         {
             return new ArrowSprite(arrowSprite);
         }
-        public IItemSprite CreateBombSprite()
+        public ISprite CreateBombSprite()
         {
             return new BombSprite(bombSprite);
         }
-        public IItemSprite CreateBoomerangSprite()
+        public ISprite CreateBoomerangSprite()
         {
             return new BoomerangSprite(boomerangSprite);
         }
-        public IItemSprite CreateBowSprite()
+        public ISprite CreateBowSprite()
         {
             return new BowSprite(bowSprite);
         }
-        public IItemSprite CreateClockSprite()
+        public ISprite CreateClockSprite()
         {
             return new ClockSprite(clockSprite);
         }
-        public IItemSprite CreateCompassSprite()
+        public ISprite CreateCompassSprite()
         {
             return new CompassSprite(compassSprite);
         }
-        public IItemSprite CreateFairySprite(Point spawnPosition)
+        public ISprite CreateFairySprite(Point spawnPosition)
         {
             return new FairySprite(fairySprite, spawnPosition);
         }
-        public IItemSprite CreateFireSprite()
-        {
-            return new FireSprite(fireSprite);
-        }
-        public IItemSprite CreateHeartSprite()
+        public ISprite CreateHeartSprite()
         {
             return new HeartSprite(heartSprite);
         }
-        public IItemSprite CreateHeartContainerSprite()
+        public ISprite CreateHeartContainerSprite()
         {
             return new HeartContainerSprite(heartContainerSprite);
         }
-        public IItemSprite CreateKeySprite()
+        public ISprite CreateKeySprite()
         {
             return new KeySprite(keySprite);
         }
-        public IItemSprite CreateMapSprite()
+        public ISprite CreateMapSprite()
         {
             return new MapSprite(mapSprite);
         }
-        public IItemSprite CreateRupeeSprite()
+        public ISprite CreateRupeeSprite()
         {
             return new RupeeSprite(rupeeSprite);
         }
-        public IItemSprite CreateTriforceSprite()
+        public ISprite CreateTriforceSprite()
         {
             return new TriforceSprite(triforceSprite);
         }

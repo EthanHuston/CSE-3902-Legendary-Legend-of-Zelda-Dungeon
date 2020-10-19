@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class KeySprite : IItemSprite
+    class KeySprite : ISprite
     {
         private const int spriteScaler = 2;
         private Texture2D sprite;

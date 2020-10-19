@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class SwordBeamExplodingSprite : IItemSprite
+    class SwordBeamExplodingSprite : IProjectileSprite
     {
         private Texture2D upLeftSprite, upRightSprite, downLeftSprite, downRightSprite;
         private bool animationIsFinished;

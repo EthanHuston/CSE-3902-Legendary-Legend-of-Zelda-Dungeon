@@ -21,6 +21,11 @@ namespace LegendOfZelda.Environment
             safeToDespawn = false;
         }
 
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
         public void Draw()
         {
             roomBorderSprite.Draw(sB, new Point(ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY));
@@ -54,7 +59,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && false; // some condition here to despawn if it has not already been marked for despawn
+            roomBorderSprite.Update();
         }
     }
 }

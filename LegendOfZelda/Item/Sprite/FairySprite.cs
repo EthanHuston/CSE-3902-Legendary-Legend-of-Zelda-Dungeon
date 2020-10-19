@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class FairySprite : IItemSprite
+    class FairySprite : ISprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;

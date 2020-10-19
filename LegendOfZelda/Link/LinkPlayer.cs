@@ -3,6 +3,7 @@ using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.NotMoving;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.Link
 {
@@ -15,6 +16,7 @@ namespace LegendOfZelda.Link
         private Point position;
         private Point oldPosition;
         private int health;
+        private Dictionary<Constants.LinkInventory, int> inventory;
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
@@ -173,6 +175,51 @@ namespace LegendOfZelda.Link
         public bool SafeToDespawn()
         {
             return false; // Link can only despawn when game ends
+        }
+
+        public void PickupMap()
+        {
+            inventory[Constants.LinkInventory.Map] += 1;
+        }
+
+        public void PickupBomb()
+        {
+            inventory[Constants.LinkInventory.Bomb] += 1;
+        }
+
+        public void PickupKey()
+        {
+            inventory[Constants.LinkInventory.Key] += 1;
+        }
+
+        public void PickupCompass()
+        {
+            inventory[Constants.LinkInventory.Compass] += 1;
+        }
+
+        public void PickupHeart()
+        {
+            // TODO: heal link when he picks up heart right??
+        }
+
+        public void PickupRupee()
+        {
+            inventory[Constants.LinkInventory.Arrow] += 1;
+        }
+
+        public void PickupFairy()
+        {
+            // TODO: can link keep fairies in his inventory??
+        }
+
+        public void PickupClock()
+        {
+            // TODO: idk what link does when he picks up a clock
+        }
+
+        public void Despawn()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

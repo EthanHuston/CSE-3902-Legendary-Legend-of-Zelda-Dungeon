@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class SwordBeamFlyingSprite : IItemSprite
+    class SwordBeamFlyingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;

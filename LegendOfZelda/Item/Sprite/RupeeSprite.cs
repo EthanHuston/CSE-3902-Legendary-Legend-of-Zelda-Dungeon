@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class RupeeSprite : IItemSprite
+    class RupeeSprite : ISprite
     {
         private Texture2D sprite;
         private const int numRows = 2;

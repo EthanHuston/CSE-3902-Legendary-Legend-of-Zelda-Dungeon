@@ -49,55 +49,55 @@ namespace LegendOfZelda.Projectile
             swordBeamExplodingUpRight = content.Load<Texture2D>("Items/SwordBeamExplosionUpRight");
         }
 
-        public IItemSprite CreateFireballSprite()
+        public IProjectileSprite CreateFireballSprite()
         {
             return new FireballSprite(fireballSprite);
         }
-        public IItemSprite CreateExplodingBombSprite()
+        public IProjectileSprite CreateExplodingBombSprite()
         {
             return new BombExplodingSprite(explodingBombSprite);
         }
-        public IItemSprite CreateArrowUpSprite()
+        public IProjectileSprite CreateArrowUpSprite()
         {
             return new ArrowFlyingSprite(arrowUpSprite);
         }
-        public IItemSprite CreateArrowDownSprite()
+        public IProjectileSprite CreateArrowDownSprite()
         {
             return new ArrowFlyingSprite(arrowDownSprite);
         }
-        public IItemSprite CreateArrowRightSprite()
+        public IProjectileSprite CreateArrowRightSprite()
         {
             return new ArrowFlyingSprite(arrowRightSprite);
         }
-        public IItemSprite CreateArrowLeftSprite()
+        public IProjectileSprite CreateArrowLeftSprite()
         {
             return new ArrowFlyingSprite(arrowLeftSprite);
         }
-        public IItemSprite CreateBombExplodingSprite()
+        public IProjectileSprite CreateBombExplodingSprite()
         {
             return new BombExplodingSprite(bombExplodingSprite);
         }
-        public IItemSprite CreateBoomerangFlyingSprite()
+        public IProjectileSprite CreateBoomerangFlyingSprite()
         {
             return new BoomerangFlyingSprite(boomerangFlyingSprite);
         }
-        public IItemSprite CreateSwordBeamDownSprite()
+        public IProjectileSprite CreateSwordBeamDownSprite()
         {
             return new SwordBeamFlyingSprite(swordBeamDown);
         }
-        public IItemSprite CreateSwordBeamUpSprite()
+        public IProjectileSprite CreateSwordBeamUpSprite()
         {
             return new SwordBeamFlyingSprite(swordBeamUp);
         }
-        public IItemSprite CreateSwordBeamRightSprite()
+        public IProjectileSprite CreateSwordBeamRightSprite()
         {
             return new SwordBeamFlyingSprite(swordBeamRight);
         }
-        public IItemSprite CreateSwordBeamLeftSprite()
+        public IProjectileSprite CreateSwordBeamLeftSprite()
         {
             return new SwordBeamFlyingSprite(swordBeamLeft);
         }
-        public IItemSprite CreateSwordBeamExplodingSprite()
+        public IProjectileSprite CreateSwordBeamExplodingSprite()
         {
             return new SwordBeamExplodingSprite(swordBeamExplodingUpLeft, swordBeamExplodingUpRight, swordBeamExplodingDownLeft, swordBeamExplodingDownRight);
         }

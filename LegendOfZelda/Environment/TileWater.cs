@@ -34,7 +34,7 @@ namespace LegendOfZelda.Environment
 
         public Point GetPosition()
         {
-            return position);
+            return position;
         }
 
         public Rectangle GetRectangle()

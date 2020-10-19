@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class ArrowSprite : IItemSprite
+    class ArrowSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;
@@ -32,11 +32,6 @@ namespace LegendOfZelda.Item.Sprite
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
-        }
-
-        public bool FinishedAnimation()
-        {
-            return false; // animation never finishes
         }
     }
 }

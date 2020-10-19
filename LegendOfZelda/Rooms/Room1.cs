@@ -1,4 +1,7 @@
-﻿namespace LegendOfZelda.Rooms
+﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace LegendOfZelda.Rooms
 {
     class Room1
     {

@@ -57,5 +57,10 @@ namespace LegendOfZelda.Environment
         {
             return doorSprite.GetPositionRectangle();
         }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
     }
 }

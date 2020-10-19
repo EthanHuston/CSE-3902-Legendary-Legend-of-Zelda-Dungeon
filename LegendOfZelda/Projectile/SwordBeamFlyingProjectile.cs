@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
@@ -8,7 +9,7 @@ namespace LegendOfZelda.Projectile
         private bool updatedSprite;
         private const int moveDistanceInterval = 5;
 
-        public SwordBeamFlyingProjectile(Game1 game, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(game, spawnPosition, owner)
+        public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
         {
             updatedSprite = false; // true we update sword beam to be exploding -- just so we don't update it more than once
             stopMovingAndExplode = false; // true the sword beam hits an enemy or gets to edge of screen

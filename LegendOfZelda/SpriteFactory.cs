@@ -1,4 +1,7 @@
-﻿using LegendOfZelda.Link;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Item;
+using LegendOfZelda.Link;
+using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework.Content;
 
 namespace LegendOfZelda

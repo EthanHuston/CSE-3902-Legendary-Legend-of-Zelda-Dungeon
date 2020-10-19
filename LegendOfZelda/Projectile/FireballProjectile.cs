@@ -14,6 +14,11 @@ namespace LegendOfZelda.Projectile
             this.velocity.Y = velocity.Y;
         }
 
+        public override double DamageAmount()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override Vector2 GetVelocity()
         {
             return new Vector2(velocity.X, velocity.Y);

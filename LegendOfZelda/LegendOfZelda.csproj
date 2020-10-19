@@ -94,7 +94,7 @@
     <Compile Include="Interface\IItem.cs" />
     <Compile Include="Interface\INpc.cs" />
     <Compile Include="Interface\IDynamic.cs" />
-    <Compile Include="Interface\IItemSprite.cs" />
+    <Compile Include="Interface\IProjectileSprite.cs" />
     <Compile Include="Interface\IProjectile.cs" />
     <Compile Include="Interface\ISpawnable.cs" />
     <Compile Include="Interface\IItemSpawner.cs" />
@@ -141,7 +141,6 @@
     <Compile Include="Projectile\SwordBeamFlyingProjectile.cs" />
     <Compile Include="Rooms\CSVReader.cs" />
     <Compile Include="Rooms\Room1.cs" />
-    <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Projectile\FireballProjectile.cs" />
     <Compile Include="Item\BombItem.cs" />
     <Compile Include="Item\BoomerangItem.cs" />
@@ -166,17 +165,20 @@
     <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
     <Compile Include="Item\MapItem.cs" />
     <Compile Include="Item\RupeeItem.cs" />
+    <Compile Include="Environment\RoomBorder.cs" />
+    <Compile Include="Environment\TileBlack.cs" />
+    <Compile Include="Environment\TileBlueGrass.cs" />
+    <Compile Include="Environment\TileWater.cs" />
+    <Compile Include="Sprint2\ConstantsSprint2.cs" />
     <Compile Include="Sprint2\NextBlockCommand.cs" />
     <Compile Include="Sprint2\NextEnemyCommand.cs" />
     <Compile Include="Sprint2\NextItemCommand.cs" />
     <Compile Include="Sprint2\PreviousBlockCommand.cs" />
     <Compile Include="Sprint2\PreviousEnemyCommand.cs" />
     <Compile Include="Sprint2\PreviousItemCommand.cs" />
-    <Compile Include="Environment\RoomBorder.cs" />
-    <Compile Include="Environment\TileBlack.cs" />
-    <Compile Include="Environment\TileBlueGrass.cs" />
-    <Compile Include="Environment\TileWater.cs" />
+    <Compile Include="Sprint2\QuitGameCommand.cs" />
     <Compile Include="Sprint2\ResetGameCommand.cs" />
+    <Compile Include="Sprint2\Sprint2Game.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\UseBowCommand.cs" />
     <Compile Include="Link\Command\UseBombCommand.cs" />
@@ -252,11 +254,9 @@
     <Compile Include="Enemies\OldMan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprint2\QuitGameCommand.cs" />
     <Compile Include="Item\Sprite\RupeeSprite.cs" />
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
-    <Compile Include="Sprint2\Sprint2Game.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />
     <Compile Include="Environment\Sprite\StatueSprite.cs" />
@@ -327,7 +327,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
-    <None Include="InteractiveEnvironment\README.md" />
+    <None Include="Sprint2\README.md" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

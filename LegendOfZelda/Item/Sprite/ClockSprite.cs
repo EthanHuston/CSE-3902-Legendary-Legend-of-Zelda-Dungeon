@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class ClockSprite : IItemSprite
+    class ClockSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;

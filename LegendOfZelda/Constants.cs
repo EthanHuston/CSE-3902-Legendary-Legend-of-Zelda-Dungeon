@@ -63,6 +63,16 @@ namespace LegendOfZelda
             Enemy
         }
 
+        public enum LinkInventory
+        {
+            Arrow,
+            Bomb,
+            Map,
+            Key,
+            Compass
+            // add mode
+        }
+
         //Enemy Constants
         public const int SpikeTrapMaxDist = 50;
         public const int SpikeTrapGoingVelocity = 4;

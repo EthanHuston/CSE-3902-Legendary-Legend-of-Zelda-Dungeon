@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class HeartSprite : IItemSprite
+    class HeartSprite : ISprite
     {
         private const int numRows = 2;
         private const int numColumns = 1;

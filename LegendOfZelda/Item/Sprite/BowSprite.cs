@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class BowSprite : IItemSprite
+    class BowSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;
