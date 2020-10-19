@@ -26,7 +26,7 @@ namespace LegendOfZelda.Environment.Sprite
         {
 
         }
-        
+
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
