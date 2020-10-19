@@ -33,5 +33,10 @@ namespace LegendOfZelda
         {
             return destinationRectangle;
         }
+
+        public bool FinishedAnimation()
+        {
+            return false; // animation never finishes
+        }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Interface
 {
-    public interface IItemSprite
+    public interface ISprite
     {
         void Update();
         void Draw(SpriteBatch spriteBatch, Point position);

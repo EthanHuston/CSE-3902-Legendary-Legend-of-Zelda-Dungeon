@@ -226,7 +226,8 @@ namespace LegendOfZelda.Enemies
         }
         public void Move(Vector2 distance)
         {
-            throw new NotImplementedException();
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
 
         public void SetPosition(Point position)
@@ -243,9 +244,17 @@ namespace LegendOfZelda.Enemies
         }
         public Rectangle GetRectangle()
         {
-            //Not implemented yet.
-            return new Rectangle();
+            return sprite.GetPositionRectangle();
         }
 
+        public void TakeDamage(double damage)
+        {
+            health -= damage;
+        }
+
+        public void Despawn()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

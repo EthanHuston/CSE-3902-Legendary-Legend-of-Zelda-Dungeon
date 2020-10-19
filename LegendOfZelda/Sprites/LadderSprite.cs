@@ -7,13 +7,16 @@ namespace LegendOfZelda
     class LadderSprite : IItemSprite
     {
         private Texture2D sprite;
+        private Rectangle destinationRectangle;
+
         public LadderSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            destinationRectangle = Rectangle.Empty;
         }
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
@@ -25,9 +28,14 @@ namespace LegendOfZelda
             Draw(spriteBatch, position);
         }
 
+        public bool FinishedAnimation()
+        {
+            return false; // animation never finishes
+        }
+
         public Rectangle GetPositionRectangle()
         {
-            throw new System.NotImplementedException();
+            return destinationRectangle;
         }
 
         public void Update()

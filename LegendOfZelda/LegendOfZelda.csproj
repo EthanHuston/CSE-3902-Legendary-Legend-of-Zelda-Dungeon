@@ -87,9 +87,12 @@
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Interface\IPlayer.cs" />
+    <Compile Include="Link\CollisionHandler\LinkBombItemCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\LinkBoomerangItemCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\LinkBowItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\LinkHeartContainerItemCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\LinkMapItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\LinkTriforceItemCollisionHandler.cs" />
     <Compile Include="Link\State\LinkActiveAbstractState.cs" />
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />
     <Compile Include="NonInteractiveEnvironment\BombedOpening.cs" />
