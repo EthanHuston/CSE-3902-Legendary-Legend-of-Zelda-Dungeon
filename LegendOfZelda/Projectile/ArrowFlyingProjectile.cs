@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item
+namespace LegendOfZelda.Projectile
 {
     class ArrowFlyingProjectile : GenericProjectile
     {
@@ -13,19 +13,19 @@ namespace LegendOfZelda.Item
             {
                 case Constants.Direction.Down:
                     velocity = new Vector2(0, moveDistanceInterval);
-                    sprite = SpriteFactory.Instance.CreateArrowDownSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateArrowDownSprite();
                     break;
                 case Constants.Direction.Up:
                     velocity = new Vector2(0, -1 * moveDistanceInterval);
-                    sprite = SpriteFactory.Instance.CreateArrowUpSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateArrowUpSprite();
                     break;
                 case Constants.Direction.Right:
                     velocity = new Vector2(moveDistanceInterval, 0);
-                    sprite = SpriteFactory.Instance.CreateArrowRightSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateArrowRightSprite();
                     break;
                 case Constants.Direction.Left:
                     velocity = new Vector2(-1 * moveDistanceInterval, 0);
-                    sprite = SpriteFactory.Instance.CreateArrowLeftSprite();
+                    sprite = ProjectileSpriteFactory.Instance.CreateArrowLeftSprite();
                     break;
             }
         }

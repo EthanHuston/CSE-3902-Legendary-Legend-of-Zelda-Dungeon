@@ -1,9 +1,5 @@
-﻿using LegendOfZelda.GameplayLogic;
-using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Threading;
 
 namespace LegendOfZelda.Rooms
 {

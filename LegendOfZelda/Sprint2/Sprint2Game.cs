@@ -1,8 +1,7 @@
 ﻿using LegendOfZelda.Enemies;
-using LegendOfZelda.InteractiveEnvironment;
+using LegendOfZelda.Environment;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
-using LegendOfZelda.NonInteractiveEnvironment;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Sprint2
@@ -39,6 +38,7 @@ namespace LegendOfZelda.Sprint2
 
         private void AddBlocksToList()
         {
+            /*
             listOfBlocks.Add(new BombedOpening(game.SpriteBatch));
             listOfBlocks.Add(new BrickTile(game.SpriteBatch));
             listOfBlocks.Add(new Fire(game.SpriteBatch));
@@ -50,10 +50,12 @@ namespace LegendOfZelda.Sprint2
             listOfBlocks.Add(new Stairs(game.SpriteBatch));
             listOfBlocks.Add(new Statues(game.SpriteBatch));
             listOfBlocks.Add(new Walls(game.SpriteBatch, ConstantsSprint2.WallSpawnLocationX, ConstantsSprint2.WallSpawnLocationY));
+            */
         }
 
         private void AddEnemiesToList()
         {
+            /*
             listOfEnemies.Add(new Aquamentus(game.SpriteBatch));
             listOfEnemies.Add(new Bat(game.SpriteBatch));
             listOfEnemies.Add(new Goriya(game.SpriteBatch));
@@ -63,10 +65,12 @@ namespace LegendOfZelda.Sprint2
             listOfEnemies.Add(new OldMan(game.SpriteBatch));
             listOfEnemies.Add(new Skeleton(game.SpriteBatch));
             listOfEnemies.Add(new SpikeTrap(game.SpriteBatch));
+            */
         }
 
         private void AddItemsToList()
         {
+            /*
             listOfItems.Add(new ArrowItem(game.SpriteBatch));
             listOfItems.Add(new BombItem(game.SpriteBatch));
             listOfItems.Add(new BoomerangItem(game.SpriteBatch));
@@ -80,6 +84,7 @@ namespace LegendOfZelda.Sprint2
             listOfItems.Add(new MapItem(game.SpriteBatch));
             listOfItems.Add(new RupeeItem(game.SpriteBatch));
             listOfItems.Add(new TriforceItem(game.SpriteBatch));
+            */
         }
 
         public void NextItem()
@@ -146,7 +151,6 @@ namespace LegendOfZelda.Sprint2
         }
         public void Draw()
         {
-            currentItem.itemAction();
             currentEnemy.Draw();
             currentBlock.Draw();
         }

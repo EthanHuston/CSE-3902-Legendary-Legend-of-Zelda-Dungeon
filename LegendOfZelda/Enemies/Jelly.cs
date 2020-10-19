@@ -1,7 +1,7 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Sprint2;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace LegendOfZelda.Enemies
@@ -18,7 +18,7 @@ namespace LegendOfZelda.Enemies
 
         public Jelly(SpriteBatch spriteBatch)
         {
-            sprite = SpriteFactory.Instance.CreateJellySprite();
+            sprite = EnemySpriteFactory.Instance.CreateJellySprite();
             this.spriteBatch = spriteBatch;
         }
         public void Update()

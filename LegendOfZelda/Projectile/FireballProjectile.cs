@@ -1,6 +1,4 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Item;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
@@ -10,10 +8,15 @@ namespace LegendOfZelda.Projectile
 
         public FireballProjectile(SpriteBatch spriteBatch, Point spawnPosition, Vector2 velocity, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
-            sprite = SpriteFactory.Instance.CreateFireballSprite();
+            sprite = ProjectileSpriteFactory.Instance.CreateFireballSprite();
             position = spawnPosition;
             this.velocity.X = velocity.X;
             this.velocity.Y = velocity.Y;
+        }
+
+        public override double DamageAmount()
+        {
+            throw new System.NotImplementedException();
         }
 
         public override Vector2 GetVelocity()
@@ -23,8 +26,8 @@ namespace LegendOfZelda.Projectile
 
         override public void Update()
         {
-            position.X += (int) velocity.X;
-            position.Y += (int) velocity.Y;
+            position.X += (int)velocity.X;
+            position.Y += (int)velocity.Y;
             sprite.Update();
             CheckItemIsExpired();
         }

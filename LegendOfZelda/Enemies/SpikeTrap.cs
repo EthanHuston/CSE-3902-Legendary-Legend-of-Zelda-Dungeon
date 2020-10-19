@@ -1,15 +1,13 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace LegendOfZelda.Enemies
 {
     class SpikeTrap : INpc
     {
-        private IItemSprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int maxDistance = Constants.SpikeTrapMaxDist;
@@ -25,7 +23,7 @@ namespace LegendOfZelda.Enemies
 
         public SpikeTrap(SpriteBatch spriteBatch, IPlayer link)
         {
-            sprite = SpriteFactory.Instance.CreateSpikeTrapSprite();
+            sprite = EnemySpriteFactory.Instance.CreateSpikeTrapSprite();
             this.spriteBatch = spriteBatch;
             this.link = link;
         }
@@ -39,15 +37,17 @@ namespace LegendOfZelda.Enemies
             {
                 CheckOverlap();
             }
-            else if(going)
+            else if (going)
             {
-                if(currentDirection == Constants.Direction.Left)
+                if (currentDirection == Constants.Direction.Left)
                 {
                     GoingLeft();
-                } else if(currentDirection == Constants.Direction.Right)
+                }
+                else if (currentDirection == Constants.Direction.Right)
                 {
                     GoingRight();
-                } else if(currentDirection == Constants.Direction.Up)
+                }
+                else if (currentDirection == Constants.Direction.Up)
                 {
                     GoingUp();
                 }
@@ -55,7 +55,8 @@ namespace LegendOfZelda.Enemies
                 {
                     GoingDown();
                 }
-            } else 
+            }
+            else
             {
                 if (currentDirection == Constants.Direction.Left)
                 {
@@ -81,22 +82,25 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckOverlap()
         {
-            if((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Left >= TrapPosition.Right)
+            if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Left >= TrapPosition.Right)
             {
                 currentDirection = Constants.Direction.Right;
                 going = true;
 
-            } else if((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Right <= TrapPosition.Left)
+            }
+            else if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Right <= TrapPosition.Left)
             {
                 currentDirection = Constants.Direction.Left;
                 going = true;
 
-            } else if(LinkPosition.Bottom <= TrapPosition.Top && (LinkPosition.Left <= TrapPosition.Right || LinkPosition.Right >= TrapPosition.Left))
+            }
+            else if (LinkPosition.Bottom <= TrapPosition.Top && (LinkPosition.Left <= TrapPosition.Right || LinkPosition.Right >= TrapPosition.Left))
             {
                 currentDirection = Constants.Direction.Up;
                 going = true;
 
-            } else if(LinkPosition.Top >= TrapPosition.Bottom && (LinkPosition.Right <= TrapPosition.Left || LinkPosition.Left <= TrapPosition.Right))
+            }
+            else if (LinkPosition.Top >= TrapPosition.Bottom && (LinkPosition.Right <= TrapPosition.Left || LinkPosition.Left <= TrapPosition.Right))
             {
                 currentDirection = Constants.Direction.Down;
                 going = true;
@@ -106,18 +110,18 @@ namespace LegendOfZelda.Enemies
         {
             position.X += goingVelocity;
             currentDist += goingVelocity;
-            if(currentDist >= maxDistance)
+            if (currentDist >= maxDistance)
             {
                 returning = true;
                 going = false;
             }
-            
+
         }
         private void ReturningLeft()
         {
             position.X -= returningVelocity;
             currentDist -= returningVelocity;
-            if(currentDist <= 0)
+            if (currentDist <= 0)
             {
                 returning = false;
             }
