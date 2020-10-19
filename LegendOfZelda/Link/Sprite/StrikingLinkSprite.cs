@@ -16,6 +16,7 @@ namespace LegendOfZelda.Link.Sprite
         private const int totalFrames = 7;
         private const int numRows = 1;
         private const int numColumns = 4;
+        private Rectangle destinationRectangle;
 
         public StrikingLinkSprite(Texture2D sprite)
         {
@@ -23,6 +24,7 @@ namespace LegendOfZelda.Link.Sprite
             animationIsDone = false;
             flashRed = false;
             damageColorCounter = 0;
+            destinationRectangle = Rectangle.Empty;
         }
 
         public void Update()
@@ -44,14 +46,12 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            spriteBatch.Begin();
             Draw(spriteBatch, position, false);
-            spriteBatch.End();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
             int frameWidth = sprite.Width / numColumns;
             int frameHeight = sprite.Height / numRows;
@@ -59,7 +59,7 @@ namespace LegendOfZelda.Link.Sprite
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
+            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
@@ -69,6 +69,11 @@ namespace LegendOfZelda.Link.Sprite
         public bool FinishedAnimation()
         {
             return animationIsDone;
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }

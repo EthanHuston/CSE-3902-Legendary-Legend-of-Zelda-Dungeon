@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class HandSprite : IItemSprite
+    class HandSprite : IDamageableSprite
     {
         private Texture2D sprite;
         private int Rows { get; set; }
@@ -16,6 +16,7 @@ namespace LegendOfZelda
         private int leftRow;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
+
         public HandSprite(Texture2D sprite)
         {
             this.sprite = sprite;
@@ -80,11 +81,6 @@ namespace LegendOfZelda
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
-        }
-
-        public bool FinishedAnimation()
-        {
-            return false; // never finishes animating
         }
     }
 }

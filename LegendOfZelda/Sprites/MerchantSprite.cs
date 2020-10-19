@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    class MerchantSprite : IItemSprite
+    class MerchantSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;

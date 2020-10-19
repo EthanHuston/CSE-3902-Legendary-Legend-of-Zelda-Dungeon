@@ -3,7 +3,6 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Item.Sprite;
 using LegendOfZelda.Link;
 using LegendOfZelda.Projectile.Sprite;
-using LegendOfZelda.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,7 +17,6 @@ namespace LegendOfZelda
         private Texture2D goriyaDownSprite;
         private Texture2D goriyaLeftSprite;
         private Texture2D goriyaRightSprite;
-        private Texture2D goriyaBoomerangSprite;
         private Texture2D aquamentusBreathingSprite;
         private Texture2D aquamentusWalkingSprite;
         private Texture2D handSprite;
@@ -69,9 +67,6 @@ namespace LegendOfZelda
         private Texture2D swordBeamExplodingUpRight;
 
         public static SpriteFactory Instance { get; } = new SpriteFactory();
-        public SpriteFactory()
-        {
-        }
 
         public void LoadAllTextures(ContentManager content)
         {
@@ -81,7 +76,6 @@ namespace LegendOfZelda
             goriyaDownSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingDown");
             goriyaRightSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingRight");
             goriyaLeftSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingLeft");
-            goriyaBoomerangSprite = content.Load<Texture2D>("Items/BoomerangFlying");
             aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
             aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
             handSprite = content.Load<Texture2D>("Enemies/Hand");
@@ -276,7 +270,7 @@ namespace LegendOfZelda
         {
             return new OldManSprite(oldManSprite);
         }
-        public IDamageableSprite CreateMerchantSprite()
+        public ISprite CreateMerchantSprite()
         {
             return new MerchantSprite(merchantSprite);
         }

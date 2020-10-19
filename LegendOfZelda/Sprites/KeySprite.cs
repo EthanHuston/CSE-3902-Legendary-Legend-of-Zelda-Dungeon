@@ -15,6 +15,7 @@ namespace LegendOfZelda
             this.sprite = sprite;
             destinationRectangle = Rectangle.Empty;
         }
+
         public void Update()
         {
             // No update needed for an unchanging object.
@@ -32,6 +33,11 @@ namespace LegendOfZelda
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
+        }
+
+        public bool FinishedAnimation()
+        {
+            return false; // animation is never finished
         }
     }
 }
