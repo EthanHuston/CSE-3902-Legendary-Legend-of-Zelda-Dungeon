@@ -63,5 +63,7 @@ namespace LegendOfZelda.Item
         {
             return owner;
         }
+
+        public abstract double DamageAmount();
     }
 }

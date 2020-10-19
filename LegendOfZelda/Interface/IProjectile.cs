@@ -3,5 +3,6 @@
     public interface IProjectile : IDynamic
     {
         Constants.ItemOwner GetItemOwner();
+        double DamageAmount();
     }
 }
