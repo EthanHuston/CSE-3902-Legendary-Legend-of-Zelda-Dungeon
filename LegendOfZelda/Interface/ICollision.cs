@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    interface ICollision
+    public interface ICollision<T, U>
     {
-        void HandleCollison<T, U>(T MainSpawnable, U SecondarySpawnable, Constants.Direction side);
+        void HandleCollison(T MainSpawnable, U SecondarySpawnable, Constants.Direction side);
     }
 }
