@@ -9,6 +9,6 @@ namespace LegendOfZelda
 {
     interface ICollision
     {
-        void HandleCollison(INpc Enemy, IBlock block, Constants.Direction side);
+        void HandleCollison<T, U>(T MainSpawnable, U SecondarySpawnable, Constants.Direction side);
     }
 }

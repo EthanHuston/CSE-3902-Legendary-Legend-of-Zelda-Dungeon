@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class SpikeTrapBlockCollisionHandler : ICollision
     {
-        public void HandleCollison(INpc spikeTrap, IBlock block, Constants.Direction side)
+        public void HandleCollison<INpc, IBlock>(INpc spikeTrap, IBlock block, Constants.Direction side)
         {
            // spikeTrap.Move() or something like that
         }
