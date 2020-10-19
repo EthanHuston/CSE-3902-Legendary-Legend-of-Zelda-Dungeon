@@ -202,7 +202,6 @@ namespace LegendOfZelda.Enemies
         }
         public Rectangle GetRectangle()
         {
-            //Not implemented yet.
             return sprite.GetPositionRectangle();
         }
     }

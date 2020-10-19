@@ -28,6 +28,7 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             movementBuffer++;
+            CheckBounds();
             if (movementBuffer == 20)
             {
                 movementBuffer = 0;
@@ -69,6 +70,25 @@ namespace LegendOfZelda.Enemies
                 position.Y++;
             }
         }
+        private void CheckBounds()
+        {
+            if (position.X == minXVal)
+            {
+                position.X = position.X + 5;
+            }
+            else if (position.X == maxXVal)
+            {
+                position.X = position.X - 5; ;
+            }
+            else if (position.Y == minYVal)
+            {
+                position.Y = position.Y + 5; ;
+            }
+            else if (position.Y == maxYVal)
+            {
+                position.Y = position.Y - 5;
+            }
+        }
         public void ResetPosition()
         {
             position.X = ConstantsSprint2.enemyNPCX;
@@ -96,8 +116,16 @@ namespace LegendOfZelda.Enemies
         }
         public Rectangle GetRectangle()
         {
-            //Not implemented yet.
-            return new Rectangle();
+            return sprite.GetPositionRectangle();
+        }
+
+        public void TakeDamage(double damage)
+        {
+            health -= damage;
+        }
+
+        public void Despawn()
+        {
         }
     }
 }
