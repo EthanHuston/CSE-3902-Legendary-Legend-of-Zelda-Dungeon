@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -7,31 +7,22 @@ namespace LegendOfZelda
     class BatSprite : IDamageableSprite
     {
         private Texture2D sprite;
-        private int Rows { get; set; }
-        private int Columns { get; set; }
+        private const int numRows = 1;
+        private const int numColumns = 2;
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        private int width;
-        private int height;
-        private int row;
-        private int column;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
 
         public BatSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            Rows = 1;
-            Columns = 2;
             currentFrame = 0;
             bufferFrame = 0;
-            totalFrames = Rows * Columns;
-            width = sprite.Width / Columns;
-            height = sprite.Height / Rows;
-            row = (int)((float)currentFrame / (float)Columns);
-            column = currentFrame % Columns;
+            totalFrames = numRows * numColumns;
         }
+
         public void Update()
         {
             bufferFrame++;
@@ -50,14 +41,15 @@ namespace LegendOfZelda
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            //Not needed for this object.
+            Draw(spriteBatch, position, false);
         }
+
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            int width = sprite.Width / numColumns;
+            int height = sprite.Height / numRows;
+            int row = (int)((float)currentFrame / (float)numColumns);
+            int column = currentFrame % numColumns;
 
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
             destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);

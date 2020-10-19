@@ -21,6 +21,7 @@ namespace LegendOfZelda.Enemies
         private double health = 6;
         private const int xVelocity = -5;
         private IItemSpawner itemSpawner;
+        private bool safeToDespawn;
 
         public Aquamentus(Game1 game, Point spawnPosition)
         {
@@ -28,6 +29,7 @@ namespace LegendOfZelda.Enemies
             spriteBatch = game.SpriteBatch;
             itemSpawner = game.SpawnedItems;
             position = spawnPosition;
+            safeToDespawn = false;
         }
 
         public void Update()
@@ -46,6 +48,7 @@ namespace LegendOfZelda.Enemies
 
             updateCount++;
 
+            CheckSafeToDespawn();
         }
 
         public void Draw()
@@ -55,7 +58,7 @@ namespace LegendOfZelda.Enemies
 
         public Point GetPosition()
         {
-            return position;
+            return new Point(position.X, position.Y);
         }
 
         public Rectangle GetRectangle()
@@ -68,14 +71,20 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
+
         public void SetPosition(Point position)
         {
-            this.position = position;
+            this.position = new Point(position.X, position.Y);
         }
 
         public bool SafeToDespawn()
         {
-            return health <= 0;
+            return safeToDespawn;
+        }
+
+        public void CheckSafeToDespawn()
+        {
+            safeToDespawn = !safeToDespawn && health <= 0;
         }
 
         private void Attack()
@@ -123,19 +132,17 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetPosition()
         {
-            position.X = ConstantsSprint2.enemyNPCX;
-            position.Y = ConstantsSprint2.enemyNPCY;
-            ballsInitialized = false;
             updateCount = 0;
         }
+
         public void TakeDamage(double damage)
         {
-            health = health - damage;
+            health -= damage;
         }
 
         public void Despawn()
         {
-            throw new System.NotImplementedException();
+            safeToDespawn = true;
         }
     }
 }
