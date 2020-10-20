@@ -9,23 +9,26 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
+        private Point position;
         private int maxDistance = Constants.SpikeTrapMaxDist;
         private int currentDist = 0;
         private int goingVelocity = Constants.SpikeTrapGoingVelocity;
         private int returningVelocity = Constants.SpikeTrapReturningVelocity;
-        bool returning = false;
-        bool going = false;
+        private bool returning = false;
+        private bool going = false;
         private IPlayer link;
-        Rectangle LinkPosition;
-        Rectangle TrapPosition;
-        Constants.Direction currentDirection;
+        private Rectangle LinkPosition;
+        private Rectangle TrapPosition;
+        private Constants.Direction currentDirection;
+        private bool safeToDespawn;
 
-        public SpikeTrap(SpriteBatch spriteBatch, IPlayer link)
+        public SpikeTrap(SpriteBatch spriteBatch, Point spawnPosition, IPlayer link)
         {
             sprite = EnemySpriteFactory.Instance.CreateSpikeTrapSprite();
             this.spriteBatch = spriteBatch;
             this.link = link;
+            position = new Point(spawnPosition.X, spawnPosition.Y);
+            safeToDespawn = false;
         }
 
         public void Update()
@@ -199,7 +202,7 @@ namespace LegendOfZelda.Enemies
         }
         public bool SafeToDespawn()
         {
-            return false;
+            return safeToDespawn;
         }
         public Point GetPosition()
         {
@@ -208,6 +211,16 @@ namespace LegendOfZelda.Enemies
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
+        }
+
+        public void TakeDamage(double damage)
+        {
+            // spike trap is invincible
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
     }
 }

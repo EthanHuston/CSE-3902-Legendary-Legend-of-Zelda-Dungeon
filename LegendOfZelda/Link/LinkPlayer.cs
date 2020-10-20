@@ -17,15 +17,16 @@ namespace LegendOfZelda.Link
         private Point oldPosition;
         private int health;
         private Dictionary<Constants.LinkInventory, int> inventory;
+        private bool safeToDespawn;
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
             health = Constants.LinkHealth;
             Game = game;
             state = new LinkStandingStillDownState(this);
-            position.X = ConstantsSprint2.Sprint2LinkSpawnX;
-            position.Y = ConstantsSprint2.Sprint2LinkSpawnY;
-            oldPosition = new Point(position.X, position.Y);
+            oldPosition = new Point(spawnPosition.X, spawnPosition.Y);
+            position = new Point(spawnPosition.X, spawnPosition.Y);
+            safeToDespawn = false;
         }
 
         public Point GetPosition()
@@ -36,9 +37,9 @@ namespace LegendOfZelda.Link
         public void SetPosition(Point newPosition)
         {
             oldPosition = new Point(position.X, position.Y);
-            position.X = newPosition.X;
-            position.Y = newPosition.Y;
+            position = new Point(newPosition.X, newPosition.Y);
         }
+
         public ILinkState GetState()
         {
             return state;
@@ -174,7 +175,7 @@ namespace LegendOfZelda.Link
 
         public bool SafeToDespawn()
         {
-            return false; // Link can only despawn when game ends
+            return safeToDespawn;
         }
 
         public void PickupMap()
@@ -219,7 +220,7 @@ namespace LegendOfZelda.Link
 
         public void Despawn()
         {
-            throw new System.NotImplementedException();
+            safeToDespawn = true;
         }
     }
 }
