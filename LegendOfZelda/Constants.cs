@@ -24,7 +24,7 @@ namespace LegendOfZelda
         public const int BombSpawnYOffsetFromLink = 6;
         public const int BoomerangSpawnXOffsetFromLink = 0;
         public const int BoomerangSpawnYOffsetFromLink = 6;
-        public const int BoomerangMaxDistanceFromLink = 300;
+        public const int BoomerangVelocity = 6;
         public const int SwordBeamSpawnXOffsetFromLink = 4;
         public const int SwordBeamSpawnYOffsetFromLink = 5;
         public const double ArrowDamage = 2.0;
