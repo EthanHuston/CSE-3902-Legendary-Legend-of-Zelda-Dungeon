@@ -35,18 +35,13 @@ namespace LegendOfZelda
             controllerList = new List<object>();
             controllerList.Add(keyboardController);
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            SpriteFactory.Instance.LoadAllTextures(this.Content);
-            sprint2 = new Sprint2Game(this);
-            SpawnedItems = new ItemSpawner();
-            IPlayer link = new LinkPlayer(this, Point.Zero); // TODO: change me
-            SpawnedItems.Spawn(link);
+            SpriteFactory.Instance.LoadAllTextures(Content);
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            SpriteFactory.Instance.LoadAllTextures(this.Content);
             base.LoadContent();
         }
 
