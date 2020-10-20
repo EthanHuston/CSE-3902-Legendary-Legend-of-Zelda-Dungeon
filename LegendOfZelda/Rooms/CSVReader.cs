@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Interface;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
