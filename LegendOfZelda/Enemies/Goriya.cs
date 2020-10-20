@@ -22,6 +22,7 @@ namespace LegendOfZelda.Enemies
         private bool boomerangActive = false;
         private int attackWaitTime = 150;
         private double health = 3;
+        private bool beingDamaged = false;
 
         private Random rand = new Random();
 
@@ -60,9 +61,18 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
-            if (boomerangActive)
-                boomer.Draw();
+            if (beingDamaged)
+            {
+                sprite.Draw(spriteBatch, position, true);
+                if (boomerangActive)
+                    boomer.Draw();
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position);
+                if (boomerangActive)
+                    boomer.Draw();
+            }
         }
 
         private void Move()
@@ -249,6 +259,7 @@ namespace LegendOfZelda.Enemies
         public void TakeDamage(double damage)
         {
             health -= damage;
+            beingDamaged = true;
         }
 
         public void Despawn()
