@@ -15,7 +15,7 @@ namespace LegendOfZelda
         List<object> controllerList;
         KeyboardController keyboardController;
         public Sprint2Game sprint2;
-        public IItemSpawner SpawnedItems;
+        public ISpawnableManager SpawnedItems;
 
         public Game1()
         {

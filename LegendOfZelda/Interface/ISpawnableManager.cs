@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.Interface
 {
-    public interface IItemSpawner
+    public interface ISpawnableManager
     {
         void UpdateAll();
         void DrawAll();
@@ -13,5 +13,7 @@
         void Spawn(IBlock spawnable);
 
         void Spawn(IPlayer spawnable);
+
+        IPlayer GetPlayer(int playerNumber);
     }
 }

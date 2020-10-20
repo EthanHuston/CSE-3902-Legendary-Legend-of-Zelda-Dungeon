@@ -12,7 +12,7 @@ namespace LegendOfZelda.Enemies
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private Point position;
-        private IItemSpawner itemSpawner;
+        private ISpawnableManager itemSpawner;
         private IProjectile boomer;
         private int velocity;
         private int updateCount = 0;

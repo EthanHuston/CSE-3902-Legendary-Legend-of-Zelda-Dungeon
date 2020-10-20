@@ -19,7 +19,7 @@ namespace LegendOfZelda.Enemies
         private bool ballsInitialized = false;
         private double health = 6;
         private const int xVelocity = -5;
-        private IItemSpawner itemSpawner;
+        private ISpawnableManager itemSpawner;
         private bool safeToDespawn;
 
         public Aquamentus(Game1 game, Point spawnPosition)

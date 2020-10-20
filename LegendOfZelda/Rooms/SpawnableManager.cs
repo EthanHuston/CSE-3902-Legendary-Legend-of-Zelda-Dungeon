@@ -3,16 +3,15 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    class ItemSpawner : IItemSpawner
+    class SpawnableManager : ISpawnableManager
     {
-        private List<List<ISpawnable>> spawnableList;
         private List<IItem> itemList;
         private List<IProjectile> projectileList;
         private List<INpc> npcList;
         private List<IBlock> blockList;
         private List<IPlayer> playerList;
 
-        public ItemSpawner()
+        public SpawnableManager()
         {
             itemList = new List<IItem>();
             projectileList = new List<IProjectile>();
@@ -90,6 +89,11 @@ namespace LegendOfZelda.Rooms
             {
                 list.RemoveAt(indicesToRemove[i]);
             }
+        }
+
+        public IPlayer GetPlayer(int playerNumber)
+        {
+            return playerList[playerNumber];
         }
     }
 }
