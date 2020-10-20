@@ -3,14 +3,14 @@ namespace LegendOfZelda.Link.Command
 {
     class PickUpTriforcePieceCommand : ICommand
     {
-        private Game1 loz;
-        public PickUpTriforcePieceCommand(Game1 game)
+        private IPlayer link;
+        public PickUpTriforcePieceCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.PickUpTriforce();
+            link.PickUpTriforce();
         }
     }
 }

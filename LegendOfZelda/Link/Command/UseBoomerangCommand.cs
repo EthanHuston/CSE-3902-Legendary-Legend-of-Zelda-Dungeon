@@ -3,14 +3,14 @@ namespace LegendOfZelda.Link.Command
 {
     class UseBoomerangCommand : ICommand
     {
-        private Game1 loz;
-        public UseBoomerangCommand(Game1 game)
+        private IPlayer link;
+        public UseBoomerangCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.UseBoomerang();
+            link.UseBoomerang();
         }
     }
 }

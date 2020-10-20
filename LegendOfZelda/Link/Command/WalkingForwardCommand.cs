@@ -3,14 +3,14 @@ namespace LegendOfZelda.Link.Command
 {
     class WalkingForwardCommand : ICommand
     {
-        private Game1 loz;
-        public WalkingForwardCommand(Game1 game)
+        private IPlayer link;
+        public WalkingForwardCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.MoveUp();
+            link.MoveUp();
         }
     }
 }
