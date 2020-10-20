@@ -13,6 +13,7 @@ namespace LegendOfZelda.Item.Sprite
         public BoomerangSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            destinationRectangle = Rectangle.Empty;
         }
         public void Update()
         {
@@ -22,7 +23,7 @@ namespace LegendOfZelda.Item.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int width = (int)((float)sprite.Width / (float)3);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, width, sprite.Height);
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
