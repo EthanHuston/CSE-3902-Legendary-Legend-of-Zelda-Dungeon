@@ -133,7 +133,7 @@ namespace LegendOfZelda.Link
             state.PickUpTriforce();
         }
 
-        public void SpawnItem(IItem item)
+        public void SpawnItem(IProjectile item)
         {
             Game.SpawnedItems.Spawn(item);
         }

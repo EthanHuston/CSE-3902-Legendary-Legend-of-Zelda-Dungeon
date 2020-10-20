@@ -1,4 +1,5 @@
 using LegendOfZelda.Link.State.NotMoving;
+using LegendOfZelda.Projectile;
 using System;
 
 namespace LegendOfZelda.Link.State.Item
@@ -15,7 +16,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            link.SpawnItem(new BombExplodingProjectile(link));
+            link.SpawnItem(new BombExplodingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.ItemOwner.Link));
         }
 
         public override void Update()

@@ -1,4 +1,5 @@
 using LegendOfZelda.Link.State.NotMoving;
+using LegendOfZelda.Projectile;
 using System;
 
 namespace LegendOfZelda.Link.State.Item
@@ -15,7 +16,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            this.link.SpawnItem(new ArrowFlyingItem(link, Constants.Direction.Right));
+            link.SpawnItem(new ArrowFlyingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.Direction.Right, Constants.ItemOwner.Link));
         }
 
         public override void Update()
