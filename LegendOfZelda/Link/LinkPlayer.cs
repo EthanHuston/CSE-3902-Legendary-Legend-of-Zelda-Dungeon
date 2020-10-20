@@ -27,6 +27,7 @@ namespace LegendOfZelda.Link
             oldPosition = new Point(spawnPosition.X, spawnPosition.Y);
             position = new Point(spawnPosition.X, spawnPosition.Y);
             safeToDespawn = false;
+            inventory = new Dictionary<Constants.LinkInventory, int>();
         }
 
         public Point GetPosition()
@@ -135,7 +136,7 @@ namespace LegendOfZelda.Link
 
         public void SpawnItem(IProjectile item)
         {
-            Game.SpawnedItems.Spawn(item);
+            Game.GetCurrentRoom().GetSpawnableManager().Spawn(item);
         }
 
         public void UseBomb()
@@ -180,42 +181,42 @@ namespace LegendOfZelda.Link
 
         public void PickupMap()
         {
-            inventory[Constants.LinkInventory.Map] += 1;
+            inventory[Constants.LinkInventory.Map]++;
         }
 
         public void PickupBomb()
         {
-            inventory[Constants.LinkInventory.Bomb] += 1;
+            inventory[Constants.LinkInventory.Bomb]++;
         }
 
         public void PickupKey()
         {
-            inventory[Constants.LinkInventory.Key] += 1;
+            inventory[Constants.LinkInventory.Key]++;
         }
 
         public void PickupCompass()
         {
-            inventory[Constants.LinkInventory.Compass] += 1;
+            inventory[Constants.LinkInventory.Compass]++;
         }
 
         public void PickupHeart()
         {
-            // TODO: heal link when he picks up heart right??
+            inventory[Constants.LinkInventory.Heart]++;
         }
 
         public void PickupRupee()
         {
-            inventory[Constants.LinkInventory.Arrow] += 1;
+            inventory[Constants.LinkInventory.Arrow]++;
         }
 
         public void PickupFairy()
         {
-            // TODO: can link keep fairies in his inventory??
+            inventory[Constants.LinkInventory.Fairy]++;
         }
 
         public void PickupClock()
         {
-            // TODO: idk what link does when he picks up a clock
+            inventory[Constants.LinkInventory.Clock]++;
         }
 
         public void Despawn()

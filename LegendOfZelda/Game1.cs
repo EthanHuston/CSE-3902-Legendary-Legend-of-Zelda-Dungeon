@@ -24,7 +24,7 @@ namespace LegendOfZelda
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            // currentRoom = ; TODO: initialize me
+            currentRoom = null; // TODO: Initialize room
             playersList = new List<IPlayer>()
             {
                 {new LinkPlayer(this, new Point(0,0)) }

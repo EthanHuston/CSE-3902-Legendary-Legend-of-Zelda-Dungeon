@@ -12,10 +12,6 @@ namespace LegendOfZelda.Enemies.Sprite
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        private int width;
-        private int height;
-        private int row;
-        private int column;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
 

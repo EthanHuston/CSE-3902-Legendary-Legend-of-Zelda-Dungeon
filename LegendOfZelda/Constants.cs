@@ -69,8 +69,10 @@ namespace LegendOfZelda
             Bomb,
             Map,
             Key,
-            Compass
-            // add mode
+            Compass,
+            Heart,
+            Fairy,
+            Clock
         }
 
         //Enemy Constants

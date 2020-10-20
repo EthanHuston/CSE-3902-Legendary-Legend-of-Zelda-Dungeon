@@ -32,7 +32,7 @@ namespace LegendOfZelda.Enemies
             spriteBatch = game.SpriteBatch;
             velocity = 2;
             position = spawnPosition;
-            itemSpawner = game.SpawnedItems;
+            itemSpawner = game.GetCurrentRoom().GetSpawnableManager();
         }
 
         public void Update()
