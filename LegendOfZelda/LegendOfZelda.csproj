@@ -82,6 +82,9 @@
     <Compile Include="Enemies\Sprite\OldManSprite.cs" />
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
+    <Compile Include="Interface\ICollisionManager.cs" />
+    <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
+    <Compile Include="Rooms\CollisionManager.cs" />
     <Compile Include="Rooms\SpawnableManager.cs" />
     <Compile Include="Enemies\CollisionHandlers\BatBlockCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\AquamentusBlockCollisionHandler.cs" />
@@ -147,7 +150,7 @@
     <Compile Include="Item\BowItem.cs" />
     <Compile Include="Item\FairyItem.cs" />
     <Compile Include="Item\HeartItem.cs" />
-    <Compile Include="Item\HeartContainer.cs" />
+    <Compile Include="Item\HeartContainerItem.cs" />
     <Compile Include="Item\KeyItem.cs" />
     <Compile Include="Link\Command\UseSwordBeamCommand.cs" />
     <Compile Include="Link\LinkPlayer.cs" />
@@ -336,7 +339,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Projectile\CollisionHandler\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
