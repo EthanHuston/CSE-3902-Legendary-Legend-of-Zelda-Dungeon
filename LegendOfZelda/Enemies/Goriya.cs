@@ -16,13 +16,15 @@ namespace LegendOfZelda.Enemies
         private IProjectile boomer;
         private int velocity;
         private int updateCount = 0;
-        private int direction = 1;
+        private Constants.Direction direction = Constants.Direction.Down;
+        private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private int changeDirection = 100;
         private bool boomerangInitialized = false;
         private bool boomerangActive = false;
         private int attackWaitTime = 150;
         private double health = 3;
-        private bool beingDamaged = false;
+        private bool inKnockback = false;
+        private bool safeToDespawn = false;
 
         private Random rand = new Random();
 
@@ -37,22 +39,28 @@ namespace LegendOfZelda.Enemies
 
         public void Update()
         {
-            updateCount++;
-            if (updateCount >= 1000)
-                updateCount = 0;
-
-            if (!boomerangActive)
-                Move();
-
-            KeepInBounds();
-
-            if (updateCount % attackWaitTime == 0)
-                Attack();
-
-            if (boomerangInitialized)
+            if (!inKnockback)
             {
-                boomer.Update();
-                boomerangActive = boomer.SafeToDespawn();
+                updateCount++;
+                if (updateCount >= 1000)
+                    updateCount = 0;
+
+                if (!boomerangActive)
+                    Move();
+
+                KeepInBounds();
+
+                if (updateCount % attackWaitTime == 0)
+                    Attack();
+
+                if (boomerangInitialized)
+                {
+                    boomer.Update();
+                    boomerangActive = boomer.SafeToDespawn();
+                }
+            }
+            else {
+                MoveKnockback(knockbackOrigin);
             }
 
 
@@ -61,7 +69,7 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            if (beingDamaged)
+            if (inKnockback)
             {
                 sprite.Draw(spriteBatch, position, true);
                 if (boomerangActive)
@@ -82,16 +90,16 @@ namespace LegendOfZelda.Enemies
 
             switch (direction)
             {
-                case 0: // Up
+                case Constants.Direction.Up: // Up
                     position.Y -= velocity;
                     break;
-                case 1: // Down
+                case Constants.Direction.Down: // Down
                     position.Y += velocity;
                     break;
-                case 2: // Left
+                case Constants.Direction.Left: // Left
                     position.X -= velocity;
                     break;
-                case 3: // Right
+                case Constants.Direction.Right: // Right
                     position.X += velocity;
                     break;
                 default:
@@ -99,47 +107,78 @@ namespace LegendOfZelda.Enemies
             }
 
         }
+        private void MoveKnockback(Constants.Direction direction)
+        {
+            if(direction == this.direction)
+            {
+                inKnockback = true;
+                switch (direction){
+                    case Constants.Direction.Up: // Up
+                        position.Y += velocity;
+                        break;
+                    case Constants.Direction.Down: // Down
+                        position.Y -= velocity;
+                        break;
+                    case Constants.Direction.Left: // Left
+                        position.X += velocity;
+                        break;
+                    case Constants.Direction.Right: // Right
+                        position.X -= velocity;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         private void ChangeDirection()
         {
-            direction = rand.Next(0, 4);
+            int newDirection = rand.Next(0, 4);
 
-            switch (direction)
+            switch (newDirection)
             {
                 case 0: // Up
                     SetUpSprite();
+                    direction = Constants.Direction.Up;
                     break;
                 case 1: // Down
                     SetDownSprite();
+                    direction = Constants.Direction.Down;
                     break;
                 case 2: // Left
                     SetLeftSprite();
+                    direction = Constants.Direction.Left;
                     break;
                 case 3: // Right
                     SetRightSprite();
+                    direction = Constants.Direction.Right;
                     break;
                 default:
                     break;
             }
         }
 
-        private void ChangeDirection(int dir)
+        private void ChangeDirection(Constants.Direction dir)
         {
             direction = dir;
 
             switch (direction)
             {
-                case 0: // Up
+                case Constants.Direction.Up: // Up
                     SetUpSprite();
+                    this.direction = Constants.Direction.Up;
                     break;
-                case 1: // Down
+                case Constants.Direction.Down: // Down
                     SetDownSprite();
+                    this.direction = Constants.Direction.Down;
                     break;
-                case 2: // Left
+                case Constants.Direction.Left: // Left
                     SetLeftSprite();
+                    this.direction = Constants.Direction.Left;
                     break;
-                case 3: // Right
+                case Constants.Direction.Right: // Right
                     SetRightSprite();
+                    this.direction = Constants.Direction.Right;
                     break;
                 default:
                     break;
@@ -153,16 +192,16 @@ namespace LegendOfZelda.Enemies
             Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
-                case 0: // Up
+                case Constants.Direction.Up: // Up
                     v = new Vector2(0, -5);
                     break;
-                case 1: // Down
+                case Constants.Direction.Down: // Down
                     v = new Vector2(0, 5);
                     break;
-                case 2: // Left
+                case Constants.Direction.Left: // Left
                     v = new Vector2(-5, 0);
                     break;
-                case 3: // Right
+                case Constants.Direction.Right: // Right
                     v = new Vector2(5, 0);
                     break;
                 default:
@@ -178,25 +217,25 @@ namespace LegendOfZelda.Enemies
             if (position.X < Constants.MinXPos)
             {
                 position.X += velocity;
-                ChangeDirection(3); // Right
+                ChangeDirection(Constants.Direction.Right); // Right
             }
 
             else if (position.X > Constants.MaxXPos)
             {
                 position.X -= velocity;
-                ChangeDirection(2); // Left
+                ChangeDirection(Constants.Direction.Left); // Left
             }
 
             if (position.Y < Constants.MinYPos)
             {
                 position.Y += velocity;
-                ChangeDirection(1); // Down
+                ChangeDirection(Constants.Direction.Down); // Down
             }
 
             else if (position.Y > Constants.MaxYPos)
             {
                 position.Y -= velocity;
-                ChangeDirection(0); // Up
+                ChangeDirection(Constants.Direction.Up); // Up
             }
 
         }
@@ -229,10 +268,6 @@ namespace LegendOfZelda.Enemies
             boomerangActive = false;
             updateCount = 0;
         }
-        public void TakeDamage(float damage)
-        {
-            health -= damage;
-        }
         public void Move(Vector2 distance)
         {
             position.X += (int)distance.X;
@@ -245,7 +280,7 @@ namespace LegendOfZelda.Enemies
         }
         public bool SafeToDespawn()
         {
-            return health <= 0;
+            return safeToDespawn;
         }
         public Point GetPosition()
         {
@@ -259,12 +294,19 @@ namespace LegendOfZelda.Enemies
         public void TakeDamage(double damage)
         {
             health -= damage;
-            beingDamaged = true;
         }
 
         public void Despawn()
         {
-            throw new NotImplementedException();
+            safeToDespawn = true;
+        }
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            inKnockback = changeKnockback;
+            if (inKnockback)
+            {
+                knockbackOrigin = knockDirection;
+            }
         }
     }
 }

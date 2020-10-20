@@ -56,6 +56,7 @@ namespace LegendOfZelda.Enemies.Sprite
             if (damaged)
             {
                 spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Red);
+                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
 
             }
             else

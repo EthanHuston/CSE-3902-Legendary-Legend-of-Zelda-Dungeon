@@ -55,6 +55,8 @@ namespace LegendOfZelda.Enemies.Sprite
             spriteBatch.Begin();
             if (damaged)
             {
+                //Call Draw() twice with different colors to give a flicker effecct of damage
+                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Blue);
                 spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             }
             else
