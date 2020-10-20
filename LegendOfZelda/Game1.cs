@@ -1,7 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Rooms;
-using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -13,9 +12,7 @@ namespace LegendOfZelda
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
-        List<object> controllerList;
-        KeyboardController keyboardController;
-        public Sprint2Game sprint2;
+        List<IController> controllerList;
         private Room1 currentRoom;
         private List<IPlayer> playersList;
 
@@ -25,24 +22,25 @@ namespace LegendOfZelda
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             currentRoom = null; // TODO: Initialize room
-            playersList = new List<IPlayer>()
-            {
-                {new LinkPlayer(this, new Point(0,0)) }
-            };
+            playersList = new List<IPlayer>();
         }
 
         public void ResetGame()
         {
-            sprint2 = new Sprint2Game(this);
         }
 
         protected override void Initialize()
         {
-            keyboardController = new KeyboardController(this);
-            controllerList = new List<object>();
-            controllerList.Add(keyboardController);
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(Content);
+
+            controllerList = new List<IController>()
+            {
+                {new KeyboardController(this) }
+            };
+
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+            playersList.Add(new LinkPlayer(this, new Point(0, 0)));
 
             base.Initialize();
         }
