@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
+using LegendOfZelda.Rooms;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,13 +16,19 @@ namespace LegendOfZelda
         List<object> controllerList;
         KeyboardController keyboardController;
         public Sprint2Game sprint2;
-        public ISpawnableManager SpawnedItems;
+        private Room1 currentRoom;
+        private List<IPlayer> playersList;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            // currentRoom = ; TODO: initialize me
+            playersList = new List<IPlayer>()
+            {
+                {new LinkPlayer(this, new Point(0,0)) }
+            };
         }
 
         public void ResetGame()
@@ -57,9 +64,6 @@ namespace LegendOfZelda
                 controller.Update();
             }
 
-            SpawnedItems.UpdateAll();
-            sprint2.Update();
-
             base.Update(gameTime);
         }
 
@@ -67,8 +71,16 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            SpawnedItems.DrawAll();
-            sprint2.Draw();
+        }
+
+        public Room1 GetCurrentRoom()
+        {
+            return currentRoom;
+        }
+
+        public IPlayer GetGamePlayer(int playerNumber)
+        {
+            return playersList[playerNumber - 1];
         }
     }
 }

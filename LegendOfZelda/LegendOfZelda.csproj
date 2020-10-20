@@ -82,7 +82,7 @@
     <Compile Include="Enemies\Sprite\OldManSprite.cs" />
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
-    <Compile Include="Rooms\ItemSpawner.cs" />
+    <Compile Include="Rooms\SpawnableManager.cs" />
     <Compile Include="Enemies\CollisionHandlers\BatBlockCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\AquamentusBlockCollisionHandler.cs" />
     <Compile Include="Interface\ICollision.cs" />
@@ -97,7 +97,7 @@
     <Compile Include="Interface\IProjectileSprite.cs" />
     <Compile Include="Interface\IProjectile.cs" />
     <Compile Include="Interface\ISpawnable.cs" />
-    <Compile Include="Interface\IItemSpawner.cs" />
+    <Compile Include="Interface\ISpawnableManager.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Interface\IPlayer.cs" />
