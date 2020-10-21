@@ -28,27 +28,25 @@ namespace LegendOfZelda.Rooms
             this.spriteBatch = spriteBatch;
             TextFieldParser parser = new TextFieldParser(fileName);
             parser.Delimiters = new string[] { "," }; //Delimiters are like separators in NextWordOrSeparator
-            int lineCount = 0;
             int j = 0;
             //Read each line of the file
             while (!parser.EndOfData)
             {
                 string[] fields = parser.ReadFields();
-                if (lineCount < 7)
+                if (j < 7)
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
                         spawnFromString(fields[i], i, j);
                     }
                 }
-                else if(lineCount > 7)
+                else if(j > 7)
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        spawnEnemiesFromString(fields[i], i, j);
+                        spawnEnemiesFromString(fields[i], i, j - 7);
                     }
                 }
-                lineCount++;
                 j++;
             }
         }
