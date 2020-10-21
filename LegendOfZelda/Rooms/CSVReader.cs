@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Interface;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,15 +28,28 @@ namespace LegendOfZelda.Rooms
             this.spriteBatch = spriteBatch;
             TextFieldParser parser = new TextFieldParser(fileName);
             parser.Delimiters = new string[] { "," }; //Delimiters are like separators in NextWordOrSeparator
+            int lineCount = 0;
             int j = 0;
             //Read each line of the file
             while (!parser.EndOfData)
             {
                 string[] fields = parser.ReadFields();
-                for (int i = 0; i < fields.Length; i++)
+                if (lineCount < 7)
                 {
-                    spawnFromString(fields[i], i, j);
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        spawnFromString(fields[i], i, j);
+                    }
                 }
+                else if(lineCount > 7)
+                {
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        spawnEnemiesFromString(fields[i], i, j);
+                    }
+                }
+                lineCount++;
+                j++;
             }
         }
 
@@ -86,6 +100,13 @@ namespace LegendOfZelda.Rooms
                     break;
 
             }
+        }
+
+        private void spawnEnemiesFromString(string spawnType, int gridX, int gridY)
+        {
+            //handle enemies
+            Point position = new Point(gridX * tileLength, gridY * tileLength);
+            IBlock blockType;
         }
 
     }
