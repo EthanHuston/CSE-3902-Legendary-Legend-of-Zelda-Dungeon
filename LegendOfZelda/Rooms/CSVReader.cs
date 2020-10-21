@@ -44,7 +44,7 @@ namespace LegendOfZelda.Rooms
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        spawnEnemiesFromString(fields[i], i, j - 7);
+                        spawnEnemiesFromString(fields[i], i, j - 8);
                     }
                 }
                 j++;
