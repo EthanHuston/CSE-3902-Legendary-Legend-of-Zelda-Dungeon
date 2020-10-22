@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 
-namespace LegendOfZelda.Enemies.CollisionHandlers
+namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile
 {
     class SkeletonProjectileCollisionHandler : ICollisionHandler<INpc, IProjectile>
     {

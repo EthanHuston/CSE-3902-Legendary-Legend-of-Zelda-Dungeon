@@ -1,12 +1,13 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Enemies.CollisionHandlers
+namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
-    class AquamentusBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
+    class SpikeTrapBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
+            //Here only in the case a moveable block is moved in the way of the trap.
             Vector2 correctDirection;
             switch (side)
             {
@@ -30,7 +31,6 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
                     break;
 
             }
-
         }
     }
 }

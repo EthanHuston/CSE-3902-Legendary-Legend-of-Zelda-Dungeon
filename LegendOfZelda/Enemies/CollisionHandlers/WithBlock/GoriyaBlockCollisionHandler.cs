@@ -1,13 +1,14 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Enemies.CollisionHandlers
+namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
-    class JellyBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
+    class GoriyaBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
             Vector2 correctDirection;
+            enemy.SetKnockBack(false, Constants.Direction.Up);
             switch (side)
             {
                 case Constants.Direction.Up:

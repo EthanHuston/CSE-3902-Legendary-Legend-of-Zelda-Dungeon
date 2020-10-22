@@ -1,8 +1,8 @@
 ﻿using LegendOfZelda.Interface;
 
-namespace LegendOfZelda.Enemies.CollisionHandlers
+namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile
 {
-    class JellyProjectileCollisionHandler : ICollisionHandler<INpc, IProjectile>
+    class BatProjectileCollisionHandler : ICollisionHandler<INpc, IProjectile>
     {
         public void HandleCollision(INpc enemy, IProjectile projectile, Constants.Direction side)
         {

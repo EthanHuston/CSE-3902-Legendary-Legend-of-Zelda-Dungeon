@@ -1,14 +1,14 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Enemies.CollisionHandlers
+namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
-    class SpikeTrapBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
+    class SkeletonBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
-            //Here only in the case a moveable block is moved in the way of the trap.
             Vector2 correctDirection;
+            enemy.SetKnockBack(false, Constants.Direction.Up);
             switch (side)
             {
                 case Constants.Direction.Up:
@@ -31,6 +31,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
                     break;
 
             }
+
         }
     }
 }

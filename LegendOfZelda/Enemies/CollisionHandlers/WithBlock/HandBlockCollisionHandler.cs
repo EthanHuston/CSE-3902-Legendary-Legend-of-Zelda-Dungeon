@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 
-namespace LegendOfZelda.Enemies.CollisionHandlers
+namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
     class HandBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
     {
