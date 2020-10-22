@@ -57,16 +57,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Enemies\CollisionHandlers\WithProjectile\AquamentusProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\WithProjectile\BatProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyProjectileDoNothingCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemySwordBeamCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyBoomerangCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyBombCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyArrowCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithBlock\GoriyaBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\WithProjectile\GoriyaProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithBlock\HandBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\WithProjectile\HandProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithBlock\JellyBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\WithProjectile\JellyProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithBlock\SkeletonBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\WithProjectile\SkeletonProjectileCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithBlock\SpikeTrapBlockCollisionHandler.cs" />
     <Compile Include="Enemies\EnemySpriteFactory.cs" />
     <Compile Include="Enemies\Sprite\AquamentusBreathingSprite.cs" />
@@ -86,6 +85,10 @@
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkFireCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkMoveableBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\SwordBeamBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
