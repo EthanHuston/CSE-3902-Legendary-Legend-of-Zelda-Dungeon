@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Link.CollisionHandler.WithItem
 {
-    class LinkClockItemCollisionHandler : ICollision<IPlayer, IItem>
+    class LinkClockItemCollisionHandler : ICollisionHandler<IPlayer, IItem>
     {
         public void HandleCollision(IPlayer link, IItem clock, Constants.Direction side)
         {

@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Link.CollisionHandler.WithItem
 {
-    class LinkBoomerangItemCollisionHandler : ICollision<IPlayer, IItem>
+    class LinkBoomerangItemCollisionHandler : ICollisionHandler<IPlayer, IItem>
     {
         public void HandleCollision(IPlayer link, IItem boomerang, Constants.Direction side)
         {

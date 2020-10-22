@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkImmovableBlockCollisionHandler : ICollision<IPlayer, IBlock>
+    class LinkImmovableBlockCollisionHandler : ICollisionHandler<IPlayer, IBlock>
     {
         private const int linkMoveDistance = 1;
 

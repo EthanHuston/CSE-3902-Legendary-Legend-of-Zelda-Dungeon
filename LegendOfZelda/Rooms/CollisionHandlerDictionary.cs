@@ -10,20 +10,20 @@ namespace LegendOfZelda.Rooms
     class CollisionHandlerDictionary
     {
         // IPlayer Collision Dictionaries
-        private Dictionary<Type, ICollision<IPlayer, INpc>> playerNpcDictionary;
-        private Dictionary<Type, ICollision<IPlayer, IProjectile>> playerProjectileDictionary;
-        private Dictionary<Type, ICollision<IPlayer, IItem>> playerItemDictionary;
-        private Dictionary<Type, ICollision<IPlayer, IBlock>> playerBlockDictionary;
+        private Dictionary<Type, ICollisionHandler<IPlayer, INpc>> playerNpcDictionary;
+        private Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>> playerProjectileDictionary;
+        private Dictionary<Type, ICollisionHandler<IPlayer, IItem>> playerItemDictionary;
+        private Dictionary<Type, ICollisionHandler<IPlayer, IBlock>> playerBlockDictionary;
 
         // INpc Collision Dictionaries
-        private Dictionary<Type, ICollision<INpc, IProjectile>> npcProjectileDictionary;
-        private Dictionary<Type, ICollision<INpc, IBlock>> npcBlockDictionary;
+        private Dictionary<Type, ICollisionHandler<INpc, IProjectile>> npcProjectileDictionary;
+        private Dictionary<Type, ICollisionHandler<INpc, IBlock>> npcBlockDictionary;
 
         // IProjectile Collision Dictionary
-        private Dictionary<Type, ICollision<IProjectile, IBlock>> projectileBlockDictionary;
+        private Dictionary<Type, ICollisionHandler<IProjectile, IBlock>> projectileBlockDictionary;
 
         // IItem Collision Dictionary
-        private Dictionary<Type, ICollision<IItem, IBlock>> itemBlockDictionary;
+        private Dictionary<Type, ICollisionHandler<IItem, IBlock>> itemBlockDictionary;
 
         public CollisionHandlerDictionary()
         {
@@ -33,59 +33,59 @@ namespace LegendOfZelda.Rooms
             InitializeItemCollisionDictionaries();
         }
 
-        public ICollision<IPlayer, INpc> GetPlayerNpcHandler(Type type)
+        public ICollisionHandler<IPlayer, INpc> GetPlayerNpcHandler(Type type)
         {
             return playerNpcDictionary[type];
         }
 
-        public ICollision<IPlayer, IProjectile> GetPlayerProjectileHandler(Type type)
+        public ICollisionHandler<IPlayer, IProjectile> GetPlayerProjectileHandler(Type type)
         {
             return playerProjectileDictionary[type];
         }
 
-        public ICollision<IPlayer, IItem> GetPlayerItemHandler(Type type)
+        public ICollisionHandler<IPlayer, IItem> GetPlayerItemHandler(Type type)
         {
             return playerItemDictionary[type];
         }
 
-        public ICollision<IPlayer, IBlock> GetPlayerBlockHandler(Type type)
+        public ICollisionHandler<IPlayer, IBlock> GetPlayerBlockHandler(Type type)
         {
             return playerBlockDictionary[type];
         }
 
-        public ICollision<INpc, IProjectile> GetNpcProjectileHandler(Type type)
+        public ICollisionHandler<INpc, IProjectile> GetNpcProjectileHandler(Type type)
         {
             return npcProjectileDictionary[type];
         }
 
-        public ICollision<INpc, IBlock> GetNpcBlockHandler(Type type)
+        public ICollisionHandler<INpc, IBlock> GetNpcBlockHandler(Type type)
         {
             return npcBlockDictionary[type];
         }
 
-        public ICollision<IProjectile, IBlock> GetProjectileBlockHandler(Type type)
+        public ICollisionHandler<IProjectile, IBlock> GetProjectileBlockHandler(Type type)
         {
             return projectileBlockDictionary[type];
         }
 
-        public ICollision<IItem, IBlock> GetItemBlockHandler(Type type)
+        public ICollisionHandler<IItem, IBlock> GetItemBlockHandler(Type type)
         {
             return itemBlockDictionary[type];
         }
 
         private void InitializePlayerCollisionDictionaries()
         {
-            playerNpcDictionary = new Dictionary<Type, ICollision<IPlayer, INpc>>()
+            playerNpcDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, INpc>>()
             {
                 // TODO: initialize here
             };
 
-            playerProjectileDictionary = new Dictionary<Type, ICollision<IPlayer, IProjectile>>()
+            playerProjectileDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>>()
             {
                 // TODO: initialize here
             };
 
-            playerItemDictionary = new Dictionary<Type, ICollision<IPlayer, IItem>>()
+            playerItemDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IItem>>()
             {
                 {typeof(BombItem), new LinkBombItemCollisionHandler() },
                 {typeof(BoomerangItem), new LinkBoomerangItemCollisionHandler() },
@@ -101,7 +101,7 @@ namespace LegendOfZelda.Rooms
                 {typeof(TriforceItem), new LinkTriforceItemCollisionHandler() }
             };
 
-            playerBlockDictionary = new Dictionary<Type, ICollision<IPlayer, IBlock>>()
+            playerBlockDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IBlock>>()
             {
                 // TODO: initialize here
                 // fire
@@ -116,12 +116,12 @@ namespace LegendOfZelda.Rooms
 
         private void InitializeNpcCollisionDictionaries()
         {
-            npcProjectileDictionary = new Dictionary<Type, ICollision<INpc, IProjectile>>
+            npcProjectileDictionary = new Dictionary<Type, ICollisionHandler<INpc, IProjectile>>
             {
                 // TODO: initialize here
             };
 
-            npcBlockDictionary = new Dictionary<Type, ICollision<INpc, IBlock>>()
+            npcBlockDictionary = new Dictionary<Type, ICollisionHandler<INpc, IBlock>>()
             {
                 // TODO: initialize here
             };
@@ -129,7 +129,7 @@ namespace LegendOfZelda.Rooms
 
         private void InitializeProjectileCollisionDictionaries()
         {
-            projectileBlockDictionary = new Dictionary<Type, ICollision<IProjectile, IBlock>>
+            projectileBlockDictionary = new Dictionary<Type, ICollisionHandler<IProjectile, IBlock>>
             {
                 // TODO: initialize here
             };
@@ -137,7 +137,7 @@ namespace LegendOfZelda.Rooms
 
         private void InitializeItemCollisionDictionaries()
         {
-            itemBlockDictionary = new Dictionary<Type, ICollision<IItem, IBlock>>()
+            itemBlockDictionary = new Dictionary<Type, ICollisionHandler<IItem, IBlock>>()
             {
                 // TODO: initialize me here
             };

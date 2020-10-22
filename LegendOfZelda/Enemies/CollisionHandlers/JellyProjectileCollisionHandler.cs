@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class JellyProjectileCollisionHandler : ICollision<INpc, IProjectile>
+    class JellyProjectileCollisionHandler : ICollisionHandler<INpc, IProjectile>
     {
         public void HandleCollision(INpc enemy, IProjectile projectile, Constants.Direction side)
         {

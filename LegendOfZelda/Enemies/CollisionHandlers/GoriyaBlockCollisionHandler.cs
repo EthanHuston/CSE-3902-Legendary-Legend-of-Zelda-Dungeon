@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers
 {
-    class GoriyaBlockCollisionHandler : ICollision<INpc, IBlock>
+    class GoriyaBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
