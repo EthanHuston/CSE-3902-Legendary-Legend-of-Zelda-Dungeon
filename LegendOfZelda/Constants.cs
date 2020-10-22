@@ -37,6 +37,13 @@ namespace LegendOfZelda
         public const double BoomerangDamage = .5;
         public const double SwordBeamDamage = 1.0;
 
+        // Moveable Block
+        public const float MBlockMoveUp = -1;
+        public const float MBlockMoveDown = 1;
+        public const float MBlockMoveRight = 1;
+        public const float MBlockMoveLeft = -1;
+        public const float MBlockNoMove = 0;
+
         // Game Screen
         public const int MaxXPos = 800;
         public const int MinXPos = 0;
