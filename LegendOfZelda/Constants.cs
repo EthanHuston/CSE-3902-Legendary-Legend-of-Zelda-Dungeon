@@ -84,6 +84,7 @@ namespace LegendOfZelda
         public const int SpikeTrapMaxDist = 50;
         public const int SpikeTrapGoingVelocity = 4;
         public const int SpikeTrapReturningVelocity = 2;
+        public const int MovableSquareVelocity = 1;
         public const float EnemyMoveUp = -1;
         public const float EnemyMoveDown = 1;
         public const float EnemyMoveRight = 1;

@@ -82,6 +82,7 @@
     <Compile Include="Enemies\Sprite\OldManSprite.cs" />
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
+    <Compile Include="Environment\MovableSquare.cs" />
     <Compile Include="Interface\ICollisionManager.cs" />
     <Compile Include="Link\CollisionHandler\LinkBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\LinkFireCollisionHandler.cs" />
