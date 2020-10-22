@@ -1,3 +1,5 @@
+using LegendOfZelda.Interface;
+
 namespace LegendOfZelda.Link.Interface
 {
     interface ILinkState
@@ -21,5 +23,6 @@ namespace LegendOfZelda.Link.Interface
         void UseSword();
         void UseBow();
         void UseSwordBeam();
+        void Drag(ISpawnable drag, int dragTimeMs);
     }
 }

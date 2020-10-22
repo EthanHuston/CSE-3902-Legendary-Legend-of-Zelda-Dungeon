@@ -8,6 +8,7 @@ namespace LegendOfZelda.Utility
         private int distanceToMove;
         private int totalDistanceMoved;
         private Vector2 movingVelocity;
+        private bool overrideNextUpdate;
 
         private Vector2 velocity;
         public Vector2 Velocity
@@ -29,6 +30,7 @@ namespace LegendOfZelda.Utility
             this.velocity = new Vector2(velocity.X, velocity.Y);
             movingDistanceRightNow = false;
             totalDistanceMoved = 0;
+            overrideNextUpdate = false;
         }
 
         public void MoveDistance(int distanceToMove, Vector2 movingVelocity)
@@ -41,6 +43,12 @@ namespace LegendOfZelda.Utility
 
         public void Update()
         {
+            if (overrideNextUpdate)
+            {
+                overrideNextUpdate = false;
+                return;
+            }
+
             position.X += (int)(!movingDistanceRightNow ? velocity.X : movingVelocity.X);
             position.Y += (int)(!movingDistanceRightNow ? velocity.Y : movingVelocity.Y);
 
@@ -52,6 +60,12 @@ namespace LegendOfZelda.Utility
         {
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
+        }
+
+        public void ForceMoveToPoint(Point position)
+        {
+            Position = position;
+            overrideNextUpdate = true;
         }
     }
 }

@@ -210,5 +210,10 @@ namespace LegendOfZelda.Link
         {
             Mover.MoveOnce(distance);
         }
+
+        public void Drag(ISpawnable dragger, int dragTimeMs)
+        {
+            state.Drag(dragger, dragTimeMs);
+        }
     }
 }

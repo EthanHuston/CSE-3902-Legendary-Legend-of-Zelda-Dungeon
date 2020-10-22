@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.Item;
 using LegendOfZelda.Link.State.Walking;
 using Microsoft.Xna.Framework;
@@ -105,6 +106,12 @@ namespace LegendOfZelda.Link.State
         public void PickUpBoomerang()
         {
             link.State = new LinkPickingUpBoomerangState(link, damaged, healthyDateTime);
+        }
+
+        public void Drag(ISpawnable owner, int dragTimeMs)
+        {
+            link.BlockStateChange = false;
+            link.State = new LinkBeingDraggedState(link, damaged, healthyDateTime, owner, dragTimeMs);
         }
     }
 }
