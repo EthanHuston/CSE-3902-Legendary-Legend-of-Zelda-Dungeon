@@ -13,28 +13,38 @@ namespace LegendOfZelda.Rooms
         private const int tileLength = 16;
         //String Abbreviations for Tiles in CSV File
         const string Block = "block";
-        const string BlueTile = "---";
         const string BrickTile = "brick";
         const string Fire = "fire";
         const string GapTile = "black";
         const string LadderTile = "lad";
+        const string MovableBlock = "redblock";
         const string Stairs = "stairs";
         const string Statue = "stat";
         const string BlueGrass = "bg";
         const string Water = "water";
         //String Abbreviations for Border and Background in CSV File
-        const string TileBackground = "tileBack";
+        const string TileBackground = "tealBack";
         const string BlackBackground = "blackBack";
-        const string Walls = "walls";
+        const string WallPiece = "wall";
+        const string OpenDoor = "open";
+        const string LockedDoor = "locked";
+        const string ShutDoor = "shut";
+        const string BombableWall = "wallBom";
         //String Abbreviations for Enemies in CSV File
-        const string Aquamentus = "Aquamentus";
-        const string Bat = "Bat";
-        const string Goriya = "Goriya";
-        const string Hand = "Hand";
-        const string Jelly = "Jelly";
-        const string OldMan = "OldMan";
-        const string Skeleton = "Skeleton";
-        const string SpikeTrap = "SpikeTrap";
+        const string Aquamentus = "aquamentus";
+        const string Bat = "bat";
+        const string Goriya = "goriya";
+        const string Hand = "hand";
+        const string Jelly = "jelly";
+        const string OldMan = "oldman";
+        const string Skeleton = "skeleton";
+        const string SpikeTrap = "spiketrap";
+        //String Abbreviations for Items in CSV File
+        const string Compass = "compass";
+        const string Heart = "heart";
+        const string Key = "key";
+        const string Map = "map";
+        const string Triforce = "triforce";
 
         public CSVReader(SpriteBatch spriteBatch, string fileName)
         {
@@ -50,7 +60,7 @@ namespace LegendOfZelda.Rooms
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        spawnWallsAndBackground(fields[i]);
+                        spawnWallsAndBackground(fields[i], i);
                     }
                 }
                 else
@@ -111,12 +121,31 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        private void spawnWallsAndBackground(string spawnType)
+        private void spawnWallsAndBackground(string spawnType, int i)
         {
             IBlock blockType;
+            Point position = Point.Zero;
+            if (i == 1)
+            {
+                position = new Point(0, 0);
+            }
+            allObjects.Spawn(new RoomBorder(spriteBatch, new Point(0, 0)));
             switch (spawnType)
             {
                 case TileBackground:
+                    break;
+                case BlackBackground:
+                    break;
+                case WallPiece:
+                    break;
+                case OpenDoor:
+                    blockType = new OpenDoor(spriteBatch, position);
+                    break;
+                case LockedDoor:
+                    break;
+                case ShutDoor:
+                    break;
+                case BombableWall:
                     break;
                 default:
                     break;
