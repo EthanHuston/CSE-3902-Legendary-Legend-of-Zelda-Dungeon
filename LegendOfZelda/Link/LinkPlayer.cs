@@ -16,6 +16,7 @@ namespace LegendOfZelda.Link
         public ILinkSprite CurrentSprite { get; set; }
         public bool BlockStateChange { get; set; }
         public SpawnableMover Mover { get; private set; }
+        
         private ILinkState state;
         public ILinkState State
         {

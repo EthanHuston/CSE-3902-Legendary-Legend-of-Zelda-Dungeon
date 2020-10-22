@@ -20,7 +20,7 @@ namespace LegendOfZelda.Link.State.Item
         protected override void InitClass()
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
-            link.SetVelocity(Vector2.Zero);
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
@@ -41,14 +41,14 @@ namespace LegendOfZelda.Link.State.Item
 
         public override void Draw()
         {
-            int posX = link.GetPosition().X + spawnOffsetX;
-            int posY = link.GetPosition().Y + spawnOffsetY;
+            int posX = link.Position.X + spawnOffsetX;
+            int posY = link.Position.Y + spawnOffsetY;
             link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged);
         }
 
         public override void StopMoving()
         {
-            link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
+            link.State = new LinkStandingStillDownState(link, damaged, healthyDateTime);
         }
     }
 }

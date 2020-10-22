@@ -64,47 +64,47 @@ namespace LegendOfZelda.Link.State
 
         public void MoveDown()
         {
-            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
+            link.State = new LinkWalkingDownState(link, damaged, healthyDateTime);
         }
 
         public void MoveLeft()
         {
-            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkWalkingLeftState(link, damaged, healthyDateTime);
         }
 
         public void MoveRight()
         {
-            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
+            link.State = new LinkWalkingRightState(link, damaged, healthyDateTime);
         }
 
         public void MoveUp()
         {
-            link.SetState(new LinkWalkingUpState(link, damaged, healthyDateTime));
+            link.State = new LinkWalkingUpState(link, damaged, healthyDateTime);
         }
 
         public void PickUpSword()
         {
-            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpSwordState(link, damaged, healthyDateTime);
         }
 
         public void PickUpHeartContainer()
         {
-            link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpHeartState(link, damaged, healthyDateTime);
         }
 
         public void PickUpTriforce()
         {
-            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpTriforceState(link, damaged, healthyDateTime);
         }
 
         public void PickUpBow()
         {
-            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpBowState(link, damaged, healthyDateTime);
         }
 
         public void PickUpBoomerang()
         {
-            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpBoomerangState(link, damaged, healthyDateTime);
         }
     }
 }

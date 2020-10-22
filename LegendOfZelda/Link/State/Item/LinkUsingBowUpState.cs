@@ -17,8 +17,8 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            this.link.SpawnItem(new ArrowFlyingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.Direction.Up, Constants.ItemOwner.Link));
-            link.SetVelocity(Vector2.Zero);
+            this.link.SpawnItem(new ArrowFlyingProjectile(link.Game.SpriteBatch, link.Position, Constants.Direction.Up, Constants.ItemOwner.Link));
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
@@ -29,12 +29,12 @@ namespace LegendOfZelda.Link.State.Item
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
         }
 
         public override void StopMoving()
         {
-            link.SetState(new LinkStandingStillUpState(link, damaged, healthyDateTime));
+            link.State = new LinkStandingStillUpState(link, damaged, healthyDateTime);
         }
     }
 }

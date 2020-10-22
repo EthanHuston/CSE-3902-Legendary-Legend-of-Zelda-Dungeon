@@ -18,7 +18,7 @@ namespace LegendOfZelda.Link.State.NotMoving
         protected override void InitClass()
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkLeftSprite();
-            link.SetVelocity(Vector2.Zero);
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
@@ -30,7 +30,7 @@ namespace LegendOfZelda.Link.State.NotMoving
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
         }
 
         public override void StopMoving()
@@ -40,27 +40,27 @@ namespace LegendOfZelda.Link.State.NotMoving
 
         public override void UseSword()
         {
-            link.SetState(new LinkAttackingLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkAttackingLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBow()
         {
-            link.SetState(new LinkUsingBowLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBowLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBomb()
         {
-            link.SetState(new LinkUsingBombLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBombLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBoomerang()
         {
-            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseSwordBeam()
         {
-            link.SetState(new LinkUsingSwordBeamLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingSwordBeamLeftState(link, damaged, healthyDateTime);
         }
     }
 }

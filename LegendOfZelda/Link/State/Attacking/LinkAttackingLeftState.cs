@@ -19,7 +19,7 @@ namespace LegendOfZelda.Link.State.Attacking
         protected override void InitClass()
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingLeftLinkSprite();
-            link.SetVelocity(Vector2.Zero);
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
@@ -40,14 +40,14 @@ namespace LegendOfZelda.Link.State.Attacking
 
         public override void Draw()
         {
-            int posX = link.GetPosition().X + spawnOffsetX;
-            int posY = link.GetPosition().Y + spawnOffsetY;
+            int posX = link.Position.X + spawnOffsetX;
+            int posY = link.Position.Y + spawnOffsetY;
             link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged);
         }
 
         public override void StopMoving()
         {
-            link.SetState(new LinkStandingStillLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkStandingStillLeftState(link, damaged, healthyDateTime);
         }
     }
 }
