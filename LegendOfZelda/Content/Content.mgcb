@@ -145,6 +145,18 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/SpikeTrap.png
 
+#begin Environment/8376.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/8376.png;Environment/Walls.png
+
 #begin Environment/BlackTile.png
 /importer:TextureImporter
 /processor:TextureProcessor

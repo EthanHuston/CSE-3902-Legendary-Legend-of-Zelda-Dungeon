@@ -8,14 +8,16 @@ namespace LegendOfZelda.Environment
 {
     class Walls : IBlock
     {
-        private ISprite roomBorderSprite;
+        private ITextureAtlasSprite wallSprite;
         private SpriteBatch sB;
         private Point position;
         private bool safeToDespawn;
+        private int textureMapRow;
+        private const int textureMapColumn = 1;
 
         public Walls(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            roomBorderSprite = EnvironmentSpriteFactory.Instance.CreateRoomBorderSprite();
+            wallSprite = EnvironmentSpriteFactory.Instance.CreateWallSprite();
             sB = spriteBatch;
             position = spawnPosition;
             safeToDespawn = false;
@@ -28,7 +30,23 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            roomBorderSprite.Draw(sB, new Point(ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY));
+            if ((position.X != Constants.MinXPos) && (position.Y == Constants.MinYPos))
+            {
+                textureMapRow = 1;
+            }
+            else if ((position.X == Constants.MinXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureMapRow = 2;
+            }
+            else if ((position.X == Constants.MaxXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureMapRow = 3;
+            }
+            else if ((position.X != Constants.MinXPos) && (position.Y == Constants.MaxYPos))
+            {
+                textureMapRow = 4;
+            }
+            wallSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
         public Point GetPosition()
@@ -38,7 +56,7 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return roomBorderSprite.GetPositionRectangle();
+            return wallSprite.GetPositionRectangle();
         }
 
         public void Move(Vector2 distance)
@@ -59,7 +77,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            roomBorderSprite.Update();
+            wallSprite.Update();
         }
     }
 }

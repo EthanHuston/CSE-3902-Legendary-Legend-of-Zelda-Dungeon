@@ -42,6 +42,8 @@ namespace LegendOfZelda
         public const int MinXPos = 0;
         public const int MaxYPos = 480;
         public const int MinYPos = 0;
+        public const int HalfXPos = 400;
+        public const int HalfYPos = 240;
 
         // Directions
         public enum Direction
