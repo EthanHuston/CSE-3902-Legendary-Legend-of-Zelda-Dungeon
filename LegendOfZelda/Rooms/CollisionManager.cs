@@ -140,40 +140,40 @@ namespace LegendOfZelda.Rooms
 
         private void CheckIntersectionAndHandleCollision(INpc npc, IProjectile projectile)
         {
-            Rectangle side = Rectangle.Intersect(npc.GetRectangle(), projectile.GetRectangle());
-            if (!side.Equals(Rectangle.Empty))
+            Rectangle collisionFound = Rectangle.Intersect(npc.GetRectangle(), projectile.GetRectangle());
+            if (!collisionFound.Equals(Rectangle.Empty))
             {
-                Constants.Direction direction = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), projectile.GetRectangle(), side);
-                handlerDictionary.GetNpcProjectileHandler(projectile.GetType()).HandleCollision(npc, projectile, direction);
+                Constants.Direction side = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), projectile.GetRectangle(), collisionFound);
+                handlerDictionary.GetNpcProjectileHandler(projectile.GetType()).HandleCollision(npc, projectile, side);
             }
         }
 
         private void CheckIntersectionAndHandleCollision(INpc npc, IBlock block)
         {
-            Rectangle side = Rectangle.Intersect(npc.GetRectangle(), block.GetRectangle());
-            if (!side.Equals(Rectangle.Empty))
+            Rectangle collisionFound = Rectangle.Intersect(npc.GetRectangle(), block.GetRectangle());
+            if (!collisionFound.Equals(Rectangle.Empty))
             {
-                Constants.Direction direction = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), block.GetRectangle(), side);
-                handlerDictionary.GetNpcBlockHandler(block.GetType()).HandleCollision(npc, block, direction);
+                Constants.Direction side = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), block.GetRectangle(), collisionFound);
+                handlerDictionary.GetNpcBlockHandler(block.GetType()).HandleCollision(npc, block, side);
             }
         }
 
         private void CheckIntersectionAndHandleCollision(IProjectile projectile, IBlock block)
         {
-            Rectangle side = Rectangle.Intersect(projectile.GetRectangle(), block.GetRectangle());
-            if (!side.Equals(Rectangle.Empty))
+            Rectangle collisionFound = Rectangle.Intersect(projectile.GetRectangle(), block.GetRectangle());
+            if (!collisionFound.Equals(Rectangle.Empty))
             {
-                Constants.Direction direction = UtilityMethods.GetCollisionDirection(projectile.GetRectangle(), block.GetRectangle(), side);
-                handlerDictionary.GetProjectileBlockHandler(block.GetType()).HandleCollision(projectile, block, direction);
+                Constants.Direction side = UtilityMethods.GetCollisionDirection(projectile.GetRectangle(), block.GetRectangle(), collisionFound);
+                handlerDictionary.GetProjectileBlockHandler(block.GetType()).HandleCollision(projectile, block, side);
             }
         }
 
         private void CheckIntersectionAndHandleCollision(IItem item, IBlock block)
         {
-            Rectangle side = Rectangle.Intersect(item.GetRectangle(), block.GetRectangle());
-            if (!side.Equals(Rectangle.Empty))
+            Rectangle collisionFound = Rectangle.Intersect(item.GetRectangle(), block.GetRectangle());
+            if (!collisionFound.Equals(Rectangle.Empty))
             {
-                Constants.Direction direction = UtilityMethods.GetCollisionDirection(item.GetRectangle(), block.GetRectangle(), side);
+                Constants.Direction side = UtilityMethods.GetCollisionDirection(item.GetRectangle(), block.GetRectangle(), collisionFound);
                 handlerDictionary.GetItemBlockHandler(block.GetType()).HandleCollision(item, block, side);
             }
         }

@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Enemies.CollisionHandlers.WithBlock;
+using LegendOfZelda.Enemies.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
@@ -122,7 +123,11 @@ namespace LegendOfZelda.Rooms
         {
             npcProjectileDictionary = new Dictionary<Type, ICollisionHandler<INpc, IProjectile>>
             {
-                // TODO: init me 
+                {typeof(ArrowFlyingProjectile), new EnemyArrowCollisionHandler() },
+                {typeof(BombExplodingProjectile), new EnemyBombCollisionHandler() },
+                {typeof(BoomerangFlyingProjectile), new EnemyBoomerangCollisionHandler() },
+                {typeof(FireballProjectile), new EnemyProjectileDoNothingCollisionHandler() },
+                {typeof(SwordBeamFlyingProjectile), new EnemySwordBeamCollisionHandler() }
             };
 
             npcBlockDictionary = new Dictionary<Type, ICollisionHandler<INpc, IBlock>>()
@@ -143,6 +148,7 @@ namespace LegendOfZelda.Rooms
             {
                 {typeof(ArrowFlyingProjectile), new ArrowBlockCollisionHandler() },
                 {typeof(BoomerangFlyingProjectile), new BoomerangBlockCollisionHandler() },
+                {typeof(BombExplodingProjectile), new ProjectileBlockDoNothingCollisionHandler() },
                 {typeof(FireballProjectile), new FireballBlockCollisionHandler() },
                 {typeof(SwordBeamFlyingProjectile), new SwordBeamBlockCollisionHandler() }
             };
