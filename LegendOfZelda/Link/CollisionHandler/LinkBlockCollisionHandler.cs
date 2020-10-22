@@ -12,19 +12,19 @@ namespace LegendOfZelda.Link.CollisionHandler
             {
                 case Constants.Direction.Up:
                     correctDirection = new Vector2(Constants.LinkNoMove, Constants.LinkMoveUp);
-                    link.Move(correctDirection);
+                    link.Move(1, correctDirection);
                     break;
                 case Constants.Direction.Down:
                     correctDirection = new Vector2(Constants.LinkNoMove, Constants.LinkMoveDown);
-                    link.Move(correctDirection);
+                    link.Move(1, correctDirection);
                     break;
                 case Constants.Direction.Left:
                     correctDirection = new Vector2(Constants.LinkMoveLeft, Constants.LinkNoMove);
-                    link.Move(correctDirection);
+                    link.Move(1, correctDirection);
                     break;
                 case Constants.Direction.Right:
                     correctDirection = new Vector2(Constants.LinkMoveRight, Constants.LinkNoMove);
-                    link.Move(correctDirection);
+                    link.Move(1, correctDirection);
                     break;
                 default:
                     break;
