@@ -11,7 +11,7 @@ namespace LegendOfZelda.Rooms
         public IItemSpawner allObjects = new ItemSpawner();
         private SpriteBatch spriteBatch;
         private const int tileLength = 16;
-        //String Abbreviations from CSV File
+        //String Abbreviations for Tiles in CSV File
         const string Block = "block";
         const string BlueTile = "---";
         const string BrickTile = "brick";
@@ -22,6 +22,19 @@ namespace LegendOfZelda.Rooms
         const string Statue = "stat";
         const string BlueGrass = "bg";
         const string Water = "water";
+        //String Abbreviations for Border and Background in CSV File
+        const string TileBackground = "tileBack";
+        const string BlackBackground = "blackBack";
+        const string Walls = "walls";
+        //String Abbreviations for Enemies in CSV File
+        const string Aquamentus = "Aquamentus";
+        const string Bat = "Bat";
+        const string Goriya = "Goriya";
+        const string Hand = "Hand";
+        const string Jelly = "Jelly";
+        const string OldMan = "OldMan";
+        const string Skeleton = "Skeleton";
+        const string SpikeTrap = "SpikeTrap";
 
         public CSVReader(SpriteBatch spriteBatch, string fileName)
         {
@@ -33,18 +46,18 @@ namespace LegendOfZelda.Rooms
             while (!parser.EndOfData)
             {
                 string[] fields = parser.ReadFields();
-                if (j < 7)
+                if (j == 0)
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        spawnFromString(fields[i], i, j);
+                        spawnWallsAndBackground(fields[i]);
                     }
                 }
-                else if(j > 7)
+                else
                 {
-                    for (int i = 0; i < fields.Length; i++)
+                    for(int i = 0; i < fields.Length; i++)
                     {
-                        spawnEnemiesFromString(fields[i], i, j - 8);
+                        spawnFromString(fields[i], i, j);
                     }
                 }
                 j++;
@@ -59,8 +72,6 @@ namespace LegendOfZelda.Rooms
             switch (spawnType)
             {
                 case Block:
-                    break;
-                case BlueTile:
                     break;
                 case BrickTile:
                     blockType = new BrickTile(spriteBatch, position);
@@ -100,11 +111,17 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        private void spawnEnemiesFromString(string spawnType, int gridX, int gridY)
+        private void spawnWallsAndBackground(string spawnType)
         {
-            //handle enemies
-            Point position = new Point(gridX * tileLength, gridY * tileLength);
             IBlock blockType;
+            switch (spawnType)
+            {
+                case TileBackground:
+                    break;
+                default:
+                    break;
+
+            }
         }
 
     }
