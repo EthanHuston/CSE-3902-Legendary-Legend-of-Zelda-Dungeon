@@ -28,13 +28,13 @@ namespace LegendOfZelda.Enemies
 
         private Random rand = new Random();
 
-        public Goriya(Game1 game, Point spawnPosition)
+        public Goriya(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
             sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
-            spriteBatch = game.SpriteBatch;
+            this.spriteBatch = spriteBatch;
+            this.itemSpawner = itemSpawner;
             velocity = 2;
-            position = spawnPosition;
-            itemSpawner = game.GetCurrentRoom().GetSpawnableManager();
+            Position = spawnPosition;
         }
 
         public void Update()

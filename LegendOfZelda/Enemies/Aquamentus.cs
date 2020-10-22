@@ -21,12 +21,19 @@ namespace LegendOfZelda.Enemies
         private ISpawnableManager itemSpawner;
         private bool safeToDespawn;
 
-        public Aquamentus(Game1 game, Point spawnPosition)
+        private Point position;
+        public Point Position
+        {
+            get => new Point(position.X, position.Y);
+            set => position = new Point(value.X, value.Y);
+        }
+
+        public Aquamentus(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
             sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
-            spriteBatch = game.SpriteBatch;
-            itemSpawner = game.GetCurrentRoom().GetSpawnableManager();
-            position = spawnPosition;
+            this.spriteBatch = spriteBatch;
+            this.itemSpawner = itemSpawner;
+            Position = spawnPosition;
             safeToDespawn = false;
         }
 
