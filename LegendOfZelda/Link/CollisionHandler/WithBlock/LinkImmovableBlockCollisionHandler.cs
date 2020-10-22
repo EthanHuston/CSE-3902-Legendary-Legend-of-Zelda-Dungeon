@@ -1,9 +1,9 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Link.CollisionHandler.Block
+namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkBlockCollisionHandler : ICollision<IPlayer, IBlock>
+    class LinkImmovableBlockCollisionHandler : ICollision<IPlayer, IBlock>
     {
         private const int linkMoveDistance = 1;
 

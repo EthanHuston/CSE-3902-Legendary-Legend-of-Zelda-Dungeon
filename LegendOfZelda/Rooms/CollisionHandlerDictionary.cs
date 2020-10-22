@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
-using LegendOfZelda.Link.CollisionHandler;
+using LegendOfZelda.Link.CollisionHandler.WithBlock;
+using LegendOfZelda.Link.CollisionHandler.WithItem;
 using System;
 using System.Collections.Generic;
 
@@ -18,14 +19,18 @@ namespace LegendOfZelda.Rooms
         private Dictionary<Type, ICollision<INpc, IProjectile>> npcProjectileDictionary;
         private Dictionary<Type, ICollision<INpc, IBlock>> npcBlockDictionary;
 
-        // IProjectile Collision Dictionaries
+        // IProjectile Collision Dictionary
         private Dictionary<Type, ICollision<IProjectile, IBlock>> projectileBlockDictionary;
+
+        // IItem Collision Dictionary
+        private Dictionary<Type, ICollision<IItem, IBlock>> itemBlockDictionary;
 
         public CollisionHandlerDictionary()
         {
             InitializePlayerCollisionDictionaries();
             InitializeNpcCollisionDictionaries();
             InitializeProjectileCollisionDictionaries();
+            InitializeItemCollisionDictionaries();
         }
 
         public ICollision<IPlayer, INpc> GetPlayerNpcHandler(Type type)
@@ -53,14 +58,19 @@ namespace LegendOfZelda.Rooms
             return npcProjectileDictionary[type];
         }
 
-        public ICollision<INpc, IBlock> getNpcBlockProjectileHandler(Type type)
+        public ICollision<INpc, IBlock> GetNpcBlockHandler(Type type)
         {
             return npcBlockDictionary[type];
         }
 
-        public ICollision<IProjectile, IBlock> getProjectileItemHandler(Type type)
+        public ICollision<IProjectile, IBlock> GetProjectileBlockHandler(Type type)
         {
             return projectileBlockDictionary[type];
+        }
+
+        public ICollision<IItem, IBlock> GetItemBlockHandler(Type type)
+        {
+            return itemBlockDictionary[type];
         }
 
         private void InitializePlayerCollisionDictionaries()
@@ -122,6 +132,14 @@ namespace LegendOfZelda.Rooms
             projectileBlockDictionary = new Dictionary<Type, ICollision<IProjectile, IBlock>>
             {
                 // TODO: initialize here
+            };
+        }
+
+        private void InitializeItemCollisionDictionaries()
+        {
+            itemBlockDictionary = new Dictionary<Type, ICollision<IItem, IBlock>>()
+            {
+                // TODO: initialize me here
             };
         }
     }

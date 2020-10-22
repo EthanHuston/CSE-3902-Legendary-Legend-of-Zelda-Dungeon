@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 
-namespace LegendOfZelda.Link.CollisionHandler
+namespace LegendOfZelda.Link.CollisionHandler.WithItem
 {
     class LinkFairyItemCollisionHandler : ICollision<IPlayer, IItem>
     {

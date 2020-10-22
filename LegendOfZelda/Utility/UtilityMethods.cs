@@ -15,9 +15,16 @@ namespace LegendOfZelda.Utility
             return Math.Sqrt(Math.Pow(position1.X - position2.X, 2) + Math.Pow(position1.Y - position2.Y, 2));
         }
 
-        public static Constants.Direction GetCollisionDirection(Rectangle rectangle1, Rectangle rectangle2, Rectangle collisionFound)
+        public static Constants.Direction GetCollisionDirection(Rectangle mainSpawnable, Rectangle secondarySpawnable, Rectangle collisionFound)
         {
-            throw new NotImplementedException();
+            // return the side the collision is on
+            if (collisionFound.Height > collisionFound.Width) // will be a right or left collision -- check by comparing X values of spawnables
+            {
+                return mainSpawnable.X > secondarySpawnable.Y ? Constants.Direction.Right : Constants.Direction.Left;
+            } else // else width > height -- so up or down collision -- check by comparing Y values of spawnables
+            {
+                return mainSpawnable.Y > secondarySpawnable.Y ? Constants.Direction.Down : Constants.Direction.Up;
+            }
         }
     }
 }
