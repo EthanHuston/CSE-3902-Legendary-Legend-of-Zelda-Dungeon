@@ -12,41 +12,7 @@ namespace LegendOfZelda.Rooms
     {
         public ISpawnableManager allObjects = new SpawnableManager();
         private SpriteBatch spriteBatch;
-        private const int tileLength = 16;
-        //String Abbreviations for Tiles in CSV File
-        const string Block = "block";
-        const string BrickTile = "brick";
-        const string Fire = "fire";
-        const string GapTile = "black";
-        const string LadderTile = "lad";
-        const string MovableBlock = "redblock";
-        const string Stairs = "stairs";
-        const string Statue = "stat";
-        const string BlueGrass = "bg";
-        const string Water = "water";
-        //String Abbreviations for Border and Background in CSV File
-        const string TileBackground = "tealBack";
-        const string BlackBackground = "blackBack";
-        const string WallPiece = "wall";
-        const string OpenDoor = "open";
-        const string LockedDoor = "locked";
-        const string ShutDoor = "shut";
-        const string BombableWall = "wallBom";
-        //String Abbreviations for Enemies in CSV File
-        const string Aquamentus = "aquamentus";
-        const string Bat = "bat";
-        const string Goriya = "goriya";
-        const string Hand = "hand";
-        const string Jelly = "jelly";
-        const string OldMan = "oldman";
-        const string Skeleton = "skeleton";
-        const string SpikeTrap = "spiketrap";
-        //String Abbreviations for Items in CSV File
-        const string Compass = "compass";
-        const string Heart = "heart";
-        const string Key = "key";
-        const string Map = "map";
-        const string Triforce = "triforce";
+        
 
         public CSVReader(SpriteBatch spriteBatch, string fileName)
         {
@@ -78,7 +44,7 @@ namespace LegendOfZelda.Rooms
 
         private void spawnFromString(string spawnType, int gridX, int gridY)
         {
-            Point position = new Point(gridX * tileLength, gridY * tileLength);
+            Point position = new Point(gridX * RoomConstants.tileLength, gridY * RoomConstants.tileLength);
             IBlock blockType;
             INpc npcType;
             IItem itemType;
@@ -86,93 +52,93 @@ namespace LegendOfZelda.Rooms
             switch (spawnType)
             {
                 //Blocks
-                case Block:
+                case RoomConstants.Block:
                     break;
-                case BrickTile:
+                case RoomConstants.BrickTile:
                     blockType = new BrickTile(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case GapTile:
+                case RoomConstants.GapTile:
                     blockType = new GapTile(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case Fire:
+                case RoomConstants.Fire:
                     blockType = new Fire(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case LadderTile:
+                case RoomConstants.LadderTile:
                     blockType = new LadderTile(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case Stairs:
+                case RoomConstants.Stairs:
                     blockType = new Stairs(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case Statue:
+                case RoomConstants.Statue:
                     blockType = new Statues(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case BlueGrass:
+                case RoomConstants.BlueGrass:
                     blockType = new TileBlueGrass(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case Water:
+                case RoomConstants.Water:
                     blockType = new TileWater(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
 
                 //Npcs
-                case Aquamentus:
+                case RoomConstants.Aquamentus:
                     npcType = new Aquamentus(spriteBatch, position, allObjects);
                     allObjects.Spawn(npcType);
                     break;
-                case Bat:
+                case RoomConstants.Bat:
                     npcType = new Bat(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
-                case Goriya:
+                case RoomConstants.Goriya:
                     npcType = new Goriya(spriteBatch, position, allObjects);
                     allObjects.Spawn(npcType);
                     break;
-                case Hand:
+                case RoomConstants.Hand:
                     npcType = new Hand(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
-                case Jelly:
+                case RoomConstants.Jelly:
                     npcType = new Jelly(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
-                case OldMan:
+                case RoomConstants.OldMan:
                     npcType = new OldMan(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
-                case Skeleton:
+                case RoomConstants.Skeleton:
                     npcType = new Skeleton(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
-                case SpikeTrap:
+                case RoomConstants.SpikeTrap:
                     npcType = new SpikeTrap(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
 
                 //Items
-                case Compass:
+                case RoomConstants.Compass:
                     itemType = new CompassItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
-                case Heart:
+                case RoomConstants.Heart:
                     itemType = new HeartItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
-                case Key:
+                case RoomConstants.Key:
                     itemType = new KeyItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
-                case Map:
+                case RoomConstants.Map:
                     itemType = new MapItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
-                case Triforce:
+                case RoomConstants.Triforce:
                     itemType = new TriforceItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
@@ -194,22 +160,22 @@ namespace LegendOfZelda.Rooms
             allObjects.Spawn(new RoomBorder(spriteBatch, new Point(0, 0)));
             switch (spawnType)
             {
-                case TileBackground:
+                case RoomConstants.TileBackground:
                     break;
-                case BlackBackground:
+                case RoomConstants.BlackBackground:
                     break;
-                case WallPiece:
+                case RoomConstants.WallPiece:
                     break;
-                case OpenDoor:
+                case RoomConstants.OpenDoor:
                     blockType = new OpenDoor(spriteBatch, position);
                     break;
-                case LockedDoor:
+                case RoomConstants.LockedDoor:
                     blockType = new LockedDoor(spriteBatch, position);
                     break;
-                case ShutDoor:
+                case RoomConstants.ShutDoor:
                     blockType = new ShutDoor(spriteBatch, position);
                     break;
-                case BombableWall:
+                case RoomConstants.BombableWall:
                     break;
                 default:
                     break;

@@ -83,12 +83,15 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
+    <Compile Include="Environment\Sprite\TileBackgroundSprite.cs" />
     <Compile Include="Environment\Sprite\WallSprite.cs" />
+    <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="Interface\ICollisionManager.cs" />
     <Compile Include="Link\CollisionHandler\LinkBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\LinkFireCollisionHandler.cs" />
     <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
     <Compile Include="Rooms\CollisionManager.cs" />
+    <Compile Include="Rooms\RoomConstants.cs" />
     <Compile Include="Rooms\SpawnableManager.cs" />
     <Compile Include="Enemies\CollisionHandlers\BatBlockCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\AquamentusBlockCollisionHandler.cs" />

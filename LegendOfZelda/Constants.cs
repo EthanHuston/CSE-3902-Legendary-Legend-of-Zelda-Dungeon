@@ -93,8 +93,5 @@ namespace LegendOfZelda
         public const float EnemyMoveLeft = -1;
         public const float EnemyNoMove = 0;
 
-        //Room Constants
-        public const int roomWidth = 12;
-        public const int roomHeight = 7;
     }
 }
