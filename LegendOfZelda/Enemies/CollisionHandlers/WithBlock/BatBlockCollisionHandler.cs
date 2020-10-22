@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
-    class BatCollisionHandler : ICollisionHandler<INpc, IBlock>
+    class BatBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {

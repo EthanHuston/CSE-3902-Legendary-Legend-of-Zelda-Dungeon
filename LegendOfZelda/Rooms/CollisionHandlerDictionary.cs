@@ -1,4 +1,6 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Enemies.CollisionHandlers.WithBlock;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;
@@ -120,12 +122,18 @@ namespace LegendOfZelda.Rooms
         {
             npcProjectileDictionary = new Dictionary<Type, ICollisionHandler<INpc, IProjectile>>
             {
-                // TODO: initialize here
+                // TODO: init me 
             };
 
             npcBlockDictionary = new Dictionary<Type, ICollisionHandler<INpc, IBlock>>()
             {
-                // TODO: initialize here
+                {typeof(Aquamentus), new AquamentusBlockCollisionHandler() },
+                {typeof(Bat), new BatBlockCollisionHandler() },
+                {typeof(Goriya), new GoriyaBlockCollisionHandler() },
+                {typeof(Hand), new HandBlockCollisionHandler() },
+                {typeof(Jelly), new JellyBlockCollisionHandler() },
+                {typeof(Skeleton), new SkeletonBlockCollisionHandler() },
+                {typeof(SpikeTrap), new SpikeTrapBlockCollisionHandler() }
             };
         }
 
