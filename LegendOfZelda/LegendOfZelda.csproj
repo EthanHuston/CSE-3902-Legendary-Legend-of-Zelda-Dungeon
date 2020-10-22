@@ -83,8 +83,10 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
+    <Compile Include="Environment\Sprite\BlackBackgroundSprite.cs" />
     <Compile Include="Environment\Sprite\TileBackgroundSprite.cs" />
     <Compile Include="Environment\Sprite\WallSprite.cs" />
+    <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="Interface\ICollisionManager.cs" />
     <Compile Include="Link\CollisionHandler\LinkBlockCollisionHandler.cs" />

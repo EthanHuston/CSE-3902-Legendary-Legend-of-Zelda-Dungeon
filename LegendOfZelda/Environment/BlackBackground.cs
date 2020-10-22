@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class TileBackground : IBlock
+    class BlackBackground : IBlock
     {
         private ISprite sprite;
         private SpriteBatch sb;
@@ -13,9 +13,9 @@ namespace LegendOfZelda.Environment
         private bool safeToDespawn;
         
 
-        public TileBackground(SpriteBatch spriteBatch, Point position)
+        public BlackBackground(SpriteBatch spriteBatch, Point position)
         {
-            sprite = EnvironmentSpriteFactory.Instance.CreateTileBackgroundSprite();
+            sprite = EnvironmentSpriteFactory.Instance.CreateBlackBackgroundSprite();
             sb = spriteBatch;
             this.position = position;
         }
