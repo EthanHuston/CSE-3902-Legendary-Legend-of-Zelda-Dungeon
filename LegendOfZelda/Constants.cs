@@ -16,6 +16,11 @@ namespace LegendOfZelda
         public const int LinkUsingItemPauseTicks = 5;
         public const int LinkStrikingPauseTicks = 5;
         public const int LinkWalkingFrameDelay = 10;
+        public const float LinkMoveUp = -1;
+        public const float LinkMoveDown = 1;
+        public const float LinkMoveRight = 1;
+        public const float LinkMoveLeft = -1;
+        public const float LinkNoMove = 0;
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
