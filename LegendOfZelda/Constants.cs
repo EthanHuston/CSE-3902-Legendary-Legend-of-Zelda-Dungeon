@@ -39,6 +39,7 @@ namespace LegendOfZelda
         public const double BoomerangDamage = .5;
         public const double SwordBeamDamage = 1.0;
         public const double FireballDamage = 0.5;
+        public const double SwordDamage = 1; // TODO lookup damage
 
         // Moveable Block
         public const float MBlockMoveUp = -1;

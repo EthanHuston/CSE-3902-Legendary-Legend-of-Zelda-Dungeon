@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Link.State.NotMoving;
+using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -7,7 +8,7 @@ namespace LegendOfZelda.Link.State.Attacking
     class LinkAttackingDownState : LinkLazyAbstractState
     {
         private const int spawnOffsetX = 0;
-        private const int spawnOffsetY = 0;
+        private const int spawnOffsetY = 16;
 
         public LinkAttackingDownState(LinkPlayer link) : base(link)
         {
@@ -23,6 +24,7 @@ namespace LegendOfZelda.Link.State.Attacking
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
             link.Velocity = Vector2.Zero;
+            link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X + spawnOffsetX, link.Position.Y + spawnOffsetY), Constants.Direction.Down, Constants.ItemOwner.Link));
         }
 
         public override void Update()

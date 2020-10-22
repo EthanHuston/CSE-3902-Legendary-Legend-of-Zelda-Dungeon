@@ -25,6 +25,10 @@ namespace LegendOfZelda.Projectile
         private Texture2D swordBeamExplodingDownRight;
         private Texture2D swordBeamExplodingUpLeft;
         private Texture2D swordBeamExplodingUpRight;
+        private Texture2D swordAttackUp;
+        private Texture2D swordAttackDown;
+        private Texture2D swordAttackLeft;
+        private Texture2D swordAttackRight;
 
         public static ProjectileSpriteFactory Instance { get; } = new ProjectileSpriteFactory();
 
@@ -47,6 +51,10 @@ namespace LegendOfZelda.Projectile
             swordBeamExplodingDownRight = content.Load<Texture2D>("Items/SwordBeamExplosionDownRight");
             swordBeamExplodingUpLeft = content.Load<Texture2D>("Items/SwordBeamExplosionUpLeft");
             swordBeamExplodingUpRight = content.Load<Texture2D>("Items/SwordBeamExplosionUpRight");
+            swordAttackUp = content.Load<Texture2D>("Link/LinkSwordUp");
+            swordAttackDown = content.Load<Texture2D>("Link/LinkSwordDown");
+            swordAttackLeft = content.Load<Texture2D>("Link/LinkSwordLeft");
+            swordAttackRight = content.Load<Texture2D>("Link/LinkSwordRight");
         }
 
         public IProjectileSprite CreateFireballSprite()
@@ -100,6 +108,23 @@ namespace LegendOfZelda.Projectile
         public IProjectileSprite CreateSwordBeamExplodingSprite()
         {
             return new SwordBeamExplodingSprite(swordBeamExplodingUpLeft, swordBeamExplodingUpRight, swordBeamExplodingDownLeft, swordBeamExplodingDownRight);
+        }
+
+        public IProjectileSprite CreateSwordAttackingUpSprite()
+        {
+            return new SwordAttackingSprite(swordAttackUp);
+        }
+        public IProjectileSprite CreateSwordAttackingDownSprite()
+        {
+            return new SwordAttackingSprite(swordAttackDown);
+        }
+        public IProjectileSprite CreateSwordAttackingLeftSprite()
+        {
+            return new SwordAttackingSprite(swordAttackLeft);
+        }
+        public IProjectileSprite CreateSwordAttackingRightSprite()
+        {
+            return new SwordAttackingSprite(swordAttackRight);
         }
     }
 }

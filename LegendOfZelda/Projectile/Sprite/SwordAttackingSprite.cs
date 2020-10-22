@@ -1,15 +1,18 @@
-using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LegendOfZelda.Link.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
-    class StrikingLinkSprite : ILinkSprite
+    class SwordAttackingSprite : IProjectileSprite
     {
         private Texture2D sprite;
         private bool animationIsDone;
-        private bool flashRed;
-        private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
@@ -18,12 +21,10 @@ namespace LegendOfZelda.Link.Sprite
         private const int numColumns = 4;
         private Rectangle destinationRectangle;
 
-        public StrikingLinkSprite(Texture2D sprite)
+        public SwordAttackingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             animationIsDone = false;
-            flashRed = false;
-            damageColorCounter = 0;
             destinationRectangle = Rectangle.Empty;
         }
 
@@ -38,31 +39,20 @@ namespace LegendOfZelda.Link.Sprite
                 currentFrame++;
                 bufferFrame = 0;
             }
-
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
-            {
-                flashRed = !flashRed;
-                damageColorCounter = 0;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Draw(spriteBatch, position, false);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
-        {
             int frameWidth = sprite.Width / numColumns;
             int frameHeight = sprite.Height / numRows;
-            int currentRow = 1;
+            int currentRow = 0;
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
+            destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
 
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
         }
 

@@ -88,11 +88,13 @@
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
+    <Compile Include="Projectile\SwordAttackingProjectile.cs" />
     <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\SwordBeamBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
     <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
     <Compile Include="Rooms\CollisionManager.cs" />
     <Compile Include="Rooms\SpawnableManager.cs" />
