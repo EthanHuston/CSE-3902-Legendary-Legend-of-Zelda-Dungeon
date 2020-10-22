@@ -4,11 +4,10 @@ namespace LegendOfZelda.Interface
 {
     public interface ISpawnable
     {
+        Point Position { get; set; }
         void Update();
         void Draw();
-        void SetPosition(Point position);
         bool SafeToDespawn();
-        Point GetPosition();
         Rectangle GetRectangle();
         void Despawn();
     }

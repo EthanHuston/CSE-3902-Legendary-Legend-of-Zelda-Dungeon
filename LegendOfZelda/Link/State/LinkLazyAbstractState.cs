@@ -9,7 +9,6 @@ namespace LegendOfZelda.Link.State
         protected LinkPlayer link;
         protected bool damaged;
         protected DateTime healthyDateTime;
-        protected Vector2 moveVector;
 
         public LinkLazyAbstractState(LinkPlayer link)
         {

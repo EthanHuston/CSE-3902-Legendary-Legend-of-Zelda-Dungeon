@@ -9,14 +9,31 @@ namespace LegendOfZelda.Link
 {
     class LinkPlayer : IPlayer
     {
-        public ILinkSprite CurrentSprite { get; set; }
-        public bool BlockStateChange { get; set; } = false;
-        public SpawnableMover Mover { get; private set; }
         public Game1 Game;
-        private ILinkState state;
         private int health;
         private Dictionary<Constants.LinkInventory, int> inventory;
         private bool safeToDespawn;
+        public ILinkSprite CurrentSprite { get; set; }
+        public bool BlockStateChange { get; set; }
+        public SpawnableMover Mover { get; private set; }
+        private ILinkState state;
+        public ILinkState State
+        {
+            get { return state; }
+            set { if (!BlockStateChange) state = value; }
+        }
+
+        public Point Position 
+        { 
+            get { return Mover.Position; } 
+            set { Mover.Position = value; }
+        }
+
+        public Vector2 Velocity
+        {
+            get { return Mover.Velocity; }
+            set { Mover.Velocity = value; }
+        }
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
@@ -26,26 +43,7 @@ namespace LegendOfZelda.Link
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             safeToDespawn = false;
             inventory = new Dictionary<Constants.LinkInventory, int>();
-        }
-
-        public Point GetPosition()
-        {
-            return Mover.GetPosition();
-        }
-
-        public void SetPosition(Point newPosition)
-        {
-            Mover.SetPosition(newPosition);
-        }
-
-        public ILinkState GetState()
-        {
-            return state;
-        }
-
-        public void SetState(ILinkState newState)
-        {
-            if (!BlockStateChange) state = newState;
+            BlockStateChange = false;
         }
 
         public void Draw()
@@ -156,11 +154,6 @@ namespace LegendOfZelda.Link
             state.UseSwordBeam();
         }
 
-        public Vector2 GetVelocity()
-        {
-            return Mover.GetVelocity();
-        }
-
         public void Move(int distance, Vector2 velocity)
         {
             Mover.MoveDistance(distance, velocity);
@@ -221,13 +214,9 @@ namespace LegendOfZelda.Link
             safeToDespawn = true;
         }
 
-        public void MoveOnce(Vector2 distance) {
-            Mover.MoveOnce(distance);
-        }
-
-        public void SetVelocity(Vector2 velocity)
+        public void MoveOnce(Vector2 distance)
         {
-            Mover.ChangeVelocity(velocity);
+            Mover.MoveOnce(distance);
         }
     }
 }

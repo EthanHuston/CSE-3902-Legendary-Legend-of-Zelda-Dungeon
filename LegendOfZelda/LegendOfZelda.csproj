@@ -83,9 +83,9 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
     <Compile Include="Interface\ICollisionManager.cs" />
-    <Compile Include="Link\CollisionHandler\LinkBlockCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkFireCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkMoveableBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Block\LinkBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkFireCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Block\LinkMoveableBlockCollisionHandler.cs" />
     <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
     <Compile Include="Rooms\CollisionManager.cs" />
     <Compile Include="Rooms\SpawnableManager.cs" />
@@ -108,18 +108,18 @@
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Interface\IPlayer.cs" />
     <Compile Include="Item\ItemSpriteFactory.cs" />
-    <Compile Include="Link\CollisionHandler\LinkBombItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkBoomerangItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkBowItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkClockItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkCompassItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkFairyItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkHeartContainerItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkHeartItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkKeyItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkMapItemCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\LinkRupeeItemCollision.cs" />
-    <Compile Include="Link\CollisionHandler\LinkTriforceItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkBombItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkBoomerangItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkBowItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkClockItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkCompassItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkFairyItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkHeartContainerItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkHeartItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkKeyItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkMapItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkRupeeItemCollision.cs" />
+    <Compile Include="Link\CollisionHandler\Item\LinkTriforceItemCollisionHandler.cs" />
     <Compile Include="Link\State\LinkActiveAbstractState.cs" />
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />
     <Compile Include="Environment\BombedOpening.cs" />
@@ -185,7 +185,6 @@
     <Compile Include="Sprint2\QuitGameCommand.cs" />
     <Compile Include="Sprint2\ResetGameCommand.cs" />
     <Compile Include="Sprint2\Sprint2Game.cs" />
-    <Compile Include="Utility.cs" />
     <Compile Include="Link\Command\UseBowCommand.cs" />
     <Compile Include="Link\Command\UseBombCommand.cs" />
     <Compile Include="Link\Command\PickUpBowCommand.cs" />
@@ -241,8 +240,6 @@
     <Compile Include="Link\State\Item\LinkPickingUpBowState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpTriforceState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpHeartState.cs" />
-    <Compile Include="Utility/SpawnableMover.cs" />
-    <Compile Include="Utility/Utility.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpSwordState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowLeftState .cs" />
@@ -275,6 +272,8 @@
     <Compile Include="Item\Sprite\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
+    <Compile Include="Utility\SpawnableMover.cs" />
+    <Compile Include="Utility\UtilityMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />

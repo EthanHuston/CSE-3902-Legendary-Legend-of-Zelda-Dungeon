@@ -20,8 +20,7 @@ namespace LegendOfZelda.Link.State.Attacking
         protected override void InitClass()
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingUpLinkSprite();
-            moveVector = Vector2.Zero;fc
-            link.SetVelocity(moveVector);
+            link.SetVelocity(Vector2.Zero);
         }
 
         public override void Update()
