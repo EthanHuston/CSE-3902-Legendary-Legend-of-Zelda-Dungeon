@@ -9,17 +9,21 @@ namespace LegendOfZelda.Environment
     {
         private ISprite blockSprite;
         private SpriteBatch spriteBatch;
-        private Point position;
-        private Point velocity;
+        private Vector2 velocity;
         private bool safeToDespawn;
         private bool isPushed;
+        private int totalDistanceTravelled;
+        private const int travelDistance = 20;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public MovableSquare(SpriteBatch spriteBatch, Point spawnPosition)
         {
             blockSprite = EnvironmentSpriteFactory.Instance.CreateBlockSprite();
             this.spriteBatch = spriteBatch;
-            position = spawnPosition;
-            velocity = Point.Zero;
+            Position = spawnPosition;
+            velocity = Vector2.Zero;
             safeToDespawn = false;
             isPushed = false;
         }
@@ -35,15 +39,12 @@ namespace LegendOfZelda.Environment
         {
             if (isPushed)
             {
-                position.X += velocity.X;
-                position.Y += velocity.Y;
+                position.X += (int) velocity.X;
+                position.Y += (int) velocity.Y;
+                totalDistanceTravelled += (int) velocity.Length();
+                if (totalDistanceTravelled >= travelDistance) EndPush();
             }
             blockSprite.Update();
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
         }
 
         public Rectangle GetRectangle()
@@ -54,12 +55,6 @@ namespace LegendOfZelda.Environment
         public Vector2 GetVelocity()
         {
             return Vector2.Zero;
-        }
-
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
         }
 
         public bool SafeToDespawn()
@@ -77,21 +72,18 @@ namespace LegendOfZelda.Environment
         {
             safeToDespawn = true;
         }
-        void Move(int distance, Vector2 velocity) {
-            // do something
-        }
 
         // 0=Up, 1=Down, 2=Left, 3=Right
-        public void Push(int direction)
+        public void Push(Constants.Direction direction)
         {
             isPushed = true;
-            if (direction == 0)
+            if (direction == Constants.Direction.Up)
                 velocity.Y = -1 * Constants.MovableSquareVelocity;
-            else if (direction == 1)
+            else if (direction == Constants.Direction.Down)
                 velocity.Y = Constants.MovableSquareVelocity;
-            else if (direction == 2)
+            else if (direction == Constants.Direction.Left)
                 velocity.X = -1 * Constants.MovableSquareVelocity;
-            else if (direction == 3)
+            else if (direction == Constants.Direction.Right)
                 velocity.X = Constants.MovableSquareVelocity;
             else
                 isPushed = false;
@@ -100,7 +92,7 @@ namespace LegendOfZelda.Environment
         public void EndPush()
         {
             isPushed = false;
-            velocity = Point.Zero;
+            velocity = Vector2.Zero;
         }
 
         public void ResetPosition()
@@ -114,6 +106,11 @@ namespace LegendOfZelda.Environment
         }
 
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public double GetDamageAmount()
         {
             throw new System.NotImplementedException();
         }

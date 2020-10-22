@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Enemies.CollisionHandlers.WithBlock;
 using LegendOfZelda.Enemies.CollisionHandlers.WithProjectile;
+using LegendOfZelda.Environment;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
@@ -93,7 +94,8 @@ namespace LegendOfZelda.Rooms
                 {typeof(Skeleton), new LinkNpcDamageCollisionHandler() },
                 {typeof(SpikeTrap), new LinkNpcDamageCollisionHandler() },
                 {typeof(OldMan), new LinkNpcDoNothingCollisionHandler() },
-                {typeof(Merchant), new LinkNpcDoNothingCollisionHandler() }
+                {typeof(Merchant), new LinkNpcDoNothingCollisionHandler() },
+                {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() }
             };
 
             playerProjectileDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>>()
@@ -124,14 +126,26 @@ namespace LegendOfZelda.Rooms
 
             playerBlockDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IBlock>>()
             {
-                // TODO: initialize here
-                // fire
+                // movable block collision handler is in the NPC dictionary
+
+                // immovable blocks
+                {typeof(LockedDoor), new LinkImmovableBlockCollisionHandler() },
+                {typeof(Statues), new LinkImmovableBlockCollisionHandler() },
+                {typeof(TileWater), new LinkImmovableBlockCollisionHandler() },
+                {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
+                {typeof(ShutDoor), new LinkImmovableBlockCollisionHandler() },
+
+                // interactive blocks
+                {typeof(Fire), new LinkFireCollisionHandler() },
+                {typeof(OpenDoor), new LinkDoorCollisionHandler() },
+                {typeof(BombedOpening), new LinkDoorCollisionHandler() },
+                {typeof(Stairs), new LinkStairsCollisionHandler() },
+
                 // unmovable block
                     // water
                     // wall
                     // gap tile
                     // statue
-                // movable block
             };
         }
 
