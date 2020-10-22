@@ -10,7 +10,7 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
+        private Point position;
         private int minXVal = 0;
         private int maxXVal = 800;
         private int minYVal = 0;
@@ -20,10 +20,11 @@ namespace LegendOfZelda.Enemies
         private int yDir = 0;
         private double health = 0.5;
 
-        public Bat(SpriteBatch spriteBatch)
+        public Bat(SpriteBatch spriteBatch, Point position)
         {
             sprite = EnemySpriteFactory.Instance.CreateBatSprite();
             this.spriteBatch = spriteBatch;
+            this.position = position;
         }
         public void Update()
         {
