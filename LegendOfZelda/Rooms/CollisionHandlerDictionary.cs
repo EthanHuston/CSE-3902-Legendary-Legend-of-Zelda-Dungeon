@@ -93,6 +93,7 @@ namespace LegendOfZelda.Rooms
                 {typeof(BombExplodingProjectile), new LinkBombCollisionHandler() },
                 {typeof(BoomerangFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
                 {typeof(FireballProjectile), new LinkFireballCollisionHandler() },
+                {typeof(SwordAttackingProjectile), new LinkProjectileDoNothingCollisionHandler() },
                 {typeof(SwordBeamFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
             };
 
@@ -133,6 +134,7 @@ namespace LegendOfZelda.Rooms
                 {typeof(BombExplodingProjectile), new EnemyBombCollisionHandler() },
                 {typeof(BoomerangFlyingProjectile), new EnemyBoomerangCollisionHandler() },
                 {typeof(FireballProjectile), new EnemyProjectileDoNothingCollisionHandler() },
+                {typeof(SwordAttackingProjectile), new EnemySwordCollisionHandler() },
                 {typeof(SwordBeamFlyingProjectile), new EnemySwordBeamCollisionHandler() }
             };
 
@@ -156,6 +158,7 @@ namespace LegendOfZelda.Rooms
                 {typeof(BoomerangFlyingProjectile), new BoomerangBlockCollisionHandler() },
                 {typeof(BombExplodingProjectile), new ProjectileBlockDoNothingCollisionHandler() },
                 {typeof(FireballProjectile), new FireballBlockCollisionHandler() },
+                {typeof(SwordAttackingProjectile), new ProjectileBlockDoNothingCollisionHandler()},
                 {typeof(SwordBeamFlyingProjectile), new SwordBeamBlockCollisionHandler() }
             };
         }
