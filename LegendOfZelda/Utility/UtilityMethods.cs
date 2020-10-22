@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Utility
 {
-    static class Utility
+    static class UtilityMethods
     {
         public static bool ItemIsOutOfBounds(Point position)
         {
