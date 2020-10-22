@@ -18,10 +18,12 @@ namespace LegendOfZelda.Link.State.Item
         protected override void InitClass()
         {
             link.SpawnItem(new BoomerangFlyingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.ItemOwner.Link, link, new Vector2(0, -1 * Constants.BoomerangVelocity)));
+            link.SetVelocity(Vector2.Zero);
         }
 
         public override void Update()
         {
+            link.Mover.Update();
             StopMoving(); // because after we spawn the boomerang return to non-moving state
         }
 

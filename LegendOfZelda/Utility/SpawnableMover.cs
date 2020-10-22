@@ -5,9 +5,9 @@ namespace LegendOfZelda.Utility
     public class SpawnableMover
     {
         private Vector2 velocity;
+        private Vector2 movingVelocity;
         private Point position;
         private bool movingDistanceRightNow;
-        private Vector2 movingVelocity;
         private int distanceToMove;
         private int totalDistanceMoved;
 
@@ -24,7 +24,7 @@ namespace LegendOfZelda.Utility
             movingDistanceRightNow = true;
             this.distanceToMove = distanceToMove;
             this.movingVelocity = movingVelocity;
-            this.totalDistanceMoved = 0;
+            totalDistanceMoved = 0;
         }
 
         public void Update()

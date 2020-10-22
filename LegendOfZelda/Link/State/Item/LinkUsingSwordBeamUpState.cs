@@ -21,6 +21,7 @@ namespace LegendOfZelda.Link.State.Item
 
         public override void Update()
         {
+            link.Mover.Update();
             StopMoving(); // because after we spawn the boomerang return to non-moving state
         }
 

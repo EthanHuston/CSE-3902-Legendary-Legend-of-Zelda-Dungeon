@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Link.State.Attacking;
 using LegendOfZelda.Link.State.Item;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State.NotMoving
@@ -16,13 +17,15 @@ namespace LegendOfZelda.Link.State.NotMoving
 
         protected override void InitClass()
         {
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
+            link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
+            link.SetVelocity(Vector2.Zero);
         }
 
         public override void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            link.Mover.Update();
         }
 
         public override void Draw()

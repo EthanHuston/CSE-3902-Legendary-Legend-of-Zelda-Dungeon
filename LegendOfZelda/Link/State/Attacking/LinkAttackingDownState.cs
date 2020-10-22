@@ -21,7 +21,8 @@ namespace LegendOfZelda.Link.State.Attacking
 
         protected override void InitClass()
         {
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
+            link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
+            link.SetVelocity(Vector2.Zero);
         }
 
         public override void Update()
@@ -37,6 +38,7 @@ namespace LegendOfZelda.Link.State.Attacking
             }
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            link.Mover.Update();
         }
 
         public override void Draw()

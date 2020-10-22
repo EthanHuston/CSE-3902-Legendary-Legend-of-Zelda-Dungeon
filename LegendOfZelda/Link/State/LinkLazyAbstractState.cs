@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State
@@ -8,6 +9,7 @@ namespace LegendOfZelda.Link.State
         protected LinkPlayer link;
         protected bool damaged;
         protected DateTime healthyDateTime;
+        protected Vector2 moveVector;
 
         public LinkLazyAbstractState(LinkPlayer link)
         {

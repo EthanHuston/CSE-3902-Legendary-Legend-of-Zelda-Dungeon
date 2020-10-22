@@ -1,5 +1,6 @@
 using LegendOfZelda.Link.State.NotMoving;
 using LegendOfZelda.Projectile;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State.Item
@@ -17,10 +18,12 @@ namespace LegendOfZelda.Link.State.Item
         protected override void InitClass()
         {
             link.SpawnItem(new SwordBeamFlyingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.ItemOwner.Link, Constants.Direction.Right));
+            link.SetVelocity(Vector2.Zero);
         }
 
         public override void Update()
         {
+            link.Mover.Update();
             StopMoving(); // because after we spawn the boomerang return to non-moving state
         }
 
