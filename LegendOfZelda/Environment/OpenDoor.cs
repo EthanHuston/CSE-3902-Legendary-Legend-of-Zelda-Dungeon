@@ -11,7 +11,7 @@ namespace LegendOfZelda.Environment
         private SpriteBatch sB;
         private bool safeToDespawn;
         private Point position;
-        private const int textureMapRow = 1;
+        private int textureMapRow;
         private const int textureMapColumn = 1;
 
         public OpenDoor(SpriteBatch spriteBatch, Point spawnPosition)
@@ -24,6 +24,22 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
+            if((position.X != Constants.MinXPos) && (position.Y == Constants.MinYPos))
+            {
+                textureMapRow = 1;
+            }
+            else if((position.X == Constants.MinXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureMapRow = 2;
+            }
+            else if ((position.X == Constants.MaxXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureMapRow = 3;
+            }
+            else if ((position.X != Constants.MinXPos) && (position.Y == Constants.MaxYPos))
+            {
+                textureMapRow = 4;
+            }
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
@@ -39,8 +55,6 @@ namespace LegendOfZelda.Environment
 
         public void Move(Vector2 distance)
         {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
         }
 
         public bool SafeToDespawn()
@@ -61,6 +75,11 @@ namespace LegendOfZelda.Environment
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void Move(int distance, Vector2 velocity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
