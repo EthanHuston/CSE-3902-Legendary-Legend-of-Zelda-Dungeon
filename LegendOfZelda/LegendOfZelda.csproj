@@ -84,6 +84,7 @@
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
     <Compile Include="Interface\ICollisionManager.cs" />
     <Compile Include="Link\CollisionHandler\LinkBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\LinkFireCollisionHandler.cs" />
     <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
     <Compile Include="Rooms\CollisionManager.cs" />
     <Compile Include="Rooms\SpawnableManager.cs" />
