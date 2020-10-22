@@ -2,6 +2,8 @@
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;
+using LegendOfZelda.Projectile;
+using LegendOfZelda.Projectile.CollisionHandler;
 using System;
 using System.Collections.Generic;
 
@@ -131,7 +133,10 @@ namespace LegendOfZelda.Rooms
         {
             projectileBlockDictionary = new Dictionary<Type, ICollisionHandler<IProjectile, IBlock>>
             {
-                // TODO: initialize here
+                {typeof(ArrowFlyingProjectile), new ArrowBlockCollisionHandler() },
+                {typeof(BoomerangFlyingProjectile), new BoomerangBlockCollisionHandler() },
+                {typeof(FireballProjectile), new FireballBlockCollisionHandler() },
+                {typeof(SwordBeamFlyingProjectile), new SwordBeamBlockCollisionHandler() }
             };
         }
 
