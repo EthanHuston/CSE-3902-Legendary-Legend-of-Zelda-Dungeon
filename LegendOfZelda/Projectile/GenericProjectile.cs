@@ -45,9 +45,9 @@ namespace LegendOfZelda.Projectile
             return new Rectangle(position.X, position.Y, size.Width, size.Height);
         }
 
-        public void Move(Vector2 distance)
+        public void Move(int distance, Vector2 velocity)
         {
-            SetPosition(new Point(position.X + (int)distance.X, position.Y + (int)distance.Y));
+            SetPosition(new Point(position.X + (int) (distance * velocity.X), position.Y + (int)(distance * velocity.Y)));
         }
 
         public bool SafeToDespawn()

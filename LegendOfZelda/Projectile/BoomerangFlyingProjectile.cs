@@ -1,4 +1,5 @@
 using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -45,7 +46,7 @@ namespace LegendOfZelda.Projectile
 
         private double GetDistanceFromOwner()
         {
-            return Utility.GetDistance(position, itemToTrack.GetPosition());
+            return UtilityMethods.GetDistance(position, itemToTrack.GetPosition());
         }
 
         protected override void CheckItemIsExpired()

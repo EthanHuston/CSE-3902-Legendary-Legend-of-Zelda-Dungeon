@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -90,8 +91,8 @@ namespace LegendOfZelda.Rooms
             Rectangle collisionFound = Rectangle.Intersect(player.GetRectangle(), spawnable.GetRectangle());
             if (!collisionFound.Equals(Rectangle.Empty))
             {
-                Constants.Direction direction = Utility.GetCollisionDirection(player.GetRectangle(), spawnable.GetRectangle(), collisionFound);
-                // call collision handler here
+                Constants.Direction direction = UtilityMethods.GetCollisionDirection(player.GetRectangle(), spawnable.GetRectangle(), collisionFound);
+                handlerDictionary.GetPlayerNpcHandler(spawnable.GetType());
             }
         }
     }

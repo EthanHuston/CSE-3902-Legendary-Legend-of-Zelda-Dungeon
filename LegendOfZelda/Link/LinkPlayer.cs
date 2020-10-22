@@ -1,7 +1,7 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.NotMoving;
-using LegendOfZelda.Sprint2;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -13,32 +13,29 @@ namespace LegendOfZelda.Link
         public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
         private ILinkState state;
-        private Point position;
-        private Point oldPosition;
+        private SpawnableMover mover;
         private int health;
         private Dictionary<Constants.LinkInventory, int> inventory;
         private bool safeToDespawn;
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
-            health = Constants.LinkHealth;
+            health = Constants.LinkStartingHealth;
             Game = game;
             state = new LinkStandingStillDownState(this);
-            oldPosition = new Point(spawnPosition.X, spawnPosition.Y);
-            position = new Point(spawnPosition.X, spawnPosition.Y);
+            mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             safeToDespawn = false;
             inventory = new Dictionary<Constants.LinkInventory, int>();
         }
 
         public Point GetPosition()
         {
-            return new Point(position.X, position.Y);
+            return mover.GetPosition();
         }
 
         public void SetPosition(Point newPosition)
         {
-            oldPosition = new Point(position.X, position.Y);
-            position = new Point(newPosition.X, newPosition.Y);
+            mover.SetPosition(newPosition);
         }
 
         public ILinkState GetState()
@@ -161,12 +158,12 @@ namespace LegendOfZelda.Link
 
         public Vector2 GetVelocity()
         {
-            return Vector2.Subtract(GetPosition().ToVector2(), oldPosition.ToVector2());
+            return mover.GetVelocity();
         }
 
-        public void Move(Vector2 distance)
+        public void Move(int distance, Vector2 velocity)
         {
-            SetPosition(new Point((int)(position.X + distance.X), (int)(position.Y + distance.Y)));
+            mover.MoveDistance(distance, velocity);
         }
 
         public Rectangle GetRectangle()
@@ -222,6 +219,10 @@ namespace LegendOfZelda.Link
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void MoveOnce(Vector2 distance) {
+            mover.MoveOnce(distance);
         }
     }
 }

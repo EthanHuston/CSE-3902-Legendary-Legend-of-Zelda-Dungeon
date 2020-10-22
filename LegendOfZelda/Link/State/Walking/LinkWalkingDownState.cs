@@ -30,9 +30,9 @@ namespace LegendOfZelda.Link.State.Walking
             if (position.Y < Constants.MaxYPos)
             {
                 damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-                position.Y = position.Y + Constants.LinkWalkStepDistanceInterval;
-                distanceWalked += Constants.LinkWalkStepDistanceInterval;
-                link.SetPosition(position);
+                Vector2 moveVector = new Vector2(0, Constants.LinkWalkDistanceInterval);
+                link.MoveOnce(moveVector);
+                distanceWalked += (int) moveVector.Length();
 
                 link.CurrentSprite.Update();
             }
