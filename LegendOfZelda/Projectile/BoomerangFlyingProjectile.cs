@@ -33,7 +33,7 @@ namespace LegendOfZelda.Projectile
 
         private void MoveBoomerang()
         {
-            if (GetDistanceFromOwner() > maxDistanceFromOwner || UtilityMethods.ItemIsOutOfBounds(Position))
+            if (!returningToOwner && GetDistanceFromOwner() > maxDistanceFromOwner)
             {
                 returningToOwner = true;
                 Velocity = new Vector2(Velocity.X * -1, Velocity.Y * -1);
@@ -41,7 +41,7 @@ namespace LegendOfZelda.Projectile
 
             int posX = Position.X == 0 ? itemToTrack.Position.X : (int)(Position.X + Velocity.X);
             int posY = Position.Y == 0 ? itemToTrack.Position.Y : (int)(Position.Y + Velocity.Y);
-            Position = new Point(posX, posX);
+            Position = new Point(posX, posY);
         }
 
         private double GetDistanceFromOwner()
@@ -62,6 +62,11 @@ namespace LegendOfZelda.Projectile
         public override double DamageAmount()
         {
             return Constants.BoomerangDamage;
+        }
+
+        public void ReturnToOwner()
+        {
+            returningToOwner = true;
         }
     }
 }
