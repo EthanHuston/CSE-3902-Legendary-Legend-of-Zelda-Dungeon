@@ -57,17 +57,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Enemies\CollisionHandlers\AquamentusProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\BatProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\GoriyaBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\GoriyaProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\HandBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\HandProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\JellyBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\JellyProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\SkeletonBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\SkeletonProjectileCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\SpikeTrapBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\AquamentusProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\BatProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\GoriyaBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\GoriyaProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\HandBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\HandProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\JellyBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\JellyProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\SkeletonBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\SkeletonProjectileCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\SpikeTrapBlockCollisionHandler.cs" />
     <Compile Include="Enemies\EnemySpriteFactory.cs" />
     <Compile Include="Enemies\Sprite\AquamentusBreathingSprite.cs" />
     <Compile Include="Enemies\Sprite\AquamentusWalkingSprite.cs" />
@@ -86,11 +86,15 @@
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkFireCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkMoveableBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\SwordBeamBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
     <Compile Include="Rooms\CollisionManager.cs" />
     <Compile Include="Rooms\SpawnableManager.cs" />
-    <Compile Include="Enemies\CollisionHandlers\BatBlockCollisionHandler.cs" />
-    <Compile Include="Enemies\CollisionHandlers\AquamentusBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\BatBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\AquamentusBlockCollisionHandler.cs" />
     <Compile Include="Interface\ICollisionHandler.cs" />
     <Compile Include="Interface\IBlock.cs" />
     <Compile Include="Interface\ICommand.cs" />
@@ -343,9 +347,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Projectile\CollisionHandler\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
