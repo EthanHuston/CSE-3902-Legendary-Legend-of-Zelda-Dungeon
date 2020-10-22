@@ -5,6 +5,7 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;
+using LegendOfZelda.Link.CollisionHandler.WithNpc;
 using LegendOfZelda.Link.CollisionHandler.WithProjectile;
 using LegendOfZelda.Link.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Projectile;
@@ -84,7 +85,15 @@ namespace LegendOfZelda.Rooms
         {
             playerNpcDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, INpc>>()
             {
-                // TODO: initialize here
+                {typeof(Aquamentus), new LinkNpcDamageCollisionHandler() },
+                {typeof(Bat), new LinkNpcDamageCollisionHandler() },
+                {typeof(Goriya), new LinkNpcDamageCollisionHandler() },
+                {typeof(Hand), new LinkHandCollisionHandler() },
+                {typeof(Jelly), new LinkNpcDamageCollisionHandler() },
+                {typeof(Skeleton), new LinkNpcDamageCollisionHandler() },
+                {typeof(SpikeTrap), new LinkNpcDamageCollisionHandler() },
+                {typeof(OldMan), new LinkNpcDoNothingCollisionHandler() },
+                {typeof(Merchant), new LinkNpcDoNothingCollisionHandler() }
             };
 
             playerProjectileDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>>()

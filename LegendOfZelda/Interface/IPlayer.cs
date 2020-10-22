@@ -27,5 +27,6 @@
         void UseBoomerang();
         void PickUpBoomerang();
         void UseSwordBeam();
+        void Drag(ISpawnable dragger, int dragTime);
     }
 }
