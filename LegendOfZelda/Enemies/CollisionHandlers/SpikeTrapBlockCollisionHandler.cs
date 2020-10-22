@@ -5,7 +5,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers
 {
     class SpikeTrapBlockCollisionHandler : ICollision<INpc, IBlock>
     {
-        public void HandleCollison(INpc enemy, IBlock block, Constants.Direction side)
+        public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
             //Here only in the case a moveable block is moved in the way of the trap.
             Vector2 correctDirection;
