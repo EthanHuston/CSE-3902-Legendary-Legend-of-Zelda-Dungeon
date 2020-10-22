@@ -8,14 +8,16 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position;
         private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public OldMan(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.spriteBatch = spriteBatch;
-            position = new Point(spawnPosition.X, spawnPosition.Y);
+            Position = spawnPosition;
             safeToDespawn = false;
         }
 
@@ -34,26 +36,11 @@ namespace LegendOfZelda.Enemies
 
         }
 
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = position;
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
         }
 
-        public Point GetPosition()
-        {
-            return position;
-        }
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
@@ -67,6 +54,11 @@ namespace LegendOfZelda.Enemies
         public void TakeDamage(double damage)
         {
             // old man knoweth not the concept of damage
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // knows no knockback
         }
     }
 }

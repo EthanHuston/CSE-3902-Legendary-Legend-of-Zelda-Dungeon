@@ -8,16 +8,18 @@ namespace LegendOfZelda.Environment
     {
         private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
         private const int textureMapRow = 1;
         private const int textureMapColumn = 4;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public BombedOpening(SpriteBatch spriteBatch, Point spawnPosition)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
-            position = spawnPosition;
+            Position = spawnPosition;
             safeToDespawn = false;
         }
 
@@ -26,30 +28,14 @@ namespace LegendOfZelda.Environment
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
-        }
-
         public Rectangle GetRectangle()
         {
             return doorSprite.GetPositionRectangle();
         }
 
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()

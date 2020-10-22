@@ -9,7 +9,6 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position;
         private int vx = 1;
         private int updateCount = 0;
         private int switchDirection = 100;
@@ -21,12 +20,19 @@ namespace LegendOfZelda.Enemies
         private ISpawnableManager itemSpawner;
         private bool safeToDespawn;
 
+        private Point position;
+        public Point Position
+        {
+            get => new Point(position.X, position.Y);
+            set => position = new Point(value.X, value.Y);
+        }
+
         public Aquamentus(Game1 game, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
             spriteBatch = game.SpriteBatch;
             itemSpawner = game.GetCurrentRoom().GetSpawnableManager();
-            position = spawnPosition;
+            Position = spawnPosition;
             safeToDespawn = false;
         }
 
@@ -54,11 +60,6 @@ namespace LegendOfZelda.Enemies
             sprite.Draw(spriteBatch, position);
         }
 
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
-        }
-
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
@@ -68,11 +69,6 @@ namespace LegendOfZelda.Enemies
         {
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
         }
 
         public bool SafeToDespawn()
@@ -140,6 +136,11 @@ namespace LegendOfZelda.Enemies
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

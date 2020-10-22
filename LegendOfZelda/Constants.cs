@@ -32,10 +32,13 @@ namespace LegendOfZelda
         public const int BoomerangVelocity = 6;
         public const int SwordBeamSpawnXOffsetFromLink = 4;
         public const int SwordBeamSpawnYOffsetFromLink = 5;
+
+        // Damage from Different Items
         public const double ArrowDamage = 2.0;
         public const double BombDamage = 4.0;
         public const double BoomerangDamage = .5;
         public const double SwordBeamDamage = 1.0;
+        public const double FireballDamage = 0.5;
 
         // Moveable Block
         public const float MBlockMoveUp = -1;

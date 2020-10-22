@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -8,13 +9,16 @@ namespace LegendOfZelda.Item
     {
         protected ISprite sprite;
         protected bool itemIsExpired;
-        protected Point position;
         protected SpriteBatch spriteBatch;
+        protected SpawnableMover mover;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public GenericItem(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            position = spawnPosition;
+            Position = spawnPosition;
         }
 
         protected abstract void CheckItemIsExpired();

@@ -9,16 +9,18 @@ namespace LegendOfZelda.Environment
     {
         private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
         private const int textureAtlasColumn = 1;
         private const int textureAtlasRow = 3;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public ShutDoor(SpriteBatch spriteBatch, Point position)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
-            this.position = new Point(position.X, position.Y);
+            Position = position;
             safeToDespawn = false;
         }
 
@@ -32,24 +34,9 @@ namespace LegendOfZelda.Environment
             doorSprite.Update();
         }
 
-        public void Move(Vector2 distance)
-        {
-            position = new Point((int)(position.X + distance.X), (int)(position.Y + distance.Y));
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
         }
 
         public Rectangle GetRectangle()

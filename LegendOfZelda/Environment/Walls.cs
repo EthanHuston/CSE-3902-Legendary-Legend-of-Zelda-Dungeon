@@ -10,14 +10,16 @@ namespace LegendOfZelda.Environment
     {
         private ISprite roomBorderSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public Walls(SpriteBatch spriteBatch, Point spawnPosition)
         {
             roomBorderSprite = EnvironmentSpriteFactory.Instance.CreateRoomBorderSprite();
             sB = spriteBatch;
-            position = spawnPosition;
+            Position = spawnPosition;
             safeToDespawn = false;
         }
 
@@ -28,12 +30,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            roomBorderSprite.Draw(sB, new Point(ConstantsSprint2.InteractiveEnvironmentSpawnX, ConstantsSprint2.InteractiveEnvironmentSpawnY));
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
+            roomBorderSprite.Draw(sB, Position);
         }
 
         public Rectangle GetRectangle()
@@ -41,20 +38,9 @@ namespace LegendOfZelda.Environment
             return roomBorderSprite.GetPositionRectangle();
         }
 
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()

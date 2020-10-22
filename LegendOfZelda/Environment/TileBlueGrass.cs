@@ -9,15 +9,17 @@ namespace LegendOfZelda.Environment
     {
         private ISprite sprite;
         private SpriteBatch sb;
-        private Point position;
         private bool safeToDespawn;
         bool canWalk;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public TileBlueGrass(SpriteBatch spriteBatch, Point position)
         {
             sprite = EnvironmentSpriteFactory.Instance.CreateTileBlueGrassSprite();
             sb = spriteBatch;
-            this.position = position;
+            Position = position;
             canWalk = true;
         }
 
@@ -31,19 +33,9 @@ namespace LegendOfZelda.Environment
             sprite.Draw(sb, position);
         }
 
-        public Point GetPosition()
-        {
-            return position;
-        }
-
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
-        }
-
-        public void Move(Vector2 distance)
-        {
-            throw new System.NotImplementedException();
         }
 
         public bool SafeToDespawn()
@@ -51,13 +43,9 @@ namespace LegendOfZelda.Environment
             return safeToDespawn;
         }
 
-        public void SetPosition(Point position)
-        {
-            this.position = position;
-        }
-
         public void Update()
         {
+            sprite.Update();
         }
 
     }

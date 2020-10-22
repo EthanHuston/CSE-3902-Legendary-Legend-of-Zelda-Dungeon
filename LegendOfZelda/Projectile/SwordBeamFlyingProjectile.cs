@@ -1,3 +1,4 @@
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,19 +17,19 @@ namespace LegendOfZelda.Projectile
             switch (direction)
             {
                 case Constants.Direction.Down:
-                    velocity = new Vector2(0, moveDistanceInterval);
+                    Velocity = new Vector2(0, moveDistanceInterval);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamDownSprite();
                     break;
                 case Constants.Direction.Up:
-                    velocity = new Vector2(0, -1 * moveDistanceInterval);
+                    Velocity = new Vector2(0, -1 * moveDistanceInterval);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamUpSprite();
                     break;
                 case Constants.Direction.Right:
-                    velocity = new Vector2(moveDistanceInterval, 0);
+                    Velocity = new Vector2(moveDistanceInterval, 0);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamRightSprite();
                     break;
                 case Constants.Direction.Left:
-                    velocity = new Vector2(-1 * moveDistanceInterval, 0);
+                    Velocity = new Vector2(-1 * moveDistanceInterval, 0);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamLeftSprite();
                     break;
             }
@@ -39,9 +40,8 @@ namespace LegendOfZelda.Projectile
             sprite.Update();
             if (!stopMovingAndExplode)
             {
-                position.X += (int)velocity.X;
-                position.Y += (int)velocity.Y;
-                stopMovingAndExplode = Utility.ItemIsOutOfBounds(position);
+                Mover.Update();
+                stopMovingAndExplode = UtilityMethods.ItemIsOutOfBounds(Position);
             }
             else if (stopMovingAndExplode && !updatedSprite) // initial setup of sword beam explosion
             {
@@ -54,11 +54,6 @@ namespace LegendOfZelda.Projectile
         protected override void CheckItemIsExpired()
         {
             itemIsExpired = sprite.FinishedAnimation();
-        }
-
-        public override Vector2 GetVelocity()
-        {
-            return new Vector2(velocity.X, velocity.Y);
         }
 
         public void ExplodeSword()

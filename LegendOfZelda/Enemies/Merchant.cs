@@ -8,14 +8,16 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position;
         protected bool itemIsExpired;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public Merchant(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.spriteBatch = spriteBatch;
-            position = spawnPosition;
+            Position = spawnPosition;
 
         }
         public void Draw()
@@ -39,20 +41,11 @@ namespace LegendOfZelda.Enemies
             position.Y += (int)distance.Y;
         }
 
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
-        }
-
         public bool SafeToDespawn()
         {
             return itemIsExpired;
         }
 
-        public Point GetPosition()
-        {
-            return position;
-        }
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
@@ -65,7 +58,12 @@ namespace LegendOfZelda.Enemies
 
         public void TakeDamage(double damage)
         {
-            throw new System.NotImplementedException();
+            // ye merchant knoweth no concept of health
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // cannot be knocked back
         }
     }
 }

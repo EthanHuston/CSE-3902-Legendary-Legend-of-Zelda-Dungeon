@@ -9,14 +9,16 @@ namespace LegendOfZelda.Environment
     {
         private ISprite tileBlackSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public GapTile(SpriteBatch spriteBatch, Point spawnPosition)
         {
             tileBlackSprite = EnvironmentSpriteFactory.Instance.CreateTileBlackSprite();
             sB = spriteBatch;
-            position = spawnPosition;
+            Position = spawnPosition;
             safeToDespawn = false;
         }
 
@@ -27,12 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            tileBlackSprite.Draw(sB, position);
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
+            tileBlackSprite.Draw(sB, Position);
         }
 
         public Rectangle GetRectangle()
@@ -40,20 +37,9 @@ namespace LegendOfZelda.Environment
             return tileBlackSprite.GetPositionRectangle();
         }
 
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()

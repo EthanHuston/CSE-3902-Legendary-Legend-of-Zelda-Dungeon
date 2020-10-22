@@ -9,25 +9,18 @@ namespace LegendOfZelda.Projectile
         public FireballProjectile(SpriteBatch spriteBatch, Point spawnPosition, Vector2 velocity, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = ProjectileSpriteFactory.Instance.CreateFireballSprite();
-            position = spawnPosition;
-            this.velocity.X = velocity.X;
-            this.velocity.Y = velocity.Y;
+            Position = spawnPosition;
+            Velocity = velocity;
         }
 
         public override double DamageAmount()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override Vector2 GetVelocity()
-        {
-            return new Vector2(velocity.X, velocity.Y);
+            return Constants.FireballDamage;
         }
 
         override public void Update()
         {
-            position.X += (int)velocity.X;
-            position.Y += (int)velocity.Y;
+            Mover.Update();
             sprite.Update();
             CheckItemIsExpired();
         }

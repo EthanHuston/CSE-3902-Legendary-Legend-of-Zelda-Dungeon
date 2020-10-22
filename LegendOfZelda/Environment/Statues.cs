@@ -9,14 +9,16 @@ namespace LegendOfZelda.Environment
     {
         private ISprite statueSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public Statues(SpriteBatch spriteBatch, Point position)
         {
             statueSprite = EnvironmentSpriteFactory.Instance.CreateStatueSprite();
             sB = spriteBatch;
-            this.position = new Point(position.X, position.Y);
+            Position = position;
             safeToDespawn = true;
         }
 
@@ -27,12 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            statueSprite.Draw(sB, position);
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
+            statueSprite.Draw(sB, Position);
         }
 
         public Rectangle GetRectangle()
@@ -40,19 +37,9 @@ namespace LegendOfZelda.Environment
             return statueSprite.GetPositionRectangle();
         }
 
-        public void Move(Vector2 distance)
-        {
-            position = new Point((int)(position.X + distance.X), (int)(position.Y + distance.Y));
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()
