@@ -240,6 +240,8 @@
     <Compile Include="Link\State\Item\LinkPickingUpBowState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpTriforceState.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpHeartState.cs" />
+    <Compile Include="Utility/SpawnableMover.cs" />
+    <Compile Include="Utility/Utility.cs" />
     <Compile Include="Link\State\Item\LinkPickingUpSwordState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowDownState.cs" />
     <Compile Include="Link\State\Item\LinkUsingBowLeftState .cs" />
