@@ -100,6 +100,7 @@ namespace LegendOfZelda.Rooms
                     // wall
                     // gap tile
                     // statue
+                // movable block
             };
         }
 
