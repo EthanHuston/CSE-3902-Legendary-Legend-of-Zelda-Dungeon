@@ -94,6 +94,12 @@ namespace LegendOfZelda.Rooms
             playerBlockDictionary = new Dictionary<Type, ICollision<IPlayer, IBlock>>()
             {
                 // TODO: initialize here
+                // fire
+                // unmovable block
+                    // water
+                    // wall
+                    // gap tile
+                    // statue
             };
         }
 
