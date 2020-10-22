@@ -11,7 +11,7 @@ namespace LegendOfZelda.Rooms
     class CSVReader
     {
         public ISpawnableManager allObjects = new SpawnableManager();
-        private Game1 game;
+        private SpriteBatch spriteBatch;
         private const int tileLength = 16;
         //String Abbreviations for Tiles in CSV File
         const string Block = "block";
@@ -48,9 +48,9 @@ namespace LegendOfZelda.Rooms
         const string Map = "map";
         const string Triforce = "triforce";
 
-        public CSVReader(Game1 game, string fileName)
+        public CSVReader(SpriteBatch spriteBatch, string fileName)
         {
-            this.game = game;
+            this.spriteBatch = spriteBatch;
             TextFieldParser parser = new TextFieldParser(fileName);
             parser.Delimiters = new string[] { "," }; //Delimiters are like separators in NextWordOrSeparator
             int j = 0;
@@ -89,91 +89,91 @@ namespace LegendOfZelda.Rooms
                 case Block:
                     break;
                 case BrickTile:
-                    blockType = new BrickTile(game.SpriteBatch, position);
+                    blockType = new BrickTile(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case GapTile:
-                    blockType = new GapTile(game.SpriteBatch, position);
+                    blockType = new GapTile(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case Fire:
-                    blockType = new Fire(game.SpriteBatch, position);
+                    blockType = new Fire(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case LadderTile:
-                    blockType = new LadderTile(game.SpriteBatch, position);
+                    blockType = new LadderTile(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case Stairs:
-                    blockType = new Stairs(game.SpriteBatch, position);
+                    blockType = new Stairs(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case Statue:
-                    blockType = new Statues(game.SpriteBatch, position);
+                    blockType = new Statues(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case BlueGrass:
-                    blockType = new TileBlueGrass(game.SpriteBatch, position);
+                    blockType = new TileBlueGrass(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case Water:
-                    blockType = new TileWater(game.SpriteBatch, position);
+                    blockType = new TileWater(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
 
                 //Npcs
                 case Aquamentus:
-                    npcType = new Aquamentus(game, position);
+                    npcType = new Aquamentus(spriteBatch, position, allObjects);
                     allObjects.Spawn(npcType);
                     break;
                 case Bat:
-                    npcType = new Bat(game, position);
+                    npcType = new Bat(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
                 case Goriya:
-                    npcType = new Goriya(game, position);
+                    npcType = new Goriya(spriteBatch, position, allObjects);
                     allObjects.Spawn(npcType);
                     break;
                 case Hand:
-                    npcType = new Hand(game, position);
+                    npcType = new Hand(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
                 case Jelly:
-                    npcType = new Jelly(game.SpriteBatch, position);
+                    npcType = new Jelly(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
                 case OldMan:
-                    npcType = new OldMan(game, position);
+                    npcType = new OldMan(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
                 case Skeleton:
-                    npcType = new Skeleton(game, position);
+                    npcType = new Skeleton(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
                 case SpikeTrap:
-                    npcType = new SpikeTrap(game, position);
+                    npcType = new SpikeTrap(spriteBatch, position);
                     allObjects.Spawn(npcType);
                     break;
 
                 //Items
                 case Compass:
-                    itemType = new CompassItem(game.SpriteBatch, position);
+                    itemType = new CompassItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
                 case Heart:
-                    itemType = new HeartItem(game.SpriteBatch, position);
+                    itemType = new HeartItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
                 case Key:
-                    itemType = new KeyItem(game.SpriteBatch, position);
+                    itemType = new KeyItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
                 case Map:
-                    itemType = new MapItem(game.SpriteBatch, position);
+                    itemType = new MapItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
                 case Triforce:
-                    itemType = new TriforceItem(game.SpriteBatch, position);
+                    itemType = new TriforceItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
 
@@ -191,7 +191,7 @@ namespace LegendOfZelda.Rooms
             {
                 position = new Point(0, 0);
             }
-            allObjects.Spawn(new RoomBorder(game.SpriteBatch, new Point(0, 0)));
+            allObjects.Spawn(new RoomBorder(spriteBatch, new Point(0, 0)));
             switch (spawnType)
             {
                 case TileBackground:
@@ -201,13 +201,13 @@ namespace LegendOfZelda.Rooms
                 case WallPiece:
                     break;
                 case OpenDoor:
-                    blockType = new OpenDoor(game.SpriteBatch, position);
+                    blockType = new OpenDoor(spriteBatch, position);
                     break;
                 case LockedDoor:
-                    blockType = new LockedDoor(game.SpriteBatch, position);
+                    blockType = new LockedDoor(spriteBatch, position);
                     break;
                 case ShutDoor:
-                    blockType = new ShutDoor(game.SpriteBatch, position);
+                    blockType = new ShutDoor(spriteBatch, position);
                     break;
                 case BombableWall:
                     break;
