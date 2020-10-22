@@ -9,14 +9,16 @@ namespace LegendOfZelda.Environment
     {
         private ISprite stairSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public Stairs(SpriteBatch spriteBatch, Point position)
         {
             stairSprite = EnvironmentSpriteFactory.Instance.CreateStairSprite();
             sB = spriteBatch;
-            this.position = new Point(position.X, position.Y);
+            Position = new Point(position.X, position.Y);
             safeToDespawn = false;
         }
 
@@ -27,12 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            stairSprite.Draw(sB, position);
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
+            stairSprite.Draw(sB, Position);
         }
 
         public Rectangle GetRectangle()
@@ -40,19 +37,9 @@ namespace LegendOfZelda.Environment
             return stairSprite.GetPositionRectangle();
         }
 
-        public void Move(Vector2 distance)
-        {
-            position = new Point((int)(position.X + distance.X), (int)(position.Y + distance.Y));
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()

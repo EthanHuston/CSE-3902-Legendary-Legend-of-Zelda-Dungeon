@@ -10,16 +10,18 @@ namespace LegendOfZelda.Environment
         private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
         private bool safeToDespawn;
-        private Point position;
-        private int textureMapRow;
+        private const int textureMapRow = 1;
         private const int textureMapColumn = 1;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public OpenDoor(SpriteBatch spriteBatch, Point spawnPosition)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             safeToDespawn = false;
-            position = spawnPosition;
+            Position = spawnPosition;
         }
 
         public void Draw()
@@ -43,11 +45,6 @@ namespace LegendOfZelda.Environment
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
-        }
-
         public Rectangle GetRectangle()
         {
             return doorSprite.GetPositionRectangle();
@@ -55,16 +52,13 @@ namespace LegendOfZelda.Environment
 
         public void Move(Vector2 distance)
         {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
 
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position = new Point(position.X, position.Y);
         }
 
         public void Update()

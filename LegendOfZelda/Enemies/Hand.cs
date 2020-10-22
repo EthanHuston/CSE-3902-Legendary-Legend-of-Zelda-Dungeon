@@ -10,24 +10,26 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
-        private int minXVal = 0;
-        private int maxXVal = 800;
-        private int minYVal = 0;
-        private int maxYVal = 480;
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
         private double health = 4;
+        private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
 
-        public Hand(SpriteBatch spriteBatch)
+        public Hand(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateHandSprite();
             this.spriteBatch = spriteBatch;
+            Position = spawnPosition;
+            safeToDespawn = false;
         }
         public void Update()
         {
+            safeToDespawn = !safeToDespawn && health <= 0;
             movementBuffer++;
             CheckBounds();
             //Move based on current chosen direction for some time.
@@ -65,19 +67,19 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckBounds()
         {
-            if (position.X == minXVal)
+            if (position.X <= Constants.MinXPos)
             {
                 position.X++;
             }
-            else if (position.X == maxXVal)
+            else if (position.X >= Constants.MaxXPos)
             {
                 position.X--;
             }
-            else if (position.Y == minYVal)
+            else if (position.Y <= Constants.MinYPos)
             {
                 position.Y++;
             }
-            else if (position.Y == maxYVal)
+            else if (position.Y >= Constants.MaxYPos)
             {
                 position.Y--;
             }
@@ -95,24 +97,16 @@ namespace LegendOfZelda.Enemies
         }
         public void TakeDamage(float damage)
         {
-            health = health - damage;
+            health =- damage;
         }
         public void Move(Vector2 distance)
         {
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-        public void SetPosition(Point position)
-        {
-            this.position = position;
-        }
         public bool SafeToDespawn()
         {
-            return health <= 0;
-        }
-        public Point GetPosition()
-        {
-            return position;
+            return safeToDespawn;
         }
         public Rectangle GetRectangle()
         {
@@ -126,7 +120,12 @@ namespace LegendOfZelda.Enemies
 
         public void Despawn()
         {
-            throw new NotImplementedException();
+            safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // hand does not have knockback
         }
     }
 }

@@ -4,6 +4,6 @@ namespace LegendOfZelda.Interface
 {
     interface ICollisionManager
     {
-        void HandleAllCollisions();
+        void CheckAndHandleAllCollisions();
     }
 }

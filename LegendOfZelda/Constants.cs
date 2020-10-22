@@ -9,7 +9,7 @@ namespace LegendOfZelda
         // Link
         public const int LinkWalkStepDistanceInterval = 1;
         public const int LinkWalkDistanceInterval = 20;
-        public const int LinkHealth = 100;
+        public const int LinkStartingHealth = 60;
         public const int LinkDamageEffectTimeMs = 2000;
         public const int LinkDamageFlashDelayTicks = 5;
         public const int LinkPickingUpItemPauseTicks = 60;
@@ -32,10 +32,21 @@ namespace LegendOfZelda
         public const int BoomerangVelocity = 6;
         public const int SwordBeamSpawnXOffsetFromLink = 4;
         public const int SwordBeamSpawnYOffsetFromLink = 5;
+
+        // Damage from Different Items
         public const double ArrowDamage = 2.0;
         public const double BombDamage = 4.0;
         public const double BoomerangDamage = .5;
         public const double SwordBeamDamage = 1.0;
+        public const double FireballDamage = 0.5;
+        public const double SwordDamage = 1; // TODO lookup damage
+
+        // Moveable Block
+        public const float MBlockMoveUp = -1;
+        public const float MBlockMoveDown = 1;
+        public const float MBlockMoveRight = 1;
+        public const float MBlockMoveLeft = -1;
+        public const float MBlockNoMove = 0;
 
         // Game Screen
         public const int MaxXPos = 800;

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Link.State.NotMoving;
+using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -7,7 +8,7 @@ namespace LegendOfZelda.Link.State.Attacking
     class LinkAttackingDownState : LinkLazyAbstractState
     {
         private const int spawnOffsetX = 0;
-        private const int spawnOffsetY = 0;
+        private const int spawnOffsetY = 16;
 
         public LinkAttackingDownState(LinkPlayer link) : base(link)
         {
@@ -21,7 +22,9 @@ namespace LegendOfZelda.Link.State.Attacking
 
         protected override void InitClass()
         {
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
+            link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
+            link.Velocity = Vector2.Zero;
+            link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X + spawnOffsetX, link.Position.Y + spawnOffsetY), Constants.Direction.Down, Constants.ItemOwner.Link));
         }
 
         public override void Update()
@@ -37,18 +40,19 @@ namespace LegendOfZelda.Link.State.Attacking
             }
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            link.Mover.Update();
         }
 
         public override void Draw()
         {
-            int posX = link.GetPosition().X + spawnOffsetX;
-            int posY = link.GetPosition().Y + spawnOffsetY;
+            int posX = link.Position.X + spawnOffsetX;
+            int posY = link.Position.Y + spawnOffsetY;
             link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged);
         }
 
         public override void StopMoving()
         {
-            link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
+            link.State = new LinkStandingStillDownState(link, damaged, healthyDateTime);
         }
     }
 }

@@ -17,22 +17,24 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            link.SpawnItem(new BoomerangFlyingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.ItemOwner.Link, link, new Vector2(0, -1 * Constants.BoomerangVelocity)));
+            link.SpawnItem(new BoomerangFlyingProjectile(link.Game.SpriteBatch, link.Position, Constants.ItemOwner.Link, link, new Vector2(0, -1 * Constants.BoomerangVelocity)));
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
         {
+            link.Mover.Update();
             StopMoving(); // because after we spawn the boomerang return to non-moving state
         }
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
         }
 
         public override void StopMoving()
         {
-            link.SetState(new LinkStandingStillUpState(link, damaged, healthyDateTime));
+            link.State = new LinkStandingStillUpState(link, damaged, healthyDateTime);
         }
     }
 }

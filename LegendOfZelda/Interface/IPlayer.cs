@@ -2,8 +2,8 @@
 {
     public interface IPlayer : IDynamic
     {
-        void BeHealthy(int healAmount);
-        void BeDamaged(int damage);
+        void BeHealthy(double healAmount);
+        void BeDamaged(double damage);
         void MoveUp();
         void MoveDown();
         void MoveLeft();
@@ -27,5 +27,6 @@
         void UseBoomerang();
         void PickUpBoomerang();
         void UseSwordBeam();
+        void Drag(ISpawnable dragger, int dragTime);
     }
 }

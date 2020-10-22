@@ -8,8 +8,10 @@ namespace LegendOfZelda.Environment
     {
         private ISprite brickTileSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public BrickTile(SpriteBatch spriteBatch, Point spawnPosition)
         {
@@ -19,6 +21,7 @@ namespace LegendOfZelda.Environment
             safeToDespawn = false;
         }
 
+
         public void Despawn()
         {
             safeToDespawn = true;
@@ -26,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            brickTileSprite.Draw(sB, position);
+            brickTileSprite.Draw(sB, Position);
         }
 
         public Point GetPosition()
@@ -37,12 +40,6 @@ namespace LegendOfZelda.Environment
         public Rectangle GetRectangle()
         {
             return brickTileSprite.GetPositionRectangle();
-        }
-
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
         }
 
         public bool SafeToDespawn()

@@ -4,6 +4,7 @@ using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace LegendOfZelda.Enemies
 {
@@ -11,7 +12,6 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position;
         private ISpawnableManager itemSpawner;
         private IProjectile boomer;
         private int velocity;
@@ -25,10 +25,13 @@ namespace LegendOfZelda.Enemies
         private double health = 3;
         private bool inKnockback = false;
         private bool safeToDespawn = false;
-
+        
         private Random rand = new Random();
 
-        public Goriya(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public Goriya(Game1 game, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
             this.spriteBatch = spriteBatch;
@@ -62,7 +65,6 @@ namespace LegendOfZelda.Enemies
             else {
                 MoveKnockback(knockbackOrigin);
             }
-
 
             sprite.Update();
         }
@@ -273,18 +275,9 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-
-        public void SetPosition(Point position)
-        {
-            this.position = position;
-        }
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-        public Point GetPosition()
-        {
-            return position;
         }
         public Rectangle GetRectangle()
         {

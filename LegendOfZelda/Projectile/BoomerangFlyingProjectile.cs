@@ -1,4 +1,5 @@
 using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -17,8 +18,7 @@ namespace LegendOfZelda.Projectile
         public BoomerangFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangFlyingSprite();
-            this.velocity.X = velocity.X;
-            this.velocity.Y = velocity.Y;
+            Velocity = velocity;
             returningToOwner = false;
             this.itemToTrack = itemToTrack;
         }
@@ -28,44 +28,45 @@ namespace LegendOfZelda.Projectile
             MoveBoomerang();
             CheckItemIsExpired();
             sprite.Update();
+            Mover.Update();
         }
 
         private void MoveBoomerang()
         {
-            if (GetDistanceFromOwner() > maxDistanceFromOwner || Utility.ItemIsOutOfBounds(position))
+            if (!returningToOwner && GetDistanceFromOwner() > maxDistanceFromOwner)
             {
                 returningToOwner = true;
-                velocity.X *= -1;
-                velocity.Y *= -1;
+                Velocity = new Vector2(Velocity.X * -1, Velocity.Y * -1);
             }
 
-            position.X = position.X == 0 ? itemToTrack.GetPosition().X : (int)(position.X + velocity.X);
-            position.Y = position.Y == 0 ? itemToTrack.GetPosition().Y : (int)(position.Y + velocity.Y);
+            int posX = Position.X == 0 ? itemToTrack.Position.X : (int)(Position.X + Velocity.X);
+            int posY = Position.Y == 0 ? itemToTrack.Position.Y : (int)(Position.Y + Velocity.Y);
+            Position = new Point(posX, posY);
         }
 
         private double GetDistanceFromOwner()
         {
-            return Utility.GetDistance(position, itemToTrack.GetPosition());
+            return UtilityMethods.GetDistance(Position, itemToTrack.Position);
         }
 
         protected override void CheckItemIsExpired()
         {
-            Point ownerPosition = itemToTrack.GetPosition();
+            Point ownerPosition = itemToTrack.Position;
             itemIsExpired = returningToOwner &&
-                position.X <= ownerPosition.X + despawnMaxXFromOwner &&
-                position.X >= ownerPosition.X + despawnMinXFromOwner &&
-                position.Y <= ownerPosition.Y + despawnMaxYFromOwner &&
-                position.Y >= ownerPosition.Y + despawnMinYFromOwner;
+                Position.X <= ownerPosition.X + despawnMaxXFromOwner &&
+                Position.X >= ownerPosition.X + despawnMinXFromOwner &&
+                Position.Y <= ownerPosition.Y + despawnMaxYFromOwner &&
+                Position.Y >= ownerPosition.Y + despawnMinYFromOwner;
         }
 
-        public override Vector2 GetVelocity()
-        {
-            // this is not true velocity, as X xor Y will always be 0; but shouldn't matter :)
-            return new Vector2(velocity.X, velocity.Y);
-        }
         public override double DamageAmount()
         {
             return Constants.BoomerangDamage;
+        }
+
+        public void ReturnToOwner()
+        {
+            returningToOwner = true;
         }
     }
 }

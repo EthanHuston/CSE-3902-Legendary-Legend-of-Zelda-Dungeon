@@ -1,7 +1,7 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.NotMoving;
-using LegendOfZelda.Sprint2;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -9,46 +9,33 @@ namespace LegendOfZelda.Link
 {
     class LinkPlayer : IPlayer
     {
-        public ILinkSprite CurrentSprite { get; set; }
-        public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
-        private ILinkState state;
-        private Point position;
-        private Point oldPosition;
-        private int health;
+        private double health;
         private Dictionary<Constants.LinkInventory, int> inventory;
         private bool safeToDespawn;
 
+        public ILinkSprite CurrentSprite { get; set; }
+
+        public bool BlockStateChange { get; set; }
+        
+        public SpawnableMover Mover { get; private set; }
+        
+        private ILinkState state;
+        public ILinkState State { get => state; set { if (!BlockStateChange) state = value; } }
+
+        public Point Position { get => Mover.Position; set => Mover.Position = value; }
+
+        public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
+
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
-            health = Constants.LinkHealth;
+            health = Constants.LinkStartingHealth;
             Game = game;
             state = new LinkStandingStillDownState(this);
-            oldPosition = new Point(spawnPosition.X, spawnPosition.Y);
-            position = new Point(spawnPosition.X, spawnPosition.Y);
+            Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             safeToDespawn = false;
             inventory = new Dictionary<Constants.LinkInventory, int>();
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
-        }
-
-        public void SetPosition(Point newPosition)
-        {
-            oldPosition = new Point(position.X, position.Y);
-            position = new Point(newPosition.X, newPosition.Y);
-        }
-
-        public ILinkState GetState()
-        {
-            return state;
-        }
-
-        public void SetState(ILinkState newState)
-        {
-            if (!BlockStateChange) state = newState;
+            BlockStateChange = false;
         }
 
         public void Draw()
@@ -61,22 +48,22 @@ namespace LegendOfZelda.Link
             state.Update();
         }
 
-        public void BeHealthy(int healAmount)
+        public void BeHealthy(double healAmount)
         {
             state.BeHealthy(healAmount);
         }
 
-        public void BeDamaged(int damage)
+        public void BeDamaged(double damage)
         {
             state.BeDamaged(damage);
         }
 
-        public void SubtractHealth(int damage)
+        public void SubtractHealth(double damage)
         {
             health -= damage;
         }
 
-        public void AddHealth(int healAmount)
+        public void AddHealth(double healAmount)
         {
             health += healAmount;
         }
@@ -159,14 +146,9 @@ namespace LegendOfZelda.Link
             state.UseSwordBeam();
         }
 
-        public Vector2 GetVelocity()
+        public void Move(int distance, Vector2 velocity)
         {
-            return Vector2.Subtract(GetPosition().ToVector2(), oldPosition.ToVector2());
-        }
-
-        public void Move(Vector2 distance)
-        {
-            SetPosition(new Point((int)(position.X + distance.X), (int)(position.Y + distance.Y)));
+            Mover.MoveDistance(distance, velocity);
         }
 
         public Rectangle GetRectangle()
@@ -222,6 +204,11 @@ namespace LegendOfZelda.Link
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void MoveOnce(Vector2 distance)
+        {
+            Mover.MoveOnce(distance);
         }
     }
 }

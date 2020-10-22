@@ -853,7 +853,7 @@
 /processorParam:TextureFormat=Color
 /build:Link/LinkPickingUpTriforce.png
 
-#begin Link/LinkStrikingDown.png
+#begin Link/LinkSwordDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -863,9 +863,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingDown.png
+/build:Link/LinkSwordDown.png
 
-#begin Link/LinkStrikingLeft.png
+#begin Link/LinkSwordLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -875,9 +875,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingLeft.png
+/build:Link/LinkSwordLeft.png
 
-#begin Link/LinkStrikingRight.png
+#begin Link/LinkSwordRight.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -887,9 +887,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingRight.png
+/build:Link/LinkSwordRight.png
 
-#begin Link/LinkStrikingUp.png
+#begin Link/LinkSwordUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -899,7 +899,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingUp.png
+/build:Link/LinkSwordUp.png
 
 #begin Link/LinkUsingItemDown.png
 /importer:TextureImporter

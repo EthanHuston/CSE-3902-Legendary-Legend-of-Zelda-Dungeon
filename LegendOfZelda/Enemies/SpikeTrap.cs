@@ -9,7 +9,6 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position;
         private int maxDistance = Constants.SpikeTrapMaxDist;
         private int currentDist = 0;
         private int goingVelocity = Constants.SpikeTrapGoingVelocity;
@@ -22,12 +21,15 @@ namespace LegendOfZelda.Enemies
         private Constants.Direction currentDirection;
         private bool safeToDespawn;
 
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
         public SpikeTrap(SpriteBatch spriteBatch, Point spawnPosition, IPlayer link)
         {
             sprite = EnemySpriteFactory.Instance.CreateSpikeTrapSprite();
             this.spriteBatch = spriteBatch;
             this.link = link;
-            position = new Point(spawnPosition.X, spawnPosition.Y);
+            Position = spawnPosition;
             safeToDespawn = false;
         }
 
@@ -196,17 +198,9 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-        public void SetPosition(Point position)
-        {
-            this.position = position;
-        }
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-        public Point GetPosition()
-        {
-            return position;
         }
         public Rectangle GetRectangle()
         {
@@ -221,6 +215,11 @@ namespace LegendOfZelda.Enemies
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // cannot be knocketh backeth
         }
     }
 }

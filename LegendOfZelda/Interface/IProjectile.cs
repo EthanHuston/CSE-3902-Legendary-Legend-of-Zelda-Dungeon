@@ -2,7 +2,7 @@
 {
     public interface IProjectile : IDynamic
     {
-        Constants.ItemOwner GetItemOwner();
+        Constants.ItemOwner Owner { get; }
         double DamageAmount();
     }
 }

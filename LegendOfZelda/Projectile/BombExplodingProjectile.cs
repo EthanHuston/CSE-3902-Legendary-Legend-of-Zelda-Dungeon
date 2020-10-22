@@ -12,6 +12,7 @@ namespace LegendOfZelda.Projectile
 
         public override void Update()
         {
+            Mover.Update();
             sprite.Update();
         }
 
@@ -20,15 +21,11 @@ namespace LegendOfZelda.Projectile
             sprite.FinishedAnimation();
         }
 
-        public override Vector2 GetVelocity()
-        {
-            return Vector2.Zero;
-        }
-
         public bool IsExploded()
         {
             return sprite.FinishedAnimation();
         }
+
         public override double DamageAmount()
         {
             return Constants.BombDamage;

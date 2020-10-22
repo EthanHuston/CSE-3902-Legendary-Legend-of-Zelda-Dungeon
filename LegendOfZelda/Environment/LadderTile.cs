@@ -9,14 +9,16 @@ namespace LegendOfZelda.Environment
     {
         private ISprite ladderSprite;
         private SpriteBatch sB;
-        private Point position;
         private bool safeToDespawn;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public LadderTile(SpriteBatch spriteBatch, Point position)
         {
             ladderSprite = EnvironmentSpriteFactory.Instance.CreateLadderSprite();
             sB = spriteBatch;
-            this.position = position;
+            Position = position;
             safeToDespawn = false;
         }
 
@@ -27,12 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            ladderSprite.Draw(sB, position);
-        }
-
-        public Point GetPosition()
-        {
-            return new Point(position.X, position.Y);
+            ladderSprite.Draw(sB, Position);
         }
 
         public Rectangle GetRectangle()
@@ -40,20 +37,9 @@ namespace LegendOfZelda.Environment
             return ladderSprite.GetPositionRectangle();
         }
 
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            throw new System.NotImplementedException();
         }
 
         public void Update()

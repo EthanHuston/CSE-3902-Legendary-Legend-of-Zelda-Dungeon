@@ -55,7 +55,7 @@ namespace LegendOfZelda.Link.Sprite
         {
             int frameWidth = sprite.Width / numColumns;
             int frameHeight = sprite.Height / numRows;
-            int currentRow = 0;
+            int currentRow = 1;
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);

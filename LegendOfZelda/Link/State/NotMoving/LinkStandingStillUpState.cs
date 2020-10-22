@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Link.State.Attacking;
 using LegendOfZelda.Link.State.Item;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State.NotMoving
@@ -17,18 +18,20 @@ namespace LegendOfZelda.Link.State.NotMoving
 
         protected override void InitClass()
         {
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkUpSprite();
+            link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkUpSprite();
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            link.Mover.Update();
         }
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
         }
 
         public override void StopMoving()
@@ -38,27 +41,27 @@ namespace LegendOfZelda.Link.State.NotMoving
 
         public override void UseSword()
         {
-            link.SetState(new LinkAttackingUpState(link, damaged, healthyDateTime));
+            link.State = new LinkAttackingUpState(link, damaged, healthyDateTime);
         }
 
         public override void UseBow()
         {
-            link.SetState(new LinkUsingBowUpState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBowUpState(link, damaged, healthyDateTime);
         }
 
         public override void UseBomb()
         {
-            link.SetState(new LinkUsingBombUpState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBombUpState(link, damaged, healthyDateTime);
         }
 
         public override void UseBoomerang()
         {
-            link.SetState(new LinkUsingBoomerangUpState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBoomerangUpState(link, damaged, healthyDateTime);
         }
 
         public override void UseSwordBeam()
         {
-            link.SetState(new LinkUsingSwordBeamUpState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingSwordBeamUpState(link, damaged, healthyDateTime);
         }
     }
 }

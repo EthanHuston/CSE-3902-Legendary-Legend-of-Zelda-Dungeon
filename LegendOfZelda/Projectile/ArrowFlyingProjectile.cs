@@ -1,3 +1,4 @@
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,19 +13,19 @@ namespace LegendOfZelda.Projectile
             switch (direction)
             {
                 case Constants.Direction.Down:
-                    velocity = new Vector2(0, moveDistanceInterval);
+                    Velocity = new Vector2(0, moveDistanceInterval);
                     sprite = ProjectileSpriteFactory.Instance.CreateArrowDownSprite();
                     break;
                 case Constants.Direction.Up:
-                    velocity = new Vector2(0, -1 * moveDistanceInterval);
+                    Velocity = new Vector2(0, -1 * moveDistanceInterval);
                     sprite = ProjectileSpriteFactory.Instance.CreateArrowUpSprite();
                     break;
                 case Constants.Direction.Right:
-                    velocity = new Vector2(moveDistanceInterval, 0);
+                    Velocity = new Vector2(moveDistanceInterval, 0);
                     sprite = ProjectileSpriteFactory.Instance.CreateArrowRightSprite();
                     break;
                 case Constants.Direction.Left:
-                    velocity = new Vector2(-1 * moveDistanceInterval, 0);
+                    Velocity = new Vector2(-1 * moveDistanceInterval, 0);
                     sprite = ProjectileSpriteFactory.Instance.CreateArrowLeftSprite();
                     break;
             }
@@ -32,24 +33,17 @@ namespace LegendOfZelda.Projectile
 
         public override void Update()
         {
-            position.X += (int)velocity.X;
-            position.Y += (int)velocity.Y;
-
+            Mover.Update();
             CheckItemIsExpired();
         }
         public override void Draw()
         {
-            sprite.Draw(spriteBatch, position);
-        }
-
-        public override Vector2 GetVelocity()
-        {
-            return new Vector2(velocity.X, velocity.Y);
+            sprite.Draw(spriteBatch, Position);
         }
 
         protected override void CheckItemIsExpired()
         {
-            itemIsExpired = Utility.ItemIsOutOfBounds(position); // or item hits enemy, but not yet implemented
+            itemIsExpired = UtilityMethods.ItemIsOutOfBounds(Position); // or item hits enemy, but not yet implemented
         }
         public override double DamageAmount()
         {
