@@ -24,6 +24,11 @@ namespace LegendOfZelda.Environment
             safeToDespawn = false;
         }
 
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
         public void Draw()
         {
             roomSprite.Draw(sb, position);

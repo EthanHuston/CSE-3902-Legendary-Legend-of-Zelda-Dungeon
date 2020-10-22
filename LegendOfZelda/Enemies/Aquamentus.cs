@@ -29,6 +29,12 @@ namespace LegendOfZelda.Enemies
 
         public Aquamentus(Game1 game, Point spawnPosition)
         {
+            get => new Point(position.X, position.Y);
+            set => position = new Point(value.X, value.Y);
+        }
+
+        public Aquamentus(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
+        {
             sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
             spriteBatch = game.SpriteBatch;
             itemSpawner = game.GetCurrentRoom().GetSpawnableManager();

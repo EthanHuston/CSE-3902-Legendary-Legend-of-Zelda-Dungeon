@@ -10,8 +10,8 @@ namespace LegendOfZelda.Environment
         private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
         private bool safeToDespawn;
-        private const int textureAtlasColumn = 1;
-        private const int textureAtlasRow = 3;
+        private const int textureAtlasColumn = 3;
+        private int textureAtlasRow;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -26,6 +26,22 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
+            if ((position.X != Constants.MinXPos) && (position.Y == Constants.MinYPos))
+            {
+                textureAtlasRow = 1;
+            }
+            else if ((position.X == Constants.MinXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureAtlasRow = 2;
+            }
+            else if ((position.X == Constants.MaxXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureAtlasRow = 3;
+            }
+            else if ((position.X != Constants.MinXPos) && (position.Y == Constants.MaxYPos))
+            {
+                textureAtlasRow = 4;
+            }
             doorSprite.Draw(sB, position, new Point(textureAtlasColumn, textureAtlasRow));
         }
 
@@ -47,6 +63,11 @@ namespace LegendOfZelda.Environment
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void Move(int distance, Vector2 velocity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

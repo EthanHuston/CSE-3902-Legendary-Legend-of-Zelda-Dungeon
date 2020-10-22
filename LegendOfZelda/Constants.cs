@@ -53,6 +53,8 @@ namespace LegendOfZelda
         public const int MinXPos = 0;
         public const int MaxYPos = 480;
         public const int MinYPos = 0;
+        public const int HalfXPos = 400;
+        public const int HalfYPos = 240;
 
         // Directions
         public enum Direction
@@ -95,14 +97,12 @@ namespace LegendOfZelda
         public const int SpikeTrapMaxDist = 50;
         public const int SpikeTrapGoingVelocity = 4;
         public const int SpikeTrapReturningVelocity = 2;
+        public const int MovableSquareVelocity = 1;
         public const float EnemyMoveUp = -1;
         public const float EnemyMoveDown = 1;
         public const float EnemyMoveRight = 1;
         public const float EnemyMoveLeft = -1;
         public const float EnemyNoMove = 0;
 
-        //Room Constants
-        public const int roomWidth = 12;
-        public const int roomHeight = 7;
     }
 }

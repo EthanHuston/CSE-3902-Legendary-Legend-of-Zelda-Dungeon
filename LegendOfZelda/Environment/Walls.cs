@@ -8,16 +8,18 @@ namespace LegendOfZelda.Environment
 {
     class Walls : IBlock
     {
-        private ISprite roomBorderSprite;
+        private ITextureAtlasSprite wallSprite;
         private SpriteBatch sB;
         private bool safeToDespawn;
+        private int textureMapRow;
+        private const int textureMapColumn = 1;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public Walls(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            roomBorderSprite = EnvironmentSpriteFactory.Instance.CreateRoomBorderSprite();
+            wallSprite = EnvironmentSpriteFactory.Instance.CreateWallSprite();
             sB = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
@@ -30,12 +32,28 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            roomBorderSprite.Draw(sB, Position);
+            if ((position.X != Constants.MinXPos) && (position.Y == Constants.MinYPos))
+            {
+                textureMapRow = 1;
+            }
+            else if ((position.X == Constants.MinXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureMapRow = 2;
+            }
+            else if ((position.X == Constants.MaxXPos) && (position.Y != Constants.MinYPos))
+            {
+                textureMapRow = 3;
+            }
+            else if ((position.X != Constants.MinXPos) && (position.Y == Constants.MaxYPos))
+            {
+                textureMapRow = 4;
+            }
+            wallSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
         public Rectangle GetRectangle()
         {
-            return roomBorderSprite.GetPositionRectangle();
+            return wallSprite.GetPositionRectangle();
         }
 
         public bool SafeToDespawn()
@@ -45,7 +63,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            roomBorderSprite.Update();
+            wallSprite.Update();
         }
     }
 }
