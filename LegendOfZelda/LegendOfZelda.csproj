@@ -57,6 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemySwordCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyProjectileDoNothingCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemySwordBeamCollisionHandler.cs" />
     <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyBoomerangCollisionHandler.cs" />
