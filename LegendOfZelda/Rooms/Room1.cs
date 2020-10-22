@@ -3,10 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Rooms
 {
-    class Room1
+    public class Room1
     {
         private CSVReader csvReader;
-        IItemSpawner allObjects;
+        private ISpawnableManager allObjects;
+
         public Room1(SpriteBatch spriteBatch)
         {
             csvReader = new CSVReader(spriteBatch, "Room1.txt");
@@ -23,5 +24,9 @@ namespace LegendOfZelda.Rooms
             allObjects.UpdateAll();
         }
 
+        public ISpawnableManager GetSpawnableManager()
+        {
+            return allObjects;
+        }
     }
 }

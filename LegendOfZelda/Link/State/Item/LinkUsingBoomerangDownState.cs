@@ -1,4 +1,6 @@
 using LegendOfZelda.Link.State.NotMoving;
+using LegendOfZelda.Projectile;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State.Item
@@ -15,7 +17,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            this.link.SpawnItem(new BoomerangFlyingProjectile(link, Constants.Direction.Down));
+            link.SpawnItem(new BoomerangFlyingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.ItemOwner.Link, link, new Vector2(0, Constants.BoomerangVelocity)));
         }
 
         public override void Update()

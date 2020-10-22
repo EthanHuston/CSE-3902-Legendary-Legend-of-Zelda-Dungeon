@@ -16,6 +16,11 @@ namespace LegendOfZelda
         public const int LinkUsingItemPauseTicks = 5;
         public const int LinkStrikingPauseTicks = 5;
         public const int LinkWalkingFrameDelay = 10;
+        public const float LinkMoveUp = -1;
+        public const float LinkMoveDown = 1;
+        public const float LinkMoveRight = 1;
+        public const float LinkMoveLeft = -1;
+        public const float LinkNoMove = 0;
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
@@ -24,7 +29,7 @@ namespace LegendOfZelda
         public const int BombSpawnYOffsetFromLink = 6;
         public const int BoomerangSpawnXOffsetFromLink = 0;
         public const int BoomerangSpawnYOffsetFromLink = 6;
-        public const int BoomerangMaxDistanceFromLink = 300;
+        public const int BoomerangVelocity = 6;
         public const int SwordBeamSpawnXOffsetFromLink = 4;
         public const int SwordBeamSpawnYOffsetFromLink = 5;
         public const double ArrowDamage = 2.0;
@@ -69,8 +74,10 @@ namespace LegendOfZelda
             Bomb,
             Map,
             Key,
-            Compass
-            // add mode
+            Compass,
+            Heart,
+            Fairy,
+            Clock
         }
 
         //Enemy Constants

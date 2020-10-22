@@ -61,6 +61,12 @@ namespace LegendOfZelda.Environment
         public void Update()
         {
             safeToDespawn = !safeToDespawn && false; // condition to despawn
+            roomSprite.Update();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
     }
 }

@@ -17,15 +17,17 @@ namespace LegendOfZelda.Link
         private Point oldPosition;
         private int health;
         private Dictionary<Constants.LinkInventory, int> inventory;
+        private bool safeToDespawn;
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
             health = Constants.LinkHealth;
             Game = game;
             state = new LinkStandingStillDownState(this);
-            position.X = ConstantsSprint2.Sprint2LinkSpawnX;
-            position.Y = ConstantsSprint2.Sprint2LinkSpawnY;
-            oldPosition = new Point(position.X, position.Y);
+            oldPosition = new Point(spawnPosition.X, spawnPosition.Y);
+            position = new Point(spawnPosition.X, spawnPosition.Y);
+            safeToDespawn = false;
+            inventory = new Dictionary<Constants.LinkInventory, int>();
         }
 
         public Point GetPosition()
@@ -36,9 +38,9 @@ namespace LegendOfZelda.Link
         public void SetPosition(Point newPosition)
         {
             oldPosition = new Point(position.X, position.Y);
-            position.X = newPosition.X;
-            position.Y = newPosition.Y;
+            position = new Point(newPosition.X, newPosition.Y);
         }
+
         public ILinkState GetState()
         {
             return state;
@@ -132,9 +134,9 @@ namespace LegendOfZelda.Link
             state.PickUpTriforce();
         }
 
-        public void SpawnItem(IItem item)
+        public void SpawnItem(IProjectile item)
         {
-            Game.SpawnedItems.Spawn(item);
+            Game.GetCurrentRoom().GetSpawnableManager().Spawn(item);
         }
 
         public void UseBomb()
@@ -174,52 +176,52 @@ namespace LegendOfZelda.Link
 
         public bool SafeToDespawn()
         {
-            return false; // Link can only despawn when game ends
+            return safeToDespawn;
         }
 
         public void PickupMap()
         {
-            inventory[Constants.LinkInventory.Map] += 1;
+            inventory[Constants.LinkInventory.Map]++;
         }
 
         public void PickupBomb()
         {
-            inventory[Constants.LinkInventory.Bomb] += 1;
+            inventory[Constants.LinkInventory.Bomb]++;
         }
 
         public void PickupKey()
         {
-            inventory[Constants.LinkInventory.Key] += 1;
+            inventory[Constants.LinkInventory.Key]++;
         }
 
         public void PickupCompass()
         {
-            inventory[Constants.LinkInventory.Compass] += 1;
+            inventory[Constants.LinkInventory.Compass]++;
         }
 
         public void PickupHeart()
         {
-            // TODO: heal link when he picks up heart right??
+            inventory[Constants.LinkInventory.Heart]++;
         }
 
         public void PickupRupee()
         {
-            inventory[Constants.LinkInventory.Arrow] += 1;
+            inventory[Constants.LinkInventory.Arrow]++;
         }
 
         public void PickupFairy()
         {
-            // TODO: can link keep fairies in his inventory??
+            inventory[Constants.LinkInventory.Fairy]++;
         }
 
         public void PickupClock()
         {
-            // TODO: idk what link does when he picks up a clock
+            inventory[Constants.LinkInventory.Clock]++;
         }
 
         public void Despawn()
         {
-            throw new System.NotImplementedException();
+            safeToDespawn = true;
         }
     }
 }

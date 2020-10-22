@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = false; // put some condition here that evaluates to true when we can despawn block
+            blockSprite.Update();
         }
 
         public Point GetPosition()
@@ -62,6 +62,11 @@ namespace LegendOfZelda.Environment
         {
             this.position.X = position.X;
             this.position.Y = position.Y;
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
     }
 }

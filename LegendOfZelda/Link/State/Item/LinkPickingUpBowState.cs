@@ -39,9 +39,9 @@ namespace LegendOfZelda.Link.State.Item
 
         public override void Draw()
         {
-            float posX = link.GetPosition().X + spawnOffsetX;
-            float posY = link.GetPosition().Y + spawnOffsetY;
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Vector2(posX, posY), damaged);
+            int posX = link.GetPosition().X + spawnOffsetX;
+            int posY = link.GetPosition().Y + spawnOffsetY;
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged);
         }
 
         public override void StopMoving()

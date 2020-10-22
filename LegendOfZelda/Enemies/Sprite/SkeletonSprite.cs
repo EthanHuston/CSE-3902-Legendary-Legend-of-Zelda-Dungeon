@@ -12,10 +12,6 @@ namespace LegendOfZelda.Enemies.Sprite
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        private int width;
-        private int height;
-        private int row;
-        private int column;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         public SkeletonSprite(Texture2D sprite)
@@ -60,6 +56,7 @@ namespace LegendOfZelda.Enemies.Sprite
             if (damaged)
             {
                 spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Red);
+                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
 
             }
             else

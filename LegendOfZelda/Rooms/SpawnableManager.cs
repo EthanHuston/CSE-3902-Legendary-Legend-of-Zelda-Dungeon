@@ -3,56 +3,55 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    class ItemSpawner : IItemSpawner
+    class SpawnableManager : ISpawnableManager
     {
-        private List<List<ISpawnable>> spawnableList;
-        private List<IItem> itemList;
-        private List<IProjectile> projectileList;
-        private List<INpc> npcList;
-        private List<IBlock> blockList;
-        private List<IPlayer> playerList;
+        public List<IItem> ItemList { get; private set; }
+        public List<IProjectile> ProjectileList { get; private set; }
+        public List<INpc> NpcList { get; private set; }
+        public List<IBlock> BlockList { get; private set; }
+        public List<IPlayer> PlayerList { get; private set; }
 
-        public ItemSpawner()
+        public SpawnableManager()
         {
-            itemList = new List<IItem>();
-            projectileList = new List<IProjectile>();
-            npcList = new List<INpc>();
-            blockList = new List<IBlock>();
-            playerList = new List<IPlayer>();
+            ItemList = new List<IItem>();
+            ProjectileList = new List<IProjectile>();
+            NpcList = new List<INpc>();
+            BlockList = new List<IBlock>();
+            PlayerList = new List<IPlayer>();
         }
 
         public void Spawn(INpc spawnable)
         {
-            npcList.Add(spawnable);
+            NpcList.Add(spawnable);
         }
 
         public void Spawn(IItem spawnable)
         {
-            itemList.Add(spawnable);
+            ItemList.Add(spawnable);
         }
 
         public void Spawn(IProjectile spawnable)
         {
-            projectileList.Add(spawnable);
+            ProjectileList.Add(spawnable);
         }
 
         public void Spawn(IBlock spawnable)
         {
-            blockList.Add(spawnable);
+            BlockList.Add(spawnable);
         }
 
         public void Spawn(IPlayer spawnable)
         {
-            playerList.Add(spawnable);
+            PlayerList.Add(spawnable);
         }
 
         public void DrawAll()
         {
-            DrawList(blockList);
-            DrawList(playerList);
-            DrawList(npcList);
-            DrawList(itemList);
-            DrawList(projectileList);
+            DrawList(BlockList);
+            DrawList(PlayerList);
+            DrawList(NpcList);
+            DrawList(ItemList);
+            DrawList(ProjectileList);
         }
 
         private void DrawList<T>(List<T> list)
@@ -66,11 +65,11 @@ namespace LegendOfZelda.Rooms
 
         public void UpdateAll()
         {
-            UpdateList(blockList);
-            UpdateList(playerList);
-            UpdateList(npcList);
-            UpdateList(itemList);
-            UpdateList(projectileList);
+            UpdateList(BlockList);
+            UpdateList(PlayerList);
+            UpdateList(NpcList);
+            UpdateList(ItemList);
+            UpdateList(ProjectileList);
         }
 
         private void UpdateList<T>(List<T> list)
@@ -90,6 +89,11 @@ namespace LegendOfZelda.Rooms
             {
                 list.RemoveAt(indicesToRemove[i]);
             }
+        }
+
+        public IPlayer GetPlayer(int playerNumber)
+        {
+            return PlayerList[playerNumber];
         }
     }
 }

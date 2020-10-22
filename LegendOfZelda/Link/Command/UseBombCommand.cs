@@ -4,14 +4,14 @@ namespace LegendOfZelda.Link.Command
 {
     class UseBombCommand : ICommand
     {
-        private Game1 loz;
-        public UseBombCommand(Game1 game)
+        private IPlayer link;
+        public UseBombCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.UseBomb();
+            link.UseBomb();
         }
     }
 }

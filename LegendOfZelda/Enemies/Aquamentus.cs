@@ -16,17 +16,16 @@ namespace LegendOfZelda.Enemies
         private int attackTime = 110;
         private int attackUpdate = 0;
         private bool attacked = false;
-        private bool ballsInitialized = false;
         private double health = 6;
         private const int xVelocity = -5;
-        private IItemSpawner itemSpawner;
+        private ISpawnableManager itemSpawner;
         private bool safeToDespawn;
 
         public Aquamentus(Game1 game, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
             spriteBatch = game.SpriteBatch;
-            itemSpawner = game.SpawnedItems;
+            itemSpawner = game.GetCurrentRoom().GetSpawnableManager();
             position = spawnPosition;
             safeToDespawn = false;
         }
@@ -92,7 +91,6 @@ namespace LegendOfZelda.Enemies
             itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -3), Constants.ItemOwner.Enemy));
             itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ItemOwner.Enemy));
             itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 3), Constants.ItemOwner.Enemy));
-            ballsInitialized = true;
             attacked = true;
             attackUpdate = updateCount;
         }

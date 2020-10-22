@@ -10,19 +10,24 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
+        private Point position;
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
         private double health = .5;
+        private bool safeToDespawn;
 
-        public Jelly(SpriteBatch spriteBatch)
+        public Jelly(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateJellySprite();
             this.spriteBatch = spriteBatch;
+            safeToDespawn = false;
+            position = new Point(spawnPosition.X, spawnPosition.Y);
+
         }
         public void Update()
         {
+            safeToDespawn = !safeToDespawn && health <= 0;
             movementBuffer++;
             if (movementBuffer == 16)
             {
@@ -70,9 +75,9 @@ namespace LegendOfZelda.Enemies
             position.X = ConstantsSprint2.enemyNPCX;
             position.Y = ConstantsSprint2.enemyNPCY;
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(double damage)
         {
-            health = health - damage;
+            health -= damage;
         }
         public void Move(Vector2 distance)
         {
@@ -85,7 +90,7 @@ namespace LegendOfZelda.Enemies
         }
         public bool SafeToDespawn()
         {
-            return health <= 0;
+            return safeToDespawn;
         }
         public Point GetPosition()
         {
@@ -94,6 +99,11 @@ namespace LegendOfZelda.Enemies
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
     }
 }

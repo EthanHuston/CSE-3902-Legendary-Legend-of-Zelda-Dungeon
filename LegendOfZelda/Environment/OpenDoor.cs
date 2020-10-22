@@ -55,7 +55,12 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && false; // condition goes here to despawn if we want
+            doorSprite.Update();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
     }
 }

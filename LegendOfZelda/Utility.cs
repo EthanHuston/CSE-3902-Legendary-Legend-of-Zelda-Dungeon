@@ -14,5 +14,10 @@ namespace LegendOfZelda
         {
             return Math.Sqrt(Math.Pow(position1.X - position2.X, 2) + Math.Pow(position1.Y - position2.Y, 2));
         }
+
+        public static Constants.Direction GetCollisionDirection(Rectangle rectangle1, Rectangle rectangle2, Rectangle collisionFound)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

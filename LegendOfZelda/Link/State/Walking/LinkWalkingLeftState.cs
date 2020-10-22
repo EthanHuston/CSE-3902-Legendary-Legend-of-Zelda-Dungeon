@@ -26,11 +26,11 @@ namespace LegendOfZelda.Link.State.Walking
 
         public override void Update()
         {
-            Vector2 position = link.GetPosition();
+            Point position = link.GetPosition();
             if (position.Y < Constants.MaxYPos)
             {
                 damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-                position.X = position.X - Constants.LinkWalkStepDistanceInterval;
+                position.X -= Constants.LinkWalkStepDistanceInterval;
                 distanceWalked += Constants.LinkWalkStepDistanceInterval;
                 link.SetPosition(position);
 

@@ -8,7 +8,7 @@ namespace LegendOfZelda.Rooms
 {
     class CSVReader
     {
-        public IItemSpawner allObjects = new ItemSpawner();
+        public ISpawnableManager allObjects = new SpawnableManager();
         private SpriteBatch spriteBatch;
         private const int tileLength = 16;
         //String Abbreviations for Tiles in CSV File

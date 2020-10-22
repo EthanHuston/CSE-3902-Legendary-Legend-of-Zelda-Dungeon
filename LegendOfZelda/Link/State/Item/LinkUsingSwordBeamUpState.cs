@@ -1,4 +1,5 @@
 using LegendOfZelda.Link.State.NotMoving;
+using LegendOfZelda.Projectile;
 using System;
 
 namespace LegendOfZelda.Link.State.Item
@@ -15,7 +16,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            this.link.SpawnItem(new SwordBeamItem(link, Constants.Direction.Up));
+            link.SpawnItem(new SwordBeamFlyingProjectile(link.Game.SpriteBatch, link.GetPosition(), Constants.ItemOwner.Link, Constants.Direction.Up));
         }
 
         public override void Update()

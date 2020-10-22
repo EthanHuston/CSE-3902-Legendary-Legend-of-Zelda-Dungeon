@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    class HeartContainer : GenericItem
+    class HeartContainerItem : GenericItem
     {
-        public HeartContainer(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
+        public HeartContainerItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {
             sprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
         }

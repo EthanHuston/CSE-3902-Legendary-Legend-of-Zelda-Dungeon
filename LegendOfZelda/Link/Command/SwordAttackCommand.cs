@@ -3,14 +3,14 @@ namespace LegendOfZelda.Link.Command
 {
     class SwordAttackCommand : ICommand
     {
-        private Game1 loz;
-        public SwordAttackCommand(Game1 game)
+        private IPlayer link;
+        public SwordAttackCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.UseSword();
+            link.UseSword();
         }
     }
 }
