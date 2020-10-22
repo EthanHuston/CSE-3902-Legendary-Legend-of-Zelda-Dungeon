@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+
 namespace LegendOfZelda
 {
     public static class RoomConstants
@@ -7,6 +9,12 @@ namespace LegendOfZelda
         public const int roomHeight = 7;
         public const int tileLength = 16;
         public const int spriteMultiplier = 4;
+        public const int topDoorX = 400, topDoorY = 0;
+        public const int rightDoorX = 800, rightDoorY = 240;
+        public const int bottomDoorX = 400, bottomDoorY = 480;
+        public const int leftDoorX = 0, leftDoorY = 240;
+        public const int backgroundX = 0, backgroundY = 0;
+        public const int roomBorderX = 0, roomBorderY = 0;
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";

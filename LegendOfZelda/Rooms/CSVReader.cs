@@ -152,35 +152,56 @@ namespace LegendOfZelda.Rooms
         private void spawnWallsAndBackground(string spawnType, int i)
         {
             IBlock blockType;
-            Point position = Point.Zero;
-            if (i == 1)
-            {
-                position = new Point(0, 0);
-            }
-            allObjects.Spawn(new RoomBorder(spriteBatch, new Point(0, 0)));
+            Point position;
+
+            if (i == 0)
+                position = new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY);
+            else if (i == 1)
+                position = new Point(RoomConstants.topDoorX, RoomConstants.topDoorY);
+            else if (i == 2)
+                position = new Point(RoomConstants.rightDoorX, RoomConstants.rightDoorY);
+            else if (i == 3)
+                position = new Point(RoomConstants.bottomDoorX, RoomConstants.bottomDoorY);
+            else if (i == 4)
+                position = new Point(RoomConstants.leftDoorX, RoomConstants.leftDoorY);
+            else
+                position = Point.Zero;
+
             switch (spawnType)
             {
                 case RoomConstants.TileBackground:
+                    blockType = new TileBackground(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.BlackBackground:
+                    blockType = new BlackBackground(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.WallPiece:
+                    blockType = new Walls(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.OpenDoor:
                     blockType = new OpenDoor(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.LockedDoor:
                     blockType = new LockedDoor(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.ShutDoor:
                     blockType = new ShutDoor(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.BombableWall:
+                    blockType = new Walls(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 default:
                     break;
 
             }
+      
         }
 
     }
