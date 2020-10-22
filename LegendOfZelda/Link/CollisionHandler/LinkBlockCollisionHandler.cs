@@ -5,7 +5,7 @@ namespace LegendOfZelda.Link.CollisionHandler
 {
     class LinkBlockCollisionHandler : ICollision<IPlayer, IBlock>
     {
-        public void HandleCollison(IPlayer link, IBlock block, Constants.Direction side)
+        public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
             Vector2 correctDirection;
             switch(side)
