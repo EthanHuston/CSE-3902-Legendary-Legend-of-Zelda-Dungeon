@@ -5,6 +5,8 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;
+using LegendOfZelda.Link.CollisionHandler.WithProjectile;
+using LegendOfZelda.Link.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Projectile.CollisionHandler;
 using System;
@@ -87,7 +89,11 @@ namespace LegendOfZelda.Rooms
 
             playerProjectileDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>>()
             {
-                // TODO: initialize here
+                {typeof(ArrowFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
+                {typeof(BombExplodingProjectile), new LinkBombCollisionHandler() },
+                {typeof(BoomerangFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
+                {typeof(FireballProjectile), new LinkFireballCollisionHandler() },
+                {typeof(SwordBeamFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
             };
 
             playerItemDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IItem>>()

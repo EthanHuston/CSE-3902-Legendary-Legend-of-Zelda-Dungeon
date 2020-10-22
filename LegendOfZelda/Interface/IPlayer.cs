@@ -3,7 +3,7 @@
     public interface IPlayer : IDynamic
     {
         void BeHealthy(int healAmount);
-        void BeDamaged(int damage);
+        void BeDamaged(double damage);
         void MoveUp();
         void MoveDown();
         void MoveLeft();
