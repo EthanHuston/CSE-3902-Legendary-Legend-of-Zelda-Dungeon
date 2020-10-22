@@ -34,7 +34,7 @@ namespace LegendOfZelda.Link.State
 
         public abstract void StopMoving();
 
-        public void BeDamaged(int damage)
+        public void BeDamaged(double damage)
         {
             if (!damaged)
             {
@@ -44,7 +44,7 @@ namespace LegendOfZelda.Link.State
             }
         }
 
-        public void BeHealthy(int healAmount)
+        public void BeHealthy(double healAmount)
         {
             damaged = false;
             link.AddHealth(healAmount);

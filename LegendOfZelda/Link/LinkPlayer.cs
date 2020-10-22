@@ -10,7 +10,7 @@ namespace LegendOfZelda.Link
     class LinkPlayer : IPlayer
     {
         public Game1 Game;
-        private int health;
+        private double health;
         private Dictionary<Constants.LinkInventory, int> inventory;
         private bool safeToDespawn;
 
@@ -48,22 +48,22 @@ namespace LegendOfZelda.Link
             state.Update();
         }
 
-        public void BeHealthy(int healAmount)
+        public void BeHealthy(double healAmount)
         {
             state.BeHealthy(healAmount);
         }
 
-        public void BeDamaged(int damage)
+        public void BeDamaged(double damage)
         {
             state.BeDamaged(damage);
         }
 
-        public void SubtractHealth(int damage)
+        public void SubtractHealth(double damage)
         {
             health -= damage;
         }
 
-        public void AddHealth(int healAmount)
+        public void AddHealth(double healAmount)
         {
             health += healAmount;
         }

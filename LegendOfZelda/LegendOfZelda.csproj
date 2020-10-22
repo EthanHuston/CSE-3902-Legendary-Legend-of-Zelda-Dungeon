@@ -87,6 +87,7 @@
     <Compile Include="Link\CollisionHandler\WithBlock\LinkFireCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkMoveableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDamageCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithNpc\LinkHandCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
