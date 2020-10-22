@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class Square : IDynamic
+    class Square : IBlock
     {
         private ISprite blockSprite;
         private SpriteBatch spriteBatch;
@@ -67,6 +67,9 @@ namespace LegendOfZelda.Environment
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+        void Move(int distance, Vector2 velocity) {
+            // do something
         }
     }
 }

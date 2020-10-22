@@ -6,7 +6,6 @@ namespace LegendOfZelda.Interface
     {
         void Update();
         void Draw();
-        void Move(int distance, Vector2 velocity);
         void SetPosition(Point position);
         bool SafeToDespawn();
         Point GetPosition();
