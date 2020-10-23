@@ -31,7 +31,7 @@ namespace LegendOfZelda.Enemies
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public Goriya(Game1 game, Point spawnPosition)
+        public Goriya(SpriteBatch spriteBatch, ISpawnableManager itemSpawner, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
             this.spriteBatch = spriteBatch;
