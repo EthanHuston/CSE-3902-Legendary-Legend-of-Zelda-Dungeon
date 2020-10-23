@@ -31,7 +31,7 @@ namespace LegendOfZelda.Enemies
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public Goriya(SpriteBatch spriteBatch, ISpawnableManager itemSpawner, Point spawnPosition)
+        public Goriya(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
             sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
             this.spriteBatch = spriteBatch;
@@ -300,6 +300,11 @@ namespace LegendOfZelda.Enemies
             {
                 knockbackOrigin = knockDirection;
             }
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
         }
     }
 }

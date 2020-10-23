@@ -60,5 +60,16 @@ namespace LegendOfZelda.Enemies
         {
             // knows no knockback
         }
+
+        public double GetDamageAmount()
+        {
+            return 0; // does no damage
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
     }
 }

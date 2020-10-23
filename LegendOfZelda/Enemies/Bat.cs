@@ -127,5 +127,10 @@ namespace LegendOfZelda.Enemies
         {
             // bat has no knockback
         }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
+        }
     }
 }

@@ -221,5 +221,10 @@ namespace LegendOfZelda.Enemies
         {
             // cannot be knocketh backeth
         }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
+        }
     }
 }
