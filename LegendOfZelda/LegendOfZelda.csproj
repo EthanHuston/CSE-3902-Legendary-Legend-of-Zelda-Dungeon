@@ -298,23 +298,60 @@
     <Compile Include="Utility\UtilityMethods.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\RoomData\Room1.csv" />
-    <Content Include="Content\RoomData\Room2.csv" />
-    <Content Include="Content\RoomData\Room3.csv" />
-    <Content Include="Content\RoomData\Room4.csv" />
-    <Content Include="Content\RoomData\Room5.csv" />
-    <Content Include="Content\RoomData\Room6.csv" />
-    <Content Include="Content\RoomData\Room7.csv" />
-    <Content Include="Content\RoomData\Room8.csv" />
-    <Content Include="Content\RoomData\Room9.csv" />
-    <Content Include="Content\RoomData\Room10.csv" />
-    <Content Include="Content\RoomData\Room11.csv" />
-    <Content Include="Content\RoomData\Room12.csv" />
-    <Content Include="Content\RoomData\Room13.csv" />
-    <Content Include="Content\RoomData\Room14.csv" />
-    <Content Include="Content\RoomData\Room15.csv" />
-    <Content Include="Content\RoomData\Room16.csv" />
-    <Content Include="Content\RoomData\Room17.csv" />
+    <None Include="Content\RoomData\Room1.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room2.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room3.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room4.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room5.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room6.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room7.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room8.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room9.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room10.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room11.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room12.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room13.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room14.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room15.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room16.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room17.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\SecretRoom.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
