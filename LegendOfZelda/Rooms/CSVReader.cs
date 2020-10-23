@@ -10,12 +10,13 @@ namespace LegendOfZelda.Rooms
 {
     class CSVReader
     {
-        public ISpawnableManager allObjects = new SpawnableManager();
+        public ISpawnableManager allObjects;
         private SpriteBatch spriteBatch;
         
 
-        public CSVReader(SpriteBatch spriteBatch, string fileName)
+        public CSVReader(SpriteBatch spriteBatch, ISpawnableManager allObjects, string fileName)
         {
+            this.allObjects = allObjects;
             this.spriteBatch = spriteBatch;
             TextFieldParser parser = new TextFieldParser(fileName);
             parser.Delimiters = new string[] { "," }; //Delimiters are like separators in NextWordOrSeparator

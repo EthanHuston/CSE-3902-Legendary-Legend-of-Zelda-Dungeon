@@ -141,6 +141,10 @@ namespace LegendOfZelda.Rooms
                 {typeof(BombedOpening), new LinkDoorCollisionHandler() },
                 {typeof(Stairs), new LinkStairsCollisionHandler() },
 
+
+                // no collision detection
+                // BlackBackground, RoomBorder, TileBackground, TileBlueGrass
+
                 // unmovable block
                     // water
                     // wall

@@ -108,6 +108,7 @@
     <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
+    <Compile Include="Rooms\RoomManager.cs" />
     <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
     <Compile Include="Rooms\CollisionManager.cs" />
     <Compile Include="Rooms\RoomConstants.cs" />
@@ -169,7 +170,7 @@
     <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
     <Compile Include="Projectile\SwordBeamFlyingProjectile.cs" />
     <Compile Include="Rooms\CSVReader.cs" />
-    <Compile Include="Rooms\Room1.cs" />
+    <Compile Include="Rooms\Room.cs" />
     <Compile Include="Projectile\FireballProjectile.cs" />
     <Compile Include="Item\BombItem.cs" />
     <Compile Include="Item\BoomerangItem.cs" />
@@ -295,6 +296,7 @@
     <Compile Include="Item\Sprite\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
+    <Compile Include="Utility\Class1.cs" />
     <Compile Include="Utility\SpawnableMover.cs" />
     <Compile Include="Utility\UtilityMethods.cs" />
   </ItemGroup>
