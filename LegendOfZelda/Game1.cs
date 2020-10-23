@@ -39,7 +39,8 @@ namespace LegendOfZelda
 
             controllerList = new List<IController>()
             {
-                {new KeyboardController(this) }
+                {new KeyboardController(this) },
+                {new MouseController(this) }
             };
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
@@ -65,19 +66,14 @@ namespace LegendOfZelda
             {
                 controller.Update();
             }
-
+            State.Update();
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        }
-
-        public Room GetCurrentRoom()
-        {
-            return currentRoom;
+            State.Draw();
         }
 
         public IPlayer GetGamePlayer(int playerNumber)
