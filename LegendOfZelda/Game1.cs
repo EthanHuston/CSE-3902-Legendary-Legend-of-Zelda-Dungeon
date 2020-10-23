@@ -13,7 +13,7 @@ namespace LegendOfZelda
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
         List<IController> controllerList;
-        private Room1 currentRoom;
+        private Room currentRoom;
         private List<IPlayer> playersList;
 
         public Game1()
@@ -75,7 +75,7 @@ namespace LegendOfZelda
 
         }
 
-        public Room1 GetCurrentRoom()
+        public Room GetCurrentRoom()
         {
             return currentRoom;
         }
