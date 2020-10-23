@@ -5,8 +5,7 @@ namespace LegendOfZelda.Rooms
 {
     class RoomFactory
     {
-        private readonly Room startingRoom;
-        private List<Room> roomsList;
+        private readonly List<Room> roomsList;
 
         public RoomFactory(SpriteBatch spriteBatch) {
             roomsList = new List<Room>();
