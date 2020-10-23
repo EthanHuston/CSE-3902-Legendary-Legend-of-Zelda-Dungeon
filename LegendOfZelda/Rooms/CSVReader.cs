@@ -117,7 +117,7 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(npcType);
                     break;
                 case RoomConstants.SpikeTrap:
-                    npcType = new SpikeTrap(spriteBatch, position);
+                    npcType = new SpikeTrap(spriteBatch, position, allObjects.GetPlayer(0));
                     allObjects.Spawn(npcType);
                     break;
 

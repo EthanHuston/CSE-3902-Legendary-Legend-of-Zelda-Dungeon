@@ -65,5 +65,11 @@ namespace LegendOfZelda.Enemies
         {
             return 0; // does no damage
         }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
     }
 }

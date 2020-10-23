@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -113,6 +114,12 @@ namespace LegendOfZelda.Environment
         public double GetDamageAmount()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
     }
 }
