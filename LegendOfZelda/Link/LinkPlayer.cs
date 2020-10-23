@@ -33,7 +33,7 @@ namespace LegendOfZelda.Link
             health = Constants.LinkStartingHealth;
             Game = game;
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
-            state = new LinkStandingStillDownState(this);
+            State = new LinkStandingStillDownState(this);
             safeToDespawn = false;
             inventory = new Dictionary<Constants.LinkInventory, int>();
             BlockStateChange = false;

@@ -22,19 +22,15 @@ namespace LegendOfZelda.Link.State.Walking
         {
             distanceWalked = 0;
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingDownLinkSprite();
-            link.Velocity = new Vector2(0, Constants.LinkWalkDistanceInterval);
+            link.Velocity = new Vector2(0, Constants.LinkWalkStepDistanceInterval);
         }
 
         public override void Update()
         {
-            Point position = link.Position;
-            if (position.Y < Constants.MaxYPos)
-            {
-                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-                link.Mover.Update();
-                distanceWalked += (int)link.Mover.Velocity.Length();
-                link.CurrentSprite.Update();
-            }
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            link.Mover.Update();
+            distanceWalked += (int)link.Mover.Velocity.Length();
+            link.CurrentSprite.Update();
 
             if (distanceWalked > Constants.LinkWalkDistanceInterval)
             {
