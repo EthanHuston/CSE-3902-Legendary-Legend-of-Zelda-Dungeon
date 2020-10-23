@@ -5,17 +5,17 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Command
 {
-    class ChangeRoomCommand : ICommand
+    class ChangeRoomDownCommand : ICommand
     {
         RoomManager rooms;
         Point mousePosition;
-        public ChangeRoomCommand(RoomManager rooms)
+        public ChangeRoomDownCommand(RoomManager rooms)
         {
             this.rooms = rooms;
         }
         public void Execute()
         {
-            rooms.MoveRoom();
+            rooms.MoveRoom(Constants.Direction.Down);
         }
     }
 }

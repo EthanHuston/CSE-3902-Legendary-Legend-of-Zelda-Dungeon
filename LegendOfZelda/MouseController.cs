@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
+using LegendOfZelda.Rooms;
 using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -16,6 +17,7 @@ namespace LegendOfZelda
         {
             myGame = game1;
             leftClickCommands = new Dictionary<Constants.Direction, ICommand>();
+            RegisterCommand(Constants.Direction.Down, new ChangeRoomDownCommand(((RoomGameState)myGame.State).roomManager));
             
         }
 
