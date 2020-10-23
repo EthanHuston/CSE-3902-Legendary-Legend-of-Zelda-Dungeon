@@ -7,30 +7,26 @@ namespace LegendOfZelda.Rooms
 {
     public class Room
     {
-        private CSVReader csvReader;
-        private ISpawnableManager allObjects;
         private Dictionary<Constants.Direction, Room> roomDictionary;
+
+        public ISpawnableManager AllObjects { get; private set; }
+        public List<IPlayer> PlayersList { get; set; }
 
         public Room(SpriteBatch spriteBatch, string fileName)
         {
-            allObjects = new SpawnableManager();
-            csvReader = new CSVReader(spriteBatch, allObjects, fileName);
+            AllObjects = new SpawnableManager();
+            CSVReader csvReader = new CSVReader(spriteBatch, AllObjects, fileName);
             roomDictionary = new Dictionary<Constants.Direction, Room>();
         }
 
         public void Draw()
         {
-            allObjects.DrawAll();
+            AllObjects.DrawAll();
         }
 
         public void Update()
         {
-            allObjects.UpdateAll();
-        }
-
-        public ISpawnableManager GetSpawnableManager()
-        {
-            return allObjects;
+            AllObjects.UpdateAll();
         }
 
         public bool ConnectRoom(Room newRoom, Constants.Direction direction)

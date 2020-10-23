@@ -2,26 +2,28 @@
 {
     class RoomManager
     {
-        private Room currentRoom;
+        public Room CurrentRoom { get; private set; }
 
         public RoomManager(Room startingRoom, Game1 game)
         {
-            currentRoom = startingRoom;
+            CurrentRoom = startingRoom;
         }
 
         public void MoveRoom(Constants.Direction direction)
         {
-            currentRoom = currentRoom.GetRoom(direction);
+            Room newRoom = CurrentRoom.GetRoom(direction);
+            newRoom.PlayersList = CurrentRoom.PlayersList;
+            CurrentRoom = newRoom;
         }
 
         public void Update()
         {
-            currentRoom.Update();
+            CurrentRoom.Update();
         }
 
         public void Draw()
         {
-            currentRoom.Draw();
+            CurrentRoom.Draw();
         }
     }
 }
