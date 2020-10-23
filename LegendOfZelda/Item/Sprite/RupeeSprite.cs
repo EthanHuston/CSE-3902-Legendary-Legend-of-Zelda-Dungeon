@@ -46,9 +46,7 @@ namespace LegendOfZelda.Item.Sprite
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public Rectangle GetPositionRectangle()

@@ -23,9 +23,7 @@ namespace LegendOfZelda.Environment.Sprite
         {
             destinationRectangle = new Rectangle(position.X, position.Y, RoomConstants.spriteMultiplier * sprite.Width, RoomConstants.spriteMultiplier * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public Rectangle GetPositionRectangle()

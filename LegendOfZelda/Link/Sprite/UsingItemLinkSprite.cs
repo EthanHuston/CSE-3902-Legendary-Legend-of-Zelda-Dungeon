@@ -45,9 +45,7 @@ namespace LegendOfZelda.Link.Sprite
         {
             destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Height);
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
-            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

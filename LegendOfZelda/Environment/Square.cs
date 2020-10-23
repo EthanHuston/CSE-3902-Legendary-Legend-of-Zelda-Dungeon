@@ -26,7 +26,6 @@ namespace LegendOfZelda.Environment
         {
             spriteBatch.Begin();
             blockSprite.Draw(spriteBatch, position);
-            spriteBatch.End();
         }
 
         public void Update()

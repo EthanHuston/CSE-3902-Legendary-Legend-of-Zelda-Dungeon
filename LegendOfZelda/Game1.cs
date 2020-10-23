@@ -75,7 +75,9 @@ namespace LegendOfZelda
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            SpriteBatch.Begin();
             State.Draw();
+            SpriteBatch.End();
         }
 
         public IPlayer GetGamePlayer(int playerNumber)

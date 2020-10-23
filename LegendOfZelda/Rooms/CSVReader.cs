@@ -214,6 +214,5 @@ namespace LegendOfZelda.Rooms
             }
       
         }
-
     }
 }

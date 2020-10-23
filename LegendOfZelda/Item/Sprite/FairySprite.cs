@@ -84,9 +84,7 @@ namespace LegendOfZelda.Item.Sprite
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
             destinationRectangle = new Rectangle(position.X, position.Y, (int)(1.25 * sprite.Width), (int)(1.25 * sprite.Height));
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
         private void CheckBounds()
         {

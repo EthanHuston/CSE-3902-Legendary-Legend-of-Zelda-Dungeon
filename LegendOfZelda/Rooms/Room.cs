@@ -9,6 +9,7 @@ namespace LegendOfZelda.Rooms
     public class Room
     {
         private Dictionary<Constants.Direction, Room> roomDictionary;
+        private CollisionManager collisionManager;
 
         public ISpawnableManager AllObjects { get; private set; }
         public List<IPlayer> PlayerList { get => AllObjects.PlayerList; }
@@ -18,6 +19,7 @@ namespace LegendOfZelda.Rooms
             AllObjects = new SpawnableManager(playerList);
             CSVReader csvReader = new CSVReader(spriteBatch, AllObjects, fileName);
             roomDictionary = new Dictionary<Constants.Direction, Room>();
+            collisionManager = new CollisionManager(AllObjects);
         }
 
         public void Draw()
@@ -28,6 +30,7 @@ namespace LegendOfZelda.Rooms
         public void Update()
         {
             AllObjects.UpdateAll();
+            collisionManager.CheckAndHandleAllCollisions();
         }
 
         public bool ConnectRoom(Room newRoom, Constants.Direction direction)

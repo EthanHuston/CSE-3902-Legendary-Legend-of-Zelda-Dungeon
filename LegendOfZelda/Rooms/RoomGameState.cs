@@ -11,9 +11,9 @@ namespace LegendOfZelda.Rooms
 
         public List<IPlayer> PlayerList { get; private set; } 
 
-        public RoomManager RoomManager { get; private set; }
+        public RoomManager RoomManager { get; private set; } // TODO: combine with this
 
-        public Room CurrentRoom { get => RoomManager.CurrentRoom; }
+        public Room CurrentRoom { get => RoomManager.CurrentRoom; } // will be combined with this
 
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
 

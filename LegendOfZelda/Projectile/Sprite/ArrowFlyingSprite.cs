@@ -19,9 +19,7 @@ namespace LegendOfZelda.Projectile.Sprite
         {
             destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public void Update()

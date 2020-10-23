@@ -25,9 +25,7 @@ namespace LegendOfZelda.Enemies.Sprite
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * sprite.Width, spriteScaler * sprite.Height);
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
