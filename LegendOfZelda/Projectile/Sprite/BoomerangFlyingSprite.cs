@@ -28,7 +28,7 @@ namespace LegendOfZelda.Projectile.Sprite
         {
             if (++bufferFrame == Constants.FrameDelay)
             {
-                currentFrame = currentFrame == totalFrames - 1 ? 0 : currentFrame + 1;
+                currentFrame++;
                 bufferFrame = 0;
             }
         }
@@ -36,7 +36,7 @@ namespace LegendOfZelda.Projectile.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int currentRow = 0;
-            int currentColumn = totalFrames % currentFrame;
+            int currentColumn = currentFrame % totalFrames;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
