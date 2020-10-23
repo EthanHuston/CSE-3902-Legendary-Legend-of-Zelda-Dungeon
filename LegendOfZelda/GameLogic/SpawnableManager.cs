@@ -14,6 +14,7 @@ namespace LegendOfZelda.GameLogic
         public List<INpc> NpcList { get; private set; }
         public List<IBlock> BlockList { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
+        public List<IBackground> BackgroundList { get; private set; }
 
         public SpawnableManager()
         {
@@ -22,6 +23,7 @@ namespace LegendOfZelda.GameLogic
             NpcList = new List<INpc>();
             BlockList = new List<IBlock>();
             PlayerList = new List<IPlayer>();
+            BackgroundList = new List<IBackground>();
         }
 
         public SpawnableManager(List<IPlayer> playerList)
@@ -58,13 +60,19 @@ namespace LegendOfZelda.GameLogic
             PlayerList.Add(spawnable);
         }
 
+        public void Spawn(IBackground spawnable)
+        {
+            BackgroundList.Add(spawnable);
+        }
+
         public void DrawAll()
         {
+            DrawList(BackgroundList);
             DrawList(BlockList);
-            DrawList(PlayerList);
             DrawList(NpcList);
-            DrawList(ItemList);
+            DrawList(PlayerList);
             DrawList(ProjectileList);
+            DrawList(ItemList);
         }
 
         private void DrawList<T>(List<T> list)
@@ -78,6 +86,7 @@ namespace LegendOfZelda.GameLogic
 
         public void UpdateAll()
         {
+            UpdateList(BackgroundList);
             UpdateList(BlockList);
             UpdateList(PlayerList);
             UpdateList(NpcList);
