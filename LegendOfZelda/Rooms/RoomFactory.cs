@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
@@ -9,9 +10,9 @@ namespace LegendOfZelda.Rooms
         private const int startingRoomNumber = 2;
         private const string roomDataDirectory = "Content\\RoomData\\";
 
-        public RoomFactory(Game1 game) {
+        public RoomFactory(SpriteBatch spriteBatch, List<IPlayer> playerList) {
             roomsList = new List<Room>();
-            InitRoomsList(game);
+            InitRoomsList(spriteBatch, playerList);
             ConnectRooms();
         }
 
@@ -20,12 +21,12 @@ namespace LegendOfZelda.Rooms
             return roomsList[startingRoomNumber];
         }
 
-        private void InitRoomsList(Game1 game)
+        private void InitRoomsList(SpriteBatch spriteBatch, List<IPlayer> playerList)
         {
             roomsList.Add(null); // room files start at 1
             for(int i = 1; i <= RoomConstants.NumberRooms; i++)
             {
-                roomsList.Add(new Room(game.SpriteBatch, roomDataDirectory + "Room" + i + ".csv", game.PlayerList));
+                roomsList.Add(new Room(spriteBatch, roomDataDirectory + "Room" + i + ".csv", playerList));
             }
         }
 

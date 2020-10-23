@@ -100,7 +100,7 @@ namespace LegendOfZelda.GameLogic
 
             for (int i = 0; i < indicesToRemove.Count; i++)
             {
-                list.RemoveAt(indicesToRemove[i]);
+                list.RemoveAt(indicesToRemove[i] - i);
             }
         }
 

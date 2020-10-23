@@ -11,11 +11,10 @@ namespace LegendOfZelda.Rooms
         private Dictionary<Constants.Direction, Room> roomDictionary;
 
         public ISpawnableManager AllObjects { get; private set; }
-        public List<IPlayer> PlayerList { get; set; }
+        public List<IPlayer> PlayerList { get => AllObjects.PlayerList; }
 
         public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
-            PlayerList = playerList;
             AllObjects = new SpawnableManager(playerList);
             CSVReader csvReader = new CSVReader(spriteBatch, AllObjects, fileName);
             roomDictionary = new Dictionary<Constants.Direction, Room>();

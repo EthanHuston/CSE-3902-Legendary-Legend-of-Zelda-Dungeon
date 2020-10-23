@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
@@ -7,6 +8,8 @@ namespace LegendOfZelda.Rooms
     class RoomGameState : IGameState
     {
         private Game1 game;
+
+        public List<IPlayer> PlayerList { get; private set; } 
 
         public RoomManager RoomManager { get; private set; }
 
@@ -17,7 +20,10 @@ namespace LegendOfZelda.Rooms
         public RoomGameState(Game1 game)
         {
             this.game = game;
-            RoomFactory roomFactory = new RoomFactory(game);
+
+            InitPlayersForGame();
+
+            RoomFactory roomFactory = new RoomFactory(game.SpriteBatch, PlayerList);
             RoomManager = new RoomManager(roomFactory.GetStartingRoom());
         }
 
@@ -38,7 +44,20 @@ namespace LegendOfZelda.Rooms
 
         public IPlayer GetPlayer(int playerNumber)
         {
-            return CurrentRoom.PlayerList[playerNumber];
+            return PlayerList[playerNumber];
+        }
+
+        public void MoveRoom(Constants.Direction direction)
+        {
+            RoomManager.MoveRoom(direction);
+        }
+
+        private void InitPlayersForGame()
+        {
+            PlayerList = new List<IPlayer>()
+            {
+                {new LinkPlayer(game, new Microsoft.Xna.Framework.Point(50,50)) }
+            };
         }
     }
 }

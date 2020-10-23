@@ -15,8 +15,6 @@ namespace LegendOfZelda
         public SpriteBatch SpriteBatch;
         private List<IController> controllerList;
 
-        public List<IPlayer> PlayerList { get; private set; }
-
         public IGameState State { get; set; }
 
         public Game1()
@@ -43,12 +41,6 @@ namespace LegendOfZelda
         protected override void Initialize()
         {
             State = new RoomGameState(this);
-
-            PlayerList = new List<IPlayer>()
-            {
-                // Change me -- choose a default spawn location in room
-                {new LinkPlayer(this, new Point(50,50)) }
-            };
 
             controllerList = new List<IController>()
             {
@@ -88,7 +80,7 @@ namespace LegendOfZelda
 
         public IPlayer GetGamePlayer(int playerNumber)
         {
-            return PlayerList[playerNumber - 1];
+            return State.GetPlayer(playerNumber);
         }
     }
 }

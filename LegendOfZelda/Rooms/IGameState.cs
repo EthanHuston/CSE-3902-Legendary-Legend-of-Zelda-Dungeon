@@ -14,5 +14,6 @@ namespace LegendOfZelda.Rooms
         void Update();
         void Draw();
         void SwitchToRoomState();
+        IPlayer GetPlayer(int playerNumber);
     }
 }
