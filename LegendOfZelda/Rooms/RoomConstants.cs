@@ -8,7 +8,7 @@ namespace LegendOfZelda
         public const int spriteMultiplier = 1;
         public const int roomWidth = 256;
         public const int roomHeight = 176;
-        public const int tileLength = 16;
+        public const int tileLength = 16 * spriteMultiplier;
         public const int roomBorderX = 0;
         public const int roomBorderY = 0;
         public const int wallWidth = 32;
