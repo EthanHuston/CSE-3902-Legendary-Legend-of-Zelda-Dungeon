@@ -19,7 +19,8 @@ namespace LegendOfZelda.Rooms
         {
             this.allObjects = allObjects;
             this.spriteBatch = spriteBatch;
-            TextFieldParser parser = new TextFieldParser(Directory.GetCurrentDirectory() + "\\" + fileName)
+            // Directory.GetCurrentDirectory() + "\\" + 
+            TextFieldParser parser = new TextFieldParser(fileName)
             {
                 Delimiters = new string[] { "," } //Delimiters are like separators in NextWordOrSeparator
             };
