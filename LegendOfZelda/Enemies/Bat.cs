@@ -93,9 +93,6 @@ namespace LegendOfZelda.Enemies
             xDir = rand.Next(0, 2); // 0 for x, 1 for y
             yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
-        public void ResetPosition()
-        {
-        }
         public void TakeDamage(double damage)
         {
             health -= damage;

@@ -96,11 +96,6 @@ namespace LegendOfZelda.Environment
             velocity = Vector2.Zero;
         }
 
-        public void ResetPosition()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void TakeDamage(double damage)
         {
             throw new System.NotImplementedException();

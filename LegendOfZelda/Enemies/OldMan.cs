@@ -31,11 +31,6 @@ namespace LegendOfZelda.Enemies
             sprite.Update();
         }
 
-        public void ResetPosition()
-        {
-
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;

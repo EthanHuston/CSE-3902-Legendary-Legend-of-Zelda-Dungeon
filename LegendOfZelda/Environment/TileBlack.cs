@@ -10,7 +10,7 @@ namespace LegendOfZelda.Environment
         private ISprite sprite;
         private SpriteBatch sb;
         private bool safeToDespawn;
-        bool canWalk;
+        // unused right now: private bool canWalk;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -20,7 +20,6 @@ namespace LegendOfZelda.Environment
             sprite = EnvironmentSpriteFactory.Instance.CreateTileBlackSprite();
             sb = spriteBatch;
             Position = position;
-            canWalk = false;
         }
 
         public void Despawn()

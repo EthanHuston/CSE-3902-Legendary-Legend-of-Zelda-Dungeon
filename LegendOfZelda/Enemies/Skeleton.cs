@@ -10,8 +10,6 @@ namespace LegendOfZelda.Enemies
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
         private int movementBuffer = 0;
-        private int upDown = 0;
-        private int leftRight = 0;
         private double health = 2;
         private Constants.Direction direction = Constants.Direction.Down;
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
@@ -48,6 +46,7 @@ namespace LegendOfZelda.Enemies
                 MoveKnockback(knockbackOrigin);
             }
             sprite.Update();
+            safeToDespawn = !safeToDespawn && health <= 0;
         }
 
         public void Draw()
@@ -164,9 +163,6 @@ namespace LegendOfZelda.Enemies
                 default:
                     break;
             }
-        }
-        public void ResetPosition()
-        {
         }
         public void TakeDamage(float damage)
         {

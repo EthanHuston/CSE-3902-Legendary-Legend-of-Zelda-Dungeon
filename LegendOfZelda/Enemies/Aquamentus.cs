@@ -119,10 +119,6 @@ namespace LegendOfZelda.Enemies
         {
             sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
         }
-        public void ResetPosition()
-        {
-            updateCount = 0;
-        }
 
         public void TakeDamage(double damage)
         {

@@ -71,9 +71,6 @@ namespace LegendOfZelda.Enemies
                 position.Y++;
             }
         }
-        public void ResetPosition()
-        {
-        }
         public void TakeDamage(double damage)
         {
             health -= damage;

@@ -260,13 +260,6 @@ namespace LegendOfZelda.Enemies
         {
             sprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
         }
-
-        public void ResetPosition()
-        {
-            boomerangInitialized = false;
-            boomerangActive = false;
-            updateCount = 0;
-        }
         public void Move(Vector2 distance)
         {
             position.X += (int)distance.X;

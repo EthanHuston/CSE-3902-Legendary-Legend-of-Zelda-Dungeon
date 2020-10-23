@@ -30,11 +30,6 @@ namespace LegendOfZelda.Enemies
             sprite.Update();
         }
 
-        public void ResetPosition()
-        {
-
-        }
-
         public void Move(Vector2 distance)
         {
             position.X += (int)distance.X;
