@@ -299,22 +299,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\RoomData\Room1.csv" />
-    <RoomData Include="Content\RoomData\Room2.csv" />
-    <RoomData Include="Content\RoomData\Room3.csv" />
-    <RoomData Include="Content\RoomData\Room4.csv" />
-    <RoomData Include="Content\RoomData\Room5.csv" />
-    <RoomData Include="Content\RoomData\Room6.csv" />
-    <RoomData Include="Content\RoomData\Room7.csv" />
-    <RoomData Include="Content\RoomData\Room8.csv" />
-    <RoomData Include="Content\RoomData\Room9.csv" />
-    <RoomData Include="Content\RoomData\Room10.csv" />
-    <RoomData Include="Content\RoomData\Room11.csv" />
-    <RoomData Include="Content\RoomData\Room12.csv" />
-    <RoomData Include="Content\RoomData\Room13.csv" />
-    <RoomData Include="Content\RoomData\Room14.csv" />
-    <RoomData Include="Content\RoomData\Room15.csv" />
-    <RoomData Include="Content\RoomData\Room16.csv" />
-    <RoomData Include="Content\RoomData\Room17.csv" />
+    <Content Include="Content\RoomData\Room2.csv" />
+    <Content Include="Content\RoomData\Room3.csv" />
+    <Content Include="Content\RoomData\Room4.csv" />
+    <Content Include="Content\RoomData\Room5.csv" />
+    <Content Include="Content\RoomData\Room6.csv" />
+    <Content Include="Content\RoomData\Room7.csv" />
+    <Content Include="Content\RoomData\Room8.csv" />
+    <Content Include="Content\RoomData\Room9.csv" />
+    <Content Include="Content\RoomData\Room10.csv" />
+    <Content Include="Content\RoomData\Room11.csv" />
+    <Content Include="Content\RoomData\Room12.csv" />
+    <Content Include="Content\RoomData\Room13.csv" />
+    <Content Include="Content\RoomData\Room14.csv" />
+    <Content Include="Content\RoomData\Room15.csv" />
+    <Content Include="Content\RoomData\Room16.csv" />
+    <Content Include="Content\RoomData\Room17.csv" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
