@@ -11,10 +11,12 @@ namespace LegendOfZelda.GameLogic
     {
         private Game1 myGame;
         private Dictionary<Constants.Direction, ICommand> leftClickCommands;
+        private MouseState oldMouseState;
 
         public MouseController(Game1 game1)
         {
             myGame = game1;
+            oldMouseState = new MouseState();
             leftClickCommands = new Dictionary<Constants.Direction, ICommand>();
             RegisterCommand(Constants.Direction.Down, new ChangeRoomDownCommand(((RoomGameState)myGame.State).RoomManager));
             RegisterCommand(Constants.Direction.Left, new ChangeRoomLeftCommand(((RoomGameState)myGame.State).RoomManager));
@@ -29,13 +31,14 @@ namespace LegendOfZelda.GameLogic
 
         public void Update()
         {
-            MouseState state = Mouse.GetState();
-            if(state.LeftButton == ButtonState.Pressed)
+            MouseState newMouseState = Mouse.GetState();
+            if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton != ButtonState.Pressed)
             {
-                Constants.Direction dir = GetDirectionFromClick(state.Position);
+                Constants.Direction dir = GetDirectionFromClick(newMouseState.Position);
                 if (leftClickCommands.ContainsKey(dir))
                     leftClickCommands[dir].Execute();
             }
+            oldMouseState = newMouseState;
         }
 
         private Point GetLocation()
