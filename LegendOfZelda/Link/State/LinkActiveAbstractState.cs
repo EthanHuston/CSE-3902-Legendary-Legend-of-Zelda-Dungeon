@@ -63,22 +63,22 @@ namespace LegendOfZelda.Link.State
             link.AddHealth(healAmount);
         }
 
-        public void MoveDown()
+        public virtual void MoveDown()
         {
             link.State = new LinkWalkingDownState(link, damaged, healthyDateTime);
         }
 
-        public void MoveLeft()
+        public virtual void MoveLeft()
         {
             link.State = new LinkWalkingLeftState(link, damaged, healthyDateTime);
         }
 
-        public void MoveRight()
+        public virtual void MoveRight()
         {
             link.State = new LinkWalkingRightState(link, damaged, healthyDateTime);
         }
 
-        public void MoveUp()
+        public virtual void MoveUp()
         {
             link.State = new LinkWalkingUpState(link, damaged, healthyDateTime);
         }

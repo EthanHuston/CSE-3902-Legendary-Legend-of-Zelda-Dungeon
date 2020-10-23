@@ -42,6 +42,10 @@ namespace LegendOfZelda.Link.State.Walking
         {
             link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
         }
+        public override void MoveRight()
+        {
+            // Already moving right, do nothing
+        }
 
         public override void StopMoving()
         {

@@ -21,16 +21,14 @@ namespace LegendOfZelda.Link.Sprite
             this.sprite = sprite;
             flashRed = false;
             damageColorCounter = 0;
+            bufferFrame = 0;
+            currentFrame = 0;
             destinationRectangle = sprite.Bounds;
         }
 
         public void Update()
         {
-            if (++bufferFrame == Constants.LinkWalkingFrameDelay)
-            {
-                currentFrame = currentFrame == totalFrames ? 0 : currentFrame + 1;
-                bufferFrame = 0;
-            }
+            currentFrame += ++bufferFrame % Constants.LinkWalkingFrameDelay == 0 ? 1 : 0; 
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {
@@ -49,7 +47,7 @@ namespace LegendOfZelda.Link.Sprite
             int width = sprite.Width / numColumns;
             int height = sprite.Height / numRows;
             int currentRow = 0;
-            int currentColumn = currentFrame;
+            int currentColumn = currentFrame % totalFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
