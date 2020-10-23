@@ -19,8 +19,10 @@ namespace LegendOfZelda.Rooms
         {
             this.allObjects = allObjects;
             this.spriteBatch = spriteBatch;
-            TextFieldParser parser = new TextFieldParser(Directory.GetCurrentDirectory() + "\\" + fileName);
-            parser.Delimiters = new string[] { "," }; //Delimiters are like separators in NextWordOrSeparator
+            TextFieldParser parser = new TextFieldParser(Directory.GetCurrentDirectory() + "\\" + fileName)
+            {
+                Delimiters = new string[] { "," } //Delimiters are like separators in NextWordOrSeparator
+            };
             int j = 0;
             //Read each line of the file
             while (!parser.EndOfData)
@@ -32,21 +34,21 @@ namespace LegendOfZelda.Rooms
                     {
                         IBlock roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY));
                         allObjects.Spawn(roomBorder);
-                        spawnWallsAndBackground(fields[i], i);
+                        SpawnWallsAndBackground(fields[i], i);
                     }
                 }
                 else
                 {
                     for(int i = 0; i < fields.Length; i++)
                     {
-                        spawnFromString(fields[i], i, j);
+                        SpawnFromString(fields[i], i, j);
                     }
                 }
                 j++;
             }
         }
 
-        private void spawnFromString(string spawnType, int gridX, int gridY)
+        private void SpawnFromString(string spawnType, int gridX, int gridY)
         {
             int posX = RoomConstants.backgroundX + gridX * RoomConstants.tileLength;
             int posY = RoomConstants.backgroundY + gridY * RoomConstants.tileLength;
@@ -155,7 +157,7 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        private void spawnWallsAndBackground(string spawnType, int i)
+        private void SpawnWallsAndBackground(string spawnType, int i)
         {
             IBlock blockType;
             Point position;
