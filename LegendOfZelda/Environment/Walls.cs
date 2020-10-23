@@ -11,7 +11,7 @@ namespace LegendOfZelda.Environment
         private SpriteBatch sB;
         private bool safeToDespawn;
         private int textureMapRow;
-        private const int textureMapColumn = 1;
+        private const int textureMapColumn = 0;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -31,21 +31,21 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            if ((position.X != Constants.MinXPos) && (position.Y == Constants.MinYPos))
+            if ((position.X == RoomConstants.topDoorX) && (position.Y == RoomConstants.topDoorY))
+            {
+                textureMapRow = 0;
+            }
+            else if ((position.X == RoomConstants.leftDoorX) && (position.Y == RoomConstants.leftDoorY))
             {
                 textureMapRow = 1;
             }
-            else if ((position.X == Constants.MinXPos) && (position.Y != Constants.MinYPos))
+            else if ((position.X == RoomConstants.rightDoorX) && (position.Y == RoomConstants.rightDoorY))
             {
                 textureMapRow = 2;
             }
-            else if ((position.X == Constants.MaxXPos) && (position.Y != Constants.MinYPos))
+            else if ((position.X == RoomConstants.bottomDoorX) && (position.Y == RoomConstants.bottomDoorY))
             {
                 textureMapRow = 3;
-            }
-            else if ((position.X != Constants.MinXPos) && (position.Y == Constants.MaxYPos))
-            {
-                textureMapRow = 4;
             }
             wallSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
