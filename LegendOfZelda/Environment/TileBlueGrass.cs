@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class TileBlueGrass : IBlock
+    class TileBlueGrass : IBackground
     {
         private ISprite sprite;
         private SpriteBatch sb;
