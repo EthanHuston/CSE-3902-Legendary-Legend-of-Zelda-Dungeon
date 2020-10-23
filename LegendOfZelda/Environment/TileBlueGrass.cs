@@ -20,6 +20,7 @@ namespace LegendOfZelda.Environment
             sprite = EnvironmentSpriteFactory.Instance.CreateTileBlueGrassSprite();
             sb = spriteBatch;
             Position = position;
+            safeToDespawn = false;
         }
 
         public void Despawn()

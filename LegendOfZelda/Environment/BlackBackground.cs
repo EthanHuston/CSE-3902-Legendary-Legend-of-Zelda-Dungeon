@@ -19,6 +19,7 @@ namespace LegendOfZelda.Environment
             sprite = EnvironmentSpriteFactory.Instance.CreateBlackBackgroundSprite();
             sb = spriteBatch;
             Position = position;
+            safeToDespawn = false;
         }
 
         public void Despawn()
