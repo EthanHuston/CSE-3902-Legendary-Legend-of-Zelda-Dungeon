@@ -13,5 +13,15 @@
         {
             currentRoom = currentRoom.GetRoom(direction);
         }
+
+        public void Update()
+        {
+            currentRoom.Update();
+        }
+
+        public void Draw()
+        {
+            currentRoom.Draw();
+        }
     }
 }

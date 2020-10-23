@@ -13,20 +13,20 @@ namespace LegendOfZelda
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
         List<IController> controllerList;
-        private Room currentRoom;
-        private List<IPlayer> playersList;
+
+        public IGameState State { get; set; }
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this); 
-            graphics.PreferredBackBufferWidth = 256;  // set this value to the desired width of your window
-            graphics.PreferredBackBufferHeight = 176;   // set this value to the desired height of your window
+            graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = 256,  // set this value to the desired width of your window
+                PreferredBackBufferHeight = 176   // set this value to the desired height of your window
+            };
             graphics.ApplyChanges();
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            currentRoom = null; // TODO: Initialize room
-            playersList = new List<IPlayer>();
         }
 
         public void ResetGame()
@@ -44,7 +44,7 @@ namespace LegendOfZelda
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            playersList.Add(new LinkPlayer(this, new Point(0, 0)));
+            State = new RoomGameState(this);
 
             base.Initialize();
         }
