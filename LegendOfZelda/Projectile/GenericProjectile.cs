@@ -24,7 +24,6 @@ namespace LegendOfZelda.Projectile
         {
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             this.spriteBatch = spriteBatch;
-            Position = spawnPosition;
             Owner = owner;
         }
 
