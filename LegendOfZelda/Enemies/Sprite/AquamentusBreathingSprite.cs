@@ -16,6 +16,7 @@ namespace LegendOfZelda.Enemies.Sprite
         private int height;
         private int row;
         private int column;
+        private int spriteScaler = Constants.SpriteScaler;
         private Rectangle destinationRectangle;
 
         public AquamentusBreathingSprite(Texture2D sprite)
@@ -60,7 +61,7 @@ namespace LegendOfZelda.Enemies.Sprite
             column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
             spriteBatch.Begin();
             if (damaged)
