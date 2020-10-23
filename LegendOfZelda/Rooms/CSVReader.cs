@@ -57,6 +57,7 @@ namespace LegendOfZelda.Rooms
             IBlock blockType;
             INpc npcType;
             IItem itemType;
+            IBackground backgroundType;
 
             switch (spawnType)
             {
@@ -88,8 +89,8 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.BlueGrass:
-                    blockType = new TileBlueGrass(spriteBatch, position);
-                    allObjects.Spawn(blockType);
+                    backgroundType = new TileBlueGrass(spriteBatch, position);
+                    allObjects.Spawn(backgroundType);
                     break;
                 case RoomConstants.Water:
                     blockType = new TileWater(spriteBatch, position);
@@ -181,11 +182,11 @@ namespace LegendOfZelda.Rooms
             {
                 case RoomConstants.TileBackground:
                     backgroundType = new TileBackground(spriteBatch, position);
-                    allObjects.Spawn(blockType);
+                    allObjects.Spawn(backgroundType);
                     break;
                 case RoomConstants.BlackBackground:
                     backgroundType = new BlackBackground(spriteBatch, position);
-                    allObjects.Spawn(blockType);
+                    allObjects.Spawn(backgroundType);
                     break;
                 case RoomConstants.WallPiece:
                     blockType = new Walls(spriteBatch, position);
