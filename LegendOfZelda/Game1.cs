@@ -66,6 +66,7 @@ namespace LegendOfZelda
             {
                 controller.Update();
             }
+
             State.Update();
             base.Update(gameTime);
         }

@@ -3,23 +3,26 @@
     class RoomGameState : IGameState
     {
         private Game1 game;
-        private RoomManager roomManager;
+
+        public RoomManager RoomManager { get; private set; }
+
+        public Room CurrentRoom { get => RoomManager.CurrentRoom; }
 
         public RoomGameState(Game1 game)
         {
             this.game = game;
             RoomFactory roomFactory = new RoomFactory(game.SpriteBatch);
-            roomManager = new RoomManager(roomFactory.GetStartingRoom(), game);
+            RoomManager = new RoomManager(roomFactory.GetStartingRoom(), game);
         }
 
         public void Update()
         {
-            roomManager.Update();
+            RoomManager.Update();
         }
 
         public void Draw()
         {
-            roomManager.Draw();
+            RoomManager.Draw();
         }
 
         public void SwitchToRoomState()
