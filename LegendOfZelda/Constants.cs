@@ -4,7 +4,8 @@ namespace LegendOfZelda
     {
         public const int Number = 69;
         public const int FrameDelay = 6;
-        public const double SpriteScaler = 1;
+        public const double GameScaler = 1;
+        public const int WallWidth = 32;
 
         // Link
         public const int LinkWalkStepDistanceInterval = 1;
