@@ -50,7 +50,9 @@ namespace LegendOfZelda.Projectile.Sprite
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
 
+            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
         }
 
         public bool FinishedAnimation()
