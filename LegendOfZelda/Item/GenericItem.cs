@@ -10,7 +10,6 @@ namespace LegendOfZelda.Item
         protected ISprite sprite;
         protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
-        protected SpawnableMover mover;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }

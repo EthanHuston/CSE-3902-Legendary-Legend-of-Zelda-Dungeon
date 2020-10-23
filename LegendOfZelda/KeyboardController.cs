@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
-using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
@@ -19,14 +18,6 @@ namespace LegendOfZelda
             oldKbState = new List<Keys>();
             InitRepeatableKeys();
             controllerMappings = new Dictionary<Keys, ICommand>();
-            RegisterCommand(Keys.Q, new QuitGameCommand(game1));
-            RegisterCommand(Keys.R, new ResetGameCommand(game1));
-            RegisterCommand(Keys.T, new PreviousBlockCommand(game1));
-            RegisterCommand(Keys.Y, new NextBlockCommand(game1));
-            RegisterCommand(Keys.U, new PreviousItemCommand(game1));
-            RegisterCommand(Keys.I, new NextItemCommand(game1));
-            RegisterCommand(Keys.O, new PreviousEnemyCommand(game1));
-            RegisterCommand(Keys.P, new NextEnemyCommand(game1));
 
             // Register Player 1 Commands
             RegisterCommand(Keys.W, new WalkingForwardCommand(game1.GetGamePlayer(1)));

@@ -31,8 +31,8 @@ namespace LegendOfZelda.Link
         {
             health = Constants.LinkStartingHealth;
             Game = game;
-            state = new LinkStandingStillDownState(this);
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
+            state = new LinkStandingStillDownState(this);
             safeToDespawn = false;
             inventory = new Dictionary<Constants.LinkInventory, int>();
             BlockStateChange = false;
@@ -123,7 +123,7 @@ namespace LegendOfZelda.Link
 
         public void SpawnItem(IProjectile item)
         {
-            Game.GetCurrentRoom().GetSpawnableManager().Spawn(item);
+            Game.State.SpawnableManager.Spawn(item);
         }
 
         public void UseBomb()

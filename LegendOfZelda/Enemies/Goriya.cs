@@ -1,6 +1,5 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
-using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -264,8 +263,6 @@ namespace LegendOfZelda.Enemies
 
         public void ResetPosition()
         {
-            position.X = ConstantsSprint2.enemyNPCX;
-            position.Y = ConstantsSprint2.enemyNPCY;
             boomerangInitialized = false;
             boomerangActive = false;
             updateCount = 0;

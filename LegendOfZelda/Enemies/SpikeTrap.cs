@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -190,8 +189,6 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetPosition()
         {
-            position.X = ConstantsSprint2.enemyNPCX;
-            position.Y = ConstantsSprint2.enemyNPCY;
         }
         public void Move(Vector2 distance)
         {

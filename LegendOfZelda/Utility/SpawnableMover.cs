@@ -26,8 +26,8 @@ namespace LegendOfZelda.Utility
 
         public SpawnableMover(Point position, Vector2 velocity)
         {
-            this.position = new Point(position.X, position.Y);
-            this.velocity = new Vector2(velocity.X, velocity.Y);
+            Position = new Point(position.X, position.Y);
+            Velocity = new Vector2(velocity.X, velocity.Y);
             movingDistanceRightNow = false;
             totalDistanceMoved = 0;
             overrideNextUpdate = false;

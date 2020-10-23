@@ -12,7 +12,6 @@
         public void MoveRoom(Constants.Direction direction)
         {
             Room newRoom = CurrentRoom.GetRoom(direction);
-            newRoom.PlayersList = CurrentRoom.PlayersList;
             CurrentRoom = newRoom;
         }
 

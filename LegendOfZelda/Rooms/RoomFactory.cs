@@ -6,26 +6,25 @@ namespace LegendOfZelda.Rooms
     class RoomFactory
     {
         private readonly List<Room> roomsList;
-        private const int startingRoomLocation = 2;
+        private const int startingRoomNumber = 2;
 
-
-        public RoomFactory(SpriteBatch spriteBatch) {
+        public RoomFactory(Game1 game) {
             roomsList = new List<Room>();
-            InitRoomsList(spriteBatch);
+            InitRoomsList(game);
             ConnectRooms();
         }
 
         public Room GetStartingRoom()
         {
-            return roomsList[startingRoomLocation];
+            return roomsList[startingRoomNumber];
         }
 
-        private void InitRoomsList(SpriteBatch spriteBatch)
+        private void InitRoomsList(Game1 game)
         {
             roomsList.Add(null); // room files start at 1
             for(int i = 1; i <= RoomConstants.NumberRooms; i++)
             {
-                roomsList.Add(new Room(spriteBatch, "Room" + i + ".csv"));
+                roomsList.Add(new Room(game.SpriteBatch, "Room" + i + ".csv", game.PlayerList));
             }
         }
 

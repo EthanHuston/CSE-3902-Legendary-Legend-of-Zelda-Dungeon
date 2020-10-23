@@ -10,9 +10,11 @@ namespace LegendOfZelda
 
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
+        private GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
-        List<IController> controllerList;
+        private List<IController> controllerList;
+
+        public List<IPlayer> PlayerList { get; private set; }
 
         public IGameState State { get; set; }
 
@@ -36,6 +38,11 @@ namespace LegendOfZelda
         protected override void Initialize()
         {
             SpriteFactory.Instance.LoadAllTextures(Content);
+
+            PlayerList = new List<IPlayer>()
+            {
+                {new LinkPlayer(this, new Point(50,50)) }
+            };
 
             controllerList = new List<IController>()
             {
@@ -79,7 +86,7 @@ namespace LegendOfZelda
 
         public IPlayer GetGamePlayer(int playerNumber)
         {
-            return playersList[playerNumber - 1];
+            return PlayerList[playerNumber - 1];
         }
     }
 }

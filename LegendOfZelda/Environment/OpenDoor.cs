@@ -10,8 +10,8 @@ namespace LegendOfZelda.Environment
         private ITextureAtlasSprite doorSprite;
         private SpriteBatch sB;
         private bool safeToDespawn;
-        private const int textureMapRow = 1;
-        private const int textureMapColumn = 1;
+        private int textureMapRow;
+        private int textureMapColumn;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }

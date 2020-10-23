@@ -207,16 +207,6 @@
     <Compile Include="Environment\TileBlack.cs" />
     <Compile Include="Environment\TileBlueGrass.cs" />
     <Compile Include="Environment\TileWater.cs" />
-    <Compile Include="Sprint2\ConstantsSprint2.cs" />
-    <Compile Include="Sprint2\NextBlockCommand.cs" />
-    <Compile Include="Sprint2\NextEnemyCommand.cs" />
-    <Compile Include="Sprint2\NextItemCommand.cs" />
-    <Compile Include="Sprint2\PreviousBlockCommand.cs" />
-    <Compile Include="Sprint2\PreviousEnemyCommand.cs" />
-    <Compile Include="Sprint2\PreviousItemCommand.cs" />
-    <Compile Include="Sprint2\QuitGameCommand.cs" />
-    <Compile Include="Sprint2\ResetGameCommand.cs" />
-    <Compile Include="Sprint2\Sprint2Game.cs" />
     <Compile Include="Link\Command\UseBowCommand.cs" />
     <Compile Include="Link\Command\UseBombCommand.cs" />
     <Compile Include="Link\Command\PickUpBowCommand.cs" />
@@ -537,7 +527,6 @@
     <None Include="Content\obj\DesktopGL\Content\NPC\OldMan.mgcontent" />
     <None Include="Content\obj\DesktopGL\Content\Text.mgcontent" />
     <None Include="Content\README.md" />
-    <None Include="Sprint2\README.md" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

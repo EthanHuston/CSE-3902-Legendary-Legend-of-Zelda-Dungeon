@@ -20,6 +20,15 @@ namespace LegendOfZelda.Rooms
             PlayerList = new List<IPlayer>();
         }
 
+        public SpawnableManager(List<IPlayer> playerList)
+        {
+            ItemList = new List<IItem>();
+            ProjectileList = new List<IProjectile>();
+            NpcList = new List<INpc>();
+            BlockList = new List<IBlock>();
+            PlayerList = playerList;
+        }
+
         public void Spawn(INpc spawnable)
         {
             NpcList.Add(spawnable);
