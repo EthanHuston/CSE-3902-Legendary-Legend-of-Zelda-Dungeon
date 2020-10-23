@@ -60,5 +60,10 @@ namespace LegendOfZelda.Enemies
         {
             // knows no knockback
         }
+
+        public double GetDamageAmount()
+        {
+            return 0; // does no damage
+        }
     }
 }
