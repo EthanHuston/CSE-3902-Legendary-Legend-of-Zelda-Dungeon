@@ -16,22 +16,13 @@ namespace LegendOfZelda.GameLogic
         public List<IPlayer> PlayerList { get; private set; }
         public List<IBackground> BackgroundList { get; private set; }
 
-        public SpawnableManager()
-        {
-            ItemList = new List<IItem>();
-            ProjectileList = new List<IProjectile>();
-            NpcList = new List<INpc>();
-            BlockList = new List<IBlock>();
-            PlayerList = new List<IPlayer>();
-            BackgroundList = new List<IBackground>();
-        }
-
         public SpawnableManager(List<IPlayer> playerList)
         {
             ItemList = new List<IItem>();
             ProjectileList = new List<IProjectile>();
             NpcList = new List<INpc>();
             BlockList = new List<IBlock>();
+            BackgroundList = new List<IBackground>();
             PlayerList = playerList;
         }
 
