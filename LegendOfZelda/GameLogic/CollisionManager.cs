@@ -1,15 +1,12 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Environment;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
-using LegendOfZelda.Link.CollisionHandler;
+using LegendOfZelda.Projectile;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.GameLogic
 {
     class CollisionManager : ICollisionManager
     {

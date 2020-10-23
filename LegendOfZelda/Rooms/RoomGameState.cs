@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.Interface;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
@@ -17,7 +18,7 @@ namespace LegendOfZelda.Rooms
         {
             this.game = game;
             RoomFactory roomFactory = new RoomFactory(game);
-            RoomManager = new RoomManager(roomFactory.GetStartingRoom(), game);
+            RoomManager = new RoomManager(roomFactory.GetStartingRoom());
         }
 
         public void Update()

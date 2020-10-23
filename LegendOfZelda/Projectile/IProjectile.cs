@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda.Interface
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Projectile
 {
     public interface IProjectile : IDynamic
     {

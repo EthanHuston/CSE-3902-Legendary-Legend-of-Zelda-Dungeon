@@ -4,7 +4,7 @@
     {
         public Room CurrentRoom { get; private set; }
 
-        public RoomManager(Room startingRoom, Game1 game)
+        public RoomManager(Room startingRoom)
         {
             CurrentRoom = startingRoom;
         }

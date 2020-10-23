@@ -1,4 +1,6 @@
-﻿using LegendOfZelda.Environment;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Environment;
+using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 

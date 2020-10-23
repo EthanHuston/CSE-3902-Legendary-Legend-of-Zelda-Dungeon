@@ -1,6 +1,7 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.NotMoving;
+using LegendOfZelda.Projectile;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;

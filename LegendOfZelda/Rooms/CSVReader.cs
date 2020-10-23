@@ -1,10 +1,12 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
+using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace LegendOfZelda.Rooms
 {
@@ -12,13 +14,12 @@ namespace LegendOfZelda.Rooms
     {
         public ISpawnableManager allObjects;
         private SpriteBatch spriteBatch;
-        
 
         public CSVReader(SpriteBatch spriteBatch, ISpawnableManager allObjects, string fileName)
         {
             this.allObjects = allObjects;
             this.spriteBatch = spriteBatch;
-            TextFieldParser parser = new TextFieldParser(fileName);
+            TextFieldParser parser = new TextFieldParser(Directory.GetCurrentDirectory() + "\\" + fileName);
             parser.Delimiters = new string[] { "," }; //Delimiters are like separators in NextWordOrSeparator
             int j = 0;
             //Read each line of the file

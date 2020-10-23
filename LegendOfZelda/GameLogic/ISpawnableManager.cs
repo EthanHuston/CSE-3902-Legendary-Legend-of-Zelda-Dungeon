@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Environment;
+using LegendOfZelda.Interface;
+using LegendOfZelda.Item;
+using LegendOfZelda.Projectile;
+using System.Collections.Generic;
 
-namespace LegendOfZelda.Interface
+namespace LegendOfZelda.GameLogic
 {
     public interface ISpawnableManager
     {

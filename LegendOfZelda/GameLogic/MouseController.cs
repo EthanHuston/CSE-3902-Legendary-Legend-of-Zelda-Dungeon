@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.GameLogic
 {
     public class MouseController : IController
     {

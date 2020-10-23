@@ -14,7 +14,7 @@ using LegendOfZelda.Projectile.CollisionHandler;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.GameLogic
 {
     class CollisionHandlerDictionary
     {

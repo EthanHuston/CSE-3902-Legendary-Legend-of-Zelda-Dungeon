@@ -1,3 +1,4 @@
+using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
@@ -66,6 +67,7 @@ namespace LegendOfZelda.Enemies
             }
 
             sprite.Update();
+            safeToDespawn = !safeToDespawn && health <= 0;
         }
 
         public void Draw()

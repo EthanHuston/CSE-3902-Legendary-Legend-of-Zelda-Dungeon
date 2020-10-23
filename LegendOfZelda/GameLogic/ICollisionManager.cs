@@ -1,6 +1,4 @@
-﻿using LegendOfZelda.Rooms;
-
-namespace LegendOfZelda.Interface
+﻿namespace LegendOfZelda.GameLogic
 {
     interface ICollisionManager
     {

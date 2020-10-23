@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Interface
+namespace LegendOfZelda.Enemies
 {
     public interface INpc : ISpawnable
     {

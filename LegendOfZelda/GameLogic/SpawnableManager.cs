@@ -1,7 +1,11 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Environment;
+using LegendOfZelda.Interface;
+using LegendOfZelda.Item;
+using LegendOfZelda.Projectile;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.GameLogic
 {
     class SpawnableManager : ISpawnableManager
     {

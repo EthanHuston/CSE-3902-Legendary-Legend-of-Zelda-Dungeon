@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
@@ -22,13 +23,17 @@ namespace LegendOfZelda
         {
             graphics = new GraphicsDeviceManager(this)
             {
+                // TODO: make constants
                 PreferredBackBufferWidth = 256,  // set this value to the desired width of your window
                 PreferredBackBufferHeight = 176   // set this value to the desired height of your window
             };
             graphics.ApplyChanges();
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            SpriteFactory.Instance.LoadAllTextures(Content);
         }
 
         public void ResetGame()
@@ -37,10 +42,11 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            SpriteFactory.Instance.LoadAllTextures(Content);
+            State = new RoomGameState(this);
 
             PlayerList = new List<IPlayer>()
             {
+                // Change me -- choose a default spawn location in room
                 {new LinkPlayer(this, new Point(50,50)) }
             };
 
@@ -49,10 +55,6 @@ namespace LegendOfZelda
                 {new KeyboardController(this) },
                 {new MouseController(this) }
             };
-
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
-
-            State = new RoomGameState(this);
 
             base.Initialize();
         }

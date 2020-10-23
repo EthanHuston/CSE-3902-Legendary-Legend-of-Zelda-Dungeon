@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda.Interface
+﻿namespace LegendOfZelda.GameLogic
 {
     public interface ICollisionHandler<T, U>
     {

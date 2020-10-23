@@ -7,6 +7,7 @@ namespace LegendOfZelda.Rooms
     {
         private readonly List<Room> roomsList;
         private const int startingRoomNumber = 2;
+        private const string roomDataDirectory = "Content\\RoomData\\";
 
         public RoomFactory(Game1 game) {
             roomsList = new List<Room>();
@@ -24,7 +25,7 @@ namespace LegendOfZelda.Rooms
             roomsList.Add(null); // room files start at 1
             for(int i = 1; i <= RoomConstants.NumberRooms; i++)
             {
-                roomsList.Add(new Room(game.SpriteBatch, "Room" + i + ".csv", game.PlayerList));
+                roomsList.Add(new Room(game.SpriteBatch, roomDataDirectory + "Room" + i + ".csv", game.PlayerList));
             }
         }
 
