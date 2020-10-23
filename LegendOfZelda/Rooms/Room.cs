@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -33,12 +33,13 @@ namespace LegendOfZelda.Rooms
             return allObjects;
         }
 
-        public bool AddRoom(Room newRoom, Constants.Direction direction)
+        public bool ConnectRoom(Room newRoom, Constants.Direction direction)
         {
+            // connects a room each way - returning true if successful, else false
             Constants.Direction invertedDirection = UtilityMethods.InvertDirection(direction);
             if (GetRoom(direction) == null && newRoom.GetRoom(invertedDirection) == null) {
                 roomDictionary[direction] = newRoom; // add room connection one way
-                return newRoom.AddRoom(this, invertedDirection); // add room connection in the opposite 
+                return newRoom.ConnectRoom(this, invertedDirection); // add room connection in the opposite 
             }
 
             return false;
