@@ -31,10 +31,10 @@ namespace LegendOfZelda.Rooms
                 string[] fields = parser.ReadFields();
                 if (j == 0)
                 {
+                    IBackground roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY));
+                    allObjects.Spawn(roomBorder);
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        IBackground roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY));
-                        allObjects.Spawn(roomBorder);
                         SpawnWallsAndBackground(fields[i], i);
                     }
                 }
