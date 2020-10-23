@@ -22,10 +22,10 @@ namespace LegendOfZelda.Projectile
 
         public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner)
         {
+            Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             Owner = owner;
-            Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
         }
 
         protected abstract void CheckItemIsExpired();

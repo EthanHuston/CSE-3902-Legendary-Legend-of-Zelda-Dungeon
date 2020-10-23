@@ -14,6 +14,8 @@ namespace LegendOfZelda.GameLogic
         List<INpc> NpcList { get; }
         List<IBlock> BlockList { get; }
         List<IPlayer> PlayerList { get; }
+        List<IBackground> BackgroundList { get; }
+
         void UpdateAll();
         void DrawAll();
         void Spawn(INpc spawnable);
@@ -25,6 +27,8 @@ namespace LegendOfZelda.GameLogic
         void Spawn(IBlock spawnable);
 
         void Spawn(IPlayer spawnable);
+
+        void Spawn(IBackground spawnable);
 
         IPlayer GetPlayer(int playerNumber);
     }
