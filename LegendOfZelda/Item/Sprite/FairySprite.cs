@@ -90,19 +90,19 @@ namespace LegendOfZelda.Item.Sprite
         }
         private void CheckBounds()
         {
-            if (position.X <= Constants.MinXPos)
+            if (position.X <= Constants.MinXPos + (Constants.GameScaler * 32))
             {
                 position.X += 5;
             }
-            else if (position.X >= Constants.MaxXPos)
+            else if (position.X >= Constants.MaxXPos - (Constants.GameScaler * 32))
             {
                 position.X -= 5; ;
             }
-            else if (position.Y <= Constants.MinYPos)
+            else if (position.Y <= Constants.MinYPos + (Constants.GameScaler * 32))
             {
                 position.Y += 5; ;
             }
-            else if (position.Y >= Constants.MaxYPos)
+            else if (position.Y >= Constants.MaxYPos - (Constants.GameScaler * 32))
             {
                 position.Y -= 5;
             }
