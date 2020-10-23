@@ -45,7 +45,7 @@ namespace LegendOfZelda
 
         private Constants.Direction GetDirectionFromClick(Point mousePos)
         {
-            Constants.Direction dir;
+            Constants.Direction dir = Constants.Direction.Down;
             
             if (mousePos.X > RoomConstants.topDoorX && mousePos.X < RoomConstants.topDoorX + RoomConstants.wallWidth)
             {
