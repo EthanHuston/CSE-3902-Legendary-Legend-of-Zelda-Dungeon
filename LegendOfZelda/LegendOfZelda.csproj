@@ -156,7 +156,7 @@
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />
     <Compile Include="Environment\BombedOpening.cs" />
     <Compile Include="Environment\BrickTile.cs" />
-    <Compile Include="Environment\EnvironementSpriteFactory.cs" />
+    <Compile Include="Environment\EnvironmentSpriteFactory.cs" />
     <Compile Include="Environment\Fire.cs" />
     <Compile Include="Environment\GapTile.cs" />
     <Compile Include="Environment\LadderTile.cs" />
