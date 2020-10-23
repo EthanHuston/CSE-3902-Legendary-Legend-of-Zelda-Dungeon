@@ -8,13 +8,14 @@ namespace LegendOfZelda.Link.Command
     class ChangeRoomCommand : ICommand
     {
         RoomManager rooms;
-        public ChangeRoomCommand(RoomManager rooms, Point mousePosition)
+        Point mousePosition;
+        public ChangeRoomCommand(RoomManager rooms)
         {
             this.rooms = rooms;
         }
         public void Execute()
         {
-            
+            rooms.MoveRoom();
         }
     }
 }
