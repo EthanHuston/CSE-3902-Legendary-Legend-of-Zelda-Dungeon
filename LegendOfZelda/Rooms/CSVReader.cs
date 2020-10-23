@@ -63,6 +63,8 @@ namespace LegendOfZelda.Rooms
             {
                 //Blocks
                 case RoomConstants.Block:
+                    blockType = new Square(spriteBatch, position);
+                    allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.BrickTile:
                     blockType = new BrickTile(spriteBatch, position);

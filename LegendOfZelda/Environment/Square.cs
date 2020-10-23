@@ -24,7 +24,6 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            spriteBatch.Begin();
             blockSprite.Draw(spriteBatch, position);
         }
 
