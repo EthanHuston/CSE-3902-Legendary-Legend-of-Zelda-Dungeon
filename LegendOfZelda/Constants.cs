@@ -42,6 +42,9 @@ namespace LegendOfZelda
         public const double FireballDamage = 0.5;
         public const double SwordDamage = 1; // TODO lookup damage
 
+        // Damage from Enemies
+        public const double LinkEnemyCollisionDamage = 0.5;
+
         // Moveable Block
         public const float MBlockMoveUp = -1;
         public const float MBlockMoveDown = 1;

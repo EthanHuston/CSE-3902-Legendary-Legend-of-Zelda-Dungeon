@@ -136,7 +136,12 @@ namespace LegendOfZelda.Enemies
 
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
-            throw new System.NotImplementedException();
+            // no knockback
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
         }
     }
 }

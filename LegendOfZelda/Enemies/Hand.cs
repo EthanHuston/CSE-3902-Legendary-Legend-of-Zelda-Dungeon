@@ -127,5 +127,10 @@ namespace LegendOfZelda.Enemies
         {
             // hand does not have knockback
         }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
+        }
     }
 }

@@ -18,7 +18,11 @@ namespace LegendOfZelda
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this); 
+            graphics.PreferredBackBufferWidth = 256;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 176;   // set this value to the desired height of your window
+            graphics.ApplyChanges();
+
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             currentRoom = null; // TODO: Initialize room

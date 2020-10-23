@@ -301,5 +301,10 @@ namespace LegendOfZelda.Enemies
                 knockbackOrigin = knockDirection;
             }
         }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
+        }
     }
 }
