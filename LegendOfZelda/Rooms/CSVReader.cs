@@ -33,7 +33,7 @@ namespace LegendOfZelda.Rooms
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        IBlock roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY));
+                        IBackground roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY));
                         allObjects.Spawn(roomBorder);
                         SpawnWallsAndBackground(fields[i], i);
                     }
@@ -160,6 +160,7 @@ namespace LegendOfZelda.Rooms
 
         private void SpawnWallsAndBackground(string spawnType, int i)
         {
+            IBackground backgroundType;
             IBlock blockType;
             Point position;
 
@@ -179,11 +180,11 @@ namespace LegendOfZelda.Rooms
             switch (spawnType)
             {
                 case RoomConstants.TileBackground:
-                    blockType = new TileBackground(spriteBatch, position);
+                    backgroundType = new TileBackground(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.BlackBackground:
-                    blockType = new BlackBackground(spriteBatch, position);
+                    backgroundType = new BlackBackground(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.WallPiece:
