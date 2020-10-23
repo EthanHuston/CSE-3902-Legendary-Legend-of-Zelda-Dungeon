@@ -110,6 +110,7 @@
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomCommand.cs" />
+    <Compile Include="Rooms\RoomFactory.cs" />
     <Compile Include="Rooms\RoomManager.cs" />
     <Compile Include="Rooms\CollisionHandlerDictionary.cs" />
     <Compile Include="Rooms\CollisionManager.cs" />
@@ -298,7 +299,6 @@
     <Compile Include="Item\Sprite\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
-    <Compile Include="Utility\Class1.cs" />
     <Compile Include="Utility\SpawnableMover.cs" />
     <Compile Include="Utility\UtilityMethods.cs" />
   </ItemGroup>

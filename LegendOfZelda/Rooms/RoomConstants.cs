@@ -22,6 +22,7 @@ namespace LegendOfZelda
         public const int bottomDoorY = roomHeight - wallWidth;
         public const int leftDoorX = roomBorderX;
         public const int leftDoorY = rightDoorY;
+        public const int NumberRooms = 17;
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";
@@ -56,7 +57,5 @@ namespace LegendOfZelda
         public const string Key = "key";
         public const string Map = "map";
         public const string Triforce = "triforce";
-
-        public const int NumberRooms = 17;
     }
 }
