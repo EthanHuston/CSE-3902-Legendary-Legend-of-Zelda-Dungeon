@@ -55,5 +55,7 @@ namespace LegendOfZelda
         public const string Key = "key";
         public const string Map = "map";
         public const string Triforce = "triforce";
+
+        public const int NumberRooms = 17;
     }
 }
