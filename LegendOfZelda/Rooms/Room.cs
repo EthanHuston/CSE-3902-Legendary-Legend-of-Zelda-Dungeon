@@ -34,7 +34,7 @@ namespace LegendOfZelda.Rooms
         {
             // connects a room each way - returning true if successful, else false
             Constants.Direction invertedDirection = UtilityMethods.InvertDirection(direction);
-            if (GetRoom(direction) == null && newRoom.GetRoom(invertedDirection) == null) {
+            if (GetRoom(direction) == null || newRoom.GetRoom(invertedDirection) == null) {
                 roomDictionary[direction] = newRoom; // add room connection one way
                 return newRoom.ConnectRoom(this, invertedDirection); // add room connection in the opposite 
             }
