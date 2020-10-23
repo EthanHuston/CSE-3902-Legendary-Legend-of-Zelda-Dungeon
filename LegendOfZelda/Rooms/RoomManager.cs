@@ -12,7 +12,7 @@
         public void MoveRoom(Constants.Direction direction)
         {
             Room newRoom = CurrentRoom.GetRoom(direction);
-            CurrentRoom = newRoom == null ? CurrentRoom : newRoom;
+            CurrentRoom = newRoom ?? CurrentRoom;
         }
 
         public void Update()
