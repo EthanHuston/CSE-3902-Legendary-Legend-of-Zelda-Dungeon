@@ -26,5 +26,22 @@ namespace LegendOfZelda.Utility
                 return mainSpawnable.Y > secondarySpawnable.Y ? Constants.Direction.Down : Constants.Direction.Up;
             }
         }
+
+        public static Constants.Direction InvertDirection(Constants.Direction direction)
+        {
+            switch(direction)
+            {
+                case Constants.Direction.Right:
+                    return Constants.Direction.Left;
+                case Constants.Direction.Left:
+                    return Constants.Direction.Right;
+                case Constants.Direction.Down:
+                    return Constants.Direction.Up;
+                case Constants.Direction.Up:
+                    return Constants.Direction.Down;
+            }
+
+            return Constants.Direction.Right;
+        }
     }
 }
