@@ -12,8 +12,8 @@ namespace LegendOfZelda
         public const int roomHeight = 176 * spriteMultiplier;
         public const int tileLength = 16 * spriteMultiplier;
         public const int wallWidth = 32 * spriteMultiplier;
-        public const int backgroundX = wallWidth;
-        public const int backgroundY = wallWidth;
+        public const int backgroundX = roomBorderX + wallWidth;
+        public const int backgroundY = roomBorderY + wallWidth;
         public const int topDoorX = (roomWidth - wallWidth) / 2;
         public const int topDoorY = roomBorderY;
         public const int rightDoorX = roomWidth - wallWidth;
