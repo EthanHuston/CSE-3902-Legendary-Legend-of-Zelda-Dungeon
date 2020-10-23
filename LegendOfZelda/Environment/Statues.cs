@@ -19,7 +19,7 @@ namespace LegendOfZelda.Environment
             statueSprite = EnvironmentSpriteFactory.Instance.CreateStatueSprite();
             sB = spriteBatch;
             Position = position;
-            safeToDespawn = true;
+            safeToDespawn = false;
         }
 
         public void Despawn()
