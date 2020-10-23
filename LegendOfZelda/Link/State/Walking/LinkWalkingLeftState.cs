@@ -37,6 +37,10 @@ namespace LegendOfZelda.Link.State.Walking
                 StopMoving();
             }
         }
+        public override void MoveLeft()
+        {
+            // Already moving left, do nothing
+        }
 
         public override void Draw()
         {

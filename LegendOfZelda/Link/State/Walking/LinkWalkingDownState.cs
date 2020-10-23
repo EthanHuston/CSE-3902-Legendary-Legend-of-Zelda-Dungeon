@@ -38,6 +38,11 @@ namespace LegendOfZelda.Link.State.Walking
             }
         }
 
+        public override void MoveDown()
+        {
+            // Already moving down, do nothing
+        }
+
         public override void Draw()
         {
             link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);

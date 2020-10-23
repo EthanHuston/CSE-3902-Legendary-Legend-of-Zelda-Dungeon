@@ -41,22 +41,22 @@ namespace LegendOfZelda.Link
 
         public void Draw()
         {
-            state.Draw();
+            State.Draw();
         }
 
         public void Update()
         {
-            state.Update();
+            State.Update();
         }
 
         public void BeHealthy(double healAmount)
         {
-            state.BeHealthy(healAmount);
+            State.BeHealthy(healAmount);
         }
 
         public void BeDamaged(double damage)
         {
-            state.BeDamaged(damage);
+            State.BeDamaged(damage);
         }
 
         public void SubtractHealth(double damage)
@@ -71,55 +71,55 @@ namespace LegendOfZelda.Link
 
         public void MoveUp()
         {
-            state.MoveUp();
+            State.MoveUp();
         }
 
         public void MoveDown()
         {
-            state.MoveDown();
+            State.MoveDown();
         }
         public void MoveLeft()
         {
-            state.MoveLeft();
+            State.MoveLeft();
         }
         public void MoveRight()
         {
-            state.MoveRight();
+            State.MoveRight();
         }
 
         public void StopMoving()
         {
-            state.StopMoving();
+            State.StopMoving();
         }
 
         public void UseSword()
         {
-            state.UseSword();
+            State.UseSword();
         }
 
         public void UseBow()
         {
-            state.UseBow();
+            State.UseBow();
         }
 
         public void PickUpSword()
         {
-            state.PickUpSword();
+            State.PickUpSword();
         }
 
         public void PickUpHeartContainer()
         {
-            state.PickUpHeartContainer();
+            State.PickUpHeartContainer();
         }
 
         public void PickUpBow()
         {
-            state.PickUpBow();
+            State.PickUpBow();
         }
 
         public void PickUpTriforce()
         {
-            state.PickUpTriforce();
+            State.PickUpTriforce();
         }
 
         public void SpawnItem(IProjectile item)
@@ -129,22 +129,22 @@ namespace LegendOfZelda.Link
 
         public void UseBomb()
         {
-            state.UseBomb();
+            State.UseBomb();
         }
 
         public void UseBoomerang()
         {
-            state.UseBoomerang();
+            State.UseBoomerang();
         }
 
         public void PickUpBoomerang()
         {
-            state.PickUpBoomerang();
+            State.PickUpBoomerang();
         }
 
         public void UseSwordBeam()
         {
-            state.UseSwordBeam();
+            State.UseSwordBeam();
         }
 
         public void Move(int distance, Vector2 velocity)
@@ -214,7 +214,7 @@ namespace LegendOfZelda.Link
 
         public void Drag(ISpawnable dragger, int dragTimeMs)
         {
-            state.Drag(dragger, dragTimeMs);
+            State.Drag(dragger, dragTimeMs);
         }
     }
 }
