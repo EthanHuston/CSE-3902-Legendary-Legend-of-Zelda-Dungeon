@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class RoomBorder : IBlock
+    class RoomBorder : IBackground
     {
         private ISprite roomSprite;
         private SpriteBatch sb;
