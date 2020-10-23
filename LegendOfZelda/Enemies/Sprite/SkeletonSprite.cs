@@ -12,6 +12,7 @@ namespace LegendOfZelda.Enemies.Sprite
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
+        private int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         public SkeletonSprite(Texture2D sprite)
@@ -50,7 +51,7 @@ namespace LegendOfZelda.Enemies.Sprite
             int column = currentFrame % Columns;
 
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
             spriteBatch.Begin();
             if (damaged)

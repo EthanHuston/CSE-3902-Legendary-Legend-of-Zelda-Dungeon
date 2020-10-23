@@ -6,6 +6,7 @@ namespace LegendOfZelda.Enemies.Sprite
 {
     class SpikeTrapSprite : IDamageableSprite
     {
+        private int spriteScaler = Constants.SpriteScaler;
         private Texture2D sprite;
         private Rectangle destinationRectangle;
 
@@ -22,7 +23,7 @@ namespace LegendOfZelda.Enemies.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
-            destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * sprite.Width, spriteScaler * sprite.Height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);

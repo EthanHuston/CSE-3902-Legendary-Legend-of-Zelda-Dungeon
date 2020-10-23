@@ -2,6 +2,7 @@ namespace LegendOfZelda
 {
     public static class Constants
     {
+        public const int SpriteScaler = 1;
         public const int Number = 69;
         public const int FrameDelay = 6;
         public const double GameScaler = 1;

@@ -14,6 +14,7 @@ namespace LegendOfZelda.Enemies.Sprite
         private bool currentDir;
         private int rightRow;
         private int leftRow;
+        private int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
 
@@ -65,7 +66,7 @@ namespace LegendOfZelda.Enemies.Sprite
             int column = currentFrame % Columns;
 
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
             spriteBatch.Begin();
             if (damaged)
