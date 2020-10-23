@@ -6,11 +6,18 @@ namespace LegendOfZelda.Rooms
     class RoomFactory
     {
         private readonly List<Room> roomsList;
+        private const int startingRoomLocation = 2;
+
 
         public RoomFactory(SpriteBatch spriteBatch) {
             roomsList = new List<Room>();
             InitRoomsList(spriteBatch);
             ConnectRooms();
+        }
+
+        public Room GetStartingRoom()
+        {
+            return roomsList[startingRoomLocation];
         }
 
         private void InitRoomsList(SpriteBatch spriteBatch)
