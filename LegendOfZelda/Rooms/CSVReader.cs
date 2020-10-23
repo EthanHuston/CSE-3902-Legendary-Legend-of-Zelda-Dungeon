@@ -42,7 +42,7 @@ namespace LegendOfZelda.Rooms
                 {
                     for(int i = 0; i < fields.Length; i++)
                     {
-                        SpawnFromString(fields[i], i, j);
+                        SpawnFromString(fields[i], i, j - 1);
                     }
                 }
                 j++;
