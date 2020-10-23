@@ -28,6 +28,8 @@ namespace LegendOfZelda.Rooms
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
+                        IBlock roomBorder = new RoomBorder(spriteBatch, Point.Zero);
+                        allObjects.Spawn(roomBorder);
                         spawnWallsAndBackground(fields[i], i);
                     }
                 }
@@ -97,7 +99,7 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Goriya:
-                    npcType = new Goriya(spriteBatch, position, allObjects);
+                    npcType = new Goriya(spriteBatch, allObjects, position);
                     allObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Hand:
@@ -155,7 +157,7 @@ namespace LegendOfZelda.Rooms
             Point position;
 
             if (i == 0)
-                position = new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY);
+                position = new Point(RoomConstants.backgroundX, RoomConstants.backgroundY);
             else if (i == 1)
                 position = new Point(RoomConstants.topDoorX, RoomConstants.topDoorY);
             else if (i == 2)

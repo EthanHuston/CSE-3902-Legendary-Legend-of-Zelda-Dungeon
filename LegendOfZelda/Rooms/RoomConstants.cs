@@ -5,16 +5,22 @@ namespace LegendOfZelda
     public static class RoomConstants
     {
         //Room Constants
-        public const int roomWidth = 12;
-        public const int roomHeight = 7;
+        public const int spriteMultiplier = 1;
+        public const int roomWidth = 256;
+        public const int roomHeight = 176;
         public const int tileLength = 16;
-        public const int spriteMultiplier = 4;
-        public const int topDoorX = 400, topDoorY = 0;
-        public const int rightDoorX = 800, rightDoorY = 240;
-        public const int bottomDoorX = 400, bottomDoorY = 480;
-        public const int leftDoorX = 0, leftDoorY = 240;
-        public const int backgroundX = 0, backgroundY = 0;
-        public const int roomBorderX = 0, roomBorderY = 0;
+        public const int roomBorderX = 0;
+        public const int roomBorderY = 0;
+        public const int wallWidth = 32;
+        public const int backgroundX = wallWidth * spriteMultiplier;
+        public const int backgroundY = wallWidth * spriteMultiplier;
+        public const int topDoorX = (roomWidth / 2 - wallWidth) * spriteMultiplier , topDoorY = 0;
+        public const int rightDoorX = (roomWidth - wallWidth) * spriteMultiplier;
+        public const int rightDoorY = (roomHeight - wallWidth) / 2 * spriteMultiplier;
+        public const int bottomDoorX = topDoorX;
+        public const int bottomDoorY = (roomHeight - wallWidth);
+        public const int leftDoorX = roomBorderX;
+        public const int leftDoorY = rightDoorY;
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";
