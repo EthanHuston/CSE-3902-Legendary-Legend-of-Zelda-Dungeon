@@ -99,7 +99,7 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Goriya:
-                    npcType = new Goriya(spriteBatch, allObjects, position);
+                    npcType = new Goriya(spriteBatch, position, allObjects);
                     allObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Hand:
