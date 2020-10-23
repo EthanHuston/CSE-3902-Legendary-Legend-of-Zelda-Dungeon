@@ -29,7 +29,7 @@ namespace LegendOfZelda.Rooms
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        IBlock roomBorder = new RoomBorder(spriteBatch, Point.Zero);
+                        IBlock roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY));
                         allObjects.Spawn(roomBorder);
                         spawnWallsAndBackground(fields[i], i);
                     }
@@ -47,7 +47,9 @@ namespace LegendOfZelda.Rooms
 
         private void spawnFromString(string spawnType, int gridX, int gridY)
         {
-            Point position = new Point(gridX * RoomConstants.tileLength, gridY * RoomConstants.tileLength);
+            int posX = RoomConstants.backgroundX + gridX * RoomConstants.tileLength;
+            int posY = RoomConstants.backgroundY + gridY * RoomConstants.tileLength;
+            Point position = new Point(posX, posY);
             IBlock blockType;
             INpc npcType;
             IItem itemType;

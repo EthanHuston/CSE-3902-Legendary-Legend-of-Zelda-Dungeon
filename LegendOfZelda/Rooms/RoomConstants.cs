@@ -6,19 +6,20 @@ namespace LegendOfZelda
     {
         //Room Constants
         public const int spriteMultiplier = 1;
-        public const int roomWidth = 256;
-        public const int roomHeight = 176;
-        public const int tileLength = 16;
         public const int roomBorderX = 0;
         public const int roomBorderY = 0;
-        public const int wallWidth = 32;
-        public const int backgroundX = wallWidth * spriteMultiplier;
-        public const int backgroundY = wallWidth * spriteMultiplier;
-        public const int topDoorX = (roomWidth / 2 - wallWidth) * spriteMultiplier , topDoorY = 0;
-        public const int rightDoorX = (roomWidth - wallWidth) * spriteMultiplier;
-        public const int rightDoorY = (roomHeight - wallWidth) / 2 * spriteMultiplier;
+        public const int roomWidth = 256 * spriteMultiplier;
+        public const int roomHeight = 176 * spriteMultiplier;
+        public const int tileLength = 16 * spriteMultiplier;
+        public const int wallWidth = 32 * spriteMultiplier;
+        public const int backgroundX = roomBorderX + wallWidth;
+        public const int backgroundY = roomBorderY + wallWidth;
+        public const int topDoorX = (roomWidth - wallWidth) / 2;
+        public const int topDoorY = roomBorderY;
+        public const int rightDoorX = roomWidth - wallWidth;
+        public const int rightDoorY = (roomHeight - wallWidth) / 2;
         public const int bottomDoorX = topDoorX;
-        public const int bottomDoorY = (roomHeight - wallWidth);
+        public const int bottomDoorY = roomHeight - wallWidth;
         public const int leftDoorX = roomBorderX;
         public const int leftDoorY = rightDoorY;
         //String Abbreviations for Tiles in CSV File
