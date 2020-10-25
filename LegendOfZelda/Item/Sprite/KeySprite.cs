@@ -6,7 +6,6 @@ namespace LegendOfZelda.Item.Sprite
 {
     class KeySprite : ISprite
     {
-        private const int spriteScaler = 2;
         private Texture2D sprite;
         private Rectangle destinationRectangle;
 
@@ -23,7 +22,7 @@ namespace LegendOfZelda.Item.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * sprite.Width, spriteScaler * sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, Constants.SpriteScaler * sprite.Width, Constants.SpriteScaler * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

@@ -23,7 +23,7 @@ namespace LegendOfZelda.Item.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int width = (int)((float)sprite.Width / (float)3);
-            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * sprite.Height);
+            destinationRectangle = new Rectangle(position.X, position.Y, Constants.SpriteScaler * width, Constants.SpriteScaler * sprite.Height);
             Rectangle sourceRectangle = new Rectangle(0, 0, width, sprite.Height);
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

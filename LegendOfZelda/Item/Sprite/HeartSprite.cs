@@ -45,7 +45,7 @@ namespace LegendOfZelda.Item.Sprite
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, 2 * width, 2 * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, Constants.SpriteScaler * width, Constants.SpriteScaler * height);
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
