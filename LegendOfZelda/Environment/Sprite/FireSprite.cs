@@ -8,7 +8,6 @@ namespace LegendOfZelda.Environment.Sprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;
-        private const int spriteScaler = 2;
         private Texture2D sprite;
         private int frameWidth;
         private int frameHeight;
@@ -48,7 +47,7 @@ namespace LegendOfZelda.Environment.Sprite
             int row = (int)((float)currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * frameWidth, spriteScaler * frameHeight);
+            destinationRectangle = new Rectangle(position.X, position.Y, RoomConstants.spriteMultiplier * frameWidth, RoomConstants.spriteMultiplier * frameHeight);
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
