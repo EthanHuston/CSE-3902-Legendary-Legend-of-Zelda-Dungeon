@@ -12,6 +12,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
+        private Rectangle destinationRectangle;
 
         public FireballSprite(Texture2D sprite)
         {
@@ -21,6 +22,7 @@ namespace LegendOfZelda.Projectile.Sprite
             currentFrame = 0;
             bufferFrame = 0;
             totalFrames = Rows * Columns;
+            destinationRectangle = Rectangle.Empty;
         }
 
         public void Update()
@@ -47,7 +49,7 @@ namespace LegendOfZelda.Projectile.Sprite
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, Constants.SpriteScaler * width, Constants.SpriteScaler * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, Constants.SpriteScaler * width, Constants.SpriteScaler * height);
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -59,7 +61,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            throw new System.NotImplementedException();
+            return destinationRectangle;
         }
 
         public bool FinishedAnimation()
