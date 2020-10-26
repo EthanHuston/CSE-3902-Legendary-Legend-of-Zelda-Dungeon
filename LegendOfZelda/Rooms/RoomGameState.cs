@@ -56,7 +56,7 @@ namespace LegendOfZelda.Rooms
         {
             PlayerList = new List<IPlayer>()
             {
-                {new LinkPlayer(game, new Microsoft.Xna.Framework.Point(50,50)) }
+                {new LinkPlayer(game, Constants.LinkDoorDownSpawnPosition) }
             };
         }
     }
