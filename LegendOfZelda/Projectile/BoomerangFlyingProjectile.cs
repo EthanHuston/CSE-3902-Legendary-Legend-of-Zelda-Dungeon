@@ -13,7 +13,7 @@ namespace LegendOfZelda.Projectile
         private const int despawnMinXFromOwner = 0;
         private const int despawnMaxYFromOwner = 15;
         private const int despawnMinYFromOwner = 0;
-        private const int maxDistanceFromOwner = 300;
+        private const int maxDistanceFromOwner = Constants.SpriteScaler * 100;
 
         public BoomerangFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
@@ -35,12 +35,11 @@ namespace LegendOfZelda.Projectile
         {
             if (!returningToOwner && GetDistanceFromOwner() > maxDistanceFromOwner)
             {
-                returningToOwner = true;
-                Velocity = new Vector2(Velocity.X * -1, Velocity.Y * -1);
+                ReturnToOwner();
             }
 
-            int posX = Position.X == 0 ? itemToTrack.Position.X : (int)(Position.X + Velocity.X);
-            int posY = Position.Y == 0 ? itemToTrack.Position.Y : (int)(Position.Y + Velocity.Y);
+            int posX = Velocity.X == 0 ? itemToTrack.Position.X : (int)(Position.X + Velocity.X);
+            int posY = Velocity.Y == 0 ? itemToTrack.Position.Y : (int)(Position.Y + Velocity.Y);
             Position = new Point(posX, posY);
         }
 
@@ -66,7 +65,9 @@ namespace LegendOfZelda.Projectile
 
         public void ReturnToOwner()
         {
+            if (returningToOwner) return;
             returningToOwner = true;
+            Velocity = new Vector2(Velocity.X * -1, Velocity.Y * -1);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace LegendOfZelda.Enemies
         private IProjectile boomer;
         private int velocity;
         private int updateCount = 0;
+        private const int boomerangVelocity = 1;
         private Constants.Direction direction = Constants.Direction.Down;
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private int changeDirection = 100;
@@ -196,16 +197,16 @@ namespace LegendOfZelda.Enemies
             switch (direction)
             {
                 case Constants.Direction.Up: // Up
-                    v = new Vector2(0, -5);
+                    v = new Vector2(0, -1 * boomerangVelocity);
                     break;
                 case Constants.Direction.Down: // Down
-                    v = new Vector2(0, 5);
+                    v = new Vector2(0, boomerangVelocity);
                     break;
                 case Constants.Direction.Left: // Left
-                    v = new Vector2(-5, 0);
+                    v = new Vector2(-1 * boomerangVelocity, 0);
                     break;
                 case Constants.Direction.Right: // Right
-                    v = new Vector2(5, 0);
+                    v = new Vector2(boomerangVelocity, 0);
                     break;
                 default:
                     break;

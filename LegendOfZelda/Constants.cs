@@ -39,6 +39,7 @@ namespace LegendOfZelda
         public const float LinkNoMove = 0;
         public const int LinkCollisionHelper = 3 * SpriteScaler;
         public const int DragAgainDelayMs = 20000;
+        public const int LinkUsingSwordFrameDelay = 3;
         public static Point LinkDoorDownSpawnPosition => new Point(120, 128);
         public static Point LinkDoorUpSpawnPosition => new Point(120, 32);
         public static Point LinkDoorLeftSpawnPosition => new Point(32, 80);
@@ -51,7 +52,7 @@ namespace LegendOfZelda
         public const int BombSpawnYOffsetFromLink = 6;
         public const int BoomerangSpawnXOffsetFromLink = 0;
         public const int BoomerangSpawnYOffsetFromLink = 6;
-        public const int BoomerangVelocity = 6;
+        public const int BoomerangVelocity = 1;
         public const int SwordBeamSpawnXOffsetFromLink = 4;
         public const int SwordBeamSpawnYOffsetFromLink = 5;
 

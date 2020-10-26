@@ -1,7 +1,8 @@
 # Bugs
 For the most part everything works pretty good. However, we did have some issues with animations as well as functionality:
 ### Sprint 3
-- First bug goes here
+- In Room 1, bats slowly glitch off the screen; issue lies with how we are handling wall collisions for bat
+- Goriya movement logic is acting strange; they get stuck in the corners and room is too easy as they don't throw the boomerang at Link
 ### Sprint 2
 - [[open]: ](../sprint2/Bugs.md)Fireball sprite animates incorrectly when shot from Aquamentus
 - [[open]: ](../sprint2/Bugs.md)Link flashes slightly when walking 

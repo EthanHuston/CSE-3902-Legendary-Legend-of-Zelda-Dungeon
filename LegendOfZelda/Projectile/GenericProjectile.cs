@@ -38,8 +38,7 @@ namespace LegendOfZelda.Projectile
 
         public Rectangle GetRectangle()
         {
-            Rectangle size = sprite.GetPositionRectangle();
-            return new Rectangle(Position.X, Position.Y, size.Width, size.Height);
+            return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
         public void Move(int distance, Vector2 velocity)
