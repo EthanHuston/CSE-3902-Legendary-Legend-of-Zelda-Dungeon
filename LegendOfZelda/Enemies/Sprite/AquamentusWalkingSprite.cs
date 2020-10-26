@@ -26,13 +26,13 @@ namespace LegendOfZelda.Enemies.Sprite
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 10)
+            if (bufferFrame >= 10)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
 
-            if (currentFrame == totalFrames)
+            if (currentFrame >= totalFrames)
             {
                 currentFrame = 0;
             }

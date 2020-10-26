@@ -36,19 +36,18 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             updateCount++;
-            if (updateCount % 2 == 0)
+            if(updateCount % 2 == 0)
             {
                 if (!attacked)
                     UpdateDirection();
-
-                if (updateCount % attackTime == 0)
-                    Attack();
-
-                UpdateSprite();
-
-                sprite.Update();
             }
 
+            if (updateCount % attackTime == 0)
+                    Attack();
+
+            UpdateSprite();
+
+            sprite.Update();
 
             //updateCount++;
 
@@ -84,9 +83,9 @@ namespace LegendOfZelda.Enemies
         private void Attack()
         {
             Point spawnPosition = new Point(position.X, position.Y);
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -3), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -1), Constants.ItemOwner.Enemy));
             itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ItemOwner.Enemy));
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 3), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 1), Constants.ItemOwner.Enemy));
             attacked = true;
             attackUpdate = updateCount;
         }

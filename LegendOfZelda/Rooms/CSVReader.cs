@@ -139,6 +139,8 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(itemType);
                     break;
                 case RoomConstants.Heart:
+                    position.X += 4 * RoomConstants.SpriteMultiplier;
+                    position.Y += 4 * RoomConstants.SpriteMultiplier;
                     itemType = new HeartItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
