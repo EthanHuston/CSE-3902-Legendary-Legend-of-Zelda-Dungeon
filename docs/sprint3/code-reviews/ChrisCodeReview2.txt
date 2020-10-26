@@ -1,7 +1,7 @@
 Chris Lenart
 10/26/2020
 RoomFactory.cs
-Ryan Stucko
+Ryan Stuckey
 10 minutes
 Readability:
 The variable and method names are easy to understand and each method is simple. 
