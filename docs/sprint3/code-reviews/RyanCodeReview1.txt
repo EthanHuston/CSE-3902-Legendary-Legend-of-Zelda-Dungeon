@@ -1,0 +1,9 @@
+Ryan Stuckey
+10/26/2020
+LinkMovableBlockCollisionHandler.cs
+Nathan Murphy
+10 minutes
+Readability:
+The class is overall pretty simple so there is not much to discuss here. The class has a good name and variables/parameters are named in a way that self-comments the code. The switch case makes the code easy to read and I can tell what is going on after only examining the code for a couple seconds.
+Maintainability:
+Overall, pretty good. We do have to cast the IBlock square to a MovableSquare, so this could cause problems down the road if we try to use this method with an IBlock that does not use the MovableSquare implementation. However, as long as we only use this collision handler under specific circumstances, we should be good.
