@@ -1,0 +1,16 @@
+Ethan Huston
+10/25/2020
+Sprint 3
+CollisionManager.cs
+Ryan Stuckey
+Readability
+The readability of this file is very good, the methods are all short, and the longer ones are simply long
+becasue they have loops in them that take up space. Overall its an easy file to read through and understand,
+all of the names are simple, describing exatly what they do/are. When looking at this file, you can also decipher our logic
+for collisions in our game. We decided on a top down approach to handling collisions, Link having priority and needing to be checked against everything
+and then trickling down with less and less needing to be checked.
+Maintainability
+Maintaining this code should also be very easy and simple. The code is already primed for a potential multiplayer addition in Sprint 5 with the for each 
+IPlayer in the player list. Beyond this, with such a simplified file for collision managing, when errors and bugs arise it will be much simpler to find them.
+The maintainability of this code goes hand in hand with its readability, it shouldnt need to be changed much if at all, but if it must the code is simple 
+enough to adapt to our needs.
