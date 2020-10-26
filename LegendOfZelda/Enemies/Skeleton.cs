@@ -15,6 +15,7 @@ namespace LegendOfZelda.Enemies
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private bool safeToDespawn = false;
         private bool inKnockback = false;
+        private Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -55,7 +56,6 @@ namespace LegendOfZelda.Enemies
         }
         private void ChooseDirection()
         {
-            Random rand = new Random();
             int newDirection = rand.Next(0, 4);
             switch (newDirection)
             {

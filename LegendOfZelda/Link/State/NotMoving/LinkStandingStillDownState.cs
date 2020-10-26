@@ -15,6 +15,11 @@ namespace LegendOfZelda.Link.State.NotMoving
         {
         }
 
+        public LinkStandingStillDownState(LinkPlayer link, bool damaged, DateTime healthyDateTime, bool walkingToggle) : base(link, damaged, healthyDateTime)
+        {
+            this.walkingToggle = walkingToggle;
+        }
+
         protected override void InitClass()
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkDownSprite();

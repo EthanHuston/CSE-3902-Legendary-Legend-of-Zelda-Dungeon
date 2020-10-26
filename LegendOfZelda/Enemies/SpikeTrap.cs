@@ -16,7 +16,7 @@ namespace LegendOfZelda.Enemies
         private bool returning = false;
         private bool going = false;
         private IPlayer link;
-        private Rectangle LinkPosition;
+        private Point LinkPosition;
         private Rectangle TrapPosition;
         private Constants.Direction currentDirection;
         private bool safeToDespawn;
@@ -36,7 +36,7 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             sprite.Update();
-            LinkPosition = link.GetRectangle();
+            LinkPosition = link.Position;
             TrapPosition = sprite.GetPositionRectangle();
             if (!returning)
             {
@@ -87,29 +87,46 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckOverlap()
         {
-            if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Left >= TrapPosition.Right)
+            if((LinkPosition.Y <= TrapPosition.Bottom || LinkPosition.Y >= TrapPosition.Top) && LinkPosition.X >= TrapPosition.Right)
+            {
+                currentDirection = Constants.Direction.Right;
+                going = true;
+            } else if((LinkPosition.Y <=TrapPosition.Bottom || LinkPosition.Y >= TrapPosition.Top) && LinkPosition.X <= TrapPosition.Left)
+            {
+                currentDirection = Constants.Direction.Left;
+                going = true;
+            } else if((LinkPosition.X <= TrapPosition.Right || LinkPosition.X >= TrapPosition.Left) && LinkPosition.Y >= TrapPosition.Bottom)
+            {
+                currentDirection = Constants.Direction.Down;
+                going = true;
+            } else if((LinkPosition.X <= TrapPosition.Right || LinkPosition.X >= TrapPosition.Left) && LinkPosition.Y <= TrapPosition.Top)
+            {
+                currentDirection = Constants.Direction.Up;
+                going = true;
+            }
+           /* if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Left >= TrapPosition.Right))
             {
                 currentDirection = Constants.Direction.Right;
                 going = true;
 
             }
-            else if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && LinkPosition.Right <= TrapPosition.Left)
+            else if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Right <= TrapPosition.Left))
             {
                 currentDirection = Constants.Direction.Left;
                 going = true;
 
             }
-            else if (LinkPosition.Bottom <= TrapPosition.Top && (LinkPosition.Left <= TrapPosition.Right || LinkPosition.Right >= TrapPosition.Left))
+            else if ((LinkPosition.Bottom <= TrapPosition.Top) && (LinkPosition.Left <= TrapPosition.Right || LinkPosition.Right >= TrapPosition.Left))
             {
                 currentDirection = Constants.Direction.Up;
                 going = true;
 
             }
-            else if (LinkPosition.Top >= TrapPosition.Bottom && (LinkPosition.Right <= TrapPosition.Left || LinkPosition.Left <= TrapPosition.Right))
+            else if ((LinkPosition.Top >= TrapPosition.Bottom) && (LinkPosition.Right <= TrapPosition.Left || LinkPosition.Left <= TrapPosition.Right))
             {
                 currentDirection = Constants.Direction.Down;
                 going = true;
-            }
+            }*/
         }
         private void GoingRight()
         {

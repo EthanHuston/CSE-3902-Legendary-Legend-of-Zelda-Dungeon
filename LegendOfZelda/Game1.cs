@@ -3,6 +3,7 @@ using LegendOfZelda.Link;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda

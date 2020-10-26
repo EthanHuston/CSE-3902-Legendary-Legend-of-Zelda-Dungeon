@@ -1,9 +1,12 @@
 ﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Interface
 {
     interface ILinkSprite : IDamageableSprite
     {
+        void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle);
         bool FinishedAnimation();
     }
 }

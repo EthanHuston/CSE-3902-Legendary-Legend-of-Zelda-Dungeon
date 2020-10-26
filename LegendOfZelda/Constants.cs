@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 
 namespace LegendOfZelda
 {
@@ -21,7 +22,7 @@ namespace LegendOfZelda
 
         // Link
         public const int LinkWalkStepDistanceInterval = 1;
-        public const int LinkWalkDistanceInterval = 16;
+        public const int LinkWalkDistanceInterval = 8;
         public const int LinkStartingHealth = 60;
         public const int LinkDamageEffectTimeMs = 2000;
         public const int LinkDamageFlashDelayTicks = 5;
@@ -34,6 +35,7 @@ namespace LegendOfZelda
         public const float LinkMoveRight = 1;
         public const float LinkMoveLeft = -1;
         public const float LinkNoMove = 0;
+        public const int LinkCollisionHelper = 3 * SpriteScaler;
         public static Point LinkDoorDownSpawnPosition => new Point(120, 128);
         public static Point LinkDoorUpSpawnPosition => new Point(120, 32);
         public static Point LinkDoorLeftSpawnPosition => new Point(32, 80);

@@ -12,19 +12,21 @@ namespace LegendOfZelda.Link.Sprite
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
+        private int frameWidth;
+        private int frameHeight;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
         private const int totalFrames = 7;
         private const int numRows = 2;
         private const int numColumns = 4;
-        private Rectangle destinationRectangle;
 
         public StrikingLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             animationIsDone = false;
             flashRed = false;
-            damageColorCounter = 0;
-            destinationRectangle = Rectangle.Empty;
+            damageColorCounter = 0; 
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
@@ -59,9 +61,14 @@ namespace LegendOfZelda.Link.Sprite
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
+        {
+            Draw(spriteBatch, position, false);
         }
 
         public bool FinishedAnimation()
@@ -71,7 +78,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }
