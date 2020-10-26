@@ -10,9 +10,6 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
-            link.StopMoving();
-            link.BlockDirection(side);
-            /*
             Vector2 correctDirection;
             switch(side)
             {
@@ -35,7 +32,6 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
                 default:
                     break;
             }
-            */
         }
     }
 }

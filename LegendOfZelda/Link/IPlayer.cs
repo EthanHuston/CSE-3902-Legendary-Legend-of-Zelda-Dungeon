@@ -30,6 +30,5 @@ namespace LegendOfZelda.Link
         void PickUpBoomerang();
         void UseSwordBeam();
         void Drag(ISpawnable dragger, int dragTime);
-        void BlockDirection(Constants.Direction direction);
     }
 }
