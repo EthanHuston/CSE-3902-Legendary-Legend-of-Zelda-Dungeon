@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public const float LinkMoveRight = 1;
         public const float LinkMoveLeft = -1;
         public const float LinkNoMove = 0;
+        public const int LinkCollisionHelper = 3 * SpriteScaler;
         public static Point LinkDoorDownSpawnPosition => new Point(120, 128);
         public static Point LinkDoorUpSpawnPosition => new Point(120, 32);
         public static Point LinkDoorLeftSpawnPosition => new Point(32, 80);
