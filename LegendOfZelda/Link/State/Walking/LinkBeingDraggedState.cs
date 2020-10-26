@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Enemies;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.State.NotMoving;
 using Microsoft.Xna.Framework;
 using System;
@@ -36,9 +37,9 @@ namespace LegendOfZelda.Link.State.Walking
         public override void Update()
         {
             link.Mover.ForceMoveToPoint(dragger.Position);
-            if (DateTime.Now.CompareTo(dragEndTime) > 0) StopMoving();
             link.CurrentSprite.Update();
             link.Mover.Update();
+            if (DateTime.Now.CompareTo(dragEndTime) > 0) StopMoving();
         }
 
         public override void Draw()
@@ -49,6 +50,11 @@ namespace LegendOfZelda.Link.State.Walking
         public override void StopMoving()
         {
             link.State = new LinkStandingStillDownState(link, damaged, healthyDateTime, lastDraggedTime);
+        }
+
+        public override void Drag(ISpawnable dragger, int dragTimeMs)
+        {
+            // do nothing, already dragging
         }
     }
 }
