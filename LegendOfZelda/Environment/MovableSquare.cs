@@ -49,7 +49,7 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return blockSprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, blockSprite.GetPositionRectangle().X, blockSprite.GetPositionRectangle().Y);
         }
 
         public Vector2 GetVelocity()

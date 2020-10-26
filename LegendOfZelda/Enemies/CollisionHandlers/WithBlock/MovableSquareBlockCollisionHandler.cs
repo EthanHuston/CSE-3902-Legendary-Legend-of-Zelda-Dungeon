@@ -10,7 +10,6 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
             Vector2 correctDirection;
-            enemy.SetKnockBack(false, Constants.Direction.Up);
             switch (side)
             {
                 case Constants.Direction.Up:
