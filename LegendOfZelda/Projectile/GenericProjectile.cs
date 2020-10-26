@@ -27,8 +27,6 @@ namespace LegendOfZelda.Projectile
             Owner = owner;
         }
 
-        protected abstract void CheckItemIsExpired();
-
         public abstract void Update();
 
         public abstract double DamageAmount();

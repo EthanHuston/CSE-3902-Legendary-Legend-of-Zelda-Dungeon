@@ -1,5 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link;
+using LegendOfZelda.Utility;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
@@ -41,7 +43,35 @@ namespace LegendOfZelda.Rooms
         public void MoveRoom(Constants.Direction direction)
         {
             Room newRoom = CurrentRoom.GetRoom(direction);
-            CurrentRoom = newRoom ?? CurrentRoom;
+            Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
+            if(newRoom != null)
+            {
+                CurrentRoom = newRoom;
+                UpdatePlayersPositions(doorLocation);
+            }
+        }
+
+        private void UpdatePlayersPositions(Constants.Direction doorLocation)
+        {
+            foreach (IPlayer player in PlayerList)
+            {
+                player.StopMoving();
+                switch (doorLocation)
+                {
+                    case Constants.Direction.Right:
+                        player.Position = Constants.LinkDoorRightSpawnPosition;
+                        break;
+                    case Constants.Direction.Left:
+                        player.Position = Constants.LinkDoorLeftSpawnPosition;
+                        break;
+                    case Constants.Direction.Up:
+                        player.Position = Constants.LinkDoorUpSpawnPosition;
+                        break;
+                    case Constants.Direction.Down:
+                        player.Position = Constants.LinkDoorDownSpawnPosition;
+                        break;
+                }
+            }
         }
 
         private void InitPlayersForGame()

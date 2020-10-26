@@ -22,12 +22,6 @@ namespace LegendOfZelda.Projectile
         {
             Mover.Update();
             sprite.Update();
-            CheckItemIsExpired();
-        }
-
-        protected override void CheckItemIsExpired()
-        {
-            itemIsExpired = false; // put some condition that gets checked
         }
     }
 }

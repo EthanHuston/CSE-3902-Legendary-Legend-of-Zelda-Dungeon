@@ -34,11 +34,10 @@ namespace LegendOfZelda
         public const float LinkMoveRight = 1;
         public const float LinkMoveLeft = -1;
         public const float LinkNoMove = 0;
-        public static Point LinkDoorDownSpawnPosition = new Point(120, 112);
-        public static Point LinkDoorUpSpawnPosition = new Point(120, 32);
-        public static Point LinkDoorLeftSpawnPosition = new Point(32, 80);
-        public static Point LinkDoorRightSpawnPosition = new Point(208, 80);
-        public const double FireTileDamage = 0.5;
+        public static Point LinkDoorDownSpawnPosition => new Point(120, 128);
+        public static Point LinkDoorUpSpawnPosition => new Point(120, 32);
+        public static Point LinkDoorLeftSpawnPosition => new Point(32, 80);
+        public static Point LinkDoorRightSpawnPosition => new Point(208, 80);
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
@@ -58,6 +57,7 @@ namespace LegendOfZelda
         public const double SwordBeamDamage = 1.0;
         public const double FireballDamage = 0.5;
         public const double SwordDamage = 1; // TODO lookup damage
+        public const double FireTileDamage = 0.5;
 
         // Damage from Enemies
         public const double LinkEnemyCollisionDamage = 0.5;

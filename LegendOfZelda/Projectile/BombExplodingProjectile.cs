@@ -14,11 +14,12 @@ namespace LegendOfZelda.Projectile
         {
             Mover.Update();
             sprite.Update();
+            CheckItemIsExpired();
         }
 
-        protected override void CheckItemIsExpired()
+        private void CheckItemIsExpired()
         {
-            sprite.FinishedAnimation();
+            itemIsExpired = sprite.FinishedAnimation();
         }
 
         public bool IsExploded()
