@@ -9,7 +9,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
     {
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
-            link.BeDamaged(1);
+            link.BeDamaged(Constants.FireTileDamage);
         }
     }
 }

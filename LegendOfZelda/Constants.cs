@@ -38,6 +38,7 @@ namespace LegendOfZelda
         public static Point LinkDoorUpSpawnPosition = new Point(120, 48);
         public static Point LinkDoorLeftSpawnPosition = new Point(32, 80);
         public static Point LinkDoorRightSpawnPosition = new Point(208, 96);
+        public const double FireTileDamage = 0.5;
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
