@@ -1,0 +1,11 @@
+Chris Lenart
+10/25/2020
+SpawnableManager.cs
+Ryan Stucko
+10 minutes
+Readability:
+The variable and method names are easy to understand and each method is simple.
+This makes it easy to understand what each variable and method do, so readability is good.
+Maintainability:
+Maintainability is excellent for this class. 
+The list types are generic so they can easily use new items or enemies if we decide to make new ones.
