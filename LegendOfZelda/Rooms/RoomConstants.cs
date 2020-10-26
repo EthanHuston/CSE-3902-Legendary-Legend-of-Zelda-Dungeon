@@ -5,7 +5,7 @@ namespace LegendOfZelda
     public static class RoomConstants
     {
         //Room Constants
-        public const int spriteMultiplier = 1;
+        public const int spriteMultiplier = Constants.SpriteScaler;
         public const int roomBorderX = 0;
         public const int roomBorderY = 0;
         public const int roomWidth = 256 * spriteMultiplier;
