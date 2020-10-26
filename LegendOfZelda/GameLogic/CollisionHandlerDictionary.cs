@@ -134,12 +134,14 @@ namespace LegendOfZelda.GameLogic
                 {typeof(TileWater), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
                 {typeof(ShutDoor), new LinkImmovableBlockCollisionHandler() },
+                {typeof(Square), new LinkImmovableBlockCollisionHandler() },
+                {typeof(RoomWall), new LinkImmovableBlockCollisionHandler() },
 
                 // interactive blocks
                 {typeof(Fire), new LinkFireCollisionHandler() },
                 {typeof(OpenDoor), new LinkDoorCollisionHandler() },
                 {typeof(BombedOpening), new LinkDoorCollisionHandler() },
-                {typeof(Stairs), new LinkStairsCollisionHandler() },
+                {typeof(Stairs), new LinkStairsCollisionHandler() }
 
 
                 // no collision detection

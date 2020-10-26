@@ -30,8 +30,7 @@ namespace LegendOfZelda.GameLogic
 
         private void CheckAndHandlePlayerCollisions()
         {
-
-            foreach (IPlayer player in spawnableManager.ItemList)
+            foreach (IPlayer player in spawnableManager.PlayerList)
             {
                 // iterate through Link vs. Npc
                 foreach (INpc npc in spawnableManager.NpcList)

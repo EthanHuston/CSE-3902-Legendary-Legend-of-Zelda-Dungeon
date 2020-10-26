@@ -1,6 +1,8 @@
+using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Utility;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -20,6 +22,7 @@ namespace LegendOfZelda.Rooms
             CSVReader csvReader = new CSVReader(spriteBatch, AllObjects, fileName);
             roomDictionary = new Dictionary<Constants.Direction, Room>();
             collisionManager = new CollisionManager(AllObjects);
+            SpawnWalls();
         }
 
         public void Draw()
@@ -30,7 +33,7 @@ namespace LegendOfZelda.Rooms
         public void Update()
         {
             AllObjects.UpdateAll();
-            // collisionManager.CheckAndHandleAllCollisions();
+            collisionManager.CheckAndHandleAllCollisions();
         }
 
         public bool ConnectRoom(Room newRoom, Constants.Direction direction)
@@ -48,6 +51,14 @@ namespace LegendOfZelda.Rooms
         public Room GetRoom(Constants.Direction direction)
         {
             return roomDictionary.ContainsKey(direction) ? roomDictionary[direction] : null;
+        }
+
+        private void SpawnWalls()
+        {
+            AllObjects.Spawn(new RoomWall(RoomConstants.LeftWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.RightWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.UpWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.DownWallRectangle));
         }
     }
 }
