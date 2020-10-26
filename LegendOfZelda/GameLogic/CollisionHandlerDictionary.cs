@@ -175,7 +175,8 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Hand), new HandBlockCollisionHandler() },
                 {typeof(Jelly), new JellyBlockCollisionHandler() },
                 {typeof(Skeleton), new SkeletonBlockCollisionHandler() },
-                {typeof(SpikeTrap), new SpikeTrapBlockCollisionHandler() }
+                {typeof(SpikeTrap), new SpikeTrapBlockCollisionHandler() },
+                {typeof(MovableSquare), new MovableSquareBlockCollisionHandler() }
             };
         }
 

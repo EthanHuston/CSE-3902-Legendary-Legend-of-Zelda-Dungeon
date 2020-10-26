@@ -32,7 +32,6 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            spriteBatch.Begin();
             blockSprite.Draw(spriteBatch, position);
         }
 
@@ -103,12 +102,13 @@ namespace LegendOfZelda.Environment
 
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
-            throw new System.NotImplementedException();
+            //Do Nothing
         }
 
         public double GetDamageAmount()
         {
-            throw new System.NotImplementedException();
+            return 0.0;
+            //Do Nothing
         }
 
         public void Move(Vector2 distance)
