@@ -1,6 +1,4 @@
-﻿using LegendOfZelda.Enemies;
-using LegendOfZelda.Interface;
-using LegendOfZelda.Utility;
+﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
