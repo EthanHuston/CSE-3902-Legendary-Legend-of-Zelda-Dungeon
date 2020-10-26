@@ -66,7 +66,7 @@ namespace LegendOfZelda.Enemies
 
         }
 
-        private void ChooseDirection()
+        public void ChooseDirection()
         {
             Random rand = new Random();
             xDir = rand.Next(0, 2); // 0 for x, 1 for y
