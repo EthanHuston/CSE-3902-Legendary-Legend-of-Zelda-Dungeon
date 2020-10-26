@@ -23,6 +23,7 @@ namespace LegendOfZelda.Link.State.Walking
             distanceWalked = 0;
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingUpLinkSprite();
             link.Velocity = new Vector2(0, -1 * Constants.LinkWalkStepDistanceInterval);
+            blockNewDirection = true;
         }
 
         public override void Update()
