@@ -157,6 +157,8 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(itemType);
                     break;
                 case RoomConstants.Triforce:
+                    position.X += 12 * RoomConstants.SpriteMultiplier;
+                    position.Y += 2 * RoomConstants.SpriteMultiplier;
                     itemType = new TriforceItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
