@@ -98,12 +98,12 @@ namespace LegendOfZelda.Rooms
                     blockType = new TileWater(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
+                case RoomConstants.MovableBlock:
+                    blockType = new MovableSquare(spriteBatch, position);
+                    allObjects.Spawn(blockType);
+                    break;
 
                 //Npcs
-                case RoomConstants.MovableBlock:
-                    npcType = new MovableSquare(spriteBatch, position);
-                    allObjects.Spawn(npcType);
-                    break;
                 case RoomConstants.Aquamentus:
                     npcType = new Aquamentus(spriteBatch, position, allObjects);
                     allObjects.Spawn(npcType);
