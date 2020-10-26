@@ -41,7 +41,7 @@ namespace LegendOfZelda.Item
         public Rectangle GetRectangle()
         {
             Rectangle size = sprite.GetPositionRectangle();
-            return new Rectangle(position.X, position.Y, size.Top, size.Right);
+            return new Rectangle(position.X, position.Y, size.Width, size.Height);
         }
 
         public void Move(Vector2 distance)
