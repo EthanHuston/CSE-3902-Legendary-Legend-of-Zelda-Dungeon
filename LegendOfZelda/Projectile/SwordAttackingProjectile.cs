@@ -6,6 +6,8 @@ namespace LegendOfZelda.Projectile
 {
     class SwordAttackingProjectile : GenericProjectile
     {
+        private const int SpawnOffsetX = 16;
+        private const int SpawnOffsetY = 16;
         public SwordAttackingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             Velocity = Vector2.Zero;
@@ -13,9 +15,11 @@ namespace LegendOfZelda.Projectile
             {
                 case Constants.Direction.Down:
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordAttackingDownSprite();
+                    Position = new Point(spawnPosition.X, spawnPosition.Y + SpawnOffsetY);
                     break;
                 case Constants.Direction.Up:
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordAttackingUpSprite();
+                    Position = new Point(spawnPosition.X, spawnPosition.Y - SpawnOffsetY);
                     break;
                 case Constants.Direction.Right:
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordAttackingRightSprite();
@@ -29,6 +33,7 @@ namespace LegendOfZelda.Projectile
         public override void Update()
         {
             Mover.Update();
+            sprite.Update();
             CheckItemIsExpired();
         }
         public override void Draw()

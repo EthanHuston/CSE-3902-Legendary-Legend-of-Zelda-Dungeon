@@ -22,7 +22,7 @@ namespace LegendOfZelda.Link.State.Attacking
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingUpLinkSprite();
             link.Velocity = (Vector2.Zero);
-            link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X + spawnOffsetX, link.Position.Y + spawnOffsetY), Constants.Direction.Up, Constants.ItemOwner.Link));
+            link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X, link.Position.Y), Constants.Direction.Up, Constants.ItemOwner.Link));
         }
 
         public override void Update()

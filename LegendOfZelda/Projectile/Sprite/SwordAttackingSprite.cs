@@ -17,7 +17,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private int bufferFrame;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
         private const int totalFrames = 7;
-        private const int numRows = 1;
+        private const int numRows = 2;
         private const int numColumns = 4;
         private Rectangle destinationRectangle;
 
