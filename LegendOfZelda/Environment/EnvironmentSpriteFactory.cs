@@ -50,7 +50,7 @@ namespace LegendOfZelda.Environment
         {
             return new WallSprite(wallSprite);
         }
-        public ISprite CreateBlockSprite()
+        public ISprite CreateSquareSprite()
         {
             return new SquareSprite(squareSprite);
         }
