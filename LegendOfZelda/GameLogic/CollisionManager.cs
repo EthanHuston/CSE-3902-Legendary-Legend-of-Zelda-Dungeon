@@ -30,8 +30,7 @@ namespace LegendOfZelda.GameLogic
 
         private void CheckAndHandlePlayerCollisions()
         {
-
-            foreach (IPlayer player in spawnableManager.ItemList)
+            foreach (IPlayer player in spawnableManager.PlayerList)
             {
                 // iterate through Link vs. Npc
                 foreach (INpc npc in spawnableManager.NpcList)
@@ -151,7 +150,7 @@ namespace LegendOfZelda.GameLogic
             if (!collisionFound.Equals(Rectangle.Empty))
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), block.GetRectangle(), collisionFound);
-                handlerDictionary.GetNpcBlockHandler(block.GetType()).HandleCollision(npc, block, side);
+                handlerDictionary.GetNpcBlockHandler(npc.GetType()).HandleCollision(npc, block, side);
             }
         }
 

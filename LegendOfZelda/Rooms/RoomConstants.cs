@@ -23,6 +23,10 @@ namespace LegendOfZelda
         public const int leftDoorX = roomBorderX;
         public const int leftDoorY = rightDoorY;
         public const int NumberRooms = 17;
+        public static Rectangle LeftWallRectangle = new Rectangle(0, 0, wallWidth, roomHeight);
+        public static Rectangle RightWallRectangle = new Rectangle(224, 0, wallWidth, roomHeight);
+        public static Rectangle UpWallRectangle = new Rectangle(0, 32, roomWidth, wallWidth);
+        public static Rectangle DownWallRectangle = new Rectangle(0, 0, roomWidth, wallWidth);
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";
