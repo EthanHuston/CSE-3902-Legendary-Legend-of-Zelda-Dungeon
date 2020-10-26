@@ -36,7 +36,7 @@ namespace LegendOfZelda.Enemies
             sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
             this.spriteBatch = spriteBatch;
             this.itemSpawner = itemSpawner;
-            velocity = 2;
+            velocity = 1;
             Position = spawnPosition;
         }
 

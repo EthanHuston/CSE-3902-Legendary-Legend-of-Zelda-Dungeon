@@ -52,7 +52,6 @@ namespace LegendOfZelda.Enemies.Sprite
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
-            spriteBatch.Begin();
             if (damaged)
             {
                 spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Red);
@@ -62,7 +61,6 @@ namespace LegendOfZelda.Enemies.Sprite
                 spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             }
 
-            spriteBatch.End();
         }
 
         public Rectangle GetPositionRectangle()

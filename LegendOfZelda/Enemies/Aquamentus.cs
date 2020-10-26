@@ -12,12 +12,12 @@ namespace LegendOfZelda.Enemies
         private SpriteBatch spriteBatch;
         private int vx = 1;
         private int updateCount = 0;
-        private int switchDirection = 100;
-        private int attackTime = 110;
+        private int switchDirection = 60;
+        private int attackTime = 60;
         private int attackUpdate = 0;
         private bool attacked = false;
         private double health = 6;
-        private const int xVelocity = -5;
+        private const int xVelocity = -2;
         private ISpawnableManager itemSpawner;
         private bool safeToDespawn;
 
@@ -35,9 +35,10 @@ namespace LegendOfZelda.Enemies
 
         public void Update()
         {
-            //updateCount++;
-
-            if (!attacked)
+            updateCount++;
+            if(updateCount % 2 == 0)
+            {
+if (!attacked)
                 UpdateDirection();
 
             if (updateCount % attackTime == 0)
@@ -46,8 +47,10 @@ namespace LegendOfZelda.Enemies
             UpdateSprite();
 
             sprite.Update();
+            }
+            
 
-            updateCount++;
+            //updateCount++;
 
             CheckSafeToDespawn();
         }
@@ -95,7 +98,7 @@ namespace LegendOfZelda.Enemies
             else if (updateCount < 2 * switchDirection)
                 position.X += vx;
             else
-                updateCount = 0;
+                updateCount = 1;
         }
 
         private void UpdateSprite()

@@ -22,7 +22,7 @@ namespace LegendOfZelda.Enemies
         {
             sprite = EnemySpriteFactory.Instance.CreateBatSprite();
             this.spriteBatch = spriteBatch;
-            Position = spawnPosition;
+            position = spawnPosition;
             safeToDespawn = false;
         }
 
@@ -70,21 +70,21 @@ namespace LegendOfZelda.Enemies
         //Movement character away from edge of screen
         private void CheckBounds()
         {
-            if (position.X >= Constants.MinXPos)
+            if (position.X <= Constants.MinXPos)
             {
-                position.X =+ 5;
+                position.X += 5;
             }
-            else if (position.X <= Constants.MaxXPos)
+            else if (position.X >= Constants.MaxXPos)
             {
-                position.X =- 5; ;
+                position.X -= 5; ;
             }
             else if (position.Y >= Constants.MaxYPos)
             {
-                position.Y =+ 5; ;
+                position.Y += 5; ;
             }
             else if (position.Y <= Constants.MinYPos)
             {
-                position.Y =- 5;
+                position.Y -= 5;
             }
         }
         private void ChooseDirection()
