@@ -14,6 +14,7 @@ namespace LegendOfZelda.Enemies
         private int yDir = 0;
         private double health = 0.5;
         private bool safeToDespawn;
+        private Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -51,7 +52,7 @@ namespace LegendOfZelda.Enemies
                 position.X++;
             }
 
-            if (movementBuffer > 10)
+            if (movementBuffer > 15)
             {
                 movementBuffer = 0;
                 ChooseDirection();
@@ -68,7 +69,6 @@ namespace LegendOfZelda.Enemies
 
         public void ChooseDirection()
         {
-            Random rand = new Random();
             xDir = rand.Next(0, 2); // 0 for x, 1 for y
             yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
