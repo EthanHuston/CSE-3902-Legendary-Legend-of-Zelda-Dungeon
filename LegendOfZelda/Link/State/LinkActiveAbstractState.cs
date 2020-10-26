@@ -14,6 +14,7 @@ namespace LegendOfZelda.Link.State
         protected bool blockNewDirection;
         protected bool walkingToggle;
         protected DateTime healthyDateTime;
+        protected DateTime lastDraggedTime;
 
         public LinkActiveAbstractState(LinkPlayer link)
         {
@@ -116,7 +117,9 @@ namespace LegendOfZelda.Link.State
 
         public void Drag(ISpawnable owner, int dragTimeMs)
         {
+            if (DateTime.Now.CompareTo(lastDraggedTime.AddMilliseconds(Constants.DragAgainDelayMs)) < 0) return;
             link.BlockStateChange = false;
+            lastDraggedTime = DateTime.Now;
             link.State = new LinkBeingDraggedState(link, damaged, healthyDateTime, owner, dragTimeMs);
         }
     }

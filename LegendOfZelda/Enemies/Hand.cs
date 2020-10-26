@@ -13,6 +13,7 @@ namespace LegendOfZelda.Enemies
         private int xDir = 0;
         private int yDir = 0;
         private double health = 4;
+        private Random rand = RoomConstants.randomGenerator;
         private bool safeToDespawn;
 
         private Point position;
@@ -85,7 +86,6 @@ namespace LegendOfZelda.Enemies
         }
         private void ChooseDirection()
         {
-            Random rand = new Random();
             xDir = rand.Next(0, 2); // 0 for x, 1 for y
             yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }

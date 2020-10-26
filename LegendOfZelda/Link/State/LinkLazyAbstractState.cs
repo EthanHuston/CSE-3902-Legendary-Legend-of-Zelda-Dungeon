@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Enemies;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.Walking;
 using Microsoft.Xna.Framework;
@@ -11,6 +12,7 @@ namespace LegendOfZelda.Link.State
         protected LinkPlayer link;
         protected bool damaged;
         protected DateTime healthyDateTime;
+        protected DateTime lastDraggedTime;
 
         public LinkLazyAbstractState(LinkPlayer link)
         {
@@ -122,9 +124,11 @@ namespace LegendOfZelda.Link.State
             // Does nothing by default since most states do this
         }
 
-        public void Drag(ISpawnable dragger, int dragTimeMs)
+        public virtual void Drag(ISpawnable dragger, int dragTimeMs)
         {
+            if (DateTime.Now.CompareTo(lastDraggedTime.AddMilliseconds(Constants.DragAgainDelayMs)) > 0) return;
             link.BlockStateChange = false;
+            lastDraggedTime = DateTime.Now;
             link.State = new LinkBeingDraggedState(link, damaged, healthyDateTime, dragger, dragTimeMs);
         }
     }
