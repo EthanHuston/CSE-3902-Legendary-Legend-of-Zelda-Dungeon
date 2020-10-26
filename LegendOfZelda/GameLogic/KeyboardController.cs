@@ -39,6 +39,7 @@ namespace LegendOfZelda.GameLogic
             RegisterCommand(Keys.D5, new PickUpBoomerangCommand(game1.GetGamePlayer(0)));
             RegisterCommand(Keys.D6, new UseBoomerangCommand(game1.GetGamePlayer(0)));
             RegisterCommand(Keys.D7, new UseBombCommand(game1.GetGamePlayer(0)));
+            RegisterCommand(Keys.Q, new QuitGameCommand(game1));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
