@@ -25,7 +25,7 @@ namespace LegendOfZelda.GameLogic
             CheckAndHandlePlayerCollisions();
             CheckAndHandleNpcCollisions();
             CheckAndHandleProjectileCollisions();
-            CheckAndHandlerItemCollisions();
+            // CheckAndHandlerItemCollisions();
         }
 
         private void CheckAndHandlePlayerCollisions()
