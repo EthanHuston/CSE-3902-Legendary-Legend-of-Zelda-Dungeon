@@ -95,7 +95,6 @@ namespace LegendOfZelda.GameLogic
                 {typeof(SpikeTrap), new LinkNpcDamageCollisionHandler() },
                 {typeof(OldMan), new LinkNpcDoNothingCollisionHandler() },
                 {typeof(Merchant), new LinkNpcDoNothingCollisionHandler() },
-                {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() }
             };
 
             playerProjectileDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>>()
@@ -141,7 +140,8 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Fire), new LinkFireCollisionHandler() },
                 {typeof(OpenDoor), new LinkDoorCollisionHandler() },
                 {typeof(BombedOpening), new LinkDoorCollisionHandler() },
-                {typeof(Stairs), new LinkStairsCollisionHandler() }
+                {typeof(Stairs), new LinkStairsCollisionHandler() },
+                {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() }
 
 
                 // no collision detection
@@ -176,7 +176,6 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Jelly), new JellyBlockCollisionHandler() },
                 {typeof(Skeleton), new SkeletonBlockCollisionHandler() },
                 {typeof(SpikeTrap), new SpikeTrapBlockCollisionHandler() },
-                {typeof(MovableSquare), new MovableSquareBlockCollisionHandler() }
             };
         }
 

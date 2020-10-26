@@ -5,11 +5,17 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkMovableBlockCollisionHandler : ICollisionHandler<IPlayer, INpc>
+    class LinkMovableBlockCollisionHandler : ICollisionHandler<IPlayer, IBlock>
     {
-        public void HandleCollision(IPlayer link, INpc square, Constants.Direction side)
+        public void HandleCollision(IPlayer link, IBlock square, Constants.Direction side)
         {
             MovableSquare squareCast = (MovableSquare)square;
+
+            if (squareCast.HasBeenPushed())
+            {
+                new LinkImmovableBlockCollisionHandler().HandleCollision(link, square, side); 
+                return;
+            }
 
             switch (side)
             {
