@@ -102,8 +102,8 @@ namespace LegendOfZelda
         }
 
         //Enemy Constants
-        public const int SpikeTrapMaxDistX = RoomConstants.roomWidth / 2;
-        public const int SpikeTrapMaxDistY = RoomConstants.roomHeight / 2;
+        public const int SpikeTrapMaxDistX = (RoomConstants.roomWidth - (2 * RoomConstants.wallWidth)) / 2;
+        public const int SpikeTrapMaxDistY = (RoomConstants.roomHeight - (2 * RoomConstants.wallWidth)) / 2;
         public const int SpikeTrapGoingVelocity = 2;
         public const int SpikeTrapReturningVelocity = 1;
         public const int MovableSquareVelocity = 1;
