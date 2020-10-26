@@ -5,13 +5,13 @@ namespace LegendOfZelda
     public static class RoomConstants
     {
         //Room Constants
-        public const int spriteMultiplier = Constants.SpriteScaler;
+        public const int SpriteMultiplier = Constants.SpriteScaler;
         public const int roomBorderX = 0;
         public const int roomBorderY = 0;
-        public const int roomWidth = 256 * spriteMultiplier;
-        public const int roomHeight = 176 * spriteMultiplier;
-        public const int tileLength = 16 * spriteMultiplier;
-        public const int wallWidth = 32 * spriteMultiplier;
+        public const int roomWidth = 256 * SpriteMultiplier;
+        public const int roomHeight = 176 * SpriteMultiplier;
+        public const int tileLength = 16 * SpriteMultiplier;
+        public const int wallWidth = 32 * SpriteMultiplier;
         public const int backgroundX = roomBorderX + wallWidth;
         public const int backgroundY = roomBorderY + wallWidth;
         public const int topDoorX = (roomWidth - wallWidth) / 2;
@@ -23,10 +23,11 @@ namespace LegendOfZelda
         public const int leftDoorX = roomBorderX;
         public const int leftDoorY = rightDoorY;
         public const int NumberRooms = 17;
-        public static Rectangle LeftWallRectangle => new Rectangle(0, 0, wallWidth, roomHeight);
-        public static Rectangle RightWallRectangle => new Rectangle(roomWidth - wallWidth, 0, wallWidth, roomHeight);
-        public static Rectangle UpWallRectangle => new Rectangle(0, 0, roomWidth, wallWidth);
-        public static Rectangle DownWallRectangle => new Rectangle(0, roomHeight- wallWidth, roomWidth, wallWidth);
+        private const int wallBlockShortener = 1;
+        public static Rectangle LeftWallRectangle => new Rectangle(0, 0, wallWidth - wallBlockShortener * SpriteMultiplier, roomHeight);
+        public static Rectangle RightWallRectangle => new Rectangle(roomWidth - wallWidth, 0, wallWidth - wallBlockShortener * SpriteMultiplier, roomHeight);
+        public static Rectangle UpWallRectangle => new Rectangle(0, 0, roomWidth - wallBlockShortener * SpriteMultiplier, wallWidth);
+        public static Rectangle DownWallRectangle => new Rectangle(0, roomHeight- wallWidth, roomWidth - wallBlockShortener * SpriteMultiplier, wallWidth);
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";
