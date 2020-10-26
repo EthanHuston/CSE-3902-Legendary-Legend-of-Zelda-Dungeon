@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+
 namespace LegendOfZelda
 {
     public static class Constants
@@ -23,6 +25,10 @@ namespace LegendOfZelda
         public const float LinkMoveRight = 1;
         public const float LinkMoveLeft = -1;
         public const float LinkNoMove = 0;
+        public static Point LinkDoorDownSpawnPosition = new Point(120, 128);
+        public static Point LinkDoorUpSpawnPosition = new Point(120, 48);
+        public static Point LinkDoorLeftSpawnPosition = new Point(32, 80);
+        public static Point LinkDoorRightSpawnPosition = new Point(208, 96);
 
         // Link's Items
         public const int ArrowSpawnXOffsetFromLink = 0;
