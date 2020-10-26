@@ -24,6 +24,7 @@ Repo link: https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dun
 |:-|:-:|
 |Quit Game | Q |
 |Reset Game | R |
+|Switch Room | Click on door with LMB |
 
 ### Link
 |Action |Control   |
@@ -43,12 +44,3 @@ Repo link: https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dun
 |Use Bomb | 7 |
 |Use Sword Beam | 8 | 
 
-### Switching Between Blocks, Enemies, and Items
-|Action | Control |
-|:-|:-:|
-|Previous Block | T |
-|Next Block | Y |
-|Previous Item | U |
-|Next Item | I |
-|Previous Block | O |
-|Next Block | P |
