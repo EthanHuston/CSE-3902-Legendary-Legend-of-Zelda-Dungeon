@@ -97,7 +97,7 @@ namespace LegendOfZelda.Environment
 
         public void TakeDamage(double damage)
         {
-            throw new System.NotImplementedException();
+            //Do Nothing
         }
 
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
@@ -108,7 +108,6 @@ namespace LegendOfZelda.Environment
         public double GetDamageAmount()
         {
             return 0.0;
-            //Do Nothing
         }
 
         public void Move(Vector2 distance)

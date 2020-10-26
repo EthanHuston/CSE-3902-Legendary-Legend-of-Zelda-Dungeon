@@ -10,7 +10,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
             //Here only in the case a moveable block is moved in the way of the trap.
-            Vector2 correctDirection;
+            /*Vector2 correctDirection;
             switch (side)
             {
                 case Constants.Direction.Up:
@@ -32,7 +32,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
                 default:
                     break;
 
-            }
+            }*/
         }
     }
 }

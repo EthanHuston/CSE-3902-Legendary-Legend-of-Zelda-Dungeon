@@ -14,6 +14,7 @@ namespace LegendOfZelda.Enemies
         private int leftRight = 0;
         private double health = .5;
         private bool safeToDespawn;
+        Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -46,8 +47,7 @@ namespace LegendOfZelda.Enemies
             sprite.Draw(spriteBatch, position, false);
         }
         private void ChooseDirection()
-        {
-            Random rand = new Random();
+        { 
             upDown = rand.Next(0, 2); // 0 for x, 1 for y
             leftRight = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
