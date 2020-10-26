@@ -154,7 +154,7 @@ namespace LegendOfZelda.Link
 
         public Rectangle GetRectangle()
         {
-            return CurrentSprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, CurrentSprite.GetPositionRectangle().Width, CurrentSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()

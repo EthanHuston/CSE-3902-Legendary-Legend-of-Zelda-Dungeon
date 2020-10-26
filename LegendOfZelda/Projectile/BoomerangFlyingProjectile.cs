@@ -49,7 +49,7 @@ namespace LegendOfZelda.Projectile
             return UtilityMethods.GetDistance(Position, itemToTrack.Position);
         }
 
-        protected override void CheckItemIsExpired()
+        private void CheckItemIsExpired()
         {
             Point ownerPosition = itemToTrack.Position;
             itemIsExpired = returningToOwner &&

@@ -14,7 +14,7 @@ namespace LegendOfZelda.Item
         protected override void CheckItemIsExpired()
         {
             // put logic here if we want item to despawn after some time
-            itemIsExpired = !itemIsExpired && false;
+            itemIsExpired = itemIsExpired && true;
         }
     }
 }

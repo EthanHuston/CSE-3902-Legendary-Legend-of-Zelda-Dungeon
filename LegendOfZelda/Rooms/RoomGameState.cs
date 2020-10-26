@@ -1,5 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link;
+using LegendOfZelda.Utility;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
@@ -7,33 +9,25 @@ namespace LegendOfZelda.Rooms
     class RoomGameState : IGameState
     {
         private Game1 game;
-
+        public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; } 
-
-        public RoomManager RoomManager { get; private set; } // TODO: combine with this
-
-        public Room CurrentRoom { get => RoomManager.CurrentRoom; } // will be combined with this
-
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
 
         public RoomGameState(Game1 game)
         {
             this.game = game;
-
             InitPlayersForGame();
-
-            RoomFactory roomFactory = new RoomFactory(game.SpriteBatch, PlayerList);
-            RoomManager = new RoomManager(roomFactory.GetStartingRoom());
+            CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
         }
 
         public void Update()
         {
-            RoomManager.Update();
+            CurrentRoom.Update();
         }
 
         public void Draw()
         {
-            RoomManager.Draw();
+            CurrentRoom.Draw();
         }
 
         public void SwitchToRoomState()
@@ -48,7 +42,36 @@ namespace LegendOfZelda.Rooms
 
         public void MoveRoom(Constants.Direction direction)
         {
-            RoomManager.MoveRoom(direction);
+            Room newRoom = CurrentRoom.GetRoom(direction);
+            Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
+            if(newRoom != null)
+            {
+                CurrentRoom = newRoom;
+                UpdatePlayersPositions(doorLocation);
+            }
+        }
+
+        private void UpdatePlayersPositions(Constants.Direction doorLocation)
+        {
+            foreach (IPlayer player in PlayerList)
+            {
+                player.StopMoving();
+                switch (doorLocation)
+                {
+                    case Constants.Direction.Right:
+                        player.Position = Constants.LinkDoorRightSpawnPosition;
+                        break;
+                    case Constants.Direction.Left:
+                        player.Position = Constants.LinkDoorLeftSpawnPosition;
+                        break;
+                    case Constants.Direction.Up:
+                        player.Position = Constants.LinkDoorUpSpawnPosition;
+                        break;
+                    case Constants.Direction.Down:
+                        player.Position = Constants.LinkDoorDownSpawnPosition;
+                        break;
+                }
+            }
         }
 
         private void InitPlayersForGame()

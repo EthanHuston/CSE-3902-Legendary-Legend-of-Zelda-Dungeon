@@ -34,17 +34,12 @@ namespace LegendOfZelda.Projectile
         public override void Update()
         {
             Mover.Update();
-            CheckItemIsExpired();
         }
         public override void Draw()
         {
             sprite.Draw(spriteBatch, Position);
         }
 
-        protected override void CheckItemIsExpired()
-        {
-            itemIsExpired = UtilityMethods.ItemIsOutOfBounds(Position); // or item hits enemy, but not yet implemented
-        }
         public override double DamageAmount()
         {
             return Constants.ArrowDamage;

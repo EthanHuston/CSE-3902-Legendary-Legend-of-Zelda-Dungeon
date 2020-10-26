@@ -13,7 +13,7 @@ namespace LegendOfZelda.Item
 
         protected override void CheckItemIsExpired()
         {
-            itemIsExpired = !itemIsExpired && false;
+            itemIsExpired = itemIsExpired && true;
         }
     }
 }

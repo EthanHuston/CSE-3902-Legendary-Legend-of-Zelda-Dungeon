@@ -41,7 +41,6 @@ namespace LegendOfZelda.Projectile
             if (!stopMovingAndExplode)
             {
                 Mover.Update();
-                stopMovingAndExplode = UtilityMethods.ItemIsOutOfBounds(Position);
             }
             else if (stopMovingAndExplode && !updatedSprite) // initial setup of sword beam explosion
             {
@@ -51,7 +50,7 @@ namespace LegendOfZelda.Projectile
             CheckItemIsExpired();
         }
 
-        protected override void CheckItemIsExpired()
+        protected void CheckItemIsExpired()
         {
             itemIsExpired = sprite.FinishedAnimation();
         }

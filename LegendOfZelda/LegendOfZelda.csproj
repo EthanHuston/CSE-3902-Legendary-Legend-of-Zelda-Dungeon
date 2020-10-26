@@ -118,7 +118,6 @@
     <Compile Include="Rooms\IGameState.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomUpCommand.cs" />
     <Compile Include="Rooms\RoomFactory.cs" />
-    <Compile Include="Rooms\RoomManager.cs" />
     <Compile Include="GameLogic\CollisionHandlerDictionary.cs" />
     <Compile Include="GameLogic\CollisionManager.cs" />
     <Compile Include="Rooms\RoomConstants.cs" />

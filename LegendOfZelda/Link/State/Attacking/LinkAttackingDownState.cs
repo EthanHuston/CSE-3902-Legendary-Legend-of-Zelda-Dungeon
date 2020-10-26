@@ -7,9 +7,6 @@ namespace LegendOfZelda.Link.State.Attacking
 {
     class LinkAttackingDownState : LinkLazyAbstractState
     {
-        private const int spawnOffsetX = 0;
-        private const int spawnOffsetY = 16;
-
         public LinkAttackingDownState(LinkPlayer link) : base(link)
         {
             // handled by parent constructor
@@ -24,7 +21,7 @@ namespace LegendOfZelda.Link.State.Attacking
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingDownLinkSprite();
             link.Velocity = Vector2.Zero;
-            link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X + spawnOffsetX, link.Position.Y + spawnOffsetY), Constants.Direction.Down, Constants.ItemOwner.Link));
+            link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X, link.Position.Y), Constants.Direction.Down, Constants.ItemOwner.Link));
         }
 
         public override void Update()
@@ -45,8 +42,8 @@ namespace LegendOfZelda.Link.State.Attacking
 
         public override void Draw()
         {
-            int posX = link.Position.X + spawnOffsetX;
-            int posY = link.Position.Y + spawnOffsetY;
+            int posX = link.Position.X;
+            int posY = link.Position.Y;
             link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged);
         }
 

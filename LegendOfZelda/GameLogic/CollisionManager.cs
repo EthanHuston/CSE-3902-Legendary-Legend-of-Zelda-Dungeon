@@ -25,7 +25,7 @@ namespace LegendOfZelda.GameLogic
             CheckAndHandlePlayerCollisions();
             CheckAndHandleNpcCollisions();
             CheckAndHandleProjectileCollisions();
-            CheckAndHandlerItemCollisions();
+            // CheckAndHandlerItemCollisions();
         }
 
         private void CheckAndHandlePlayerCollisions()
@@ -83,21 +83,10 @@ namespace LegendOfZelda.GameLogic
             }
         }
 
-        private void CheckAndHandlerItemCollisions()
-        {
-            foreach (IItem item in spawnableManager.ItemList)
-            {
-                foreach (IBlock block in spawnableManager.BlockList)
-                {
-                    CheckIntersectionAndHandleCollision(item, block);
-                }
-            }
-        }
-
         private void CheckIntersectionAndHandleCollision(IPlayer player, INpc npc)
         {
             Rectangle collisionFound = Rectangle.Intersect(player.GetRectangle(), npc.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(player.GetRectangle(), npc.GetRectangle(), collisionFound);
                 handlerDictionary.GetPlayerNpcHandler(npc.GetType()).HandleCollision(player, npc, side);
@@ -107,7 +96,7 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(IPlayer player, IProjectile projectile)
         {
             Rectangle collisionFound = Rectangle.Intersect(player.GetRectangle(), projectile.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(player.GetRectangle(), projectile.GetRectangle(), collisionFound);
                 handlerDictionary.GetPlayerProjectileHandler(projectile.GetType()).HandleCollision(player, projectile, side);
@@ -117,7 +106,7 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(IPlayer player, IItem item)
         {
             Rectangle collisionFound = Rectangle.Intersect(player.GetRectangle(), item.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(player.GetRectangle(), item.GetRectangle(), collisionFound);
                 handlerDictionary.GetPlayerItemHandler(item.GetType()).HandleCollision(player, item, side);
@@ -127,7 +116,7 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(IPlayer player, IBlock block)
         {
             Rectangle collisionFound = Rectangle.Intersect(player.GetRectangle(), block.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(player.GetRectangle(), block.GetRectangle(), collisionFound);
                 handlerDictionary.GetPlayerBlockHandler(block.GetType()).HandleCollision(player, block, side);
@@ -137,7 +126,7 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(INpc npc, IProjectile projectile)
         {
             Rectangle collisionFound = Rectangle.Intersect(npc.GetRectangle(), projectile.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), projectile.GetRectangle(), collisionFound);
                 handlerDictionary.GetNpcProjectileHandler(projectile.GetType()).HandleCollision(npc, projectile, side);
@@ -147,7 +136,7 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(INpc npc, IBlock block)
         {
             Rectangle collisionFound = Rectangle.Intersect(npc.GetRectangle(), block.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), block.GetRectangle(), collisionFound);
                 handlerDictionary.GetNpcBlockHandler(npc.GetType()).HandleCollision(npc, block, side);
@@ -157,7 +146,7 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(IProjectile projectile, IBlock block)
         {
             Rectangle collisionFound = Rectangle.Intersect(projectile.GetRectangle(), block.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(projectile.GetRectangle(), block.GetRectangle(), collisionFound);
                 handlerDictionary.GetProjectileBlockHandler(projectile.GetType()).HandleCollision(projectile, block, side);
@@ -167,7 +156,7 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(IItem item, IBlock block)
         {
             Rectangle collisionFound = Rectangle.Intersect(item.GetRectangle(), block.GetRectangle());
-            if (!collisionFound.Equals(Rectangle.Empty))
+            if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(item.GetRectangle(), block.GetRectangle(), collisionFound);
                 handlerDictionary.GetItemBlockHandler(block.GetType()).HandleCollision(item, block, side);

@@ -15,7 +15,7 @@ namespace LegendOfZelda.Item
         {
             // put a condition here if we want item to despawn after something happens (i.e. some time passes)
             // eventually, we'll probably want it to despawn when Link runs through it
-            itemIsExpired = !itemIsExpired && false;
+            itemIsExpired = itemIsExpired && true;
         }
     }
 }
