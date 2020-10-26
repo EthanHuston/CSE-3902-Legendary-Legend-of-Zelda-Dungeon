@@ -9,6 +9,7 @@ namespace LegendOfZelda.Enemies.Sprite
         private Texture2D sprite;
         private const int numRows = 1;
         private const int numColumns = 2;
+        private const int frameDelay = 30;
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
@@ -27,7 +28,7 @@ namespace LegendOfZelda.Enemies.Sprite
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 6)
+            if (bufferFrame == frameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;

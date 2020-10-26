@@ -9,6 +9,7 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
+        private const int directionChangeDelay = 30;
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
@@ -52,7 +53,7 @@ namespace LegendOfZelda.Enemies
                 position.X++;
             }
 
-            if (movementBuffer > 15)
+            if (movementBuffer > directionChangeDelay)
             {
                 movementBuffer = 0;
                 ChooseDirection();
