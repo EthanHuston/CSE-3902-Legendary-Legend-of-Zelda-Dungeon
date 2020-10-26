@@ -7,8 +7,8 @@ namespace LegendOfZelda.Link.Command
 {
     class ChangeRoomDownCommand : ICommand
     {
-        RoomManager rooms;
-        public ChangeRoomDownCommand(RoomManager rooms)
+        RoomGameState rooms;
+        public ChangeRoomDownCommand(RoomGameState rooms)
         {
             this.rooms = rooms;
         }

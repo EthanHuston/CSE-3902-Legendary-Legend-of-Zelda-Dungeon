@@ -18,10 +18,10 @@ namespace LegendOfZelda.GameLogic
             myGame = game1;
             oldMouseState = new MouseState();
             leftClickCommands = new Dictionary<Constants.Direction, ICommand>();
-            RegisterCommand(Constants.Direction.Down, new ChangeRoomDownCommand(((RoomGameState)myGame.State).RoomManager));
-            RegisterCommand(Constants.Direction.Left, new ChangeRoomLeftCommand(((RoomGameState)myGame.State).RoomManager));
-            RegisterCommand(Constants.Direction.Right, new ChangeRoomRightCommand(((RoomGameState)myGame.State).RoomManager));
-            RegisterCommand(Constants.Direction.Up, new ChangeRoomUpCommand(((RoomGameState)myGame.State).RoomManager));
+            RegisterCommand(Constants.Direction.Down, new ChangeRoomDownCommand((RoomGameState)myGame.State));
+            RegisterCommand(Constants.Direction.Left, new ChangeRoomLeftCommand((RoomGameState)myGame.State));
+            RegisterCommand(Constants.Direction.Right, new ChangeRoomRightCommand((RoomGameState)myGame.State));
+            RegisterCommand(Constants.Direction.Up, new ChangeRoomUpCommand((RoomGameState)myGame.State));
         }
 
         public void RegisterCommand(Constants.Direction dir, ICommand command)

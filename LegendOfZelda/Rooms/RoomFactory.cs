@@ -4,24 +4,20 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    class RoomFactory
+    static class RoomFactory
     {
-        private readonly List<Room> roomsList;
         private const int startingRoomNumber = 2;
         private const string roomDataDirectory = "Content\\RoomData\\";
 
-        public RoomFactory(SpriteBatch spriteBatch, List<IPlayer> playerList) {
-            roomsList = new List<Room>();
-            InitRoomsList(spriteBatch, playerList);
-            ConnectRooms();
-        }
-
-        public Room GetStartingRoom()
+        public static Room BuildMapAndGetStartRoom(SpriteBatch spriteBatch, List<IPlayer> playerList)
         {
+            List<Room> roomsList = new List<Room>();
+            InitRoomsList(roomsList, spriteBatch, playerList);
+            ConnectRooms(roomsList);
             return roomsList[startingRoomNumber];
         }
 
-        private void InitRoomsList(SpriteBatch spriteBatch, List<IPlayer> playerList)
+        private static void InitRoomsList(List<Room> roomsList ,SpriteBatch spriteBatch, List<IPlayer> playerList)
         {
             roomsList.Add(null); // room files start at 1
             for(int i = 1; i <= RoomConstants.NumberRooms; i++)
@@ -30,7 +26,7 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        private void ConnectRooms()
+        private static void ConnectRooms(List<Room> roomsList)
         {
             // Row 1
             roomsList[1].ConnectRoom(roomsList[2], Constants.Direction.Right); // connect 1-2

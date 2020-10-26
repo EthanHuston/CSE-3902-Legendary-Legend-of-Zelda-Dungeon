@@ -7,33 +7,25 @@ namespace LegendOfZelda.Rooms
     class RoomGameState : IGameState
     {
         private Game1 game;
-
+        public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; } 
-
-        public RoomManager RoomManager { get; private set; } // TODO: combine with this
-
-        public Room CurrentRoom { get => RoomManager.CurrentRoom; } // will be combined with this
-
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
 
         public RoomGameState(Game1 game)
         {
             this.game = game;
-
             InitPlayersForGame();
-
-            RoomFactory roomFactory = new RoomFactory(game.SpriteBatch, PlayerList);
-            RoomManager = new RoomManager(roomFactory.GetStartingRoom());
+            CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
         }
 
         public void Update()
         {
-            RoomManager.Update();
+            CurrentRoom.Update();
         }
 
         public void Draw()
         {
-            RoomManager.Draw();
+            CurrentRoom.Draw();
         }
 
         public void SwitchToRoomState()
@@ -48,7 +40,8 @@ namespace LegendOfZelda.Rooms
 
         public void MoveRoom(Constants.Direction direction)
         {
-            RoomManager.MoveRoom(direction);
+            Room newRoom = CurrentRoom.GetRoom(direction);
+            CurrentRoom = newRoom ?? CurrentRoom;
         }
 
         private void InitPlayersForGame()
