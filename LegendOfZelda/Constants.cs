@@ -79,15 +79,6 @@ namespace LegendOfZelda
             None
         }
 
-        // Items
-        public enum Item
-        {
-            ArrowFlying,
-            BombExploding,
-            BoomerangFlying,
-            SwordBeamFlying
-        }
-
         public enum ItemOwner
         {
             Link,
