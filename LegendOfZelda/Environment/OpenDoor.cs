@@ -50,12 +50,6 @@ namespace LegendOfZelda.Environment
             return new Rectangle(Position.X, Position.Y, doorSprite.GetPositionRectangle().Width, doorSprite.GetPositionRectangle().Height);
         }
 
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
