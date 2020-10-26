@@ -12,8 +12,8 @@ namespace LegendOfZelda.Enemies
         private SpriteBatch spriteBatch;
         private int vx = 1;
         private int updateCount = 0;
-        private int switchDirection = 60;
-        private int attackTime = 60;
+        private int switchDirection = 90;
+        private int attackTime = 90;
         private int attackUpdate = 0;
         private bool attacked = false;
         private double health = 6;
@@ -36,7 +36,7 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             updateCount++;
-            if(updateCount % 2 == 0)
+            if(updateCount % 3 == 0)
             {
                 if (!attacked)
                     UpdateDirection();
@@ -102,7 +102,7 @@ namespace LegendOfZelda.Enemies
 
         private void UpdateSprite()
         {
-            if (updateCount - attackUpdate <= 4)
+            if (updateCount - attackUpdate <= 16 && updateCount - attackUpdate >= 0)
             {
                 SetBreathingSprite();
             }

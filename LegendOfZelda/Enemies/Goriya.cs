@@ -25,8 +25,8 @@ namespace LegendOfZelda.Enemies
         private double health = 3;
         private bool inKnockback = false;
         private bool safeToDespawn = false;
-        
-        private Random rand = new Random();
+
+        private Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
