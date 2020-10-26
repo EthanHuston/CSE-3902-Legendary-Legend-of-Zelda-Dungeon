@@ -53,7 +53,7 @@ namespace LegendOfZelda.Enemies
                 position.X++;
             }
 
-            if (movementBuffer > 10)
+            if (movementBuffer > 20)
             {
                 movementBuffer = 0;
                 ChooseDirection();
