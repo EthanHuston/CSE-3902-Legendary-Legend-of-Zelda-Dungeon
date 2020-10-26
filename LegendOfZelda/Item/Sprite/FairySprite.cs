@@ -36,7 +36,6 @@ namespace LegendOfZelda.Item.Sprite
         public void Update()
         {
             movementBuffer++;
-            CheckBounds();
             //Move based on current chosen direction for some time.
             if (xDir == 0 && yDir == 0)
             {
@@ -86,25 +85,7 @@ namespace LegendOfZelda.Item.Sprite
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
-        private void CheckBounds()
-        {
-            if (position.X <= Constants.MinXPos + (Constants.GameScaler * 32))
-            {
-                position.X += 5;
-            }
-            else if (position.X >= Constants.MaxXPos - (Constants.GameScaler * 32))
-            {
-                position.X -= 5; ;
-            }
-            else if (position.Y <= Constants.MinYPos + (Constants.GameScaler * 32))
-            {
-                position.Y += 5; ;
-            }
-            else if (position.Y >= Constants.MaxYPos - (Constants.GameScaler * 32))
-            {
-                position.Y -= 5;
-            }
-        }
+
         private void ChooseDirection()
         {
             Random rand = new Random();
