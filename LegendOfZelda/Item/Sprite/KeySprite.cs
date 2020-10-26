@@ -7,7 +7,6 @@ namespace LegendOfZelda.Item.Sprite
     class KeySprite : ISprite
     {
         private Texture2D sprite;
-        private Rectangle destinationRectangle;
 
         public KeySprite(Texture2D sprite)
         {
