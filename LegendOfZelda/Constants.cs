@@ -75,7 +75,8 @@ namespace LegendOfZelda
             Right,
             Left,
             Up,
-            Down
+            Down,
+            None
         }
 
         // Items
