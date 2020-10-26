@@ -11,6 +11,7 @@ namespace LegendOfZelda.Link.State
         protected LinkPlayer link;
         protected bool damaged;
         protected DateTime healthyDateTime;
+        protected DateTime lastDraggedTime;
 
         public LinkLazyAbstractState(LinkPlayer link)
         {
@@ -124,7 +125,9 @@ namespace LegendOfZelda.Link.State
 
         public void Drag(ISpawnable dragger, int dragTimeMs)
         {
+            if (DateTime.Now.CompareTo(lastDraggedTime.AddMilliseconds(Constants.DragAgainDelayMs)) > 0) return;
             link.BlockStateChange = false;
+            lastDraggedTime = DateTime.Now;
             link.State = new LinkBeingDraggedState(link, damaged, healthyDateTime, dragger, dragTimeMs);
         }
     }

@@ -30,6 +30,7 @@ namespace LegendOfZelda.Link.State.Walking
         {
             this.dragger = dragger;
             dragEndTime = DateTime.Now.AddMilliseconds(dragTimeMs);
+            lastDraggedTime = DateTime.Now;
         }
 
         public override void Update()
@@ -47,7 +48,7 @@ namespace LegendOfZelda.Link.State.Walking
 
         public override void StopMoving()
         {
-            link.State = new LinkStandingStillDownState(link, damaged, healthyDateTime);
+            link.State = new LinkStandingStillDownState(link, damaged, healthyDateTime, lastDraggedTime);
         }
     }
 }
