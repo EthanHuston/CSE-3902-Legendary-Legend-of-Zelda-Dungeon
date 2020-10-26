@@ -83,17 +83,6 @@ namespace LegendOfZelda.GameLogic
             }
         }
 
-        private void CheckAndHandlerItemCollisions()
-        {
-            foreach (IItem item in spawnableManager.ItemList)
-            {
-                foreach (IBlock block in spawnableManager.BlockList)
-                {
-                    CheckIntersectionAndHandleCollision(item, block);
-                }
-            }
-        }
-
         private void CheckIntersectionAndHandleCollision(IPlayer player, INpc npc)
         {
             Rectangle collisionFound = Rectangle.Intersect(player.GetRectangle(), npc.GetRectangle());
