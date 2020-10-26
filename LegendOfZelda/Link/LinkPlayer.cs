@@ -18,9 +18,9 @@ namespace LegendOfZelda.Link
         public ILinkSprite CurrentSprite { get; set; }
 
         public bool BlockStateChange { get; set; }
-        
+
         public SpawnableMover Mover { get; private set; }
-        
+
         private ILinkState state;
         public ILinkState State { get => state; set { if (!BlockStateChange) state = value; } }
 
@@ -35,7 +35,7 @@ namespace LegendOfZelda.Link
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             State = new LinkStandingStillDownState(this);
             safeToDespawn = false;
-            inventory = new Dictionary<Constants.LinkInventory, int>();
+            InitInventory();
             BlockStateChange = false;
         }
 
@@ -215,6 +215,21 @@ namespace LegendOfZelda.Link
         public void Drag(ISpawnable dragger, int dragTimeMs)
         {
             State.Drag(dragger, dragTimeMs);
+        }
+
+        private void InitInventory()
+        {
+            inventory = new Dictionary<Constants.LinkInventory, int>()
+            {
+                {Constants.LinkInventory.Arrow, 0 },
+                {Constants.LinkInventory.Bomb, 0 },
+                {Constants.LinkInventory.Clock, 0 },
+                {Constants.LinkInventory.Compass, 0 },
+                {Constants.LinkInventory.Fairy, 0 },
+                {Constants.LinkInventory.Heart, 0 },
+                {Constants.LinkInventory.Key, 0 },
+                {Constants.LinkInventory.Map, 0 }
+            };
         }
     }
 }

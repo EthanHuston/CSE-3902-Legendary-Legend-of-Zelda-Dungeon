@@ -150,7 +150,7 @@ namespace LegendOfZelda.GameLogic
             if (!collisionFound.Equals(Rectangle.Empty))
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), block.GetRectangle(), collisionFound);
-                handlerDictionary.GetNpcBlockHandler(block.GetType()).HandleCollision(npc, block, side);
+                handlerDictionary.GetNpcBlockHandler(npc.GetType()).HandleCollision(npc, block, side);
             }
         }
 
