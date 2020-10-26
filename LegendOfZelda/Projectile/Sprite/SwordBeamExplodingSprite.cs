@@ -17,8 +17,8 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int frameDelay = 2;
         private const int numRows = 1;
         private const int numColumns = 4;
-        private const int explosionDistanceInterval = 1;
-        private const int explosionRange = 50;
+        private const int explosionDistanceVelocity = 1;
+        private const int explosionRange = 30 * Constants.SpriteScaler;
 
         public SwordBeamExplodingSprite(Texture2D upLeftSprite, Texture2D upRightSprite, Texture2D downLeftSprite, Texture2D downRightSprite)
         {
@@ -43,8 +43,8 @@ namespace LegendOfZelda.Projectile.Sprite
                 bufferFrame = 0;
             }
 
-            xOffset += explosionDistanceInterval;
-            yOffset += explosionDistanceInterval;
+            xOffset += explosionDistanceVelocity;
+            yOffset += explosionDistanceVelocity;
 
             animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > explosionRange;
         }

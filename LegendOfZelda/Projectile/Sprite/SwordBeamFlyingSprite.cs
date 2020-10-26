@@ -14,6 +14,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private int frameHeight;
         private const int numRows = 1;
         private const int numColumns = 4;
+        private const int frameDelay = 10;
 
         public SwordBeamFlyingSprite(Texture2D sprite)
         {
@@ -27,7 +28,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public void Update()
         {
-            if (++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == frameDelay)
             {
                 currentFrame = currentFrame == totalFrames - 1 ? 0 : currentFrame + 1;
                 bufferFrame = 0;

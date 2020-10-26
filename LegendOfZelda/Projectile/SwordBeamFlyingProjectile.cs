@@ -8,7 +8,7 @@ namespace LegendOfZelda.Projectile
     {
         private bool stopMovingAndExplode;
         private bool updatedSprite;
-        private const int moveDistanceInterval = 5;
+        private const int moveDistanceVelocity = 3;
 
         public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
         {
@@ -17,19 +17,19 @@ namespace LegendOfZelda.Projectile
             switch (direction)
             {
                 case Constants.Direction.Down:
-                    Velocity = new Vector2(0, moveDistanceInterval);
+                    Velocity = new Vector2(0, moveDistanceVelocity);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamDownSprite();
                     break;
                 case Constants.Direction.Up:
-                    Velocity = new Vector2(0, -1 * moveDistanceInterval);
+                    Velocity = new Vector2(0, -1 * moveDistanceVelocity);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamUpSprite();
                     break;
                 case Constants.Direction.Right:
-                    Velocity = new Vector2(moveDistanceInterval, 0);
+                    Velocity = new Vector2(moveDistanceVelocity, 0);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamRightSprite();
                     break;
                 case Constants.Direction.Left:
-                    Velocity = new Vector2(-1 * moveDistanceInterval, 0);
+                    Velocity = new Vector2(-1 * moveDistanceVelocity, 0);
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamLeftSprite();
                     break;
             }

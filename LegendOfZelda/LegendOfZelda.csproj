@@ -91,6 +91,7 @@
     <Compile Include="Environment\Sprite\WallSprite.cs" />
     <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
+    <Compile Include="GameLogic\QuitGameCommand.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
     <Compile Include="GameLogic\MouseController.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
