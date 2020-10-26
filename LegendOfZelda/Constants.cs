@@ -21,7 +21,7 @@ namespace LegendOfZelda
 
         // Link
         public const int LinkWalkStepDistanceInterval = 1;
-        public const int LinkWalkDistanceInterval = 20;
+        public const int LinkWalkDistanceInterval = 16;
         public const int LinkStartingHealth = 60;
         public const int LinkDamageEffectTimeMs = 2000;
         public const int LinkDamageFlashDelayTicks = 5;
