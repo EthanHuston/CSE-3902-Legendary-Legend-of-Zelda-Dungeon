@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda.Interface
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Link
 {
     public interface IPlayer : IDynamic
     {

@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using System.Collections.Generic;
 

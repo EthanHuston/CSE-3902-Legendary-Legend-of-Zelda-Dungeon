@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 using LegendOfZelda.Projectile;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile

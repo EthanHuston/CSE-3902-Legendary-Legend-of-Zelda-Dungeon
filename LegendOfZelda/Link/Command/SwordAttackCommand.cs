@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+
 namespace LegendOfZelda.Link.Command
 {
     class SwordAttackCommand : ICommand

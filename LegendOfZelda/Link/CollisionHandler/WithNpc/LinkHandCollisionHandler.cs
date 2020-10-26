@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithNpc
 {
