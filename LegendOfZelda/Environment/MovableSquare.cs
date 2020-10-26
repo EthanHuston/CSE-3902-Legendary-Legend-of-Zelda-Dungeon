@@ -22,7 +22,7 @@ namespace LegendOfZelda.Environment
 
         public MovableSquare(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            blockSprite = EnvironmentSpriteFactory.Instance.CreateBlockSprite();
+            blockSprite = EnvironmentSpriteFactory.Instance.CreateSquareSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             velocity = Vector2.Zero;
@@ -49,7 +49,7 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(Position.X, Position.Y, blockSprite.GetPositionRectangle().X, blockSprite.GetPositionRectangle().Y);
+            return new Rectangle(Position.X, Position.Y, blockSprite.GetPositionRectangle().Width, blockSprite.GetPositionRectangle().Height);
         }
 
         public Vector2 GetVelocity()

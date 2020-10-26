@@ -16,7 +16,7 @@ namespace LegendOfZelda.Environment
 
         public Square(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            blockSprite = EnvironmentSpriteFactory.Instance.CreateBlockSprite();
+            blockSprite = EnvironmentSpriteFactory.Instance.CreateSquareSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
@@ -34,7 +34,7 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return blockSprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, blockSprite.GetPositionRectangle().Width, blockSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()
