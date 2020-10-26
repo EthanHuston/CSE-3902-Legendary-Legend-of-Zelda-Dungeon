@@ -66,7 +66,7 @@ namespace LegendOfZelda.Rooms
             roomsList[16].ConnectRoom(roomsList[17], Constants.Direction.Right); // connect 16-17
 
             // Row 5 <-> 6
-            roomsList[15].ConnectRoom(roomsList[17], Constants.Direction.Up); // connect 15-17
+            roomsList[13].ConnectRoom(roomsList[17], Constants.Direction.Up); // connect 15-17
         }
     }
 }
