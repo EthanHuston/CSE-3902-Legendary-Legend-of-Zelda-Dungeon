@@ -22,8 +22,8 @@ namespace LegendOfZelda
             graphics = new GraphicsDeviceManager(this)
             {
                 // TODO: make constants
-                PreferredBackBufferWidth = 256,  // set this value to the desired width of your window
-                PreferredBackBufferHeight = 176   // set this value to the desired height of your window
+                PreferredBackBufferWidth = (int) Constants.GameSize.X,  // set this value to the desired width of your window
+                PreferredBackBufferHeight = (int) Constants.GameSize.Y   // set this value to the desired height of your window
             };
             graphics.ApplyChanges();
             SpriteBatch = new SpriteBatch(GraphicsDevice);

@@ -10,6 +10,15 @@ namespace LegendOfZelda
         public const double GameScaler = 1;
         public const int WallWidth = 32;
 
+        // Game Screen
+        public static Vector2 GameSize = new Vector2(MaxXPos, MaxYPos);
+        public const int MaxXPos = RoomConstants.roomWidth;
+        public const int MinXPos = 0;
+        public const int MaxYPos = RoomConstants.roomHeight;
+        public const int MinYPos = 0;
+        public const int HalfXPos = MaxXPos / 2;
+        public const int HalfYPos = MaxYPos / 2;
+
         // Link
         public const int LinkWalkStepDistanceInterval = 1;
         public const int LinkWalkDistanceInterval = 20;
@@ -58,14 +67,6 @@ namespace LegendOfZelda
         public const float MBlockMoveRight = 1;
         public const float MBlockMoveLeft = -1;
         public const float MBlockNoMove = 0;
-
-        // Game Screen
-        public const int MaxXPos = 800;
-        public const int MinXPos = 0;
-        public const int MaxYPos = 480;
-        public const int MinYPos = 0;
-        public const int HalfXPos = 400;
-        public const int HalfYPos = 240;
 
         // Directions
         public enum Direction

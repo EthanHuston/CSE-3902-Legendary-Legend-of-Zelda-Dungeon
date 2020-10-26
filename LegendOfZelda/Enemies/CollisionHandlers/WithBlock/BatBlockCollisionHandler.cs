@@ -8,7 +8,10 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
-            //Do nothing, Bat does not Collide with blocks, just the walls which is taken care of elsewhere.
+            if (block.GetType() == typeof(RoomWall))
+            {
+                ((Bat)enemy).ChooseDirection();
+            }
         }
     }
 }
