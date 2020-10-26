@@ -1,7 +1,7 @@
 Saumyah Patel
 10/26/2020
 Sprint 3
-SpikeTrap.cs
+Jelly.cs
 Ethan Huston
 The collision detection looks nice with the if-else statements, and you check every possibility (with the spike trap that is). 
 The movement of the traps seem fluid, and the despawn method works as intended.
