@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Utility
@@ -20,7 +20,7 @@ namespace LegendOfZelda.Utility
             // return the side the collision is on
             if (collisionFound.Height > collisionFound.Width) // will be a right or left collision -- check by comparing X values of spawnables
             {
-                return mainSpawnable.X > secondarySpawnable.Y ? Constants.Direction.Right : Constants.Direction.Left;
+                return mainSpawnable.X > secondarySpawnable.X ? Constants.Direction.Right : Constants.Direction.Left;
             } else // else width > height -- so up or down collision -- check by comparing Y values of spawnables
             {
                 return mainSpawnable.Y > secondarySpawnable.Y ? Constants.Direction.Down : Constants.Direction.Up;
@@ -39,9 +39,9 @@ namespace LegendOfZelda.Utility
                     return Constants.Direction.Up;
                 case Constants.Direction.Up:
                     return Constants.Direction.Down;
+                default:
+                    return Constants.Direction.None;
             }
-
-            return Constants.Direction.Right;
         }
     }
 }
