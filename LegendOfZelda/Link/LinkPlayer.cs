@@ -14,6 +14,7 @@ namespace LegendOfZelda.Link
         private double health;
         private Dictionary<Constants.LinkInventory, int> inventory;
         private bool safeToDespawn;
+        private Dictionary<Constants.Direction, bool> blockedDirections;
 
         public ILinkSprite CurrentSprite { get; set; }
 
@@ -37,6 +38,13 @@ namespace LegendOfZelda.Link
             safeToDespawn = false;
             InitInventory();
             BlockStateChange = false;
+            blockedDirections = new Dictionary<Constants.Direction, bool>()
+            {
+                {Constants.Direction.Right, false },
+                {Constants.Direction.Left, false },
+                {Constants.Direction.Down, false },
+                {Constants.Direction.Up, false }
+            };
         }
 
         public void Draw()
@@ -71,20 +79,24 @@ namespace LegendOfZelda.Link
 
         public void MoveUp()
         {
-            State.MoveUp();
+            if (!blockedDirections[Constants.Direction.Up]) State.MoveUp();
+            blockedDirections[Constants.Direction.Down] = false;
         }
 
         public void MoveDown()
         {
-            State.MoveDown();
+            if (!blockedDirections[Constants.Direction.Down]) State.MoveDown();
+            blockedDirections[Constants.Direction.Up] = false;
         }
         public void MoveLeft()
         {
-            State.MoveLeft();
+            if (!blockedDirections[Constants.Direction.Left]) State.MoveLeft();
+            blockedDirections[Constants.Direction.Right] = false;
         }
         public void MoveRight()
         {
-            State.MoveRight();
+            if (!blockedDirections[Constants.Direction.Right]) State.MoveRight();
+            blockedDirections[Constants.Direction.Left] = false;
         }
 
         public void StopMoving()
@@ -154,7 +166,7 @@ namespace LegendOfZelda.Link
 
         public Rectangle GetRectangle()
         {
-            return CurrentSprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, CurrentSprite.GetPositionRectangle().X, CurrentSprite.GetPositionRectangle().Y);
         }
 
         public bool SafeToDespawn()
@@ -230,6 +242,11 @@ namespace LegendOfZelda.Link
                 {Constants.LinkInventory.Key, 0 },
                 {Constants.LinkInventory.Map, 0 }
             };
+        }
+
+        public void BlockDirection(Constants.Direction direction)
+        {
+            blockedDirections[direction] = true;
         }
     }
 }

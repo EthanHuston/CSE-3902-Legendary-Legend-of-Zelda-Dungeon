@@ -9,14 +9,12 @@ namespace LegendOfZelda.Link.Sprite
         private Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
-        private Rectangle destinationRectangle;
 
         public IdleLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             flashRed = false;
             damageColorCounter = 0;
-            destinationRectangle = Rectangle.Empty;
         }
 
         public void Update()
@@ -35,7 +33,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
-            destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
 
             spriteBatch.Draw(sprite, destinationRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
@@ -47,7 +45,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return sprite.Bounds;
         }
     }
 }
