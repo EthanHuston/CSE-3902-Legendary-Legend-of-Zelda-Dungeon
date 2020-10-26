@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using System;
+using LegendOfZelda.Rooms;
 
 namespace LegendOfZelda
 {
@@ -101,9 +102,10 @@ namespace LegendOfZelda
         }
 
         //Enemy Constants
-        public const int SpikeTrapMaxDist = 50;
-        public const int SpikeTrapGoingVelocity = 4;
-        public const int SpikeTrapReturningVelocity = 2;
+        public const int SpikeTrapMaxDistX = RoomConstants.roomWidth / 2;
+        public const int SpikeTrapMaxDistY = RoomConstants.roomHeight / 2;
+        public const int SpikeTrapGoingVelocity = 2;
+        public const int SpikeTrapReturningVelocity = 1;
         public const int MovableSquareVelocity = 1;
         public const float EnemyMoveUp = -1;
         public const float EnemyMoveDown = 1;

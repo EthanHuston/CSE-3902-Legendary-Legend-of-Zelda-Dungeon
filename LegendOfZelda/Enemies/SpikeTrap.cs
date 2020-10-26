@@ -9,7 +9,8 @@ namespace LegendOfZelda.Enemies
     {
         private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private int maxDistance = Constants.SpikeTrapMaxDist;
+        private int maxDistanceX = Constants.SpikeTrapMaxDistX;
+        private int maxDistanceY = Constants.SpikeTrapMaxDistY;
         private int currentDist = 0;
         private int goingVelocity = Constants.SpikeTrapGoingVelocity;
         private int returningVelocity = Constants.SpikeTrapReturningVelocity;
@@ -85,23 +86,6 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckOverlap()
         {
-            /* if((LinkPosition.Y <= position.Y+16|| LinkPosition.Y >= position.Y) && LinkPosition.X >= position.X)
-             {
-                 currentDirection = Constants.Direction.Right;
-                 going = true;
-             } else if((LinkPosition.Y <= position.Y+16 || LinkPosition.Y >= position.Y) && LinkPosition.X <= position.X)
-             {
-                 currentDirection = Constants.Direction.Left;
-                 going = true;
-             } else if((LinkPosition.X <= position.X+16 || LinkPosition.X >= position.X) && LinkPosition.Y >= position.Y)
-             {
-                 currentDirection = Constants.Direction.Down;
-                 going = true;
-             } else if((LinkPosition.X <= position.X +16 || LinkPosition.X >= position.X) && LinkPosition.Y <= position.Y)
-             {
-                 currentDirection = Constants.Direction.Up;
-                 going = true;
-             }*/
             if ((LinkPosition.Top <= TrapPosition.Bottom && LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Left >= TrapPosition.Right))
             {
                 currentDirection = Constants.Direction.Right;
@@ -130,7 +114,7 @@ namespace LegendOfZelda.Enemies
         {
             position.X += goingVelocity;
             currentDist += goingVelocity;
-            if (currentDist >= maxDistance)
+            if (currentDist >= maxDistanceX)
             {
                 returning = true;
                 going = false;
@@ -177,7 +161,7 @@ namespace LegendOfZelda.Enemies
         {
             position.X -= goingVelocity;
             currentDist += goingVelocity;
-            if (currentDist >= maxDistance)
+            if (currentDist >= maxDistanceX)
             {
                 returning = true;
                 going = false;
@@ -187,7 +171,7 @@ namespace LegendOfZelda.Enemies
         {
             position.Y -= goingVelocity;
             currentDist += goingVelocity;
-            if (currentDist >= maxDistance)
+            if (currentDist >= maxDistanceY)
             {
                 returning = true;
                 going = false;
@@ -197,7 +181,7 @@ namespace LegendOfZelda.Enemies
         {
             position.Y += goingVelocity;
             currentDist += goingVelocity;
-            if (currentDist >= maxDistance)
+            if (currentDist >= maxDistanceY)
             {
                 returning = true;
                 going = false;
