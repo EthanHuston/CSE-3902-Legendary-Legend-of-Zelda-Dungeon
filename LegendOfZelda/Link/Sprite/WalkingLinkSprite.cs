@@ -7,14 +7,16 @@ namespace LegendOfZelda.Link.Sprite
     class WalkingLinkSprite : ILinkSprite
     {
         private readonly Texture2D sprite;
-        private Rectangle destinationRectangle;
         private bool flashRed;
         private int damageColorCounter;
         private int bufferFrame;
         private int currentFrame;
+        private int frameWidth;
+        private int frameHeight;
         private const int totalFrames = 2;
         private const int numRows = 1;
         private const int numColumns = 2;
+        private const int walkingFrameDelay = 7;
 
         public WalkingLinkSprite(Texture2D sprite)
         {
@@ -22,13 +24,13 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             bufferFrame = 0;
-            currentFrame = 0;
-            destinationRectangle = sprite.Bounds;
+            currentFrame = 0; frameWidth = sprite.Width / numColumns; 
+            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
         {
-            currentFrame += ++bufferFrame % Constants.LinkWalkingFrameDelay == 0 ? 1 : 0; 
+            currentFrame += ++bufferFrame % walkingFrameDelay == 0 ? 1 : 0; 
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {
@@ -44,15 +46,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
-            int currentRow = 0;
-            int currentColumn = currentFrame % totalFrames;
-
-            Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
-
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);
+            Draw(spriteBatch, position, drawWithDamage, false);
         }
 
         public bool FinishedAnimation()
@@ -62,7 +56,18 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, frameWidth, frameHeight);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
+        {
+            int currentRow = 0;
+            int currentColumn = walkingToggle ? 0 : 1;
+
+            Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, damaged && flashRed ? Color.Red : Color.White);
         }
     }
 }

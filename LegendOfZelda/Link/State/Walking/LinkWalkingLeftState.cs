@@ -18,6 +18,11 @@ namespace LegendOfZelda.Link.State.Walking
         {
         }
 
+        public LinkWalkingLeftState(LinkPlayer link, bool damaged, DateTime healthyDateTime, bool walkingToggle) : this(link, damaged, healthyDateTime)
+        {
+            this.walkingToggle = walkingToggle;
+        }
+
         protected override void InitClass()
         {
             distanceWalked = 0;
@@ -45,12 +50,12 @@ namespace LegendOfZelda.Link.State.Walking
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged, walkingToggle);
         }
 
         public override void StopMoving()
         {
-            link.State = new LinkStandingStillLeftState(link, damaged, healthyDateTime);
+            link.State = new LinkStandingStillLeftState(link, damaged, healthyDateTime, walkingToggle);
         }
 
         public override void UseSword()

@@ -13,7 +13,8 @@ namespace LegendOfZelda.Link.Sprite
         private int currentFrame;
         private int bufferFrame;
         private int delayCounter;
-        private Rectangle destinationRectangle;
+        private int frameWidth;
+        private int frameHeight;
         private const int numRows = 1;
         private const int numColumns = 2;
 
@@ -24,7 +25,8 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             delayCounter = 0;
-            destinationRectangle = Rectangle.Empty;
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
@@ -55,15 +57,18 @@ namespace LegendOfZelda.Link.Sprite
         {
             if (FinishedAnimation()) return;
 
-            int frameWidth = sprite.Width / numColumns;
-            int frameHeight = sprite.Height / numRows;
             int currentRow = 0;
             int currentColumn = currentFrame % 2;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
+        {
+            Draw(spriteBatch, position, false);
         }
 
         public bool FinishedAnimation()
@@ -73,7 +78,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }

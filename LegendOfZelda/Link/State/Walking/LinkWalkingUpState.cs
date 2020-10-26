@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Link.State.Attacking;
+﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State.Attacking;
 using LegendOfZelda.Link.State.Item;
 using LegendOfZelda.Link.State.NotMoving;
 using Microsoft.Xna.Framework;
@@ -8,7 +9,7 @@ namespace LegendOfZelda.Link.State.Walking
 {
     class LinkWalkingUpState : LinkActiveAbstractState
     {
-        int distanceWalked;
+        private int distanceWalked;
 
         public LinkWalkingUpState(LinkPlayer link) : base(link)
         {
@@ -16,6 +17,10 @@ namespace LegendOfZelda.Link.State.Walking
 
         public LinkWalkingUpState(LinkPlayer link, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
         {
+        }
+        public LinkWalkingUpState(LinkPlayer link, bool damaged, DateTime healthyDateTime, bool walkingToggle) : base(link, damaged, healthyDateTime)
+        {
+            this.walkingToggle = walkingToggle;
         }
 
         protected override void InitClass()
@@ -45,12 +50,12 @@ namespace LegendOfZelda.Link.State.Walking
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged, walkingToggle);
         }
 
         public override void StopMoving()
         {
-            link.State = new LinkStandingStillUpState(link, damaged, healthyDateTime);
+            link.State = new LinkStandingStillUpState(link, damaged, healthyDateTime, walkingToggle);
         }
 
         public override void UseSword()

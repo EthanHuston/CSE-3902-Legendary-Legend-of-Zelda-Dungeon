@@ -12,6 +12,7 @@ namespace LegendOfZelda.Link.State
         protected LinkPlayer link;
         protected bool damaged;
         protected bool blockNewDirection;
+        protected bool walkingToggle;
         protected DateTime healthyDateTime;
 
         public LinkActiveAbstractState(LinkPlayer link)
@@ -20,6 +21,7 @@ namespace LegendOfZelda.Link.State
             healthyDateTime = DateTime.Now;
             damaged = false;
             blockNewDirection = false;
+            walkingToggle = false;
             InitClass();
         }
 
@@ -29,6 +31,7 @@ namespace LegendOfZelda.Link.State
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
             blockNewDirection = false;
+            walkingToggle = false;
             InitClass();
         }
 
@@ -68,22 +71,22 @@ namespace LegendOfZelda.Link.State
 
         public virtual void MoveDown()
         {
-            if(!blockNewDirection) link.State = new LinkWalkingDownState(link, damaged, healthyDateTime);
+            if(!blockNewDirection) link.State = new LinkWalkingDownState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
         public virtual void MoveLeft()
         {
-            if (!blockNewDirection) link.State = new LinkWalkingLeftState(link, damaged, healthyDateTime);
+            if (!blockNewDirection) link.State = new LinkWalkingLeftState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
         public virtual void MoveRight()
         {
-            if (!blockNewDirection) link.State = new LinkWalkingRightState(link, damaged, healthyDateTime);
+            if (!blockNewDirection) link.State = new LinkWalkingRightState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
         public virtual void MoveUp()
         {
-            if (!blockNewDirection) link.State = new LinkWalkingUpState(link, damaged, healthyDateTime);
+            if (!blockNewDirection) link.State = new LinkWalkingUpState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
         public void PickUpSword()
