@@ -36,19 +36,19 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             updateCount++;
-            if(updateCount % 2 == 0)
+            if (updateCount % 2 == 0)
             {
-if (!attacked)
-                UpdateDirection();
+                if (!attacked)
+                    UpdateDirection();
 
-            if (updateCount % attackTime == 0)
-                Attack();
+                if (updateCount % attackTime == 0)
+                    Attack();
 
-            UpdateSprite();
+                UpdateSprite();
 
-            sprite.Update();
+                sprite.Update();
             }
-            
+
 
             //updateCount++;
 
