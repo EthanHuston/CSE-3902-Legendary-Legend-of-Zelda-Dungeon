@@ -102,25 +102,25 @@ namespace LegendOfZelda.Enemies
                  currentDirection = Constants.Direction.Up;
                  going = true;
              }*/
-            if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Left >= TrapPosition.Right))
+            if ((LinkPosition.Top <= TrapPosition.Bottom && LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Left >= TrapPosition.Right))
             {
                 currentDirection = Constants.Direction.Right;
                 going = true;
 
             }
-            else if ((LinkPosition.Top <= TrapPosition.Bottom || LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Right <= TrapPosition.Left))
+            else if ((LinkPosition.Top <= TrapPosition.Bottom && LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Right <= TrapPosition.Left))
             {
                 currentDirection = Constants.Direction.Left;
                 going = true;
 
             }
-            else if ((LinkPosition.Bottom <= TrapPosition.Top) && (LinkPosition.Left <= TrapPosition.Right || LinkPosition.Right >= TrapPosition.Left))
+            else if ((LinkPosition.Bottom <= TrapPosition.Top) && (LinkPosition.Left <= TrapPosition.Right && LinkPosition.Right >= TrapPosition.Left))
             {
                 currentDirection = Constants.Direction.Up;
                 going = true;
 
             }
-            else if ((LinkPosition.Top >= TrapPosition.Bottom) && (LinkPosition.Right <= TrapPosition.Left || LinkPosition.Left <= TrapPosition.Right))
+            else if ((LinkPosition.Top >= TrapPosition.Bottom) && (LinkPosition.Right >= TrapPosition.Left && LinkPosition.Left <= TrapPosition.Right))
             {
                 currentDirection = Constants.Direction.Down;
                 going = true;
