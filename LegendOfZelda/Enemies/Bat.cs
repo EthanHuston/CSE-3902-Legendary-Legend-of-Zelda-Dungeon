@@ -32,6 +32,7 @@ namespace LegendOfZelda.Enemies
         {
             movementBuffer++;
             //Move based on current chosen direction for some time.
+            CheckBounds();
             if (xDir == 0 && yDir == 0)
             {
                 position.X--;
@@ -73,6 +74,24 @@ namespace LegendOfZelda.Enemies
             xDir = rand.Next(0, 2); // 0 for x, 1 for y
             yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
+        private void CheckBounds()
+        {
+            if(position.X + 16 > Constants.MaxXPos)
+            {
+                ChooseDirection();
+            } else if(position.X -16 < Constants.MinXPos)
+            {
+                ChooseDirection();
+            }
+            if(position.Y + 16 > Constants.MaxYPos)
+            {
+                ChooseDirection();
+            } else if(position.Y-16 < Constants.MinYPos)
+            {
+                ChooseDirection();
+            }
+        }
+
         public void TakeDamage(double damage)
         {
             health -= damage;
