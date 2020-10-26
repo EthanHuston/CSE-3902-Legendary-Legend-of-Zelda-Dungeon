@@ -100,6 +100,10 @@ namespace LegendOfZelda.Rooms
                     break;
 
                 //Npcs
+                case RoomConstants.MovableBlock:
+                    npcType = new MovableSquare(spriteBatch, position);
+                    allObjects.Spawn(npcType);
+                    break;
                 case RoomConstants.Aquamentus:
                     npcType = new Aquamentus(spriteBatch, position, allObjects);
                     allObjects.Spawn(npcType);
