@@ -11,6 +11,7 @@ namespace LegendOfZelda.Link.State
     {
         protected LinkPlayer link;
         protected bool damaged;
+        protected bool blockNewDirection;
         protected DateTime healthyDateTime;
 
         public LinkActiveAbstractState(LinkPlayer link)
@@ -18,6 +19,7 @@ namespace LegendOfZelda.Link.State
             this.link = link;
             healthyDateTime = DateTime.Now;
             damaged = false;
+            blockNewDirection = false;
             InitClass();
         }
 
@@ -26,6 +28,7 @@ namespace LegendOfZelda.Link.State
             this.link = link;
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
+            blockNewDirection = false;
             InitClass();
         }
 
@@ -65,22 +68,22 @@ namespace LegendOfZelda.Link.State
 
         public virtual void MoveDown()
         {
-            link.State = new LinkWalkingDownState(link, damaged, healthyDateTime);
+            if(!blockNewDirection) link.State = new LinkWalkingDownState(link, damaged, healthyDateTime);
         }
 
         public virtual void MoveLeft()
         {
-            link.State = new LinkWalkingLeftState(link, damaged, healthyDateTime);
+            if (!blockNewDirection) link.State = new LinkWalkingLeftState(link, damaged, healthyDateTime);
         }
 
         public virtual void MoveRight()
         {
-            link.State = new LinkWalkingRightState(link, damaged, healthyDateTime);
+            if (!blockNewDirection) link.State = new LinkWalkingRightState(link, damaged, healthyDateTime);
         }
 
         public virtual void MoveUp()
         {
-            link.State = new LinkWalkingUpState(link, damaged, healthyDateTime);
+            if (!blockNewDirection) link.State = new LinkWalkingUpState(link, damaged, healthyDateTime);
         }
 
         public void PickUpSword()
