@@ -1,0 +1,14 @@
+Nathan Murphy
+10/25/2020
+Sprint 3
+LockedDoor.cs, OpenDoor.cs, ShutDoor.cs
+Saumyah Patel
+Readability
+Overall, these files are fairily easy to understand/comprehend. The method names give clear indication to what is going on and what they are dealing with in that
+instance. Also, the variable names (such as textureMapRow) give a clear picture to the reader on what they are storing. Other than the draw methods, each method
+is short and to the point. When looking at the draw method, however, the if-else chain could not be avoided...so I do not blame the programmer for using it. Other
+than that, each file has great readability.
+Maintainability
+The maintainabiliy of these files also seem to be quite good. As Sprint 4 deals with room transitions and such, these files are already able to accept the logical
+changes needed to help the project make that transition. Also, as stated before, with such good readability, there is a lot more ease to making a larger overall
+change (say in Sprint 5) if needed. Ergo, this code can adapt. Overall, these files demonstate good maintainability as well.
