@@ -3,6 +3,7 @@ Ethan Huston
 Sprint 3
 CollisionManager.cs
 Ryan Stuckey
+15 Minutes
 Readability
 The readability of this file is very good, the methods are all short, and the longer ones are simply long
 becasue they have loops in them that take up space. Overall its an easy file to read through and understand,
