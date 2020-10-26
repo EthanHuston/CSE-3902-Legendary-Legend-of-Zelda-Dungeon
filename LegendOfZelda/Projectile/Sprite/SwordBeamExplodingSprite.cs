@@ -55,8 +55,6 @@ namespace LegendOfZelda.Projectile.Sprite
             int currentRow = 0;
             int currentColumn = currentFrame % totalFrames;
 
-            spriteBatch.Begin();
-
             width = upLeftSprite.Width / numColumns;
             height = upLeftSprite.Height / numRows;
             spriteBatch.Draw(upLeftSprite, new Rectangle((int)position.X - xOffset, (int)position.Y - yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
@@ -72,8 +70,6 @@ namespace LegendOfZelda.Projectile.Sprite
             width = downRightSprite.Width / numColumns;
             height = downRightSprite.Height / numRows;
             spriteBatch.Draw(downRightSprite, new Rectangle((int)position.X + xOffset, (int)position.Y + yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
-
-            spriteBatch.End();
         }
 
         public bool FinishedAnimation()

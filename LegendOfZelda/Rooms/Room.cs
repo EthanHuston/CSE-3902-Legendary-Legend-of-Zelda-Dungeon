@@ -30,7 +30,7 @@ namespace LegendOfZelda.Rooms
         public void Update()
         {
             AllObjects.UpdateAll();
-            collisionManager.CheckAndHandleAllCollisions();
+            // collisionManager.CheckAndHandleAllCollisions();
         }
 
         public bool ConnectRoom(Room newRoom, Constants.Direction direction)
