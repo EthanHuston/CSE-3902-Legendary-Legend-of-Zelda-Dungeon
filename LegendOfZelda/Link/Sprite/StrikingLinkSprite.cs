@@ -35,7 +35,7 @@ namespace LegendOfZelda.Link.Sprite
             if (FinishedAnimation()) return;
 
             // Check to see if we're at total frames so animation doesn't loop
-            if (currentFrame < totalFrames && ++bufferFrame == Constants.FrameDelay)
+            if (currentFrame < totalFrames && ++bufferFrame == Constants.LinkUsingSwordFrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
