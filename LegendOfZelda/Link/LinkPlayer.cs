@@ -14,18 +14,14 @@ namespace LegendOfZelda.Link
         private double health;
         private Dictionary<Constants.LinkInventory, int> inventory;
         private bool safeToDespawn;
-
-        public ILinkSprite CurrentSprite { get; set; }
-
-        public bool BlockStateChange { get; set; }
-
-        public SpawnableMover Mover { get; private set; }
-
         private ILinkState state;
+
+        public Constants.Direction FacingDirection { get; set; }
+        public ILinkSprite CurrentSprite { get; set; }
+        public bool BlockStateChange { get; set; }
+        public SpawnableMover Mover { get; private set; }
         public ILinkState State { get => state; set { if (!BlockStateChange) state = value; } }
-
         public Point Position { get => Mover.Position; set => Mover.Position = value; }
-
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
 
         public LinkPlayer(Game1 game, Point spawnPosition)

@@ -105,6 +105,8 @@
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
+    <Compile Include="Link\State\Attacking\LinkAttackingState.cs" />
+    <Compile Include="Link\State\NotMoving\LinkStandingStillState.cs" />
     <Compile Include="Link\State\Walking\LinkBeingDraggedState.cs" />
     <Compile Include="Projectile\SwordAttackingProjectile.cs" />
     <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
