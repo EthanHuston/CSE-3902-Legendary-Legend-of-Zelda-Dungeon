@@ -4,7 +4,6 @@ For the most part everything works pretty good. However, we did have some issues
 ### Sprint 3
 - Hand enemies drag Link, but they are also able to go outside the wall and can carry Link out. When releasing Link outside of walls, Link's collision handling takes over and weird things happen
 - Game screen is extremely small; need to finish implementing a scaling system to make screen bigger
-- Enemies die immediately once hit regardless of health
 
 ### From Sprint 2
 - [[fixed]: ](../sprint2/Bugs.md)Fireball sprite animates incorrectly when shot from Aquamentus
