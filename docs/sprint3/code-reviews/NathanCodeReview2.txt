@@ -1,0 +1,15 @@
+Nathan Murphy
+10/25/2020
+Sprint 3
+Skeleton.cs (Updated)
+Ethan Huston
+Readability
+This class' readability is very good. Each method is given a name that clearly tells the reader what it is doing (such as ResetPosition()), while also having each
+method be short and to the point. The branching in Update() and Move() is easy to follow; the reader can clearly see what case is called with that condition. In
+tandem with this, each of the variables are named really well - as they clearly convey to the reader what is being stored in them (such as upDown and leftRight).
+Overall, this class provides great readability.
+Maintainability
+Luckily, the way the enemies where designed for this project provide an easy "route" to add/change features. In this specific case, Skeleton.cs gives clear
+openings for any programmer that wanted to change the implementation of the enemy (say in Sprint 5, we want to make the enemy hop instead of walk). Given that this
+code also had great readability, it goes to say that it only improves the maintainability of this class. Overall, Skeleton.cs (if not all the enemies) have great
+maintainability and will help the group to make changes in the next two sprints.

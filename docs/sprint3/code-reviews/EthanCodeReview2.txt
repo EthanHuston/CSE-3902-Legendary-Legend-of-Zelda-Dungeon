@@ -1,0 +1,14 @@
+Ethan Huston
+10/25/2020
+Sprint 3
+CSVReader.cs
+Chris Lenart
+20 Minutes
+Readability
+The readability of this file could be a little better, however the nature of a text parser that must deal with how many entities there are in a room
+it will be hard to condense all the logic needed easily. So given the task at hand, i believe this code is not too hard to read. The most confusing parts is
+the initial text parsing, after this the code is essentially one large switch case to differentiate between what needs to be spawned in the current room.
+Maintainability
+This code's maintainability is fairly good, potential changes needed in the future that apply to this code would be adding new items, enemies, or roo types. 
+With a change like this we would simply need to add a new case in the switch and a new acronym in the text files to denote this new entity. Since this code
+is just a text reader, needing to change the specific functionality will be unlikley, so the state of this CSVReader is good for where we are in the project. 

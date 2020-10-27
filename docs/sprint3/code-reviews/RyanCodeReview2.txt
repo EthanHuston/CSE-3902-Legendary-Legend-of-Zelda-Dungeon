@@ -1,0 +1,11 @@
+Ryan Stuckey
+10/26/2020
+AquamentusBlockColllisionHandler.cs
+Ethan Huston
+8 minutes
+
+Readability:
+Code is pretty easy to read as there is not much to the class. The parameters and variables have good names and the switch-case statement makes it easy to figure out branching within the class.
+
+Maintainability:
+Maintainability overall is pretty good. Some issues may arise if we were to add another possible direction to the Direction enum in Constants.cs. Adding another direction would cause the collision handler to not do anything. However, that is not a big concern at this time because it is likely outside the scope of our project.

@@ -1,0 +1,8 @@
+Saumyah Patel
+10/26/2020
+Sprint 3
+Jelly.cs
+Ethan Huston
+The collision detection looks nice with the if-else statements, and you check every possibility (with the spike trap that is). 
+The movement of the traps seem fluid, and the despawn method works as intended.
+You have a lot of methods, but with teh amount of work the traps must do, it is reasonable. The code for this class looks good.

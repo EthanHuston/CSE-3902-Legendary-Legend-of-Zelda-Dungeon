@@ -1,0 +1,7 @@
+Saumyah Patel
+10/26/2020
+Sprint 3
+LinkImmovableBlockCollisionHandler.cs
+Nathan Murphy
+The code is short and concise, especially for the amount of work it must do. The simple if-else statement, which is simple to read.
+The other collision handlers are similar, which is perfect, since they are all very simple and tehy work perfectly. Good job.

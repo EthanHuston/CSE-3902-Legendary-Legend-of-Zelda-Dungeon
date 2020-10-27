@@ -1,0 +1,11 @@
+Chris Lenart
+10/26/2020
+RoomFactory.cs
+Ryan Stuckey
+10 minutes
+Readability:
+The variable and method names are easy to understand and each method is simple. 
+The only complicated looking method is ConnectRooms since it is long compared to the others but the logic isn’t too difficult to understand and it is well commented to help.
+Maintainability:
+Maintainability is okay for this class. If we want to add more rooms then we have to change a couple variables and add more connections 
+but this is fine because we do not plan on adding more rooms for this project.
