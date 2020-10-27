@@ -170,7 +170,7 @@ namespace LegendOfZelda.Enemies
                     break;
             }
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(double damage)
         {
             if (!damaged)
             {
@@ -191,11 +191,6 @@ namespace LegendOfZelda.Enemies
         public Rectangle GetRectangle()
         {
             return sprite.GetPositionRectangle();
-        }
-
-        public void TakeDamage(double damage)
-        {
-            health -= damage;
         }
 
         public void Despawn()
