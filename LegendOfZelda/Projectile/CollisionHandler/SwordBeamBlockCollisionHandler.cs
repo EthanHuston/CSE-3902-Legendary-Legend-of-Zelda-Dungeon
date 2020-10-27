@@ -7,6 +7,7 @@ namespace LegendOfZelda.Projectile.CollisionHandler
     {
         public void HandleCollision(IProjectile swordBeam, IBlock block, Constants.Direction side)
         {
+            if (block.GetType() == typeof(TileWater)) return;
             SwordBeamFlyingProjectile swordBeamCast = (SwordBeamFlyingProjectile)swordBeam;
             swordBeamCast.ExplodeSword();
         }

@@ -7,6 +7,7 @@ namespace LegendOfZelda.Projectile.CollisionHandler
     {
         public void HandleCollision(IProjectile fireball, IBlock block, Constants.Direction side)
         {
+            if (block.GetType() == typeof(TileWater)) return;
             fireball.Despawn();
         }
     }
