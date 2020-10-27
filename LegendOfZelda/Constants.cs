@@ -115,7 +115,7 @@ namespace LegendOfZelda
         public const float EnemyMoveRight = 1;
         public const float EnemyMoveLeft = -1;
         public const float EnemyNoMove = 0;
-        public const int EnemyDamageEffectTimeMs = 2000;
+        public const int EnemyDamageEffectTimeMs = 500;
         public const int EnemyDamageFlashDelayTicks = 5;
 
     }
