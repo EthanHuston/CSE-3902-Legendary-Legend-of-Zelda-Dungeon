@@ -1,12 +1,10 @@
 # Code Maintainability, Readability, and Analysis
-We had a decent amount of runtime errors in the game this time after merging all our parts together. Most of these were logical errors that prevent game features from working.
+Initially, we had a lot of errors in the game after merging everything to master. However, we were able to fix these fairly quickly.
 
 ### Warnings and Errors
-After we began testing, we found a lot of logical errors in dealing with collision detection and error handling. One of the major sources of our problems was determining how to get a position rectangle for every sprite on screen. Initially, we were saving the destination rectangle after every call to Draw, but this was problematic as we were unable to properly initialize the destination rectangle until the sprite's Draw method was called. We fixed this but returning Sprite.Bounds and then manually adding the X and Y values to the rectangle. This fixed a lot of our problems with collision detection. 
-
-Compile errors and warnings were fairly easy to fix, as Visual Studio makes it easy to jump right to the build error and fix it. Most of the warnings we had consisted of having fields in classes that were unused or not setting fields to be readonly. These were fixed easily running Visual Studio's code cleanup.
+We also had a lot of warnings, including things like unused fields or not initializing fields in constructors. After manually fixing some of these and running Visual Studio's code cleanup, we were able to eliminate most of the warnings. Some of the warnings were from class members that were not used/read in Sprint 2, but these members will be used in later Sprints, so we kept them in there.
 
 ### Maintainability and Readability
-Here in Sprint 3, we were able to implement a lot of features and frameworks that we can extend to add new features in the rest of the project. One such feature was adding an [IGameState](../../LegendOfZelda/GameLogic/IGameState.cs) interface and adding a State member to [Game1](../../LegendOfZelda/Game1.cs). While we only have a [RoomState](../../LegendOfZelda/Rooms/RoomState.cs) right now, we will easily be able to implement new states in Sprint 4, like a GameWonState, PauseState, and StartMenuState. Another feature that we included in this sprint was including a list of players. Currently, since the game is only single player, we only have one player in there. However, since we already have the list, we should be able to add multiplayer into the game relatively gracefullly.
+In addition, We tried to keep Sprint 2 logic from general game logic. This means everything that Sprint 2 needs to do can be done within the namespace LegendOfZelda.Sprint2; we did not want to be putting Sprint2 logic inside of Link's, enemies', or any other classes, as this would make it harder to transition to Sprint 3. Once we start with Sprint 3, we can just remove the Sprint2 namespace and use all of the existing code without much change.
 
-In terms of readability, we greatly improved it by adding more helper methods. Most methods are only 10-20 lines long, and, if they are longer, have multiple helper methods with descriptive names to make it easy to understand what is going on.
+In addition, we used interfaces as much as possible to hide details about implementations as well as improve readability and maintainability.
