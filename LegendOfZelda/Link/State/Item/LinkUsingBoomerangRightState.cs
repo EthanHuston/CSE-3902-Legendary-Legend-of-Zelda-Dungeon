@@ -34,7 +34,7 @@ namespace LegendOfZelda.Link.State.Item
 
         public override void StopMoving()
         {
-            link.State = new LinkStandingStillLeftState(link, damaged, healthyDateTime);
+            link.State = new LinkStandingStillRightState(link, damaged, healthyDateTime);
         }
     }
 }
