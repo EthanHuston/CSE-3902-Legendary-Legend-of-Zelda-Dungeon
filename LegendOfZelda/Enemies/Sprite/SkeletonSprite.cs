@@ -15,6 +15,9 @@ namespace LegendOfZelda.Enemies.Sprite
         private int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
+        private bool flashRed;
+        private int damageColorCounter;
+
         public SkeletonSprite(Texture2D sprite)
         {
             this.sprite = sprite;
@@ -23,6 +26,10 @@ namespace LegendOfZelda.Enemies.Sprite
             currentFrame = 0;
             bufferFrame = 0;
             totalFrames = Rows * Columns;
+            flashRed = false;
+            damageColorCounter = 0;
+            flashRed = false;
+            damageColorCounter = 0;
         }
         public void Update()
         {
@@ -36,6 +43,11 @@ namespace LegendOfZelda.Enemies.Sprite
             if (currentFrame == totalFrames)
             {
                 currentFrame = 0;
+            }
+            if (++damageColorCounter == Constants.EnemyDamageFlashDelayTicks)
+            {
+                flashRed = !flashRed;
+                damageColorCounter = 0;
             }
         }
 
@@ -53,17 +65,7 @@ namespace LegendOfZelda.Enemies.Sprite
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
             destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
-            if (damaged)
-            {
-                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Red);
-                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-
-            }
-            else
-            {
-                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-
-            }
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }
         public Rectangle GetPositionRectangle()
         {

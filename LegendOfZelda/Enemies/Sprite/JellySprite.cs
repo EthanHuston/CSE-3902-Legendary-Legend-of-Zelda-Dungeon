@@ -15,12 +15,17 @@ namespace LegendOfZelda.Enemies.Sprite
         private int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
+        private bool flashRed;
+        private int damageColorCounter;
+
         public JellySprite(Texture2D sprite)
         {
             this.sprite = sprite;
             currentFrame = 0;
             bufferFrame = 0;
             totalFrames = numRows * numColumns;
+            flashRed = false;
+            damageColorCounter = 0;
         }
         public void Update()
         {
@@ -35,6 +40,11 @@ namespace LegendOfZelda.Enemies.Sprite
             {
                 currentFrame = 0;
             }
+            if (++damageColorCounter == Constants.EnemyDamageFlashDelayTicks)
+            {
+                flashRed = !flashRed;
+                damageColorCounter = 0;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
@@ -47,17 +57,9 @@ namespace LegendOfZelda.Enemies.Sprite
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
             destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
 
-            if (damaged)
-            {
-                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Red);
-
-            }
-            else
-            {
-                spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-
-            }
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }
+
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
