@@ -7,8 +7,9 @@ Team Project for CSE 3902, creating the first dungeon of Legend of Zelda.
 Repo link: https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dungeon.git
 
 ### Contents
-- [Sprint 2](docs/sprint2)
-- [Code](LegendOfZelda)
+- [Sprint 2/](docs/sprint2)
+- [Sprint 3/](docs/sprint3)
+- [Code/](LegendOfZelda)
 
 ### Team
 - Ethan Huston (huston.210@osu.edu)
