@@ -2,7 +2,7 @@
 We had a decent amount of runtime errors in the game this time after merging all our parts together. Most of these were logical errors that prevent game features from working.
 
 ### Warnings and Errors
-After we began testing, we found a lot of logical errors in dealing with collision detection and error handling. One of the major sources of our problems was determining how to get a position rectangle for every sprite on screen. Initially, we were saving the destination rectangle after every call to Draw, but this was problematic - as we were unable to properly initialize the destination rectangle until the sprite's Draw method was called. We fixed this, but returning Sprite.Bounds and then manually adding the X and Y values to the rectangle. This ultimately fixed a lot of our problems with collision detection. 
+After we began testing, we found a lot of logical errors in dealing with collision detection and error handling. One of the major sources of our problems was determining how to get a position rectangle for every sprite on screen. Initially, we were saving the destination rectangle after every call to Draw, but this was problematic - as we were unable to properly initialize the destination rectangle until the sprite's Draw method was called. We fixed this, by returning Sprite.Bounds and then manually adding the X and Y values to the rectangle. This ultimately fixed a lot of our problems with collision detection. 
 
 Compile errors and warnings were fairly easy to fix, as Visual Studio makes it easy to jump right to the build error and fix it. Most of the warnings we had consisted of having fields in classes that were unused or not setting fields to be readonly. These were fixed easily running Visual Studio's code cleanup.
 
