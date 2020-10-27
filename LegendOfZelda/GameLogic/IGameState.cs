@@ -1,12 +1,6 @@
-﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.Link;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LegendOfZelda.Link;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.GameLogic
 {
     public interface IGameState
     {

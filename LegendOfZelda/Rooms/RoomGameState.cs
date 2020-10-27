@@ -1,7 +1,6 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link;
 using LegendOfZelda.Utility;
-using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
