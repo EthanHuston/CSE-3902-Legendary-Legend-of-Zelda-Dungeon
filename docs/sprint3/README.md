@@ -7,6 +7,6 @@ Overall, we did better in terms of planning here during Sprint 3 than we did dur
 - [Team Reflection.md](Team-Reflection.md)
 - [BurndownChart.PNG](BurndownChart.PNG)
 - [Code Reflection.md](Code-Reflection.md)
-- [Code Reviews](https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dungeon/tree/master/docs/sprint3/code-reviews)
+- [Code Reviews.md](https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dungeon/tree/master/docs/sprint3/code-reviews)
 - [Bugs.md](Bugs.md)
 - [Moving Forward.md](Moving-Forward.md)
