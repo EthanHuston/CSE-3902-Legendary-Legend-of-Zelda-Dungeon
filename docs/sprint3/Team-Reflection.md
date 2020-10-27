@@ -1,2 +1,6 @@
 # Team Reflection and Agile Analysis
+Sprint 3 started on 10/6 and we were able to start planning almost as soon as the sprint began. However, we did not finish planning until about 10/9, as seen on this sprint's [burndown chart](BurndownChart.PNG) chart. However, towards the second week of the sprint we stalled as we all had midterms and other projects in other classes. Finally, during the third week of the sprint, we were able to make progress at a relatively quick pace. Initially, we wanted to finish all stories by the first few days of the sprint's third week (around 10/15), but the unexpected surge in classwork prevented this.
 
+During this sprint, we made our [stories](https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dungeon/tree/master/docs/sprint3/azure-board-stories) too generic and too lengthy, as we were not completing stories until the final few days of the sprint. Some stories had 10-15 tasks and took too long, having as many as 8-10 story points. Even though these were relatively large stories, we were still able to accurately predict the story points for each and the amount of work we needed to put in to complete them.
+
+Making the stories more specific and keeping them to 4-5 story points with 9-10 tasks will improve the burndown rate and allow the burndown chart to follow the ideal trendline. 
