@@ -1,19 +1,17 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 
 namespace LegendOfZelda.Rooms
 {
-    class CSVReader
+    internal class CSVReader
     {
         public ISpawnableManager allObjects;
-        private SpriteBatch spriteBatch;
+        private readonly SpriteBatch spriteBatch;
 
         public CSVReader(SpriteBatch spriteBatch, ISpawnableManager allObjects, string fileName)
         {
@@ -40,7 +38,7 @@ namespace LegendOfZelda.Rooms
                 }
                 else
                 {
-                    for(int i = 0; i < fields.Length; i++)
+                    for (int i = 0; i < fields.Length; i++)
                     {
                         SpawnFromString(fields[i], i, j - 1);
                     }
@@ -222,7 +220,7 @@ namespace LegendOfZelda.Rooms
                     break;
 
             }
-      
+
         }
     }
 }

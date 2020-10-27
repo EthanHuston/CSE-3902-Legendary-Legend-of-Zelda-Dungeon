@@ -1,17 +1,16 @@
-﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class FireballSprite : IProjectileSprite
+    internal class FireballSprite : IProjectileSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private int Rows { get; set; }
         private int Columns { get; set; }
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
+        private readonly int totalFrames;
         private Rectangle destinationRectangle;
 
         public FireballSprite(Texture2D sprite)

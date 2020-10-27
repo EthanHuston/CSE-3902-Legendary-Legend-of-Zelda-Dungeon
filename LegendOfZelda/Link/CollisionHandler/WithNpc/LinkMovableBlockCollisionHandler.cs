@@ -1,11 +1,9 @@
-﻿using LegendOfZelda.Enemies;
-using LegendOfZelda.Environment;
+﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkMovableBlockCollisionHandler : ICollisionHandler<IPlayer, IBlock>
+    internal class LinkMovableBlockCollisionHandler : ICollisionHandler<IPlayer, IBlock>
     {
         public void HandleCollision(IPlayer link, IBlock square, Constants.Direction side)
         {
@@ -13,7 +11,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 
             if (squareCast.HasBeenPushed())
             {
-                new LinkImmovableBlockCollisionHandler().HandleCollision(link, square, side); 
+                new LinkImmovableBlockCollisionHandler().HandleCollision(link, square, side);
                 return;
             }
 

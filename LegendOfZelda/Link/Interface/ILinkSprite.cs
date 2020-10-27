@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Interface
 {
-    interface ILinkSprite : IDamageableSprite
+    internal interface ILinkSprite : IDamageableSprite
     {
         void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle);
         bool FinishedAnimation();

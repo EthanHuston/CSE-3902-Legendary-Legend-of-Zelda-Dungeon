@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    class RoomGameState : IGameState
+    internal class RoomGameState : IGameState
     {
-        private Game1 game;
+        private readonly Game1 game;
         public Room CurrentRoom { get; private set; }
-        public List<IPlayer> PlayerList { get; private set; } 
+        public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
 
         public RoomGameState(Game1 game)
@@ -43,7 +43,7 @@ namespace LegendOfZelda.Rooms
         {
             Room newRoom = CurrentRoom.GetRoom(direction);
             Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
-            if(newRoom != null)
+            if (newRoom != null)
             {
                 CurrentRoom = newRoom;
                 UpdatePlayersPositions(doorLocation);

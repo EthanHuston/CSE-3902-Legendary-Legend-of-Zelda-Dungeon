@@ -1,10 +1,9 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 
 namespace LegendOfZelda.Projectile.CollisionHandler
 {
-    class SwordBeamBlockCollisionHandler : ICollisionHandler<IProjectile, IBlock>
+    internal class SwordBeamBlockCollisionHandler : ICollisionHandler<IProjectile, IBlock>
     {
         public void HandleCollision(IProjectile swordBeam, IBlock block, Constants.Direction side)
         {

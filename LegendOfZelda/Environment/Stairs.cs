@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class Stairs : IBlock
+    internal class Stairs : IBlock
     {
-        private ISprite stairSprite;
-        private SpriteBatch sB;
+        private readonly ISprite stairSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
 
         private Point position;

@@ -5,10 +5,10 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Skeleton : INpc
+    internal class Skeleton : INpc
     {
-        private IDamageableSprite sprite;
-        private SpriteBatch spriteBatch;
+        private readonly IDamageableSprite sprite;
+        private readonly SpriteBatch spriteBatch;
         private int movementBuffer = 0;
         private double health = 2;
         private Constants.Direction direction = Constants.Direction.Down;
@@ -17,7 +17,7 @@ namespace LegendOfZelda.Enemies
         private bool inKnockback = false;
         private DateTime healthyDateTime;
         private bool damaged;
-        private Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -104,7 +104,7 @@ namespace LegendOfZelda.Enemies
         private void MoveKnockback(Constants.Direction knockDirection)
         {
             inKnockback = true;
-            switch (direction)
+            switch (knockDirection)
             {
                 case Constants.Direction.Up: // Up
                     position.Y++;
@@ -155,16 +155,16 @@ namespace LegendOfZelda.Enemies
             switch (direction)
             {
                 case Constants.Direction.Up: // Up
-                    this.direction = Constants.Direction.Up;
+                    direction = Constants.Direction.Up;
                     break;
                 case Constants.Direction.Down: // Down
-                    this.direction = Constants.Direction.Down;
+                    direction = Constants.Direction.Down;
                     break;
                 case Constants.Direction.Left: // Left
-                    this.direction = Constants.Direction.Left;
+                    direction = Constants.Direction.Left;
                     break;
                 case Constants.Direction.Right: // Right
-                    this.direction = Constants.Direction.Right;
+                    direction = Constants.Direction.Right;
                     break;
                 default:
                     break;

@@ -3,7 +3,7 @@ using LegendOfZelda.GameLogic;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithNpc
 {
-    class LinkHandCollisionHandler : ICollisionHandler<IPlayer, INpc>
+    internal class LinkHandCollisionHandler : ICollisionHandler<IPlayer, INpc>
     {
         private const int dragTimeMs = 2000;
 

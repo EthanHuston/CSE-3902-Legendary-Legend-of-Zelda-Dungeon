@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Sprite
 {
-    class IdleLinkSprite : ILinkSprite
+    internal class IdleLinkSprite : ILinkSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
 

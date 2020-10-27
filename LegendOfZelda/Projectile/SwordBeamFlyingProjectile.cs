@@ -1,10 +1,9 @@
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class SwordBeamFlyingProjectile : GenericProjectile
+    internal class SwordBeamFlyingProjectile : GenericProjectile
     {
         private bool stopMovingAndExplode;
         private bool updatedSprite;

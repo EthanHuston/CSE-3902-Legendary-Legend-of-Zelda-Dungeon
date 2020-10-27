@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class OldManSprite : ISprite
+    internal class OldManSprite : ISprite
     {
-        private int spriteScaler = Constants.SpriteScaler;
-        private Texture2D sprite;
+        private readonly int spriteScaler = Constants.SpriteScaler;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public OldManSprite(Texture2D sprite)

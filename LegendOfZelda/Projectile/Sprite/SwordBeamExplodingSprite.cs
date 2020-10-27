@@ -1,19 +1,18 @@
-using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class SwordBeamExplodingSprite : IProjectileSprite
+    internal class SwordBeamExplodingSprite : IProjectileSprite
     {
-        private Texture2D upLeftSprite, upRightSprite, downLeftSprite, downRightSprite;
+        private readonly Texture2D upLeftSprite, upRightSprite, downLeftSprite, downRightSprite;
         private bool animationIsFinished;
         private int xOffset;
         private int yOffset;
         private int bufferFrame;
         private int currentFrame;
-        private int totalFrames;
+        private readonly int totalFrames;
         private const int frameDelay = 2;
         private const int numRows = 1;
         private const int numColumns = 4;

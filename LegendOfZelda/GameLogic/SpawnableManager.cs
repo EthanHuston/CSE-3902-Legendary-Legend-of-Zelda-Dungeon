@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
 {
-    class SpawnableManager : ISpawnableManager
+    internal class SpawnableManager : ISpawnableManager
     {
         public List<IItem> ItemList { get; private set; }
         public List<IProjectile> ProjectileList { get; private set; }

@@ -1,12 +1,11 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Projectile.Sprite;
+﻿using LegendOfZelda.Projectile.Sprite;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    abstract class GenericProjectile : IProjectile
+    internal abstract class GenericProjectile : IProjectile
     {
         protected IProjectileSprite sprite;
         protected bool itemIsExpired;

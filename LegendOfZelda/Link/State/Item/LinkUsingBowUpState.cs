@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Item
 {
-    class LinkUsingBowUpState : LinkLazyAbstractState
+    internal class LinkUsingBowUpState : LinkLazyAbstractState
     {
         public LinkUsingBowUpState(LinkPlayer link) : base(link)
         {
@@ -17,7 +17,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            this.link.SpawnItem(new ArrowFlyingProjectile(link.Game.SpriteBatch, link.Position, Constants.Direction.Up, Constants.ItemOwner.Link));
+            link.SpawnItem(new ArrowFlyingProjectile(link.Game.SpriteBatch, link.Position, Constants.Direction.Up, Constants.ItemOwner.Link));
             link.Velocity = (Vector2.Zero);
         }
 

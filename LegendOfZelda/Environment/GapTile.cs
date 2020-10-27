@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class GapTile : IBlock
+    internal class GapTile : IBlock
     {
-        private ISprite tileBlackSprite;
-        private SpriteBatch sB;
+        private readonly ISprite tileBlackSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
 
         private Point position;

@@ -4,14 +4,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    class FireSprite : ISprite
+    internal class FireSprite : ISprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;
-        private Texture2D sprite;
-        private int frameWidth;
-        private int frameHeight;
-        private int totalFrames;
+        private readonly Texture2D sprite;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
+        private readonly int totalFrames;
         private Rectangle destinationRectangle;
         private int currentFrame;
         private int bufferFrame;

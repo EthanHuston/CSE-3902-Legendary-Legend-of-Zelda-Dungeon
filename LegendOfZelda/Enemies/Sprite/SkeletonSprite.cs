@@ -4,15 +4,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class SkeletonSprite : IDamageableSprite
+    internal class SkeletonSprite : IDamageableSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private int Rows { get; set; }
         private int Columns { get; set; }
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
-        private int spriteScaler = Constants.SpriteScaler;
+        private readonly int totalFrames;
+        private readonly int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private bool flashRed;

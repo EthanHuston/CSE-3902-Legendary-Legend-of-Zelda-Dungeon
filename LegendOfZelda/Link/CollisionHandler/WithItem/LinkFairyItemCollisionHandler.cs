@@ -3,7 +3,7 @@ using LegendOfZelda.Item;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithItem
 {
-    class LinkFairyItemCollisionHandler : ICollisionHandler<IPlayer, IItem>
+    internal class LinkFairyItemCollisionHandler : ICollisionHandler<IPlayer, IItem>
     {
         public void HandleCollision(IPlayer link, IItem fairy, Constants.Direction side)
         {

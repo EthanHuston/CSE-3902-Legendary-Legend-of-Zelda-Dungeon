@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class Square : IBlock
+    internal class Square : IBlock
     {
-        private ISprite blockSprite;
-        private SpriteBatch spriteBatch;
+        private readonly ISprite blockSprite;
+        private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
 
         private Point position;
@@ -46,7 +46,9 @@ namespace LegendOfZelda.Environment
         {
             safeToDespawn = true;
         }
-        void Move(int distance, Vector2 velocity) {
+
+        private void Move(int distance, Vector2 velocity)
+        {
             // do something
         }
     }

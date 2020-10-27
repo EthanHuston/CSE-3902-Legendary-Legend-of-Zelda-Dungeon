@@ -4,15 +4,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class JellySprite : IDamageableSprite
+    internal class JellySprite : IDamageableSprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
-        private int spriteScaler = Constants.SpriteScaler;
+        private readonly int totalFrames;
+        private readonly int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private bool flashRed;

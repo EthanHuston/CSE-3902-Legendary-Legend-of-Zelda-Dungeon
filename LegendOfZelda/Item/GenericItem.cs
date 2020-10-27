@@ -1,11 +1,10 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    abstract class GenericItem : IItem
+    internal abstract class GenericItem : IItem
     {
         protected ISprite sprite;
         protected bool itemIsExpired;

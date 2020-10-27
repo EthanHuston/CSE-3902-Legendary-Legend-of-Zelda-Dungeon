@@ -7,8 +7,8 @@ namespace LegendOfZelda.GameLogic
 {
     public class KeyboardController : IController
     {
-        private Game1 myGame;
-        private Dictionary<Keys, ICommand> controllerMappings;
+        private readonly Game1 myGame;
+        private readonly Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;
         private List<Keys> repeatableKeys;
 

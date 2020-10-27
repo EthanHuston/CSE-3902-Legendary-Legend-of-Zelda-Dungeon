@@ -1,10 +1,9 @@
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class SwordAttackingProjectile : GenericProjectile
+    internal class SwordAttackingProjectile : GenericProjectile
     {
         private const int SpawnOffsetX = 16;
         private const int SpawnOffsetY = 16;

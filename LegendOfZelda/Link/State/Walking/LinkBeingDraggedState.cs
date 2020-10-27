@@ -1,4 +1,3 @@
-using LegendOfZelda.Enemies;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.State.NotMoving;
 using Microsoft.Xna.Framework;
@@ -6,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Walking
 {
-    class LinkBeingDraggedState : LinkLazyAbstractState
+    internal class LinkBeingDraggedState : LinkLazyAbstractState
     {
         private ISpawnable dragger;
         private DateTime dragEndTime;

@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    class DoorSprite : ITextureAtlasSprite
+    internal class DoorSprite : ITextureAtlasSprite
     {
-        private Texture2D sprite;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly Texture2D sprite;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
 
         public DoorSprite(Texture2D sprite)
         {

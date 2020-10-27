@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class RoomBorder : IBackground
+    internal class RoomBorder : IBackground
     {
-        private ISprite roomSprite;
-        private SpriteBatch sb;
+        private readonly ISprite roomSprite;
+        private readonly SpriteBatch sb;
         private Rectangle destinationRectangle;
         private bool safeToDespawn;
 

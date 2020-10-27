@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 namespace LegendOfZelda
 {
     //Sprite Factory based of model found in slides
-    class SpriteFactory
+    internal class SpriteFactory
     {
         public static SpriteFactory Instance { get; } = new SpriteFactory();
 

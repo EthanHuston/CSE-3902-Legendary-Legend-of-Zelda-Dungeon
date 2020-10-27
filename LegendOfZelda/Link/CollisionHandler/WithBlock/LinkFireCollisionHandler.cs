@@ -1,10 +1,9 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkFireCollisionHandler : ICollisionHandler<IPlayer, IBlock>
+    internal class LinkFireCollisionHandler : ICollisionHandler<IPlayer, IBlock>
     {
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {

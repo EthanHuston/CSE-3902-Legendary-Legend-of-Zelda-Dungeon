@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    class SquareSprite : ISprite
+    internal class SquareSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
 
         public SquareSprite(Texture2D sprite)
         {

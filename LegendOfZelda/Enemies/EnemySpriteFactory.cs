@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda.Enemies
 {
     //Sprite Factory based of model found in slides
-    class EnemySpriteFactory
+    internal class EnemySpriteFactory
     {
         private Texture2D batSprite;
         private Texture2D goriyaUpSprite;

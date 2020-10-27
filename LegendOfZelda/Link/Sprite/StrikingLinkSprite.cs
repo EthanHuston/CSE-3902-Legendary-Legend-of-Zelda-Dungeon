@@ -4,16 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Sprite
 {
-    class StrikingLinkSprite : ILinkSprite
+    internal class StrikingLinkSprite : ILinkSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private bool animationIsDone;
         private bool flashRed;
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
         private const int totalFrames = 7;
         private const int numRows = 2;
@@ -24,7 +24,7 @@ namespace LegendOfZelda.Link.Sprite
             this.sprite = sprite;
             animationIsDone = false;
             flashRed = false;
-            damageColorCounter = 0; 
+            damageColorCounter = 0;
             frameWidth = sprite.Width / numColumns;
             frameHeight = sprite.Height / numRows;
         }

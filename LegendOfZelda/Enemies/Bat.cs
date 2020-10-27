@@ -5,10 +5,10 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Bat : INpc
+    internal class Bat : INpc
     {
-        private IDamageableSprite sprite;
-        private SpriteBatch spriteBatch;
+        private readonly IDamageableSprite sprite;
+        private readonly SpriteBatch spriteBatch;
         private const int directionChangeDelay = 30;
         private int movementBuffer = 0;
         private int xDir = 0;
@@ -17,7 +17,7 @@ namespace LegendOfZelda.Enemies
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
-        private Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -82,17 +82,19 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckBounds()
         {
-            if(position.X + 16 > Constants.MaxXPos)
-            {
-                ChooseDirection();
-            } else if(position.X -16 < Constants.MinXPos)
+            if (position.X + 16 > Constants.MaxXPos)
             {
                 ChooseDirection();
             }
-            if(position.Y + 16 > Constants.MaxYPos)
+            else if (position.X - 16 < Constants.MinXPos)
             {
                 ChooseDirection();
-            } else if(position.Y-16 < Constants.MinYPos)
+            }
+            if (position.Y + 16 > Constants.MaxYPos)
+            {
+                ChooseDirection();
+            }
+            else if (position.Y - 16 < Constants.MinYPos)
             {
                 ChooseDirection();
             }

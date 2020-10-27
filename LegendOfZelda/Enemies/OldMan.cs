@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class OldMan : INpc
+    internal class OldMan : INpc
     {
-        private ISprite sprite;
-        private SpriteBatch spriteBatch;
+        private readonly ISprite sprite;
+        private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
 
         private Point position;

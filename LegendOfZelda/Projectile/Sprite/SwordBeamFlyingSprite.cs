@@ -1,17 +1,16 @@
-﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class SwordBeamFlyingSprite : IProjectileSprite
+    internal class SwordBeamFlyingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
         private int currentFrame;
-        private int totalFrames;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly int totalFrames;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int frameDelay = 10;

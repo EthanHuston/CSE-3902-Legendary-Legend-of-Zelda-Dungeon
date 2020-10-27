@@ -4,17 +4,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class HandSprite : IDamageableSprite
+    internal class HandSprite : IDamageableSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private int Rows { get; set; }
         private int Columns { get; set; }
         private int currentFrame;
         private int bufferFrame;
-        private bool currentDir;
-        private int rightRow;
-        private int leftRow;
-        private int spriteScaler = Constants.SpriteScaler;
+        private readonly bool currentDir;
+        private readonly int rightRow;
+        private readonly int leftRow;
+        private readonly int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private bool flashRed;
@@ -75,7 +75,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
             destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
-            
+
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }
         public Rectangle GetPositionRectangle()

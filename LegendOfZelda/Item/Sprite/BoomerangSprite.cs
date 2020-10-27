@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class BoomerangSprite : ISprite
+    internal class BoomerangSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public BoomerangSprite(Texture2D sprite)

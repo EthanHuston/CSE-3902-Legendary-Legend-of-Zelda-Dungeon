@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Item
 {
-    class LinkUsingBombRightState : LinkLazyAbstractState
+    internal class LinkUsingBombRightState : LinkLazyAbstractState
     {
         private const int spawnOffsetX = 16 * Constants.SpriteScaler;
         private const int spawnOffsetY = 0 * Constants.SpriteScaler;

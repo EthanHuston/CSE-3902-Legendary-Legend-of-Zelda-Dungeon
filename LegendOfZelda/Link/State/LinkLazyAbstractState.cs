@@ -1,13 +1,11 @@
-using LegendOfZelda.Enemies;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.Walking;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State
 {
-    abstract class LinkLazyAbstractState : ILinkState
+    internal abstract class LinkLazyAbstractState : ILinkState
     {
         protected LinkPlayer link;
         protected bool damaged;

@@ -2,12 +2,11 @@
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.Item;
 using LegendOfZelda.Link.State.Walking;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State
 {
-    abstract class LinkActiveAbstractState : ILinkState
+    internal abstract class LinkActiveAbstractState : ILinkState
     {
         protected LinkPlayer link;
         protected bool damaged;
@@ -72,7 +71,7 @@ namespace LegendOfZelda.Link.State
 
         public virtual void MoveDown()
         {
-            if(!blockNewDirection) link.State = new LinkWalkingDownState(link, damaged, healthyDateTime, !walkingToggle);
+            if (!blockNewDirection) link.State = new LinkWalkingDownState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
         public virtual void MoveLeft()

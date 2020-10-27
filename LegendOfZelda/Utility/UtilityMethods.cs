@@ -1,10 +1,9 @@
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 
 namespace LegendOfZelda.Utility
 {
-    static class UtilityMethods
+    internal static class UtilityMethods
     {
         public static bool ItemIsOutOfBounds(Point position)
         {
@@ -22,7 +21,8 @@ namespace LegendOfZelda.Utility
             if (collisionFound.Height > collisionFound.Width) // will be a right or left collision -- check by comparing X values of spawnables
             {
                 return mainSpawnable.X > secondarySpawnable.X ? Constants.Direction.Right : Constants.Direction.Left;
-            } else // else width > height -- so up or down collision -- check by comparing Y values of spawnables
+            }
+            else // else width > height -- so up or down collision -- check by comparing Y values of spawnables
             {
                 return mainSpawnable.Y > secondarySpawnable.Y ? Constants.Direction.Down : Constants.Direction.Up;
             }
@@ -30,7 +30,7 @@ namespace LegendOfZelda.Utility
 
         public static Constants.Direction InvertDirection(Constants.Direction direction)
         {
-            switch(direction)
+            switch (direction)
             {
                 case Constants.Direction.Right:
                     return Constants.Direction.Left;

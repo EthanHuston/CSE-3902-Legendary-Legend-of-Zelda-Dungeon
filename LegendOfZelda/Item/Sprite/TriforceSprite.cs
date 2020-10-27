@@ -4,14 +4,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class TriforceSprite : ISprite
+    internal class TriforceSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private const int numRows = 2;
         private const int numColumns = 1;
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
+        private readonly int totalFrames;
         private Rectangle destinationRectangle;
 
         public TriforceSprite(Texture2D sprite)

@@ -4,7 +4,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Item
 {
-    class LinkPickingUpHeartState : LinkLazyAbstractState
+    internal class LinkPickingUpHeartState : LinkLazyAbstractState
     {
         public const int spawnOffsetX = 0;
         public const int spawnOffsetY = -14;

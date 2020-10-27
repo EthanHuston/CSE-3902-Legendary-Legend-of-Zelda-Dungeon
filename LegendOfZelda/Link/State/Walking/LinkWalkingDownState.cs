@@ -6,7 +6,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Walking
 {
-    class LinkWalkingDownState : LinkActiveAbstractState
+    internal class LinkWalkingDownState : LinkActiveAbstractState
     {
         private int distanceWalked;
 

@@ -5,10 +5,10 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Jelly : INpc
+    internal class Jelly : INpc
     {
-        private IDamageableSprite sprite;
-        private SpriteBatch spriteBatch;
+        private readonly IDamageableSprite sprite;
+        private readonly SpriteBatch spriteBatch;
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
@@ -16,7 +16,7 @@ namespace LegendOfZelda.Enemies
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
-        Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -51,7 +51,7 @@ namespace LegendOfZelda.Enemies
             sprite.Draw(spriteBatch, position, damaged);
         }
         private void ChooseDirection()
-        { 
+        {
             upDown = rand.Next(0, 2); // 0 for x, 1 for y
             leftRight = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }

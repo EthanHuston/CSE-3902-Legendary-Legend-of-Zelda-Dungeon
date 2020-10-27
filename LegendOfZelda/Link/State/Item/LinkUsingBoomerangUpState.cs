@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Item
 {
-    class LinkUsingBoomerangUpState : LinkLazyAbstractState
+    internal class LinkUsingBoomerangUpState : LinkLazyAbstractState
     {
         public LinkUsingBoomerangUpState(LinkPlayer link) : base(link)
         {

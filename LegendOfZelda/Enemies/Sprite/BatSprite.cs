@@ -4,16 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class BatSprite : IDamageableSprite
+    internal class BatSprite : IDamageableSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private const int numRows = 1;
         private const int numColumns = 2;
         private const int frameDelay = 30;
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
-        private int spriteScaler = Constants.SpriteScaler;
+        private readonly int totalFrames;
+        private readonly int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private bool flashRed;

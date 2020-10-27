@@ -1,17 +1,11 @@
-﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class SwordAttackingSprite : IProjectileSprite
+    internal class SwordAttackingSprite : IProjectileSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private bool animationIsDone;
         private int currentFrame;
         private int bufferFrame;

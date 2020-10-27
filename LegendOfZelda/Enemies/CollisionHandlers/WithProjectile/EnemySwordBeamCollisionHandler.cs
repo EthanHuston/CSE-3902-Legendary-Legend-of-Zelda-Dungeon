@@ -1,10 +1,9 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile
 {
-    class EnemySwordBeamCollisionHandler : ICollisionHandler<INpc, IProjectile>
+    internal class EnemySwordBeamCollisionHandler : ICollisionHandler<INpc, IProjectile>
     {
         public void HandleCollision(INpc enemy, IProjectile swordBeam, Constants.Direction side)
         {

@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Attacking
 {
-    class LinkAttackingDownState : LinkLazyAbstractState
+    internal class LinkAttackingDownState : LinkLazyAbstractState
     {
         public LinkAttackingDownState(LinkPlayer link) : base(link)
         {

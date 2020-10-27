@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Item
 {
-    class LinkUsingSwordBeamRightState : LinkLazyAbstractState
+    internal class LinkUsingSwordBeamRightState : LinkLazyAbstractState
     {
         public LinkUsingSwordBeamRightState(LinkPlayer link) : base(link)
         {

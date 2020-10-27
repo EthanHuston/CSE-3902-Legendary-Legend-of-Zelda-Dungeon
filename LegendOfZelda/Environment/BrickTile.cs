@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class BrickTile : IBlock
+    internal class BrickTile : IBlock
     {
-        private ISprite brickTileSprite;
-        private SpriteBatch sB;
+        private readonly ISprite brickTileSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
 
         private Point position;

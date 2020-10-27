@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.NotMoving
 {
-    class LinkStandingStillDownState : LinkActiveAbstractState
+    internal class LinkStandingStillDownState : LinkActiveAbstractState
     {
         public LinkStandingStillDownState(LinkPlayer link) : base(link)
         {

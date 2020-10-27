@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Link.State.Attacking;
+﻿using LegendOfZelda.Link.State.Attacking;
 using LegendOfZelda.Link.State.Item;
 using LegendOfZelda.Link.State.NotMoving;
 using Microsoft.Xna.Framework;
@@ -7,7 +6,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Walking
 {
-    class LinkWalkingUpState : LinkActiveAbstractState
+    internal class LinkWalkingUpState : LinkActiveAbstractState
     {
         private int distanceWalked;
 

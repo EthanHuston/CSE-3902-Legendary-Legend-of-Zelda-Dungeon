@@ -5,18 +5,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class SpikeTrap : INpc
+    internal class SpikeTrap : INpc
     {
-        private IDamageableSprite sprite;
-        private SpriteBatch spriteBatch;
-        private int maxDistanceX = Constants.SpikeTrapMaxDistX;
-        private int maxDistanceY = Constants.SpikeTrapMaxDistY;
+        private readonly IDamageableSprite sprite;
+        private readonly SpriteBatch spriteBatch;
+        private readonly int maxDistanceX = Constants.SpikeTrapMaxDistX;
+        private readonly int maxDistanceY = Constants.SpikeTrapMaxDistY;
         private int currentDist = 0;
-        private int goingVelocity = Constants.SpikeTrapGoingVelocity;
-        private int returningVelocity = Constants.SpikeTrapReturningVelocity;
+        private readonly int goingVelocity = Constants.SpikeTrapGoingVelocity;
+        private readonly int returningVelocity = Constants.SpikeTrapReturningVelocity;
         private bool returning = false;
         private bool going = false;
-        private IPlayer link;
+        private readonly IPlayer link;
         private Rectangle LinkPosition;
         private Rectangle TrapPosition;
         private Constants.Direction currentDirection;
@@ -57,7 +57,9 @@ namespace LegendOfZelda.Enemies
                 {
                     GoingDown();
                 }
-            }else if(!returning){
+            }
+            else if (!returning)
+            {
                 CheckOverlap();
             }
             else

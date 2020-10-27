@@ -1,10 +1,9 @@
-﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class BombExplodingSprite : IProjectileSprite
+    internal class BombExplodingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private bool animationIsFinished;

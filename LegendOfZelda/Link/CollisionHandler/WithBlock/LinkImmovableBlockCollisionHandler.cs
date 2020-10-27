@@ -4,14 +4,14 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkImmovableBlockCollisionHandler : ICollisionHandler<IPlayer, IBlock>
+    internal class LinkImmovableBlockCollisionHandler : ICollisionHandler<IPlayer, IBlock>
     {
         private const int linkMoveDistance = 1;
 
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
             Vector2 correctDirection;
-            switch(side)
+            switch (side)
             {
                 case Constants.Direction.Up:
                     correctDirection = new Vector2(Constants.LinkNoMove, Constants.LinkMoveUp);

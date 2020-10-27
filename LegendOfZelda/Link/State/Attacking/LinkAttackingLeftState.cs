@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Attacking
 {
-    class LinkAttackingLeftState : LinkLazyAbstractState
+    internal class LinkAttackingLeftState : LinkLazyAbstractState
     {
         private const int spawnOffsetX = -16;
         private const int spawnOffsetY = 0;

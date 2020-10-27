@@ -1,7 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
-using System.Diagnostics.PerformanceData;
-using LegendOfZelda.Rooms;
 
 namespace LegendOfZelda
 {
@@ -25,7 +22,7 @@ namespace LegendOfZelda
         // Link
         public const int LinkWalkStepDistanceInterval = 1;
         public const int LinkWalkDistanceInterval = 8;
-        public const int LinkStartingHealth = 60;
+        public const int LinkStartingHealth = 1000; // gave Link large health for this sprint
         public const int LinkDamageEffectTimeMs = 2000;
         public const int LinkDamageFlashDelayTicks = 5;
         public const int LinkPickingUpItemPauseTicks = 60;

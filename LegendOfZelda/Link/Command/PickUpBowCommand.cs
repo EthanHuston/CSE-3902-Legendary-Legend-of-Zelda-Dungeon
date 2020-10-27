@@ -2,9 +2,9 @@
 
 namespace LegendOfZelda.Link.Command
 {
-    class PickUpBowCommand : ICommand
+    internal class PickUpBowCommand : ICommand
     {
-        private IPlayer link;
+        private readonly IPlayer link;
         public PickUpBowCommand(IPlayer player)
         {
             link = player;

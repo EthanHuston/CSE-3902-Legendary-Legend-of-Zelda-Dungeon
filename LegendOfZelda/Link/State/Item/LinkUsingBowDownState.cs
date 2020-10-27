@@ -5,7 +5,7 @@ using System;
 
 namespace LegendOfZelda.Link.State.Item
 {
-    class LinkUsingBowDownState : LinkLazyAbstractState
+    internal class LinkUsingBowDownState : LinkLazyAbstractState
     {
         public LinkUsingBowDownState(LinkPlayer link) : base(link)
         {
