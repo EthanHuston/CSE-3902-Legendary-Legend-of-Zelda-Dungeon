@@ -7,6 +7,8 @@ namespace LegendOfZelda.Link.State.Item
 {
     class LinkUsingBombUpState : LinkLazyAbstractState
     {
+        private const int spawnOffsetX = 0 * Constants.SpriteScaler;
+        private const int spawnOffsetY = -16 * Constants.SpriteScaler;
         public LinkUsingBombUpState(LinkPlayer link) : base(link)
         {
         }
@@ -17,7 +19,7 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            link.SpawnItem(new BombExplodingProjectile(link.Game.SpriteBatch, link.Position, Constants.ItemOwner.Link));
+            link.SpawnItem(new BombExplodingProjectile(link.Game.SpriteBatch, new Point(link.Position.X + spawnOffsetX, link.Position.Y + spawnOffsetY), Constants.ItemOwner.Link));
             link.Velocity = (Vector2.Zero);
         }
 
