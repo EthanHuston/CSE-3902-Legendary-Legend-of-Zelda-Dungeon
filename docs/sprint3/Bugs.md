@@ -8,6 +8,7 @@ For the most part everything works pretty good. However, we did have some issues
 - Goriya movement logic is acting strange; they get stuck in the corners and room is too easy as they don't throw the boomerang at Link
 - If you just tap Link's movement keys repeatedly, he will alternate between walking and animating
 - It is difficult to walk Link between two blocks that have a gap of 1 tile (16 px * SpriteScaler)
+- Link can spam as many boomerangs/arrow/sword beams as he wants to; fix by putting a can spawn boolean in LinkPlayer.cs
 
 ### From Sprint 2
 - [[fixed]: ](../sprint2/Bugs.md)Fireball sprite animates incorrectly when shot from Aquamentus
