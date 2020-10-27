@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
-    class SwordBeamFlyingSprite : IItemSprite
+    class SwordBeamFlyingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
@@ -14,6 +14,7 @@ namespace LegendOfZelda.Item.Sprite
         private int frameHeight;
         private const int numRows = 1;
         private const int numColumns = 4;
+        private const int frameDelay = 10;
 
         public SwordBeamFlyingSprite(Texture2D sprite)
         {
@@ -27,7 +28,7 @@ namespace LegendOfZelda.Item.Sprite
 
         public void Update()
         {
-            if (++bufferFrame == Constants.FrameDelay)
+            if (++bufferFrame == frameDelay)
             {
                 currentFrame = currentFrame == totalFrames - 1 ? 0 : currentFrame + 1;
                 bufferFrame = 0;
@@ -40,11 +41,9 @@ namespace LegendOfZelda.Item.Sprite
             int currentColumn = currentFrame;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public bool FinishedAnimation()
@@ -52,9 +51,9 @@ namespace LegendOfZelda.Item.Sprite
             return false; // not used, BoomerangFlying class keeps track of this
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
-            return sprite.Bounds;
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }

@@ -2,21 +2,24 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
-    class ArrowFlyingSprite : IItemSprite
+    class ArrowFlyingSprite : IProjectileSprite
     {
         private Texture2D sprite;
+        private Rectangle destinationRectangle;
+
         public ArrowFlyingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            destinationRectangle = Rectangle.Empty;
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            spriteBatch.Begin();
-            spriteBatch.Draw(sprite, position.ToVector2(), Color.White);
-            spriteBatch.End();
+            destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
+
+            spriteBatch.Draw(sprite, destinationRectangle, Color.White);
         }
 
         public void Update()
@@ -29,9 +32,9 @@ namespace LegendOfZelda.Item.Sprite
             return false; // not used
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
-            return sprite.Bounds;
+            return destinationRectangle;
         }
     }
 }

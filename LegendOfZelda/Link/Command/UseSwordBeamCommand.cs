@@ -1,15 +1,17 @@
-﻿namespace LegendOfZelda.Link.Command
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Link.Command
 {
     class UseSwordBeamCommand : ICommand
     {
-        private Game1 loz;
-        public UseSwordBeamCommand(Game1 game)
+        private IPlayer link;
+        public UseSwordBeamCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.UseSwordBeam();
+            link.UseSwordBeam();
         }
     }
 }

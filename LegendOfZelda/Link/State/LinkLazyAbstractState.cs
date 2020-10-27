@@ -1,4 +1,8 @@
-﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Enemies;
+using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State.Walking;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State
@@ -8,6 +12,7 @@ namespace LegendOfZelda.Link.State
         protected LinkPlayer link;
         protected bool damaged;
         protected DateTime healthyDateTime;
+        protected DateTime lastDraggedTime;
 
         public LinkLazyAbstractState(LinkPlayer link)
         {
@@ -33,7 +38,7 @@ namespace LegendOfZelda.Link.State
 
         public abstract void StopMoving();
 
-        public void BeDamaged(int damage)
+        public void BeDamaged(double damage)
         {
             if (!damaged)
             {
@@ -43,7 +48,7 @@ namespace LegendOfZelda.Link.State
             }
         }
 
-        public void BeHealthy(int healAmount)
+        public void BeHealthy(double healAmount)
         {
             damaged = false;
             link.AddHealth(healAmount);
@@ -117,6 +122,14 @@ namespace LegendOfZelda.Link.State
         public virtual void UseSwordBeam()
         {
             // Does nothing by default since most states do this
+        }
+
+        public virtual void Drag(ISpawnable dragger, int dragTimeMs)
+        {
+            if (DateTime.Now.CompareTo(lastDraggedTime.AddMilliseconds(Constants.DragAgainDelayMs)) > 0) return;
+            link.BlockStateChange = false;
+            lastDraggedTime = DateTime.Now;
+            link.State = new LinkBeingDraggedState(link, damaged, healthyDateTime, dragger, dragTimeMs);
         }
     }
 }

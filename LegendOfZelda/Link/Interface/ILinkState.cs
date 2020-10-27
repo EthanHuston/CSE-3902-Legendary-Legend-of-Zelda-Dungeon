@@ -1,3 +1,5 @@
+using LegendOfZelda.Interface;
+
 namespace LegendOfZelda.Link.Interface
 {
     interface ILinkState
@@ -8,8 +10,8 @@ namespace LegendOfZelda.Link.Interface
         void MoveRight();
         void MoveDown();
         void MoveUp();
-        void BeDamaged(int damage);
-        void BeHealthy(int healAmount);
+        void BeDamaged(double damage);
+        void BeHealthy(double healAmount);
         void StopMoving();
         void PickUpSword();
         void PickUpHeartContainer();
@@ -21,5 +23,6 @@ namespace LegendOfZelda.Link.Interface
         void UseSword();
         void UseBow();
         void UseSwordBeam();
+        void Drag(ISpawnable drag, int dragTimeMs);
     }
 }

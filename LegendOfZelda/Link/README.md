@@ -4,4 +4,4 @@ Holds all states, commands, items, and sprites for Link.
 
 ---
 ### TODO:
-- Modify spawn location when link uses sword so he doesn't pop right/left/up/down from his current location
+- Simplify Link's using item states. For the ones in which he shoots and arrow or swordbeam, we don't need to change states as we can just call item spawner and spawn them within the current state.

@@ -34,21 +34,31 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             Draw(spriteBatch, position, false);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
-            spriteBatch.Begin();
-            spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
-            spriteBatch.End();
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Height);
+
+            spriteBatch.Draw(sprite, destinationRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
+        {
+            Draw(spriteBatch, position, false);
         }
 
         public bool FinishedAnimation()
         {
             return animationIsDone;
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return new Rectangle(0, 0, sprite.Width, sprite.Height);
         }
     }
 }

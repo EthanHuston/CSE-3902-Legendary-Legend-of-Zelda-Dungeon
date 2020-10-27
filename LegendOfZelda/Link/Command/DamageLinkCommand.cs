@@ -1,15 +1,17 @@
-﻿namespace LegendOfZelda.Link.Command
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Link.Command
 {
     class DamageLinkCommand : ICommand
     {
-        private Game1 loz;
-        public DamageLinkCommand(Game1 game)
+        private IPlayer link;
+        public DamageLinkCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.TakeDamage(10); // Arbitrary number for the purposes of Sprint 2.
+            link.BeDamaged(10); // Arbitrary number for the purposes of Sprint 2.
         }
     }
 }

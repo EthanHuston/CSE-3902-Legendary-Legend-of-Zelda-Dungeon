@@ -2,19 +2,21 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
-    class BombExplodingSprite : IItemSprite
+    class BombExplodingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private bool animationIsFinished;
         private int delayBeforeExplosionCounter;
         private int bufferFrame;
         private int currentFrame;
+        private Rectangle destinationRectangle;
         private const int totalFrames = 4;
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int delayBeforeExplosion = 60;
+        private bool isExploding;
 
         public BombExplodingSprite(Texture2D sprite)
         {
@@ -22,6 +24,8 @@ namespace LegendOfZelda.Item.Sprite
             delayBeforeExplosionCounter = 0;
             bufferFrame = 0;
             currentFrame = 0;
+            destinationRectangle = Rectangle.Empty;
+            isExploding = false;
         }
 
         public void Update()
@@ -31,6 +35,7 @@ namespace LegendOfZelda.Item.Sprite
             {
                 currentFrame++;
                 bufferFrame = 0;
+                isExploding = true;
             }
 
             animationIsFinished = currentFrame >= totalFrames - 1;
@@ -46,7 +51,7 @@ namespace LegendOfZelda.Item.Sprite
             int currentColumn = currentFrame % totalFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.SpriteScaler), (int)(height * Constants.SpriteScaler));
+            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -56,9 +61,14 @@ namespace LegendOfZelda.Item.Sprite
             return animationIsFinished;
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
-            return sprite.Bounds;
+            return destinationRectangle;
+        }
+
+        public bool IsExploding()
+        {
+            return isExploding;
         }
     }
 }

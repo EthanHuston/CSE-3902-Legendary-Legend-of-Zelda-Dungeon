@@ -11,6 +11,7 @@ namespace LegendOfZelda.Link.Sprite
         private bool flashRed;
         private int damageColorCounter;
         private int delayCounter;
+        private Rectangle destinationRectangle;
 
         public PickingUpItemLinkSprite(Texture2D sprite)
         {
@@ -19,6 +20,7 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             delayCounter = 0;
+            destinationRectangle = Rectangle.Empty;
         }
 
         public void Update()
@@ -34,21 +36,31 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
             Draw(spriteBatch, position, false);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
-            spriteBatch.Begin();
-            spriteBatch.Draw(sprite, position, flashRed && drawWithDamage ? Color.Red : Color.White);
-            spriteBatch.End();
+            destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Height);
+
+            spriteBatch.Draw(sprite, destinationRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
 
         public bool FinishedAnimation()
         {
             return animationIsDone;
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return destinationRectangle;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
+        {
+            Draw(spriteBatch, position, false);
         }
     }
 }

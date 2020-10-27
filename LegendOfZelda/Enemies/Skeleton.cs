@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,75 +7,209 @@ namespace LegendOfZelda.Enemies
 {
     class Skeleton : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
-        private int minXVal = 0;
-        private int maxXVal = 800;
-        private int minYVal = 0;
-        private int maxYVal = 480;
         private int movementBuffer = 0;
-        private int upDown = 0;
-        private int leftRight = 0;
         private double health = 2;
+        private Constants.Direction direction = Constants.Direction.Down;
+        private Constants.Direction knockbackOrigin = Constants.Direction.Down;
+        private bool safeToDespawn = false;
+        private bool inKnockback = false;
+        private DateTime healthyDateTime;
+        private bool damaged;
+        private Random rand = RoomConstants.randomGenerator;
 
-        public Skeleton(SpriteBatch spriteBatch)
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public Skeleton(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateSkeletonSprite();
+            sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
             this.spriteBatch = spriteBatch;
+            Position = spawnPosition;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
         public void Update()
         {
-            movementBuffer++;
-            if (movementBuffer == 20)
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            safeToDespawn = !safeToDespawn && health <= 0;
+
+            if (!inKnockback)
             {
-                movementBuffer = 0;
-                ChooseDirection();
+                movementBuffer++;
+                if (movementBuffer == 20)
+                {
+                    movementBuffer = 0;
+                    ChooseDirection();
+                }
+                else
+                {
+                    Move();
+                    CheckBounds();
+                }
             }
             else
             {
-                Move();
+                MoveKnockback(knockbackOrigin);
             }
             sprite.Update();
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
+            sprite.Draw(spriteBatch, position, inKnockback);
         }
         private void ChooseDirection()
         {
-            Random rand = new Random();
-            upDown = rand.Next(0, 2); // 0 for x, 1 for y
-            leftRight = rand.Next(0, 2); // 0 right/down. 1 for left/up
+            int newDirection = rand.Next(0, 4);
+            switch (newDirection)
+            {
+                case 0:
+                    direction = Constants.Direction.Down;
+                    break;
+                case 1:
+                    direction = Constants.Direction.Up;
+                    break;
+                case 2:
+                    direction = Constants.Direction.Left;
+                    break;
+                case 3:
+                    direction = Constants.Direction.Right;
+                    break;
+                default:
+                    break;
+            }
         }
         private void Move()
         {
-            if (upDown == 0 && leftRight == 0 && position.X + 32 < maxXVal)
+            switch (direction)
+            {
+                case Constants.Direction.Up: // Up
+                    position.Y--;
+                    break;
+                case Constants.Direction.Down: // Down
+                    position.Y++;
+                    break;
+                case Constants.Direction.Left: // Left
+                    position.X--;
+                    break;
+                case Constants.Direction.Right: // Right
+                    position.X++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void MoveKnockback(Constants.Direction knockDirection)
+        {
+            inKnockback = true;
+            switch (direction)
+            {
+                case Constants.Direction.Up: // Up
+                    position.Y++;
+                    break;
+                case Constants.Direction.Down: // Down
+                    position.Y--;
+                    break;
+                case Constants.Direction.Left: // Left
+                    position.X++;
+                    break;
+                case Constants.Direction.Right: // Right
+                    position.X--;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void CheckBounds()
+        {
+            if (position.X < Constants.MinXPos)
             {
                 position.X++;
+                ChangeDirection(Constants.Direction.Right); // Right
             }
-            else if (upDown == 0 && leftRight == 1 && position.X - 32 > minXVal)
+
+            else if (position.X > Constants.MaxXPos)
             {
-                position.X++;
+                position.X--;
+                ChangeDirection(Constants.Direction.Left); // Left
             }
-            else if (upDown == 1 && leftRight == 0 && position.Y + 32 < maxYVal)
-            {
-                position.Y--;
-            }
-            else if (position.Y - 32 > minYVal)
+
+            if (position.Y < Constants.MinYPos)
             {
                 position.Y++;
+                ChangeDirection(Constants.Direction.Down); // Down
+            }
+
+            else if (position.Y > Constants.MaxYPos)
+            {
+                position.Y--;
+                ChangeDirection(Constants.Direction.Up); // Up
             }
         }
-        public void ResetPosition()
+        private void ChangeDirection(Constants.Direction dir)
         {
-            position.X = ConstantsSprint2.enemyNPCX;
-            position.Y = ConstantsSprint2.enemyNPCY;
+            direction = dir;
+
+            switch (direction)
+            {
+                case Constants.Direction.Up: // Up
+                    this.direction = Constants.Direction.Up;
+                    break;
+                case Constants.Direction.Down: // Down
+                    this.direction = Constants.Direction.Down;
+                    break;
+                case Constants.Direction.Left: // Left
+                    this.direction = Constants.Direction.Left;
+                    break;
+                case Constants.Direction.Right: // Right
+                    this.direction = Constants.Direction.Right;
+                    break;
+                default:
+                    break;
+            }
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(double damage)
         {
-            health = health - damage;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
+        }
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+        public Rectangle GetRectangle()
+        {
+            return sprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            inKnockback = changeKnockback;
+            if (inKnockback)
+            {
+                knockbackOrigin = knockDirection;
+            }
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
         }
     }
 }

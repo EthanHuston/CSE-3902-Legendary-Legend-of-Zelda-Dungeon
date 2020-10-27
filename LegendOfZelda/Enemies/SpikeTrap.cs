@@ -1,85 +1,224 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
+using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace LegendOfZelda.Enemies
 {
     class SpikeTrap : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
-        private int maxDistance = 50;
+        private int maxDistanceX = Constants.SpikeTrapMaxDistX;
+        private int maxDistanceY = Constants.SpikeTrapMaxDistY;
         private int currentDist = 0;
-        bool returning = false;
-        bool going = false;
-        private int xOrYDir = 0;
+        private int goingVelocity = Constants.SpikeTrapGoingVelocity;
+        private int returningVelocity = Constants.SpikeTrapReturningVelocity;
+        private bool returning = false;
+        private bool going = false;
+        private IPlayer link;
+        private Rectangle LinkPosition;
+        private Rectangle TrapPosition;
+        private Constants.Direction currentDirection;
+        private bool safeToDespawn;
 
-        public SpikeTrap(SpriteBatch spriteBatch)
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public SpikeTrap(SpriteBatch spriteBatch, Point spawnPosition, IPlayer link)
         {
-            sprite = SpriteFactory.Instance.CreateSpikeTrapSprite();
+            sprite = EnemySpriteFactory.Instance.CreateSpikeTrapSprite();
             this.spriteBatch = spriteBatch;
+            this.link = link;
+            Position = spawnPosition;
+            safeToDespawn = false;
         }
 
         public void Update()
         {
-            //Needs new implementation with Link knowledge
+            sprite.Update();
+            LinkPosition = link.GetRectangle();
+            TrapPosition = sprite.GetPositionRectangle();
+            if (going)
+            {
+                if (currentDirection == Constants.Direction.Left)
+                {
+                    GoingLeft();
+                }
+                else if (currentDirection == Constants.Direction.Right)
+                {
+                    GoingRight();
+                }
+                else if (currentDirection == Constants.Direction.Up)
+                {
+                    GoingUp();
+                }
+                else
+                {
+                    GoingDown();
+                }
+            }else if(!returning){
+                CheckOverlap();
+            }
+            else
+            {
+                if (currentDirection == Constants.Direction.Left)
+                {
+                    ReturningRight();
+                }
+                else if (currentDirection == Constants.Direction.Right)
+                {
+                    ReturningLeft();
+                }
+                else if (currentDirection == Constants.Direction.Up)
+                {
+                    ReturningDown();
+                }
+                else
+                {
+                    ReturningUp();
+                }
+            }
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch,position);
+            sprite.Draw(spriteBatch, position);
         }
+        private void CheckOverlap()
+        {
+            if ((LinkPosition.Top <= TrapPosition.Bottom && LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Left >= TrapPosition.Right))
+            {
+                currentDirection = Constants.Direction.Right;
+                going = true;
 
-        private void ChooseDirection()
-        {
-            Random rand = new Random();
-            xOrYDir = rand.Next(0, 2); // 0 for x, 1 for y
+            }
+            else if ((LinkPosition.Top <= TrapPosition.Bottom && LinkPosition.Bottom >= TrapPosition.Top) && (LinkPosition.Right <= TrapPosition.Left))
+            {
+                currentDirection = Constants.Direction.Left;
+                going = true;
+
+            }
+            else if ((LinkPosition.Bottom <= TrapPosition.Top) && (LinkPosition.Left <= TrapPosition.Right && LinkPosition.Right >= TrapPosition.Left))
+            {
+                currentDirection = Constants.Direction.Up;
+                going = true;
+
+            }
+            else if ((LinkPosition.Top >= TrapPosition.Bottom) && (LinkPosition.Right >= TrapPosition.Left && LinkPosition.Left <= TrapPosition.Right))
+            {
+                currentDirection = Constants.Direction.Down;
+                going = true;
+            }
         }
-        private void MoveGoing()
+        private void GoingRight()
         {
-            if (xOrYDir == 0)
-            {
-                position.X = position.X + 2;
-                currentDist = currentDist + 2;
-            }
-            else
-            {
-                position.Y = position.Y - 2;
-                currentDist = currentDist + 2;
-            }
-            if (currentDist >= maxDistance)
+            position.X += goingVelocity;
+            currentDist += goingVelocity;
+            if (currentDist >= maxDistanceX)
             {
                 returning = true;
                 going = false;
-                currentDist = 0;
-            }
-        }
-        private void MoveReturning()
-        {
-            if (xOrYDir == 0)
-            {
-                position.X = position.X--;
-                currentDist++;
-            }
-            else
-            {
-                position.Y = position.Y++;
-                currentDist++;
             }
 
-            if (currentDist >= maxDistance)
+        }
+        private void ReturningLeft()
+        {
+            position.X -= returningVelocity;
+            currentDist -= returningVelocity;
+            if (currentDist <= 0)
             {
                 returning = false;
-                currentDist = 0;
             }
-
         }
-        public void ResetPosition()
+        private void ReturningRight()
         {
-            position.X = ConstantsSprint2.enemyNPCX;
-            position.Y = ConstantsSprint2.enemyNPCY;
+            position.X += returningVelocity;
+            currentDist -= returningVelocity;
+            if (currentDist <= 0)
+            {
+                returning = false;
+            }
+        }
+        private void ReturningUp()
+        {
+            position.Y -= returningVelocity;
+            currentDist -= returningVelocity;
+            if (currentDist <= 0)
+            {
+                returning = false;
+            }
+        }
+        private void ReturningDown()
+        {
+            position.Y += returningVelocity;
+            currentDist -= returningVelocity;
+            if (currentDist <= 0)
+            {
+                returning = false;
+            }
+        }
+        private void GoingLeft()
+        {
+            position.X -= goingVelocity;
+            currentDist += goingVelocity;
+            if (currentDist >= maxDistanceX)
+            {
+                returning = true;
+                going = false;
+            }
+        }
+        private void GoingUp()
+        {
+            position.Y -= goingVelocity;
+            currentDist += goingVelocity;
+            if (currentDist >= maxDistanceY)
+            {
+                returning = true;
+                going = false;
+            }
+        }
+        private void GoingDown()
+        {
+            position.Y += goingVelocity;
+            currentDist += goingVelocity;
+            if (currentDist >= maxDistanceY)
+            {
+                returning = true;
+                going = false;
+            }
+        }
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+        public Rectangle GetRectangle()
+        {
+            return sprite.GetPositionRectangle();
+        }
+
+        public void TakeDamage(double damage)
+        {
+            // spike trap is invincible
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // cannot be knocketh backeth
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
         }
     }
 }

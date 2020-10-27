@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -6,16 +7,17 @@ namespace LegendOfZelda.Item
 {
     abstract class GenericItem : IItem
     {
-        protected IItemSprite sprite;
+        protected ISprite sprite;
         protected bool itemIsExpired;
-        protected Point position;
         protected SpriteBatch spriteBatch;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public GenericItem(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            position.X = spawnPosition.X;
-            position.Y = spawnPosition.Y;
+            Position = spawnPosition;
         }
 
         protected abstract void CheckItemIsExpired();
@@ -38,7 +40,7 @@ namespace LegendOfZelda.Item
 
         public Rectangle GetRectangle()
         {
-            Rectangle size = sprite.GetSizeRectangle();
+            Rectangle size = sprite.GetPositionRectangle();
             return new Rectangle(position.X, position.Y, size.Width, size.Height);
         }
 
@@ -56,6 +58,11 @@ namespace LegendOfZelda.Item
         {
             this.position.X = position.X;
             this.position.Y = position.Y;
+        }
+
+        public void Despawn()
+        {
+            itemIsExpired = true;
         }
     }
 }

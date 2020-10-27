@@ -1,5 +1,6 @@
 using LegendOfZelda.Link.State.Attacking;
 using LegendOfZelda.Link.State.Item;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State.NotMoving
@@ -14,20 +15,27 @@ namespace LegendOfZelda.Link.State.NotMoving
         {
         }
 
+        public LinkStandingStillLeftState(LinkPlayer link, bool damaged, DateTime healthyDateTime, bool walkingToggle) : this(link, damaged, healthyDateTime)
+        {
+            this.walkingToggle = walkingToggle;
+        }
+
         protected override void InitClass()
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkLeftSprite();
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            link.Mover.Update();
         }
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged);
         }
 
         public override void StopMoving()
@@ -37,27 +45,27 @@ namespace LegendOfZelda.Link.State.NotMoving
 
         public override void UseSword()
         {
-            link.SetState(new LinkAttackingLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkAttackingLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBow()
         {
-            link.SetState(new LinkUsingBowLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBowLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBomb()
         {
-            link.SetState(new LinkUsingBombLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBombLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBoomerang()
         {
-            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseSwordBeam()
         {
-            link.SetState(new LinkUsingSwordBeamLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingSwordBeamLeftState(link, damaged, healthyDateTime);
         }
     }
 }

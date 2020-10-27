@@ -31,17 +31,7 @@ namespace LegendOfZelda.Link
         private Texture2D linkPickingUpBowSprite;
         private Texture2D linkPickingUpBoomerangSprite;
 
-        private static LinkSpriteFactory instance = new LinkSpriteFactory();
-        public static LinkSpriteFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-        private LinkSpriteFactory()
-        {
-        }
+        public static LinkSpriteFactory Instance { get; } = new LinkSpriteFactory();
 
         public void LoadAllTextures(ContentManager content)
         {
@@ -50,10 +40,10 @@ namespace LegendOfZelda.Link
             idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
             idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
             idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
-            strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkStrikingDown");
-            strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkStrikingLeft");
-            strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkStrikingRight");
-            strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkStrikingUp");
+            strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkSwordDown");
+            strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkSwordLeft");
+            strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkSwordRight");
+            strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkSwordUp");
             pickingUpItemLinkSprite = content.Load<Texture2D>("Link/LinkPickingUpItem");
             usingItemDownLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemDown");
             usingItemUpLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemUp");
@@ -69,7 +59,7 @@ namespace LegendOfZelda.Link
             linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
             linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
         }
-        // Link Sprites
+
         public ILinkSprite CreateIdleLinkDownSprite()
         {
             return new IdleLinkSprite(idleLinkDownSprite);

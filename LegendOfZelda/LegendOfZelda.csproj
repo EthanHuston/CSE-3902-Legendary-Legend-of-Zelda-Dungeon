@@ -57,51 +57,138 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Interface\IBlock.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\MovableSquareBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemySwordCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyProjectileDoNothingCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemySwordBeamCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyBoomerangCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyBombCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithProjectile\EnemyArrowCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\GoriyaBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\HandBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\JellyBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\SkeletonBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\SpikeTrapBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\EnemySpriteFactory.cs" />
+    <Compile Include="Enemies\Sprite\AquamentusBreathingSprite.cs" />
+    <Compile Include="Enemies\Sprite\AquamentusWalkingSprite.cs" />
+    <Compile Include="Enemies\Sprite\BatSprite.cs" />
+    <Compile Include="Enemies\Sprite\GoriyaDownSprite.cs" />
+    <Compile Include="Enemies\Sprite\GoriyaLeftSprite.cs" />
+    <Compile Include="Enemies\Sprite\GoriyaRightSprite.cs" />
+    <Compile Include="Enemies\Sprite\GoriyaUpSprite.cs" />
+    <Compile Include="Enemies\Sprite\HandSprite.cs" />
+    <Compile Include="Enemies\Sprite\JellySprite.cs" />
+    <Compile Include="Enemies\Sprite\MerchantSprite.cs" />
+    <Compile Include="Enemies\Sprite\OldManSprite.cs" />
+    <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
+    <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
+    <Compile Include="Environment\IBackground.cs" />
+    <Compile Include="Environment\MovableSquare.cs" />
+    <Compile Include="Environment\RoomWall.cs" />
+    <Compile Include="Environment\Sprite\BlackBackgroundSprite.cs" />
+    <Compile Include="Environment\Sprite\TileBackgroundSprite.cs" />
+    <Compile Include="Environment\Sprite\WallSprite.cs" />
+    <Compile Include="Environment\BlackBackground.cs" />
+    <Compile Include="Environment\TileBackground.cs" />
+    <Compile Include="GameLogic\QuitGameCommand.cs" />
+    <Compile Include="GameLogic\ICollisionManager.cs" />
+    <Compile Include="GameLogic\MouseController.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkDoorCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkFireCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithNpc\LinkMovableBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDamageCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithNpc\LinkHandCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDoNothingCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
+    <Compile Include="Link\State\Walking\LinkBeingDraggedState.cs" />
+    <Compile Include="Projectile\SwordAttackingProjectile.cs" />
+    <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\SwordBeamBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
+    <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
+    <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
+    <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />
+    <Compile Include="Rooms\Commands\ChangeRoomRightCommand.cs" />
+    <Compile Include="Rooms\RoomGameState.cs" />
+    <Compile Include="Rooms\IGameState.cs" />
+    <Compile Include="Rooms\Commands\ChangeRoomUpCommand.cs" />
+    <Compile Include="Rooms\RoomFactory.cs" />
+    <Compile Include="GameLogic\CollisionHandlerDictionary.cs" />
+    <Compile Include="GameLogic\CollisionManager.cs" />
+    <Compile Include="Rooms\RoomConstants.cs" />
+    <Compile Include="GameLogic\SpawnableManager.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\BatBlockCollisionHandler.cs" />
+    <Compile Include="Enemies\CollisionHandlers\WithBlock\AquamentusBlockCollisionHandler.cs" />
+    <Compile Include="GameLogic\ICollisionHandler.cs" />
+    <Compile Include="Environment\IBlock.cs" />
     <Compile Include="Interface\ICommand.cs" />
-    <Compile Include="Interface\IController.cs" />
-    <Compile Include="Interface\IItem.cs" />
-    <Compile Include="Interface\INpc.cs" />
+    <Compile Include="GameLogic\IController.cs" />
+    <Compile Include="Interface\ITextureAtlasSprite.cs" />
+    <Compile Include="Interface\IDamageableSprite.cs" />
+    <Compile Include="Item\IItem.cs" />
+    <Compile Include="Enemies\INpc.cs" />
     <Compile Include="Interface\IDynamic.cs" />
-    <Compile Include="Interface\IItemSprite.cs" />
-    <Compile Include="Interface\IProjectile.cs" />
+    <Compile Include="Projectile\Sprite\IProjectileSprite.cs" />
+    <Compile Include="Projectile\IProjectile.cs" />
     <Compile Include="Interface\ISpawnable.cs" />
-    <Compile Include="Interface\IPlayer.cs" />
+    <Compile Include="GameLogic\ISpawnableManager.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
-    <Compile Include="Link\Interface\ILinkPlayer.cs" />
+    <Compile Include="Link\IPlayer.cs" />
+    <Compile Include="Item\ItemSpriteFactory.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkBombItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkBoomerangItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkBowItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkClockItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkCompassItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkFairyItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkHeartContainerItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkHeartItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkKeyItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkMapItemCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkRupeeItemCollision.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkTriforceItemCollisionHandler.cs" />
     <Compile Include="Link\State\LinkActiveAbstractState.cs" />
     <Compile Include="Link\State\LinkLazyAbstractState.cs" />
-    <Compile Include="NonInteractiveEnvironment\BombedOpening.cs" />
-    <Compile Include="NonInteractiveEnvironment\BrickTile.cs" />
-    <Compile Include="NonInteractiveEnvironment\Fire.cs" />
-    <Compile Include="NonInteractiveEnvironment\GapTile.cs" />
-    <Compile Include="NonInteractiveEnvironment\LadderTile.cs" />
-    <Compile Include="NonInteractiveEnvironment\LockedDoor.cs" />
-    <Compile Include="NonInteractiveEnvironment\OpenDoor.cs" />
-    <Compile Include="NonInteractiveEnvironment\ShutDoor.cs" />
-    <Compile Include="NonInteractiveEnvironment\Stairs.cs" />
-    <Compile Include="NonInteractiveEnvironment\Statues.cs" />
-    <Compile Include="NonInteractiveEnvironment\Walls.cs" />
-    <Compile Include="Projectile\ArrowFlyingItem.cs" />
-    <Compile Include="Projectile\BombExplodingItem.cs" />
-    <Compile Include="Projectile\BoomerangFlyingItem.cs" />
+    <Compile Include="Environment\BombedOpening.cs" />
+    <Compile Include="Environment\BrickTile.cs" />
+    <Compile Include="Environment\EnvironmentSpriteFactory.cs" />
+    <Compile Include="Environment\Fire.cs" />
+    <Compile Include="Environment\GapTile.cs" />
+    <Compile Include="Environment\LadderTile.cs" />
+    <Compile Include="Environment\LockedDoor.cs" />
+    <Compile Include="Environment\OpenDoor.cs" />
+    <Compile Include="Environment\ShutDoor.cs" />
+    <Compile Include="Environment\Stairs.cs" />
+    <Compile Include="Environment\Statues.cs" />
+    <Compile Include="Environment\Walls.cs" />
+    <Compile Include="Projectile\ArrowFlyingProjectile.cs" />
+    <Compile Include="Projectile\BombExplodingProjectile.cs" />
+    <Compile Include="Projectile\BoomerangFlyingProjectile.cs" />
     <Compile Include="Projectile\GenericProjectile.cs" />
+    <Compile Include="Projectile\ProjectileSpriteFactory.cs" />
     <Compile Include="Projectile\Sprite\ArrowFlyingSprite.cs" />
     <Compile Include="Projectile\Sprite\BombExplodingSprite.cs" />
     <Compile Include="Projectile\Sprite\BoomerangFlyingSprite.cs" />
     <Compile Include="Projectile\Sprite\SwordBeamExplodingSprite.cs" />
     <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
-    <Compile Include="Projectile\SwordBeamFlyingItem.cs" />
-    <Compile Include="Sprint2\ConstantsSprint2.cs" />
-    <Compile Include="Enemies\FireBall.cs" />
-    <Compile Include="Enemies\GoriyaBoomerang.cs" />
+    <Compile Include="Projectile\SwordBeamFlyingProjectile.cs" />
+    <Compile Include="Rooms\CSVReader.cs" />
+    <Compile Include="Rooms\Room.cs" />
+    <Compile Include="Projectile\FireballProjectile.cs" />
     <Compile Include="Item\BombItem.cs" />
     <Compile Include="Item\BoomerangItem.cs" />
     <Compile Include="Item\BowItem.cs" />
     <Compile Include="Item\FairyItem.cs" />
     <Compile Include="Item\HeartItem.cs" />
-    <Compile Include="Item\HeartContainer.cs" />
+    <Compile Include="Item\HeartContainerItem.cs" />
     <Compile Include="Item\KeyItem.cs" />
     <Compile Include="Link\Command\UseSwordBeamCommand.cs" />
     <Compile Include="Link\LinkPlayer.cs" />
@@ -119,19 +206,10 @@
     <Compile Include="Link\State\Item\LinkUsingBombUpState.cs" />
     <Compile Include="Item\MapItem.cs" />
     <Compile Include="Item\RupeeItem.cs" />
-    <Compile Include="Sprint2\NextBlockCommand.cs" />
-    <Compile Include="Sprint2\NextEnemyCommand.cs" />
-    <Compile Include="Sprint2\NextItemCommand.cs" />
-    <Compile Include="Sprint2\PreviousBlockCommand.cs" />
-    <Compile Include="Sprint2\PreviousEnemyCommand.cs" />
-    <Compile Include="Sprint2\PreviousItemCommand.cs" />
-    <Compile Include="NonInteractiveEnvironment\RoomBorder.cs" />
-    <Compile Include="NonInteractiveEnvironment\TileBlack.cs" />
-    <Compile Include="NonInteractiveEnvironment\TileBlueGrass.cs" />
-    <Compile Include="NonInteractiveEnvironment\TileWater.cs" />
-    <Compile Include="Sprint2\ResetGameCommand.cs" />
-    <Compile Include="Sprites\GoriyaBoomerangSprite.cs" />
-    <Compile Include="Utility.cs" />
+    <Compile Include="Environment\RoomBorder.cs" />
+    <Compile Include="Environment\TileBlack.cs" />
+    <Compile Include="Environment\TileBlueGrass.cs" />
+    <Compile Include="Environment\TileWater.cs" />
     <Compile Include="Link\Command\UseBowCommand.cs" />
     <Compile Include="Link\Command\UseBombCommand.cs" />
     <Compile Include="Link\Command\PickUpBowCommand.cs" />
@@ -147,47 +225,35 @@
     <Compile Include="Link\Command\PickUpBoomerangCommand.cs" />
     <Compile Include="Link\Interface\ILinkSprite.cs" />
     <Compile Include="Link\Interface\ILinkState.cs" />
-    <Compile Include="Link\Interface\ISpawnedItems.cs" />
-    <Compile Include="Link\Item\LinkSpawnedItems.cs" />
     <Compile Include="Enemies\Goriya.cs" />
     <Compile Include="Enemies\Aquamentus.cs" />
-    <Compile Include="Sprites\ArrowSprite.cs" />
+    <Compile Include="Item\Sprite\ArrowSprite.cs" />
     <Compile Include="Enemies\Bat.cs" />
-    <Compile Include="Sprites\BatSprite.cs" />
-    <Compile Include="Sprites\BlockSprite.cs" />
-    <Compile Include="Sprites\BombSprite.cs" />
-    <Compile Include="Sprites\BoomerangSprite.cs" />
-    <Compile Include="Sprites\BowSprite.cs" />
+    <Compile Include="Environment\Sprite\SquareSprite.cs" />
+    <Compile Include="Item\Sprite\BombSprite.cs" />
+    <Compile Include="Item\Sprite\BoomerangSprite.cs" />
+    <Compile Include="Item\Sprite\BowSprite.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Sprites\BrickTileSprite.cs" />
-    <Compile Include="Sprites\LadderSprite.cs" />
-    <Compile Include="Sprites\RoomBorderSprite.cs" />
-    <Compile Include="Sprites\StairSprite.cs" />
-    <Compile Include="Sprites\DoorSprite.cs" />
+    <Compile Include="Environment\Sprite\BrickTileSprite.cs" />
+    <Compile Include="Environment\Sprite\LadderSprite.cs" />
+    <Compile Include="Environment\Sprite\RoomBorderSprite.cs" />
+    <Compile Include="Environment\Sprite\StairSprite.cs" />
+    <Compile Include="Environment\Sprite\DoorSprite.cs" />
     <Compile Include="Item\ClockItem.cs" />
-    <Compile Include="Sprites\ClockSprite.cs" />
+    <Compile Include="Item\Sprite\ClockSprite.cs" />
     <Compile Include="Item\CompassItem.cs" />
-    <Compile Include="Sprites\CompassSprite.cs" />
-    <Compile Include="Sprites\GoriyaRightSprite.cs" />
-    <Compile Include="Sprites\GoriyaLeftSprite.cs" />
-    <Compile Include="Sprites\GoriyaDownSprite.cs" />
-    <Compile Include="Sprites\GoriyaUpSprite.cs" />
-    <Compile Include="Sprites\AquamentusBreathingSprite.cs" />
-    <Compile Include="Sprites\AquamentusWalkingSprite.cs" />
-    <Compile Include="Sprites\ExplodingBombSprite.cs" />
-    <Compile Include="Sprites\FairySprite.cs" />
-    <Compile Include="Sprites\FireballSprite.cs" />
-    <Compile Include="Sprites\FireSprite.cs" />
+    <Compile Include="Item\Sprite\CompassSprite.cs" />
+    <Compile Include="Item\Sprite\FairySprite.cs" />
+    <Compile Include="Projectile\Sprite\FireballSprite.cs" />
+    <Compile Include="Environment\Sprite\FireSprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Enemies\Hand.cs" />
-    <Compile Include="Sprites\HandSprite.cs" />
-    <Compile Include="Sprites\HeartContainerSprite.cs" />
-    <Compile Include="Sprites\HeartSprite.cs" />
+    <Compile Include="Item\Sprite\HeartContainerSprite.cs" />
+    <Compile Include="Item\Sprite\HeartSprite.cs" />
     <Compile Include="Link\LinkSpriteFactory.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />
-    <Compile Include="Sprites\JellySprite.cs" />
-    <Compile Include="KeyboardController.cs" />
+    <Compile Include="GameLogic\KeyboardController.cs" />
     <Compile Include="Link\Sprite\PickingUpItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\PickingUpTriforceLinkSprite.cs" />
     <Compile Include="Link\Sprite\StrikingLinkSprite.cs" />
@@ -212,33 +278,86 @@
     <Compile Include="Link\State\Walking\LinkWalkingLeftState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingRightState.cs" />
     <Compile Include="Link\State\Walking\LinkWalkingUpState.cs" />
-    <Compile Include="Sprites\MapSprite.cs" />
+    <Compile Include="Item\Sprite\MapSprite.cs" />
     <Compile Include="Enemies\Merchant.cs" />
-    <Compile Include="Sprites\MerchantSprite.cs" />
-    <Compile Include="Sprites\KeySprite.cs" />
+    <Compile Include="Item\Sprite\KeySprite.cs" />
     <Compile Include="Enemies\OldMan.cs" />
-    <Compile Include="Sprites\OldManSprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprint2\QuitGameCommand.cs" />
-    <Compile Include="Sprites\RupeeSprite.cs" />
+    <Compile Include="Item\Sprite\RupeeSprite.cs" />
     <Compile Include="Enemies\Skeleton.cs" />
-    <Compile Include="Sprites\SkeletonSprite.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
-    <Compile Include="Sprites\SpikeTrapSprite.cs" />
-    <Compile Include="Sprint2\Sprint2Game.cs" />
-    <Compile Include="Sprites\SpriteFactory.cs" />
-    <Compile Include="InteractiveEnvironment\Square.cs" />
-    <Compile Include="Sprites\StatueSprite.cs" />
-    <Compile Include="Sprites\TileBlueGrassSprite.cs" />
-    <Compile Include="Sprites\TileBlackSprite.cs" />
-    <Compile Include="Sprites\TileWaterSprite.cs" />
+    <Compile Include="SpriteFactory.cs" />
+    <Compile Include="Environment\Square.cs" />
+    <Compile Include="Environment\Sprite\StatueSprite.cs" />
+    <Compile Include="Environment\Sprite\TileBlueGrassSprite.cs" />
+    <Compile Include="Environment\Sprite\TileBlackSprite.cs" />
+    <Compile Include="Environment\Sprite\TileWaterSprite.cs" />
     <Compile Include="Item\TriforceItem.cs" />
-    <Compile Include="Sprites\TriforceSprite.cs" />
+    <Compile Include="Item\Sprite\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
+    <Compile Include="Utility\SpawnableMover.cs" />
+    <Compile Include="Utility\UtilityMethods.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\RoomData\Room1.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room2.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room3.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room4.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room5.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room6.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room7.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room8.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room9.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room10.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room11.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room12.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room13.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room14.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room15.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room16.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\Room17.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RoomData\SecretRoom.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
     </Reference>

@@ -12,9 +12,11 @@ namespace LegendOfZelda.Link.Sprite
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
+        private int frameWidth;
+        private int frameHeight;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
         private const int totalFrames = 7;
-        private const int numRows = 1;
+        private const int numRows = 2;
         private const int numColumns = 4;
 
         public StrikingLinkSprite(Texture2D sprite)
@@ -22,7 +24,9 @@ namespace LegendOfZelda.Link.Sprite
             this.sprite = sprite;
             animationIsDone = false;
             flashRed = false;
-            damageColorCounter = 0;
+            damageColorCounter = 0; 
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
@@ -31,7 +35,7 @@ namespace LegendOfZelda.Link.Sprite
             if (FinishedAnimation()) return;
 
             // Check to see if we're at total frames so animation doesn't loop
-            if (currentFrame < totalFrames && ++bufferFrame == Constants.FrameDelay)
+            if (currentFrame < totalFrames && ++bufferFrame == Constants.LinkUsingSwordFrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
@@ -44,31 +48,37 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            spriteBatch.Begin();
             Draw(spriteBatch, position, false);
-            spriteBatch.End();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
             int frameWidth = sprite.Width / numColumns;
             int frameHeight = sprite.Height / numRows;
-            int currentRow = 0;
+            int currentRow = 1;
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
-            spriteBatch.End();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
+        {
+            Draw(spriteBatch, position, false);
         }
 
         public bool FinishedAnimation()
         {
             return animationIsDone;
+        }
+
+        public Rectangle GetPositionRectangle()
+        {
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }

@@ -7,7 +7,6 @@ namespace LegendOfZelda.Interface
     {
         void Update();
         void Draw(SpriteBatch spriteBatch, Point position);
-        void Draw(SpriteBatch spriteBatch, Point position, bool damaged);
-        Rectangle GetSizeRectangle();
+        Rectangle GetPositionRectangle();
     }
 }

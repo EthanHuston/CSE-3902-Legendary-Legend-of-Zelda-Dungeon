@@ -1,5 +1,5 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
+using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -7,52 +7,59 @@ namespace LegendOfZelda.Enemies
 {
     class Hand : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private int currentX = ConstantsSprint2.enemyNPCX;
-        private int currentY = ConstantsSprint2.enemyNPCY;
-        private int minXVal = 0;
-        private int maxXVal = 800;
-        private int minYVal = 0;
-        private int maxYVal = 480;
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
         private double health = 4;
+        private Random rand = RoomConstants.randomGenerator;
+        private bool safeToDespawn;
+        private DateTime healthyDateTime;
+        private bool damaged;
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
 
-        public Hand(SpriteBatch spriteBatch)
+        public Hand(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateHandSprite();
+            sprite = EnemySpriteFactory.Instance.CreateHandSprite();
             this.spriteBatch = spriteBatch;
+            Position = spawnPosition;
+            safeToDespawn = false;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            safeToDespawn = !safeToDespawn && health <= 0;
             movementBuffer++;
             CheckBounds();
             //Move based on current chosen direction for some time.
             if (xDir == 0 && yDir == 0)
             {
-                currentX--;
-                currentY--;
+                position.X--;
+                position.Y--;
             }
             else if (xDir == 0 && yDir == 1)
             {
-                currentX--;
-                currentY++;
+                position.X--;
+                position.Y++;
             }
             else if (xDir == 1 && yDir == 0)
             {
-                currentX++;
-                currentY--;
+                position.X++;
+                position.Y--;
             }
             else
             {
-                currentY++;
-                currentX++;
+                position.Y++;
+                position.X++;
             }
 
-            if (movementBuffer > 10)
+            if (movementBuffer > 20)
             {
                 movementBuffer = 0;
                 ChooseDirection();
@@ -61,41 +68,69 @@ namespace LegendOfZelda.Enemies
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, currentX, currentY);
+            sprite.Draw(spriteBatch, position, false);
         }
         private void CheckBounds()
         {
-            if (currentX == minXVal)
+            if (position.X <= Constants.MinXPos)
             {
-                currentX++;
+                position.X++;
             }
-            else if (currentX == maxXVal)
+            else if (position.X >= Constants.MaxXPos)
             {
-                currentX--;
+                position.X--;
             }
-            else if (currentY == minYVal)
+            else if (position.Y <= Constants.MinYPos)
             {
-                currentY++;
+                position.Y++;
             }
-            else if (currentY == maxYVal)
+            else if (position.Y >= Constants.MaxYPos)
             {
-                currentY--;
+                position.Y--;
             }
         }
         private void ChooseDirection()
         {
-            Random rand = new Random();
             xDir = rand.Next(0, 2); // 0 for x, 1 for y
             yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
-        public void ResetPosition()
+        public void Move(Vector2 distance)
         {
-            currentX = ConstantsSprint2.enemyNPCX;
-            currentY = ConstantsSprint2.enemyNPCY;
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
-        public void TakeDamage(float damage)
+        public bool SafeToDespawn()
         {
-            health = health - damage;
+            return safeToDespawn;
+        }
+        public Rectangle GetRectangle()
+        {
+            return sprite.GetPositionRectangle();
+        }
+
+        public void TakeDamage(double damage)
+        {
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // hand does not have knockback
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
         }
     }
 }

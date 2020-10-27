@@ -1,5 +1,5 @@
 using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -7,22 +7,33 @@ namespace LegendOfZelda.Enemies
 {
     class Jelly : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private int currentX = ConstantsSprint2.enemyNPCX;
-        private int currentY = ConstantsSprint2.enemyNPCY;
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
         private double health = .5;
+        private bool safeToDespawn;
+        private DateTime healthyDateTime;
+        private bool damaged;
+        Random rand = RoomConstants.randomGenerator;
 
-        public Jelly(SpriteBatch spriteBatch)
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public Jelly(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateJellySprite();
+            sprite = EnemySpriteFactory.Instance.CreateJellySprite();
             this.spriteBatch = spriteBatch;
+            safeToDespawn = false;
+            Position = spawnPosition;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            safeToDespawn = !safeToDespawn && health <= 0;
             movementBuffer++;
             if (movementBuffer == 16)
             {
@@ -37,42 +48,69 @@ namespace LegendOfZelda.Enemies
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, currentX, currentY);
+            sprite.Draw(spriteBatch, position, damaged);
         }
         private void ChooseDirection()
-        {
-            Random rand = new Random();
+        { 
             upDown = rand.Next(0, 2); // 0 for x, 1 for y
             leftRight = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
         private void Move()
         {
             //Simulate jelly moving
-            if (upDown == 0 && leftRight == 0 && currentX + 16 < Constants.MaxXPos)
+            if (upDown == 0 && leftRight == 0 && position.X + 16 < Constants.MaxXPos)
             {
-                currentX++;
+                position.X++;
             }
-            else if (upDown == 0 && leftRight == 1 && currentX - 16 > Constants.MinXPos)
+            else if (upDown == 0 && leftRight == 1 && position.X - 16 > Constants.MinXPos)
             {
-                currentX--;
+                position.X--;
             }
-            else if (upDown == 1 && leftRight == 0 && currentY + 16 < Constants.MaxYPos)
+            else if (upDown == 1 && leftRight == 0 && position.Y + 16 < Constants.MaxYPos)
             {
-                currentY--;
+                position.Y--;
             }
             else
             {
-                currentY++;
+                position.Y++;
             }
         }
-        public void ResetPosition()
+        public void TakeDamage(double damage)
         {
-            currentX = ConstantsSprint2.enemyNPCX;
-            currentY = ConstantsSprint2.enemyNPCY;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
         }
-        public void TakeDamage(float damage)
+        public void Move(Vector2 distance)
         {
-            health = health - damage;
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+        public Rectangle GetRectangle()
+        {
+            return sprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // cannot be knocked back
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
         }
     }
 }

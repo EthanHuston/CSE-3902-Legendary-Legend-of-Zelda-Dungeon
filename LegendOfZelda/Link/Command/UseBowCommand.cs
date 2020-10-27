@@ -1,15 +1,17 @@
-﻿namespace LegendOfZelda.Link.Command
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Link.Command
 {
     class UseBowCommand : ICommand
     {
-        private Game1 loz;
-        public UseBowCommand(Game1 game)
+        private IPlayer link;
+        public UseBowCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.UseBow();
+            link.UseBow();
         }
     }
 }

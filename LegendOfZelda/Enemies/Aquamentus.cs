@@ -1,137 +1,158 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
+﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.Interface;
+using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.Enemies
 {
     class Aquamentus : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
         private int vx = 1;
         private int updateCount = 0;
-        private int switchDirection = 100;
-        private int attackTime = 110;
+        private int switchDirection = 90;
+        private int attackTime = 90;
         private int attackUpdate = 0;
         private bool attacked = false;
-        private bool ballsInitialized = false;
         private double health = 6;
-        public Fireball[] spicyBalls = new Fireball[3];
+        private const int xVelocity = -2;
+        private ISpawnableManager itemSpawner;
+        private bool safeToDespawn;
+        private DateTime healthyDateTime;
+        private bool damaged;
 
-        public Aquamentus(SpriteBatch spriteBatch)
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public Aquamentus(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
-            this.sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
+            sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
             this.spriteBatch = spriteBatch;
+            this.itemSpawner = itemSpawner;
+            Position = spawnPosition;
+            safeToDespawn = false;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
 
         public void Update()
         {
-            //updateCount++;
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
 
-            if (!attacked)
-                updateDirection();
+            updateCount++;
+            if(updateCount % 3 == 0)
+            {
+                if (!attacked)
+                    UpdateDirection();
+            }
 
             if (updateCount % attackTime == 0)
-                Attack();
+                    Attack();
 
-            if (ballsInitialized)
-                updateBalls();
-
-            updateSprite();
+            UpdateSprite();
 
             sprite.Update();
 
-            updateCount++;
+            //updateCount++;
 
+            CheckSafeToDespawn();
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
-
-            if (ballsInitialized)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    spicyBalls[i].Draw();
-                }
-            }
-
-
+            sprite.Draw(spriteBatch, position, damaged);
         }
 
-        public int getX()
+        public Rectangle GetRectangle()
         {
-            return position.X;
+            return sprite.GetPositionRectangle();
         }
 
-        public int getY()
+        public void Move(Vector2 distance)
         {
-            return position.Y;
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public void CheckSafeToDespawn()
+        {
+            safeToDespawn = !safeToDespawn && health <= 0;
         }
 
         private void Attack()
         {
-            spicyBalls[0] = new Fireball(spriteBatch, position.X, position.Y, -3);
-            spicyBalls[1] = new Fireball(spriteBatch, position.X, position.Y, 0);
-            spicyBalls[2] = new Fireball(spriteBatch, position.X, position.Y, 3);
-            ballsInitialized = true;
+            Point spawnPosition = new Point(position.X, position.Y);
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -1), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 1), Constants.ItemOwner.Enemy));
             attacked = true;
             attackUpdate = updateCount;
         }
 
-        private void updateDirection()
+        private void UpdateDirection()
         {
             if (updateCount < switchDirection)
                 position.X -= vx;
             else if (updateCount < 2 * switchDirection)
                 position.X += vx;
             else
-                updateCount = 0;
+                updateCount = 1;
         }
 
-        private void updateBalls()
+        private void UpdateSprite()
         {
-            for (int i = 0; i < 3; i++)
+            if (updateCount - attackUpdate <= 16 && updateCount - attackUpdate >= 0)
             {
-                spicyBalls[i].Update();
-            }
-        }
-
-        private void updateSprite()
-        {
-            if (updateCount - attackUpdate <= 4)
-            {
-                setBreathingSprite();
+                SetBreathingSprite();
             }
             else if (attacked)
             {
-                setWalkingSprite();
+                SetWalkingSprite();
                 attacked = false;
             }
         }
 
-        private void setBreathingSprite()
+        private void SetBreathingSprite()
         {
-            sprite = SpriteFactory.Instance.CreateAquamentusBreathingSprite();
+            sprite = EnemySpriteFactory.Instance.CreateAquamentusBreathingSprite();
         }
 
-        private void setWalkingSprite()
+        private void SetWalkingSprite()
         {
-            sprite = SpriteFactory.Instance.CreateAquamentusWalkingSprite();
+            sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
         }
-        public void ResetPosition()
-        {
-            position.X = ConstantsSprint2.enemyNPCX;
-            position.Y = ConstantsSprint2.enemyNPCY;
-            ballsInitialized = false;
-            updateCount = 0;
-        }
+
         public void TakeDamage(double damage)
         {
-            health = health - damage;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // no knockback
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
@@ -8,25 +8,63 @@ namespace LegendOfZelda.Enemies
     {
         private ISprite sprite;
         private SpriteBatch spriteBatch;
+        private bool safeToDespawn;
 
-        public OldMan(SpriteBatch spriteBatch)
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public OldMan(SpriteBatch spriteBatch, Point spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateOldManSprite();
+            sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.spriteBatch = spriteBatch;
-
+            Position = spawnPosition;
+            safeToDespawn = false;
         }
+
         public void Draw()
         {
-            sprite.Draw(spriteBatch, ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
+            sprite.Draw(spriteBatch, position);
         }
 
         public void Update()
         {
+            sprite.Update();
         }
 
-        public void ResetPosition()
+        public bool SafeToDespawn()
         {
+            return safeToDespawn;
+        }
 
+        public Rectangle GetRectangle()
+        {
+            return sprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void TakeDamage(double damage)
+        {
+            // old man knoweth not the concept of damage
+        }
+
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            // knows no knockback
+        }
+
+        public double GetDamageAmount()
+        {
+            return 0; // does no damage
+        }
+
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
         }
     }
 }

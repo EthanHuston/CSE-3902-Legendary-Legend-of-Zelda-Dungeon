@@ -18,64 +18,69 @@ namespace LegendOfZelda.Link.State.Walking
         {
         }
 
+        public LinkWalkingLeftState(LinkPlayer link, bool damaged, DateTime healthyDateTime, bool walkingToggle) : this(link, damaged, healthyDateTime)
+        {
+            this.walkingToggle = walkingToggle;
+        }
+
         protected override void InitClass()
         {
             distanceWalked = 0;
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingLeftLinkSprite();
+            link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingLeftLinkSprite();
+            link.Velocity = new Vector2(-1 * Constants.LinkWalkStepDistanceInterval, 0);
+            blockNewDirection = true;
         }
 
         public override void Update()
         {
-            Vector2 position = link.GetPosition();
-            if (position.Y < Constants.MaxYPos)
-            {
-                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-                position.X = position.X - Constants.LinkWalkStepDistanceInterval;
-                distanceWalked += Constants.LinkWalkStepDistanceInterval;
-                link.SetPosition(position);
-
-                link.CurrentSprite.Update();
-            }
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            link.Mover.Update();
+            distanceWalked += (int)link.Mover.Velocity.Length();
+            link.CurrentSprite.Update();
 
             if (distanceWalked > Constants.LinkWalkDistanceInterval)
             {
                 StopMoving();
             }
         }
+        public override void MoveLeft()
+        {
+            // Already moving left, do nothing
+        }
 
         public override void Draw()
         {
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.GetPosition(), damaged);
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, link.Position, damaged, walkingToggle);
         }
 
         public override void StopMoving()
         {
-            link.SetState(new LinkStandingStillLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkStandingStillLeftState(link, damaged, healthyDateTime, walkingToggle);
         }
 
         public override void UseSword()
         {
-            link.SetState(new LinkAttackingLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkAttackingLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBow()
         {
-            link.SetState(new LinkUsingBowLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBowLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBomb()
         {
-            link.SetState(new LinkUsingBombLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBombLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseBoomerang()
         {
-            link.SetState(new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingBoomerangLeftState(link, damaged, healthyDateTime);
         }
 
         public override void UseSwordBeam()
         {
-            link.SetState(new LinkUsingSwordBeamLeftState(link, damaged, healthyDateTime));
+            link.State = new LinkUsingSwordBeamLeftState(link, damaged, healthyDateTime);
         }
     }
 }

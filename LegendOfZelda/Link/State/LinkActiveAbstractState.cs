@@ -1,6 +1,8 @@
-﻿using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.Item;
 using LegendOfZelda.Link.State.Walking;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda.Link.State
@@ -9,13 +11,18 @@ namespace LegendOfZelda.Link.State
     {
         protected LinkPlayer link;
         protected bool damaged;
+        protected bool blockNewDirection;
+        protected bool walkingToggle;
         protected DateTime healthyDateTime;
+        protected DateTime lastDraggedTime;
 
         public LinkActiveAbstractState(LinkPlayer link)
         {
             this.link = link;
             healthyDateTime = DateTime.Now;
             damaged = false;
+            blockNewDirection = false;
+            walkingToggle = false;
             InitClass();
         }
 
@@ -24,6 +31,8 @@ namespace LegendOfZelda.Link.State
             this.link = link;
             this.healthyDateTime = healthyDateTime;
             this.damaged = damaged;
+            blockNewDirection = false;
+            walkingToggle = false;
             InitClass();
         }
 
@@ -45,7 +54,7 @@ namespace LegendOfZelda.Link.State
 
         public abstract void UseBomb();
 
-        public void BeDamaged(int damage)
+        public void BeDamaged(double damage)
         {
             if (!damaged)
             {
@@ -55,55 +64,63 @@ namespace LegendOfZelda.Link.State
             }
         }
 
-        public void BeHealthy(int healAmount)
+        public void BeHealthy(double healAmount)
         {
             damaged = false;
             link.AddHealth(healAmount);
         }
 
-        public void MoveDown()
+        public virtual void MoveDown()
         {
-            link.SetState(new LinkWalkingDownState(link, damaged, healthyDateTime));
+            if(!blockNewDirection) link.State = new LinkWalkingDownState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
-        public void MoveLeft()
+        public virtual void MoveLeft()
         {
-            link.SetState(new LinkWalkingLeftState(link, damaged, healthyDateTime));
+            if (!blockNewDirection) link.State = new LinkWalkingLeftState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
-        public void MoveRight()
+        public virtual void MoveRight()
         {
-            link.SetState(new LinkWalkingRightState(link, damaged, healthyDateTime));
+            if (!blockNewDirection) link.State = new LinkWalkingRightState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
-        public void MoveUp()
+        public virtual void MoveUp()
         {
-            link.SetState(new LinkWalkingUpState(link, damaged, healthyDateTime));
+            if (!blockNewDirection) link.State = new LinkWalkingUpState(link, damaged, healthyDateTime, !walkingToggle);
         }
 
         public void PickUpSword()
         {
-            link.SetState(new LinkPickingUpSwordState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpSwordState(link, damaged, healthyDateTime);
         }
 
         public void PickUpHeartContainer()
         {
-            link.SetState(new LinkPickingUpHeartState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpHeartState(link, damaged, healthyDateTime);
         }
 
         public void PickUpTriforce()
         {
-            link.SetState(new LinkPickingUpTriforceState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpTriforceState(link, damaged, healthyDateTime);
         }
 
         public void PickUpBow()
         {
-            link.SetState(new LinkPickingUpBowState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpBowState(link, damaged, healthyDateTime);
         }
 
         public void PickUpBoomerang()
         {
-            link.SetState(new LinkPickingUpBoomerangState(link, damaged, healthyDateTime));
+            link.State = new LinkPickingUpBoomerangState(link, damaged, healthyDateTime);
+        }
+
+        public void Drag(ISpawnable owner, int dragTimeMs)
+        {
+            if (DateTime.Now.CompareTo(lastDraggedTime.AddMilliseconds(Constants.DragAgainDelayMs)) < 0) return;
+            link.BlockStateChange = false;
+            lastDraggedTime = DateTime.Now;
+            link.State = new LinkBeingDraggedState(link, damaged, healthyDateTime, owner, dragTimeMs);
         }
     }
 }

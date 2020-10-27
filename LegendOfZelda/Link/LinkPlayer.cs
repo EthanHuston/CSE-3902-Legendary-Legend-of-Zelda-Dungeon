@@ -1,183 +1,239 @@
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State.NotMoving;
-using LegendOfZelda.Sprint2;
+using LegendOfZelda.Projectile;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.Link
 {
-    class LinkPlayer : ILinkPlayer
+    class LinkPlayer : IPlayer
     {
-        private ILinkState state;
-        public ILinkSprite CurrentSprite { get; set; }
-        public bool BlockStateChange { get; set; } = false;
         public Game1 Game;
-        private int health;
-        private float posX;
-        private float posY;
-        private Vector2 oldPosition;
+        private double health;
+        private Dictionary<Constants.LinkInventory, int> inventory;
+        private bool safeToDespawn;
 
-        public LinkPlayer(Game1 game) : this(game, new Vector2(ConstantsSprint2.Sprint2LinkSpawnX, ConstantsSprint2.Sprint2LinkSpawnY))
-        {
-            // handle with other constructor
-        }
+        public ILinkSprite CurrentSprite { get; set; }
 
-        public LinkPlayer(Game1 game, Vector2 spawnPosition)
+        public bool BlockStateChange { get; set; }
+
+        public SpawnableMover Mover { get; private set; }
+
+        private ILinkState state;
+        public ILinkState State { get => state; set { if (!BlockStateChange) state = value; } }
+
+        public Point Position { get => Mover.Position; set => Mover.Position = value; }
+
+        public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
+
+        public LinkPlayer(Game1 game, Point spawnPosition)
         {
-            health = Constants.LinkHealth;
+            health = Constants.LinkStartingHealth;
             Game = game;
-            state = new LinkStandingStillDownState(this);
-            posX = ConstantsSprint2.Sprint2LinkSpawnX;
-            posY = ConstantsSprint2.Sprint2LinkSpawnY;
-            oldPosition = new Vector2(posX, posY);
-        }
-
-        public Vector2 GetPosition()
-        {
-            return new Vector2(posX, posY);
-        }
-
-        public void SetPosition(Vector2 newPosition)
-        {
-            oldPosition = new Vector2(posX, posY);
-            posX = newPosition.X;
-            posY = newPosition.Y;
-        }
-        public ILinkState GetState()
-        {
-            return state;
-        }
-
-        public void SetState(ILinkState newState)
-        {
-            if (!BlockStateChange) state = newState;
+            Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
+            State = new LinkStandingStillDownState(this);
+            safeToDespawn = false;
+            InitInventory();
+            BlockStateChange = false;
         }
 
         public void Draw()
         {
-            state.Draw();
+            State.Draw();
         }
 
         public void Update()
         {
-            state.Update();
+            State.Update();
         }
 
-        public void BeHealthy(int healAmount)
+        public void BeHealthy(double healAmount)
         {
-            state.BeHealthy(healAmount);
+            State.BeHealthy(healAmount);
         }
 
-        public void BeDamaged(int damage)
+        public void BeDamaged(double damage)
         {
-            state.BeDamaged(damage);
+            State.BeDamaged(damage);
         }
 
-        public void SubtractHealth(int damage)
+        public void SubtractHealth(double damage)
         {
             health -= damage;
         }
 
-        public void AddHealth(int healAmount)
+        public void AddHealth(double healAmount)
         {
             health += healAmount;
         }
 
         public void MoveUp()
         {
-            state.MoveUp();
+            State.MoveUp();
         }
 
         public void MoveDown()
         {
-            state.MoveDown();
+            State.MoveDown();
         }
         public void MoveLeft()
         {
-            state.MoveLeft();
+            State.MoveLeft();
         }
         public void MoveRight()
         {
-            state.MoveRight();
+            State.MoveRight();
         }
 
         public void StopMoving()
         {
-            state.StopMoving();
+            State.StopMoving();
         }
 
         public void UseSword()
         {
-            state.UseSword();
+            State.UseSword();
         }
 
         public void UseBow()
         {
-            state.UseBow();
+            State.UseBow();
         }
 
         public void PickUpSword()
         {
-            state.PickUpSword();
+            State.PickUpSword();
         }
 
         public void PickUpHeartContainer()
         {
-            state.PickUpHeartContainer();
+            State.PickUpHeartContainer();
         }
 
         public void PickUpBow()
         {
-            state.PickUpBow();
+            State.PickUpBow();
         }
 
         public void PickUpTriforce()
         {
-            state.PickUpTriforce();
+            State.PickUpTriforce();
         }
 
-        public void SpawnItem(ILinkItem item)
+        public void SpawnItem(IProjectile item)
         {
-            throw new System.NotImplementedException();
+            Game.State.SpawnableManager.Spawn(item);
         }
 
         public void UseBomb()
         {
-            state.UseBomb();
+            State.UseBomb();
         }
 
         public void UseBoomerang()
         {
-            state.UseBoomerang();
+            State.UseBoomerang();
         }
 
         public void PickUpBoomerang()
         {
-            state.PickUpBoomerang();
+            State.PickUpBoomerang();
         }
 
         public void UseSwordBeam()
         {
-            state.UseSwordBeam();
+            State.UseSwordBeam();
         }
 
-        public Vector2 GetVelocity()
+        public void Move(int distance, Vector2 velocity)
         {
-            return Vector2.Subtract(GetPosition(), oldPosition);
-        }
-
-        public void Move(Vector2 distance)
-        {
-            SetPosition(new Vector2(posX + distance.X, posY + distance.Y));
+            Mover.MoveDistance(distance, velocity);
         }
 
         public Rectangle GetRectangle()
         {
-            return CurrentSprite.GetRectangle();
+            return new Rectangle(
+                Position.X + Constants.LinkCollisionHelper,
+                Position.Y + Constants.LinkCollisionHelper,
+                CurrentSprite.GetPositionRectangle().Width - Constants.LinkCollisionHelper,
+                CurrentSprite.GetPositionRectangle().Height - Constants.LinkCollisionHelper);
         }
 
         public bool SafeToDespawn()
         {
-            return false; // Link can only despawn when game ends
+            return safeToDespawn;
+        }
+
+        public void PickupMap()
+        {
+            inventory[Constants.LinkInventory.Map]++;
+        }
+
+        public void PickupBomb()
+        {
+            inventory[Constants.LinkInventory.Bomb]++;
+        }
+
+        public void PickupKey()
+        {
+            inventory[Constants.LinkInventory.Key]++;
+        }
+
+        public void PickupCompass()
+        {
+            inventory[Constants.LinkInventory.Compass]++;
+        }
+
+        public void PickupHeart()
+        {
+            inventory[Constants.LinkInventory.Heart]++;
+        }
+
+        public void PickupRupee()
+        {
+            inventory[Constants.LinkInventory.Arrow]++;
+        }
+
+        public void PickupFairy()
+        {
+            inventory[Constants.LinkInventory.Fairy]++;
+        }
+
+        public void PickupClock()
+        {
+            inventory[Constants.LinkInventory.Clock]++;
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void MoveOnce(Vector2 distance)
+        {
+            Mover.MoveOnce(distance);
+        }
+
+        public void Drag(ISpawnable dragger, int dragTimeMs)
+        {
+            State.Drag(dragger, dragTimeMs);
+        }
+
+        private void InitInventory()
+        {
+            inventory = new Dictionary<Constants.LinkInventory, int>()
+            {
+                {Constants.LinkInventory.Arrow, 0 },
+                {Constants.LinkInventory.Bomb, 0 },
+                {Constants.LinkInventory.Clock, 0 },
+                {Constants.LinkInventory.Compass, 0 },
+                {Constants.LinkInventory.Fairy, 0 },
+                {Constants.LinkInventory.Heart, 0 },
+                {Constants.LinkInventory.Key, 0 },
+                {Constants.LinkInventory.Map, 0 }
+            };
         }
     }
 }

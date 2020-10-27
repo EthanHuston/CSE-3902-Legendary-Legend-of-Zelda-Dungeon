@@ -1,15 +1,17 @@
-﻿namespace LegendOfZelda.Link.Command
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Link.Command
 {
     class PickUpHeartContainerCommand : ICommand
     {
-        private Game1 loz;
-        public PickUpHeartContainerCommand(Game1 game)
+        private IPlayer link;
+        public PickUpHeartContainerCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.PickUpHeartContainer();
+            link.PickUpHeartContainer();
         }
     }
 }

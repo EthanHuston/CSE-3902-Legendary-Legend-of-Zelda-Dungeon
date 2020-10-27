@@ -1,84 +1,104 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
+using LegendOfZelda.GameLogic;
+using LegendOfZelda.Interface;
+using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace LegendOfZelda.Enemies
 {
     class Goriya : INpc
     {
-        private ISprite sprite;
+        private IDamageableSprite sprite;
         private SpriteBatch spriteBatch;
-        private Point position = new Point(ConstantsSprint2.enemyNPCX, ConstantsSprint2.enemyNPCY);
-        private GoriyaBoomerang boomer;
+        private ISpawnableManager itemSpawner;
+        private IProjectile boomer;
         private int velocity;
         private int updateCount = 0;
-        private int direction = 1;
+        private const int boomerangVelocity = 1;
+        private Constants.Direction direction = Constants.Direction.Down;
+        private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private int changeDirection = 100;
         private bool boomerangInitialized = false;
         private bool boomerangActive = false;
         private int attackWaitTime = 150;
-        private int attackTime;
         private double health = 3;
+        private bool inKnockback = false;
+        private bool safeToDespawn = false;
+        private DateTime healthyDateTime;
+        private bool damaged;
 
-        private Random rand = new Random();
+        private Random rand = RoomConstants.randomGenerator;
 
-        public Goriya(SpriteBatch spriteBatch)
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public Goriya(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
-            this.sprite = SpriteFactory.Instance.CreateGoriyaDownSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
             this.spriteBatch = spriteBatch;
-            velocity = 2;
+            this.itemSpawner = itemSpawner;
+            velocity = 1;
+            Position = spawnPosition;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
 
         public void Update()
         {
-            updateCount++;
-            if (updateCount >= 1000)
-                updateCount = 0;
-
-            if (!boomerangActive)
-                move();
-
-            keepInBounds();
-
-            if (updateCount % attackWaitTime == 0)
-                Attack();
-
-            if (boomerangInitialized)
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            safeToDespawn = !safeToDespawn && health <= 0;
+            if (!inKnockback)
             {
-                boomer.Update();
-                boomerangActive = boomer.isActive;
-            }
+                updateCount++;
+                if (updateCount >= 1000)
+                    updateCount = 0;
 
+                if (!boomerangActive)
+                    Move();
+
+                KeepInBounds();
+
+                if (updateCount % attackWaitTime == 0)
+                    Attack();
+
+                if (boomerangInitialized)
+                {
+                    boomer.Update();
+                    boomerangActive = boomer.SafeToDespawn();
+                }
+            }
+            else
+            {
+                MoveKnockback(knockbackOrigin);
+            }
 
             sprite.Update();
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
-            if (boomerangActive)
-                boomer.Draw();
+            sprite.Draw(spriteBatch, position, damaged);
         }
 
-        private void move()
+        private void Move()
         {
             if ((updateCount % changeDirection) == 0)
                 ChangeDirection();
 
             switch (direction)
             {
-                case 0: // Up
+                case Constants.Direction.Up: // Up
                     position.Y -= velocity;
                     break;
-                case 1: // Down
+                case Constants.Direction.Down: // Down
                     position.Y += velocity;
                     break;
-                case 2: // Left
+                case Constants.Direction.Left: // Left
                     position.X -= velocity;
                     break;
-                case 3: // Right
+                case Constants.Direction.Right: // Right
                     position.X += velocity;
                     break;
                 default:
@@ -86,47 +106,79 @@ namespace LegendOfZelda.Enemies
             }
 
         }
+        private void MoveKnockback(Constants.Direction direction)
+        {
+            if (direction == this.direction)
+            {
+                inKnockback = true;
+                switch (direction)
+                {
+                    case Constants.Direction.Up: // Up
+                        position.Y += velocity;
+                        break;
+                    case Constants.Direction.Down: // Down
+                        position.Y -= velocity;
+                        break;
+                    case Constants.Direction.Left: // Left
+                        position.X += velocity;
+                        break;
+                    case Constants.Direction.Right: // Right
+                        position.X -= velocity;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         private void ChangeDirection()
         {
-            direction = rand.Next(0, 4);
+            int newDirection = rand.Next(0, 4);
 
-            switch (direction)
+            switch (newDirection)
             {
                 case 0: // Up
-                    setUpSprite();
+                    SetUpSprite();
+                    direction = Constants.Direction.Up;
                     break;
                 case 1: // Down
-                    setDownSprite();
+                    SetDownSprite();
+                    direction = Constants.Direction.Down;
                     break;
                 case 2: // Left
-                    setLeftSprite();
+                    SetLeftSprite();
+                    direction = Constants.Direction.Left;
                     break;
                 case 3: // Right
-                    setRightSprite();
+                    SetRightSprite();
+                    direction = Constants.Direction.Right;
                     break;
                 default:
                     break;
             }
         }
 
-        private void ChangeDirection(int dir)
+        private void ChangeDirection(Constants.Direction dir)
         {
             direction = dir;
 
             switch (direction)
             {
-                case 0: // Up
-                    setUpSprite();
+                case Constants.Direction.Up: // Up
+                    SetUpSprite();
+                    this.direction = Constants.Direction.Up;
                     break;
-                case 1: // Down
-                    setDownSprite();
+                case Constants.Direction.Down: // Down
+                    SetDownSprite();
+                    this.direction = Constants.Direction.Down;
                     break;
-                case 2: // Left
-                    setLeftSprite();
+                case Constants.Direction.Left: // Left
+                    SetLeftSprite();
+                    this.direction = Constants.Direction.Left;
                     break;
-                case 3: // Right
-                    setRightSprite();
+                case Constants.Direction.Right: // Right
+                    SetRightSprite();
+                    this.direction = Constants.Direction.Right;
                     break;
                 default:
                     break;
@@ -137,89 +189,116 @@ namespace LegendOfZelda.Enemies
         {
             boomerangActive = true;
             boomerangInitialized = true;
-            attackTime = updateCount;
             Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
-                case 0: // Up
-                    v = new Vector2(0, -5);
+                case Constants.Direction.Up: // Up
+                    v = new Vector2(0, -1 * boomerangVelocity);
                     break;
-                case 1: // Down
-                    v = new Vector2(0, 5);
+                case Constants.Direction.Down: // Down
+                    v = new Vector2(0, boomerangVelocity);
                     break;
-                case 2: // Left
-                    v = new Vector2(-5, 0);
+                case Constants.Direction.Left: // Left
+                    v = new Vector2(-1 * boomerangVelocity, 0);
                     break;
-                case 3: // Right
-                    v = new Vector2(5, 0);
+                case Constants.Direction.Right: // Right
+                    v = new Vector2(boomerangVelocity, 0);
                     break;
                 default:
                     break;
             }
 
-            boomer = new GoriyaBoomerang(spriteBatch, position, v);
+            boomer = new BoomerangFlyingProjectile(spriteBatch, position, Constants.ItemOwner.Enemy, this, v);
+            itemSpawner.Spawn(boomer);
         }
 
-        private void keepInBounds()
+        private void KeepInBounds()
         {
             if (position.X < Constants.MinXPos)
             {
                 position.X += velocity;
-                ChangeDirection(3); // Right
+                ChangeDirection(Constants.Direction.Right); // Right
             }
 
             else if (position.X > Constants.MaxXPos)
             {
                 position.X -= velocity;
-                ChangeDirection(2); // Left
+                ChangeDirection(Constants.Direction.Left); // Left
             }
 
             if (position.Y < Constants.MinYPos)
             {
                 position.Y += velocity;
-                ChangeDirection(1); // Down
+                ChangeDirection(Constants.Direction.Down); // Down
             }
 
             else if (position.Y > Constants.MaxYPos)
             {
                 position.Y -= velocity;
-                ChangeDirection(0); // Up
+                ChangeDirection(Constants.Direction.Up); // Up
             }
 
         }
 
-        private void setUpSprite()
+        private void SetUpSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaUpSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
         }
 
-        private void setDownSprite()
+        private void SetDownSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaDownSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
         }
 
-        private void setLeftSprite()
+        private void SetLeftSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaLeftSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
         }
 
-        private void setRightSprite()
+        private void SetRightSprite()
         {
-            sprite = SpriteFactory.Instance.CreateGoriyaRightSprite();
+            sprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
+        }
+        public void Move(Vector2 distance)
+        {
+            position.X += (int)distance.X;
+            position.Y += (int)distance.Y;
+        }
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+        public Rectangle GetRectangle()
+        {
+            return sprite.GetPositionRectangle();
         }
 
-        public void ResetPosition()
+        public void TakeDamage(double damage)
         {
-            position.X = ConstantsSprint2.enemyNPCX;
-            position.Y = ConstantsSprint2.enemyNPCY;
-            boomerangInitialized = false;
-            boomerangActive = false;
-            updateCount = 0;
-        }
-        public void TakeDamage(float damage)
-        {
-            health = health - damage;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
         }
 
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
+        {
+            inKnockback = changeKnockback;
+            if (inKnockback)
+            {
+                knockbackOrigin = knockDirection;
+            }
+        }
+
+        public double GetDamageAmount()
+        {
+            return Constants.LinkEnemyCollisionDamage;
+        }
     }
 }

@@ -1,15 +1,17 @@
-﻿namespace LegendOfZelda.Link.Command
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Link.Command
 {
     class WalkingRightCommand : ICommand
     {
-        private Game1 loz;
-        public WalkingRightCommand(Game1 game)
+        private IPlayer link;
+        public WalkingRightCommand(IPlayer player)
         {
-            loz = game;
+            link = player;
         }
         public void Execute()
         {
-            loz.link.MoveRight();
+            link.MoveRight();
         }
     }
 }

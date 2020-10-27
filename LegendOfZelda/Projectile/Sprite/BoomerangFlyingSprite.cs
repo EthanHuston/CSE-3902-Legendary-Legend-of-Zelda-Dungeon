@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.Item.Sprite
+namespace LegendOfZelda.Projectile.Sprite
 {
-    class BoomerangFlyingSprite : IItemSprite
+    class BoomerangFlyingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
@@ -28,7 +28,7 @@ namespace LegendOfZelda.Item.Sprite
         {
             if (++bufferFrame == Constants.FrameDelay)
             {
-                currentFrame = currentFrame == totalFrames - 1 ? 0 : currentFrame + 1;
+                currentFrame++;
                 bufferFrame = 0;
             }
         }
@@ -36,14 +36,17 @@ namespace LegendOfZelda.Item.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
             int currentRow = 0;
-            int currentColumn = totalFrames % currentFrame;
+            int currentColumn = currentFrame % totalFrames;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.SpriteScaler), (int)(frameHeight * Constants.SpriteScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
+        {
+            Draw(spriteBatch, position);
         }
 
         public bool FinishedAnimation()
@@ -51,9 +54,9 @@ namespace LegendOfZelda.Item.Sprite
             return false; // not used, BoomerangFlying class keeps track of this
         }
 
-        public Rectangle GetSizeRectangle()
+        public Rectangle GetPositionRectangle()
         {
-            return sprite.Bounds;
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }

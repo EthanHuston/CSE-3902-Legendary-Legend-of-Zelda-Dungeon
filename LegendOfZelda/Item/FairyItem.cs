@@ -1,6 +1,4 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Sprint2;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -10,12 +8,12 @@ namespace LegendOfZelda.Item
     {
         public FairyItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {
-            sprite = SpriteFactory.Instance.CreateFairySprite();
+            sprite = ItemSpriteFactory.Instance.CreateFairySprite(spawnPosition);
         }
 
         protected override void CheckItemIsExpired()
         {
-            itemIsExpired = false; // put condition here to determine when item despawns
+            itemIsExpired = itemIsExpired && true;
         }
     }
 }

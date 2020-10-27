@@ -19,7 +19,8 @@ namespace LegendOfZelda.Link.State.Item
 
         protected override void InitClass()
         {
-            this.link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
+            link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
+            link.Velocity = (Vector2.Zero);
         }
 
         public override void Update()
@@ -35,18 +36,19 @@ namespace LegendOfZelda.Link.State.Item
             }
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.CurrentSprite.Update();
+            link.Mover.Update();
         }
 
         public override void Draw()
         {
-            float posX = link.GetPosition().X + spawnOffsetX;
-            float posY = link.GetPosition().Y + spawnOffsetY;
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Vector2(posX, posY), damaged);
+            int posX = link.Position.X + spawnOffsetX;
+            int posY = link.Position.Y + spawnOffsetY;
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged);
         }
 
         public override void StopMoving()
         {
-            link.SetState(new LinkStandingStillDownState(link, damaged, healthyDateTime));
+            link.State = new LinkStandingStillDownState(link, damaged, healthyDateTime);
         }
     }
 }

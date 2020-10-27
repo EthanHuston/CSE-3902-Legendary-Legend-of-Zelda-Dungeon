@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/Bat.png
 
-#begin Enemies/Bat.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Bat.png
-
 #begin Enemies/DogLikeMonsterWalkingDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -109,30 +97,6 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/DragonWalking.png
 
-#begin Enemies/Fireball.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Fireball.png
-
-#begin Enemies/Fireball.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Fireball.png
-
 #begin Enemies/Hand.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -144,30 +108,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Enemies/Hand.png
-
-#begin Enemies/Hand.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Hand.png
-
-#begin Enemies/Jelly.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Jelly.png
 
 #begin Enemies/Jelly.png
 /importer:TextureImporter
@@ -204,6 +144,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Enemies/SpikeTrap.png
+
+#begin Environment/8376.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/8376.png;Environment/Walls.png
+
+#begin Environment/BlackBackgroundSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Environment/BlackBackgroundSprite.png;Environment/BlackBackground.png
 
 #begin Environment/BlackTile.png
 /importer:TextureImporter
@@ -889,7 +853,7 @@
 /processorParam:TextureFormat=Color
 /build:Link/LinkPickingUpTriforce.png
 
-#begin Link/LinkStrikingDown.png
+#begin Link/LinkSwordDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -899,9 +863,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingDown.png
+/build:Link/LinkSwordDown.png
 
-#begin Link/LinkStrikingLeft.png
+#begin Link/LinkSwordLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -911,9 +875,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingLeft.png
+/build:Link/LinkSwordLeft.png
 
-#begin Link/LinkStrikingRight.png
+#begin Link/LinkSwordRight.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -923,9 +887,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingRight.png
+/build:Link/LinkSwordRight.png
 
-#begin Link/LinkStrikingUp.png
+#begin Link/LinkSwordUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -935,7 +899,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link/LinkStrikingUp.png
+/build:Link/LinkSwordUp.png
 
 #begin Link/LinkUsingItemDown.png
 /importer:TextureImporter
