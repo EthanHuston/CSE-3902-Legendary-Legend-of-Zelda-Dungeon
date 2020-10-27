@@ -15,6 +15,8 @@ namespace LegendOfZelda.Enemies
         private int yDir = 0;
         private double health = 0.5;
         private bool safeToDespawn;
+        private DateTime healthyDateTime;
+        private bool damaged;
         private Random rand = RoomConstants.randomGenerator;
 
         private Point position;
@@ -26,10 +28,14 @@ namespace LegendOfZelda.Enemies
             this.spriteBatch = spriteBatch;
             position = spawnPosition;
             safeToDespawn = false;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
 
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+
             movementBuffer++;
             //Move based on current chosen direction for some time.
             CheckBounds();
@@ -94,7 +100,12 @@ namespace LegendOfZelda.Enemies
 
         public void TakeDamage(double damage)
         {
-            health -= damage;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
         }
         public void Move(Vector2 distance)
         {

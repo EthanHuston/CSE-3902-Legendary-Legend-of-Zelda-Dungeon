@@ -48,7 +48,7 @@ namespace LegendOfZelda.Projectile
 
         public override double DamageAmount()
         {
-            return Constants.ArrowDamage;
+            return Constants.SwordDamage;
         }
     }
 }

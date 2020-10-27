@@ -3,6 +3,7 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.Enemies
 {
@@ -20,6 +21,8 @@ namespace LegendOfZelda.Enemies
         private const int xVelocity = -2;
         private ISpawnableManager itemSpawner;
         private bool safeToDespawn;
+        private DateTime healthyDateTime;
+        private bool damaged;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -31,10 +34,14 @@ namespace LegendOfZelda.Enemies
             this.itemSpawner = itemSpawner;
             Position = spawnPosition;
             safeToDespawn = false;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
 
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+
             updateCount++;
             if(updateCount % 3 == 0)
             {
@@ -56,7 +63,7 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
+            sprite.Draw(spriteBatch, position, damaged);
         }
 
         public Rectangle GetRectangle()
@@ -125,7 +132,12 @@ namespace LegendOfZelda.Enemies
 
         public void TakeDamage(double damage)
         {
-            health -= damage;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
         }
 
         public void Despawn()

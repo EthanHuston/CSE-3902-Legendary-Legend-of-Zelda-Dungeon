@@ -15,6 +15,8 @@ namespace LegendOfZelda.Enemies
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private bool safeToDespawn = false;
         private bool inKnockback = false;
+        private DateTime healthyDateTime;
+        private bool damaged;
         private Random rand = RoomConstants.randomGenerator;
 
         private Point position;
@@ -25,9 +27,14 @@ namespace LegendOfZelda.Enemies
             sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            safeToDespawn = !safeToDespawn && health <= 0;
+
             if (!inKnockback)
             {
                 movementBuffer++;
@@ -47,7 +54,6 @@ namespace LegendOfZelda.Enemies
                 MoveKnockback(knockbackOrigin);
             }
             sprite.Update();
-            safeToDespawn = !safeToDespawn && health <= 0;
         }
 
         public void Draw()
@@ -166,7 +172,12 @@ namespace LegendOfZelda.Enemies
         }
         public void TakeDamage(float damage)
         {
-            health =- damage;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
         }
         public void Move(Vector2 distance)
         {

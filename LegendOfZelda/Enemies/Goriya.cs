@@ -26,6 +26,8 @@ namespace LegendOfZelda.Enemies
         private double health = 3;
         private bool inKnockback = false;
         private bool safeToDespawn = false;
+        private DateTime healthyDateTime;
+        private bool damaged;
 
         private Random rand = RoomConstants.randomGenerator;
 
@@ -39,10 +41,14 @@ namespace LegendOfZelda.Enemies
             this.itemSpawner = itemSpawner;
             velocity = 1;
             Position = spawnPosition;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
         }
 
         public void Update()
         {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            safeToDespawn = !safeToDespawn && health <= 0;
             if (!inKnockback)
             {
                 updateCount++;
@@ -63,28 +69,17 @@ namespace LegendOfZelda.Enemies
                     boomerangActive = boomer.SafeToDespawn();
                 }
             }
-            else {
+            else
+            {
                 MoveKnockback(knockbackOrigin);
             }
 
             sprite.Update();
-            safeToDespawn = !safeToDespawn && health <= 0;
         }
 
         public void Draw()
         {
-            if (inKnockback)
-            {
-                sprite.Draw(spriteBatch, position, true);
-                if (boomerangActive)
-                    boomer.Draw();
-            }
-            else
-            {
-                sprite.Draw(spriteBatch, position);
-                if (boomerangActive)
-                    boomer.Draw();
-            }
+            sprite.Draw(spriteBatch, position, damaged);
         }
 
         private void Move()
@@ -113,10 +108,11 @@ namespace LegendOfZelda.Enemies
         }
         private void MoveKnockback(Constants.Direction direction)
         {
-            if(direction == this.direction)
+            if (direction == this.direction)
             {
                 inKnockback = true;
-                switch (direction){
+                switch (direction)
+                {
                     case Constants.Direction.Up: // Up
                         position.Y += velocity;
                         break;
@@ -279,7 +275,12 @@ namespace LegendOfZelda.Enemies
 
         public void TakeDamage(double damage)
         {
-            health -= damage;
+            if (!damaged)
+            {
+                damaged = true;
+                health -= damage;
+                healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+            }
         }
 
         public void Despawn()
