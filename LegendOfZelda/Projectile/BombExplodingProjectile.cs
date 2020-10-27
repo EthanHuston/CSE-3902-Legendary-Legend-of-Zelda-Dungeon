@@ -1,3 +1,4 @@
+using LegendOfZelda.Projectile.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -24,7 +25,7 @@ namespace LegendOfZelda.Projectile
 
         public bool IsExploded()
         {
-            return sprite.FinishedAnimation();
+            return ((BombExplodingSprite)sprite).IsExploding();
         }
 
         public override double DamageAmount()

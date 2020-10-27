@@ -16,6 +16,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int delayBeforeExplosion = 60;
+        private bool isExploding;
 
         public BombExplodingSprite(Texture2D sprite)
         {
@@ -24,6 +25,7 @@ namespace LegendOfZelda.Projectile.Sprite
             bufferFrame = 0;
             currentFrame = 0;
             destinationRectangle = Rectangle.Empty;
+            isExploding = false;
         }
 
         public void Update()
@@ -33,6 +35,7 @@ namespace LegendOfZelda.Projectile.Sprite
             {
                 currentFrame++;
                 bufferFrame = 0;
+                isExploding = true;
             }
 
             animationIsFinished = currentFrame >= totalFrames - 1;
@@ -61,6 +64,11 @@ namespace LegendOfZelda.Projectile.Sprite
         public Rectangle GetPositionRectangle()
         {
             return destinationRectangle;
+        }
+
+        public bool IsExploding()
+        {
+            return isExploding;
         }
     }
 }
