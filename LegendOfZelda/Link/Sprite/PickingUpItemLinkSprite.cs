@@ -57,10 +57,5 @@ namespace LegendOfZelda.Link.Sprite
         {
             return destinationRectangle;
         }
-
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
-        {
-            Draw(spriteBatch, position, false);
-        }
     }
 }

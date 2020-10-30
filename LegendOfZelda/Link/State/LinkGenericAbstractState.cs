@@ -11,6 +11,8 @@ namespace LegendOfZelda.Link.State
         protected DateTime healthyDateTime;
         protected Point spawnOffset;
 
+        protected LinkGenericAbstractState() { }
+
         public LinkGenericAbstractState(LinkPlayer link)
         {
             this.link = link;
@@ -31,13 +33,15 @@ namespace LegendOfZelda.Link.State
 
         protected abstract void InitClass();
 
-        public virtual void Draw() {
+        public virtual void Draw()
+        {
             int posX = link.Position.X + spawnOffset.X;
             int posY = link.Position.Y + spawnOffset.Y;
             link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged);
         }
 
-        public void Update() {
+        public void Update()
+        {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.Mover.Update();
             link.CurrentSprite.Update();
@@ -46,11 +50,13 @@ namespace LegendOfZelda.Link.State
 
         protected abstract void UpdateState();
 
-        public void StopMoving() {
+        public void StopMoving()
+        {
             link.State = new LinkStandingStillState(link, damaged, healthyDateTime);
         }
 
-        public void UseSword() {
+        public void UseSword()
+        {
             link.State = new LinkAttackingState(link, damaged, healthyDateTime);
         }
 
@@ -75,7 +81,8 @@ namespace LegendOfZelda.Link.State
             link.State = new LinkWalkingState(link, direction, damaged, healthyDateTime);
         }
 
-        public void PickUpItem(LinkConstants.LinkInventory itemType) {
+        public void PickUpItem(LinkConstants.LinkInventory itemType)
+        {
             link.State = new LinkPickingUpItemState(link, itemType, damaged, healthyDateTime);
         }
     }

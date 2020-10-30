@@ -135,7 +135,7 @@ namespace LegendOfZelda.Link
 
         public void UseBoomerang()
         {
-            Vector2 velocity = createVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
+            Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
             SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position, Constants.ProjectileOwner.Link, this, velocity));
         }
 
@@ -227,7 +227,7 @@ namespace LegendOfZelda.Link
             };
         }
 
-        private Vector2 createVelocityVector(Constants.Direction direction, int speed) {
+        private Vector2 CreateVelocityVector(Constants.Direction direction, int speed) {
             Vector2 velocity = Vector2.Zero;
             switch (direction) {
                 case Constants.Direction.Up:

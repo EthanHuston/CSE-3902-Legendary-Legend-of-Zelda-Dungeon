@@ -46,11 +46,6 @@ namespace LegendOfZelda.Link.Sprite
             spriteBatch.Draw(sprite, destinationRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
-        {
-            Draw(spriteBatch, position, false);
-        }
-
         public bool FinishedAnimation()
         {
             return animationIsDone;
