@@ -7,9 +7,9 @@ namespace LegendOfZelda.Enemies.Sprite
     internal class BatSprite : IDamageableSprite
     {
         private readonly Texture2D sprite;
-        private const int numRows = 1;
-        private const int numColumns = 2;
-        private const int frameDelay = 30;
+        private const int numRows = 2;
+        private const int numColumns = 1;
+        private const int frameDelay = 20;
         private int currentFrame;
         private int bufferFrame;
         private readonly int totalFrames;
