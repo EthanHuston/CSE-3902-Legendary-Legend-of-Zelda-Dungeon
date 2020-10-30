@@ -10,7 +10,7 @@ namespace LegendOfZelda.Projectile
         private bool updatedSprite;
         private const int moveDistanceVelocity = 3;
 
-        public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
+        public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
         {
             updatedSprite = false; // true we update sword beam to be exploding -- just so we don't update it more than once
             stopMovingAndExplode = false; // true the sword beam hits an enemy or gets to edge of screen

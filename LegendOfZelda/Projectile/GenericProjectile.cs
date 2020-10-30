@@ -14,13 +14,13 @@ namespace LegendOfZelda.Projectile
 
         public SpawnableMover Mover { get; private set; }
 
-        public Constants.ItemOwner Owner { get; private set; }
+        public Constants.ProjectileOwner Owner { get; private set; }
 
         public Point Position { get => Mover.Position; set => Mover.Position = value; }
 
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
 
-        public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner)
+        public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner)
         {
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             this.spriteBatch = spriteBatch;

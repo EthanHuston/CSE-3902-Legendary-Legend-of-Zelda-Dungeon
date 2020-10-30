@@ -208,7 +208,7 @@ namespace LegendOfZelda.Enemies
                     break;
             }
 
-            boomer = new BoomerangFlyingProjectile(spriteBatch, position, Constants.ItemOwner.Enemy, this, v);
+            boomer = new BoomerangFlyingProjectile(spriteBatch, position, Constants.ProjectileOwner.Enemy, this, v);
             itemSpawner.Spawn(boomer);
         }
 

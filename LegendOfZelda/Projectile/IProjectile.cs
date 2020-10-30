@@ -4,7 +4,7 @@ namespace LegendOfZelda.Projectile
 {
     public interface IProjectile : IDynamic
     {
-        Constants.ItemOwner Owner { get; }
+        Constants.ProjectileOwner Owner { get; }
         double DamageAmount();
     }
 }

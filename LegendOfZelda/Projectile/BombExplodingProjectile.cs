@@ -6,7 +6,7 @@ namespace LegendOfZelda.Projectile
 {
     class BombExplodingProjectile : GenericProjectile
     {
-        public BombExplodingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
+        public BombExplodingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = ProjectileSpriteFactory.Instance.CreateBombExplodingSprite();
         }

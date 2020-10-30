@@ -8,7 +8,7 @@ namespace LegendOfZelda.Projectile
     {
         private const int moveDistanceInterval = 2;
 
-        public ArrowFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
+        public ArrowFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             switch (direction)
             {
