@@ -10,7 +10,7 @@ namespace LegendOfZelda.Link.Interface
         void BeDamaged(double damage);
         void BeHealthy(double healAmount);
         void StopMoving();
-        void PickUpItem(LinkConstants.LinkInventory itemType);
+        void PickUpItem(LinkConstants.ItemType itemType);
         void UseSword();
     }
 }

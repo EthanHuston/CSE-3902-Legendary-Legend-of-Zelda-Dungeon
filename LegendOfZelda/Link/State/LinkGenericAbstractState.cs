@@ -81,7 +81,7 @@ namespace LegendOfZelda.Link.State
             link.State = new LinkWalkingState(link, direction, damaged, healthyDateTime);
         }
 
-        public void PickUpItem(LinkConstants.LinkInventory itemType)
+        public void PickUpItem(LinkConstants.ItemType itemType)
         {
             link.State = new LinkPickingUpItemState(link, itemType, damaged, healthyDateTime);
         }

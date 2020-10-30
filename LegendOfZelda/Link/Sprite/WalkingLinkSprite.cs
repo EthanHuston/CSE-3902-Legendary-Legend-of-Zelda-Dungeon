@@ -8,15 +8,16 @@ namespace LegendOfZelda.Link.Sprite
     {
         private readonly Texture2D sprite;
         private bool flashRed;
+        private bool animationIsDone;
         private int damageColorCounter;
         private int bufferFrame;
         private int currentFrame;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
         private const int totalFrames = 2;
         private const int numRows = 1;
         private const int numColumns = 2;
-        private const int walkingFrameDelay = 7;
+        private const int walkingFrameDelay = 10;
 
         public WalkingLinkSprite(Texture2D sprite)
         {
@@ -30,7 +31,10 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Update()
         {
-            currentFrame += ++bufferFrame % walkingFrameDelay == 0 ? 1 : 0; 
+            animationIsDone = currentFrame >= totalFrames;
+            if (FinishedAnimation()) return;
+
+            currentFrame += ++bufferFrame % walkingFrameDelay == 0 ? 1 : 0;
 
             if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
             {
@@ -57,7 +61,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public bool FinishedAnimation()
         {
-            return false; // because animation can be exited at any time
+            return animationIsDone;
         }
 
         public Rectangle GetPositionRectangle()

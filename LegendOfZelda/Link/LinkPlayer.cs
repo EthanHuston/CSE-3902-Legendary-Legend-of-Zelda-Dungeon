@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link
     {
         public Game1 Game;
         private double health;
-        private Dictionary<LinkConstants.LinkInventory, int> inventory;
+        private Dictionary<LinkConstants.ItemType, int> inventory;
         private bool safeToDespawn;
         private ILinkState state;
 
@@ -89,6 +89,36 @@ namespace LegendOfZelda.Link
             State.StopMoving();
         }
 
+        public void PickUpSword()
+        {
+            State.PickUpItem(LinkConstants.ItemType.Sword);
+        }
+
+        public void PickUpHeartContainer()
+        {
+            State.PickUpItem(LinkConstants.ItemType.HeartContainer);
+        }
+
+        public void PickUpBow()
+        {
+            State.PickUpItem(LinkConstants.ItemType.Bow);
+        }
+
+        public void PickUpTriforce()
+        {
+            State.PickUpItem(LinkConstants.ItemType.Triforce);
+        }
+
+        public void PickUpBoomerang()
+        {
+            State.PickUpItem(LinkConstants.ItemType.Boomerang);
+        }
+
+        public void SpawnItem(IProjectile item)
+        {
+            Game.State.SpawnableManager.Spawn(item);
+        }
+
         public void UseSword()
         {
             State.UseSword();
@@ -96,36 +126,8 @@ namespace LegendOfZelda.Link
 
         public void UseBow()
         {
-        }
-
-        public void PickUpSword()
-        {
-            State.PickUpItem(LinkConstants.LinkInventory.Sword);
-        }
-
-        public void PickUpHeartContainer()
-        {
-            State.PickUpItem(LinkConstants.LinkInventory.HeartContainer);
-        }
-
-        public void PickUpBow()
-        {
-            State.PickUpItem(LinkConstants.LinkInventory.Bow);
-        }
-
-        public void PickUpTriforce()
-        {
-            State.PickUpItem(LinkConstants.LinkInventory.Triforce);
-        }
-
-        public void PickUpBoomerang()
-        {
-            State.PickUpItem(LinkConstants.LinkInventory.Boomerang);
-        }
-
-        public void SpawnItem(IProjectile item)
-        {
-            Game.State.SpawnableManager.Spawn(item);
+            Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.ArrowSpeed);
+            SpawnItem(new ArrowFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingArrowSpawnOffset, Constants.ProjectileOwner.Link, velocity));
         }
 
         public void UseBomb()
@@ -136,11 +138,12 @@ namespace LegendOfZelda.Link
         public void UseBoomerang()
         {
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
-            SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position, Constants.ProjectileOwner.Link, this, velocity));
+            SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingBoomerangSpawnOffset, Constants.ProjectileOwner.Link, this, velocity));
         }
 
         public void UseSwordBeam()
         {
+            SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
         }
 
         public void Move(int distance, Vector2 velocity)
@@ -164,42 +167,42 @@ namespace LegendOfZelda.Link
 
         public void PickupMap()
         {
-            inventory[LinkConstants.LinkInventory.Map]++;
+            inventory[LinkConstants.ItemType.Map]++;
         }
 
         public void PickupBomb()
         {
-            inventory[LinkConstants.LinkInventory.Bomb]++;
+            inventory[LinkConstants.ItemType.Bomb]++;
         }
 
         public void PickupKey()
         {
-            inventory[LinkConstants.LinkInventory.Key]++;
+            inventory[LinkConstants.ItemType.Key]++;
         }
 
         public void PickupCompass()
         {
-            inventory[LinkConstants.LinkInventory.Compass]++;
+            inventory[LinkConstants.ItemType.Compass]++;
         }
 
         public void PickupHeart()
         {
-            inventory[LinkConstants.LinkInventory.Heart]++;
+            inventory[LinkConstants.ItemType.Heart]++;
         }
 
         public void PickupRupee()
         {
-            inventory[LinkConstants.LinkInventory.Arrow]++;
+            inventory[LinkConstants.ItemType.Arrow]++;
         }
 
         public void PickupFairy()
         {
-            inventory[LinkConstants.LinkInventory.Fairy]++;
+            inventory[LinkConstants.ItemType.Fairy]++;
         }
 
         public void PickupClock()
         {
-            inventory[LinkConstants.LinkInventory.Clock]++;
+            inventory[LinkConstants.ItemType.Clock]++;
         }
 
         public void Despawn()
@@ -214,16 +217,16 @@ namespace LegendOfZelda.Link
 
         private void InitInventory()
         {
-            inventory = new Dictionary<LinkConstants.LinkInventory, int>()
+            inventory = new Dictionary<LinkConstants.ItemType, int>()
             {
-                {LinkConstants.LinkInventory.Arrow, 0 },
-                {LinkConstants.LinkInventory.Bomb, 0 },
-                {LinkConstants.LinkInventory.Clock, 0 },
-                {LinkConstants.LinkInventory.Compass, 0 },
-                {LinkConstants.LinkInventory.Fairy, 0 },
-                {LinkConstants.LinkInventory.Heart, 0 },
-                {LinkConstants.LinkInventory.Key, 0 },
-                {LinkConstants.LinkInventory.Map, 0 }
+                {LinkConstants.ItemType.Arrow, 0 },
+                {LinkConstants.ItemType.Bomb, 0 },
+                {LinkConstants.ItemType.Clock, 0 },
+                {LinkConstants.ItemType.Compass, 0 },
+                {LinkConstants.ItemType.Fairy, 0 },
+                {LinkConstants.ItemType.Heart, 0 },
+                {LinkConstants.ItemType.Key, 0 },
+                {LinkConstants.ItemType.Map, 0 }
             };
         }
 
@@ -237,10 +240,10 @@ namespace LegendOfZelda.Link
                     velocity.Y = speed;
                     return velocity;
                 case Constants.Direction.Left:
-                    velocity.Y = -1 * speed;
+                    velocity.X = -1 * speed;
                     return velocity;
                 case Constants.Direction.Right:
-                    velocity.Y = speed;
+                    velocity.X = speed;
                     return velocity;
             }
 
