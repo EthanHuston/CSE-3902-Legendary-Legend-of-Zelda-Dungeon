@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.GameLogic
 {
-    public interface IGameState
+    interface IGameState
     {
         ISpawnableManager SpawnableManager { get; }
         void Update();

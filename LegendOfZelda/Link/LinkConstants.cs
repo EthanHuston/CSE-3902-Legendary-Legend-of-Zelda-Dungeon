@@ -20,9 +20,10 @@ namespace LegendOfZelda.Link
         public static Point ShootingSwordBeamSpawnOffset => new Point(2, 6);
         public static Point ShootingBoomerangSpawnOffset => new Point(4, 8);
 
+        // Link's Item Types
         public enum ItemType
         {
-            Arrow,
+            Rupee,
             Bomb,
             Bow,
             Boomerang,

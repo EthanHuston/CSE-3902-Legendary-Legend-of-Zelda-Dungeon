@@ -165,44 +165,9 @@ namespace LegendOfZelda.Link
             return safeToDespawn;
         }
 
-        public void PickupMap()
+        public void PickupItem(LinkConstants.ItemType itemType)
         {
-            inventory[LinkConstants.ItemType.Map]++;
-        }
-
-        public void PickupBomb()
-        {
-            inventory[LinkConstants.ItemType.Bomb]++;
-        }
-
-        public void PickupKey()
-        {
-            inventory[LinkConstants.ItemType.Key]++;
-        }
-
-        public void PickupCompass()
-        {
-            inventory[LinkConstants.ItemType.Compass]++;
-        }
-
-        public void PickupHeart()
-        {
-            inventory[LinkConstants.ItemType.Heart]++;
-        }
-
-        public void PickupRupee()
-        {
-            inventory[LinkConstants.ItemType.Arrow]++;
-        }
-
-        public void PickupFairy()
-        {
-            inventory[LinkConstants.ItemType.Fairy]++;
-        }
-
-        public void PickupClock()
-        {
-            inventory[LinkConstants.ItemType.Clock]++;
+            inventory[itemType]++;
         }
 
         public void Despawn()
@@ -210,16 +175,12 @@ namespace LegendOfZelda.Link
             safeToDespawn = true;
         }
 
-        public void MoveOnce(Vector2 distance)
-        {
-            Mover.MoveOnce(distance);
-        }
 
         private void InitInventory()
         {
             inventory = new Dictionary<LinkConstants.ItemType, int>()
             {
-                {LinkConstants.ItemType.Arrow, 0 },
+                {LinkConstants.ItemType.Rupee, 0 },
                 {LinkConstants.ItemType.Bomb, 0 },
                 {LinkConstants.ItemType.Clock, 0 },
                 {LinkConstants.ItemType.Compass, 0 },

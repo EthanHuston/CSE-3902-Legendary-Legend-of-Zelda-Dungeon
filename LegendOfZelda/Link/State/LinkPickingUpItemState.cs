@@ -22,7 +22,7 @@ namespace LegendOfZelda.Link.State
             link.Velocity = (Vector2.Zero);
             switch (itemType)
             {
-                case LinkConstants.ItemType.Arrow:
+                case LinkConstants.ItemType.Rupee:
                 case LinkConstants.ItemType.Bomb:
                 case LinkConstants.ItemType.Clock:
                 case LinkConstants.ItemType.Compass:

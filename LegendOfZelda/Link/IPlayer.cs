@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Link
 {
-    public interface IPlayer : IDynamic
+    interface IPlayer : IDynamic
     {
         void BeHealthy(double healAmount);
         void BeDamaged(double damage);
@@ -13,18 +13,7 @@ namespace LegendOfZelda.Link
         void StopMoving();
         void UseSword();
         void UseBow();
-        void PickUpSword();
-        void PickUpHeartContainer();
-        void PickUpBow();
-        void PickUpTriforce();
-        void PickupMap();
-        void PickupBomb();
-        void PickupKey();
-        void PickupCompass();
-        void PickupHeart();
-        void PickupRupee();
-        void PickupFairy();
-        void PickupClock();
+        void PickupItem(LinkConstants.ItemType itemType);
         void UseBomb();
         void UseBoomerang();
         void PickUpBoomerang();
