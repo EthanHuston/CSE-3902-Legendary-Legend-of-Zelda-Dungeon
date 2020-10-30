@@ -1,8 +1,8 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Link.State.NotMoving;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Utility;
+using LegendOfZelda.Link.State;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link
     {
         public Game1 Game;
         private double health;
-        private Dictionary<Constants.LinkInventory, int> inventory;
+        private Dictionary<LinkConstants.LinkInventory, int> inventory;
         private bool safeToDespawn;
         private ILinkState state;
 
@@ -29,10 +29,11 @@ namespace LegendOfZelda.Link
             health = Constants.LinkStartingHealth;
             Game = game;
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
-            State = new LinkStandingStillDownState(this);
+            FacingDirection = Constants.Direction.Down;
+            State = new LinkStandingStillState(this);
             safeToDespawn = false;
-            InitInventory();
             BlockStateChange = false;
+            InitInventory();
         }
 
         public void Draw()
@@ -67,20 +68,20 @@ namespace LegendOfZelda.Link
 
         public void MoveUp()
         {
-            State.MoveUp();
+            State.Move(Constants.Direction.Up);
         }
 
         public void MoveDown()
         {
-            State.MoveDown();
+            State.Move(Constants.Direction.Down);
         }
         public void MoveLeft()
         {
-            State.MoveLeft();
+            State.Move(Constants.Direction.Left);
         }
         public void MoveRight()
         {
-            State.MoveRight();
+            State.Move(Constants.Direction.Right);
         }
 
         public void StopMoving()
@@ -95,27 +96,31 @@ namespace LegendOfZelda.Link
 
         public void UseBow()
         {
-            State.UseBow();
         }
 
         public void PickUpSword()
         {
-            State.PickUpSword();
+            State.PickUpItem(LinkConstants.LinkInventory.Sword);
         }
 
         public void PickUpHeartContainer()
         {
-            State.PickUpHeartContainer();
+            State.PickUpItem(LinkConstants.LinkInventory.HeartContainer);
         }
 
         public void PickUpBow()
         {
-            State.PickUpBow();
+            State.PickUpItem(LinkConstants.LinkInventory.Bow);
         }
 
         public void PickUpTriforce()
         {
-            State.PickUpTriforce();
+            State.PickUpItem(LinkConstants.LinkInventory.Triforce);
+        }
+
+        public void PickUpBoomerang()
+        {
+            State.PickUpItem(LinkConstants.LinkInventory.Boomerang);
         }
 
         public void SpawnItem(IProjectile item)
@@ -125,22 +130,17 @@ namespace LegendOfZelda.Link
 
         public void UseBomb()
         {
-            State.UseBomb();
+            SpawnItem(new BombExplodingProjectile(Game.SpriteBatch, Position, Constants.ProjectileOwner.Link));
         }
 
         public void UseBoomerang()
         {
-            State.UseBoomerang();
-        }
-
-        public void PickUpBoomerang()
-        {
-            State.PickUpBoomerang();
+            Vector2 velocity = createVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
+            SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position, Constants.ProjectileOwner.Link, this, velocity));
         }
 
         public void UseSwordBeam()
         {
-            State.UseSwordBeam();
         }
 
         public void Move(int distance, Vector2 velocity)
@@ -164,42 +164,42 @@ namespace LegendOfZelda.Link
 
         public void PickupMap()
         {
-            inventory[Constants.LinkInventory.Map]++;
+            inventory[LinkConstants.LinkInventory.Map]++;
         }
 
         public void PickupBomb()
         {
-            inventory[Constants.LinkInventory.Bomb]++;
+            inventory[LinkConstants.LinkInventory.Bomb]++;
         }
 
         public void PickupKey()
         {
-            inventory[Constants.LinkInventory.Key]++;
+            inventory[LinkConstants.LinkInventory.Key]++;
         }
 
         public void PickupCompass()
         {
-            inventory[Constants.LinkInventory.Compass]++;
+            inventory[LinkConstants.LinkInventory.Compass]++;
         }
 
         public void PickupHeart()
         {
-            inventory[Constants.LinkInventory.Heart]++;
+            inventory[LinkConstants.LinkInventory.Heart]++;
         }
 
         public void PickupRupee()
         {
-            inventory[Constants.LinkInventory.Arrow]++;
+            inventory[LinkConstants.LinkInventory.Arrow]++;
         }
 
         public void PickupFairy()
         {
-            inventory[Constants.LinkInventory.Fairy]++;
+            inventory[LinkConstants.LinkInventory.Fairy]++;
         }
 
         public void PickupClock()
         {
-            inventory[Constants.LinkInventory.Clock]++;
+            inventory[LinkConstants.LinkInventory.Clock]++;
         }
 
         public void Despawn()
@@ -212,24 +212,39 @@ namespace LegendOfZelda.Link
             Mover.MoveOnce(distance);
         }
 
-        public void Drag(ISpawnable dragger, int dragTimeMs)
-        {
-            State.Drag(dragger, dragTimeMs);
-        }
-
         private void InitInventory()
         {
-            inventory = new Dictionary<Constants.LinkInventory, int>()
+            inventory = new Dictionary<LinkConstants.LinkInventory, int>()
             {
-                {Constants.LinkInventory.Arrow, 0 },
-                {Constants.LinkInventory.Bomb, 0 },
-                {Constants.LinkInventory.Clock, 0 },
-                {Constants.LinkInventory.Compass, 0 },
-                {Constants.LinkInventory.Fairy, 0 },
-                {Constants.LinkInventory.Heart, 0 },
-                {Constants.LinkInventory.Key, 0 },
-                {Constants.LinkInventory.Map, 0 }
+                {LinkConstants.LinkInventory.Arrow, 0 },
+                {LinkConstants.LinkInventory.Bomb, 0 },
+                {LinkConstants.LinkInventory.Clock, 0 },
+                {LinkConstants.LinkInventory.Compass, 0 },
+                {LinkConstants.LinkInventory.Fairy, 0 },
+                {LinkConstants.LinkInventory.Heart, 0 },
+                {LinkConstants.LinkInventory.Key, 0 },
+                {LinkConstants.LinkInventory.Map, 0 }
             };
+        }
+
+        private Vector2 createVelocityVector(Constants.Direction direction, int speed) {
+            Vector2 velocity = Vector2.Zero;
+            switch (direction) {
+                case Constants.Direction.Up:
+                    velocity.Y = -1 * speed;
+                    return velocity;
+                case Constants.Direction.Down:
+                    velocity.Y = speed;
+                    return velocity;
+                case Constants.Direction.Left:
+                    velocity.Y = -1 * speed;
+                    return velocity;
+                case Constants.Direction.Right:
+                    velocity.Y = speed;
+                    return velocity;
+            }
+
+            return velocity;
         }
     }
 }

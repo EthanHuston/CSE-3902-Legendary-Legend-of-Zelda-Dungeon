@@ -132,7 +132,7 @@ namespace LegendOfZelda.Link
         {
             return new PickingUpItemLinkSprite(linkPickingUpSwordSprite);
         }
-        public ILinkSprite CreateLinkPickingUpHeartSprite()
+        public ILinkSprite CreateLinkPickingUpHeartContainerSprite()
         {
             return new PickingUpItemLinkSprite(linkPickingUpHeartSprite);
         }

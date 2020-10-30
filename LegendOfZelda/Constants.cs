@@ -85,23 +85,10 @@ namespace LegendOfZelda
             None
         }
 
-        public enum ItemOwner
+        public enum ProjectileOwner
         {
             Link,
-            Room,
             Enemy
-        }
-
-        public enum LinkInventory
-        {
-            Arrow,
-            Bomb,
-            Map,
-            Key,
-            Compass,
-            Heart,
-            Fairy,
-            Clock
         }
 
         //Enemy Constants
