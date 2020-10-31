@@ -5,15 +5,15 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Hand : INpc
+    internal class Hand : INpc
     {
-        private IDamageableSprite sprite;
-        private SpriteBatch spriteBatch;
+        private readonly IDamageableSprite sprite;
+        private readonly SpriteBatch spriteBatch;
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
         private double health = 4;
-        private Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.randomGenerator;
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;

@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class HeartContainerSprite : ISprite
+    internal class HeartContainerSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public HeartContainerSprite(Texture2D sprite)

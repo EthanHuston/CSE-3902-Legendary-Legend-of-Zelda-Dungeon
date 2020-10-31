@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class HeartSprite : ISprite
+    internal class HeartSprite : ISprite
     {
         private const int numRows = 2;
         private const int numColumns = 3;
@@ -12,7 +12,7 @@ namespace LegendOfZelda.Item.Sprite
         private Texture2D sprite;
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
+        private readonly int totalFrames;
         private Rectangle destinationRectangle;
 
         public HeartSprite(Texture2D sprite)

@@ -1,13 +1,13 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 
 namespace LegendOfZelda.Projectile.CollisionHandler
 {
-    class BoomerangBlockCollisionHandler : ICollisionHandler<IProjectile, IBlock>
+    internal class BoomerangBlockCollisionHandler : ICollisionHandler<IProjectile, IBlock>
     {
         public void HandleCollision(IProjectile boomerang, IBlock block, Constants.Direction side)
         {
+            if (block.GetType() == typeof(TileWater)) return;
             BoomerangFlyingProjectile boomerangCast = (BoomerangFlyingProjectile)boomerang;
             boomerangCast.ReturnToOwner();
         }

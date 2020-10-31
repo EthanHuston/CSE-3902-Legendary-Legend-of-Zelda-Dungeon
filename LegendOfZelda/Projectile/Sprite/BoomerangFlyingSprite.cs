@@ -1,16 +1,15 @@
-﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class BoomerangFlyingSprite : IProjectileSprite
+    internal class BoomerangFlyingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
         private int currentFrame;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
         private const int totalFrames = 8;
         private const int numRows = 1;
         private const int numColumns = 8;

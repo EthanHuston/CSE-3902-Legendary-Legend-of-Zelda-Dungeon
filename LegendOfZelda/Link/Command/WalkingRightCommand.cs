@@ -2,9 +2,9 @@
 
 namespace LegendOfZelda.Link.Command
 {
-    class WalkingRightCommand : ICommand
+    internal class WalkingRightCommand : ICommand
     {
-        private IPlayer link;
+        private readonly IPlayer link;
         public WalkingRightCommand(IPlayer player)
         {
             link = player;

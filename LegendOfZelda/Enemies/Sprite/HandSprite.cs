@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class HandSprite : IDamageableSprite
+    internal class HandSprite : IDamageableSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private int Rows { get; set; }
         private int Columns { get; set; }
         private int currentFrame;

@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class ShutDoor : IBlock
+    internal class ShutDoor : IBlock
     {
-        private ITextureAtlasSprite doorSprite;
-        private SpriteBatch sB;
+        private readonly ITextureAtlasSprite doorSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
         private const int textureMapColumn = 2;
         private int textureMapRow;

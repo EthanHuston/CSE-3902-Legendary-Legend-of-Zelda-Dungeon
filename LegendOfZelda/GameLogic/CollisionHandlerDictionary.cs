@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
 {
-    class CollisionHandlerDictionary
+    internal class CollisionHandlerDictionary
     {
         // IPlayer Collision Dictionaries
         private Dictionary<Type, ICollisionHandler<IPlayer, INpc>> playerNpcDictionary;

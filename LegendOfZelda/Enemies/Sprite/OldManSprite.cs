@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class OldManSprite : ISprite
+    internal class OldManSprite : ISprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;

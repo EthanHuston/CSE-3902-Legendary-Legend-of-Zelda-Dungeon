@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    class BoomerangItem : GenericItem
+    internal class BoomerangItem : GenericItem
     {
         public BoomerangItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {

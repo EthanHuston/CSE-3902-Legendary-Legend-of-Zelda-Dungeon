@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class BoomerangFlyingProjectile : GenericProjectile
+    internal class BoomerangFlyingProjectile : GenericProjectile
     {
         private bool returningToOwner;
-        private ISpawnable itemToTrack;
+        private readonly ISpawnable itemToTrack;
         private const int despawnMaxXFromOwner = 15;
         private const int despawnMinXFromOwner = 0;
         private const int despawnMaxYFromOwner = 15;

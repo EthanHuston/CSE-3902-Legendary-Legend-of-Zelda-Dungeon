@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class Fire : IBlock
+    internal class Fire : IBlock
     {
-        private ISprite fireSprite;
-        private SpriteBatch sB;
+        private readonly ISprite fireSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
 
         private Point position;

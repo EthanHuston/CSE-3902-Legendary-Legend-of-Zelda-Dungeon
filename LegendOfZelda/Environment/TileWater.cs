@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class TileWater : IBlock
+    internal class TileWater : IBlock
     {
-        private ISprite sprite;
-        private SpriteBatch sb;
+        private readonly ISprite sprite;
+        private readonly SpriteBatch sb;
         private bool safeToDespawn;
         // unused right now: private bool canWalk;
 

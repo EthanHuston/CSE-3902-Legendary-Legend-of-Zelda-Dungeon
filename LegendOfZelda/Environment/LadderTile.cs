@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class LadderTile : IBlock
+    internal class LadderTile : IBlock
     {
-        private ISprite ladderSprite;
-        private SpriteBatch sB;
+        private readonly ISprite ladderSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
 
         private Point position;

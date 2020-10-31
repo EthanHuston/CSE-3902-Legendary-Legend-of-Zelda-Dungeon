@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    class TileBackgroundSprite : ISprite
+    internal class TileBackgroundSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public TileBackgroundSprite(Texture2D sprite)

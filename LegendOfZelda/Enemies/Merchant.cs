@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies
 {
-    class Merchant : INpc
+    internal class Merchant : INpc
     {
-        private ISprite sprite;
-        private SpriteBatch spriteBatch;
+        private readonly ISprite sprite;
+        private readonly SpriteBatch spriteBatch;
         protected bool itemIsExpired;
 
         private Point position;

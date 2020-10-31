@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.GameLogic
 {
-    interface ICollisionManager
+    internal interface ICollisionManager
     {
         void CheckAndHandleAllCollisions();
     }

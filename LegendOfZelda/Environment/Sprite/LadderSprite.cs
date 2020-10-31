@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    class LadderSprite : ISprite
+    internal class LadderSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public LadderSprite(Texture2D sprite)

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda.Item
 {
     //Sprite Factory based of model found in slides
-    class ItemSpriteFactory
+    internal class ItemSpriteFactory
     {
         private Texture2D arrowSprite;
         private Texture2D bombSprite;

@@ -1,10 +1,9 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkDoorCollisionHandler : ICollisionHandler<IPlayer, IBlock>
+    internal class LinkDoorCollisionHandler : ICollisionHandler<IPlayer, IBlock>
     {
         private const int linkMoveDistance = 1;
 

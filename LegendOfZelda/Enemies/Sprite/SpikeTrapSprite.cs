@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class SpikeTrapSprite : IDamageableSprite
+    internal class SpikeTrapSprite : IDamageableSprite
     {
         private Texture2D sprite;
         private Rectangle destinationRectangle;

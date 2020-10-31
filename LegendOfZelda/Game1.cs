@@ -3,7 +3,6 @@ using LegendOfZelda.Link;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda
@@ -11,7 +10,7 @@ namespace LegendOfZelda
 
     class Game1 : Game
     {
-        private GraphicsDeviceManager graphics;
+        private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
         private List<IController> controllerList;
 
@@ -22,8 +21,8 @@ namespace LegendOfZelda
             graphics = new GraphicsDeviceManager(this)
             {
                 // TODO: make constants
-                PreferredBackBufferWidth = (int) Constants.GameSize.X,  // set this value to the desired width of your window
-                PreferredBackBufferHeight = (int) Constants.GameSize.Y   // set this value to the desired height of your window
+                PreferredBackBufferWidth = (int)Constants.GameSize.X,  // set this value to the desired width of your window
+                PreferredBackBufferHeight = (int)Constants.GameSize.Y   // set this value to the desired height of your window
             };
             graphics.ApplyChanges();
             SpriteBatch = new SpriteBatch(GraphicsDevice);

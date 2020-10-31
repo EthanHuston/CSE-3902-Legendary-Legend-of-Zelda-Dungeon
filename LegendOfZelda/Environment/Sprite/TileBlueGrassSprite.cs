@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    class TileBlueGrassSprite : ISprite
+    internal class TileBlueGrassSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public TileBlueGrassSprite(Texture2D sprite)

@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class Walls : IBlock
+    internal class Walls : IBlock
     {
-        private ITextureAtlasSprite wallSprite;
-        private SpriteBatch sB;
+        private readonly ITextureAtlasSprite wallSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
         private int textureMapRow;
         private const int textureMapColumn = 0;

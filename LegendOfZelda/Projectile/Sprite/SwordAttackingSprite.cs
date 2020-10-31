@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class SwordAttackingSprite : IProjectileSprite
+    internal class SwordAttackingSprite : IProjectileSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private bool animationIsDone;
         private int currentFrame;
         private int bufferFrame;

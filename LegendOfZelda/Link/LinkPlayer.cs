@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Link
 {
-    class LinkPlayer : IPlayer
+    internal class LinkPlayer : IPlayer
     {
         public Game1 Game;
         private double currentHealth;
@@ -45,7 +45,7 @@ namespace LegendOfZelda.Link
 
         public void Update()
         {
-            safeToDespawn = safeToDespawn || currentHealth <= 0;
+            safeToDespawn = !safeToDespawn && health <= 0;
             State.Update();
         }
 

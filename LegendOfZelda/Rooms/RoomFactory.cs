@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    static class RoomFactory
+    internal static class RoomFactory
     {
         private const int startingRoomNumber = 2;
         private const string roomDataDirectory = "Content\\RoomData\\";
@@ -17,10 +17,10 @@ namespace LegendOfZelda.Rooms
             return roomsList[startingRoomNumber];
         }
 
-        private static void InitRoomsList(List<Room> roomsList ,SpriteBatch spriteBatch, List<IPlayer> playerList)
+        private static void InitRoomsList(List<Room> roomsList, SpriteBatch spriteBatch, List<IPlayer> playerList)
         {
             roomsList.Add(null); // room files start at 1
-            for(int i = 1; i <= RoomConstants.NumberRooms; i++)
+            for (int i = 1; i <= RoomConstants.NumberRooms; i++)
             {
                 roomsList.Add(new Room(spriteBatch, roomDataDirectory + "Room" + i + ".csv", playerList));
             }

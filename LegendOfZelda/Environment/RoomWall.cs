@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Environment
 {
-    class RoomWall : IBlock
+    internal class RoomWall : IBlock
     {
         private Rectangle positionRectangle;
         private bool safeToDespawn;

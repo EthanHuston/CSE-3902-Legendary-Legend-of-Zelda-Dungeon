@@ -9,8 +9,8 @@ namespace LegendOfZelda.GameLogic
 {
     class MouseController : IController
     {
-        private Game1 myGame;
-        private Dictionary<Constants.Direction, ICommand> leftClickCommands;
+        private readonly Game1 myGame;
+        private readonly Dictionary<Constants.Direction, ICommand> leftClickCommands;
         private MouseState oldMouseState;
 
         public MouseController(Game1 game1)
@@ -32,7 +32,7 @@ namespace LegendOfZelda.GameLogic
         public void Update()
         {
             MouseState newMouseState = Mouse.GetState();
-            if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton != ButtonState.Pressed)
+            if (newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton != ButtonState.Pressed)
             {
                 Constants.Direction dir = GetDirectionFromClick(newMouseState.Position);
                 if (leftClickCommands.ContainsKey(dir))
@@ -47,7 +47,7 @@ namespace LegendOfZelda.GameLogic
         }
 
         private Constants.Direction GetDirectionFromClick(Point mousePos)
-        {   
+        {
             if (mousePos.X > RoomConstants.topDoorX && mousePos.X < RoomConstants.topDoorX + RoomConstants.wallWidth)
             {
                 if (mousePos.Y > RoomConstants.topDoorY && mousePos.Y < RoomConstants.topDoorY + RoomConstants.wallWidth)

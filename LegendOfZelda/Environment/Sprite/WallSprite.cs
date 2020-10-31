@@ -1,17 +1,12 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    class WallSprite : ITextureAtlasSprite
+    internal class WallSprite : ITextureAtlasSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public WallSprite(Texture2D sprite)

@@ -1,12 +1,11 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Projectile.Sprite;
+﻿using LegendOfZelda.Projectile.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
     //Sprite Factory based of model found in slides
-    class ProjectileSpriteFactory
+    internal class ProjectileSpriteFactory
     {
 
         private Texture2D fireballSprite;

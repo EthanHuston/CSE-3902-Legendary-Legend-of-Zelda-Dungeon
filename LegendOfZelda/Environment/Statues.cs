@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class Statues : IBlock
+    internal class Statues : IBlock
     {
-        private ISprite statueSprite;
-        private SpriteBatch sB;
+        private readonly ISprite statueSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
 
         private Point position;

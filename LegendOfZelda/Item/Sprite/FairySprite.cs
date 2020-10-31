@@ -5,14 +5,14 @@ using System;
 
 namespace LegendOfZelda.Item.Sprite
 {
-    class FairySprite : ISprite
+    internal class FairySprite : ISprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;
-        private Texture2D sprite;
-        private int totalFrames;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly Texture2D sprite;
+        private readonly int totalFrames;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
         private int currentFrame;
         private int bufferFrame;
         private Point position;

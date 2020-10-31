@@ -1,13 +1,13 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 
 namespace LegendOfZelda.Projectile.CollisionHandler
 {
-    class FireballBlockCollisionHandler : ICollisionHandler<IProjectile, IBlock>
+    internal class FireballBlockCollisionHandler : ICollisionHandler<IProjectile, IBlock>
     {
         public void HandleCollision(IProjectile fireball, IBlock block, Constants.Direction side)
         {
+            if (block.GetType() == typeof(TileWater)) return;
             fireball.Despawn();
         }
     }

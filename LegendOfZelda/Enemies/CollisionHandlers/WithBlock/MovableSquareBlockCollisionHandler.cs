@@ -1,11 +1,10 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
-    class MovableSquareBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
+    internal class MovableSquareBlockCollisionHandler : ICollisionHandler<INpc, IBlock>
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {

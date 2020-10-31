@@ -8,10 +8,10 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameLogic
 {
-    class CollisionManager : ICollisionManager
+    internal class CollisionManager : ICollisionManager
     {
-        private ISpawnableManager spawnableManager;
-        private CollisionHandlerDictionary handlerDictionary;
+        private readonly ISpawnableManager spawnableManager;
+        private readonly CollisionHandlerDictionary handlerDictionary;
 
         public CollisionManager(ISpawnableManager spawnableManager)
         {

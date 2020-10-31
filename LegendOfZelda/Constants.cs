@@ -1,7 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
-using System.Diagnostics.PerformanceData;
-using LegendOfZelda.Rooms;
 
 namespace LegendOfZelda
 {

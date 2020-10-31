@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class FireballProjectile : GenericProjectile
+    internal class FireballProjectile : GenericProjectile
     {
 
         public FireballProjectile(SpriteBatch spriteBatch, Point spawnPosition, Vector2 velocity, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
@@ -18,7 +18,7 @@ namespace LegendOfZelda.Projectile
             return Constants.FireballDamage;
         }
 
-        override public void Update()
+        public override void Update()
         {
             Mover.Update();
             sprite.Update();

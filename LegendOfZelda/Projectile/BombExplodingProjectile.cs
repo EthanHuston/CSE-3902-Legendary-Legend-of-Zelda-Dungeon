@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class BombExplodingProjectile : GenericProjectile
+    internal class BombExplodingProjectile : GenericProjectile
     {
         public BombExplodingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {

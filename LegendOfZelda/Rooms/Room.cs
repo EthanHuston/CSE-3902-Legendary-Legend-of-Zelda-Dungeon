@@ -2,7 +2,6 @@ using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link;
 using LegendOfZelda.Utility;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -10,8 +9,8 @@ namespace LegendOfZelda.Rooms
 {
     class Room
     {
-        private Dictionary<Constants.Direction, Room> roomDictionary;
-        private CollisionManager collisionManager;
+        private readonly Dictionary<Constants.Direction, Room> roomDictionary;
+        private readonly CollisionManager collisionManager;
 
         public ISpawnableManager AllObjects { get; private set; }
         public List<IPlayer> PlayerList { get => AllObjects.PlayerList; }
@@ -40,7 +39,8 @@ namespace LegendOfZelda.Rooms
         {
             // connects a room each way - returning true if successful, else false
             Constants.Direction invertedDirection = UtilityMethods.InvertDirection(direction);
-            if (GetRoom(direction) == null || newRoom.GetRoom(invertedDirection) == null) {
+            if (GetRoom(direction) == null || newRoom.GetRoom(invertedDirection) == null)
+            {
                 roomDictionary[direction] = newRoom; // add room connection one way
                 return newRoom.ConnectRoom(this, invertedDirection); // add room connection in the opposite 
             }

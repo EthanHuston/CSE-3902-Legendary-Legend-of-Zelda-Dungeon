@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class BlackBackground : IBackground
+    internal class BlackBackground : IBackground
     {
-        private ISprite sprite;
-        private SpriteBatch sb;
+        private readonly ISprite sprite;
+        private readonly SpriteBatch sb;
         private bool safeToDespawn;
 
         private Point position;

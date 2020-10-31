@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithNpc
 {
-    class LinkNpcDamageCollisionHandler : ICollisionHandler<IPlayer, INpc>
+    internal class LinkNpcDamageCollisionHandler : ICollisionHandler<IPlayer, INpc>
     {
         private const int knockbackDistance = 50;
         private const int knockbackVelocityScalar = 3;
@@ -15,7 +15,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithNpc
 
             Vector2 velocity = Vector2.Zero;
 
-            switch(side)
+            switch (side)
             {
                 case Constants.Direction.Up:
                     velocity = new Vector2(0, -1 * knockbackVelocityScalar);

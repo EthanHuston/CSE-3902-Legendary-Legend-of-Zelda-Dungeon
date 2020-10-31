@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class AquamentusWalkingSprite : IDamageableSprite
+    internal class AquamentusWalkingSprite : IDamageableSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private const int numRows = 1;
         private const int numColumns = 2;
         private int currentFrame;

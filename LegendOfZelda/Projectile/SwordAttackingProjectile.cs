@@ -1,10 +1,9 @@
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class SwordAttackingProjectile : GenericProjectile
+    internal class SwordAttackingProjectile : GenericProjectile
     {
         public SwordAttackingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {

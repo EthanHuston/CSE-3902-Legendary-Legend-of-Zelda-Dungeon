@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Link.Interface
 {
-    interface ILinkSprite : IDamageableSprite
+    internal interface ILinkSprite : IDamageableSprite
     {
         bool FinishedAnimation();
     }

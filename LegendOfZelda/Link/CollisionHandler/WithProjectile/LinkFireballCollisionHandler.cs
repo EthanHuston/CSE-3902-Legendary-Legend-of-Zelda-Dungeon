@@ -4,7 +4,7 @@ using LegendOfZelda.Projectile;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile
 {
-    class LinkFireballCollisionHandler : ICollisionHandler<IPlayer, IProjectile>
+    internal class LinkFireballCollisionHandler : ICollisionHandler<IPlayer, IProjectile>
     {
         public void HandleCollision(IPlayer link, IProjectile fireball, Constants.Direction side)
         {

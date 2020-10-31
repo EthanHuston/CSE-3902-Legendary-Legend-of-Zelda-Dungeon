@@ -4,32 +4,31 @@ using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Runtime.Remoting.Messaging;
 
 namespace LegendOfZelda.Enemies
 {
-    class Goriya : INpc
+    internal class Goriya : INpc
     {
         private IDamageableSprite sprite;
-        private SpriteBatch spriteBatch;
-        private ISpawnableManager itemSpawner;
+        private readonly SpriteBatch spriteBatch;
+        private readonly ISpawnableManager itemSpawner;
         private IProjectile boomer;
-        private int velocity;
+        private readonly int velocity;
         private int updateCount = 0;
         private const int boomerangVelocity = 1;
         private Constants.Direction direction = Constants.Direction.Down;
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
-        private int changeDirection = 100;
+        private readonly int changeDirection = 100;
         private bool boomerangInitialized = false;
         private bool boomerangActive = false;
-        private int attackWaitTime = 150;
+        private readonly int attackWaitTime = 150;
         private double health = 3;
         private bool inKnockback = false;
         private bool safeToDespawn = false;
         private DateTime healthyDateTime;
         private bool damaged;
 
-        private Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.randomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -166,19 +165,19 @@ namespace LegendOfZelda.Enemies
             {
                 case Constants.Direction.Up: // Up
                     SetUpSprite();
-                    this.direction = Constants.Direction.Up;
+                    direction = Constants.Direction.Up;
                     break;
                 case Constants.Direction.Down: // Down
                     SetDownSprite();
-                    this.direction = Constants.Direction.Down;
+                    direction = Constants.Direction.Down;
                     break;
                 case Constants.Direction.Left: // Left
                     SetLeftSprite();
-                    this.direction = Constants.Direction.Left;
+                    direction = Constants.Direction.Left;
                     break;
                 case Constants.Direction.Right: // Right
                     SetRightSprite();
-                    this.direction = Constants.Direction.Right;
+                    direction = Constants.Direction.Right;
                     break;
                 default:
                     break;

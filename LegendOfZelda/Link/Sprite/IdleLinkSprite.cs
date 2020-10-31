@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Sprite
 {
-    class IdleLinkSprite : ILinkSprite
+    internal class IdleLinkSprite : ILinkSprite
     {
         private readonly Texture2D sprite;
         private bool flashRed;

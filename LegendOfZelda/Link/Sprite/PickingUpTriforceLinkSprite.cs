@@ -4,17 +4,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Link.Sprite
 {
-    class PickingUpTriforceLinkSprite : ILinkSprite
+    internal class PickingUpTriforceLinkSprite : ILinkSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private bool animationIsDone;
         private bool flashRed;
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
         private int delayCounter;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
         private const int numRows = 1;
         private const int numColumns = 2;
 

@@ -2,9 +2,9 @@
 
 namespace LegendOfZelda.Link.Command
 {
-    class SwordAttackCommand : ICommand
+    internal class SwordAttackCommand : ICommand
     {
-        private IPlayer link;
+        private readonly IPlayer link;
         public SwordAttackCommand(IPlayer player)
         {
             link = player;

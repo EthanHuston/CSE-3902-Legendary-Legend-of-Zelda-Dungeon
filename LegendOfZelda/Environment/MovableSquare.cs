@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class MovableSquare : IBlock
+    internal class MovableSquare : IBlock
     {
-        private ISprite blockSprite;
-        private SpriteBatch spriteBatch;
+        private readonly ISprite blockSprite;
+        private readonly SpriteBatch spriteBatch;
         private Vector2 velocity;
         private bool safeToDespawn;
         private bool hasBeenPushed;
@@ -39,9 +39,9 @@ namespace LegendOfZelda.Environment
         {
             if (pushingInProgress)
             {
-                position.X += (int) velocity.X;
-                position.Y += (int) velocity.Y;
-                totalDistanceTravelled += (int) velocity.Length();
+                position.X += (int)velocity.X;
+                position.Y += (int)velocity.Y;
+                totalDistanceTravelled += (int)velocity.Length();
                 if (totalDistanceTravelled >= travelDistance) EndPush();
             }
             blockSprite.Update();

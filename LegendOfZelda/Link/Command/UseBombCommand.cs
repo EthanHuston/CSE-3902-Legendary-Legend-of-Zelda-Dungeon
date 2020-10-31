@@ -2,9 +2,9 @@
 
 namespace LegendOfZelda.Link.Command
 {
-    class UseBombCommand : ICommand
+    internal class UseBombCommand : ICommand
     {
-        private IPlayer link;
+        private readonly IPlayer link;
         public UseBombCommand(IPlayer player)
         {
             link = player;

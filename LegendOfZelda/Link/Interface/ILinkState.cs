@@ -2,7 +2,7 @@ using LegendOfZelda.Interface;
 
 namespace LegendOfZelda.Link.Interface
 {
-    interface ILinkState
+    internal interface ILinkState
     {
         void Update();
         void Draw();

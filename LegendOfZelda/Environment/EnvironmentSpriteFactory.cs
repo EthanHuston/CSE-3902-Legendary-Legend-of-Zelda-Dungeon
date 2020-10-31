@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda.Environment
 {
     //Sprite Factory based of model found in slides
-    class EnvironmentSpriteFactory
+    internal class EnvironmentSpriteFactory
     {
         private Texture2D squareSprite;
         private Texture2D statueSprite;

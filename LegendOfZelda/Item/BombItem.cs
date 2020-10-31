@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    class BombItem : GenericItem
+    internal class BombItem : GenericItem
     {
         public BombItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {

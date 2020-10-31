@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class BombedOpening : IBlock
+    internal class BombedOpening : IBlock
     {
-        private ITextureAtlasSprite doorSprite;
-        private SpriteBatch sB;
+        private readonly ITextureAtlasSprite doorSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
         private int textureMapRow;
         private const int textureMapColumn = 3;

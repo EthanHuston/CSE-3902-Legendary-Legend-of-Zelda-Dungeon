@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    class CompassItem : GenericItem
+    internal class CompassItem : GenericItem
     {
         public CompassItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {

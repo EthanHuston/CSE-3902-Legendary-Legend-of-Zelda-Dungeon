@@ -1,12 +1,11 @@
-﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    class ArrowFlyingSprite : IProjectileSprite
+    internal class ArrowFlyingSprite : IProjectileSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private Rectangle destinationRectangle;
 
         public ArrowFlyingSprite(Texture2D sprite)

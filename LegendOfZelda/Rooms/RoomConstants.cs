@@ -26,10 +26,17 @@ namespace LegendOfZelda
         public const int NumberRooms = 17;
         private const int wallBlockShortener = 1;
         public static Random randomGenerator = new Random();
+<<<<<<< HEAD
         public static Rectangle LeftWallRectangle => new Rectangle(0, 0, wallWidth - (int) (wallBlockShortener * SpriteMultiplier), roomHeight);
         public static Rectangle RightWallRectangle => new Rectangle(roomWidth - wallWidth, 0, wallWidth + (int) (wallBlockShortener * SpriteMultiplier), roomHeight);
         public static Rectangle UpWallRectangle => new Rectangle(0, 0, roomWidth - (int) (wallBlockShortener * SpriteMultiplier), wallWidth);
         public static Rectangle DownWallRectangle => new Rectangle(0, roomHeight- wallWidth, roomWidth + (int) (wallBlockShortener * SpriteMultiplier), wallWidth);
+=======
+        public static Rectangle LeftWallRectangle => new Rectangle(0, 0, wallWidth - wallBlockShortener * SpriteMultiplier, roomHeight);
+        public static Rectangle RightWallRectangle => new Rectangle(roomWidth - wallWidth, 0, wallWidth + wallBlockShortener * SpriteMultiplier, roomHeight);
+        public static Rectangle UpWallRectangle => new Rectangle(0, 0, roomWidth - wallBlockShortener * SpriteMultiplier, wallWidth);
+        public static Rectangle DownWallRectangle => new Rectangle(0, roomHeight - wallWidth, roomWidth + wallBlockShortener * SpriteMultiplier, wallWidth);
+>>>>>>> master
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";

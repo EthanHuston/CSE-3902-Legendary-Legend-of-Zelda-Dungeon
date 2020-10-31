@@ -1,13 +1,12 @@
 ﻿
 using LegendOfZelda.Interface;
 using LegendOfZelda.Rooms;
-using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Command
 {
-    class ChangeRoomDownCommand : ICommand
+    internal class ChangeRoomDownCommand : ICommand
     {
-        RoomGameState rooms;
+        private readonly RoomGameState rooms;
         public ChangeRoomDownCommand(RoomGameState rooms)
         {
             this.rooms = rooms;

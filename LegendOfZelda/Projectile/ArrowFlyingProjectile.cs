@@ -1,10 +1,9 @@
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
 {
-    class ArrowFlyingProjectile : GenericProjectile
+    internal class ArrowFlyingProjectile : GenericProjectile
     {
         private const int moveDistanceInterval = 2;
 

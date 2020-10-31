@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda.Link
 {
     //Sprite Factory based of model found in slides
-    class LinkSpriteFactory
+    internal class LinkSpriteFactory
     {
         private Texture2D idleLinkDownSprite;
         private Texture2D idleLinkRightSprite;

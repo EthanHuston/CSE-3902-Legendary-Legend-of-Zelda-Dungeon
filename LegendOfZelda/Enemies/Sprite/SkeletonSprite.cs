@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class SkeletonSprite : IDamageableSprite
+    internal class SkeletonSprite : IDamageableSprite
     {
         private Texture2D sprite;
         private const int rows = 1;

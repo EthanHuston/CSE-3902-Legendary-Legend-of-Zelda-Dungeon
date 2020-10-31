@@ -5,13 +5,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    class LockedDoor : IBlock
+    internal class LockedDoor : IBlock
     {
-        private ITextureAtlasSprite doorSprite;
-        private SpriteBatch sB;
+        private readonly ITextureAtlasSprite doorSprite;
+        private readonly SpriteBatch sB;
         private bool safeToDespawn;
         private int textureMapRow;
-        private int textureMapColumn = 1;
+        private readonly int textureMapColumn = 1;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }

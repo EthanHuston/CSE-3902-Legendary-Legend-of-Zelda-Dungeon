@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    class TriforceItem : GenericItem
+    internal class TriforceItem : GenericItem
     {
         public TriforceItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {

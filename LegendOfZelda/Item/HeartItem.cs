@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Item
 {
-    class HeartItem : GenericItem
+    internal class HeartItem : GenericItem
     {
         public HeartItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {

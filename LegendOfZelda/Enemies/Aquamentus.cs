@@ -7,19 +7,19 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    class Aquamentus : INpc
+    internal class Aquamentus : INpc
     {
         private IDamageableSprite sprite;
-        private SpriteBatch spriteBatch;
-        private int vx = 1;
+        private readonly SpriteBatch spriteBatch;
+        private readonly int vx = 1;
         private int updateCount = 0;
-        private int switchDirection = 90;
-        private int attackTime = 90;
+        private readonly int switchDirection = 90;
+        private readonly int attackTime = 90;
         private int attackUpdate = 0;
         private bool attacked = false;
         private double health = 6;
         private const int xVelocity = -2;
-        private ISpawnableManager itemSpawner;
+        private readonly ISpawnableManager itemSpawner;
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
@@ -43,14 +43,14 @@ namespace LegendOfZelda.Enemies
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
 
             updateCount++;
-            if(updateCount % 3 == 0)
+            if (updateCount % 3 == 0)
             {
                 if (!attacked)
                     UpdateDirection();
             }
 
             if (updateCount % attackTime == 0)
-                    Attack();
+                Attack();
 
             UpdateSprite();
 

@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Projectile.Sprite
 {
-    interface IProjectileSprite : ISprite
+    internal interface IProjectileSprite : ISprite
     {
         bool FinishedAnimation();
     }
