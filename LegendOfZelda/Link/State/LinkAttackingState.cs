@@ -6,11 +6,6 @@ namespace LegendOfZelda.Link.State
 {
     class LinkAttackingState : LinkGenericAbstractState
     {
-        public LinkAttackingState(LinkPlayer link) : base(link)
-        {
-            // handled by parent constructor
-        }
-
         public LinkAttackingState(LinkPlayer link, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
         {
             // handled by parent constructor

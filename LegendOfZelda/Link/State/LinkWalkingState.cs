@@ -9,16 +9,6 @@ namespace LegendOfZelda.Link.State
         private const int walkDistance = 16;
         private const int stepDistance = 1;
 
-        public LinkWalkingState(LinkPlayer link, Constants.Direction direction)
-        {
-            this.link = link;
-            healthyDateTime = DateTime.Now;
-            damaged = false;
-            spawnOffset = Point.Zero;
-            link.FacingDirection = direction;
-            InitClass();
-        }
-
         public LinkWalkingState(LinkPlayer link, Constants.Direction direction, bool damaged, DateTime healthyDateTime) 
         {
             this.link = link;

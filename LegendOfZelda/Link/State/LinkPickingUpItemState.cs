@@ -7,14 +7,14 @@ namespace LegendOfZelda.Link.State
     {
         private readonly LinkConstants.ItemType itemType;
 
-        public LinkPickingUpItemState(LinkPlayer link, LinkConstants.ItemType itemType) : base(link)
-        {
-            this.itemType = itemType;
-        }
-
         public LinkPickingUpItemState(LinkPlayer link, LinkConstants.ItemType itemType, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
         {
+            this.link = link;
+            this.healthyDateTime = healthyDateTime;
+            this.damaged = damaged;
+            spawnOffset = Point.Zero;
             this.itemType = itemType;
+            InitClass();
         }
 
         protected override void InitClass()
@@ -67,6 +67,11 @@ namespace LegendOfZelda.Link.State
             {
                 link.BlockStateChange = true;
             }
+        }
+
+        public override void Move(Constants.Direction direction)
+        {
+            // do not allow Link to move from this state
         }
     }
 }
