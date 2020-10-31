@@ -4,30 +4,27 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class GoriyaLeftSprite : IDamageableSprite
+    class GoriyaSprite : IDamageableSprite
     {
         private Texture2D sprite;
-        private int Rows { get; set; }
-        private int Columns { get; set; }
+        private const int numRows = 1;
+        private const int numColumns = 2;
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
         private bool flashRed;
         private int damageColorCounter;
 
-        public GoriyaLeftSprite(Texture2D sprite)
+        public GoriyaSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            Rows = 1;
-            Columns = 2;
             currentFrame = 0;
             bufferFrame = 0;
-            totalFrames = Columns;
+            totalFrames = numColumns * numRows;
             flashRed = false;
             damageColorCounter = 0;
         }
+
         public void Update()
         {
             bufferFrame++;
@@ -54,20 +51,21 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            int width = sprite.Width / numColumns;
+            int height = sprite.Height / numRows;
+            int row = (int)((float)currentFrame / (float)numColumns);
+            int column = currentFrame % numColumns;
 
-            sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
-        }
 
+        }
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return sprite.Bounds;
         }
+
     }
 }

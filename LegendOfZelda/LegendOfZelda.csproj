@@ -73,10 +73,7 @@
     <Compile Include="Enemies\Sprite\AquamentusBreathingSprite.cs" />
     <Compile Include="Enemies\Sprite\AquamentusWalkingSprite.cs" />
     <Compile Include="Enemies\Sprite\BatSprite.cs" />
-    <Compile Include="Enemies\Sprite\GoriyaDownSprite.cs" />
-    <Compile Include="Enemies\Sprite\GoriyaLeftSprite.cs" />
-    <Compile Include="Enemies\Sprite\GoriyaRightSprite.cs" />
-    <Compile Include="Enemies\Sprite\GoriyaUpSprite.cs" />
+    <Compile Include="Enemies\Sprite\GoriyaSprite.cs" />
     <Compile Include="Enemies\Sprite\HandSprite.cs" />
     <Compile Include="Enemies\Sprite\JellySprite.cs" />
     <Compile Include="Enemies\Sprite\MerchantSprite.cs" />
