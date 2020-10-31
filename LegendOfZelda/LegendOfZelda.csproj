@@ -265,7 +265,6 @@
     <Compile Include="Environment\Sprite\TileWaterSprite.cs" />
     <Compile Include="Item\TriforceItem.cs" />
     <Compile Include="Item\Sprite\TriforceSprite.cs" />
-    <Compile Include="Link\Sprite\UsingItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
     <Compile Include="Utility\SpawnableMover.cs" />
     <Compile Include="Utility\UtilityMethods.cs" />

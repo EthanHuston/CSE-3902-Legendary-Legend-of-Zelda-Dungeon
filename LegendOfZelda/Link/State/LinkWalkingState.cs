@@ -7,14 +7,24 @@ namespace LegendOfZelda.Link.State
     {
         private int distanceWalked;
 
-        public LinkWalkingState(LinkPlayer link, Constants.Direction direction) : base(link)
+        public LinkWalkingState(LinkPlayer link, Constants.Direction direction)
         {
+            this.link = link;
+            healthyDateTime = DateTime.Now;
+            damaged = false;
+            spawnOffset = Point.Zero;
             link.FacingDirection = direction;
+            InitClass();
         }
 
-        public LinkWalkingState(LinkPlayer link, Constants.Direction direction, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
+        public LinkWalkingState(LinkPlayer link, Constants.Direction direction, bool damaged, DateTime healthyDateTime) 
         {
+            this.link = link;
+            this.healthyDateTime = healthyDateTime;
+            this.damaged = damaged;
+            spawnOffset = Point.Zero;
             link.FacingDirection = direction;
+            InitClass();
         }
 
         protected override void InitClass()
@@ -24,7 +34,7 @@ namespace LegendOfZelda.Link.State
             switch (link.FacingDirection)
             {
                 case Constants.Direction.Up:
-                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingDownLinkSprite();
+                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingUpLinkSprite();
                     link.Velocity = new Vector2(0, -1 * Constants.LinkWalkStepDistanceInterval);
                     break;
                 case Constants.Direction.Down:
@@ -32,12 +42,12 @@ namespace LegendOfZelda.Link.State
                     link.Velocity = new Vector2(0, Constants.LinkWalkStepDistanceInterval);
                     break;
                 case Constants.Direction.Left:
-                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingDownLinkSprite();
-                    link.Velocity = new Vector2(0, -1 * Constants.LinkWalkStepDistanceInterval);
+                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingLeftLinkSprite();
+                    link.Velocity = new Vector2(-1 * Constants.LinkWalkStepDistanceInterval, 0);
                     break;
                 case Constants.Direction.Right:
-                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingDownLinkSprite();
-                    link.Velocity = new Vector2(0, Constants.LinkWalkStepDistanceInterval);
+                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingRightLinkSprite();
+                    link.Velocity = new Vector2(Constants.LinkWalkStepDistanceInterval, 0);
                     break;
             }
         }

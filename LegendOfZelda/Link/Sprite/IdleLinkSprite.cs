@@ -6,7 +6,7 @@ namespace LegendOfZelda.Link.Sprite
 {
     class IdleLinkSprite : ILinkSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
 
@@ -46,11 +46,6 @@ namespace LegendOfZelda.Link.Sprite
         public Rectangle GetPositionRectangle()
         {
             return sprite.Bounds;
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
-        {
-            Draw(spriteBatch, position, false);
         }
     }
 }

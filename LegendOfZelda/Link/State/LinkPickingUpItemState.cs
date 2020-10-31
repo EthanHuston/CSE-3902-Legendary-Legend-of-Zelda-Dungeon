@@ -5,14 +5,16 @@ namespace LegendOfZelda.Link.State
 {
     class LinkPickingUpItemState : LinkGenericAbstractState
     {
-        private LinkConstants.LinkInventory itemType;
+        private readonly LinkConstants.ItemType itemType;
 
-        public LinkPickingUpItemState(LinkPlayer link, LinkConstants.LinkInventory item) : base(link)
+        public LinkPickingUpItemState(LinkPlayer link, LinkConstants.ItemType itemType) : base(link)
         {
+            this.itemType = itemType;
         }
 
-        public LinkPickingUpItemState(LinkPlayer link, LinkConstants.LinkInventory item, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
+        public LinkPickingUpItemState(LinkPlayer link, LinkConstants.ItemType itemType, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
         {
+            this.itemType = itemType;
         }
 
         protected override void InitClass()
@@ -20,34 +22,34 @@ namespace LegendOfZelda.Link.State
             link.Velocity = (Vector2.Zero);
             switch (itemType)
             {
-                case LinkConstants.LinkInventory.Arrow:
-                case LinkConstants.LinkInventory.Bomb:
-                case LinkConstants.LinkInventory.Clock:
-                case LinkConstants.LinkInventory.Compass:
-                case LinkConstants.LinkInventory.Fairy:
-                case LinkConstants.LinkInventory.Heart:
-                case LinkConstants.LinkInventory.Key:
-                case LinkConstants.LinkInventory.Map:
+                case LinkConstants.ItemType.Rupee:
+                case LinkConstants.ItemType.Bomb:
+                case LinkConstants.ItemType.Clock:
+                case LinkConstants.ItemType.Compass:
+                case LinkConstants.ItemType.Fairy:
+                case LinkConstants.ItemType.Heart:
+                case LinkConstants.ItemType.Key:
+                case LinkConstants.ItemType.Map:
                     break;
 
                 
-                case LinkConstants.LinkInventory.Boomerang:
+                case LinkConstants.ItemType.Boomerang:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
                     spawnOffset = LinkConstants.PickingUpBoomerangSpawnOffset;
                     break;
-                case LinkConstants.LinkInventory.Bow:
+                case LinkConstants.ItemType.Bow:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBowSprite();
                     spawnOffset = LinkConstants.PickingUpBowSpawnOffset;
                     break;
-                case LinkConstants.LinkInventory.HeartContainer:
+                case LinkConstants.ItemType.HeartContainer:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpHeartContainerSprite();
                     spawnOffset = LinkConstants.PickingUpHeartContainerSpawnOffset;
                     break;
-                case LinkConstants.LinkInventory.Sword:
+                case LinkConstants.ItemType.Sword:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpSwordSprite();
                     spawnOffset = LinkConstants.PickingUpSwordSpawnOffset;
                     break;
-                case LinkConstants.LinkInventory.Triforce:
+                case LinkConstants.ItemType.Triforce:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpTriforceSprite();
                     spawnOffset = LinkConstants.PickingUpTriforceSpawnOffset;
                     break;

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,6 +11,7 @@ namespace LegendOfZelda.Item
         protected ISprite sprite;
         protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
+        protected LinkConstants.ItemType itemType;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -63,6 +65,11 @@ namespace LegendOfZelda.Item
         public void Despawn()
         {
             itemIsExpired = true;
+        }
+
+        public LinkConstants.ItemType GetItemType()
+        {
+            return itemType;
         }
     }
 }

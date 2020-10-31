@@ -8,26 +8,20 @@ namespace LegendOfZelda.Projectile
     {
         private const int moveDistanceInterval = 2;
 
-        public ArrowFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
+        public ArrowFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
-            switch (direction)
+            Velocity = velocity;
+            
+            if(Velocity.X == 0)
             {
-                case Constants.Direction.Down:
-                    Velocity = new Vector2(0, moveDistanceInterval);
-                    sprite = ProjectileSpriteFactory.Instance.CreateArrowDownSprite();
-                    break;
-                case Constants.Direction.Up:
-                    Velocity = new Vector2(0, -1 * moveDistanceInterval);
-                    sprite = ProjectileSpriteFactory.Instance.CreateArrowUpSprite();
-                    break;
-                case Constants.Direction.Right:
-                    Velocity = new Vector2(moveDistanceInterval, 0);
-                    sprite = ProjectileSpriteFactory.Instance.CreateArrowRightSprite();
-                    break;
-                case Constants.Direction.Left:
-                    Velocity = new Vector2(-1 * moveDistanceInterval, 0);
-                    sprite = ProjectileSpriteFactory.Instance.CreateArrowLeftSprite();
-                    break;
+                sprite = Velocity.Y > 0 ? 
+                    ProjectileSpriteFactory.Instance.CreateArrowDownSprite() : 
+                    ProjectileSpriteFactory.Instance.CreateArrowUpSprite();
+            } else
+            {
+                sprite = Velocity.X > 0 ?
+                    ProjectileSpriteFactory.Instance.CreateArrowRightSprite() :
+                    ProjectileSpriteFactory.Instance.CreateArrowLeftSprite();
             }
         }
 
