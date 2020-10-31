@@ -45,7 +45,7 @@ namespace LegendOfZelda.Link
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && health <= 0;
+            safeToDespawn = !safeToDespawn && currentHealth <= 0;
             State.Update();
         }
 
