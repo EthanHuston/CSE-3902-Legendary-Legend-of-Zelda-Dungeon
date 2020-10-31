@@ -23,11 +23,11 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Update()
         {
-            animationIsDone = delayCounter >= Constants.LinkPickingUpItemPauseTicks;
+            animationIsDone = delayCounter >= LinkConstants.PickUpItemPauseTicks;
             if (FinishedAnimation()) return;
             delayCounter++;
 
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
+            if (++damageColorCounter == LinkConstants.DamageFlashDelayTicks)
             {
                 flashRed = !flashRed;
                 damageColorCounter = 0;

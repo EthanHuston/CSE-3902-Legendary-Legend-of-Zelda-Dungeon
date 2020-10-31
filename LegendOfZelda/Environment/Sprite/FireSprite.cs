@@ -47,7 +47,7 @@ namespace LegendOfZelda.Environment.Sprite
             int row = (int)((float)currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle(position.X, position.Y, RoomConstants.SpriteMultiplier * frameWidth, RoomConstants.SpriteMultiplier * frameHeight);
+            destinationRectangle = new Rectangle(position.X, position.Y, (int) (RoomConstants.SpriteMultiplier * frameWidth), (int) (RoomConstants.SpriteMultiplier * frameHeight));
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 

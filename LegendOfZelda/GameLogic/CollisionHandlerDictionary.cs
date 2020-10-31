@@ -101,7 +101,7 @@ namespace LegendOfZelda.GameLogic
             {
                 {typeof(ArrowFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
                 {typeof(BombExplodingProjectile), new LinkBombCollisionHandler() },
-                {typeof(BoomerangFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
+                {typeof(BoomerangFlyingProjectile), new LinkBoomerangCollisionHandler() },
                 {typeof(FireballProjectile), new LinkFireballCollisionHandler() },
                 {typeof(SwordAttackingProjectile), new LinkProjectileDoNothingCollisionHandler() },
                 {typeof(SwordBeamFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
@@ -109,24 +109,23 @@ namespace LegendOfZelda.GameLogic
 
             playerItemDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IItem>>()
             {
-                {typeof(BombItem), new LinkBombItemCollisionHandler() },
-                {typeof(BoomerangItem), new LinkBoomerangItemCollisionHandler() },
-                {typeof(BowItem), new LinkBowItemCollisionHandler() },
-                {typeof(ClockItem), new LinkClockItemCollisionHandler() },
-                {typeof(CompassItem), new LinkCompassItemCollisionHandler() },
-                {typeof(FairyItem), new LinkFairyItemCollisionHandler() },
-                {typeof(HeartContainerItem), new LinkHeartContainerItemCollisionHandler() },
-                {typeof(HeartItem), new LinkHeartItemCollisionHandler() },
-                {typeof(KeyItem), new LinkKeyItemCollisionHandler() },
-                {typeof(MapItem), new LinkMapItemCollisionHandler() },
-                {typeof(RupeeItem), new LinkRupeeItemCollision() },
-                {typeof(TriforceItem), new LinkTriforceItemCollisionHandler() }
+                // TODO: fix me
+                {typeof(BombItem), new LinkItemCollisionHandler() },
+                {typeof(BoomerangItem), new LinkItemCollisionHandler() },
+                {typeof(BowItem), new LinkItemCollisionHandler() },
+                {typeof(ClockItem), new LinkItemCollisionHandler() },
+                {typeof(CompassItem), new LinkItemCollisionHandler() },
+                {typeof(FairyItem), new LinkItemCollisionHandler() },
+                {typeof(HeartContainerItem), new LinkItemCollisionHandler() },
+                {typeof(HeartItem), new LinkItemCollisionHandler() },
+                {typeof(KeyItem), new LinkItemCollisionHandler() },
+                {typeof(MapItem), new LinkItemCollisionHandler() },
+                {typeof(RupeeItem), new LinkItemCollisionHandler() },
+                {typeof(TriforceItem), new LinkItemCollisionHandler() }
             };
 
             playerBlockDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IBlock>>()
             {
-                // movable block collision handler is in the NPC dictionary
-
                 // immovable blocks
                 {typeof(LockedDoor), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Statues), new LinkImmovableBlockCollisionHandler() },

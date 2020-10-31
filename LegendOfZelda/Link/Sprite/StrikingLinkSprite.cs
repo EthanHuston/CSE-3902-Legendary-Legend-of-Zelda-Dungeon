@@ -35,13 +35,13 @@ namespace LegendOfZelda.Link.Sprite
             if (FinishedAnimation()) return;
 
             // Check to see if we're at total frames so animation doesn't loop
-            if (currentFrame < totalFrames && ++bufferFrame == Constants.LinkUsingSwordFrameDelay)
+            if (currentFrame < totalFrames && ++bufferFrame == LinkConstants.UsingSwordFrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
 
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
+            if (++damageColorCounter == LinkConstants.DamageFlashDelayTicks)
             {
                 flashRed = !flashRed;
                 damageColorCounter = 0;

@@ -18,7 +18,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int explosionDistanceVelocity = 1;
-        private const int explosionRange = 30 * Constants.SpriteScaler;
+        private const int explosionRange = (int) (30 * Constants.GameScaler);
 
         public SwordBeamExplodingSprite(Texture2D upLeftSprite, Texture2D upRightSprite, Texture2D downLeftSprite, Texture2D downRightSprite)
         {

@@ -58,16 +58,16 @@ namespace LegendOfZelda.Rooms
                 switch (doorLocation)
                 {
                     case Constants.Direction.Right:
-                        player.Position = Constants.LinkDoorRightSpawnPosition;
+                        player.Position = LinkConstants.DoorRightSpawnPosition;
                         break;
                     case Constants.Direction.Left:
-                        player.Position = Constants.LinkDoorLeftSpawnPosition;
+                        player.Position = LinkConstants.DoorLeftSpawnPosition;
                         break;
                     case Constants.Direction.Up:
-                        player.Position = Constants.LinkDoorUpSpawnPosition;
+                        player.Position = LinkConstants.DoorUpSpawnPosition;
                         break;
                     case Constants.Direction.Down:
-                        player.Position = Constants.LinkDoorDownSpawnPosition;
+                        player.Position = LinkConstants.DoorDownSpawnPosition;
                         break;
                 }
             }
@@ -77,7 +77,7 @@ namespace LegendOfZelda.Rooms
         {
             PlayerList = new List<IPlayer>()
             {
-                {new LinkPlayer(game, Constants.LinkDoorDownSpawnPosition) }
+                {new LinkPlayer(game, LinkConstants.DoorDownSpawnPosition) }
             };
         }
     }

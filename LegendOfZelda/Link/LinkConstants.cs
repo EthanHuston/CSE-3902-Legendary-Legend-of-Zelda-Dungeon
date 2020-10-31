@@ -4,21 +4,45 @@ namespace LegendOfZelda.Link
 {
     static class LinkConstants
     {
+        // General Constants
+        public const double SpriteScaler = Constants.GameScaler;
+
         // Velocities
-        public const int BoomerangSpeed = 1;
-        public const int ArrowSpeed = 2;
+        public const int BoomerangSpeed = (int) (1 * SpriteScaler);
+        public const int ArrowSpeed = (int) (2 * SpriteScaler);
+
+        // Values
+        public const int StartingHealth = 60;
+        public const int HeartValue = Constants.HeartValue;
+        public const int DamageEffectTimeMs = 2000;
+        public const int DamageFlashDelayTicks = 5;
+        public const int PickUpItemPauseTicks = 60;
+        public const int CollisionHelper = (int) (3 * SpriteScaler);
+        public const int UsingSwordFrameDelay = 3;
+
+        // Spawn Locations : Entering into Rooms
+        public static Point DoorDownSpawnPosition => new Point(120, 128);
+        public static Point DoorUpSpawnPosition => new Point(120, 32);
+        public static Point DoorLeftSpawnPosition => new Point(32, 80);
+        public static Point DoorRightSpawnPosition => new Point(208, 80);
 
         // Spawn Offsets : Picking Up Items
-        public static Point PickingUpBoomerangSpawnOffset => new Point(0, -9);
-        public static Point PickingUpBowSpawnOffset => new Point(0, -15);
-        public static Point PickingUpHeartContainerSpawnOffset => new Point(0, -14);
-        public static Point PickingUpSwordSpawnOffset => new Point(0, -12);
-        public static Point PickingUpTriforceSpawnOffset => new Point(0, -11);
+        public static Point PickingUpBoomerangSpawnOffset => new Point((int) (0 * SpriteScaler), (int) (-9 * SpriteScaler));
+        public static Point PickingUpBowSpawnOffset => new Point((int) (0 * SpriteScaler), (int) (-15 * SpriteScaler));
+        public static Point PickingUpHeartContainerSpawnOffset => new Point((int) (0 * SpriteScaler), (int) (-14 * SpriteScaler));
+        public static Point PickingUpSwordSpawnOffset => new Point((int) (0 * SpriteScaler), (int) (-12 * SpriteScaler));
+        public static Point PickingUpTriforceSpawnOffset => new Point((int) (0 * SpriteScaler), (int) (-11 * SpriteScaler));
 
         // Spawn Offsets : Using Items
-        public static Point ShootingArrowSpawnOffset => new Point(3, 7);
-        public static Point ShootingSwordBeamSpawnOffset => new Point(2, 6);
-        public static Point ShootingBoomerangSpawnOffset => new Point(4, 8);
+        public static Point ShootingArrowSpawnOffset => new Point((int) (3 * SpriteScaler), (int) (7 * SpriteScaler));
+        public static Point ShootingSwordBeamSpawnOffset => new Point((int) (2 * SpriteScaler), (int) (6 * SpriteScaler));
+        public static Point ShootingBoomerangSpawnOffset => new Point((int) (4 * SpriteScaler), (int) (8 * SpriteScaler));
+
+        // Spawn Offsets : Using Sword
+        public static Point UsingSwordRightSpawnOffset => new Point((int) (16 * SpriteScaler), (int) (0 * SpriteScaler));
+        public static Point UsingSwordLeftSpawnOffset => new Point((int) (-16 * SpriteScaler), (int) (0 * SpriteScaler));
+        public static Point UsingSwordUpSpawnOffset => new Point((int) (0 * SpriteScaler), (int) (-16 * SpriteScaler));
+        public static Point UsingSwordDownSpawnOffset => new Point((int) (0 * SpriteScaler), (int) (16 * SpriteScaler));
 
         // Link's Item Types
         public enum ItemType

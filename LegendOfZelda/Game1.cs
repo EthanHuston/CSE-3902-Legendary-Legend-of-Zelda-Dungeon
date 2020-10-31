@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace LegendOfZelda
 {
 
-    public class Game1 : Game
+    class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;

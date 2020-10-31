@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    public class Room
+    class Room
     {
         private Dictionary<Constants.Direction, Room> roomDictionary;
         private CollisionManager collisionManager;

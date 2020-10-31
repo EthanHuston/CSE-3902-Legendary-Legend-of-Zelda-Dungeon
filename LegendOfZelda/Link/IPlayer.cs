@@ -16,7 +16,6 @@ namespace LegendOfZelda.Link
         void PickupItem(LinkConstants.ItemType itemType);
         void UseBomb();
         void UseBoomerang();
-        void PickUpBoomerang();
         void UseSwordBeam();
     }
 }

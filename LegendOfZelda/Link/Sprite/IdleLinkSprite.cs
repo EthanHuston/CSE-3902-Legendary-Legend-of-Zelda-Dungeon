@@ -19,7 +19,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Update()
         {
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
+            if (++damageColorCounter == LinkConstants.DamageFlashDelayTicks)
             {
                 flashRed = !flashRed;
                 damageColorCounter = 0;

@@ -11,7 +11,8 @@ namespace LegendOfZelda.Link
     class LinkPlayer : IPlayer
     {
         public Game1 Game;
-        private double health;
+        private double currentHealth;
+        private double maxHealth;
         private Dictionary<LinkConstants.ItemType, int> inventory;
         private bool safeToDespawn;
         private ILinkState state;
@@ -26,7 +27,8 @@ namespace LegendOfZelda.Link
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
-            health = Constants.LinkStartingHealth;
+            currentHealth = LinkConstants.StartingHealth;
+            maxHealth = LinkConstants.StartingHealth;
             Game = game;
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             FacingDirection = Constants.Direction.Down;
@@ -58,12 +60,12 @@ namespace LegendOfZelda.Link
 
         public void SubtractHealth(double damage)
         {
-            health -= damage;
+            currentHealth -= damage;
         }
 
         public void AddHealth(double healAmount)
         {
-            health += healAmount;
+            currentHealth += healAmount;
         }
 
         public void MoveUp()
@@ -87,31 +89,6 @@ namespace LegendOfZelda.Link
         public void StopMoving()
         {
             State.StopMoving();
-        }
-
-        public void PickUpSword()
-        {
-            State.PickUpItem(LinkConstants.ItemType.Sword);
-        }
-
-        public void PickUpHeartContainer()
-        {
-            State.PickUpItem(LinkConstants.ItemType.HeartContainer);
-        }
-
-        public void PickUpBow()
-        {
-            State.PickUpItem(LinkConstants.ItemType.Bow);
-        }
-
-        public void PickUpTriforce()
-        {
-            State.PickUpItem(LinkConstants.ItemType.Triforce);
-        }
-
-        public void PickUpBoomerang()
-        {
-            State.PickUpItem(LinkConstants.ItemType.Boomerang);
         }
 
         public void SpawnItem(IProjectile item)
@@ -154,10 +131,10 @@ namespace LegendOfZelda.Link
         public Rectangle GetRectangle()
         {
             return new Rectangle(
-                Position.X + Constants.LinkCollisionHelper,
-                Position.Y + Constants.LinkCollisionHelper,
-                CurrentSprite.GetPositionRectangle().Width - Constants.LinkCollisionHelper,
-                CurrentSprite.GetPositionRectangle().Height - Constants.LinkCollisionHelper);
+                Position.X + LinkConstants.CollisionHelper,
+                Position.Y + LinkConstants.CollisionHelper,
+                CurrentSprite.GetPositionRectangle().Width - LinkConstants.CollisionHelper * 2,
+                CurrentSprite.GetPositionRectangle().Height - LinkConstants.CollisionHelper * 2);
         }
 
         public bool SafeToDespawn()
@@ -167,7 +144,9 @@ namespace LegendOfZelda.Link
 
         public void PickupItem(LinkConstants.ItemType itemType)
         {
-            inventory[itemType]++;
+            // TODO: need to add more items to Link's inventory, throws a key not found exception right now
+            if(inventory.ContainsKey(itemType)) inventory[itemType]++;
+            else state.PickUpItem(itemType);
         }
 
         public void Despawn()
@@ -185,7 +164,6 @@ namespace LegendOfZelda.Link
                 {LinkConstants.ItemType.Clock, 0 },
                 {LinkConstants.ItemType.Compass, 0 },
                 {LinkConstants.ItemType.Fairy, 0 },
-                {LinkConstants.ItemType.Heart, 0 },
                 {LinkConstants.ItemType.Key, 0 },
                 {LinkConstants.ItemType.Map, 0 }
             };

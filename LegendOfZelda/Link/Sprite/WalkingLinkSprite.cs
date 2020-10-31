@@ -36,7 +36,7 @@ namespace LegendOfZelda.Link.Sprite
 
             currentFrame += ++bufferFrame % walkingFrameDelay == 0 ? 1 : 0;
 
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
+            if (++damageColorCounter == LinkConstants.DamageFlashDelayTicks)
             {
                 flashRed = !flashRed;
                 damageColorCounter = 0;

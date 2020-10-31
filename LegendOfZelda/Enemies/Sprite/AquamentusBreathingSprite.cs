@@ -16,7 +16,6 @@ namespace LegendOfZelda.Enemies.Sprite
         private int height;
         private int row;
         private int column;
-        private int spriteScaler = Constants.SpriteScaler;
         private Rectangle destinationRectangle;
         private bool flashRed;
         private int damageColorCounter;
@@ -70,7 +69,7 @@ namespace LegendOfZelda.Enemies.Sprite
             column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }

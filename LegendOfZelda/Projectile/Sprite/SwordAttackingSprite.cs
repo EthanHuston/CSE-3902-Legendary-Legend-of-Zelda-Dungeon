@@ -1,11 +1,6 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.Projectile.Sprite
 {
@@ -34,7 +29,7 @@ namespace LegendOfZelda.Projectile.Sprite
             if (FinishedAnimation()) return;
 
             // Check to see if we're at total frames so animation doesn't loop
-            if (currentFrame < totalFrames && ++bufferFrame == Constants.LinkUsingSwordFrameDelay)
+            if (currentFrame < totalFrames && ++bufferFrame == LinkConstants.UsingSwordFrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;

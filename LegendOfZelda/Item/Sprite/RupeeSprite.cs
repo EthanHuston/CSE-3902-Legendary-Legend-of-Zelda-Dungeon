@@ -9,6 +9,7 @@ namespace LegendOfZelda.Item.Sprite
         private Texture2D sprite;
         private const int numRows = 2;
         private const int numColumns = 1;
+        private const int frameDelay = 6;
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
@@ -24,7 +25,7 @@ namespace LegendOfZelda.Item.Sprite
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 6)
+            if (bufferFrame == frameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
@@ -39,11 +40,11 @@ namespace LegendOfZelda.Item.Sprite
         {
             int width = sprite.Width / numColumns;
             int height = sprite.Height / numRows;
-            int row = (int)(currentFrame / numColumns);
+            int row = currentFrame % numColumns;
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, Constants.SpriteScaler * width, Constants.SpriteScaler * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

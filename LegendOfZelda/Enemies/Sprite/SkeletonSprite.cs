@@ -7,12 +7,11 @@ namespace LegendOfZelda.Enemies.Sprite
     class SkeletonSprite : IDamageableSprite
     {
         private Texture2D sprite;
-        private int Rows { get; set; }
-        private int Columns { get; set; }
+        private const int rows = 1;
+        private const int columns = 2;
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        private int spriteScaler = Constants.SpriteScaler;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private bool flashRed;
@@ -21,11 +20,9 @@ namespace LegendOfZelda.Enemies.Sprite
         public SkeletonSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            Rows = 1;
-            Columns = 2;
             currentFrame = 0;
             bufferFrame = 0;
-            totalFrames = Rows * Columns;
+            totalFrames = rows * columns;
             flashRed = false;
             damageColorCounter = 0;
             flashRed = false;
@@ -57,13 +54,13 @@ namespace LegendOfZelda.Enemies.Sprite
         }
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            int width = sprite.Width / columns;
+            int height = sprite.Height / rows;
+            int row = (int)((float)currentFrame / (float)columns);
+            int column = currentFrame % columns;
 
             sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * width, spriteScaler * height);
+            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }

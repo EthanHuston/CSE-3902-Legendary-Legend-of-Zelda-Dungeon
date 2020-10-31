@@ -6,6 +6,8 @@ namespace LegendOfZelda.Link.State
     class LinkWalkingState : LinkGenericAbstractState
     {
         private int distanceWalked;
+        private const int walkDistance = 16;
+        private const int stepDistance = 1;
 
         public LinkWalkingState(LinkPlayer link, Constants.Direction direction)
         {
@@ -35,19 +37,19 @@ namespace LegendOfZelda.Link.State
             {
                 case Constants.Direction.Up:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingUpLinkSprite();
-                    link.Velocity = new Vector2(0, -1 * Constants.LinkWalkStepDistanceInterval);
+                    link.Velocity = new Vector2(0, -1 * stepDistance);
                     break;
                 case Constants.Direction.Down:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingDownLinkSprite();
-                    link.Velocity = new Vector2(0, Constants.LinkWalkStepDistanceInterval);
+                    link.Velocity = new Vector2(0, stepDistance);
                     break;
                 case Constants.Direction.Left:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingLeftLinkSprite();
-                    link.Velocity = new Vector2(-1 * Constants.LinkWalkStepDistanceInterval, 0);
+                    link.Velocity = new Vector2(-1 * stepDistance, 0);
                     break;
                 case Constants.Direction.Right:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateWalkingRightLinkSprite();
-                    link.Velocity = new Vector2(Constants.LinkWalkStepDistanceInterval, 0);
+                    link.Velocity = new Vector2(stepDistance, 0);
                     break;
             }
         }
@@ -55,7 +57,7 @@ namespace LegendOfZelda.Link.State
         protected override void UpdateState()
         {
             distanceWalked += (int)link.Velocity.Length();
-            if (distanceWalked > Constants.LinkWalkDistanceInterval)
+            if (distanceWalked > walkDistance)
             {
                 StopMoving();
             }
