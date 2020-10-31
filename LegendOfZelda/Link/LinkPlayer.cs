@@ -45,6 +45,7 @@ namespace LegendOfZelda.Link
 
         public void Update()
         {
+            safeToDespawn = safeToDespawn || currentHealth <= 0;
             State.Update();
         }
 
@@ -66,6 +67,17 @@ namespace LegendOfZelda.Link
         public void AddHealth(double healAmount)
         {
             currentHealth += healAmount;
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+        }
+
+        public void IncreaseMaxHealth(int amount)
+        {
+            maxHealth += amount;
+        }
+
+        public void GiveFullHealth()
+        {
+            currentHealth = maxHealth;
         }
 
         public void MoveUp()

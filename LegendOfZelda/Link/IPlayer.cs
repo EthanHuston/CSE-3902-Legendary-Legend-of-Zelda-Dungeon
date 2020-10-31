@@ -5,7 +5,9 @@ namespace LegendOfZelda.Link
     interface IPlayer : IDynamic
     {
         void BeHealthy(double healAmount);
-        void BeDamaged(double damage);
+        void BeDamaged(double damage); 
+        void IncreaseMaxHealth(int amount); 
+        void GiveFullHealth();
         void MoveUp();
         void MoveDown();
         void MoveLeft();

@@ -11,11 +11,14 @@ namespace LegendOfZelda.Link
         public const int BoomerangSpeed = (int) (1 * SpriteScaler);
         public const int ArrowSpeed = (int) (2 * SpriteScaler);
 
-        // Values
+        // Misc. Values
         public const int StartingHealth = 60;
         public const int HeartValue = Constants.HeartValue;
+        public const int HeartItemHealAmount = Constants.HeartValue;
+
         public const int DamageEffectTimeMs = 2000;
         public const int DamageFlashDelayTicks = 5;
+        
         public const int PickUpItemPauseTicks = 60;
         public const int CollisionHelper = (int) (3 * SpriteScaler);
         public const int UsingSwordFrameDelay = 3;
