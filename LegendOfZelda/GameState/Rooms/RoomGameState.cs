@@ -1,6 +1,4 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState;
-using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.GameState.Pause;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -99,7 +97,8 @@ namespace LegendOfZelda.GameState.Rooms
 
         public void SwitchToPauseState()
         {
-            Game.State = new PauseGameState(Game, this);
+            OldInputState oldInputState = GameStateConstants.GetOldInputState(controllerList);
+            Game.SetGameState(new PauseGameState(Game, this), oldInputState);
         }
         public void SwitchToRoomState()
         {
@@ -109,6 +108,11 @@ namespace LegendOfZelda.GameState.Rooms
         public void SwitchToMainMenuState()
         {
             // cannot go to main menu from here
+        }
+
+        public void SetControllerOldInputState(OldInputState oldInputState)
+        {
+            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
         }
     }
 }

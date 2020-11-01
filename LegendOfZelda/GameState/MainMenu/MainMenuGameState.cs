@@ -41,12 +41,20 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public void SwitchToRoomState()
         {
-            Game.State = new RoomGameState(Game);
+            Game.SetGameState(new RoomGameState(Game), GameStateConstants.GetOldInputState(controllerList));
         }
 
         public void Update()
         {
-            // don't update spawnable manager because we don't want anything to move in the background
+            foreach (IController controller in controllerList)
+            {
+                controller.Update();
+            }
+        }
+
+        public void SetControllerOldInputState(OldInputState oldInputState)
+        {
+            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
         }
     }
 }

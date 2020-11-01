@@ -1,13 +1,15 @@
-﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState;
-using LegendOfZelda.GameState.MainMenu;
-using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.Interface;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Pause
 {
     class PauseGameState : IGameState
     {
         private readonly IGameState roomStatePreserved;
+        private List<IController> controllerList;
+        private List<ISpawnable> buttons;
 
         public Game1 Game { get; private set; }
 
@@ -15,12 +17,32 @@ namespace LegendOfZelda.GameState.Pause
         {
             Game = game;
             roomStatePreserved = oldRoomState;
+            InitControllerList();
+            InitButtonsList();
+        }
+
+        private void InitButtonsList()
+        {
+            buttons = new List<ISpawnable>()
+            {
+                {new ResumeButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
+                {new ExitButton(Game.SpriteBatch, GameStateConstants.PauseStateExitButtonLocation) }
+            };
+        }
+
+        private void InitControllerList()
+        {
+            controllerList = new List<IController>()
+            {
+                {new KeyboardController(this) },
+                {new MouseController(this) }
+            };
         }
 
         public void Draw()
         {
             roomStatePreserved.Draw(); // continue to draw the old room in the background
-            // draw buttons next (quit game, resume game)
+            foreach (ISpawnable button in buttons) button.Draw();
         }
 
         public void SwitchToPauseState()
@@ -30,17 +52,27 @@ namespace LegendOfZelda.GameState.Pause
 
         public void SwitchToRoomState()
         {
-            Game.State = roomStatePreserved;
-        }
-
-        public void Update()
-        {
-            // don't update old room because we don't want anything to move in the background
+            Game.SetGameState(roomStatePreserved, GameStateConstants.GetOldInputState(controllerList));
         }
 
         public void SwitchToMainMenuState()
         {
-            Game.State = new MainMenuGameState(Game);
+            Game.SetGameState(new MainMenuGameState(Game), GameStateConstants.GetOldInputState(controllerList));
+        }
+
+        public void Update()
+        {
+            foreach (IController controller in controllerList)
+            {
+                controller.Update();
+            }
+            // don't need to update buttons because they are non animated
+            // don't update old room because we don't want anything to move in the background
+        }
+
+        public void SetControllerOldInputState(OldInputState oldInputState)
+        {
+            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
         }
     }
 }

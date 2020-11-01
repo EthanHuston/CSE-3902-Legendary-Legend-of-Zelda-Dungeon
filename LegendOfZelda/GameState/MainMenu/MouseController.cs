@@ -8,7 +8,22 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public MouseController(IGameState gameState)
         {
-            oldMouseState = new MouseState();
+            this.oldMouseState = new MouseState();
+        }
+
+        public GameStateConstants.InputType GetInputType()
+        {
+            return GameStateConstants.InputType.Mouse;
+        }
+
+        public OldInputState GetOldInputState()
+        {
+            return new OldInputState { oldMouseState = oldMouseState };
+        }
+
+        public void SetOldInputState(OldInputState oldInputState)
+        {
+            oldMouseState = oldInputState.oldMouseState;
         }
 
         public void Update()

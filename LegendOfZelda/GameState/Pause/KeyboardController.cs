@@ -1,7 +1,5 @@
-﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.Pause.Command;
+﻿using LegendOfZelda.GameState.Pause.Command;
 using LegendOfZelda.Interface;
-using LegendOfZelda.Link.Command;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
@@ -22,26 +20,43 @@ namespace LegendOfZelda.GameState.Pause
             RegisterCommand(Keys.Escape, new ResumeGameCommand(gameState));
         }
 
+        public GameStateConstants.InputType GetInputType()
+        {
+            return GameStateConstants.InputType.Keyboard;
+        }
+
+        public OldInputState GetOldInputState()
+        {
+            return new OldInputState { oldKeyboardState = oldKbState };
+        }
+
         public void RegisterCommand(Keys key, ICommand command)
         {
             controllerMappings.Add(key, command);
         }
 
+        public void SetOldInputState(OldInputState oldInputState)
+        {
+            oldKbState = oldInputState.oldKeyboardState;
+        }
+
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            bool changedKbState = false;
 
-            List<Keys> newKbState = new List<Keys>();
             foreach (Keys key in pressedKeys)
             {
+                changedKbState = true;
                 bool inOldKbState = oldKbState.Contains(key);
-                if (!repeatableKeys.Contains(key)) newKbState.Add(key);
+                if (inOldKbState) oldKbState.Remove(key);
+                if (!repeatableKeys.Contains(key)) oldKbState.Add(key);
                 if (controllerMappings.ContainsKey(key) && !inOldKbState)
                 {
                     controllerMappings[key].Execute();
                 }
             }
-            oldKbState = newKbState;
+            if (!changedKbState) oldKbState = new List<Keys>();
         }
 
         private void InitRepeatableKeys()

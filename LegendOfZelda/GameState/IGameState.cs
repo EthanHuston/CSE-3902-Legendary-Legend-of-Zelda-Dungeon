@@ -11,5 +11,6 @@ namespace LegendOfZelda.GameState
         void SwitchToRoomState();
         void SwitchToPauseState();
         void SwitchToMainMenuState();
+        void SetControllerOldInputState(OldInputState oldInputState);
     }
 }

@@ -14,7 +14,7 @@ namespace LegendOfZelda
         private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
 
-        public IGameState State { get; set; }
+        public IGameState State { get; private set; }
 
         public Game1()
         {
@@ -62,6 +62,12 @@ namespace LegendOfZelda
             SpriteBatch.Begin();
             State.Draw();
             SpriteBatch.End();
+        }
+
+        public void SetGameState(IGameState gameState, OldInputState oldInputState)
+        {
+            State = gameState;
+            State.SetControllerOldInputState(oldInputState);
         }
     }
 }

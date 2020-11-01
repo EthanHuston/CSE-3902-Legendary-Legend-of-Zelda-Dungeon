@@ -24,9 +24,24 @@ namespace LegendOfZelda.GameState.Rooms
             RegisterCommand(Constants.Direction.Up, new ChangeRoomUpCommand(gameStateCast));
         }
 
+        public GameStateConstants.InputType GetInputType()
+        {
+            return GameStateConstants.InputType.Mouse;
+        }
+
+        public OldInputState GetOldInputState()
+        {
+            return new OldInputState { oldMouseState = oldMouseState };
+        }
+
         public void RegisterCommand(Constants.Direction dir, ICommand command)
         {
             leftClickCommands.Add(dir, command);
+        }
+
+        public void SetOldInputState(OldInputState oldInputState)
+        {
+            oldMouseState = oldInputState.oldMouseState;
         }
 
         public void Update()
