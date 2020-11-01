@@ -1,38 +1,53 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState;
+using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.Pause;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Rooms;
 using LegendOfZelda.Utility;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.GameState.Rooms
 {
     internal class RoomGameState : IGameState
     {
-        private readonly Game1 game;
+        private List<IController> controllerList;
+
+        public Game1 Game { get; private set; }
         public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
 
         public RoomGameState(Game1 game)
         {
-            this.game = game;
+            Game = game;
             InitPlayersForGame();
+            InitControllerList();
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
+        }
+
+        private void InitControllerList()
+        {
+            controllerList = new List<IController>()
+            {
+                {new KeyboardController(this) },
+                {new MouseController(this) }
+            };
         }
 
         public void Update()
         {
+            foreach (IController controller in controllerList)
+            {
+                controller.Update();
+            }
             CurrentRoom.Update();
         }
 
         public void Draw()
         {
             CurrentRoom.Draw();
-        }
-
-        public void SwitchToRoomState()
-        {
-            // do nothing, already in room state
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -78,8 +93,22 @@ namespace LegendOfZelda.Rooms
         {
             PlayerList = new List<IPlayer>()
             {
-                {new LinkPlayer(game, LinkConstants.DoorDownSpawnPosition) }
+                {new LinkPlayer(Game, LinkConstants.DoorDownSpawnPosition) }
             };
+        }
+
+        public void SwitchToPauseState()
+        {
+            Game.State = new PauseGameState(Game, this);
+        }
+        public void SwitchToRoomState()
+        {
+            // do nothing, already in room state
+        }
+
+        public void SwitchToMainMenuState()
+        {
+            // cannot go to main menu from here
         }
     }
 }

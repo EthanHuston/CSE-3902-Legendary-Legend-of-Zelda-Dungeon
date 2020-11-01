@@ -1,3 +1,4 @@
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State;
 using LegendOfZelda.Projectile;
@@ -109,7 +110,7 @@ namespace LegendOfZelda.Link
             IProjectile currentProjectile = currentProjectiles[projectile.GetProjectileType()];
             if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
 
-            Game.State.SpawnableManager.Spawn(projectile);
+            ((RoomGameState)Game.State).SpawnableManager.Spawn(projectile);
             currentProjectiles[projectile.GetProjectileType()] = projectile;
         }
 

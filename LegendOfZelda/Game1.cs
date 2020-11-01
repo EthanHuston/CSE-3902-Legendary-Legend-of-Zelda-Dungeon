@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -11,7 +12,6 @@ namespace LegendOfZelda
     {
         private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
-        private List<IController> controllerList;
 
         public IGameState State { get; set; }
 
@@ -32,19 +32,11 @@ namespace LegendOfZelda
             SpriteFactory.Instance.LoadAllTextures(Content);
         }
 
-        public void ResetGame()
-        {
-        }
-
         protected override void Initialize()
         {
             State = new RoomGameState(this);
 
-            controllerList = new List<IController>()
-            {
-                {new KeyboardController(this) },
-                {new MouseController(this) }
-            };
+            
 
             base.Initialize();
         }
@@ -60,12 +52,6 @@ namespace LegendOfZelda
 
         protected override void Update(GameTime gameTime)
         {
-
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
-
             State.Update();
             base.Update(gameTime);
         }
@@ -76,11 +62,6 @@ namespace LegendOfZelda
             SpriteBatch.Begin();
             State.Draw();
             SpriteBatch.End();
-        }
-
-        public IPlayer GetGamePlayer(int playerNumber)
-        {
-            return State.GetPlayer(playerNumber);
         }
     }
 }

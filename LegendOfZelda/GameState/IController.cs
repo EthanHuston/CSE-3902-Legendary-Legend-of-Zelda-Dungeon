@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda.GameLogic
+﻿namespace LegendOfZelda.GameState
 {
     public interface IController
     {
