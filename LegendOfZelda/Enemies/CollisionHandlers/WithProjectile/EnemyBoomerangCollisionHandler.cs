@@ -7,7 +7,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile
     {
         public void HandleCollision(INpc enemy, IProjectile boomerang, Constants.Direction side)
         {
-            if (boomerang.Owner == Constants.ItemOwner.Link)
+            if (boomerang.Owner == Constants.ProjectileOwner.Link)
             {
                 BoomerangFlyingProjectile boomerangCast = (BoomerangFlyingProjectile)boomerang;
                 enemy.TakeDamage(boomerangCast.DamageAmount());

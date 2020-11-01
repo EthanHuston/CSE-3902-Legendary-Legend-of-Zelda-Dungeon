@@ -1,8 +1,8 @@
-﻿using LegendOfZelda.Link;
+﻿using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.GameLogic
 {
-    public interface IGameState
+    interface IGameState
     {
         ISpawnableManager SpawnableManager { get; }
         void Update();

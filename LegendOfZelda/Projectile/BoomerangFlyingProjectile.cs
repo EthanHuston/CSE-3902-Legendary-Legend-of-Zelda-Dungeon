@@ -1,4 +1,5 @@
 using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,14 +14,15 @@ namespace LegendOfZelda.Projectile
         private const int despawnMinXFromOwner = 0;
         private const int despawnMaxYFromOwner = 15;
         private const int despawnMinYFromOwner = 0;
-        private const int maxDistanceFromOwner = Constants.SpriteScaler * 100;
+        private const int maxDistanceFromOwner = (int) (Constants.GameScaler * 100);
 
-        public BoomerangFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
+        public BoomerangFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangFlyingSprite();
             Velocity = velocity;
             returningToOwner = false;
             this.itemToTrack = itemToTrack;
+            projectileType = LinkConstants.ProjectileType.Boomerang;
         }
 
         public override void Update()
@@ -38,8 +40,8 @@ namespace LegendOfZelda.Projectile
                 ReturnToOwner();
             }
 
-            int posX = Velocity.X == 0 ? itemToTrack.Position.X : (int)(Position.X + Velocity.X);
-            int posY = Velocity.Y == 0 ? itemToTrack.Position.Y : (int)(Position.Y + Velocity.Y);
+            int posX = Velocity.X == 0 ? itemToTrack.Position.X + itemToTrack.GetRectangle().Width / 2 : (int)(Position.X + Velocity.X);
+            int posY = Velocity.Y == 0 ? itemToTrack.Position.Y + itemToTrack.GetRectangle().Height / 2 : (int)(Position.Y + Velocity.Y);
             Position = new Point(posX, posY);
         }
 

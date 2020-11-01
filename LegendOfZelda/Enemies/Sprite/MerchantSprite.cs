@@ -7,7 +7,6 @@ namespace LegendOfZelda.Enemies.Sprite
     internal class MerchantSprite : ISprite
     {
         private readonly Texture2D sprite;
-        private Rectangle destinationRectangle;
 
         public MerchantSprite(Texture2D sprite)
         {
@@ -22,14 +21,14 @@ namespace LegendOfZelda.Enemies.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
-            destinationRectangle = new Rectangle(position.X, position.Y, 2 * sprite.Width, 2 * sprite.Width);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Width);
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return sprite.Bounds;
         }
     }
 }

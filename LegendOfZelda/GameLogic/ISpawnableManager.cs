@@ -1,13 +1,13 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Item;
-using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
 {
-    public interface ISpawnableManager
+    interface ISpawnableManager
     {
         List<IItem> ItemList { get; }
         List<IProjectile> ProjectileList { get; }

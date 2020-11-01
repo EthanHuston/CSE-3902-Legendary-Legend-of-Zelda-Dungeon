@@ -1,8 +1,10 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 
 namespace LegendOfZelda.Item
 {
-    public interface IItem : ISpawnable
+    interface IItem : ISpawnable
     {
+        LinkConstants.ItemType GetItemType();
     }
 }

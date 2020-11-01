@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
@@ -14,19 +15,19 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
             switch (side)
             {
                 case Constants.Direction.Up:
-                    correctDirection = new Vector2(Constants.LinkNoMove, Constants.LinkMoveUp);
+                    correctDirection = new Vector2(0, -1);
                     link.Move(linkMoveDistance, correctDirection);
                     break;
                 case Constants.Direction.Down:
-                    correctDirection = new Vector2(Constants.LinkNoMove, Constants.LinkMoveDown);
+                    correctDirection = new Vector2(0, 1);
                     link.Move(linkMoveDistance, correctDirection);
                     break;
                 case Constants.Direction.Left:
-                    correctDirection = new Vector2(Constants.LinkMoveLeft, Constants.LinkNoMove);
+                    correctDirection = new Vector2(-1, 0);
                     link.Move(linkMoveDistance, correctDirection);
                     break;
                 case Constants.Direction.Right:
-                    correctDirection = new Vector2(Constants.LinkMoveRight, Constants.LinkNoMove);
+                    correctDirection = new Vector2(1, 0);
                     link.Move(linkMoveDistance, correctDirection);
                     break;
                 default:

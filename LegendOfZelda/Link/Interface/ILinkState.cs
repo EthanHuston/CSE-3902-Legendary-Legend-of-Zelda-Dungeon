@@ -6,23 +6,11 @@ namespace LegendOfZelda.Link.Interface
     {
         void Update();
         void Draw();
-        void MoveLeft();
-        void MoveRight();
-        void MoveDown();
-        void MoveUp();
+        void Move(Constants.Direction direction);
         void BeDamaged(double damage);
         void BeHealthy(double healAmount);
         void StopMoving();
-        void PickUpSword();
-        void PickUpHeartContainer();
-        void PickUpTriforce();
-        void PickUpBow();
-        void PickUpBoomerang();
-        void UseBomb();
-        void UseBoomerang();
+        void PickUpItem(LinkConstants.ItemType itemType);
         void UseSword();
-        void UseBow();
-        void UseSwordBeam();
-        void Drag(ISpawnable drag, int dragTimeMs);
     }
 }

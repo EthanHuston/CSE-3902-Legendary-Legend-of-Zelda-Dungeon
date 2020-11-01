@@ -6,14 +6,11 @@ namespace LegendOfZelda.Enemies.Sprite
 {
     internal class OldManSprite : ISprite
     {
-        private readonly int spriteScaler = Constants.SpriteScaler;
-        private readonly Texture2D sprite;
-        private Rectangle destinationRectangle;
+        private Texture2D sprite;
 
         public OldManSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            destinationRectangle = Rectangle.Empty;
         }
         public void Update()
         {
@@ -23,13 +20,13 @@ namespace LegendOfZelda.Enemies.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
-            destinationRectangle = new Rectangle(position.X, position.Y, spriteScaler * sprite.Width, spriteScaler * sprite.Width);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * sprite.Width), (int) (Constants.GameScaler * sprite.Width));
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return sprite.Bounds;
         }
     }
 }

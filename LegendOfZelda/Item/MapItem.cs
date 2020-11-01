@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -9,6 +10,7 @@ namespace LegendOfZelda.Item
         public MapItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {
             sprite = ItemSpriteFactory.Instance.CreateMapSprite();
+            itemType = LinkConstants.ItemType.Map;
         }
 
         protected override void CheckItemIsExpired()

@@ -19,7 +19,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Update()
         {
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
+            if (++damageColorCounter == LinkConstants.DamageFlashDelayTicks)
             {
                 flashRed = !flashRed;
                 damageColorCounter = 0;
@@ -46,11 +46,6 @@ namespace LegendOfZelda.Link.Sprite
         public Rectangle GetPositionRectangle()
         {
             return sprite.Bounds;
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
-        {
-            Draw(spriteBatch, position, false);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.GameLogic;
+using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithNpc
 {
@@ -10,7 +11,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithNpc
         public void HandleCollision(IPlayer link, INpc enemy, Constants.Direction side)
         {
             link.BeDamaged(enemy.GetDamageAmount());
-            link.Drag(enemy, dragTimeMs);
+            // TODO: fix dragging collisions
         }
     }
 }

@@ -1,3 +1,4 @@
+using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -5,20 +6,17 @@ namespace LegendOfZelda.Projectile
 {
     internal class SwordAttackingProjectile : GenericProjectile
     {
-        private const int SpawnOffsetX = 16;
-        private const int SpawnOffsetY = 16;
-        public SwordAttackingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
+        public SwordAttackingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
+            projectileType = LinkConstants.ProjectileType.Sword;
             Velocity = Vector2.Zero;
             switch (direction)
             {
                 case Constants.Direction.Down:
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordAttackingDownSprite();
-                    Position = new Point(spawnPosition.X, spawnPosition.Y + SpawnOffsetY);
                     break;
                 case Constants.Direction.Up:
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordAttackingUpSprite();
-                    Position = new Point(spawnPosition.X, spawnPosition.Y - SpawnOffsetY);
                     break;
                 case Constants.Direction.Right:
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordAttackingRightSprite();
@@ -35,6 +33,7 @@ namespace LegendOfZelda.Projectile
             sprite.Update();
             CheckItemIsExpired();
         }
+
         public override void Draw()
         {
             sprite.Draw(spriteBatch, Position);

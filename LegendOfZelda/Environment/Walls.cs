@@ -52,7 +52,7 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return wallSprite.GetPositionRectangle();
+            return new Rectangle(0, 0, wallSprite.GetPositionRectangle().Width, wallSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()

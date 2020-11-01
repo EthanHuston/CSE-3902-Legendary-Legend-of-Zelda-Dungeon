@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {

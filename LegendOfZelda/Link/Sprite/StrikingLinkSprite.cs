@@ -15,7 +15,7 @@ namespace LegendOfZelda.Link.Sprite
         private readonly int frameWidth;
         private readonly int frameHeight;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
-        private const int totalFrames = 7;
+        private readonly int totalFrames;
         private const int numRows = 2;
         private const int numColumns = 4;
 
@@ -26,7 +26,8 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             frameWidth = sprite.Width / numColumns;
-            frameHeight = sprite.Height / numRows;
+            frameHeight = sprite.Height / numRows; 
+            totalFrames = frameToCurrentColumnArray.Length;
         }
 
         public void Update()
@@ -35,13 +36,13 @@ namespace LegendOfZelda.Link.Sprite
             if (FinishedAnimation()) return;
 
             // Check to see if we're at total frames so animation doesn't loop
-            if (currentFrame < totalFrames && ++bufferFrame == Constants.LinkUsingSwordFrameDelay)
+            if (currentFrame < totalFrames && ++bufferFrame == LinkConstants.UsingSwordFrameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
 
-            if (++damageColorCounter == Constants.LinkDamageFlashDelayTicks)
+            if (++damageColorCounter == LinkConstants.DamageFlashDelayTicks)
             {
                 flashRed = !flashRed;
                 damageColorCounter = 0;
@@ -55,8 +56,6 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
-            int frameWidth = sprite.Width / numColumns;
-            int frameHeight = sprite.Height / numRows;
             int currentRow = 1;
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
@@ -64,11 +63,6 @@ namespace LegendOfZelda.Link.Sprite
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, bool walkingToggle)
-        {
-            Draw(spriteBatch, position, false);
         }
 
         public bool FinishedAnimation()

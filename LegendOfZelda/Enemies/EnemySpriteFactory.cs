@@ -48,19 +48,19 @@ namespace LegendOfZelda.Enemies
         }
         public IDamageableSprite CreateGoriyaUpSprite()
         {
-            return new GoriyaUpSprite(goriyaUpSprite);
+            return new GoriyaSprite(goriyaUpSprite);
         }
         public IDamageableSprite CreateGoriyaDownSprite()
         {
-            return new GoriyaUpSprite(goriyaDownSprite);
+            return new GoriyaSprite(goriyaDownSprite);
         }
         public IDamageableSprite CreateGoriyaRightSprite()
         {
-            return new GoriyaRightSprite(goriyaRightSprite);
+            return new GoriyaSprite(goriyaRightSprite);
         }
         public IDamageableSprite CreateGoriyaLeftSprite()
         {
-            return new GoriyaLeftSprite(goriyaLeftSprite);
+            return new GoriyaSprite(goriyaLeftSprite);
         }
         public IDamageableSprite CreateAquamentusBreathingSprite()
         {

@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Projectile.Sprite;
+﻿using LegendOfZelda.Link;
+using LegendOfZelda.Projectile.Sprite;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,16 +11,17 @@ namespace LegendOfZelda.Projectile
         protected IProjectileSprite sprite;
         protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
+        protected LinkConstants.ProjectileType projectileType;
 
         public SpawnableMover Mover { get; private set; }
 
-        public Constants.ItemOwner Owner { get; private set; }
+        public Constants.ProjectileOwner Owner { get; private set; }
 
         public Point Position { get => Mover.Position; set => Mover.Position = value; }
 
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
 
-        public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner)
+        public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner)
         {
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             this.spriteBatch = spriteBatch;
@@ -53,6 +55,11 @@ namespace LegendOfZelda.Projectile
         public void Despawn()
         {
             itemIsExpired = true;
+        }
+
+        public LinkConstants.ProjectileType GetProjectileType()
+        {
+            return projectileType;
         }
     }
 }

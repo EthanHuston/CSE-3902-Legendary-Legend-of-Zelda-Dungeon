@@ -56,8 +56,6 @@ namespace LegendOfZelda.Enemies
 
             sprite.Update();
 
-            //updateCount++;
-
             CheckSafeToDespawn();
         }
 
@@ -68,7 +66,7 @@ namespace LegendOfZelda.Enemies
 
         public Rectangle GetRectangle()
         {
-            return sprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
         public void Move(Vector2 distance)
@@ -90,9 +88,9 @@ namespace LegendOfZelda.Enemies
         private void Attack()
         {
             Point spawnPosition = new Point(position.X, position.Y);
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -1), Constants.ItemOwner.Enemy));
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ItemOwner.Enemy));
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 1), Constants.ItemOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -1), Constants.ProjectileOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ProjectileOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 1), Constants.ProjectileOwner.Enemy));
             attacked = true;
             attackUpdate = updateCount;
         }

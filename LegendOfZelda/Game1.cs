@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace LegendOfZelda
 {
 
-    public class Game1 : Game
+    class Game1 : Game
     {
         private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;

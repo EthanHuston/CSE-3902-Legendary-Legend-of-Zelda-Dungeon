@@ -141,8 +141,8 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(itemType);
                     break;
                 case RoomConstants.Heart:
-                    position.X += 4 * RoomConstants.SpriteMultiplier;
-                    position.Y += 4 * RoomConstants.SpriteMultiplier;
+                    position.X += (int) (4 * RoomConstants.SpriteMultiplier);
+                    position.Y += (int) (4 * RoomConstants.SpriteMultiplier);
                     itemType = new HeartItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;
@@ -155,8 +155,8 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(itemType);
                     break;
                 case RoomConstants.Triforce:
-                    position.X += 12 * RoomConstants.SpriteMultiplier;
-                    position.Y += 2 * RoomConstants.SpriteMultiplier;
+                    position.X += (int) (12 * RoomConstants.SpriteMultiplier);
+                    position.Y += (int) (2 * RoomConstants.SpriteMultiplier);
                     itemType = new TriforceItem(spriteBatch, position);
                     allObjects.Spawn(itemType);
                     break;

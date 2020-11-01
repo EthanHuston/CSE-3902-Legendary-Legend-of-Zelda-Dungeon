@@ -1,3 +1,4 @@
+using LegendOfZelda.Link;
 using LegendOfZelda.Projectile.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,8 +7,9 @@ namespace LegendOfZelda.Projectile
 {
     internal class BombExplodingProjectile : GenericProjectile
     {
-        public BombExplodingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner) : base(spriteBatch, spawnPosition, owner)
+        public BombExplodingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
+            projectileType = LinkConstants.ProjectileType.Bomb;
             sprite = ProjectileSpriteFactory.Instance.CreateBombExplodingSprite();
         }
 

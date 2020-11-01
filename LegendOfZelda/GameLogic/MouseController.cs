@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
 {
-    public class MouseController : IController
+    class MouseController : IController
     {
         private readonly Game1 myGame;
         private readonly Dictionary<Constants.Direction, ICommand> leftClickCommands;

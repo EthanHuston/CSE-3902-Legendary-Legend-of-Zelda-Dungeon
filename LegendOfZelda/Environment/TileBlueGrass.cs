@@ -10,7 +10,6 @@ namespace LegendOfZelda.Environment
         private readonly ISprite sprite;
         private readonly SpriteBatch sb;
         private bool safeToDespawn;
-        // unused right now: private bool canWalk;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -35,7 +34,7 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return sprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()

@@ -1,3 +1,4 @@
+using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -9,8 +10,9 @@ namespace LegendOfZelda.Projectile
         private bool updatedSprite;
         private const int moveDistanceVelocity = 3;
 
-        public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ItemOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
+        public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
         {
+            projectileType = LinkConstants.ProjectileType.SwordBeam;
             updatedSprite = false; // true we update sword beam to be exploding -- just so we don't update it more than once
             stopMovingAndExplode = false; // true the sword beam hits an enemy or gets to edge of screen
             switch (direction)
@@ -58,6 +60,7 @@ namespace LegendOfZelda.Projectile
         {
             stopMovingAndExplode = true;
         }
+
         public override double DamageAmount()
         {
             return Constants.SwordBeamDamage;

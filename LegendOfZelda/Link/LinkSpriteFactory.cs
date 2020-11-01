@@ -96,22 +96,6 @@ namespace LegendOfZelda.Link
         {
             return new PickingUpItemLinkSprite(pickingUpItemLinkSprite);
         }
-        public ILinkSprite CreateUsingItemLeftLinkSprite()
-        {
-            return new UsingItemLinkSprite(usingItemLeftLinkSprite);
-        }
-        public ILinkSprite CreateUsingItemRightLinkSprite()
-        {
-            return new UsingItemLinkSprite(usingItemRightLinkSprite);
-        }
-        public ILinkSprite CreateUsingItemUpLinkSprite()
-        {
-            return new UsingItemLinkSprite(usingItemUpLinkSprite);
-        }
-        public ILinkSprite CreateUsingItemDownLinkSprite()
-        {
-            return new UsingItemLinkSprite(usingItemDownLinkSprite);
-        }
         public ILinkSprite CreateWalkingDownLinkSprite()
         {
             return new WalkingLinkSprite(walkingDownLinkSprite);
@@ -132,7 +116,7 @@ namespace LegendOfZelda.Link
         {
             return new PickingUpItemLinkSprite(linkPickingUpSwordSprite);
         }
-        public ILinkSprite CreateLinkPickingUpHeartSprite()
+        public ILinkSprite CreateLinkPickingUpHeartContainerSprite()
         {
             return new PickingUpItemLinkSprite(linkPickingUpHeartSprite);
         }

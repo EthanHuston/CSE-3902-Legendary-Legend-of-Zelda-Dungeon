@@ -9,7 +9,6 @@ namespace LegendOfZelda.Environment
     {
         private readonly ISprite roomSprite;
         private readonly SpriteBatch sb;
-        private Rectangle destinationRectangle;
         private bool safeToDespawn;
 
         private Point position;
@@ -20,7 +19,6 @@ namespace LegendOfZelda.Environment
             roomSprite = EnvironmentSpriteFactory.Instance.CreateRoomBorderSprite();
             sb = spriteBatch;
             Position = spawnPosition;
-            destinationRectangle = Rectangle.Empty;
             safeToDespawn = false;
         }
 
@@ -36,7 +34,7 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(Position.X, Position.Y, roomSprite.GetPositionRectangle().Width, roomSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()

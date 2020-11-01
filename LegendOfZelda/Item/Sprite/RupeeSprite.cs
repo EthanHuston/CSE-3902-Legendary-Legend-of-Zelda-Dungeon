@@ -9,10 +9,12 @@ namespace LegendOfZelda.Item.Sprite
         private readonly Texture2D sprite;
         private const int numRows = 2;
         private const int numColumns = 1;
+        private const int frameDelay = 6;
         private int currentFrame;
         private int bufferFrame;
         private readonly int totalFrames;
-        private Rectangle destinationRectangle;
+        private int width;
+        private int height;
 
         public RupeeSprite(Texture2D sprite)
         {
@@ -20,11 +22,13 @@ namespace LegendOfZelda.Item.Sprite
             currentFrame = 0;
             bufferFrame = 0;
             totalFrames = numRows * numColumns;
+            width = sprite.Width / numColumns;
+            height = sprite.Height / numRows;
         }
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 6)
+            if (bufferFrame == frameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
@@ -37,20 +41,18 @@ namespace LegendOfZelda.Item.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
-            int row = (int)(currentFrame / numColumns);
+            int row = currentFrame % numColumns;
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, Constants.SpriteScaler * width, Constants.SpriteScaler * height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, width, height);
         }
     }
 }

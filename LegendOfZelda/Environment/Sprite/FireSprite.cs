@@ -12,7 +12,6 @@ namespace LegendOfZelda.Environment.Sprite
         private readonly int frameWidth;
         private readonly int frameHeight;
         private readonly int totalFrames;
-        private Rectangle destinationRectangle;
         private int currentFrame;
         private int bufferFrame;
 
@@ -26,7 +25,6 @@ namespace LegendOfZelda.Environment.Sprite
             frameWidth = sprite.Width / numColumns;
             frameHeight = sprite.Height / numRows;
 
-            destinationRectangle = Rectangle.Empty;
         }
         public void Update()
         {
@@ -47,13 +45,13 @@ namespace LegendOfZelda.Environment.Sprite
             int row = (int)((float)currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle(position.X, position.Y, RoomConstants.SpriteMultiplier * frameWidth, RoomConstants.SpriteMultiplier * frameHeight);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (RoomConstants.SpriteMultiplier * frameWidth), (int) (RoomConstants.SpriteMultiplier * frameHeight));
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
 
     }
