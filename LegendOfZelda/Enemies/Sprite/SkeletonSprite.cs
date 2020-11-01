@@ -12,10 +12,10 @@ namespace LegendOfZelda.Enemies.Sprite
         private int currentFrame;
         private int bufferFrame;
         private int totalFrames;
-        private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
         private bool flashRed;
         private int damageColorCounter;
+        private int width;
+        private int height;
 
         public SkeletonSprite(Texture2D sprite)
         {
@@ -27,6 +27,8 @@ namespace LegendOfZelda.Enemies.Sprite
             damageColorCounter = 0;
             flashRed = false;
             damageColorCounter = 0;
+            width = sprite.Width / columns;
+            height = sprite.Height / rows;
         }
         public void Update()
         {
@@ -54,19 +56,17 @@ namespace LegendOfZelda.Enemies.Sprite
         }
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            int width = sprite.Width / columns;
-            int height = sprite.Height / rows;
             int row = (int)((float)currentFrame / (float)columns);
             int column = currentFrame % columns;
 
-            sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, width, height);
         }
     }
 }

@@ -29,10 +29,5 @@ namespace LegendOfZelda.Item.Sprite
         {
             return sprite.Bounds;
         }
-
-        public bool FinishedAnimation()
-        {
-            return false; // animation is never finished
-        }
     }
 }

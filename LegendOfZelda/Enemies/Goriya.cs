@@ -1,6 +1,7 @@
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -19,7 +20,6 @@ namespace LegendOfZelda.Enemies
         private Constants.Direction direction = Constants.Direction.Down;
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private readonly int changeDirection = 100;
-        private bool boomerangInitialized = false;
         private bool boomerangActive = false;
         private readonly int attackWaitTime = 150;
         private double health = 3;
@@ -62,11 +62,7 @@ namespace LegendOfZelda.Enemies
                 if (updateCount % attackWaitTime == 0)
                     Attack();
 
-                if (boomerangInitialized)
-                {
-                    boomer.Update();
-                    boomerangActive = boomer.SafeToDespawn();
-                }
+                boomerangActive = boomer != null && !boomer.SafeToDespawn();
             }
             else
             {
@@ -187,7 +183,6 @@ namespace LegendOfZelda.Enemies
         private void Attack()
         {
             boomerangActive = true;
-            boomerangInitialized = true;
             Vector2 v = new Vector2(0, 0);
             switch (direction)
             {
@@ -207,7 +202,7 @@ namespace LegendOfZelda.Enemies
                     break;
             }
 
-            boomer = new BoomerangFlyingProjectile(spriteBatch, position, Constants.ProjectileOwner.Enemy, this, v);
+            boomer = new BoomerangFlyingProjectile(spriteBatch, Position, Constants.ProjectileOwner.Enemy, this, v);
             itemSpawner.Spawn(boomer);
         }
 

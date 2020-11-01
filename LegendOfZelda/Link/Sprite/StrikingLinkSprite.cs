@@ -15,7 +15,7 @@ namespace LegendOfZelda.Link.Sprite
         private readonly int frameWidth;
         private readonly int frameHeight;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
-        private const int totalFrames = 7;
+        private readonly int totalFrames;
         private const int numRows = 2;
         private const int numColumns = 4;
 
@@ -26,7 +26,8 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             frameWidth = sprite.Width / numColumns;
-            frameHeight = sprite.Height / numRows;
+            frameHeight = sprite.Height / numRows; 
+            totalFrames = frameToCurrentColumnArray.Length;
         }
 
         public void Update()
@@ -55,8 +56,6 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
         {
-            int frameWidth = sprite.Width / numColumns;
-            int frameHeight = sprite.Height / numRows;
             int currentRow = 1;
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 

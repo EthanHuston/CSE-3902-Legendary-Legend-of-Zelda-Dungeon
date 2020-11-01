@@ -16,7 +16,6 @@ namespace LegendOfZelda.Item
         private Texture2D clockSprite;
         private Texture2D compassSprite;
         private Texture2D fairySprite;
-        private Texture2D fireSprite;
         private Texture2D heartSprite;
         private Texture2D heartContainerSprite;
         private Texture2D keySprite;
@@ -36,7 +35,6 @@ namespace LegendOfZelda.Item
             clockSprite = content.Load<Texture2D>("Items/Clock");
             compassSprite = content.Load<Texture2D>("Items/Compass");
             fairySprite = content.Load<Texture2D>("Items/Fairy");
-            fireSprite = content.Load<Texture2D>("Items/Fire");
             heartSprite = content.Load<Texture2D>("Items/Heart");
             heartContainerSprite = content.Load<Texture2D>("Items/HeartContainer");
             keySprite = content.Load<Texture2D>("Items/Key");

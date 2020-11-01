@@ -14,6 +14,8 @@ namespace LegendOfZelda.Enemies.Sprite
         private int totalFrames;
         private bool flashRed;
         private int damageColorCounter;
+        private int width;
+        private int height;
 
         public GoriyaSprite(Texture2D sprite)
         {
@@ -23,6 +25,8 @@ namespace LegendOfZelda.Enemies.Sprite
             totalFrames = numColumns * numRows;
             flashRed = false;
             damageColorCounter = 0;
+            width = sprite.Width / numColumns;
+            height = sprite.Height / numRows;
         }
 
         public void Update()
@@ -51,8 +55,6 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
             int row = (int)((float)currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
 
@@ -64,7 +66,7 @@ namespace LegendOfZelda.Enemies.Sprite
         }
         public Rectangle GetPositionRectangle()
         {
-            return sprite.Bounds;
+            return new Rectangle(0, 0, width, height);
         }
 
     }

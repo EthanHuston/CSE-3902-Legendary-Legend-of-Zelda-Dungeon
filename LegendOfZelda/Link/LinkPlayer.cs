@@ -166,7 +166,6 @@ namespace LegendOfZelda.Link
             safeToDespawn = true;
         }
 
-
         private void InitInventory()
         {
             inventory = new Dictionary<LinkConstants.ItemType, int>()

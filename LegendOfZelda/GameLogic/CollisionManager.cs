@@ -1,7 +1,7 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Item;
-using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;

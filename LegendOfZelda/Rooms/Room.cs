@@ -1,6 +1,6 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

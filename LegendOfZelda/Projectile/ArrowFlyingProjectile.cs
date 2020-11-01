@@ -5,8 +5,6 @@ namespace LegendOfZelda.Projectile
 {
     internal class ArrowFlyingProjectile : GenericProjectile
     {
-        private const int moveDistanceInterval = 2;
-
         public ArrowFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
             Velocity = velocity;
@@ -29,6 +27,7 @@ namespace LegendOfZelda.Projectile
             Mover.Update();
             sprite.Update();
         }
+
         public override void Draw()
         {
             sprite.Draw(spriteBatch, Position);

@@ -43,11 +43,6 @@ namespace LegendOfZelda.Projectile.Sprite
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
-        {
-            Draw(spriteBatch, position);
-        }
-
         public bool FinishedAnimation()
         {
             return false; // not used, BoomerangFlying class keeps track of this

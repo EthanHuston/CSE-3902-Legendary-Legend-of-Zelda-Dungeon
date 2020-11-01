@@ -31,6 +31,7 @@ namespace LegendOfZelda.Projectile
             sprite.Update();
             CheckItemIsExpired();
         }
+
         public override void Draw()
         {
             sprite.Draw(spriteBatch, Position);

@@ -13,7 +13,8 @@ namespace LegendOfZelda.Item.Sprite
         private int currentFrame;
         private int bufferFrame;
         private readonly int totalFrames;
-        private Rectangle destinationRectangle;
+        private int width;
+        private int height;
 
         public HeartSprite(Texture2D sprite)
         {
@@ -21,7 +22,8 @@ namespace LegendOfZelda.Item.Sprite
             currentFrame = 0;
             bufferFrame = 0;
             totalFrames = numRows * numColumns;
-            destinationRectangle = Rectangle.Empty;
+            width = sprite.Width / numColumns;
+            height = sprite.Height / numRows;
         }
 
         public void Update()
@@ -40,30 +42,18 @@ namespace LegendOfZelda.Item.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
             int row = currentFrame % numRows;
             int column = 0;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
-        {
-            Draw(spriteBatch, position);
-        }
-
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
-        }
-
-        public bool FinishedAnimation()
-        {
-            return false; // animation is never finished
+            return new Rectangle(0, 0, width, height);
         }
     }
 }

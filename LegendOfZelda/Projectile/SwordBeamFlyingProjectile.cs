@@ -58,6 +58,7 @@ namespace LegendOfZelda.Projectile
         {
             stopMovingAndExplode = true;
         }
+
         public override double DamageAmount()
         {
             return Constants.SwordBeamDamage;

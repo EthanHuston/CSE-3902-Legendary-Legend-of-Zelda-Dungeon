@@ -46,10 +46,5 @@ namespace LegendOfZelda.Environment
         {
             safeToDespawn = true;
         }
-
-        private void Move(int distance, Vector2 velocity)
-        {
-            // do something
-        }
     }
 }

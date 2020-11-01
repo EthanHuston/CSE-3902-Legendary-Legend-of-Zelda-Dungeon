@@ -78,7 +78,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(); // because we do not need to check collisions for these
+            return Rectangle.Empty;
         }
     }
 }

@@ -52,20 +52,9 @@ namespace LegendOfZelda.Environment
             return new Rectangle(Position.X, Position.Y, blockSprite.GetPositionRectangle().Width, blockSprite.GetPositionRectangle().Height);
         }
 
-        public Vector2 GetVelocity()
-        {
-            return Vector2.Zero;
-        }
-
         public bool SafeToDespawn()
         {
             return safeToDespawn;
-        }
-
-        public void SetPosition(Point position)
-        {
-            this.position.X = position.X;
-            this.position.Y = position.Y;
         }
 
         public void Despawn()
@@ -95,27 +84,6 @@ namespace LegendOfZelda.Environment
         {
             hasBeenPushed = true;
             velocity = Vector2.Zero;
-        }
-
-        public void TakeDamage(double damage)
-        {
-            //Do Nothing
-        }
-
-        public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
-        {
-            //Do Nothing
-        }
-
-        public double GetDamageAmount()
-        {
-            return 0.0;
-        }
-
-        public void Move(Vector2 distance)
-        {
-            position.X += (int)distance.X;
-            position.Y += (int)distance.Y;
         }
 
         public bool HasBeenPushed()

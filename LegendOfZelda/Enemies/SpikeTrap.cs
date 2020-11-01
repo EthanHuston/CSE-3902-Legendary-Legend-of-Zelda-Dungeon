@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -200,7 +200,7 @@ namespace LegendOfZelda.Enemies
         }
         public Rectangle GetRectangle()
         {
-            return sprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
         public void TakeDamage(double damage)

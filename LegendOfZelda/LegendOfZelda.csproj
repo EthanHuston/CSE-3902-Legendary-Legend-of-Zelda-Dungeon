@@ -141,7 +141,7 @@
     <Compile Include="GameLogic\ISpawnableManager.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Item\GenericItem.cs" />
-    <Compile Include="Link\IPlayer.cs" />
+    <Compile Include="Link\Interface\IPlayer.cs" />
     <Compile Include="Item\ItemSpriteFactory.cs" />
     <Compile Include="Environment\BombedOpening.cs" />
     <Compile Include="Environment\BrickTile.cs" />

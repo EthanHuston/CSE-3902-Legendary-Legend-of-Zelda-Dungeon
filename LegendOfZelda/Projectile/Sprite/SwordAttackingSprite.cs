@@ -11,16 +11,19 @@ namespace LegendOfZelda.Projectile.Sprite
         private int currentFrame;
         private int bufferFrame;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
-        private const int totalFrames = 7;
+        private readonly int totalFrames = 7;
         private const int numRows = 2;
         private const int numColumns = 4;
-        private Rectangle destinationRectangle;
+        private int frameWidth;
+        private int frameHeight;
 
         public SwordAttackingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             animationIsDone = false;
-            destinationRectangle = Rectangle.Empty;
+            totalFrames = frameToCurrentColumnArray.Length;
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
@@ -28,7 +31,6 @@ namespace LegendOfZelda.Projectile.Sprite
             animationIsDone = currentFrame >= totalFrames - 1;
             if (FinishedAnimation()) return;
 
-            // Check to see if we're at total frames so animation doesn't loop
             if (currentFrame < totalFrames && ++bufferFrame == LinkConstants.UsingSwordFrameDelay)
             {
                 currentFrame++;
@@ -38,13 +40,11 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int frameWidth = sprite.Width / numColumns;
-            int frameHeight = sprite.Height / numRows;
             int currentRow = 0;
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -56,7 +56,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }

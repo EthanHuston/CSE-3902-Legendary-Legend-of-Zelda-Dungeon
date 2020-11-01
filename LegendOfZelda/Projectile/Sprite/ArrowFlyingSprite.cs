@@ -6,17 +6,15 @@ namespace LegendOfZelda.Projectile.Sprite
     internal class ArrowFlyingSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
-        private Rectangle destinationRectangle;
 
         public ArrowFlyingSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            destinationRectangle = Rectangle.Empty;
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
 
             spriteBatch.Draw(sprite, destinationRectangle, Color.White);
         }
@@ -33,7 +31,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return sprite.Bounds;
         }
     }
 }

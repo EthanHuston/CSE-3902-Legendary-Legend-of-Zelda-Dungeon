@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

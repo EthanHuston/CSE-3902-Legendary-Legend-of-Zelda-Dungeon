@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Link;
+﻿using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 

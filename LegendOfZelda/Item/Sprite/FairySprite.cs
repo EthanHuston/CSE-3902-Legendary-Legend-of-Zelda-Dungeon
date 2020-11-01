@@ -19,7 +19,6 @@ namespace LegendOfZelda.Item.Sprite
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
-        private Rectangle destinationRectangle;
 
         public FairySprite(Texture2D sprite, Point spawnPosition)
         {
@@ -29,7 +28,6 @@ namespace LegendOfZelda.Item.Sprite
             totalFrames = numRows * numColumns;
             frameWidth = sprite.Width / numColumns;
             frameHeight = sprite.Height / numRows;
-            destinationRectangle = new Rectangle(position.X, position.Y, frameWidth, frameHeight);
 
             position = spawnPosition;
         }
@@ -82,7 +80,7 @@ namespace LegendOfZelda.Item.Sprite
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * sprite.Width), (int) (Constants.GameScaler * sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * sprite.Width), (int) (Constants.GameScaler * sprite.Height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -114,12 +112,7 @@ namespace LegendOfZelda.Item.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
-        }
-
-        public bool FinishedAnimation()
-        {
-            return false; // animation never finishes
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }

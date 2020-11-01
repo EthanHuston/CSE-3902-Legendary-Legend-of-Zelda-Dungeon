@@ -57,17 +57,12 @@ namespace LegendOfZelda.Environment
 
         public Rectangle GetRectangle()
         {
-            return doorSprite.GetPositionRectangle();
+            return new Rectangle(Position.X, Position.Y, doorSprite.GetPositionRectangle().Width, doorSprite.GetPositionRectangle().Height);
         }
 
         public void Despawn()
         {
             safeToDespawn = true;
-        }
-
-        public void Move(int distance, Vector2 velocity)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

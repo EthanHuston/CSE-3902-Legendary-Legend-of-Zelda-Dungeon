@@ -16,7 +16,6 @@ namespace LegendOfZelda.Enemies.Sprite
         private int height;
         private int row;
         private int column;
-        private Rectangle destinationRectangle;
         private bool flashRed;
         private int damageColorCounter;
 
@@ -32,7 +31,6 @@ namespace LegendOfZelda.Enemies.Sprite
             row = (int)((float)currentFrame / (float)numColumns);
             column = currentFrame % numColumns;
 
-            destinationRectangle = Rectangle.Empty;
             flashRed = false;
             damageColorCounter = 0;
         }
@@ -63,20 +61,18 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            width = sprite.Width / numColumns;
-            height = sprite.Height / numRows;
-            row = (int)((float)currentFrame / (float)numColumns);
+            row = currentFrame % numRows;
             column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, width, height);
         }
     }
 }

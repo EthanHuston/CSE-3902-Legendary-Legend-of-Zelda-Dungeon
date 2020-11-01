@@ -25,7 +25,8 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             bufferFrame = 0;
-            currentFrame = 0; frameWidth = sprite.Width / numColumns;
+            currentFrame = 0; 
+            frameWidth = sprite.Width / numColumns;
             frameHeight = sprite.Height / numRows;
         }
 

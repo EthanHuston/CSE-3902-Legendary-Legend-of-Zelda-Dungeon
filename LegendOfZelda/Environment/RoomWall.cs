@@ -35,7 +35,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            // does not need to draw
+            // does not need to update
         }
     }
 }

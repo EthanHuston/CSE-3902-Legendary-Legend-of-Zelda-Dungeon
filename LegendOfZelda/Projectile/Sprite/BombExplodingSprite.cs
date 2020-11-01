@@ -10,12 +10,13 @@ namespace LegendOfZelda.Projectile.Sprite
         private int delayBeforeExplosionCounter;
         private int bufferFrame;
         private int currentFrame;
-        private Rectangle destinationRectangle;
         private const int totalFrames = 4;
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int delayBeforeExplosion = 60;
         private bool isExploding;
+        private int width;
+        private int height;
 
         public BombExplodingSprite(Texture2D sprite)
         {
@@ -23,8 +24,9 @@ namespace LegendOfZelda.Projectile.Sprite
             delayBeforeExplosionCounter = 0;
             bufferFrame = 0;
             currentFrame = 0;
-            destinationRectangle = Rectangle.Empty;
             isExploding = false;
+            width = sprite.Width / numColumns;
+            height = sprite.Height / numRows;
         }
 
         public void Update()
@@ -44,13 +46,11 @@ namespace LegendOfZelda.Projectile.Sprite
         {
             if (FinishedAnimation()) return;
 
-            int width = sprite.Width / numColumns;
-            int height = sprite.Height / numRows;
             int currentRow = 0;
             int currentColumn = currentFrame % totalFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -62,7 +62,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, width, height);
         }
 
         public bool IsExploding()

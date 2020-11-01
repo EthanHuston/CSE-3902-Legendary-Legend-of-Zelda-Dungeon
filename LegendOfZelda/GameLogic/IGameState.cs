@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Link;
+﻿using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.GameLogic
 {

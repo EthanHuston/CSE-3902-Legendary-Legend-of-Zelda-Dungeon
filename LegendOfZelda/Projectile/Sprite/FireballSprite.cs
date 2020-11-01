@@ -6,28 +6,29 @@ namespace LegendOfZelda.Projectile.Sprite
     internal class FireballSprite : IProjectileSprite
     {
         private readonly Texture2D sprite;
-        private int Rows { get; set; }
-        private int Columns { get; set; }
+        private const int numRows = 1;
+        private const int numColumns = 4;
+        private const int frameDelay = 3;
         private int currentFrame;
         private int bufferFrame;
         private readonly int totalFrames;
-        private Rectangle destinationRectangle;
+        private int width;
+        private int height;
 
         public FireballSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            Rows = 1;
-            Columns = 4;
             currentFrame = 0;
             bufferFrame = 0;
-            totalFrames = Rows * Columns;
-            destinationRectangle = Rectangle.Empty;
+            totalFrames = numRows * numColumns;
+            width = sprite.Width / numColumns;
+            height = sprite.Height / numRows;
         }
 
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == 3)
+            if (bufferFrame == frameDelay)
             {
                 bufferFrame = 0;
                 currentFrame++;
@@ -42,25 +43,18 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int width = sprite.Width / Columns;
-            int height = sprite.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            int row = currentFrame % numRows;
+            int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
-        {
-            Draw(spriteBatch, position);
-        }
-
         public Rectangle GetPositionRectangle()
         {
-            return destinationRectangle;
+            return new Rectangle(0, 0, width, height);
         }
 
         public bool FinishedAnimation()
