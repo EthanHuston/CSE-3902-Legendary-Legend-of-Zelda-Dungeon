@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState;
+using LegendOfZelda.GameState.Rooms.Command;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using Microsoft.Xna.Framework.Input;
@@ -19,6 +20,8 @@ namespace LegendOfZelda.GameState.Rooms
             oldKbState = new List<Keys>();
             InitRepeatableKeys();
             controllerMappings = new Dictionary<Keys, ICommand>();
+
+            RegisterCommand(Keys.Escape, new PauseGameCommand(gameState));
 
             // Register Player 1 Commands
             RegisterCommand(Keys.W, new WalkingForwardCommand(gameStateCast.GetPlayer(0)));

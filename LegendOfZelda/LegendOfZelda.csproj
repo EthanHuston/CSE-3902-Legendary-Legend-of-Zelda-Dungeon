@@ -91,11 +91,13 @@
     <Compile Include="GameState\MainMenu\KeyboardController.cs" />
     <Compile Include="GameState\MainMenu\MouseController.cs" />
     <Compile Include="GameState\MainMenu\MainMenuGameState.cs" />
+    <Compile Include="GameState\Pause\Command\ResumeGameCommand.cs" />
     <Compile Include="GameState\Pause\KeyboardController.cs" />
     <Compile Include="GameState\Pause\MouseController.cs" />
     <Compile Include="GameState\Pause\PauseGameState.cs" />
     <Compile Include="GameState\MainMenu\Command\QuitGameCommand.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
+    <Compile Include="GameState\Rooms\Command\PauseGameCommand.cs" />
     <Compile Include="GameState\Rooms\MouseController.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
@@ -384,10 +386,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameState\Pause\Command\" />
-    <Folder Include="GameState\Rooms\Command\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

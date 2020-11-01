@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState;
+using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
@@ -34,9 +35,8 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            State = new RoomGameState(this);
-
-            
+            State = new RoomGameState(this);            
+            // State = new MainMenuGameState(this);
 
             base.Initialize();
         }

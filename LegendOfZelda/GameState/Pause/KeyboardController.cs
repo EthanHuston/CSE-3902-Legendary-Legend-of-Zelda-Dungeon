@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Pause.Command;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using Microsoft.Xna.Framework.Input;
@@ -18,7 +19,7 @@ namespace LegendOfZelda.GameState.Pause
             InitRepeatableKeys();
             controllerMappings = new Dictionary<Keys, ICommand>();
 
-            // TODO: Add commands here
+            RegisterCommand(Keys.Escape, new ResumeGameCommand(gameState));
         }
 
         public void RegisterCommand(Keys key, ICommand command)
