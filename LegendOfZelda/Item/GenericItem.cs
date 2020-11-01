@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

@@ -9,12 +9,12 @@ namespace LegendOfZelda.Item.Sprite
         private const int numRows = 2;
         private const int numColumns = 3;
         private const int frameDelay = 6;
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private int currentFrame;
         private int bufferFrame;
         private readonly int totalFrames;
-        private int width;
-        private int height;
+        private readonly int width;
+        private readonly int height;
 
         public HeartSprite(Texture2D sprite)
         {
@@ -46,7 +46,7 @@ namespace LegendOfZelda.Item.Sprite
             int column = 0;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

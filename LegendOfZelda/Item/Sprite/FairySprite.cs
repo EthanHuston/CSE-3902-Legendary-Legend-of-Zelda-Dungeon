@@ -76,11 +76,11 @@ namespace LegendOfZelda.Item.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int row = (int)((float)currentFrame / (float)numColumns);
+            int row = (int)(currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * sprite.Width), (int) (Constants.GameScaler * sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

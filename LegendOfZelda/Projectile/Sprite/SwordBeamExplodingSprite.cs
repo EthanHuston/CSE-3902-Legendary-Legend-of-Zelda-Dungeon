@@ -17,7 +17,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int explosionDistanceVelocity = 1;
-        private const int explosionRange = (int) (30 * Constants.GameScaler);
+        private const int explosionRange = (int)(30 * Constants.GameScaler);
 
         public SwordBeamExplodingSprite(Texture2D upLeftSprite, Texture2D upRightSprite, Texture2D downLeftSprite, Texture2D downRightSprite)
         {
@@ -56,19 +56,19 @@ namespace LegendOfZelda.Projectile.Sprite
 
             width = upLeftSprite.Width / numColumns;
             height = upLeftSprite.Height / numRows;
-            spriteBatch.Draw(upLeftSprite, new Rectangle((int)position.X - xOffset, (int)position.Y - yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
+            spriteBatch.Draw(upLeftSprite, new Rectangle(position.X - xOffset, position.Y - yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
 
             width = downLeftSprite.Width / numColumns;
             height = downLeftSprite.Height / numRows;
-            spriteBatch.Draw(downLeftSprite, new Rectangle((int)position.X - xOffset, (int)position.Y + yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
+            spriteBatch.Draw(downLeftSprite, new Rectangle(position.X - xOffset, position.Y + yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
 
             width = upRightSprite.Width / numColumns;
             height = upRightSprite.Height / numRows;
-            spriteBatch.Draw(upRightSprite, new Rectangle((int)position.X + xOffset, (int)position.Y - yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
+            spriteBatch.Draw(upRightSprite, new Rectangle(position.X + xOffset, position.Y - yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
 
             width = downRightSprite.Width / numColumns;
             height = downRightSprite.Height / numRows;
-            spriteBatch.Draw(downRightSprite, new Rectangle((int)position.X + xOffset, (int)position.Y + yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
+            spriteBatch.Draw(downRightSprite, new Rectangle(position.X + xOffset, position.Y + yOffset, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler)), new Rectangle(width * currentColumn, height * currentRow, width, height), Color.White);
         }
 
         public bool FinishedAnimation()

@@ -3,13 +3,13 @@ using System;
 
 namespace LegendOfZelda.Link.State
 {
-    class LinkWalkingState : LinkGenericAbstractState
+    internal class LinkWalkingState : LinkGenericAbstractState
     {
         private int distanceWalked;
         private const int walkDistance = 16;
         private const int stepDistance = 1;
 
-        public LinkWalkingState(LinkPlayer link, Constants.Direction direction, bool damaged, DateTime healthyDateTime) 
+        public LinkWalkingState(LinkPlayer link, Constants.Direction direction, bool damaged, DateTime healthyDateTime)
         {
             this.link = link;
             this.healthyDateTime = healthyDateTime;
@@ -53,7 +53,8 @@ namespace LegendOfZelda.Link.State
             }
         }
 
-        public override void Move(Constants.Direction direction) {
+        public override void Move(Constants.Direction direction)
+        {
             // TODO: see what happens if we start moving from here
             // Link can only start moving from the LinkStandingStill state
         }

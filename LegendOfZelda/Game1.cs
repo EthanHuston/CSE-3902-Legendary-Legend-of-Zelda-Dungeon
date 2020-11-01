@@ -7,8 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-
-    class Game1 : Game
+    internal class Game1 : Game
     {
         private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;

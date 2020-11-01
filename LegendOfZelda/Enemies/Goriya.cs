@@ -1,7 +1,6 @@
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

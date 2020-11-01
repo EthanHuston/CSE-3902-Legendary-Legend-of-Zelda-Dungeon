@@ -3,7 +3,7 @@ using System;
 
 namespace LegendOfZelda.Link.State
 {
-    class LinkPickingUpItemState : LinkGenericAbstractState
+    internal class LinkPickingUpItemState : LinkGenericAbstractState
     {
         private readonly LinkConstants.ItemType itemType;
 
@@ -21,7 +21,7 @@ namespace LegendOfZelda.Link.State
         {
             link.Velocity = (Vector2.Zero);
             switch (itemType)
-            {                
+            {
                 case LinkConstants.ItemType.Boomerang:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
                     spawnOffset = LinkConstants.PickingUpBoomerangSpawnOffset;

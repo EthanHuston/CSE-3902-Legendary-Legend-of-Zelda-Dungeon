@@ -4,18 +4,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    class GoriyaSprite : IDamageableSprite
+    internal class GoriyaSprite : IDamageableSprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         private const int numRows = 1;
         private const int numColumns = 2;
         private int currentFrame;
         private int bufferFrame;
-        private int totalFrames;
+        private readonly int totalFrames;
         private bool flashRed;
         private int damageColorCounter;
-        private int width;
-        private int height;
+        private readonly int width;
+        private readonly int height;
 
         public GoriyaSprite(Texture2D sprite)
         {
@@ -55,11 +55,11 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
         {
-            int row = (int)((float)currentFrame / (float)numColumns);
+            int row = (int)(currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
 

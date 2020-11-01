@@ -1,8 +1,7 @@
-using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Utility;
-using LegendOfZelda.Link.State;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 

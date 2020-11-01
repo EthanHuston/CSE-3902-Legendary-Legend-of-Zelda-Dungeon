@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    class Room
+    internal class Room
     {
         private readonly Dictionary<Constants.Direction, Room> roomDictionary;
         private readonly CollisionManager collisionManager;

@@ -11,13 +11,13 @@ namespace LegendOfZelda.Enemies.Sprite
         private const int numColumns = 2;
         private int currentFrame;
         private int bufferFrame;
-        private bool currentDir;
-        private int rightRow;
-        private int leftRow;
+        private readonly bool currentDir;
+        private readonly int rightRow;
+        private readonly int leftRow;
         private bool flashRed;
         private int damageColorCounter;
-        private int width;
-        private int height;
+        private readonly int width;
+        private readonly int height;
 
         public HandSprite(Texture2D sprite)
         {
@@ -71,8 +71,8 @@ namespace LegendOfZelda.Enemies.Sprite
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (Constants.GameScaler * width), (int) (Constants.GameScaler * height));
-            
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
+
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
         }
         public Rectangle GetPositionRectangle()

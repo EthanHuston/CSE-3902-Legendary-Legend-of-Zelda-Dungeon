@@ -14,8 +14,8 @@ namespace LegendOfZelda.Projectile.Sprite
         private readonly int totalFrames = 7;
         private const int numRows = 2;
         private const int numColumns = 4;
-        private int frameWidth;
-        private int frameHeight;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
 
         public SwordAttackingSprite(Texture2D sprite)
         {

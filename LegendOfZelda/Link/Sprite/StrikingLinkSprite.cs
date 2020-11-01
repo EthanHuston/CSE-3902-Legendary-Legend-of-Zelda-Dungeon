@@ -26,7 +26,7 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             frameWidth = sprite.Width / numColumns;
-            frameHeight = sprite.Height / numRows; 
+            frameHeight = sprite.Height / numRows;
             totalFrames = frameToCurrentColumnArray.Length;
         }
 
@@ -60,7 +60,7 @@ namespace LegendOfZelda.Link.Sprite
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
         }

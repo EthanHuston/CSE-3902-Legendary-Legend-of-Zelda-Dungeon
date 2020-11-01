@@ -4,7 +4,7 @@ using System;
 
 namespace LegendOfZelda.Link.State
 {
-    class LinkAttackingState : LinkGenericAbstractState
+    internal class LinkAttackingState : LinkGenericAbstractState
     {
         public LinkAttackingState(LinkPlayer link, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
         {
@@ -14,7 +14,7 @@ namespace LegendOfZelda.Link.State
         protected override void InitClass()
         {
             Point spawnOffset = Point.Zero;
-            switch(link.FacingDirection)
+            switch (link.FacingDirection)
             {
                 case Constants.Direction.Up:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateStrikingUpLinkSprite();

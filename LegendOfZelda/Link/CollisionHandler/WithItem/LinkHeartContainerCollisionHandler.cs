@@ -4,7 +4,7 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithItem
 {
-    class LinkHeartContainerCollisionHandler : ICollisionHandler<IPlayer, IItem>
+    internal class LinkHeartContainerCollisionHandler : ICollisionHandler<IPlayer, IItem>
     {
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {

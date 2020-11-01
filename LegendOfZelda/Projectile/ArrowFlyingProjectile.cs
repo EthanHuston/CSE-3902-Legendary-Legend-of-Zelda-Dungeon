@@ -9,13 +9,14 @@ namespace LegendOfZelda.Projectile
         {
             projectileType = Link.LinkConstants.ProjectileType.Arrow;
             Velocity = velocity;
-            
-            if(Velocity.X == 0)
+
+            if (Velocity.X == 0)
             {
-                sprite = Velocity.Y > 0 ? 
-                    ProjectileSpriteFactory.Instance.CreateArrowDownSprite() : 
+                sprite = Velocity.Y > 0 ?
+                    ProjectileSpriteFactory.Instance.CreateArrowDownSprite() :
                     ProjectileSpriteFactory.Instance.CreateArrowUpSprite();
-            } else
+            }
+            else
             {
                 sprite = Velocity.X > 0 ?
                     ProjectileSpriteFactory.Instance.CreateArrowRightSprite() :

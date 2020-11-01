@@ -15,8 +15,8 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int numColumns = 4;
         private const int delayBeforeExplosion = 60;
         private bool isExploding;
-        private int width;
-        private int height;
+        private readonly int width;
+        private readonly int height;
 
         public BombExplodingSprite(Texture2D sprite)
         {
@@ -50,7 +50,7 @@ namespace LegendOfZelda.Projectile.Sprite
             int currentColumn = currentFrame % totalFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentColumn, height * currentRow, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

@@ -13,7 +13,7 @@ namespace LegendOfZelda.Environment.Sprite
         }
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (RoomConstants.SpriteMultiplier * sprite.Width), (int) (RoomConstants.SpriteMultiplier * sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * sprite.Width), (int)(RoomConstants.SpriteMultiplier * sprite.Height));
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

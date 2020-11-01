@@ -42,10 +42,10 @@ namespace LegendOfZelda.Environment.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            int row = (int)((float)currentFrame / (float)numColumns);
+            int row = (int)(currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int) (RoomConstants.SpriteMultiplier * frameWidth), (int) (RoomConstants.SpriteMultiplier * frameHeight));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * frameWidth), (int)(RoomConstants.SpriteMultiplier * frameHeight));
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 

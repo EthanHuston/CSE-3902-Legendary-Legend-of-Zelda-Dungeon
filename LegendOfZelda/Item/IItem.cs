@@ -3,7 +3,7 @@ using LegendOfZelda.Link;
 
 namespace LegendOfZelda.Item
 {
-    interface IItem : ISpawnable
+    internal interface IItem : ISpawnable
     {
         LinkConstants.ItemType GetItemType();
     }

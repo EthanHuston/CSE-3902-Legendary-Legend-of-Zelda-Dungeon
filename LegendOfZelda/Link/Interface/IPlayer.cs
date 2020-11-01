@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Link.Interface
 {
-    interface IPlayer : IDynamic
+    internal interface IPlayer : IDynamic
     {
         void BeHealthy(double healAmount);
         void BeDamaged(double damage);

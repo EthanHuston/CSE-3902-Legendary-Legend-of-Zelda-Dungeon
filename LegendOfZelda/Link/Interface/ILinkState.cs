@@ -1,5 +1,3 @@
-using LegendOfZelda.Interface;
-
 namespace LegendOfZelda.Link.Interface
 {
     internal interface ILinkState

@@ -12,8 +12,8 @@ namespace LegendOfZelda.Enemies.Sprite
         private int currentFrame;
         private int bufferFrame;
         private readonly int totalFrames;
-        private int width;
-        private int height;
+        private readonly int width;
+        private readonly int height;
         private int row;
         private int column;
         private bool flashRed;
@@ -28,7 +28,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
             width = sprite.Width / numColumns;
             height = sprite.Height / numRows;
-            row = (int)((float)currentFrame / (float)numColumns);
+            row = (int)(currentFrame / (float)numColumns);
             column = currentFrame % numColumns;
 
             flashRed = false;

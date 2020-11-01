@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
 {
-    class KeyboardController : IController
+    internal class KeyboardController : IController
     {
         private readonly Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;

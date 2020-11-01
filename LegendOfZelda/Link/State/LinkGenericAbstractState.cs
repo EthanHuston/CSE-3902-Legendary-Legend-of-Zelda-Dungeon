@@ -4,7 +4,7 @@ using System;
 
 namespace LegendOfZelda.Link.State
 {
-    abstract class LinkGenericAbstractState : ILinkState
+    internal abstract class LinkGenericAbstractState : ILinkState
     {
         protected LinkPlayer link;
         protected bool damaged;

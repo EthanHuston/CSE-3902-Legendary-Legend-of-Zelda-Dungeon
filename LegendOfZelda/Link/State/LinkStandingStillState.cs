@@ -3,7 +3,7 @@ using System;
 
 namespace LegendOfZelda.Link.State
 {
-    class LinkStandingStillState : LinkGenericAbstractState
+    internal class LinkStandingStillState : LinkGenericAbstractState
     {
         public LinkStandingStillState(LinkPlayer link) : base(link)
         {

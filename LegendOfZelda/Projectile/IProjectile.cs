@@ -3,7 +3,7 @@ using LegendOfZelda.Link;
 
 namespace LegendOfZelda.Projectile
 {
-    interface IProjectile : IDynamic
+    internal interface IProjectile : IDynamic
     {
         Constants.ProjectileOwner Owner { get; }
         double DamageAmount();
