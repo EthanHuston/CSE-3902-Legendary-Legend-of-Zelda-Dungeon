@@ -7,6 +7,7 @@ namespace LegendOfZelda.Projectile
     {
         public ArrowFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)
         {
+            projectileType = Link.LinkConstants.ProjectileType.Arrow;
             Velocity = velocity;
             
             if(Velocity.X == 0)

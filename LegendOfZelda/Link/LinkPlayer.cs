@@ -14,6 +14,7 @@ namespace LegendOfZelda.Link
         private double currentHealth;
         private double maxHealth;
         private Dictionary<LinkConstants.ItemType, int> inventory;
+        private Dictionary<LinkConstants.ProjectileType, IProjectile> currentProjectiles;
         private bool safeToDespawn;
         private ILinkState state;
 
@@ -35,7 +36,8 @@ namespace LegendOfZelda.Link
             State = new LinkStandingStillState(this);
             safeToDespawn = false;
             BlockStateChange = false;
-            InitInventory();
+            InitInventoryDict();
+            InitCurrentProjectileDict();
         }
 
         public void Draw()
@@ -103,36 +105,45 @@ namespace LegendOfZelda.Link
             State.StopMoving();
         }
 
-        public void SpawnItem(IProjectile item)
+        public void SpawnItem(IProjectile projectile)
         {
-            Game.State.SpawnableManager.Spawn(item);
+            IProjectile currentProjectile = currentProjectiles[projectile.GetProjectileType()];
+            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
+
+            Game.State.SpawnableManager.Spawn(projectile);
+            currentProjectiles[projectile.GetProjectileType()] = projectile;
         }
 
         public void UseSword()
         {
+            if (inventory[LinkConstants.ItemType.Sword] <= 0) return;
             State.UseSword();
         }
 
         public void UseBow()
         {
+            if (inventory[LinkConstants.ItemType.Bow] <= 0 && inventory[LinkConstants.ItemType.Rupee] <= 0) return;
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.ArrowSpeed);
             SpawnItem(new ArrowFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingArrowSpawnOffset, Constants.ProjectileOwner.Link, velocity));
         }
 
         public void UseBomb()
         {
+            if (inventory[LinkConstants.ItemType.Bomb] <= 0) return;
             SpawnItem(new BombExplodingProjectile(Game.SpriteBatch, Position, Constants.ProjectileOwner.Link));
         }
 
         public void UseBoomerang()
         {
+            if (inventory[LinkConstants.ItemType.Boomerang] <= 0) return;
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
             SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingBoomerangSpawnOffset, Constants.ProjectileOwner.Link, this, velocity));
         }
 
         public void UseSwordBeam()
         {
-            SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
+            IProjectile projectile = currentProjectiles[LinkConstants.ProjectileType.SwordBeam];
+            if (inventory[LinkConstants.ItemType.Sword] > 0 && (projectile == null || projectile.SafeToDespawn())) SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
         }
 
         public void Move(int distance, Vector2 velocity)
@@ -156,9 +167,8 @@ namespace LegendOfZelda.Link
 
         public void PickupItem(LinkConstants.ItemType itemType)
         {
-            // TODO: need to add more items to Link's inventory, throws a key not found exception right now
-            if(inventory.ContainsKey(itemType)) inventory[itemType]++;
-            else state.PickUpItem(itemType);
+            inventory[itemType]++;
+            state.PickUpItem(itemType);
         }
 
         public void Despawn()
@@ -166,7 +176,7 @@ namespace LegendOfZelda.Link
             safeToDespawn = true;
         }
 
-        private void InitInventory()
+        private void InitInventoryDict()
         {
             inventory = new Dictionary<LinkConstants.ItemType, int>()
             {
@@ -174,15 +184,31 @@ namespace LegendOfZelda.Link
                 {LinkConstants.ItemType.Bomb, 0 },
                 {LinkConstants.ItemType.Clock, 0 },
                 {LinkConstants.ItemType.Compass, 0 },
-                {LinkConstants.ItemType.Fairy, 0 },
                 {LinkConstants.ItemType.Key, 0 },
-                {LinkConstants.ItemType.Map, 0 }
+                {LinkConstants.ItemType.Map, 0 },
+                {LinkConstants.ItemType.Boomerang, 1 },
+                {LinkConstants.ItemType.Bow, 0 },
+                {LinkConstants.ItemType.Sword, 1 },
             };
         }
 
-        private Vector2 CreateVelocityVector(Constants.Direction direction, int speed) {
+        private void InitCurrentProjectileDict()
+        {
+            currentProjectiles = new Dictionary<LinkConstants.ProjectileType, IProjectile>()
+            {
+                {LinkConstants.ProjectileType.Sword, null },
+                {LinkConstants.ProjectileType.Bomb, null },
+                {LinkConstants.ProjectileType.Boomerang, null },
+                {LinkConstants.ProjectileType.SwordBeam, null },
+                {LinkConstants.ProjectileType.Arrow, null }
+            };
+        }
+
+        private Vector2 CreateVelocityVector(Constants.Direction direction, int speed)
+        {
             Vector2 velocity = Vector2.Zero;
-            switch (direction) {
+            switch (direction)
+            {
                 case Constants.Direction.Up:
                     velocity.Y = -1 * speed;
                     return velocity;
@@ -196,7 +222,6 @@ namespace LegendOfZelda.Link
                     velocity.X = speed;
                     return velocity;
             }
-
             return velocity;
         }
     }

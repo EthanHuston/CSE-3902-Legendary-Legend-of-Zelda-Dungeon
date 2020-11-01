@@ -64,5 +64,15 @@ namespace LegendOfZelda.Link
             Sword,
             Triforce
         }
+
+        public enum ProjectileType
+        {
+            Arrow,
+            Bomb,
+            Boomerang,
+            Fireball,
+            Sword,
+            SwordBeam
+        }
     }
 }

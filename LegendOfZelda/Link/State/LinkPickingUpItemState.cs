@@ -21,18 +21,7 @@ namespace LegendOfZelda.Link.State
         {
             link.Velocity = (Vector2.Zero);
             switch (itemType)
-            {
-                case LinkConstants.ItemType.Rupee:
-                case LinkConstants.ItemType.Bomb:
-                case LinkConstants.ItemType.Clock:
-                case LinkConstants.ItemType.Compass:
-                case LinkConstants.ItemType.Fairy:
-                case LinkConstants.ItemType.Heart:
-                case LinkConstants.ItemType.Key:
-                case LinkConstants.ItemType.Map:
-                    break;
-
-                
+            {                
                 case LinkConstants.ItemType.Boomerang:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
                     spawnOffset = LinkConstants.PickingUpBoomerangSpawnOffset;
@@ -52,6 +41,8 @@ namespace LegendOfZelda.Link.State
                 case LinkConstants.ItemType.Triforce:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpTriforceSprite();
                     spawnOffset = LinkConstants.PickingUpTriforceSpawnOffset;
+                    break;
+                default:
                     break;
             }
         }

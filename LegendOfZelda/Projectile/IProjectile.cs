@@ -1,10 +1,12 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 
 namespace LegendOfZelda.Projectile
 {
-    public interface IProjectile : IDynamic
+    interface IProjectile : IDynamic
     {
         Constants.ProjectileOwner Owner { get; }
         double DamageAmount();
+        LinkConstants.ProjectileType GetProjectileType();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Link;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile
@@ -11,6 +12,7 @@ namespace LegendOfZelda.Projectile
             sprite = ProjectileSpriteFactory.Instance.CreateFireballSprite();
             Position = spawnPosition;
             Velocity = velocity;
+            projectileType = LinkConstants.ProjectileType.Fireball;
         }
 
         public override double DamageAmount()

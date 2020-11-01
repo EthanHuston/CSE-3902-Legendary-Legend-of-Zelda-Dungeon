@@ -1,4 +1,5 @@
 using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,6 +22,7 @@ namespace LegendOfZelda.Projectile
             Velocity = velocity;
             returningToOwner = false;
             this.itemToTrack = itemToTrack;
+            projectileType = LinkConstants.ProjectileType.Boomerang;
         }
 
         public override void Update()

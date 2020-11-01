@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Projectile.Sprite;
+﻿using LegendOfZelda.Link;
+using LegendOfZelda.Projectile.Sprite;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,6 +11,7 @@ namespace LegendOfZelda.Projectile
         protected IProjectileSprite sprite;
         protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
+        protected LinkConstants.ProjectileType projectileType;
 
         public SpawnableMover Mover { get; private set; }
 
@@ -53,6 +55,11 @@ namespace LegendOfZelda.Projectile
         public void Despawn()
         {
             itemIsExpired = true;
+        }
+
+        public LinkConstants.ProjectileType GetProjectileType()
+        {
+            return projectileType;
         }
     }
 }
