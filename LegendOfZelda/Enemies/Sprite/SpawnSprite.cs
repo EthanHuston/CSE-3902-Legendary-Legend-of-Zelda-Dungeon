@@ -13,7 +13,7 @@ namespace LegendOfZelda.Enemies.Sprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
-        private int frameDelay = 20;
+        private int frameDelay = 10;
         private int numRows = 1;
         private int numColumns = 3;
         private int currentFrame;
