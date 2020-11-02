@@ -4,6 +4,7 @@ using LegendOfZelda.Link.State;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Link
@@ -118,6 +119,7 @@ namespace LegendOfZelda.Link
         {
             if (inventory[LinkConstants.ItemType.Sword] <= 0) return;
             State.UseSword();
+            SoundFactory.Instance.CreateSwordSlashSound().Play();
         }
 
         public void UseBow()
