@@ -31,6 +31,7 @@ namespace LegendOfZelda
             IsMouseVisible = true;
 
             SpriteFactory.Instance.LoadAllTextures(Content);
+            SoundFactory.Instance.LoadAllSounds(Content);
         }
 
         protected override void Initialize()
