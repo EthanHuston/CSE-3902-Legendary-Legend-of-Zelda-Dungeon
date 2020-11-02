@@ -1,15 +1,10 @@
 ﻿using LegendOfZelda.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LegendOfZelda.GameState.Pause.Command
+namespace LegendOfZelda.GameState.Command
 {
     class MainMenuCommand : ICommand
     {
-        private IGameState gameState;
+        private readonly IGameState gameState;
 
         public MainMenuCommand(IGameState gameState)
         {

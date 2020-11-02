@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.GameState.Pause.Command;
+﻿using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;

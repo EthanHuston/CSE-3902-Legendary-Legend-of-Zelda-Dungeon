@@ -1,7 +1,4 @@
-﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.Link.Interface;
-
-namespace LegendOfZelda.GameState
+﻿namespace LegendOfZelda.GameState
 {
     internal interface IGameState
     {

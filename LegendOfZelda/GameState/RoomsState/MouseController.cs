@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.GameState;
-using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -47,7 +46,10 @@ namespace LegendOfZelda.GameState.Rooms
         public void Update()
         {
             MouseState newMouseState = Mouse.GetState();
-            if (newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton != ButtonState.Pressed)
+            MouseState localOldMouseState = oldMouseState;
+            oldMouseState = newMouseState;
+
+            if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
             {
                 Constants.Direction dir = GetDirectionFromClick(newMouseState.Position);
                 if (leftClickCommands.ContainsKey(dir))
