@@ -10,7 +10,7 @@ namespace LegendOfZelda.GameState.Pause
     internal class MouseController : IController
     {
         private MouseState oldMouseState;
-        private List<ISpawnable> buttons;
+        private readonly List<ISpawnable> buttons;
         private Dictionary<Type, ICommand> controllerMappings;
 
         public MouseController(IGameState gameState, List<ISpawnable> buttons)

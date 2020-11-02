@@ -5,7 +5,7 @@ namespace LegendOfZelda.GameState
 {
     static class GameStateConstants
     {
-        private static double gameScaler = Constants.GameScaler;
+        private const double gameScaler = Constants.GameScaler;
 
         // Button Positions
         public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
