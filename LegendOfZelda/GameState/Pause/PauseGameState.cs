@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.GameState.MainMenu;
-using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using System.Collections.Generic;
 
@@ -17,8 +16,8 @@ namespace LegendOfZelda.GameState.Pause
         {
             Game = game;
             roomStatePreserved = oldRoomState;
-            InitControllerList();
             InitButtonsList();
+            InitControllerList();
         }
 
         private void InitButtonsList()
@@ -26,6 +25,7 @@ namespace LegendOfZelda.GameState.Pause
             buttons = new List<ISpawnable>()
             {
                 {new ResumeButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
+                {new MainMenuButton(Game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) },
                 {new ExitButton(Game.SpriteBatch, GameStateConstants.PauseStateExitButtonLocation) }
             };
         }
@@ -35,7 +35,7 @@ namespace LegendOfZelda.GameState.Pause
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this) }
+                {new MouseController(this, buttons) }
             };
         }
 

@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace LegendOfZelda.GameState.Rooms
+namespace LegendOfZelda.GameState.Pause
 {
-    class ResumeButton : ISpawnable
+    class MainMenuButton : ISpawnable
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;
@@ -14,10 +14,10 @@ namespace LegendOfZelda.GameState.Rooms
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public ResumeButton(SpriteBatch spriteBatch, Point spawnPosition)
+        public MainMenuButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateResumeButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateMainMenuButtonSprite();
             Position = spawnPosition;
         }
 
@@ -33,7 +33,7 @@ namespace LegendOfZelda.GameState.Rooms
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(0, 0, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
+            return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()

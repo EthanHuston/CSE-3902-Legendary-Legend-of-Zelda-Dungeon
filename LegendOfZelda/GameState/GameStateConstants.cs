@@ -10,8 +10,9 @@ namespace LegendOfZelda.GameState
         private static double gameScaler = Constants.GameScaler;
 
         // Button Positions
-        public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 80));
-        public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 80));
+        public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
+        public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
+        public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 64));
 
         public enum InputType
         {

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace LegendOfZelda.GameState.Rooms
+namespace LegendOfZelda.GameState.Pause
 {
     class ExitButton : ISpawnable
     {
@@ -33,7 +33,7 @@ namespace LegendOfZelda.GameState.Rooms
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(0, 0, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
+            return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()
