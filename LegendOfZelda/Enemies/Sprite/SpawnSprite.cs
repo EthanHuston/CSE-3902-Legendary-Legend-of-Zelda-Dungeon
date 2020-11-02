@@ -60,5 +60,9 @@ namespace LegendOfZelda.Enemies.Sprite
         {
             return new Rectangle(0, 0, width, height);
         }
+        public bool AnimationDone()
+        {
+            return animationDone;
+        }
     }
 }
