@@ -143,7 +143,7 @@ namespace LegendOfZelda.Link
         public void UseSwordBeam()
         {
             IProjectile projectile = currentProjectiles[LinkConstants.ProjectileType.SwordBeam];
-            if (inventory[LinkConstants.ItemType.Sword] > 0 && (projectile == null || projectile.SafeToDespawn())) SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
+            if (currentHealth < maxHealth && inventory[LinkConstants.ItemType.Sword] > 0 && (projectile == null || projectile.SafeToDespawn())) SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
         }
 
         public void Move(int distance, Vector2 velocity)

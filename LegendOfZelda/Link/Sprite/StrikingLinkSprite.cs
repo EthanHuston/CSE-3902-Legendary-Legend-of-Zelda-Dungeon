@@ -12,8 +12,8 @@ namespace LegendOfZelda.Link.Sprite
         private int damageColorCounter;
         private int currentFrame;
         private int bufferFrame;
-        private readonly int frameWidth;
-        private readonly int frameHeight;
+        private readonly int spriteWidth;
+        private readonly int spriteHeight;
         private readonly int[] frameToCurrentColumnArray = { 0, 1, 2, 3, 2, 1, 0 };
         private readonly int totalFrames;
         private const int numRows = 2;
@@ -25,8 +25,8 @@ namespace LegendOfZelda.Link.Sprite
             animationIsDone = false;
             flashRed = false;
             damageColorCounter = 0;
-            frameWidth = sprite.Width / numColumns;
-            frameHeight = sprite.Height / numRows;
+            spriteWidth = (int)(sprite.Width / numColumns * Constants.GameScaler);
+            spriteHeight = (int)(sprite.Height / numRows * Constants.GameScaler);
             totalFrames = frameToCurrentColumnArray.Length;
         }
 
@@ -59,8 +59,8 @@ namespace LegendOfZelda.Link.Sprite
             int currentRow = 1;
             int currentColumn = frameToCurrentColumnArray[currentFrame];
 
-            Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle sourceRectangle = new Rectangle(spriteWidth * currentColumn, spriteHeight * currentRow, spriteWidth, spriteHeight);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(spriteWidth * Constants.GameScaler), (int)(spriteHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
@@ -72,7 +72,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, frameWidth, frameHeight);
+            return new Rectangle(0, 0, spriteWidth, spriteHeight);
         }
     }
 }

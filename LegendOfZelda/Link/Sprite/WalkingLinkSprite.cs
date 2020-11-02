@@ -12,8 +12,8 @@ namespace LegendOfZelda.Link.Sprite
         private int damageColorCounter;
         private int bufferFrame;
         private int currentFrame;
-        private readonly int frameWidth;
-        private readonly int frameHeight;
+        private readonly int spriteWidth;
+        private readonly int spriteHeight;
         private const int totalFrames = 2;
         private const int numRows = 1;
         private const int numColumns = 2;
@@ -26,8 +26,8 @@ namespace LegendOfZelda.Link.Sprite
             damageColorCounter = 0;
             bufferFrame = 0;
             currentFrame = 0;
-            frameWidth = sprite.Width / numColumns;
-            frameHeight = sprite.Height / numRows;
+            spriteWidth = (int)(sprite.Width / numColumns * Constants.GameScaler);
+            spriteHeight = (int)(sprite.Height / numRows * Constants.GameScaler);
         }
 
         public void Update()
@@ -54,8 +54,8 @@ namespace LegendOfZelda.Link.Sprite
             int currentRow = 0;
             int currentColumn = currentFrame % numColumns;
 
-            Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle sourceRectangle = new Rectangle(spriteWidth * currentColumn, spriteHeight * currentRow, spriteWidth, spriteHeight);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(spriteWidth * Constants.GameScaler), (int)(spriteHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, drawWithDamage && flashRed ? Color.Red : Color.White);
         }
@@ -67,7 +67,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, frameWidth, frameHeight);
+            return new Rectangle(0, 0, spriteWidth, spriteHeight);
         }
     }
 }
