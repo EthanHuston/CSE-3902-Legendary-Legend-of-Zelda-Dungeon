@@ -1,6 +1,8 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState;
+using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -11,9 +13,8 @@ namespace LegendOfZelda
     {
         private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
-        private List<IController> controllerList;
 
-        public IGameState State { get; set; }
+        public IGameState State { get; private set; }
 
         public Game1()
         {
@@ -32,19 +33,10 @@ namespace LegendOfZelda
             SpriteFactory.Instance.LoadAllTextures(Content);
         }
 
-        public void ResetGame()
-        {
-        }
-
         protected override void Initialize()
         {
-            State = new RoomGameState(this);
-
-            controllerList = new List<IController>()
-            {
-                {new KeyboardController(this) },
-                {new MouseController(this) }
-            };
+            State = new RoomGameState(this);            
+            // State = new MainMenuGameState(this);
 
             base.Initialize();
         }
@@ -60,12 +52,6 @@ namespace LegendOfZelda
 
         protected override void Update(GameTime gameTime)
         {
-
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
-
             State.Update();
             base.Update(gameTime);
         }
@@ -78,9 +64,10 @@ namespace LegendOfZelda
             SpriteBatch.End();
         }
 
-        public IPlayer GetGamePlayer(int playerNumber)
+        public void SetGameState(IGameState gameState, OldInputState oldInputState)
         {
-            return State.GetPlayer(playerNumber);
+            State = gameState;
+            State.SetControllerOldInputState(oldInputState);
         }
     }
 }

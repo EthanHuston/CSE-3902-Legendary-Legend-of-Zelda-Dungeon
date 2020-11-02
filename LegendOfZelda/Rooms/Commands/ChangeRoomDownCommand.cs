@@ -1,6 +1,6 @@
 ﻿
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
-using LegendOfZelda.Rooms;
 
 namespace LegendOfZelda.Link.Command
 {

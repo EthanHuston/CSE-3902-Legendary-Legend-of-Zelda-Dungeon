@@ -1,32 +1,47 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameState;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
-using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameLogic
+namespace LegendOfZelda.GameState.Rooms
 {
     internal class MouseController : IController
     {
-        private readonly Game1 myGame;
         private readonly Dictionary<Constants.Direction, ICommand> leftClickCommands;
         private MouseState oldMouseState;
 
-        public MouseController(Game1 game1)
+        public MouseController(IGameState gameState)
         {
-            myGame = game1;
+            RoomGameState gameStateCast = (RoomGameState)gameState;
+
             oldMouseState = new MouseState();
             leftClickCommands = new Dictionary<Constants.Direction, ICommand>();
-            RegisterCommand(Constants.Direction.Down, new ChangeRoomDownCommand((RoomGameState)myGame.State));
-            RegisterCommand(Constants.Direction.Left, new ChangeRoomLeftCommand((RoomGameState)myGame.State));
-            RegisterCommand(Constants.Direction.Right, new ChangeRoomRightCommand((RoomGameState)myGame.State));
-            RegisterCommand(Constants.Direction.Up, new ChangeRoomUpCommand((RoomGameState)myGame.State));
+            RegisterCommand(Constants.Direction.Down, new ChangeRoomDownCommand(gameStateCast));
+            RegisterCommand(Constants.Direction.Left, new ChangeRoomLeftCommand(gameStateCast));
+            RegisterCommand(Constants.Direction.Right, new ChangeRoomRightCommand(gameStateCast));
+            RegisterCommand(Constants.Direction.Up, new ChangeRoomUpCommand(gameStateCast));
+        }
+
+        public GameStateConstants.InputType GetInputType()
+        {
+            return GameStateConstants.InputType.Mouse;
+        }
+
+        public OldInputState GetOldInputState()
+        {
+            return new OldInputState { oldMouseState = oldMouseState };
         }
 
         public void RegisterCommand(Constants.Direction dir, ICommand command)
         {
             leftClickCommands.Add(dir, command);
+        }
+
+        public void SetOldInputState(OldInputState oldInputState)
+        {
+            oldMouseState = oldInputState.oldMouseState;
         }
 
         public void Update()
@@ -39,11 +54,6 @@ namespace LegendOfZelda.GameLogic
                     leftClickCommands[dir].Execute();
             }
             oldMouseState = newMouseState;
-        }
-
-        private Point GetLocation()
-        {
-            return Mouse.GetState().Position;
         }
 
         private Constants.Direction GetDirectionFromClick(Point mousePos)
