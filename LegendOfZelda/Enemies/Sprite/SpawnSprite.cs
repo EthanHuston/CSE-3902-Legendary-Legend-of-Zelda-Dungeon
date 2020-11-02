@@ -13,7 +13,7 @@ namespace LegendOfZelda.Enemies.Sprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
-        private int frameDelay = 10;
+        private int frameDelay = 5;
         private int numRows = 1;
         private int numColumns = 3;
         private int currentFrame;
@@ -54,6 +54,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
+            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public Rectangle GetPositionRectangle()
