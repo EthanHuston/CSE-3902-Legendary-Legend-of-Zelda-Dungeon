@@ -1,3 +1,4 @@
+using LegendOfZelda.Enemies.Sprite;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,6 +9,7 @@ namespace LegendOfZelda.Enemies
     internal class Hand : INpc
     {
         private readonly IDamageableSprite sprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private int movementBuffer = 0;
         private int xDir = 0;
@@ -17,6 +19,7 @@ namespace LegendOfZelda.Enemies
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
+        private bool spawning;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -25,50 +28,73 @@ namespace LegendOfZelda.Enemies
         public Hand(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateHandSprite();
+            spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
             healthyDateTime = DateTime.Now;
             damaged = false;
+            spawning = true;
         }
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = !safeToDespawn && health <= 0;
-            movementBuffer++;
-            CheckBounds();
-            //Move based on current chosen direction for some time.
-            if (xDir == 0 && yDir == 0)
+            if (spawning)
             {
-                position.X--;
-                position.Y--;
-            }
-            else if (xDir == 0 && yDir == 1)
-            {
-                position.X--;
-                position.Y++;
-            }
-            else if (xDir == 1 && yDir == 0)
-            {
-                position.X++;
-                position.Y--;
+                if (!spawnSprite.AnimationDone())
+                {
+                    spawnSprite.Update();
+                }
+                else
+                {
+                    spawning = false;
+                }
             }
             else
             {
-                position.Y++;
-                position.X++;
-            }
+                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+                safeToDespawn = !safeToDespawn && health <= 0;
+                movementBuffer++;
+                CheckBounds();
+                //Move based on current chosen direction for some time.
+                if (xDir == 0 && yDir == 0)
+                {
+                    position.X--;
+                    position.Y--;
+                }
+                else if (xDir == 0 && yDir == 1)
+                {
+                    position.X--;
+                    position.Y++;
+                }
+                else if (xDir == 1 && yDir == 0)
+                {
+                    position.X++;
+                    position.Y--;
+                }
+                else
+                {
+                    position.Y++;
+                    position.X++;
+                }
 
-            if (movementBuffer > 20)
-            {
-                movementBuffer = 0;
-                ChooseDirection();
+                if (movementBuffer > 20)
+                {
+                    movementBuffer = 0;
+                    ChooseDirection();
+                }
+                sprite.Update();
             }
-            sprite.Update();
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position, false);
+            if (spawning)
+            {
+                spawnSprite.Draw(spriteBatch, position);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position, damaged);
+            }
         }
         private void CheckBounds()
         {
