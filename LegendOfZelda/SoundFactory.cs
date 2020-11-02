@@ -59,7 +59,7 @@ namespace LegendOfZelda
             link_hurt = content.Load<SoundEffect>("Sounds/LOZ_Link_Hurt");
             low_health = content.Load<SoundEffect>("Sounds/LOZ_LowHealth");
             refill = content.Load<SoundEffect>("Sounds/LOZ_Refill_Loop");
-            secret = content.Load<SoundEffect>("Sounds/LOZ_Boss_Secret");
+            secret = content.Load<SoundEffect>("Sounds/LOZ_Secret");
             shield = content.Load<SoundEffect>("Sounds/LOZ_Shield");
             stairs = content.Load<SoundEffect>("Sounds/LOZ_Stairs");
             sword_combined = content.Load<SoundEffect>("Sounds/LOZ_Sword_Combined");
