@@ -91,24 +91,24 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
-    <Compile Include="GameState\MainMenu\KeyboardController.cs" />
-    <Compile Include="GameState\MainMenu\MouseController.cs" />
-    <Compile Include="GameState\MainMenu\MainMenuGameState.cs" />
+    <Compile Include="GameState\MainMenuState\KeyboardController.cs" />
+    <Compile Include="GameState\MainMenuState\MouseController.cs" />
+    <Compile Include="GameState\MainMenuState\MainMenuGameState.cs" />
     <Compile Include="GameState\OldInputState.cs" />
-    <Compile Include="GameState\Pause\Command\MainMenuCommand.cs" />
-    <Compile Include="GameState\Pause\Command\ExitGameCommand.cs" />
-    <Compile Include="GameState\Pause\Command\ResumeGameCommand.cs" />
-    <Compile Include="GameState\Pause\KeyboardController.cs" />
-    <Compile Include="GameState\Pause\MouseController.cs" />
-    <Compile Include="GameState\Pause\PauseGameState.cs" />
-    <Compile Include="GameState\MainMenu\Command\QuitGameCommand.cs" />
+    <Compile Include="GameState\PauseState\Command\MainMenuCommand.cs" />
+    <Compile Include="GameState\PauseState\Command\ExitGameCommand.cs" />
+    <Compile Include="GameState\PauseState\Command\ResumeGameCommand.cs" />
+    <Compile Include="GameState\PauseState\KeyboardController.cs" />
+    <Compile Include="GameState\PauseState\MouseController.cs" />
+    <Compile Include="GameState\PauseState\PauseGameState.cs" />
+    <Compile Include="GameState\MainMenuState\Command\QuitGameCommand.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
-    <Compile Include="GameState\Pause\ExitButton.cs" />
-    <Compile Include="GameState\Pause\MainMenuButton.cs" />
-    <Compile Include="GameState\Pause\ResumeButton.cs" />
+    <Compile Include="GameState\PauseState\ExitButton.cs" />
+    <Compile Include="GameState\PauseState\MainMenuButton.cs" />
+    <Compile Include="GameState\PauseState\ResumeButton.cs" />
     <Compile Include="GameState\Sprite\ButtonSprite.cs" />
-    <Compile Include="GameState\Rooms\Command\PauseGameCommand.cs" />
-    <Compile Include="GameState\Rooms\MouseController.cs" />
+    <Compile Include="GameState\RoomsState\Command\PauseGameCommand.cs" />
+    <Compile Include="GameState\RoomsState\MouseController.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkDoorCollisionHandler.cs" />
@@ -134,7 +134,7 @@
     <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomRightCommand.cs" />
-    <Compile Include="GameState\Rooms\RoomGameState.cs" />
+    <Compile Include="GameState\RoomsState\RoomGameState.cs" />
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomUpCommand.cs" />
     <Compile Include="Rooms\RoomFactory.cs" />
@@ -248,7 +248,7 @@
     <Compile Include="Link\LinkSpriteFactory.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />
-    <Compile Include="GameState\Rooms\KeyboardController.cs" />
+    <Compile Include="GameState\RoomsState\KeyboardController.cs" />
     <Compile Include="Link\Sprite\PickingUpItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\PickingUpTriforceLinkSprite.cs" />
     <Compile Include="Link\Sprite\StrikingLinkSprite.cs" />
@@ -397,6 +397,40 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
+    <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
+    <Content Include="Content\Sounds\LOZ_Bomb_Drop.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Hit.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Scream1.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Scream2.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Scream3.wav" />
+    <Content Include="Content\Sounds\LOZ_Candle.wav" />
+    <Content Include="Content\Sounds\LOZ_Door_Unlock.wav" />
+    <Content Include="Content\Sounds\LOZ_Dungeon.mp3" />
+    <Content Include="Content\Sounds\LOZ_Enemy_Die.wav" />
+    <Content Include="Content\Sounds\LOZ_Enemy_Hit.wav" />
+    <Content Include="Content\Sounds\LOZ_Fanfare.wav" />
+    <Content Include="Content\Sounds\LOZ_Get_Heart.wav" />
+    <Content Include="Content\Sounds\LOZ_Get_Item.wav" />
+    <Content Include="Content\Sounds\LOZ_Get_Rupee.wav" />
+    <Content Include="Content\Sounds\LOZ_Key_Appear.wav" />
+    <Content Include="Content\Sounds\LOZ_Link_Die.wav" />
+    <Content Include="Content\Sounds\LOZ_Link_Hurt.wav" />
+    <Content Include="Content\Sounds\LOZ_LowHealth.wav" />
+    <Content Include="Content\Sounds\LOZ_MagicalRod.wav" />
+    <Content Include="Content\Sounds\LOZ_Recorder.wav" />
+    <Content Include="Content\Sounds\LOZ_Refill_Loop.wav" />
+    <Content Include="Content\Sounds\LOZ_Secret.wav" />
+    <Content Include="Content\Sounds\LOZ_Shield.wav" />
+    <Content Include="Content\Sounds\LOZ_Shore.wav" />
+    <Content Include="Content\Sounds\LOZ_Stairs.wav" />
+    <Content Include="Content\Sounds\LOZ_Sword_Combined.wav" />
+    <Content Include="Content\Sounds\LOZ_Sword_Shoot.wav" />
+    <Content Include="Content\Sounds\LOZ_Sword_Slash.wav" />
+    <Content Include="Content\Sounds\LOZ_Text.wav" />
+    <Content Include="Content\Sounds\LOZ_Text_Slow.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
