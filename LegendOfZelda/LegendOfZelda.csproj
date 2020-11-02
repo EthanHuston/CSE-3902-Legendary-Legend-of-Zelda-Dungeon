@@ -395,8 +395,39 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Content\Sounds\" />
+    <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
+    <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
+    <Content Include="Content\Sounds\LOZ_Bomb_Drop.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Hit.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Scream1.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Scream2.wav" />
+    <Content Include="Content\Sounds\LOZ_Boss_Scream3.wav" />
+    <Content Include="Content\Sounds\LOZ_Candle.wav" />
+    <Content Include="Content\Sounds\LOZ_Door_Unlock.wav" />
+    <Content Include="Content\Sounds\LOZ_Enemy_Die.wav" />
+    <Content Include="Content\Sounds\LOZ_Enemy_Hit.wav" />
+    <Content Include="Content\Sounds\LOZ_Fanfare.wav" />
+    <Content Include="Content\Sounds\LOZ_Get_Heart.wav" />
+    <Content Include="Content\Sounds\LOZ_Get_Item.wav" />
+    <Content Include="Content\Sounds\LOZ_Get_Rupee.wav" />
+    <Content Include="Content\Sounds\LOZ_Key_Appear.wav" />
+    <Content Include="Content\Sounds\LOZ_Link_Die.wav" />
+    <Content Include="Content\Sounds\LOZ_Link_Hurt.wav" />
+    <Content Include="Content\Sounds\LOZ_LowHealth.wav" />
+    <Content Include="Content\Sounds\LOZ_MagicalRod.wav" />
+    <Content Include="Content\Sounds\LOZ_Recorder.wav" />
+    <Content Include="Content\Sounds\LOZ_Refill_Loop.wav" />
+    <Content Include="Content\Sounds\LOZ_Secret.wav" />
+    <Content Include="Content\Sounds\LOZ_Shield.wav" />
+    <Content Include="Content\Sounds\LOZ_Shore.wav" />
+    <Content Include="Content\Sounds\LOZ_Stairs.wav" />
+    <Content Include="Content\Sounds\LOZ_Sword_Combined.wav" />
+    <Content Include="Content\Sounds\LOZ_Sword_Shoot.wav" />
+    <Content Include="Content\Sounds\LOZ_Sword_Slash.wav" />
+    <Content Include="Content\Sounds\LOZ_Text.wav" />
+    <Content Include="Content\Sounds\LOZ_Text_Slow.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
