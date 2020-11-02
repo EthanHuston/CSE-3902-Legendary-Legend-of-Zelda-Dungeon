@@ -406,6 +406,7 @@
     <Content Include="Content\Sounds\LOZ_Boss_Scream3.wav" />
     <Content Include="Content\Sounds\LOZ_Candle.wav" />
     <Content Include="Content\Sounds\LOZ_Door_Unlock.wav" />
+    <Content Include="Content\Sounds\LOZ_Dungeon.mp3" />
     <Content Include="Content\Sounds\LOZ_Enemy_Die.wav" />
     <Content Include="Content\Sounds\LOZ_Enemy_Hit.wav" />
     <Content Include="Content\Sounds\LOZ_Fanfare.wav" />
