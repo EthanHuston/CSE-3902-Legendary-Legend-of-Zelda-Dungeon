@@ -14,8 +14,8 @@ namespace LegendOfZelda.Link.Sprite
         private int bufferFrame;
         private int delayCounter;
         private readonly int totalFrames;
-        private readonly int spriteWidth;
-        private readonly int spriteHeight;
+        private readonly int frameWidth;
+        private readonly int frameHeight;
         private const int numRows = 1;
         private const int numColumns = 2;
 
@@ -27,8 +27,8 @@ namespace LegendOfZelda.Link.Sprite
             damageColorCounter = 0;
             delayCounter = 0;
             totalFrames = numRows * numColumns;
-            spriteWidth = (int) (sprite.Width / numColumns * Constants.GameScaler);
-            spriteHeight = (int) (sprite.Height / numRows * Constants.GameScaler);
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
@@ -62,8 +62,8 @@ namespace LegendOfZelda.Link.Sprite
             int currentRow = 0;
             int currentColumn = currentFrame % totalFrames;
 
-            Rectangle sourceRectangle = new Rectangle(spriteWidth * currentColumn, spriteHeight * currentRow, spriteWidth, spriteHeight);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(spriteWidth * Constants.GameScaler), (int)(spriteHeight * Constants.GameScaler));
+            Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
         }
@@ -75,7 +75,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, spriteWidth, spriteHeight);
+            return new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }

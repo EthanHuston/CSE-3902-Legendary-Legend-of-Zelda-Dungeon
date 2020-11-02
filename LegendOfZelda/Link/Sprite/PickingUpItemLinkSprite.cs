@@ -11,8 +11,6 @@ namespace LegendOfZelda.Link.Sprite
         private bool flashRed;
         private int damageColorCounter;
         private int delayCounter;
-        private readonly int spriteWidth;
-        private readonly int spriteHeight;
 
         public PickingUpItemLinkSprite(Texture2D sprite)
         {
@@ -21,8 +19,6 @@ namespace LegendOfZelda.Link.Sprite
             flashRed = false;
             damageColorCounter = 0;
             delayCounter = 0;
-            spriteWidth = (int)(sprite.Width * Constants.GameScaler);
-            spriteHeight = (int)(sprite.Height * Constants.GameScaler);
         }
 
         public void Update()
@@ -57,7 +53,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, spriteWidth, spriteHeight);
+            return new Rectangle(0, 0, sprite.Width, sprite.Height);
         }
     }
 }

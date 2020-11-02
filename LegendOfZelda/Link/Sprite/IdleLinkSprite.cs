@@ -9,16 +9,12 @@ namespace LegendOfZelda.Link.Sprite
         private readonly Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
-        private readonly int spriteWidth;
-        private readonly int spriteHeight;
 
         public IdleLinkSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             flashRed = false;
             damageColorCounter = 0;
-            spriteWidth = (int)(sprite.Width * Constants.GameScaler);
-            spriteHeight = (int)(sprite.Height * Constants.GameScaler);
         }
 
         public void Update()
@@ -49,7 +45,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, spriteWidth, spriteHeight);
+            return sprite.Bounds;
         }
     }
 }
