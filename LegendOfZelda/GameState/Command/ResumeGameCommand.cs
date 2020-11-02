@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 
-namespace LegendOfZelda.GameState.Pause.Command
+namespace LegendOfZelda.GameState.Command
 {
     class ResumeGameCommand : ICommand
     {

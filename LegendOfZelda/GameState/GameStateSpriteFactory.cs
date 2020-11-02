@@ -12,6 +12,7 @@ namespace LegendOfZelda.GameState
         private Texture2D resumeButtonSprite;
         private Texture2D exitButtonSprite;
         private Texture2D mainMenuButtonSprite;
+        private Texture2D titleScreenBackgroundSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -21,6 +22,7 @@ namespace LegendOfZelda.GameState
             resumeButtonSprite = content.Load<Texture2D>("Buttons/Resume");
             exitButtonSprite = content.Load<Texture2D>("Buttons/Exit");
             mainMenuButtonSprite = content.Load<Texture2D>("Buttons/Menu");
+            titleScreenBackgroundSprite = content.Load<Texture2D>("Environment/TitleScreenBackground");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -34,6 +36,10 @@ namespace LegendOfZelda.GameState
         public ISprite CreateMainMenuButtonSprite()
         {
             return new ButtonSprite(mainMenuButtonSprite);
+        }
+        public ITextureAtlasSprite CreateTitleScreenBackgroundSprite()
+        {
+            return new TitleBackgroundSprite(titleScreenBackgroundSprite);
         }
     }
 }

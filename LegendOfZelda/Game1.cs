@@ -1,11 +1,7 @@
-﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState;
+﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.MainMenu;
-using LegendOfZelda.GameState.Rooms;
-using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -20,7 +16,6 @@ namespace LegendOfZelda
         {
             graphics = new GraphicsDeviceManager(this)
             {
-                // TODO: make constants
                 PreferredBackBufferWidth = (int)Constants.GameSize.X,  // set this value to the desired width of your window
                 PreferredBackBufferHeight = (int)Constants.GameSize.Y   // set this value to the desired height of your window
             };
@@ -35,9 +30,7 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            State = new RoomGameState(this);            
-            // State = new MainMenuGameState(this);
-
+            SetGameState(new MainMenuGameState(this), new OldInputState());
             base.Initialize();
         }
 

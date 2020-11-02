@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.GameState.Pause.Command;
+﻿using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -10,7 +10,7 @@ namespace LegendOfZelda.GameState.Pause
     internal class MouseController : IController
     {
         private MouseState oldMouseState;
-        private List<ISpawnable> buttons;
+        private readonly List<ISpawnable> buttons;
         private Dictionary<Type, ICommand> controllerMappings;
 
         public MouseController(IGameState gameState, List<ISpawnable> buttons)
@@ -48,8 +48,10 @@ namespace LegendOfZelda.GameState.Pause
         public void Update()
         {
             MouseState newMouseState = Mouse.GetState();
+            MouseState localOldMouseState = oldMouseState;
+            oldMouseState = newMouseState;
 
-            if (newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton != ButtonState.Pressed)
+            if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
             {
                 Point mousePosition = newMouseState.Position;
                 foreach (ISpawnable button in buttons)
@@ -59,7 +61,7 @@ namespace LegendOfZelda.GameState.Pause
                         mousePosition.X < buttonRectangle.Right &&
                         mousePosition.Y > buttonRectangle.Top &&
                         mousePosition.Y < buttonRectangle.Bottom)
-                        controllerMappings[button.GetType()].Execute();                        
+                        controllerMappings[button.GetType()].Execute();
                 }
             }
 

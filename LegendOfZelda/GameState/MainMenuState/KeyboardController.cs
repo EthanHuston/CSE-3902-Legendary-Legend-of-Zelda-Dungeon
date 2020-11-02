@@ -1,6 +1,5 @@
-﻿using LegendOfZelda.GameLogic;
+﻿using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
-using LegendOfZelda.Link.Command;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
@@ -8,7 +7,7 @@ namespace LegendOfZelda.GameState.MainMenu
 {
     internal class KeyboardController : IController
     {
-        private readonly Dictionary<Keys, ICommand> controllerMappings;
+        private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;
         private List<Keys> repeatableKeys;
 
@@ -16,9 +15,15 @@ namespace LegendOfZelda.GameState.MainMenu
         {
             oldKbState = new List<Keys>();
             InitRepeatableKeys();
-            controllerMappings = new Dictionary<Keys, ICommand>();
+            InitControllerMappings(gameState);
+        }
 
-            // TODO: add commands here
+        public void InitControllerMappings(IGameState gameState)
+        {
+            controllerMappings = new Dictionary<Keys, ICommand>
+            {
+                {Keys.Escape, new ExitGameCommand(gameState) }
+            };
         }
 
         public GameStateConstants.InputType GetInputType()
@@ -50,7 +55,7 @@ namespace LegendOfZelda.GameState.MainMenu
             {
                 changedKbState = true;
                 bool inOldKbState = oldKbState.Contains(key);
-                if(inOldKbState) oldKbState.Remove(key);
+                if (inOldKbState) oldKbState.Remove(key);
                 if (!repeatableKeys.Contains(key)) oldKbState.Add(key);
                 if (controllerMappings.ContainsKey(key) && !inOldKbState)
                 {
