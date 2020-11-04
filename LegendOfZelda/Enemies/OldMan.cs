@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Enemies.Sprite;
+using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -7,8 +8,10 @@ namespace LegendOfZelda.Enemies
     internal class OldMan : INpc
     {
         private readonly ISprite sprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
+        private bool spawning;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -16,19 +19,43 @@ namespace LegendOfZelda.Enemies
         public OldMan(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
+            spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
+            spawning = true;
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
+            if (spawning)
+            {
+                spawnSprite.Draw(spriteBatch, position);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position);
+            }
         }
 
         public void Update()
         {
-            sprite.Update();
+            if (spawning)
+            {
+                if (!spawnSprite.AnimationDone())
+                {
+                    spawnSprite.Update();
+                }
+                else
+                {
+                    spawning = false;
+                }
+            }
+            else
+            {
+                sprite.Update();
+            }
+            
         }
 
         public bool SafeToDespawn()

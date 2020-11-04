@@ -25,14 +25,14 @@ namespace LegendOfZelda.Environment.Sprite
         {
             int width = sprite.Width / 4;
             int height = sprite.Height / 4;
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
             Rectangle sourceRectangle = new Rectangle(width * textureLocation.X, height * textureLocation.Y, width, height);
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, frameWidth, frameHeight);
+            return new Rectangle(0, 0, (int) (frameWidth * Constants.GameScaler), (int) (frameHeight * Constants.GameScaler));
         }
 
         public void Update()

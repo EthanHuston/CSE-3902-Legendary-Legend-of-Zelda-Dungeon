@@ -6,8 +6,8 @@ namespace LegendOfZelda.Link.State
     internal class LinkWalkingState : LinkGenericAbstractState
     {
         private int distanceWalked;
-        private const int walkDistance = 16;
-        private const int stepDistance = 1;
+        private const int walkDistance = (int)(16 * Constants.GameScaler);
+        private const int stepDistance = (int)(1 * Constants.GameScaler);
 
         public LinkWalkingState(LinkPlayer link, Constants.Direction direction, bool damaged, DateTime healthyDateTime)
         {
