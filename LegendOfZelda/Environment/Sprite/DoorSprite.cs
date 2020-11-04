@@ -32,7 +32,7 @@ namespace LegendOfZelda.Environment.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, frameWidth, frameHeight);
+            return new Rectangle(0, 0, (int) (frameWidth * Constants.GameScaler), (int) (frameHeight * Constants.GameScaler));
         }
 
         public void Update()
