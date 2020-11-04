@@ -3,16 +3,18 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {
-    internal class DamageLinkCommand : ICommand
+    class UsePrimaryItem : ICommand
     {
         private readonly IPlayer link;
-        public DamageLinkCommand(IPlayer player)
+
+        public UsePrimaryItem(IPlayer link)
         {
-            link = player;
+            this.link = link;
         }
+
         public void Execute()
         {
-            link.BeDamaged(10); // Arbitrary number for the purposes of Sprint 2.
+            link.UsePrimary();
         }
     }
 }

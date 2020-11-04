@@ -62,5 +62,10 @@ namespace LegendOfZelda.GameState.MainMenu
         {
             foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
         }
+
+        public void SwitchToItemSelectionState()
+        {
+            // do nothing, cannot switch to that state from here
+        }
     }
 }

@@ -127,6 +127,9 @@
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
+    <Compile Include="Link\Command\ChangeSecondaryToItem.cs" />
+    <Compile Include="Link\Command\UseSecondaryItem.cs" />
+    <Compile Include="Link\Command\UsePrimaryItem.cs" />
     <Compile Include="Projectile\SwordAttackingProjectile.cs" />
     <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />
@@ -204,12 +207,6 @@
     <Compile Include="Environment\TileBlueGrass.cs" />
     <Compile Include="Environment\TileWater.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkItemCollisionHandler.cs" />
-    <Compile Include="Link\Command\DamageLinkCommand.cs" />
-    <Compile Include="Link\Command\SwordAttackCommand.cs" />
-    <Compile Include="Link\Command\UseBombCommand.cs" />
-    <Compile Include="Link\Command\UseBoomerangCommand.cs" />
-    <Compile Include="Link\Command\UseBowCommand.cs" />
-    <Compile Include="Link\Command\UseSwordBeamCommand.cs" />
     <Compile Include="Link\Command\WalkingDownCommand.cs" />
     <Compile Include="Link\Command\WalkingForwardCommand.cs" />
     <Compile Include="Link\Command\WalkingLeftCommand.cs" />

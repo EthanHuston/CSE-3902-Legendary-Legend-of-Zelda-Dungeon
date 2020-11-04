@@ -19,10 +19,10 @@ namespace LegendOfZelda.GameState
         public void LoadAllTextures(ContentManager content)
         {
             //Load Item Sprites
-            resumeButtonSprite = content.Load<Texture2D>("Buttons/Resume");
-            exitButtonSprite = content.Load<Texture2D>("Buttons/Exit");
-            mainMenuButtonSprite = content.Load<Texture2D>("Buttons/Menu");
-            titleScreenBackgroundSprite = content.Load<Texture2D>("Environment/TitleScreenBackground");
+            resumeButtonSprite = content.Load<Texture2D>("Menu/ResumeButton");
+            exitButtonSprite = content.Load<Texture2D>("Menu/ExitButton");
+            mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton");
+            titleScreenBackgroundSprite = content.Load<Texture2D>("Menu/TitleScreenBackground");
         }
 
         public ISprite CreateResumeButtonSprite()

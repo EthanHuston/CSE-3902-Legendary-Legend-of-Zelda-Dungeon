@@ -117,7 +117,7 @@ namespace LegendOfZelda.GameState.Rooms
 
         public void SwitchToItemSelectionState()
         {
-            Game.SetGameState(new ItemSelectionGameState(Game), GameStateConstants.GetOldInputState(controllerList));
+            Game.SetGameState(new ItemSelectionGameState(Game, this), GameStateConstants.GetOldInputState(controllerList));
         }
     }
 }

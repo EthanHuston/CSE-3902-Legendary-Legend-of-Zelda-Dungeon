@@ -4,6 +4,8 @@ namespace LegendOfZelda.Link.Interface
 {
     internal interface IPlayer : IDynamic
     {
+        LinkConstants.ItemType PrimaryItem { get; }
+        LinkConstants.ItemType SecondaryItem { get; set; }
         void BeHealthy(double healAmount);
         void BeDamaged(double damage);
         void IncreaseMaxHealth(int amount);
@@ -13,11 +15,8 @@ namespace LegendOfZelda.Link.Interface
         void MoveLeft();
         void MoveRight();
         void StopMoving();
-        void UseSword();
-        void UseBow();
         void PickupItem(LinkConstants.ItemType itemType);
-        void UseBomb();
-        void UseBoomerang();
-        void UseSwordBeam();
+        void UsePrimary();
+        void UseSecondary();
     }
 }

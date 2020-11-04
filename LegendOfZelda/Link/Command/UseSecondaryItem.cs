@@ -3,16 +3,18 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {
-    internal class UseBowCommand : ICommand
+    class UseSecondaryItem : ICommand
     {
         private readonly IPlayer link;
-        public UseBowCommand(IPlayer player)
+
+        public UseSecondaryItem(IPlayer link)
         {
-            link = player;
+            this.link = link;
         }
+
         public void Execute()
         {
-            link.UseBow();
+            link.UseSecondary();
         }
     }
 }

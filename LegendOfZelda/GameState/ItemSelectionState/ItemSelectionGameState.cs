@@ -5,7 +5,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 {
     class ItemSelectionGameState : IGameState
     {
-        private IGameState roomStatePreserved;
+        private readonly IGameState roomStatePreserved;
         private List<IController> controllerList;
         private List<ISpawnable> buttons;
 

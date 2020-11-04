@@ -31,13 +31,8 @@ namespace LegendOfZelda.GameState.Rooms
             RegisterCommand(Keys.Right, new WalkingRightCommand(gameStateCast.GetPlayer(0)));
             RegisterCommand(Keys.S, new WalkingDownCommand(gameStateCast.GetPlayer(0)));
             RegisterCommand(Keys.Down, new WalkingDownCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.Z, new SwordAttackCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.N, new SwordAttackCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.E, new DamageLinkCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D4, new UseBowCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D8, new UseSwordBeamCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D6, new UseBoomerangCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D7, new UseBombCommand(gameStateCast.GetPlayer(0)));
+            RegisterCommand(Keys.D1, new UsePrimaryItem(gameStateCast.GetPlayer(0)));
+            RegisterCommand(Keys.D2, new UseSecondaryItem(gameStateCast.GetPlayer(0)));
         }
 
         public GameStateConstants.InputType GetInputType()

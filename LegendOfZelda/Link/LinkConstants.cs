@@ -62,7 +62,9 @@ namespace LegendOfZelda.Link
             Key,
             Map,
             Sword,
-            Triforce
+            SwordBeam,
+            Triforce,
+            None
         }
 
         public enum ProjectileType
