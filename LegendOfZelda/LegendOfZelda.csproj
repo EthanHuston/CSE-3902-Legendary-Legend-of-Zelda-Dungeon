@@ -109,8 +109,10 @@
     <Compile Include="GameState\Sprite\ButtonSprite.cs" />
     <Compile Include="GameState\RoomsState\Command\PauseGameCommand.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
-    <Compile Include="HUD\HUD.cs" />
-    <Compile Include="HUD\Sprites\HUDSprite.cs" />
+    <Compile Include="HUDClasses\HUDConstants.cs" />
+    <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
+    <Compile Include="HUDClasses\HUD.cs" />
+    <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkDoorCollisionHandler.cs" />

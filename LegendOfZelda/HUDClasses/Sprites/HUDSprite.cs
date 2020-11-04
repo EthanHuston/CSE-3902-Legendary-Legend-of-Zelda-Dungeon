@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace LegendOfZelda.GameState.Sprite
+namespace LegendOfZelda.HUDClasses.Sprite
 {
     class HUDSprite : ISprite
     {
@@ -21,7 +21,7 @@ namespace LegendOfZelda.GameState.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * sprite.Width), (int)(RoomConstants.SpriteMultiplier * sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height));
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }

@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameState;
+using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link;
 using LegendOfZelda.Projectile;
@@ -22,6 +23,7 @@ namespace LegendOfZelda
             ProjectileSpriteFactory.Instance.LoadAllTextures(content);
             EnvironmentSpriteFactory.Instance.LoadAllTextures(content);
             GameStateSpriteFactory.Instance.LoadAllTextures(content);
+            HUDSpriteFactory.Instance.LoadAllTextures(content);
         }
     }
 }

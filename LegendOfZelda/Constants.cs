@@ -1,3 +1,4 @@
+using LegendOfZelda.HUDClasses;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
@@ -5,15 +6,15 @@ namespace LegendOfZelda
     public static class Constants
     {
         public const int FrameDelay = 6;
-        public const double GameScaler = 6;
+        public const double GameScaler = 4;
         public const int HeartValue = 10;
 
         // Game Screen
         public static Vector2 GameSize => new Vector2(MaxXPos, MaxYPos);
         public const int MaxXPos = RoomConstants.roomWidth;
         public const int MinXPos = 0;
-        public const int MaxYPos = RoomConstants.roomHeight;
-        public const int MinYPos = 0;
+        public const int MaxYPos = HUDConstants.hudHeight + RoomConstants.roomHeight;
+        public const int MinYPos = HUDConstants.hudHeight;
         public const int HalfXPos = MaxXPos / 2;
         public const int HalfYPos = MaxYPos / 2;
 

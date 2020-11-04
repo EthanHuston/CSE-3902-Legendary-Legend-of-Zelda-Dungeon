@@ -1,3 +1,4 @@
+using LegendOfZelda.HUDClasses;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -8,19 +9,19 @@ namespace LegendOfZelda
         //Room Constants
         public const double SpriteMultiplier = Constants.GameScaler;
         public const int roomBorderX = 0;
-        public const int roomBorderY = 0;
+        public const int roomBorderY = HUDConstants.hudHeight;
         public const int roomWidth = (int)(256 * SpriteMultiplier);
         public const int roomHeight = (int)(176 * SpriteMultiplier);
         public const int tileLength = (int)(16 * SpriteMultiplier);
         public const int wallWidth = (int)(32 * SpriteMultiplier);
         public const int backgroundX = roomBorderX + wallWidth;
         public const int backgroundY = roomBorderY + wallWidth;
-        public const int topDoorX = (roomWidth - wallWidth) / 2;
+        public const int topDoorX = roomBorderX + (roomWidth - wallWidth) / 2;
         public const int topDoorY = roomBorderY;
-        public const int rightDoorX = roomWidth - wallWidth;
-        public const int rightDoorY = (roomHeight - wallWidth) / 2;
+        public const int rightDoorX = roomBorderX + roomWidth - wallWidth;
+        public const int rightDoorY = roomBorderY + (roomHeight - wallWidth) / 2;
         public const int bottomDoorX = topDoorX;
-        public const int bottomDoorY = roomHeight - wallWidth;
+        public const int bottomDoorY = roomBorderY + roomHeight - wallWidth;
         public const int leftDoorX = roomBorderX;
         public const int leftDoorY = rightDoorY;
         public const int NumberRooms = 17;
