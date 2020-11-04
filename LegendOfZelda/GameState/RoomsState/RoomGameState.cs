@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.Pause;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -112,6 +113,11 @@ namespace LegendOfZelda.GameState.Rooms
         public void SetControllerOldInputState(OldInputState oldInputState)
         {
             foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
+        }
+
+        public void SwitchToItemSelectionState()
+        {
+            Game.SetGameState(new ItemSelectionGameState(Game), GameStateConstants.GetOldInputState(controllerList));
         }
     }
 }

@@ -60,6 +60,11 @@ namespace LegendOfZelda.GameState.Pause
             Game.SetGameState(new MainMenuGameState(Game), GameStateConstants.GetOldInputState(controllerList));
         }
 
+        public void SwitchToItemSelectionState()
+        {
+            // do nothing, cannot switch to this state from here
+        }
+
         public void Update()
         {
             foreach (IController controller in controllerList)

@@ -1,12 +1,38 @@
-﻿namespace LegendOfZelda.GameState.ItemSelectionState
+﻿using System.Collections.Generic;
+using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.GameState.ItemSelectionState
 {
     class ItemSelectionGameState : IGameState
     {
+        private IGameState roomStatePreserved;
+        private List<IController> controllerList;
+        private List<ISpawnable> buttons;
+
         public Game1 Game { get; private set; }
 
-        public ItemSelectionGameState(Game1 game)
+        public ItemSelectionGameState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
+            roomStatePreserved = oldRoomState;
+            InitButtonsList();
+            InitControllerList();
+        }
+
+        private void InitButtonsList()
+        {
+            buttons = new List<ISpawnable>()
+            {
+            };
+        }
+
+        private void InitControllerList()
+        {
+            controllerList = new List<IController>()
+            {
+                {new KeyboardController(this) },
+                {new MouseController(this, buttons) }
+            };
         }
 
         public void Draw()
@@ -16,27 +42,27 @@
 
         public void SetControllerOldInputState(OldInputState oldInputState)
         {
-            throw new System.NotImplementedException();
+            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
         }
 
         public void SwitchToMainMenuState()
         {
-            throw new System.NotImplementedException();
+            // do nothing, cannot go to main menu from here
         }
 
         public void SwitchToPauseState()
         {
-            throw new System.NotImplementedException();
+            // do nothing, cannot pause from here
         }
 
         public void SwitchToRoomState()
         {
-            throw new System.NotImplementedException();
+            Game.SetGameState(roomStatePreserved, GameStateConstants.GetOldInputState(controllerList));
         }
 
         public void SwitchToItemSelectionState()
         {
-            throw new System.NotImplementedException();
+            // do nothing, already in item selection state
         }
 
         public void Update()

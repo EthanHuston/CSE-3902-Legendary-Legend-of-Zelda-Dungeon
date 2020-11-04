@@ -275,6 +275,8 @@
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
     <Compile Include="Utility\SpawnableMover.cs" />
     <Compile Include="Utility\UtilityMethods.cs" />
+    <Compile Include="GameState\ItemSelectionState\KeyboardController.cs" />
+    <Compile Include="GameState\ItemSelectionState\MouseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\RoomData\Room1.csv">
