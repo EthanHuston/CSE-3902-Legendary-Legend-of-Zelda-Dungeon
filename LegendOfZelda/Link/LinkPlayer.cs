@@ -168,7 +168,7 @@ namespace LegendOfZelda.Link
                 {LinkConstants.ItemType.Map, 0 },
                 {LinkConstants.ItemType.Boomerang, 1 },
                 {LinkConstants.ItemType.Bow, 0 },
-                {LinkConstants.ItemType.Sword, 1 },
+                {LinkConstants.ItemType.Sword, 1 }
             };
         }
 
