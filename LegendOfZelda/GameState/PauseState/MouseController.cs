@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.GameState.Command;
+﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;

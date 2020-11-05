@@ -89,11 +89,12 @@
     <Compile Include="Environment\Sprite\WallSprite.cs" />
     <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
+    <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\Command\ItemSelectCommand.cs" />
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
-    <Compile Include="GameState\ItemSelectionState\ItemSelectionBackground.cs" />
+    <Compile Include="GameState\ItemSelectionState\Inventory.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionGameState.cs" />
     <Compile Include="GameState\MainMenuState\KeyboardController.cs" />
     <Compile Include="GameState\MainMenuState\MouseController.cs" />

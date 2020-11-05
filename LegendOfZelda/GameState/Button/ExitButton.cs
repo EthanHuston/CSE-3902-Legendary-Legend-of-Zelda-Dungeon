@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.GameState.Pause
+namespace LegendOfZelda.GameState.Button
 {
     class ExitButton : ISpawnable
     {

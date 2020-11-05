@@ -12,6 +12,9 @@ namespace LegendOfZelda.GameState
         public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
         public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 64));
 
+        // Item Positions in HudItems.png Texture Atlas
+        public static Point BombTexureAtlasLocation => new Point(85, 29);
+
         public enum InputType
         {
             Keyboard,
