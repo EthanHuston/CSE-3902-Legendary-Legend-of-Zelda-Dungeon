@@ -58,19 +58,19 @@ namespace LegendOfZelda.GameState.Rooms
 
         private Constants.Direction GetDirectionFromClick(Point mousePos)
         {
-            if (mousePos.X > RoomConstants.topDoorX && mousePos.X < RoomConstants.topDoorX + RoomConstants.wallWidth)
+            if (mousePos.X > RoomConstants.TopDoorX && mousePos.X < RoomConstants.TopDoorX + RoomConstants.WallWidth)
             {
-                if (mousePos.Y > RoomConstants.topDoorY && mousePos.Y < RoomConstants.topDoorY + RoomConstants.wallWidth)
+                if (mousePos.Y > RoomConstants.TopDoorY && mousePos.Y < RoomConstants.TopDoorY + RoomConstants.WallWidth)
                     return Constants.Direction.Up;
-                else if (mousePos.Y > RoomConstants.bottomDoorY && mousePos.Y < RoomConstants.bottomDoorY + RoomConstants.wallWidth)
+                else if (mousePos.Y > RoomConstants.BottomDoorY && mousePos.Y < RoomConstants.BottomDoorY + RoomConstants.WallWidth)
                     return Constants.Direction.Down;
             }
 
-            else if (mousePos.Y > RoomConstants.leftDoorY && mousePos.Y < RoomConstants.leftDoorY + RoomConstants.wallWidth)
+            else if (mousePos.Y > RoomConstants.LeftDoorY && mousePos.Y < RoomConstants.LeftDoorY + RoomConstants.WallWidth)
             {
-                if (mousePos.X >= RoomConstants.leftDoorX && mousePos.X <= RoomConstants.leftDoorX + RoomConstants.wallWidth)
+                if (mousePos.X >= RoomConstants.LeftDoorX && mousePos.X <= RoomConstants.LeftDoorX + RoomConstants.WallWidth)
                     return Constants.Direction.Left;
-                else if (mousePos.X >= RoomConstants.rightDoorX && mousePos.X <= RoomConstants.rightDoorX + RoomConstants.wallWidth)
+                else if (mousePos.X >= RoomConstants.RightDoorX && mousePos.X <= RoomConstants.RightDoorX + RoomConstants.WallWidth)
                     return Constants.Direction.Right;
             }
 

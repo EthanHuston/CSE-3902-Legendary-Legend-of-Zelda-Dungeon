@@ -19,7 +19,7 @@ namespace LegendOfZelda.Enemies
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
-        private readonly Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.RandomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
