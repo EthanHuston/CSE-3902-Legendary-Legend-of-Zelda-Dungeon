@@ -1,9 +1,11 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
+using System.CodeDom;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
@@ -17,6 +19,9 @@ namespace LegendOfZelda.GameLogic
         public List<IPlayer> PlayerList { get; private set; }
         public List<IBackground> BackgroundList { get; private set; }
 
+        private ItemDrop itemDropper;
+
+
         public SpawnableManager(List<IPlayer> playerList)
         {
             ItemList = new List<IItem>();
@@ -25,6 +30,7 @@ namespace LegendOfZelda.GameLogic
             BlockList = new List<IBlock>();
             BackgroundList = new List<IBackground>();
             PlayerList = playerList;
+            itemDropper = new ItemDrop(this);
         }
 
         public void Spawn(INpc spawnable)
@@ -95,6 +101,10 @@ namespace LegendOfZelda.GameLogic
                 item.Update();
                 if (item.SafeToDespawn())
                 {
+                    if(item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
+                    {
+                        itemDropper.DropItem(item.Position);
+                    }
                     indicesToRemove.Add(i);
                 }
             }
