@@ -5,11 +5,14 @@ using System;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class BombInventoryButton : ISpawnable
+    class BombInventoryButton : IButton
     {
         private readonly ITextureAtlasSprite sprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
+        private bool isActive;
+
+        private Vector2 Size => GameStateConstants.StandardItemSpriteSize;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -19,6 +22,8 @@ namespace LegendOfZelda.GameState.Button
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             sprite = GameStateSpriteFactory.Instance.CreateHudItemsSprite();
+            safeToDespawn = false;
+            isActive = true;
         }
 
 
@@ -29,12 +34,14 @@ namespace LegendOfZelda.GameState.Button
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, Position, GameStateConstants.BombTexureAtlasLocation);
+            sprite.Draw(spriteBatch, Position, GameStateConstants.BombTextureAtlasLocation);
         }
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
+            return !isActive ?
+                Rectangle.Empty :
+                new Rectangle(Position.X, Position.Y, (int)(Size.X * Constants.GameScaler), (int)(Size.Y * Constants.GameScaler));
         }
 
         public bool SafeToDespawn()
@@ -45,6 +52,16 @@ namespace LegendOfZelda.GameState.Button
         public void Update()
         {
             sprite.Update();
+        }
+
+        public void MakeActive()
+        {
+            isActive = true;
+        }
+
+        public void MakeInactive()
+        {
+            isActive = false;
         }
     }
 }
