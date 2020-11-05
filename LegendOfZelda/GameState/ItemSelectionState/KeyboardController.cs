@@ -22,6 +22,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             controllerMappings = new Dictionary<Keys, ICommand>
             {
+                {Keys.Tab, new ResumeGameCommand(gameState) }
             };
         }
 

@@ -4,7 +4,7 @@ namespace LegendOfZelda.GameState.Command
 {
     class ResumeGameCommand : ICommand
     {
-        private IGameState gameState;
+        private readonly IGameState gameState;
 
         public ResumeGameCommand(IGameState gameState)
         {

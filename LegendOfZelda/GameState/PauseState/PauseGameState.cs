@@ -67,12 +67,7 @@ namespace LegendOfZelda.GameState.Pause
 
         public void Update()
         {
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
-            // don't need to update buttons because they are non animated
-            // don't update old room because we don't want anything to move in the background
+            foreach (IController controller in controllerList) controller.Update();
         }
 
         public void SetControllerOldInputState(OldInputState oldInputState)

@@ -71,6 +71,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public void Update()
         {
             itemSelectionBackground.Update();
+            foreach (IController controller in controllerList) controller.Update();
         }
     }
 }
