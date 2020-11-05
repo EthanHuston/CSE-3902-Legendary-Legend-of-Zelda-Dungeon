@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.Pause;
+using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
@@ -17,6 +18,7 @@ namespace LegendOfZelda.GameState.Rooms
         public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
+        public HUD hud;
 
         public RoomGameState(Game1 game)
         {
@@ -24,6 +26,7 @@ namespace LegendOfZelda.GameState.Rooms
             InitPlayersForGame();
             InitControllerList();
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
+            hud = new HUD(PlayerList);
         }
 
         private void InitControllerList()
@@ -47,6 +50,7 @@ namespace LegendOfZelda.GameState.Rooms
         public void Draw()
         {
             CurrentRoom.Draw();
+            hud.Draw(Game.SpriteBatch);
         }
 
         public IPlayer GetPlayer(int playerNumber)

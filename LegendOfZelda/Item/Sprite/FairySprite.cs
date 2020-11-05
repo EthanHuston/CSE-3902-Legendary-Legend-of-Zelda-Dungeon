@@ -86,19 +86,19 @@ namespace LegendOfZelda.Item.Sprite
         }
         private void CheckBounds()
         {
-            if (position.X <= Constants.MinXPos + (Constants.GameScaler * RoomConstants.wallWidth))
+            if (position.X <= Constants.MinXPos + (Constants.GameScaler * RoomConstants.WallWidth))
             {
                 position.X += 5;
             }
-            else if (position.X >= Constants.MaxXPos - (Constants.GameScaler * RoomConstants.wallWidth))
+            else if (position.X >= Constants.MaxXPos - (Constants.GameScaler * RoomConstants.WallWidth))
             {
                 position.X -= 5; ;
             }
-            else if (position.Y <= Constants.MinYPos + (Constants.GameScaler * RoomConstants.wallWidth))
+            else if (position.Y <= Constants.MinYPos + (Constants.GameScaler * RoomConstants.WallWidth))
             {
                 position.Y += 5; ;
             }
-            else if (position.Y >= Constants.MaxYPos - (Constants.GameScaler * RoomConstants.wallWidth))
+            else if (position.Y >= Constants.MaxYPos - (Constants.GameScaler * RoomConstants.WallWidth))
             {
                 position.Y -= 5;
             }
@@ -112,7 +112,7 @@ namespace LegendOfZelda.Item.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, frameWidth, frameHeight);
+            return new Rectangle(0, 0, (int) (frameWidth * Constants.GameScaler), (int) (frameHeight * Constants.GameScaler));
         }
     }
 }

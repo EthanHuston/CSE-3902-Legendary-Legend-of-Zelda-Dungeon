@@ -1,3 +1,4 @@
+using LegendOfZelda.Enemies.Sprite;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,6 +9,7 @@ namespace LegendOfZelda.Enemies
     internal class Jelly : INpc
     {
         private readonly IDamageableSprite sprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private int movementBuffer = 0;
         private int upDown = 0;
@@ -16,7 +18,8 @@ namespace LegendOfZelda.Enemies
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
-        private readonly Random rand = RoomConstants.randomGenerator;
+        private bool spawning;
+        private readonly Random rand = RoomConstants.RandomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -24,31 +27,54 @@ namespace LegendOfZelda.Enemies
         public Jelly(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateJellySprite();
+            spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             safeToDespawn = false;
             Position = spawnPosition;
             healthyDateTime = DateTime.Now;
             damaged = false;
+            spawning = true;
         }
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = !safeToDespawn && health <= 0;
-            movementBuffer++;
-            if (movementBuffer == 16)
+            if (spawning)
             {
-                movementBuffer = 0;
-                ChooseDirection();
+                if (!spawnSprite.AnimationDone())
+                {
+                    spawnSprite.Update();
+                }
+                else
+                {
+                    spawning = false;
+                }
             }
             else
             {
-                Move();
+                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+                safeToDespawn = !safeToDespawn && health <= 0;
+                movementBuffer++;
+                if (movementBuffer == 16)
+                {
+                    movementBuffer = 0;
+                    ChooseDirection();
+                }
+                else
+                {
+                    Move();
+                }
+                sprite.Update();
             }
-            sprite.Update();
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position, damaged);
+            if (spawning)
+            {
+                spawnSprite.Draw(spriteBatch, position);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position, damaged);
+            }
         }
         private void ChooseDirection()
         {

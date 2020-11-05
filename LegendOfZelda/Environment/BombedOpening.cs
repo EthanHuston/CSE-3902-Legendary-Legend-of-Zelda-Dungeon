@@ -25,19 +25,19 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            if ((position.X == RoomConstants.topDoorX) && (position.Y == RoomConstants.topDoorY))
+            if ((position.X == RoomConstants.TopDoorX) && (position.Y == RoomConstants.TopDoorY))
             {
                 textureMapRow = 0;
             }
-            else if ((position.X == RoomConstants.leftDoorX) && (position.Y == RoomConstants.leftDoorY))
+            else if ((position.X == RoomConstants.LeftDoorX) && (position.Y == RoomConstants.LeftDoorY))
             {
                 textureMapRow = 1;
             }
-            else if ((position.X == RoomConstants.rightDoorX) && (position.Y == RoomConstants.rightDoorY))
+            else if ((position.X == RoomConstants.RightDoorX) && (position.Y == RoomConstants.RightDoorY))
             {
                 textureMapRow = 2;
             }
-            else if ((position.X == RoomConstants.bottomDoorX) && (position.Y == RoomConstants.bottomDoorY))
+            else if ((position.X == RoomConstants.BottomDoorX) && (position.Y == RoomConstants.BottomDoorY))
             {
                 textureMapRow = 3;
             }

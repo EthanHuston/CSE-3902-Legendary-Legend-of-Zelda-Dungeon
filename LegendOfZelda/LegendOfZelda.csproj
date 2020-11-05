@@ -79,6 +79,7 @@
     <Compile Include="Enemies\Sprite\MerchantSprite.cs" />
     <Compile Include="Enemies\Sprite\OldManSprite.cs" />
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
+    <Compile Include="Enemies\Sprite\SpawnSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
@@ -114,6 +115,10 @@
     <Compile Include="GameState\Sprite\GameStateSprite.cs" />
     <Compile Include="GameState\Command\PauseGameCommand.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="HUDClasses\HUDConstants.cs" />
+    <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
+    <Compile Include="HUDClasses\HUD.cs" />
+    <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkDoorCollisionHandler.cs" />

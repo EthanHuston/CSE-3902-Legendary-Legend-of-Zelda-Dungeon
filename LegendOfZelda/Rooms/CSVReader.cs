@@ -29,7 +29,7 @@ namespace LegendOfZelda.Rooms
                 string[] fields = parser.ReadFields();
                 if (j == 0)
                 {
-                    IBackground roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.roomBorderX, RoomConstants.roomBorderY));
+                    IBackground roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.RoomBorderX, RoomConstants.RoomBorderY));
                     allObjects.Spawn(roomBorder);
                     for (int i = 0; i < fields.Length; i++)
                     {
@@ -49,8 +49,8 @@ namespace LegendOfZelda.Rooms
 
         private void SpawnFromString(string spawnType, int gridX, int gridY)
         {
-            int posX = RoomConstants.backgroundX + gridX * RoomConstants.tileLength;
-            int posY = RoomConstants.backgroundY + gridY * RoomConstants.tileLength;
+            int posX = RoomConstants.BackgroundX + gridX * RoomConstants.TileLength;
+            int posY = RoomConstants.BackgroundY + gridY * RoomConstants.TileLength;
             Point position = new Point(posX, posY);
             IBlock blockType;
             INpc npcType;
@@ -174,15 +174,15 @@ namespace LegendOfZelda.Rooms
             Point position;
 
             if (i == 0)
-                position = new Point(RoomConstants.backgroundX, RoomConstants.backgroundY);
+                position = new Point(RoomConstants.BackgroundX, RoomConstants.BackgroundY);
             else if (i == 1)
-                position = new Point(RoomConstants.topDoorX, RoomConstants.topDoorY);
+                position = new Point(RoomConstants.TopDoorX, RoomConstants.TopDoorY);
             else if (i == 2)
-                position = new Point(RoomConstants.rightDoorX, RoomConstants.rightDoorY);
+                position = new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY);
             else if (i == 3)
-                position = new Point(RoomConstants.bottomDoorX, RoomConstants.bottomDoorY);
+                position = new Point(RoomConstants.BottomDoorX, RoomConstants.BottomDoorY);
             else if (i == 4)
-                position = new Point(RoomConstants.leftDoorX, RoomConstants.leftDoorY);
+                position = new Point(RoomConstants.LeftDoorX, RoomConstants.LeftDoorY);
             else
                 position = Point.Zero;
 

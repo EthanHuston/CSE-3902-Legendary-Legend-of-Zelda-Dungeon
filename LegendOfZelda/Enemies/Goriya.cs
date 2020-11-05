@@ -1,3 +1,4 @@
+using LegendOfZelda.Enemies.Sprite;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
@@ -10,6 +11,7 @@ namespace LegendOfZelda.Enemies
     internal class Goriya : INpc
     {
         private IDamageableSprite sprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private readonly ISpawnableManager itemSpawner;
         private IProjectile boomer;
@@ -26,8 +28,9 @@ namespace LegendOfZelda.Enemies
         private bool safeToDespawn = false;
         private DateTime healthyDateTime;
         private bool damaged;
+        private bool spawning;
 
-        private readonly Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.RandomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -35,45 +38,68 @@ namespace LegendOfZelda.Enemies
         public Goriya(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
             sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
+            spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             this.itemSpawner = itemSpawner;
             velocity = 1;
             Position = spawnPosition;
             healthyDateTime = DateTime.Now;
             damaged = false;
+            spawning = true;
         }
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = !safeToDespawn && health <= 0;
-            if (!inKnockback)
+            if (spawning)
             {
-                updateCount++;
-                if (updateCount >= 1000)
-                    updateCount = 0;
-
-                if (!boomerangActive)
-                    Move();
-
-                KeepInBounds();
-
-                if (updateCount % attackWaitTime == 0)
-                    Attack();
-
-                boomerangActive = boomer != null && !boomer.SafeToDespawn();
+                if (!spawnSprite.AnimationDone())
+                {
+                    spawnSprite.Update();
+                }
+                else
+                {
+                    spawning = false;
+                }
             }
             else
             {
-                MoveKnockback(knockbackOrigin);
-            }
+                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+                safeToDespawn = !safeToDespawn && health <= 0;
+                if (!inKnockback)
+                {
+                    updateCount++;
+                    if (updateCount >= 1000)
+                        updateCount = 0;
 
-            sprite.Update();
+                    if (!boomerangActive)
+                        Move();
+
+                    KeepInBounds();
+
+                    if (updateCount % attackWaitTime == 0)
+                        Attack();
+
+                    boomerangActive = boomer != null && !boomer.SafeToDespawn();
+                }
+                else
+                {
+                    MoveKnockback(knockbackOrigin);
+                }
+
+                sprite.Update();
+            }
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position, damaged);
+            if(spawning)
+            {
+                spawnSprite.Draw(spriteBatch, position);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position, damaged);
+            }
         }
 
         private void Move()

@@ -10,10 +10,10 @@ namespace LegendOfZelda.Projectile
     {
         private bool returningToOwner;
         private readonly ISpawnable itemToTrack;
-        private const int despawnMaxXFromOwner = 15;
-        private const int despawnMinXFromOwner = 0;
-        private const int despawnMaxYFromOwner = 15;
-        private const int despawnMinYFromOwner = 0;
+        private const int despawnMaxXFromOwner = (int)(Constants.GameScaler * 15);
+        private const int despawnMinXFromOwner = (int)(Constants.GameScaler * 0);
+        private const int despawnMaxYFromOwner = (int)(Constants.GameScaler * 15);
+        private const int despawnMinYFromOwner = (int)(Constants.GameScaler * 0);
         private const int maxDistanceFromOwner = (int)(Constants.GameScaler * 100);
 
         public BoomerangFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, ISpawnable itemToTrack, Vector2 velocity) : base(spriteBatch, spawnPosition, owner)

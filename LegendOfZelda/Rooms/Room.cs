@@ -18,7 +18,7 @@ namespace LegendOfZelda.Rooms
         public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
             AllObjects = new SpawnableManager(playerList);
-            CSVReader csvReader = new CSVReader(spriteBatch, AllObjects, fileName);
+            new CSVReader(spriteBatch, AllObjects, fileName);
             roomDictionary = new Dictionary<Constants.Direction, Room>();
             collisionManager = new CollisionManager(AllObjects);
             SpawnWalls();
