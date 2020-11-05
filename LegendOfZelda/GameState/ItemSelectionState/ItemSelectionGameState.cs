@@ -7,7 +7,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     {
         private readonly IGameState roomStatePreserved;
         private List<IController> controllerList;
-        private List<ISpawnable> buttons;
+        private List<ISpawnable> buttonsList;
+        private readonly ISpawnable itemSelectionBackground;
 
         public Game1 Game { get; private set; }
 
@@ -15,13 +16,14 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             Game = game;
             roomStatePreserved = oldRoomState;
+            itemSelectionBackground = new ItemSelectionBackground(game.SpriteBatch);
             InitButtonsList();
             InitControllerList();
         }
 
         private void InitButtonsList()
         {
-            buttons = new List<ISpawnable>()
+            buttonsList = new List<ISpawnable>()
             {
             };
         }
@@ -31,13 +33,14 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, buttons) }
+                {new MouseController(this, buttonsList) }
             };
         }
 
         public void Draw()
         {
-            throw new System.NotImplementedException();
+            itemSelectionBackground.Draw();
+            foreach (ISpawnable button in buttonsList) button.Draw();
         }
 
         public void SetControllerOldInputState(OldInputState oldInputState)
@@ -67,7 +70,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Update()
         {
-            throw new System.NotImplementedException();
+            itemSelectionBackground.Update();
         }
     }
 }

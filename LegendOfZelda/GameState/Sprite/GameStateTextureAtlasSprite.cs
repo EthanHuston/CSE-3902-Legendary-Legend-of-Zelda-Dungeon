@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Sprite
 {
-    class TitleBackgroundSprite : ITextureAtlasSprite
+    class GameStateTextureAtlasSprite : ITextureAtlasSprite
     {
         private readonly Texture2D sprite;
         private const int numRows = 1;
@@ -12,7 +12,7 @@ namespace LegendOfZelda.GameState.Sprite
         private readonly int frameWidth;
         private readonly int frameHeight;
 
-        public TitleBackgroundSprite(Texture2D sprite)
+        public GameStateTextureAtlasSprite(Texture2D sprite)
         {
             this.sprite = sprite;
             frameWidth = sprite.Width / numColumns;
@@ -26,18 +26,18 @@ namespace LegendOfZelda.GameState.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            
+            Draw(spriteBatch, position, Point.Zero);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, frameWidth, frameHeight);
+            return new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * frameWidth), (int)(RoomConstants.SpriteMultiplier * frameHeight));
             Rectangle sourceRectangle = new Rectangle(textureLocation.X, textureLocation.Y, frameWidth, frameHeight);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * frameWidth), (int)(RoomConstants.SpriteMultiplier * frameHeight));
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
     }

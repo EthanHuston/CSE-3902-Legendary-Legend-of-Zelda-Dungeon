@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Sprite
 {
-    class ButtonSprite : ISprite
+    class GameStateSprite : ISprite
     {
         private readonly Texture2D sprite;
 
-        public ButtonSprite(Texture2D sprite)
+        public GameStateSprite(Texture2D sprite)
         {
             this.sprite = sprite;
         }
