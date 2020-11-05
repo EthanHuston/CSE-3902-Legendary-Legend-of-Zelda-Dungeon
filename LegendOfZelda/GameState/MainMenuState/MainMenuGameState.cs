@@ -9,8 +9,6 @@ namespace LegendOfZelda.GameState.MainMenu
     {
         private List<IController> controllerList;
         private readonly ITextureAtlasSprite backgroundSprite;
-        private const int textureMapColumn = 0;
-        private const int textureMapRow = 0;
 
         public Game1 Game { get; private set; }
 
@@ -32,7 +30,7 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public void Draw()
         {
-            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, new Point(textureMapColumn, textureMapRow));
+            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource);
         }
 
         public void SwitchToMainMenuState()

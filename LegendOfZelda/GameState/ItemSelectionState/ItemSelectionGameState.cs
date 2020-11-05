@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using LegendOfZelda.GameState.Button;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
@@ -7,40 +9,30 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     {
         private readonly IGameState roomStatePreserved;
         private List<IController> controllerList;
-        private List<ISpawnable> buttonsList;
-        private readonly ISpawnable itemSelectionBackground;
+        private readonly IMenu inventoryScreen;
 
         public Game1 Game { get; private set; }
 
-        public ItemSelectionGameState(Game1 game, IGameState oldRoomState)
+        public ItemSelectionGameState(IPlayer player, IGameState oldRoomState)
         {
-            Game = game;
+            Game = player.Game;
             roomStatePreserved = oldRoomState;
-            itemSelectionBackground = new ItemSelectionBackground(game.SpriteBatch);
-            InitButtonsList();
-            InitControllerList();
+            inventoryScreen = new InventoryScreen(player);
+            InitControllerList(player);
         }
 
-        private void InitButtonsList()
-        {
-            buttonsList = new List<ISpawnable>()
-            {
-            };
-        }
-
-        private void InitControllerList()
+        private void InitControllerList(IPlayer player)
         {
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, buttonsList) }
+                {new MouseController(player, inventoryScreen.Buttons) }
             };
         }
 
         public void Draw()
         {
-            itemSelectionBackground.Draw();
-            foreach (ISpawnable button in buttonsList) button.Draw();
+            inventoryScreen.Draw();
         }
 
         public void SetControllerOldInputState(OldInputState oldInputState)
@@ -70,8 +62,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Update()
         {
-            itemSelectionBackground.Update();
             foreach (IController controller in controllerList) controller.Update();
+            inventoryScreen.Update();
         }
     }
 }

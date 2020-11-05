@@ -17,6 +17,7 @@ namespace LegendOfZelda.GameState.Rooms
         public Game1 Game { get; private set; }
         public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
+        public List<ItemSelectionGameState> itemSelectionGameStates;
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
         public HUD hud;
 
@@ -27,6 +28,7 @@ namespace LegendOfZelda.GameState.Rooms
             InitControllerList();
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
             hud = new HUD(PlayerList);
+            InitInventoryStates();
         }
 
         private void InitControllerList()
@@ -36,6 +38,14 @@ namespace LegendOfZelda.GameState.Rooms
                 {new KeyboardController(this) },
                 {new MouseController(this) }
             };
+        }
+        private void InitInventoryStates()
+        {
+            itemSelectionGameStates = new List<ItemSelectionGameState>();
+            foreach(IPlayer player in PlayerList)
+            {
+                itemSelectionGameStates.Add(new ItemSelectionGameState(player, this));
+            }
         }
 
         public void Update()
@@ -121,7 +131,8 @@ namespace LegendOfZelda.GameState.Rooms
 
         public void SwitchToItemSelectionState()
         {
-            Game.SetGameState(new ItemSelectionGameState(Game, this), GameStateConstants.GetOldInputState(controllerList));
+            // player 0 inventory for now - in case we add multiplayer later
+            Game.SetGameState(itemSelectionGameStates[0], GameStateConstants.GetOldInputState(controllerList));
         }
     }
 }

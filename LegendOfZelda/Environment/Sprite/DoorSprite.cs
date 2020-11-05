@@ -39,5 +39,10 @@ namespace LegendOfZelda.Environment.Sprite
         {
             // no update needed
         }
+
+        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource)
+        {
+            Draw(spriteBatch, position, new Point(textureSource.X, textureSource.Y));
+        }
     }
 }

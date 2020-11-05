@@ -4,23 +4,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class MainMenuButton : IButton
+    class EmptyButton : IButton
     {
-        private readonly ISprite sprite;
-        private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
+        private Rectangle location;
         public bool IsActive { get; private set; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public MainMenuButton(SpriteBatch spriteBatch, Point spawnPosition)
+        public EmptyButton(Rectangle location)
         {
-            this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateMainMenuButtonSprite();
-            Position = spawnPosition;
+            Position = new Point(location.X, location.Y);
             safeToDespawn = false;
             IsActive = true;
+            this.location = location;
         }
 
         public void Despawn()
@@ -30,14 +28,13 @@ namespace LegendOfZelda.GameState.Button
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, Position);
         }
 
         public Rectangle GetRectangle()
         {
             return !IsActive ?
                 Rectangle.Empty :
-                new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
+                new Rectangle(Position.X, Position.Y, location.Width, location.Height);
         }
 
         public bool SafeToDespawn()
@@ -47,7 +44,6 @@ namespace LegendOfZelda.GameState.Button
 
         public void Update()
         {
-            sprite.Update();
         }
 
         public void MakeActive()

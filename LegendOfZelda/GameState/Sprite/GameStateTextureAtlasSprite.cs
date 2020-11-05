@@ -26,19 +26,22 @@ namespace LegendOfZelda.GameState.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Draw(spriteBatch, position, Point.Zero);
+            Draw(spriteBatch, position, Rectangle.Empty);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            return Rectangle.Empty;
         }
 
+        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource)
+        {
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * textureSource.Width), (int)(RoomConstants.SpriteMultiplier * textureSource.Height));
+            spriteBatch.Draw(sprite, destinationRectangle, textureSource, Color.White);
+        }
         public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation)
         {
-            Rectangle sourceRectangle = new Rectangle(textureLocation.X, textureLocation.Y, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * frameWidth), (int)(RoomConstants.SpriteMultiplier * frameHeight));
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            Draw(spriteBatch, position, Rectangle.Empty);
         }
     }
 }

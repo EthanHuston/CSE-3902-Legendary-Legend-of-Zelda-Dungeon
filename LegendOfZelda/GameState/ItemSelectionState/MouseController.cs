@@ -1,5 +1,8 @@
-﻿using LegendOfZelda.GameState.Command;
+﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Command;
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -10,23 +13,25 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     internal class MouseController : IController
     {
         private MouseState oldMouseState;
-        private readonly List<ISpawnable> buttons;
+        private readonly List<IButton> buttons;
         private Dictionary<Type, ICommand> controllerMappings;
 
-        public MouseController(IGameState gameState, List<ISpawnable> buttons)
+        public MouseController(IPlayer player, List<IButton> buttons)
         {
             oldMouseState = new MouseState();
             this.buttons = buttons;
-            InitControllerMappings(gameState);
+            InitControllerMappings(player);
         }
 
-        private void InitControllerMappings(IGameState gameState)
+        private void InitControllerMappings(IPlayer player)
         {
             controllerMappings = new Dictionary<Type, ICommand>
             {
-                //{typeof(ResumeButton), new ResumeGameCommand(gameState) },
-                //{typeof(MainMenuButton), new MainMenuCommand(gameState) },
-                //{typeof(ExitButton), new ExitGameCommand(gameState) }
+                {typeof(ArrowWoodInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Bow) },
+                {typeof(BombInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Bomb) },
+                {typeof(BoomerangWoodInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Boomerang) },
+                {typeof(BowInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Bow) },
+
             };
         }
 
@@ -54,7 +59,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
             {
                 Point mousePosition = newMouseState.Position;
-                foreach (ISpawnable button in buttons)
+                foreach (IButton button in buttons)
                 {
                     Rectangle buttonRectangle = button.GetRectangle();
                     if (mousePosition.X > buttonRectangle.Left &&

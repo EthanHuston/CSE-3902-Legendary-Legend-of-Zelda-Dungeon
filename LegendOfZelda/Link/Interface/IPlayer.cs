@@ -4,6 +4,7 @@ namespace LegendOfZelda.Link.Interface
 {
     internal interface IPlayer : IDynamic
     {
+        Game1 Game { get; }
         LinkConstants.ItemType PrimaryItem { get; }
         LinkConstants.ItemType SecondaryItem { get; set; }
         void BeHealthy(double healAmount);
@@ -16,6 +17,7 @@ namespace LegendOfZelda.Link.Interface
         void MoveRight();
         void StopMoving();
         void PickupItem(LinkConstants.ItemType itemType);
+        int GetQuantityInInventory(LinkConstants.ItemType itemType);
         void UsePrimary();
         void UseSecondary();
     }

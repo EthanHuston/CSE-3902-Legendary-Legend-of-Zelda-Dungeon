@@ -4,25 +4,25 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class WhistleInventoryButton : IButton
+    class MapInventoryButton : IButton
     {
         private readonly ITextureAtlasSprite sprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
-        private bool isActive;
+        public bool IsActive { get; private set; }
 
         private Vector2 Size => GameStateConstants.StandardItemSpriteSize;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public WhistleInventoryButton(SpriteBatch spriteBatch, Point spawnPosition)
+        public MapInventoryButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             sprite = GameStateSpriteFactory.Instance.CreateHudItemsSprite();
             safeToDespawn = false;
-            isActive = false;
+            IsActive = false;
         }
 
 
@@ -33,12 +33,12 @@ namespace LegendOfZelda.GameState.Button
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, Position, GameStateConstants.WhistleTextureAtlasLocation);
+            sprite.Draw(spriteBatch, Position, GameStateConstants.MapTextureAtlasSource);
         }
 
         public Rectangle GetRectangle()
         {
-            return !isActive ?
+            return !IsActive ?
                 Rectangle.Empty :
                 new Rectangle(Position.X, Position.Y, (int)(Size.X * Constants.GameScaler), (int)(Size.Y * Constants.GameScaler));
         }
@@ -55,12 +55,12 @@ namespace LegendOfZelda.GameState.Button
 
         public void MakeActive()
         {
-            isActive = true;
+            IsActive = true;
         }
 
         public void MakeInactive()
         {
-            isActive = false;
+            IsActive = false;
         }
     }
 }

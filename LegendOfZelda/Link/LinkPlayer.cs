@@ -10,7 +10,6 @@ namespace LegendOfZelda.Link
 {
     internal class LinkPlayer : IPlayer
     {
-        public Game1 Game;
         private double currentHealth;
         private double maxHealth;
         private Dictionary<LinkConstants.ItemType, int> inventory;
@@ -18,6 +17,8 @@ namespace LegendOfZelda.Link
         private bool safeToDespawn;
         private ILinkState state;
 
+
+        public Game1 Game { get; private set; }
         public Constants.Direction FacingDirection { get; set; }
         public ILinkSprite CurrentSprite { get; set; }
         public bool BlockStateChange { get; set; }
@@ -39,6 +40,7 @@ namespace LegendOfZelda.Link
             safeToDespawn = false;
             BlockStateChange = false;
             currentProjectiles = new Dictionary<LinkConstants.ProjectileType, IProjectile>();
+            SecondaryItem = LinkConstants.ItemType.None;
             InitInventoryDict();
         }
 
@@ -167,9 +169,14 @@ namespace LegendOfZelda.Link
                 {LinkConstants.ItemType.Key, 0 },
                 {LinkConstants.ItemType.Map, 0 },
                 {LinkConstants.ItemType.Boomerang, 1 },
-                {LinkConstants.ItemType.Bow, 0 },
+                {LinkConstants.ItemType.Bow, 1 },
                 {LinkConstants.ItemType.Sword, 1 }
             };
+        }
+
+        public int GetQuantityInInventory(LinkConstants.ItemType itemType)
+        {
+            return inventory.ContainsKey(itemType) ? inventory[itemType] : 0;
         }
 
         public void UsePrimary()

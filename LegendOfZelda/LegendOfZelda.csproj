@@ -90,7 +90,10 @@
     <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
-    <Compile Include="GameState\Button\WhistleInventoryButton.cs" />
+    <Compile Include="GameState\Button\CompassInventoryButton.cs" />
+    <Compile Include="GameState\Button\EmptyButton.cs" />
+    <Compile Include="GameState\Button\IMenu.cs" />
+    <Compile Include="GameState\Button\MapInventoryButton.cs" />
     <Compile Include="GameState\Button\CandleBlueInventoryButton.cs" />
     <Compile Include="GameState\Button\BowInventoryButton.cs" />
     <Compile Include="GameState\Button\ArrowWoodInventoryButton.cs" />
