@@ -50,6 +50,12 @@ namespace LegendOfZelda.Link
         {
             safeToDespawn = !safeToDespawn && currentHealth <= 0;
             State.Update();
+            if(currentHealth <= 1.0)
+            {
+                SoundEffectInstance lowHealth = SoundFactory.Instance.CreateLowHealthSound();
+                lowHealth.IsLooped = true;
+                lowHealth.Play();
+            }
         }
 
         public void BeHealthy(double healAmount)
@@ -65,6 +71,7 @@ namespace LegendOfZelda.Link
         public void SubtractHealth(double damage)
         {
             currentHealth -= damage;
+            SoundFactory.Instance.CreateLinkHurtSound().Play();
         }
 
         public void AddHealth(double healAmount)
@@ -124,28 +131,40 @@ namespace LegendOfZelda.Link
 
         public void UseBow()
         {
+            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.Arrow];
+            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
             if (inventory[LinkConstants.ItemType.Bow] <= 0 && inventory[LinkConstants.ItemType.Rupee] <= 0) return;
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.ArrowSpeed);
             SpawnItem(new ArrowFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingArrowSpawnOffset, Constants.ProjectileOwner.Link, velocity));
+            SoundFactory.Instance.CreateArrowBoomerangSound().Play();
         }
 
         public void UseBomb()
         {
+            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.Bomb];
+            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
             if (inventory[LinkConstants.ItemType.Bomb] <= 0) return;
             SpawnItem(new BombExplodingProjectile(Game.SpriteBatch, Position, Constants.ProjectileOwner.Link));
+            SoundFactory.Instance.CreateBombDropSound().Play();
         }
 
         public void UseBoomerang()
         {
+            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.Boomerang];
+            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
             if (inventory[LinkConstants.ItemType.Boomerang] <= 0) return;
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
             SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingBoomerangSpawnOffset, Constants.ProjectileOwner.Link, this, velocity));
+            SoundFactory.Instance.CreateArrowBoomerangSound().Play();
         }
 
         public void UseSwordBeam()
         {
+            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.SwordBeam];
+            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
             IProjectile projectile = currentProjectiles[LinkConstants.ProjectileType.SwordBeam];
             if (inventory[LinkConstants.ItemType.Sword] > 0 && (projectile == null || projectile.SafeToDespawn())) SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
+            SoundFactory.Instance.CreateSwordCombinedSound().Play();
         }
 
         public void Move(int distance, Vector2 velocity)

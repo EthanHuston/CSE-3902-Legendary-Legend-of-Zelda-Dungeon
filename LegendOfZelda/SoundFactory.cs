@@ -41,31 +41,31 @@ namespace LegendOfZelda
 
         public void LoadAllSounds(ContentManager content)
         {
-            arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang");
-            bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow");
-            bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop");
+            arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang"); // Done
+            bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow"); // Done
+            bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop"); // Done
             boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit");
             boss_scream = content.Load<SoundEffect>("Sounds/LOZ_Boss_Scream1");
             door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock");
-            dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon");
+            dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon"); // Done
             enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die");
             enemy_hit = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Hit");
-            fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare");
-            get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart");
-            get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item");
-            get_rupee = content.Load<SoundEffect>("Sounds/LOZ_Get_Rupee");
+            fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare"); // Done
+            get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart"); // Done
+            get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item"); // Done
+            get_rupee = content.Load<SoundEffect>("Sounds/LOZ_Get_Rupee"); // Done
             key_appear = content.Load<SoundEffect>("Sounds/LOZ_Key_Appear");
-            link_die = content.Load<SoundEffect>("Sounds/LOZ_Link_Die");
-            link_hurt = content.Load<SoundEffect>("Sounds/LOZ_Link_Hurt");
-            low_health = content.Load<SoundEffect>("Sounds/LOZ_LowHealth");
+            link_die = content.Load<SoundEffect>("Sounds/LOZ_Link_Die"); // BACKBURNER!!!!!!!!!!!!!!!!!!!
+            link_hurt = content.Load<SoundEffect>("Sounds/LOZ_Link_Hurt"); // Done
+            low_health = content.Load<SoundEffect>("Sounds/LOZ_LowHealth"); // Done
             refill = content.Load<SoundEffect>("Sounds/LOZ_Refill_Loop");
             secret = content.Load<SoundEffect>("Sounds/LOZ_Secret");
             shield = content.Load<SoundEffect>("Sounds/LOZ_Shield");
             stairs = content.Load<SoundEffect>("Sounds/LOZ_Stairs");
-            sword_combined = content.Load<SoundEffect>("Sounds/LOZ_Sword_Combined");
-            sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot");
-            sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash");
-            text = content.Load<SoundEffect>("Sounds/LOZ_Text");
+            sword_combined = content.Load<SoundEffect>("Sounds/LOZ_Sword_Combined"); // Done
+            sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot"); // Done
+            sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash"); // Done
+            text = content.Load<SoundEffect>("Sounds/LOZ_Text"); // Done
         }
 
         public SoundEffectInstance CreateArrowBoomerangSound()
