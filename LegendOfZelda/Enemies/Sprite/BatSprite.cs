@@ -69,7 +69,7 @@ namespace LegendOfZelda.Enemies.Sprite
         }
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, width, height);
+            return new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
         }
     }
 }
