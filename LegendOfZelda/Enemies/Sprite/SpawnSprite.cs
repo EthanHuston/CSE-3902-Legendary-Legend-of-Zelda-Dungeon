@@ -43,7 +43,7 @@ namespace LegendOfZelda.Enemies.Sprite
             if(currentFrame == totalFrames)
             {
                 animationDone = true;
-                curretnFram = 0;
+                currentFrame = 0;
             }
             
         }

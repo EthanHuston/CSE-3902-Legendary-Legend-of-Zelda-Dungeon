@@ -31,5 +31,6 @@ namespace LegendOfZelda.GameLogic
         void Spawn(IBackground spawnable);
 
         IPlayer GetPlayer(int playerNumber);
+        void ResetClouds();
     }
 }

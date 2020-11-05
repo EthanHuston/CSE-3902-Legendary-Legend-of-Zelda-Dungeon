@@ -109,5 +109,12 @@ namespace LegendOfZelda.GameLogic
         {
             return PlayerList[playerNumber];
         }
+
+        public void ResetClouds()
+        {
+            foreach(INpc Npc in NpcList){
+                Npc.ResetSpawnCloud();
+            }
+        }
     }
 }

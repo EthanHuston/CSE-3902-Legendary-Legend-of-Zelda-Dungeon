@@ -61,6 +61,7 @@ namespace LegendOfZelda.GameState.Rooms
             {
                 CurrentRoom = newRoom;
                 UpdatePlayersPositions(doorLocation);
+                CurrentRoom.ResetClouds();
             }
         }
 
