@@ -64,7 +64,9 @@ namespace LegendOfZelda.Enemies.Sprite
         }
         public bool AnimationDone()
         {
-            return animationDone;
+            bool currentState = animationDone;
+            animationDone = false;
+            return currentState;
         }
     }
 }
