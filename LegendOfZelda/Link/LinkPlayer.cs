@@ -120,18 +120,6 @@ namespace LegendOfZelda.Link
 
         public void SpawnItem(IProjectile projectile)
         {
-            IProjectile currentProjectile;
-
-            if (currentProjectiles.ContainsKey(projectile.GetProjectileType()))
-                currentProjectile = currentProjectiles[projectile.GetProjectileType()];
-            else
-            {
-                currentProjectile = null;
-                currentProjectiles.Add(projectile.GetProjectileType(), null);
-            }
-
-            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
-
             ((RoomGameState)Game.State).SpawnableManager.Spawn(projectile);
             currentProjectiles[projectile.GetProjectileType()] = projectile;
         }
@@ -249,9 +237,8 @@ namespace LegendOfZelda.Link
 
         private void UseBow()
         {
-            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.Arrow];
-            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
-            if (inventory[LinkConstants.ItemType.Bow] <= 0 && inventory[LinkConstants.ItemType.Rupee] <= 0) return;
+            if (!CanSpawnProjectile(LinkConstants.ProjectileType.Arrow) || inventory[LinkConstants.ItemType.Bow] <= 0 || inventory[LinkConstants.ItemType.Rupee] <= 0) return;
+            inventory[LinkConstants.ItemType.Rupee]--;
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.ArrowSpeed);
             SpawnItem(new ArrowFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingArrowSpawnOffset, Constants.ProjectileOwner.Link, velocity));
             SoundFactory.Instance.CreateArrowBoomerangSound().Play();
@@ -259,18 +246,15 @@ namespace LegendOfZelda.Link
 
         private void UseBomb()
         {
-            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.Bomb];
-            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
-            if (inventory[LinkConstants.ItemType.Bomb] <= 0) return;
+            if (!CanSpawnProjectile(LinkConstants.ProjectileType.Bomb) || inventory[LinkConstants.ItemType.Bomb] <= 0) return;
+            inventory[LinkConstants.ItemType.Bomb]--;
             SpawnItem(new BombExplodingProjectile(Game.SpriteBatch, Position, Constants.ProjectileOwner.Link));
             SoundFactory.Instance.CreateBombDropSound().Play();
         }
 
         private void UseBoomerang()
         {
-            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.Boomerang];
-            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
-            if (inventory[LinkConstants.ItemType.Boomerang] <= 0) return;
+            if (!CanSpawnProjectile(LinkConstants.ProjectileType.Boomerang) || inventory[LinkConstants.ItemType.Boomerang] <= 0) return;
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
             SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingBoomerangSpawnOffset, Constants.ProjectileOwner.Link, this, velocity));
             SoundFactory.Instance.CreateArrowBoomerangSound().Play();
@@ -278,11 +262,24 @@ namespace LegendOfZelda.Link
 
         private void UseSwordBeam()
         {
-            IProjectile currentProjectile = currentProjectiles[LinkConstants.ProjectileType.SwordBeam];
-            if (currentProjectile != null && !currentProjectile.SafeToDespawn()) return;
-            IProjectile projectile = currentProjectiles[LinkConstants.ProjectileType.SwordBeam];
-            if (inventory[LinkConstants.ItemType.Sword] > 0 && (projectile == null || projectile.SafeToDespawn())) SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
+            if (!CanSpawnProjectile(LinkConstants.ProjectileType.SwordBeam) || inventory[LinkConstants.ItemType.Sword] <= 0) return;
+            SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
             SoundFactory.Instance.CreateSwordCombinedSound().Play();
+        }
+
+        private bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType)
+        {
+            IProjectile currentProjectile;
+
+            if (currentProjectiles.ContainsKey(projectileType))
+                currentProjectile = currentProjectiles[projectileType];
+            else
+            {
+                currentProjectile = null;
+                currentProjectiles.Add(projectileType, null);
+            }
+
+            return currentProjectile == null || currentProjectile.SafeToDespawn();
         }
     }
 }
