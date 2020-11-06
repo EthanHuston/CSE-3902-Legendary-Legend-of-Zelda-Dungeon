@@ -86,6 +86,10 @@ namespace LegendOfZelda.Enemies
                 sprite.Update();
                 safeToDespawn = !safeToDespawn && health <= 0;
             }
+            if (safeToDespawn)
+            {
+                SoundFactory.Instance.CreateEnemyDieSound().Play();
+            }
         }
 
         public void Draw()
@@ -133,6 +137,7 @@ namespace LegendOfZelda.Enemies
                 damaged = true;
                 health -= damage;
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+                SoundFactory.Instance.CreateEnemyHitSound().Play();
             }
         }
         public void Move(Vector2 distance)
