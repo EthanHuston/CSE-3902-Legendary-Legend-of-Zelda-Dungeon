@@ -135,6 +135,7 @@ namespace LegendOfZelda.Enemies
                 damaged = true;
                 health -= damage;
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+                SoundFactory.Instance.CreateBossHitSound().Play();
             }
         }
 

@@ -35,6 +35,10 @@ namespace LegendOfZelda.Enemies
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             safeToDespawn = !safeToDespawn && health <= 0;
+            if (safeToDespawn)
+            {
+                SoundFactory.Instance.CreateEnemyDieSound().Play();
+            }
             movementBuffer++;
             CheckBounds();
             //Move based on current chosen direction for some time.
@@ -115,6 +119,7 @@ namespace LegendOfZelda.Enemies
                 damaged = true;
                 health -= damage;
                 healthyDateTime = DateTime.Now.AddMilliseconds(Constants.EnemyDamageEffectTimeMs);
+                SoundFactory.Instance.CreateEnemyHitSound().Play();
             }
         }
 
