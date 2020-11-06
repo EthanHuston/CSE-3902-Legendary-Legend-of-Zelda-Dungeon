@@ -21,6 +21,7 @@ namespace LegendOfZelda.Enemies
         private Texture2D spikeTrapSprite;
         private Texture2D oldManSprite;
         private Texture2D merchantSprite;
+        private Texture2D spawnSprite;
 
         public static EnemySpriteFactory Instance { get; } = new EnemySpriteFactory();
 
@@ -40,6 +41,7 @@ namespace LegendOfZelda.Enemies
             spikeTrapSprite = content.Load<Texture2D>("Enemies/SpikeTrap");
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
             merchantSprite = content.Load<Texture2D>("NPC/Merchant");
+            spawnSprite = content.Load<Texture2D>("Enemies/EnemySpawn");
         }
 
         public IDamageableSprite CreateBatSprite()
@@ -93,6 +95,10 @@ namespace LegendOfZelda.Enemies
         public ISprite CreateMerchantSprite()
         {
             return new MerchantSprite(merchantSprite);
+        }
+        public ISprite CreateSpawnSprite()
+        {
+            return new SpawnSprite(spawnSprite);
         }
     }
 }

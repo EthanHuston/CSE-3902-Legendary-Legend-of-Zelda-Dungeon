@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Enemies.Sprite;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,6 +9,7 @@ namespace LegendOfZelda.Enemies
     internal class SpikeTrap : INpc
     {
         private readonly IDamageableSprite sprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private readonly int maxDistanceX = Constants.SpikeTrapMaxDistX;
         private readonly int maxDistanceY = Constants.SpikeTrapMaxDistY;
@@ -21,6 +23,7 @@ namespace LegendOfZelda.Enemies
         private Rectangle TrapPosition;
         private Constants.Direction currentDirection;
         private bool safeToDespawn;
+        private bool spawning;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -28,63 +31,86 @@ namespace LegendOfZelda.Enemies
         public SpikeTrap(SpriteBatch spriteBatch, Point spawnPosition, IPlayer link)
         {
             sprite = EnemySpriteFactory.Instance.CreateSpikeTrapSprite();
+            spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             this.link = link;
             Position = spawnPosition;
             safeToDespawn = false;
+            spawning = true;
         }
 
         public void Update()
         {
-            sprite.Update();
-            LinkPosition = link.GetRectangle();
-            TrapPosition = GetRectangle();
-            if (going)
+            if (spawning)
             {
-                if (currentDirection == Constants.Direction.Left)
+                if (!spawnSprite.AnimationDone())
                 {
-                    GoingLeft();
-                }
-                else if (currentDirection == Constants.Direction.Right)
-                {
-                    GoingRight();
-                }
-                else if (currentDirection == Constants.Direction.Up)
-                {
-                    GoingUp();
+                    spawnSprite.Update();
                 }
                 else
                 {
-                    GoingDown();
+                    spawning = false;
                 }
-            }
-            else if (!returning)
-            {
-                CheckOverlap();
             }
             else
             {
-                if (currentDirection == Constants.Direction.Left)
+                sprite.Update();
+                LinkPosition = link.GetRectangle();
+                TrapPosition = this.GetRectangle();
+                if (going)
                 {
-                    ReturningRight();
+                    if (currentDirection == Constants.Direction.Left)
+                    {
+                        GoingLeft();
+                    }
+                    else if (currentDirection == Constants.Direction.Right)
+                    {
+                        GoingRight();
+                    }
+                    else if (currentDirection == Constants.Direction.Up)
+                    {
+                        GoingUp();
+                    }
+                    else
+                    {
+                        GoingDown();
+                    }
                 }
-                else if (currentDirection == Constants.Direction.Right)
+                else if (!returning)
                 {
-                    ReturningLeft();
-                }
-                else if (currentDirection == Constants.Direction.Up)
-                {
-                    ReturningDown();
+                    CheckOverlap();
                 }
                 else
                 {
-                    ReturningUp();
+                    if (currentDirection == Constants.Direction.Left)
+                    {
+                        ReturningRight();
+                    }
+                    else if (currentDirection == Constants.Direction.Right)
+                    {
+                        ReturningLeft();
+                    }
+                    else if (currentDirection == Constants.Direction.Up)
+                    {
+                        ReturningDown();
+                    }
+                    else
+                    {
+                        ReturningUp();
+                    }
                 }
             }
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
+            if (spawning)
+            {
+                spawnSprite.Draw(spriteBatch, position);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position);
+            }
         }
         private void CheckOverlap()
         {
@@ -221,6 +247,10 @@ namespace LegendOfZelda.Enemies
         public double GetDamageAmount()
         {
             return Constants.LinkEnemyCollisionDamage;
+        }
+        public void ResetSpawnCloud()
+        {
+            spawning = true;
         }
     }
 }
