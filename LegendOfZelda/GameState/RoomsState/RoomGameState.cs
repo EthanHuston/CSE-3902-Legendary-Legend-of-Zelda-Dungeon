@@ -42,6 +42,7 @@ namespace LegendOfZelda.GameState.Rooms
                         
             DungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
             DungeonMusic.IsLooped = true;
+            DungeonMusic.Volume = 0.2f;
             DungeonMusic.Play();
         }
 

@@ -18,7 +18,6 @@ namespace LegendOfZelda.Link
         private bool safeToDespawn;
         private ILinkState state;
 
-
         public Game1 Game { get; private set; }
         public Constants.Direction FacingDirection { get; set; }
         public ILinkSprite CurrentSprite { get; set; }
