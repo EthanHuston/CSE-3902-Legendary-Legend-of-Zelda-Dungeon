@@ -64,6 +64,10 @@ namespace LegendOfZelda.GameState
         public static Point LetterHudLocation => new Point((int)(180 * Constants.GameScaler), (int)(64 * Constants.GameScaler));
         public static Point Empty2HudLocation => new Point((int)(204 * Constants.GameScaler), (int)(64 * Constants.GameScaler));
 
+        //Item Draw Positions in HUD screen
+        public static Point LevelNumberLocation = new Point((int)(64 * Constants.GameScaler), (int)(8 * Constants.GameScaler));
+        public static Point MinimapLocation = new Point((int)(16 * Constants.GameScaler), (int)(15 * Constants.GameScaler));
+        
         // Source Rectangles for Map Pieces in HUDItems.png
         // Codes are binary numbers with each bit representing an opening on a given side order in UpRightDownLeft
         // Example: 1001 means the sprite has an opening on the Up and Left walls

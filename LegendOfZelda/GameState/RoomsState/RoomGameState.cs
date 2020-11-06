@@ -69,6 +69,7 @@ namespace LegendOfZelda.GameState.Rooms
                 controller.Update();
             }
             CurrentRoom.Update();
+            hud.Update();
         }
 
         public void Draw()
