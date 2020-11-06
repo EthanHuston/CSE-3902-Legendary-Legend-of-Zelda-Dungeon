@@ -28,7 +28,7 @@ namespace LegendOfZelda.Link
         public const int BombCount = 2;
         public const int BoomerangCount = 1;
         public const int SwordCount = 1;
-        public const int BowCount = 0;
+        public const int BowCount = 1; // TODO: change me after implementing secret room
 
         // Spawn Locations : Entering into Rooms
         public static Point DoorDownSpawnPosition => new Point(RoomConstants.BottomDoorX + RoomConstants.TileLength / 2, RoomConstants.BottomDoorY - RoomConstants.TileLength);

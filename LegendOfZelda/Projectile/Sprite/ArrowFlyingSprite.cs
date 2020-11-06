@@ -14,7 +14,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
-            Rectangle destinationRectangle = new Rectangle(position, new Point(sprite.Width, sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position, new Point((int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler)));
 
             spriteBatch.Draw(sprite, destinationRectangle, Color.White);
         }
