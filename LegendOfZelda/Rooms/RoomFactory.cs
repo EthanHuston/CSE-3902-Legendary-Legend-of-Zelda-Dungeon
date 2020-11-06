@@ -77,6 +77,9 @@ namespace LegendOfZelda.Rooms
             roomsList[14].ConnectRoom(roomsList[15], Constants.Direction.Right); // connect 14-15
 
             column = 2;
+            roomsList[13].LocationOnMap = new Point(column, row);
+
+            column = 4;
             roomsList[14].LocationOnMap = new Point(column++, row);
             roomsList[15].LocationOnMap = new Point(column, row);
 
