@@ -54,6 +54,7 @@ namespace LegendOfZelda.Link
         {
             safeToDespawn = !safeToDespawn && currentHealth <= 0;
             State.Update();
+            if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
             if(currentHealth <= 1.0)
             {
                 SoundEffectInstance lowHealth = SoundFactory.Instance.CreateLowHealthSound();
@@ -166,7 +167,8 @@ namespace LegendOfZelda.Link
                 {LinkConstants.ItemType.Map, 0 },
                 {LinkConstants.ItemType.Boomerang, LinkConstants.BoomerangCount },
                 {LinkConstants.ItemType.Bow, LinkConstants.BowCount },
-                {LinkConstants.ItemType.Sword, LinkConstants.SwordCount }
+                {LinkConstants.ItemType.Sword, LinkConstants.SwordCount },
+                {LinkConstants.ItemType.None, 0 }
             };
         }
 
