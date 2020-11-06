@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using LegendOfZelda.GameState.Button;
-using LegendOfZelda.Interface;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
@@ -14,12 +14,12 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public Game1 Game { get; private set; }
 
-        public ItemSelectionGameState(IPlayer player, IGameState oldRoomState)
+        public ItemSelectionGameState(IPlayer player, RoomGameState oldRoomState)
         {
             Game = player.Game;
             roomStatePreserved = oldRoomState;
             inventoryMenu = new InventoryMenu(player);
-            mapMenu = new MapMenu(player);
+            mapMenu = new MapMenu(player, oldRoomState.RoomMap);
             InitControllerList(player);
         }
 

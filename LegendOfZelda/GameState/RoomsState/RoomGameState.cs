@@ -20,17 +20,26 @@ namespace LegendOfZelda.GameState.Rooms
         public List<IPlayer> PlayerList { get; private set; }
         public List<ItemSelectionGameState> itemSelectionGameStates;
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
-        public HUD hud;
+        private readonly HUD hud;
+
+        public RoomMap RoomMap { get; private set; }
+
         public SoundEffectInstance DungeonMusic;
 
         public RoomGameState(Game1 game)
         {
             Game = game;
+            
             InitPlayersForGame();
-            InitControllerList();
+            
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
+            RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStatePosition + GameStateConstants.MapStartPosition);
+            RoomMap.AddRoomToMap(CurrentRoom);
             hud = new HUD(PlayerList);
-            InitInventoryStates();
+
+            InitControllerList();
+            InitItemSelectionGameStates();
+                        
             DungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
             DungeonMusic.IsLooped = true;
             DungeonMusic.Play();
@@ -44,7 +53,7 @@ namespace LegendOfZelda.GameState.Rooms
                 {new MouseController(this) }
             };
         }
-        private void InitInventoryStates()
+        private void InitItemSelectionGameStates()
         {
             itemSelectionGameStates = new List<ItemSelectionGameState>();
             foreach(IPlayer player in PlayerList)
@@ -77,11 +86,16 @@ namespace LegendOfZelda.GameState.Rooms
         {
             Room newRoom = CurrentRoom.GetRoom(direction);
             Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
+
             if (newRoom != null)
             {
+                CurrentRoom.Visiting = false;
+                newRoom.Visiting = true;
+
                 CurrentRoom = newRoom;
                 UpdatePlayersPositions(doorLocation);
                 CurrentRoom.ResetClouds();
+                RoomMap.AddRoomToMap(CurrentRoom);
             }
         }
 

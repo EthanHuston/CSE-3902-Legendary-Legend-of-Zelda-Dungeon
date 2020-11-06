@@ -2,6 +2,7 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -11,9 +12,9 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     {
         private readonly IPlayer link;
         private readonly ISprite mapBackgroundSprite;
+        private readonly RoomMap roomMap;
         private bool safeToDespawn;
         private Dictionary<LinkConstants.ItemType, IButton> buttonsDict;
-
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -28,10 +29,11 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             }
         }
 
-        public MapMenu(IPlayer link)
+        public MapMenu(IPlayer link, RoomMap roomMap)
         {
             mapBackgroundSprite = GameStateSpriteFactory.Instance.CreateMapBackgroundSprite();
             Position = GameStateConstants.MapItemSelectStatePosition;
+            this.roomMap = roomMap;
             this.link = link;
             InitButtonsDictionary();
         }
@@ -48,6 +50,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             {
                 if (button.Value.IsActive) button.Value.Draw();
             }
+            roomMap.Draw();
         }
 
         public Rectangle GetRectangle()

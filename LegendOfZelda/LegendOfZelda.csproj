@@ -280,6 +280,7 @@
     <Compile Include="Item\Sprite\RupeeSprite.cs" />
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
+    <Compile Include="Rooms\RoomMap.cs" />
     <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />
