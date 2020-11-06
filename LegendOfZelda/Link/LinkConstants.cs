@@ -23,6 +23,13 @@ namespace LegendOfZelda.Link
         public const int CollisionHelper = (int)(3 * SpriteScaler);
         public const int UsingSwordFrameDelay = 3;
 
+        // Inventory Starting Quantities
+        public const int RupeeCount = 10;
+        public const int BombCount = 2;
+        public const int BoomerangCount = 1;
+        public const int SwordCount = 1;
+        public const int BowCount = 0;
+
         // Spawn Locations : Entering into Rooms
         public static Point DoorDownSpawnPosition => new Point(RoomConstants.BottomDoorX + RoomConstants.TileLength / 2, RoomConstants.BottomDoorY - RoomConstants.TileLength);
         public static Point DoorUpSpawnPosition => new Point(RoomConstants.TopDoorX + RoomConstants.TileLength / 2, RoomConstants.TopDoorY + RoomConstants.TileLength * 2);

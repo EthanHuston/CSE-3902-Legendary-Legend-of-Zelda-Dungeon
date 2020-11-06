@@ -162,15 +162,15 @@ namespace LegendOfZelda.Link
         {
             inventory = new Dictionary<LinkConstants.ItemType, int>()
             {
-                {LinkConstants.ItemType.Rupee, 0 },
-                {LinkConstants.ItemType.Bomb, 0 },
+                {LinkConstants.ItemType.Rupee, LinkConstants.RupeeCount },
+                {LinkConstants.ItemType.Bomb, LinkConstants.BombCount },
                 {LinkConstants.ItemType.Clock, 0 },
                 {LinkConstants.ItemType.Compass, 0 },
                 {LinkConstants.ItemType.Key, 0 },
                 {LinkConstants.ItemType.Map, 0 },
-                {LinkConstants.ItemType.Boomerang, 1 },
-                {LinkConstants.ItemType.Bow, 1 },
-                {LinkConstants.ItemType.Sword, 1 }
+                {LinkConstants.ItemType.Boomerang, LinkConstants.BoomerangCount },
+                {LinkConstants.ItemType.Bow, LinkConstants.BowCount },
+                {LinkConstants.ItemType.Sword, LinkConstants.SwordCount }
             };
         }
 
