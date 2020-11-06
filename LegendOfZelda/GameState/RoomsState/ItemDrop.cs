@@ -13,7 +13,7 @@ namespace LegendOfZelda.GameState.RoomsState
 {
     class ItemDrop
     {
-        private Random rand = RoomConstants.randomGenerator;
+        private Random rand = RoomConstants.RandomGenerator;
         private ISpawnableManager spawnableManager;
         private LinkPlayer player;
 

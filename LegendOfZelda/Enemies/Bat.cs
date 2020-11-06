@@ -107,6 +107,7 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckBounds()
         {
+            // TODO: use constant
             if (position.X + 16 > Constants.MaxXPos)
             {
                 ChooseDirection();

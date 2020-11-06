@@ -100,7 +100,11 @@
     <Compile Include="GameState\Button\BoomerangWoodInventoryButton.cs" />
     <Compile Include="GameState\Button\BombInventoryButton.cs" />
     <Compile Include="GameState\Button\IButton.cs" />
+    <Compile Include="GameState\Command\ExitGameCommand.cs" />
     <Compile Include="GameState\Command\ItemSelectCommand.cs" />
+    <Compile Include="GameState\Command\MainMenuCommand.cs" />
+    <Compile Include="GameState\Command\QuitGameCommand.cs" />
+    <Compile Include="GameState\Command\ResumeGameCommand.cs" />
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
@@ -110,13 +114,9 @@
     <Compile Include="GameState\MainMenuState\MouseController.cs" />
     <Compile Include="GameState\MainMenuState\MainMenuGameState.cs" />
     <Compile Include="GameState\OldInputState.cs" />
-    <Compile Include="GameState\PauseState\Command\MainMenuCommand.cs" />
-    <Compile Include="GameState\PauseState\Command\ExitGameCommand.cs" />
-    <Compile Include="GameState\PauseState\Command\ResumeGameCommand.cs" />
     <Compile Include="GameState\PauseState\KeyboardController.cs" />
     <Compile Include="GameState\PauseState\MouseController.cs" />
     <Compile Include="GameState\PauseState\PauseGameState.cs" />
-    <Compile Include="GameState\MainMenuState\Command\QuitGameCommand.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
     <Compile Include="GameState\RoomsState\ItemDrop.cs" />
     <Compile Include="GameState\Sprite\GameStateTextureAtlasSprite.cs" />
