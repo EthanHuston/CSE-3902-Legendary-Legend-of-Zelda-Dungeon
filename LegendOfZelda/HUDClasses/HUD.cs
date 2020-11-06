@@ -21,6 +21,8 @@ namespace LegendOfZelda.HUDClasses
         HUDNumber levelNum;
         HUDNumber[] numRupees;
         int linkRupeeCount;
+        HUDNumber[] numKeys;
+        int linkKeyCount;
         ISprite minimapSprite;
         bool displayMinimap;
 
@@ -29,14 +31,22 @@ namespace LegendOfZelda.HUDClasses
             this.players = players;
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
-            linkRupeeCount = -20;
             levelNum = new HUDNumber(1);
             numRupees = new HUDNumber[3];
+            numKeys = new HUDNumber[3];
+            initNumberArrays();
+            displayMinimap = false;
+            linkRupeeCount = -20;
+            linkKeyCount = -20;
+        }
+
+        private void initNumberArrays()
+        {
             for(int i = 0; i < 3; i++)
             {
-                numRupees[i] = new HUDNumber(0);
+                numRupees[i] = new HUDNumber(10);
+                numKeys[i] = new HUDNumber(10);
             }
-            displayMinimap = false;
         }
 
         public void Update()
@@ -80,6 +90,7 @@ namespace LegendOfZelda.HUDClasses
             else
             {
                 numRupees[1].AssignNumber(remainder);
+                numRupees[2].AssignNumber(10);
             }
         }
     }
