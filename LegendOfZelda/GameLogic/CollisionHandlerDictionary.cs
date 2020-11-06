@@ -117,7 +117,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(CompassItem), new LinkItemCollisionHandler() },
                 {typeof(FairyItem), new LinkItemCollisionHandler() },
                 {typeof(HeartContainerItem), new LinkItemCollisionHandler() },
-                {typeof(HeartItem), new LinkItemCollisionHandler() },
+                {typeof(HeartItem), new LinkHeartCollisionHandler() },
                 {typeof(KeyItem), new LinkItemCollisionHandler() },
                 {typeof(MapItem), new LinkItemCollisionHandler() },
                 {typeof(RupeeItem), new LinkItemCollisionHandler() },
