@@ -57,7 +57,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(0, 0, inventoryBackgroundSprite.GetPositionRectangle().Width, inventoryBackgroundSprite.GetPositionRectangle().Height);
+            return new Rectangle(Position.X, Position.Y, inventoryBackgroundSprite.GetPositionRectangle().Width, inventoryBackgroundSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()
