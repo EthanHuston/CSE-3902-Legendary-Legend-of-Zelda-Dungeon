@@ -90,6 +90,7 @@
     <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
+    <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
     <Compile Include="GameState\Button\EmptyButton.cs" />
     <Compile Include="GameState\Button\IMenu.cs" />

@@ -6,7 +6,7 @@ namespace LegendOfZelda
     public static class Constants
     {
         public const int FrameDelay = 6;
-        public const double GameScaler = 4;
+        public const double GameScaler = 2.5;
         public const int HeartValue = 10;
 
         // Game Screen
