@@ -127,9 +127,11 @@
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="HUDClasses\HUDNumber.cs" />
     <Compile Include="HUDClasses\HUDConstants.cs" />
     <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
     <Compile Include="HUDClasses\HUD.cs" />
+    <Compile Include="HUDClasses\Sprites\HUDItemsTextureAtlas.cs" />
     <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />

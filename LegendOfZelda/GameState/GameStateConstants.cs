@@ -63,7 +63,9 @@ namespace LegendOfZelda.GameState
         public static Point LetterHudLocation => new Point((int)(180 * Constants.GameScaler), (int)(64 * Constants.GameScaler));
         public static Point Empty2HudLocation => new Point((int)(204 * Constants.GameScaler), (int)(64 * Constants.GameScaler));
 
-
+        //Item Draw Positions in HUD screen
+        public static Point LevelNumberLocation = new Point((int)(64 * Constants.GameScaler), (int)(8 * Constants.GameScaler));
+        public static Point MinimapLocation = new Point((int)(16 * Constants.GameScaler), (int)(15 * Constants.GameScaler));
 
         public enum InputType
         {

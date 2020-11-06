@@ -11,6 +11,7 @@ namespace LegendOfZelda.HUDClasses
     internal class HUDSpriteFactory
     {
         private Texture2D HUDSprite;
+        private Texture2D HUDItemsTextureAtlas;
 
         public static HUDSpriteFactory Instance { get; } = new HUDSpriteFactory();
 
@@ -18,11 +19,17 @@ namespace LegendOfZelda.HUDClasses
         {
             //Load Item Sprites
             HUDSprite = content.Load<Texture2D>("Menu/HUD");
+            HUDItemsTextureAtlas = content.Load<Texture2D>("Menu/HudItems");
         }
 
         public ISprite CreateHUDSprite()
         {
             return new HUDSprite(HUDSprite);
+        }
+
+        public ITextureAtlasSprite CreateHUDItemsTextureAtlas()
+        {
+            return new HUDItemsTextureAtlas(HUDItemsTextureAtlas);
         }
     }
 }
