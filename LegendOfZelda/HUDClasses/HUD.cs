@@ -20,6 +20,7 @@ namespace LegendOfZelda.HUDClasses
         Point position = new Point(HUDConstants.hudx, HUDConstants.hudy);
         HUDNumber levelNum;
         HUDNumber[] numRupees;
+        int linkRupeeCount;
         ISprite minimapSprite;
         bool displayMinimap;
 
@@ -28,6 +29,7 @@ namespace LegendOfZelda.HUDClasses
             this.players = players;
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
+            linkRupeeCount = -20;
             levelNum = new HUDNumber(1);
             numRupees = new HUDNumber[3];
             for(int i = 0; i < 3; i++)
@@ -41,7 +43,8 @@ namespace LegendOfZelda.HUDClasses
         {
             if (players[0].GetQuantityInInventory(LinkConstants.ItemType.Map) != 0)
                 displayMinimap = true;
-            UpdateNumRupees();
+            if(players[0].GetQuantityInInventory(LinkConstants.ItemType.Rupee) != linkRupeeCount)
+                UpdateNumRupees();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -65,12 +68,13 @@ namespace LegendOfZelda.HUDClasses
         private void UpdateNumRupees()
         {
             numRupees[0].AssignNumber(-1);
-            int linkNumRupees = players[0].GetQuantityInInventory(LinkConstants.ItemType.Rupee);
-            int remainder = linkNumRupees % 10;
-            linkNumRupees /= 10;
-            if (linkNumRupees > 0)
+            linkRupeeCount = players[0].GetQuantityInInventory(LinkConstants.ItemType.Rupee);
+            int tensPlace = linkRupeeCount;
+            int remainder = tensPlace % 10;
+            tensPlace /= 10;
+            if (tensPlace > 0)
             {
-                numRupees[1].AssignNumber(linkNumRupees);
+                numRupees[1].AssignNumber(tensPlace);
                 numRupees[2].AssignNumber(remainder);
             }
             else
