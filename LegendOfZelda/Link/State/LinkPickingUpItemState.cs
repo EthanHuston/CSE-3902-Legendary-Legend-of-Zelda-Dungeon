@@ -25,22 +25,47 @@ namespace LegendOfZelda.Link.State
                 case LinkConstants.ItemType.Boomerang:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
                     spawnOffset = LinkConstants.PickingUpBoomerangSpawnOffset;
+                    SoundFactory.Instance.CreateGetItemSound().Play();
                     break;
                 case LinkConstants.ItemType.Bow:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBowSprite();
                     spawnOffset = LinkConstants.PickingUpBowSpawnOffset;
+                    SoundFactory.Instance.CreateFanfareSound().Play();
                     break;
                 case LinkConstants.ItemType.HeartContainer:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpHeartContainerSprite();
                     spawnOffset = LinkConstants.PickingUpHeartContainerSpawnOffset;
+                    SoundFactory.Instance.CreateFanfareSound().Play();
                     break;
                 case LinkConstants.ItemType.Sword:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpSwordSprite();
                     spawnOffset = LinkConstants.PickingUpSwordSpawnOffset;
+                    SoundFactory.Instance.CreateFanfareSound().Play();
                     break;
                 case LinkConstants.ItemType.Triforce:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpTriforceSprite();
                     spawnOffset = LinkConstants.PickingUpTriforceSpawnOffset;
+                    break;
+                case LinkConstants.ItemType.Clock:
+                    SoundFactory.Instance.CreateGetItemSound().Play();
+                    break;
+                case LinkConstants.ItemType.Compass:
+                    SoundFactory.Instance.CreateGetItemSound().Play();
+                    break;
+                case LinkConstants.ItemType.Fairy:
+                    SoundFactory.Instance.CreateGetItemSound().Play();
+                    break;
+                case LinkConstants.ItemType.Heart:
+                    SoundFactory.Instance.CreateGetHeartSound().Play();
+                    break;
+                case LinkConstants.ItemType.Key:
+                    SoundFactory.Instance.CreateGetItemSound().Play();
+                    break;
+                case LinkConstants.ItemType.Map:
+                    SoundFactory.Instance.CreateGetItemSound().Play();
+                    break;
+                case LinkConstants.ItemType.Rupee:
+                    SoundFactory.Instance.CreateGetRupeeSound().Play();
                     break;
                 default:
                     break;

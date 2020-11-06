@@ -18,6 +18,10 @@ namespace LegendOfZelda.Projectile
             Mover.Update();
             sprite.Update();
             CheckItemIsExpired();
+            if(((BombExplodingSprite)sprite).IsExploding())
+            {
+                SoundFactory.Instance.CreateBombBlowSound().Play();
+            }
         }
 
         private void CheckItemIsExpired()
