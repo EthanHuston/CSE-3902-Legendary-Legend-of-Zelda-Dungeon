@@ -60,5 +60,9 @@ namespace LegendOfZelda.Rooms
             AllObjects.Spawn(new RoomWall(RoomConstants.UpWallRectangle));
             AllObjects.Spawn(new RoomWall(RoomConstants.DownWallRectangle));
         }
+        public void ResetClouds()
+        {
+            AllObjects.ResetClouds();
+        }
     }
 }

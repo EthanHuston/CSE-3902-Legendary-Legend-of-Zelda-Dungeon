@@ -9,5 +9,6 @@ namespace LegendOfZelda.Enemies
         void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection);
         double GetDamageAmount();
         void Move(Vector2 correctDirection);
+        void ResetSpawnCloud();
     }
 }

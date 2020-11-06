@@ -9,6 +9,7 @@ namespace LegendOfZelda.Enemies
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;
         protected bool itemIsExpired;
+        private bool spawning;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -64,6 +65,10 @@ namespace LegendOfZelda.Enemies
         public double GetDamageAmount()
         {
             return 0; // does no damage
+        }
+        public void ResetSpawnCloud()
+        {
+            spawning = true;
         }
     }
 }

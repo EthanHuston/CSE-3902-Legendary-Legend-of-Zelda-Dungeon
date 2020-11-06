@@ -93,5 +93,9 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
+        public void ResetSpawnCloud()
+        {
+            spawning = true;
+        }
     }
 }

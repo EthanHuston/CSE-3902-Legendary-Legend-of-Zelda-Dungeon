@@ -319,5 +319,9 @@ namespace LegendOfZelda.Enemies
         {
             return Constants.LinkEnemyCollisionDamage;
         }
+        public void ResetSpawnCloud()
+        {
+            spawning = true;
+        }
     }
 }
