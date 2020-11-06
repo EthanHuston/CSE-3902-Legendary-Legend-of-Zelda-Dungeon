@@ -19,6 +19,7 @@ namespace LegendOfZelda.HUDClasses
         ISprite hudSprite;
         Point position = new Point(HUDConstants.hudx, HUDConstants.hudy);
         HUDNumber levelNum;
+        HUDNumber[] numRupees;
         ISprite minimapSprite;
         bool displayMinimap;
 
@@ -28,6 +29,11 @@ namespace LegendOfZelda.HUDClasses
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
             levelNum = new HUDNumber(1);
+            numRupees = new HUDNumber[3];
+            for(int i = 0; i < 3; i++)
+            {
+                numRupees[i] = new HUDNumber(0);
+            }
             displayMinimap = false;
         }
 
@@ -35,6 +41,7 @@ namespace LegendOfZelda.HUDClasses
         {
             if (players[0].GetQuantityInInventory(LinkConstants.ItemType.Map) != 0)
                 displayMinimap = true;
+            UpdateNumRupees();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -43,6 +50,33 @@ namespace LegendOfZelda.HUDClasses
             levelNum.Draw(spriteBatch, GameStateConstants.LevelNumberLocation);
             if (displayMinimap)
                 minimapSprite.Draw(spriteBatch, GameStateConstants.MinimapLocation);
+            DrawNumRupees(spriteBatch);
+        }
+
+        private void DrawNumRupees(SpriteBatch spriteBatch)
+        {
+            for(int i = 0; i < numRupees.Length; i++)
+            {
+                Point position = new Point(HUDConstants.RupeeNumberX + i * HUDConstants.NumberWidth, HUDConstants.RupeeNumberY);
+                numRupees[i].Draw(spriteBatch, position);
+            }
+        }
+
+        private void UpdateNumRupees()
+        {
+            numRupees[0].AssignNumber(-1);
+            int linkNumRupees = players[0].GetQuantityInInventory(LinkConstants.ItemType.Rupee);
+            int remainder = linkNumRupees % 10;
+            linkNumRupees /= 10;
+            if (linkNumRupees > 0)
+            {
+                numRupees[1].AssignNumber(linkNumRupees);
+                numRupees[2].AssignNumber(remainder);
+            }
+            else
+            {
+                numRupees[1].AssignNumber(remainder);
+            }
         }
     }
 }
