@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    class InventoryScreen : IMenu
+    class InventoryMenu : IMenu
     {
         private readonly IPlayer link;
         private readonly ISprite inventoryBackgroundSprite;
@@ -30,7 +30,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             }
         }
 
-        public InventoryScreen(IPlayer link)
+        public InventoryMenu(IPlayer link)
         {
             inventoryBackgroundSprite = GameStateSpriteFactory.Instance.CreateInventoryBackgroundSprite();
             Position = Point.Zero;
@@ -80,8 +80,6 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             buttonsDict = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Map, new MapInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.MapHudLocation)},
-                { LinkConstants.ItemType.Compass, new CompassInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.CompassHudLocation)},
                 { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.BoomerangHudLocation)},
                 { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.BombHudLocation)},
                 { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.ArrowHudLocation)},
@@ -94,8 +92,6 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Map, new MapInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Compass, new CompassInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
                 { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
                 { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
                 { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},

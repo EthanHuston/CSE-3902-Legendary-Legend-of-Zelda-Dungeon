@@ -108,7 +108,8 @@
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
-    <Compile Include="GameState\ItemSelectionState\InventoryScreen.cs" />
+    <Compile Include="GameState\ItemSelectionState\MapMenu.cs" />
+    <Compile Include="GameState\ItemSelectionState\InventoryMenu.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionGameState.cs" />
     <Compile Include="GameState\MainMenuState\KeyboardController.cs" />
     <Compile Include="GameState\MainMenuState\MouseController.cs" />
@@ -126,9 +127,12 @@
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="HUDClasses\HUDNumber.cs" />
     <Compile Include="HUDClasses\HUDConstants.cs" />
     <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
     <Compile Include="HUDClasses\HUD.cs" />
+    <Compile Include="HUDClasses\Sprites\HUDItemsTextureAtlas.cs" />
+    <Compile Include="HUDClasses\Sprites\MinimapSprite.cs" />
     <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
@@ -279,6 +283,7 @@
     <Compile Include="Item\Sprite\RupeeSprite.cs" />
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
+    <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />
     <Compile Include="Environment\Sprite\StatueSprite.cs" />

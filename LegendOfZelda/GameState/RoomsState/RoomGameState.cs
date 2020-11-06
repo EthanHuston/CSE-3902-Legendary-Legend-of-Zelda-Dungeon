@@ -6,6 +6,7 @@ using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
 using LegendOfZelda.Utility;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Rooms
@@ -20,6 +21,7 @@ namespace LegendOfZelda.GameState.Rooms
         public List<ItemSelectionGameState> itemSelectionGameStates;
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
         public HUD hud;
+        public SoundEffectInstance DungeonMusic;
 
         public RoomGameState(Game1 game)
         {
@@ -29,6 +31,9 @@ namespace LegendOfZelda.GameState.Rooms
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
             hud = new HUD(PlayerList);
             InitInventoryStates();
+            DungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
+            DungeonMusic.IsLooped = true;
+            DungeonMusic.Play();
         }
 
         private void InitControllerList()
@@ -55,6 +60,7 @@ namespace LegendOfZelda.GameState.Rooms
                 controller.Update();
             }
             CurrentRoom.Update();
+            hud.Update();
         }
 
         public void Draw()

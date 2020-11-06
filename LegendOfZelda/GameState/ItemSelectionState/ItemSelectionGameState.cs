@@ -9,7 +9,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     {
         private readonly IGameState roomStatePreserved;
         private List<IController> controllerList;
-        private readonly IMenu inventoryScreen;
+        private readonly IMenu inventoryMenu;
+        private readonly IMenu mapMenu;
 
         public Game1 Game { get; private set; }
 
@@ -17,7 +18,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             Game = player.Game;
             roomStatePreserved = oldRoomState;
-            inventoryScreen = new InventoryScreen(player);
+            inventoryMenu = new InventoryMenu(player);
+            mapMenu = new MapMenu(player);
             InitControllerList(player);
         }
 
@@ -26,13 +28,14 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(player, inventoryScreen.Buttons) }
+                {new MouseController(player, inventoryMenu.Buttons) }
             };
         }
 
         public void Draw()
         {
-            inventoryScreen.Draw();
+            inventoryMenu.Draw();
+            mapMenu.Draw();
         }
 
         public void SetControllerOldInputState(OldInputState oldInputState)
@@ -63,7 +66,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public void Update()
         {
             foreach (IController controller in controllerList) controller.Update();
-            inventoryScreen.Update();
+            inventoryMenu.Update();
+            mapMenu.Update();
         }
     }
 }

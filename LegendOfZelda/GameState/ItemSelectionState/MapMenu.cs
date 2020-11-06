@@ -1,0 +1,82 @@
+﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+
+namespace LegendOfZelda.GameState.ItemSelectionState
+{
+    class MapMenu : IMenu
+    {
+        private readonly IPlayer link;
+        private readonly ISprite mapBackgroundSprite;
+        private bool safeToDespawn;
+        private Dictionary<LinkConstants.ItemType, IButton> buttonsDict;
+
+
+        private Point position;
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public List<IButton> Buttons
+        {
+            get
+            {
+                List<IButton> list = new List<IButton>();
+                foreach (KeyValuePair<LinkConstants.ItemType, IButton> button in buttonsDict) list.Add(button.Value);
+                return list;
+            }
+        }
+
+        public MapMenu(IPlayer link)
+        {
+            mapBackgroundSprite = GameStateSpriteFactory.Instance.CreateMapBackgroundSprite();
+            Position = GameStateConstants.MapItemSelectStatePosition;
+            this.link = link;
+            InitButtonsDictionary();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
+        }
+
+        public void Draw()
+        {
+            mapBackgroundSprite.Draw(link.Game.SpriteBatch, Position);
+            foreach (KeyValuePair<LinkConstants.ItemType, IButton> button in buttonsDict)
+            {
+                if (button.Value.IsActive) button.Value.Draw();
+            }
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle(0, 0, mapBackgroundSprite.GetPositionRectangle().Width, mapBackgroundSprite.GetPositionRectangle().Height);
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public void Update()
+        {
+            mapBackgroundSprite.Update();
+            foreach (KeyValuePair<LinkConstants.ItemType, IButton> item in buttonsDict)
+            {
+                if (link.GetQuantityInInventory(item.Key) > 0) item.Value.MakeActive();
+                else item.Value.MakeInactive();
+            }
+        }
+
+        private void InitButtonsDictionary()
+        {
+            buttonsDict = new Dictionary<LinkConstants.ItemType, IButton>
+            {
+                { LinkConstants.ItemType.Map, new MapInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.MapHudLocation)},
+                { LinkConstants.ItemType.Compass, new CompassInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.CompassHudLocation)}
+            };
+        }
+    }
+}
