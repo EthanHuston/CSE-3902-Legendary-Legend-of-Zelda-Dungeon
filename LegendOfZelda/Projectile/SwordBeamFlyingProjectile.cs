@@ -8,7 +8,7 @@ namespace LegendOfZelda.Projectile
     {
         private bool stopMovingAndExplode;
         private bool updatedSprite;
-        private const int moveDistanceVelocity = 3;
+        private const int moveDistanceVelocity = (int)(Constants.GameScaler * 3);
 
         public SwordBeamFlyingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner, Constants.Direction direction) : base(spriteBatch, spawnPosition, owner)
         {

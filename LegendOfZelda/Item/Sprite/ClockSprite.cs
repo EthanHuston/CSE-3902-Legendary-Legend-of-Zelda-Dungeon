@@ -26,7 +26,7 @@ namespace LegendOfZelda.Item.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return sprite.Bounds;
+            return new Rectangle(0, 0, (int) (sprite.Width * Constants.GameScaler), (int) (sprite.Height * Constants.GameScaler));
         }
     }
 }

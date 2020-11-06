@@ -24,10 +24,10 @@ namespace LegendOfZelda.Link
         public const int UsingSwordFrameDelay = 3;
 
         // Spawn Locations : Entering into Rooms
-        public static Point DoorDownSpawnPosition => new Point(120, 128);
-        public static Point DoorUpSpawnPosition => new Point(120, 32);
-        public static Point DoorLeftSpawnPosition => new Point(32, 80);
-        public static Point DoorRightSpawnPosition => new Point(208, 80);
+        public static Point DoorDownSpawnPosition => new Point((int)(120 * SpriteScaler), (int)(128 * SpriteScaler));
+        public static Point DoorUpSpawnPosition => new Point((int)(120 * SpriteScaler), (int)(32 * SpriteScaler));
+        public static Point DoorLeftSpawnPosition => new Point((int)(32 * SpriteScaler), (int)(80 * SpriteScaler));
+        public static Point DoorRightSpawnPosition => new Point((int)(208 * SpriteScaler), (int)(80 * SpriteScaler));
 
         // Spawn Offsets : Picking Up Items
         public static Point PickingUpBoomerangSpawnOffset => new Point((int)(0 * SpriteScaler), (int)(-9 * SpriteScaler));

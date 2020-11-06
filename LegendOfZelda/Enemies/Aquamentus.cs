@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.GameLogic;
+﻿using LegendOfZelda.Enemies.Sprite;
+using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
@@ -10,6 +11,7 @@ namespace LegendOfZelda.Enemies
     internal class Aquamentus : INpc
     {
         private IDamageableSprite sprite;
+        private SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private readonly int vx = 1;
         private int updateCount = 0;
@@ -23,6 +25,7 @@ namespace LegendOfZelda.Enemies
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
+        private bool spawning;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -30,38 +33,61 @@ namespace LegendOfZelda.Enemies
         public Aquamentus(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
             sprite = EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite();
+            spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             this.itemSpawner = itemSpawner;
             Position = spawnPosition;
             safeToDespawn = false;
             healthyDateTime = DateTime.Now;
             damaged = false;
+            spawning = true;
         }
 
         public void Update()
         {
-            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-
-            updateCount++;
-            if (updateCount % 3 == 0)
+            if (spawning)
             {
-                if (!attacked)
-                    UpdateDirection();
+                if (!spawnSprite.AnimationDone())
+                {
+                    spawnSprite.Update();
+                }
+                else
+                {
+                    spawning = false;
+                }
             }
+            else
+            {
+                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
 
-            if (updateCount % attackTime == 0)
-                Attack();
+                updateCount++;
+                if (updateCount % 3 == 0)
+                {
+                    if (!attacked)
+                        UpdateDirection();
+                }
 
-            UpdateSprite();
+                if (updateCount % attackTime == 0)
+                    Attack();
 
-            sprite.Update();
+                UpdateSprite();
 
-            CheckSafeToDespawn();
+                sprite.Update();
+
+                CheckSafeToDespawn();
+            }
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position, damaged);
+            if (spawning)
+            {
+                spawnSprite.Draw(spriteBatch, position);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position, damaged);
+            }
         }
 
         public Rectangle GetRectangle()
@@ -152,6 +178,10 @@ namespace LegendOfZelda.Enemies
         public double GetDamageAmount()
         {
             return Constants.LinkEnemyCollisionDamage;
+        }
+        public void ResetSpawnCloud()
+        {
+            spawning = true;
         }
     }
 }

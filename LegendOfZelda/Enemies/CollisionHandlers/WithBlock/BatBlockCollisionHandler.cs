@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
@@ -9,7 +10,24 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
         {
             if (block.GetType() == typeof(RoomWall))
             {
+                Vector2 direction = new Vector2();
+                switch (side)
+                {
+                    case Constants.Direction.Up:
+                        direction = new Vector2(Constants.EnemyNoMove, Constants.EnemyMoveUp);
+                        break;
+                    case Constants.Direction.Down:
+                        direction = new Vector2(Constants.EnemyNoMove, Constants.EnemyMoveDown);
+                        break;
+                    case Constants.Direction.Right:
+                        direction = new Vector2(Constants.EnemyMoveRight, Constants.EnemyNoMove);
+                        break;
+                    case Constants.Direction.Left:
+                        direction = new Vector2(Constants.EnemyMoveLeft, Constants.EnemyNoMove);
+                        break;
+                }
                 ((Bat)enemy).ChooseDirection();
+                ((Bat)enemy).Move(direction);
             }
         }
     }

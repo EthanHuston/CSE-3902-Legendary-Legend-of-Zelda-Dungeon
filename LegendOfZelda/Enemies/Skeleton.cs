@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Enemies.Sprite;
+using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,6 +9,7 @@ namespace LegendOfZelda.Enemies
     internal class Skeleton : INpc
     {
         private readonly IDamageableSprite sprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private int movementBuffer = 0;
         private double health = 2;
@@ -17,6 +19,7 @@ namespace LegendOfZelda.Enemies
         private bool inKnockback = false;
         private DateTime healthyDateTime;
         private bool damaged;
+        private bool spawning;
         private readonly Random rand = RoomConstants.randomGenerator;
 
         private Point position;
@@ -25,10 +28,12 @@ namespace LegendOfZelda.Enemies
         public Skeleton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+            spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
             healthyDateTime = DateTime.Now;
             damaged = false;
+            spawning = true;
         }
         public void Update()
         {
@@ -38,31 +43,54 @@ namespace LegendOfZelda.Enemies
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
             }
-
-            if (!inKnockback)
+            if (spawning)
             {
-                movementBuffer++;
-                if (movementBuffer == 20)
+                if (!spawnSprite.AnimationDone())
                 {
-                    movementBuffer = 0;
-                    ChooseDirection();
+                    spawnSprite.Update();
                 }
                 else
                 {
-                    Move();
-                    CheckBounds();
+                    spawning = false;
                 }
             }
             else
             {
-                MoveKnockback(knockbackOrigin);
+                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) <= 0; // only compare if we're damaged
+                safeToDespawn = !safeToDespawn && health <= 0;
+
+                if (!inKnockback)
+                {
+                    movementBuffer++;
+                    if (movementBuffer == 20)
+                    {
+                        movementBuffer = 0;
+                        ChooseDirection();
+                    }
+                    else
+                    {
+                        Move();
+                        CheckBounds();
+                    }
+                }
+                else
+                {
+                    MoveKnockback(knockbackOrigin);
+                }
+                sprite.Update();
             }
-            sprite.Update();
         }
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position, damaged);
+            if (spawning)
+            {
+                spawnSprite.Draw(spriteBatch, position);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position, damaged);
+            }
         }
         private void ChooseDirection()
         {
@@ -215,6 +243,10 @@ namespace LegendOfZelda.Enemies
         public double GetDamageAmount()
         {
             return Constants.LinkEnemyCollisionDamage;
+        }
+        public void ResetSpawnCloud()
+        {
+            spawning = true;
         }
     }
 }
