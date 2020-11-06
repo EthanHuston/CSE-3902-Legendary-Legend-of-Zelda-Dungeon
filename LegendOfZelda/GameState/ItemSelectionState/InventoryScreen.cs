@@ -10,7 +10,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     class InventoryScreen : IMenu
     {
         private readonly IPlayer link;
-        private readonly ISprite itemSelectionBackgroundSprite;
+        private readonly ISprite inventoryBackgroundSprite;
         private IButton secondaryItem;
         private bool safeToDespawn;
         private Dictionary<LinkConstants.ItemType, IButton> buttonsDict;
@@ -32,7 +32,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public InventoryScreen(IPlayer link)
         {
-            itemSelectionBackgroundSprite = GameStateSpriteFactory.Instance.CreateItemSelectionBackgroundSprite();
+            inventoryBackgroundSprite = GameStateSpriteFactory.Instance.CreateInventoryBackgroundSprite();
             Position = Point.Zero;
             this.link = link;
             secondaryItem = GetEmptyButton();
@@ -47,7 +47,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Draw()
         {
-            itemSelectionBackgroundSprite.Draw(link.Game.SpriteBatch, Position);
+            inventoryBackgroundSprite.Draw(link.Game.SpriteBatch, Position);
             secondaryItem.Draw();
             foreach (KeyValuePair<LinkConstants.ItemType, IButton> button in buttonsDict)
             {
@@ -57,7 +57,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(0, 0, itemSelectionBackgroundSprite.GetPositionRectangle().Width, itemSelectionBackgroundSprite.GetPositionRectangle().Height);
+            return new Rectangle(0, 0, inventoryBackgroundSprite.GetPositionRectangle().Width, inventoryBackgroundSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()
@@ -67,7 +67,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Update()
         {
-            itemSelectionBackgroundSprite.Update();
+            inventoryBackgroundSprite.Update();
             secondaryItem = secondaryItemDictionary[link.SecondaryItem];
             foreach (KeyValuePair<LinkConstants.ItemType, IButton> item in buttonsDict)
             {
