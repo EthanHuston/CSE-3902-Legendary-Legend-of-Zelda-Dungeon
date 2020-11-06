@@ -1,13 +1,12 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace LegendOfZelda.GameState.Sprite
 {
     class ButtonSprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
 
         public ButtonSprite(Texture2D sprite)
         {

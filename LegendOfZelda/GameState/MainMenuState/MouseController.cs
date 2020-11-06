@@ -1,14 +1,18 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using LegendOfZelda.GameState.Command;
+using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework.Input;
 
 namespace LegendOfZelda.GameState.MainMenu
 {
     internal class MouseController : IController
     {
         private MouseState oldMouseState;
+        private readonly ICommand startGameCommand;
 
         public MouseController(IGameState gameState)
         {
-            this.oldMouseState = new MouseState();
+            oldMouseState = new MouseState();
+            startGameCommand = new StartGameCommand(gameState);
         }
 
         public GameStateConstants.InputType GetInputType()
@@ -29,8 +33,10 @@ namespace LegendOfZelda.GameState.MainMenu
         public void Update()
         {
             MouseState newMouseState = Mouse.GetState();
-            
-            // TODO: execute commands here
+            MouseState localOldMouseState = oldMouseState;
+            oldMouseState = newMouseState;
+
+            if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed) startGameCommand.Execute();
 
             oldMouseState = newMouseState;
         }

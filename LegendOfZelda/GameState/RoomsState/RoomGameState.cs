@@ -102,8 +102,7 @@ namespace LegendOfZelda.GameState.Rooms
 
         public void SwitchToPauseState()
         {
-            OldInputState oldInputState = GameStateConstants.GetOldInputState(controllerList);
-            Game.SetGameState(new PauseGameState(Game, this), oldInputState);
+            Game.SetGameState(new PauseGameState(Game, this), GameStateConstants.GetOldInputState(controllerList));
         }
         public void SwitchToRoomState()
         {

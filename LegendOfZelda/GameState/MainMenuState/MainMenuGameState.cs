@@ -1,4 +1,6 @@
 ﻿using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.MainMenu
@@ -6,11 +8,16 @@ namespace LegendOfZelda.GameState.MainMenu
     class MainMenuGameState : IGameState
     {
         private List<IController> controllerList;
+        private readonly ITextureAtlasSprite backgroundSprite;
+        private const int textureMapColumn = 0;
+        private const int textureMapRow = 0;
+
         public Game1 Game { get; private set; }
 
         public MainMenuGameState(Game1 game)
         {
             Game = game;
+            backgroundSprite = GameStateSpriteFactory.Instance.CreateTitleScreenBackgroundSprite();
             InitControllerList();
         }
 
@@ -25,8 +32,7 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public void Draw()
         {
-            // draw background
-            // draw button sprites
+            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, new Point(textureMapColumn, textureMapRow));
         }
 
         public void SwitchToMainMenuState()
