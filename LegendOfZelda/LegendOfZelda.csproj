@@ -132,6 +132,7 @@
     <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
     <Compile Include="HUDClasses\HUD.cs" />
     <Compile Include="HUDClasses\Sprites\HUDItemsTextureAtlas.cs" />
+    <Compile Include="HUDClasses\Sprites\MinimapSprite.cs" />
     <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
