@@ -43,6 +43,7 @@ namespace LegendOfZelda.GameState
         public static Rectangle PowerBraceletTextureAtlasSource => new Rectangle(71, 48, 8, 16);
         public static Rectangle MapTextureAtlasSource => new Rectangle(82, 48, 8, 16);
         public static Rectangle CompassTextureAtlasSource => new Rectangle(93, 48, 16, 16);
+        public static Rectangle SwordWoodTextureAtlasSource => new Rectangle(36, 29, 8, 16);
 
         // Item Draw Positions in Item Selection Screen (relative to background- not absolute positions)
         public static Point SecondaryItemHudLocation => new Point((int)(68 * Constants.GameScaler), (int)(48 * Constants.GameScaler));
