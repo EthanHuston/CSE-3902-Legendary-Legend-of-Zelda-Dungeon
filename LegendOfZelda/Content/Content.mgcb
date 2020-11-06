@@ -1045,7 +1045,7 @@
 /processorParam:TextureFormat=Color
 /build:Menu/HudItems.png
 
-#begin Menu/ItemSelectionBackground.png
+#begin Menu/InventoryBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1055,7 +1055,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Menu/ItemSelectionBackground.png
+/build:Menu/InventoryBackground.png
+
+#begin Menu/MapBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menu/MapBackground.png
 
 #begin Menu/MenuButton.png
 /importer:TextureImporter

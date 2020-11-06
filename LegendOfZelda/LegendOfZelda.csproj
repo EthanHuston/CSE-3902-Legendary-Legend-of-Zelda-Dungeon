@@ -108,7 +108,8 @@
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
-    <Compile Include="GameState\ItemSelectionState\InventoryScreen.cs" />
+    <Compile Include="GameState\ItemSelectionState\MapMenu.cs" />
+    <Compile Include="GameState\ItemSelectionState\InventoryMenu.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionGameState.cs" />
     <Compile Include="GameState\MainMenuState\KeyboardController.cs" />
     <Compile Include="GameState\MainMenuState\MouseController.cs" />

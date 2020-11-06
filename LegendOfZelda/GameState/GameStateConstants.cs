@@ -9,11 +9,14 @@ namespace LegendOfZelda.GameState
 
         public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 224);
 
+        private const int inventoryItemSelectStateHeight = (int)(88 * gameScaler);
+        public static Point InventoryItemSelectStatePosition => new Point((int)(gameScaler * 0), (int)(gameScaler * 0));
+        public static Point MapItemSelectStatePosition => new Point((int)(gameScaler * 0), InventoryItemSelectStatePosition.Y + inventoryItemSelectStateHeight);
+
         // Button Positions
         public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
         public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
         public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 64));
-
 
 
         // Item Positions in HudItems.png Texture Atlas
@@ -42,8 +45,8 @@ namespace LegendOfZelda.GameState
 
         // Item Draw Positions in Item Selection Screen (relative to background- not absolute positions)
         public static Point SecondaryItemHudLocation => new Point((int)(68 * Constants.GameScaler), (int)(48*Constants.GameScaler));
-        public static Point MapHudLocation => new Point((int)(48 * Constants.GameScaler), (int)(112 * Constants.GameScaler));
-        public static Point CompassHudLocation => new Point((int)(44 * Constants.GameScaler), (int)(152 * Constants.GameScaler));
+        public static Point MapHudLocation => new Point((int)(48 * Constants.GameScaler), (int)(24 * Constants.GameScaler));
+        public static Point CompassHudLocation => new Point((int)(44 * Constants.GameScaler), (int)(64 * Constants.GameScaler));
         public static Point RaftHudLocation => new Point((int)(128 * Constants.GameScaler), (int)(24 * Constants.GameScaler));
         public static Point MagicBookHudLocation => new Point((int)(152 * Constants.GameScaler), (int)(24 * Constants.GameScaler));
         public static Point RingHudLocation => new Point((int)(164 * Constants.GameScaler), (int)(24 * Constants.GameScaler));
