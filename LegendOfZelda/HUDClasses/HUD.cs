@@ -8,8 +8,9 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.HUDClasses
 {
-    internal class HUD
+    internal class HUD : ISpawnable
     {
+        private SpriteBatch spriteBatch;
         private List<IPlayer> players;
         private ISprite hudSprite;
         private HUDNumber[] numRupees;
@@ -21,11 +22,15 @@ namespace LegendOfZelda.HUDClasses
         private HUDNumber levelNum;
         private ISprite minimapSprite;
         private bool displayMinimap;
+
+        private bool safeToDespawn = false;
         
         private Point position;
-        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
-        public HUD(List<IPlayer> players)
+        public Point Position { get => position; set => position = new Point(value.X, value.Y); }
+
+        public HUD(SpriteBatch spriteBatch, List<IPlayer> players)
         {
+            this.spriteBatch = spriteBatch;
             this.players = players;
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
@@ -67,7 +72,7 @@ namespace LegendOfZelda.HUDClasses
                 UpdateNumBombs();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
             hudSprite.Draw(spriteBatch, position);
             levelNum.Draw(spriteBatch, Position + GameStateConstants.LevelNumberLocation);
@@ -152,6 +157,21 @@ namespace LegendOfZelda.HUDClasses
                 numBombs[1].AssignNumber(remainder);
                 numBombs[2].AssignNumber(10);
             }
+        }
+
+        public bool SafeToDespawn()
+        {
+            return safeToDespawn;
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return hudSprite.GetPositionRectangle();
+        }
+
+        public void Despawn()
+        {
+            safeToDespawn = true;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace LegendOfZelda.GameState.Rooms
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
             RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStateStartPosition + GameStateConstants.MapStartPosition);
             RoomMap.AddRoomToMap(CurrentRoom);
-            Hud = new HUD(PlayerList);
+            Hud = new HUD(Game.SpriteBatch, PlayerList);
 
             InitControllerList();
             InitItemSelectionGameStates();
@@ -161,7 +161,7 @@ namespace LegendOfZelda.GameState.Rooms
         public override void Draw()
         {
             CurrentRoom.Draw();
-            Hud.Draw(Game.SpriteBatch);
+            Hud.Draw();
         }
     }
 }
