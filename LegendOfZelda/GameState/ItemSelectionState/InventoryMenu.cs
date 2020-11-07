@@ -33,7 +33,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public InventoryMenu(IPlayer link)
         {
             inventoryBackgroundSprite = GameStateSpriteFactory.Instance.CreateInventoryBackgroundSprite();
-            Position = GameStateConstants.InventoryItemSelectStateStartPosition;
+            Position = ItemSelectionStateConstants.InventoryPaneStartPosition;
             this.link = link;
             secondaryItem = GetEmptyButton();
             InitButtonsDictionary();
@@ -80,11 +80,11 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             buttonsDict = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.BoomerangHudLocation)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.BombHudLocation)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.ArrowHudLocation)},
-                { LinkConstants.ItemType.Bow, new BowInventoryButton(link.Game.SpriteBatch,this, GameStateConstants.BowHudLocation)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.CandleHudLocation)}
+                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.BoomerangHudLocation)},
+                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.BombHudLocation)},
+                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.ArrowHudLocation)},
+                { LinkConstants.ItemType.Bow, new BowInventoryButton(link.Game.SpriteBatch,this, ItemSelectionStateConstants.BowHudLocation)},
+                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.CandleHudLocation)}
             };
         }
 
@@ -92,18 +92,18 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
                 { LinkConstants.ItemType.None, GetEmptyButton() }
             };
         }
 
         private IButton GetEmptyButton()
         {
-            return new EmptyButton(this, new Rectangle(GameStateConstants.SecondaryItemHudLocation.X, GameStateConstants.SecondaryItemHudLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
+            return new EmptyButton(this, new Rectangle(ItemSelectionStateConstants.SecondaryItemHudLocation.X, ItemSelectionStateConstants.SecondaryItemHudLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
         }
     }
 }

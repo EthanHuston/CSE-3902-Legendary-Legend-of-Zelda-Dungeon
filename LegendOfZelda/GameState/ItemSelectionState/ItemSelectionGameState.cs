@@ -42,7 +42,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public override void StateEntryProcedure()
         {
-            camera.Pan(ItemSelectionStateConstants.CameraVelocity, GameStateConstants.ItemSelectStateCameraPanDistance);
+            camera.Pan(ItemSelectionStateConstants.CameraVelocity, ItemSelectionStateConstants.CameraPanDistance);
         }
 
         public override void StateExitProcedure()

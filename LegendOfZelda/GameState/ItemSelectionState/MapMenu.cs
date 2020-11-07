@@ -23,7 +23,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             set
             {
                 position = new Point(value.X, value.Y);
-                roomMap.Position = Position + GameStateConstants.MapPosition;
+                roomMap.Position = Position + ItemSelectionStateConstants.MapPosition;
             }
         }
 
@@ -42,7 +42,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             this.roomMap = roomMap;
             this.link = link;
             mapBackgroundSprite = GameStateSpriteFactory.Instance.CreateMapBackgroundSprite();
-            Position = GameStateConstants.MapItemSelectStateStartPosition;
+            Position = ItemSelectionStateConstants.MapPaneStartPosition;
             InitButtonsDictionary();
         }
 
@@ -85,8 +85,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             buttonsDict = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Map, new MapInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.MapHudLocation)},
-                { LinkConstants.ItemType.Compass, new CompassInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.CompassHudLocation)}
+                { LinkConstants.ItemType.Map, new MapInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.MapHudLocation)},
+                { LinkConstants.ItemType.Compass, new CompassInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.CompassHudLocation)}
             };
         }
     }

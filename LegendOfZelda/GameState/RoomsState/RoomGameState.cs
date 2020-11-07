@@ -7,6 +7,7 @@ using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
 using LegendOfZelda.Utility;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
@@ -31,7 +32,7 @@ namespace LegendOfZelda.GameState.Rooms
             
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
             CurrentRoom.Visiting = true;
-            RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStateStartPosition + GameStateConstants.MapPosition);
+            RoomMap = new RoomMap(game.SpriteBatch, ItemSelectionStateConstants.MapPieceTextureAtlasSource, ItemSelectionStateConstants.MapPieceTextureSize, Point.Zero);
             RoomMap.AddRoomToMap(CurrentRoom);
             Hud = new HUD(Game.SpriteBatch, PlayerList);
 

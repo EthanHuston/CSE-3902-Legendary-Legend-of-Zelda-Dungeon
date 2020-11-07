@@ -78,9 +78,9 @@ namespace LegendOfZelda.HUDClasses
         public void Draw()
         {
             hudSprite.Draw(spriteBatch, position);
-            levelNum.Draw(spriteBatch, Position + GameStateConstants.LevelNumberLocation);
+            levelNum.Draw(spriteBatch, Position + HUDConstants.LevelNumberLocation);
             if (displayMinimap)
-                minimapSprite.Draw(spriteBatch, Position + GameStateConstants.MinimapLocation);
+                minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation);
             DrawNumRupees(spriteBatch);
             DrawNumKeys(spriteBatch);
             DrawNumBombs(spriteBatch);

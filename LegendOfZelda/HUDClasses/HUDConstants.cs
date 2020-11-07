@@ -24,5 +24,8 @@ namespace LegendOfZelda.HUDClasses
         public const int HalfHeartX = 116, HalfHeartY = 9;
         public const int FullHeartX = 124, FullHeartY = 9;
 
+        //Item Draw Positions in HUD screen (relative to HUD position)
+        public static Point LevelNumberLocation => new Point((int)(64 * Constants.GameScaler), (int)(8 * Constants.GameScaler));
+        public static Point MinimapLocation => new Point((int)(16 * Constants.GameScaler), (int)(15 * Constants.GameScaler));
     }
 }
