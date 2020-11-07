@@ -133,6 +133,8 @@
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="HUDClasses\HeartManager.cs" />
+    <Compile Include="HUDClasses\HUDHeart.cs" />
     <Compile Include="HUDClasses\HUDNumber.cs" />
     <Compile Include="HUDClasses\HUDConstants.cs" />
     <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
