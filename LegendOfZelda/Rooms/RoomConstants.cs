@@ -34,8 +34,6 @@ namespace LegendOfZelda
         public static Rectangle UpWallRectangle => new Rectangle(RoomBorderX, RoomBorderY, RoomWidth - (int)(wallBlockShortener * SpriteMultiplier), WallWidth);
         public static Rectangle DownWallRectangle => new Rectangle(RoomBorderX, BottomOfScreen - WallWidth, RoomWidth - (int)(wallBlockShortener * SpriteMultiplier), WallWidth);
 
-        // Room Map Constants
-
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";

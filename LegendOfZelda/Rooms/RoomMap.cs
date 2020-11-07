@@ -45,7 +45,7 @@ namespace LegendOfZelda.Rooms
                     Position.Y + (int)((mapGridSize.Y - room.LocationOnMap.Y) * sourceRectangleSize.Y * Constants.GameScaler) - (int)(sourceRectangleSize.Y * Constants.GameScaler));
                 
                 roomIconSprite.Draw(spriteBatch, drawLocation, spriteSourceRectangles[room.RoomType]);
-                if (room.Visiting) roomIconSprite.Draw(spriteBatch, drawLocation, GameStateConstants.RoomMarkerTextureAtlasSource);
+                if (room.Visiting) roomIconSprite.Draw(spriteBatch, drawLocation + ItemSelectionStateConstants.RoomMarkerDrawOffset, GameStateConstants.RoomMarkerTextureAtlasSource);
             }
         }
 

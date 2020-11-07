@@ -7,7 +7,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         private const double gameScaler = Constants.GameScaler;
 
         // Misc Constants
-        public static Vector2 CameraVelocity => new Vector2(0, 7);
+        public static Vector2 CameraVelocity => new Vector2(0, 15);
         public const int CameraPanDistance = InventoryPaneHeight + MapPaneHeight;
 
         // Pane Positions
@@ -64,5 +64,6 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         };
 
         public static Point MapPosition => new Point((int)(128 * Constants.GameScaler), (int)(8 * Constants.GameScaler));
+        public static Point RoomMarkerDrawOffset => new Point((int)(MapPieceTextureSize.X / 2 * gameScaler - GameStateConstants.RoomMarkerTextureAtlasSource.Width), (int)(MapPieceTextureSize.Y / 2 * gameScaler - GameStateConstants.RoomMarkerTextureAtlasSource.Height));
     }
 }
