@@ -1,15 +1,6 @@
-﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState;
-using LegendOfZelda.GameState.Pause;
-using LegendOfZelda.HUDClasses.Sprite;
-using LegendOfZelda.Interface;
-using LegendOfZelda.Link;
-using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Rooms;
-using LegendOfZelda.Utility;
+﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace LegendOfZelda.HUDClasses
 {
