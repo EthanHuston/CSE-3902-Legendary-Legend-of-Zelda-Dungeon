@@ -2,6 +2,7 @@
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.Pause;
 using LegendOfZelda.HUDClasses;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
@@ -19,7 +20,7 @@ namespace LegendOfZelda.GameState.Rooms
         public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
-        public HUD Hud { get; private set; }
+        public ISpawnable Hud { get; private set; }
         public RoomMap RoomMap { get; private set; }
 
         public RoomGameState(Game1 game)

@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.HUDClasses;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         private readonly IGameState roomStatePreserved;
         private readonly IMenu inventoryMenu;
         private readonly IMenu mapMenu;
-        private readonly HUD hud;
+        private readonly ISpawnable hud;
         private readonly ICamera camera;
 
         public ItemSelectionGameState(IPlayer player, RoomGameState oldRoomState)
