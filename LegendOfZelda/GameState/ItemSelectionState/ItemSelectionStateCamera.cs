@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.Button;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;

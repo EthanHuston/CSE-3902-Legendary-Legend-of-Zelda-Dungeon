@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link.Interface;

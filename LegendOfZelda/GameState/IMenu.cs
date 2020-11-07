@@ -1,7 +1,8 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.Interface;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Button
+namespace LegendOfZelda.GameState
 {
     interface IMenu : ISpawnable
     {
