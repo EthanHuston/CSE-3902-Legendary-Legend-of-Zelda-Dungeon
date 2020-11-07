@@ -12,6 +12,7 @@ namespace LegendOfZelda.HUDClasses
     {
         private SpriteBatch spriteBatch;
         private List<IPlayer> players;
+        private HeartManager heartManager;
         private ISprite hudSprite;
         private HUDNumber[] numRupees;
         private HUDNumber[] numKeys;
@@ -32,6 +33,7 @@ namespace LegendOfZelda.HUDClasses
         {
             this.spriteBatch = spriteBatch;
             this.players = players;
+            heartManager = new HeartManager((LinkPlayer)players[0]);
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
             levelNum = new HUDNumber(1);
@@ -70,6 +72,7 @@ namespace LegendOfZelda.HUDClasses
                 UpdateNumKeys();
             if (players[0].GetQuantityInInventory(LinkConstants.ItemType.Bomb) != linkBombCount)
                 UpdateNumBombs();
+            heartManager.Update();
         }
 
         public void Draw()
@@ -81,6 +84,7 @@ namespace LegendOfZelda.HUDClasses
             DrawNumRupees(spriteBatch);
             DrawNumKeys(spriteBatch);
             DrawNumBombs(spriteBatch);
+            heartManager.Draw(spriteBatch, Position);
         }
 
         private void DrawNumRupees(SpriteBatch spriteBatch)
