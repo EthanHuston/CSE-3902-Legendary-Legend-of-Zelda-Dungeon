@@ -90,6 +90,7 @@
     <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
+    <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
     <Compile Include="GameState\Button\EmptyButton.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
+    <Compile Include="GameState\ItemSelectionState\Camera.cs" />
+    <Compile Include="GameState\ItemSelectionState\ItemSelectionStateConstants.cs" />
     <Compile Include="GameState\ItemSelectionState\MapMenu.cs" />
     <Compile Include="GameState\ItemSelectionState\InventoryMenu.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionGameState.cs" />

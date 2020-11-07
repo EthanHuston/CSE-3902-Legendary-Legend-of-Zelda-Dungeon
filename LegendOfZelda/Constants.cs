@@ -7,7 +7,8 @@ namespace LegendOfZelda
     {
         public const int FrameDelay = 6;
         public const double GameScaler = 2.5;
-        public const int HeartValue = 10;
+        public const int HeartValue = 1;
+        public const float MusicVolume = 0.2f;
 
         // Game Screen
         public static Vector2 GameSize => new Vector2(MaxXPos, MaxYPos);

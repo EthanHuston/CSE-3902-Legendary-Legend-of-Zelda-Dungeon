@@ -1,25 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link.Interface;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    class ItemSelectionGameState : IGameState
+    class ItemSelectionGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
-        private List<IController> controllerList;
         private readonly IMenu inventoryMenu;
         private readonly IMenu mapMenu;
-
-        public Game1 Game { get; private set; }
+        private readonly HUD hud;
+        private readonly ICamera camera;
 
         public ItemSelectionGameState(IPlayer player, RoomGameState oldRoomState)
         {
             Game = player.Game;
-            roomStatePreserved = oldRoomState;
             inventoryMenu = new InventoryMenu(player);
             mapMenu = new MapMenu(player, oldRoomState.RoomMap);
+            hud = oldRoomState.Hud;
+            camera = new Camera(hud, new List<IMenu> { inventoryMenu, mapMenu });
+            roomStatePreserved = oldRoomState;
             InitControllerList(player);
         }
 
@@ -32,42 +35,46 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             };
         }
 
-        public void Draw()
+        public override void SwitchToRoomState()
         {
-            inventoryMenu.Draw();
-            mapMenu.Draw();
+            StartStateSwitch(roomStatePreserved);
         }
 
-        public void SetControllerOldInputState(OldInputState oldInputState)
+        public override void StateEntryProcedure()
         {
-            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
+            camera.Pan(ItemSelectionStateConstants.CameraVelocity, GameStateConstants.ItemSelectStateCameraPanDistance);
         }
 
-        public void SwitchToMainMenuState()
+        public override void StateExitProcedure()
         {
-            // do nothing, cannot go to main menu from here
+            camera.ReversePan();
         }
 
-        public void SwitchToPauseState()
-        {
-            // do nothing, cannot pause from here
-        }
-
-        public void SwitchToRoomState()
-        {
-            Game.SetGameState(roomStatePreserved, GameStateConstants.GetOldInputState(controllerList));
-        }
-
-        public void SwitchToItemSelectionState()
-        {
-            // do nothing, already in item selection state
-        }
-
-        public void Update()
+        protected override void NormalStateUpdate()
         {
             foreach (IController controller in controllerList) controller.Update();
             inventoryMenu.Update();
             mapMenu.Update();
+            hud.Update();
+        }
+
+        protected override void SwitchingStateUpdate()
+        {
+            camera.Update();
+            readyToSwitchState = !camera.IsPanning;
+        }
+
+        protected override void InitializingStateUpdate()
+        {
+            camera.Update();
+            stateInitialized = !camera.IsPanning;
+        }
+
+        public override void Draw()
+        {
+            roomStatePreserved.Draw(); // hud gets drawn with room
+            inventoryMenu.Draw();
+            mapMenu.Draw();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public InventoryMenu(IPlayer link)
         {
             inventoryBackgroundSprite = GameStateSpriteFactory.Instance.CreateInventoryBackgroundSprite();
-            Position = Point.Zero;
+            Position = GameStateConstants.InventoryItemSelectStateStartPosition;
             this.link = link;
             secondaryItem = GetEmptyButton();
             InitButtonsDictionary();

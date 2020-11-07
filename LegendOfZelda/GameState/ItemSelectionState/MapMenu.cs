@@ -32,7 +32,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public MapMenu(IPlayer link, RoomMap roomMap)
         {
             mapBackgroundSprite = GameStateSpriteFactory.Instance.CreateMapBackgroundSprite();
-            Position = GameStateConstants.MapItemSelectStatePosition;
+            Position = GameStateConstants.MapItemSelectStateStartPosition;
             this.roomMap = roomMap;
             this.link = link;
             InitButtonsDictionary();

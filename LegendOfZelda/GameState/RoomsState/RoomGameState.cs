@@ -11,20 +11,16 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Rooms
 {
-    internal class RoomGameState : IGameState
+    internal class RoomGameState : AbstractGameState
     {
-        private List<IController> controllerList;
+        private readonly SoundEffectInstance dungeonMusic;
+        public List<ItemSelectionGameState> itemSelectionGameStates;
 
-        public Game1 Game { get; private set; }
         public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
-        public List<ItemSelectionGameState> itemSelectionGameStates;
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
         public HUD Hud { get; private set; }
-
         public RoomMap RoomMap { get; private set; }
-
-        public SoundEffectInstance DungeonMusic;
 
         public RoomGameState(Game1 game)
         {
@@ -33,17 +29,17 @@ namespace LegendOfZelda.GameState.Rooms
             InitPlayersForGame();
             
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
-            RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStatePosition + GameStateConstants.MapStartPosition);
+            RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStateStartPosition + GameStateConstants.MapStartPosition);
             RoomMap.AddRoomToMap(CurrentRoom);
             Hud = new HUD(PlayerList);
 
             InitControllerList();
             InitItemSelectionGameStates();
                         
-            DungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
-            DungeonMusic.IsLooped = true;
-            DungeonMusic.Volume = 0.2f;
-            DungeonMusic.Play();
+            dungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
+            dungeonMusic.IsLooped = true;
+            dungeonMusic.Volume = Constants.MusicVolume;
+            dungeonMusic.Play();
         }
 
         private void InitControllerList()
@@ -54,6 +50,7 @@ namespace LegendOfZelda.GameState.Rooms
                 {new MouseController(this) }
             };
         }
+
         private void InitItemSelectionGameStates()
         {
             itemSelectionGameStates = new List<ItemSelectionGameState>();
@@ -61,22 +58,6 @@ namespace LegendOfZelda.GameState.Rooms
             {
                 itemSelectionGameStates.Add(new ItemSelectionGameState(player, this));
             }
-        }
-
-        public void Update()
-        {
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
-            CurrentRoom.Update();
-            Hud.Update();
-        }
-
-        public void Draw()
-        {
-            CurrentRoom.Draw();
-            Hud.Draw(Game.SpriteBatch);
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -132,29 +113,55 @@ namespace LegendOfZelda.GameState.Rooms
             };
         }
 
-        public void SwitchToPauseState()
+        public override void SwitchToPauseState()
         {
-            Game.SetGameState(new PauseGameState(Game, this), GameStateConstants.GetOldInputState(controllerList));
-        }
-        public void SwitchToRoomState()
-        {
-            // do nothing, already in room state
+            dungeonMusic.Pause();
+            StartStateSwitch(new PauseGameState(Game, this));
         }
 
-        public void SwitchToMainMenuState()
-        {
-            // cannot go to main menu from here
-        }
-
-        public void SetControllerOldInputState(OldInputState oldInputState)
-        {
-            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
-        }
-
-        public void SwitchToItemSelectionState()
+        public override void SwitchToItemSelectionState()
         {
             // player 0 inventory for now - in case we add multiplayer later
-            Game.SetGameState(itemSelectionGameStates[0], GameStateConstants.GetOldInputState(controllerList));
+            StartStateSwitch(itemSelectionGameStates[0]);
+        }
+
+        public override void StateEntryProcedure()
+        {
+            // TODO: initialize a camera to move between rooms here
+            if(dungeonMusic.State != SoundState.Playing) dungeonMusic.Resume();
+        }
+
+        public override void StateExitProcedure()
+        {
+            // TODO: do some exit stuff here, might not need to do anything at all
+        }
+
+        protected override void NormalStateUpdate()
+        {
+            foreach (IController controller in controllerList)
+            {
+                controller.Update();
+            }
+            CurrentRoom.Update();
+            Hud.Update();
+        }
+
+        protected override void SwitchingStateUpdate()
+        {
+            // TODO: use me when we start doing room transitions to update camera
+            readyToSwitchState = true;
+        }
+
+        protected override void InitializingStateUpdate()
+        {
+            // TODO: potentially use me when doing room transitions
+            stateInitialized = true;
+        }
+
+        public override void Draw()
+        {
+            CurrentRoom.Draw();
+            Hud.Draw(Game.SpriteBatch);
         }
     }
 }

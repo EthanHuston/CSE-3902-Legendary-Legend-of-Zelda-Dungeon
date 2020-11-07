@@ -5,12 +5,9 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.MainMenu
 {
-    class MainMenuGameState : IGameState
+    class MainMenuGameState : AbstractGameState
     {
-        private List<IController> controllerList;
         private readonly ITextureAtlasSprite backgroundSprite;
-
-        public Game1 Game { get; private set; }
 
         public MainMenuGameState(Game1 game)
         {
@@ -28,42 +25,39 @@ namespace LegendOfZelda.GameState.MainMenu
             };
         }
 
-        public void Draw()
+        public override void Draw()
         {
             backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource);
         }
 
-        public void SwitchToMainMenuState()
+        public override void SwitchToRoomState()
         {
-            // Already in main menu state
+            StartStateSwitch(new RoomGameState(Game));
         }
 
-        public void SwitchToPauseState()
+        public override void StateEntryProcedure()
         {
-            // cannot switch to pause state from here
+            // shouldn't need to do anything here
         }
 
-        public void SwitchToRoomState()
+        public override void StateExitProcedure()
         {
-            Game.SetGameState(new RoomGameState(Game), GameStateConstants.GetOldInputState(controllerList));
+            // shouldn't need to do anything here
         }
 
-        public void Update()
+        protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
+            foreach (IController controller in controllerList) controller.Update();
         }
 
-        public void SetControllerOldInputState(OldInputState oldInputState)
+        protected override void SwitchingStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
+            readyToSwitchState = true;
         }
 
-        public void SwitchToItemSelectionState()
+        protected override void InitializingStateUpdate()
         {
-            // do nothing, cannot switch to that state from here
+            stateInitialized = true;
         }
     }
 }

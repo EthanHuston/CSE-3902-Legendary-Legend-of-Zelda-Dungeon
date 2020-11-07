@@ -9,10 +9,15 @@ namespace LegendOfZelda.GameState
 
         public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 224);
 
-        private const int inventoryItemSelectStateHeight = (int)(88 * gameScaler);
-        public static Point InventoryItemSelectStatePosition => new Point((int)(gameScaler * 0), (int)(gameScaler * 0));
-        public static Point MapItemSelectStatePosition => new Point((int)(gameScaler * 0), InventoryItemSelectStatePosition.Y + inventoryItemSelectStateHeight);
         public static Point MapGridSize => new Point(8, 8);
+
+        // Pane Positions in Item Selection Game State
+        public const int InventoryItemSelectStateHeight = (int)(88 * gameScaler);
+        public const int MapItemSelectStateHeight = (int)(88 * gameScaler);
+        public const int ItemSelectStateCameraPanDistance = InventoryItemSelectStateHeight + MapItemSelectStateHeight;
+        public static Point InventoryItemSelectStateStartPosition => new Point((int)(gameScaler * 0), -1 * (InventoryItemSelectStateHeight + MapItemSelectStateHeight));
+        public static Point MapItemSelectStateStartPosition => new Point((int)(gameScaler * 0), InventoryItemSelectStateStartPosition.Y + InventoryItemSelectStateHeight);
+        public static Point HudItemSelectStatePosition => new Point(0, InventoryItemSelectStateHeight + MapItemSelectStateHeight);
 
         // Button Positions
         public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
@@ -65,7 +70,7 @@ namespace LegendOfZelda.GameState
         public static Point LetterHudLocation => new Point((int)(180 * Constants.GameScaler), (int)(64 * Constants.GameScaler));
         public static Point Empty2HudLocation => new Point((int)(204 * Constants.GameScaler), (int)(64 * Constants.GameScaler));
 
-        //Item Draw Positions in HUD screen
+        //Item Draw Positions in HUD screen (relative to HUD position)
         public static Point LevelNumberLocation = new Point((int)(64 * Constants.GameScaler), (int)(8 * Constants.GameScaler));
         public static Point MinimapLocation = new Point((int)(16 * Constants.GameScaler), (int)(15 * Constants.GameScaler));
         
@@ -105,25 +110,6 @@ namespace LegendOfZelda.GameState
             Gamepad
         }
 
-        public static OldInputState GetOldInputState(List<IController> controllerList)
-        {
-            OldInputState oldInputState = new OldInputState();
-
-            foreach (IController controller in controllerList)
-            {
-                switch (controller.GetInputType())
-                {
-                    case InputType.Keyboard:
-                        oldInputState.oldKeyboardState = controller.GetOldInputState().oldKeyboardState;
-                        break;
-
-                    case InputType.Mouse:
-                        oldInputState.oldMouseState = controller.GetOldInputState().oldMouseState;
-                        break;
-                }
-            }
-
-            return oldInputState;
-        }
+        
     }
 }

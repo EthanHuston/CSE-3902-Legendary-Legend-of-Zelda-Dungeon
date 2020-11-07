@@ -1,17 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.GameLogic
 {
-    interface ICamera<T, U>
+    interface ICamera
     {
-        void Pan(T currentFrame, U newFrame, Vector2 velocity, int distance);
+        bool IsPanning { get; }
+        void Pan(Vector2 velocity, int distance);
         void Update();
         void Draw();
-        void IsPanning();
+        void ReversePan();
     }
 }
