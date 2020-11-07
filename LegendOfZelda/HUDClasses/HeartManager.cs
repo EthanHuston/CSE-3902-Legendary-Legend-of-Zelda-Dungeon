@@ -46,7 +46,7 @@ namespace LegendOfZelda.HUDClasses
             {
                 if (i < tensPlace)
                     hearts[i].AssignNumber(2);
-                else if (i == tensPlace + 1 && onesPlace > 4)
+                else if (i == tensPlace && onesPlace > 4)
                     hearts[i].AssignNumber(1);
                 else
                     hearts[i].AssignNumber(0);
