@@ -21,7 +21,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             inventoryMenu = new InventoryMenu(player);
             mapMenu = new MapMenu(player, oldRoomState.RoomMap);
             hud = oldRoomState.Hud;
-            camera = new Camera(hud, new List<IMenu> { inventoryMenu, mapMenu });
+            camera = new ItemSelectionStateCamera(hud, new List<IMenu> { inventoryMenu, mapMenu });
             roomStatePreserved = oldRoomState;
             InitControllerList(player);
         }

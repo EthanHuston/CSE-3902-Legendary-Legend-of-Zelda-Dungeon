@@ -7,17 +7,17 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    class Camera : ICamera
+    class ItemSelectionStateCamera : ICamera
     {
         private readonly HUD hud;
-        private List<IMenu> inventorySelectionSpawnables;
+        private readonly List<IMenu> inventorySelectionSpawnables;
         private Vector2 velocityWhenPan;
         private int distanceToPan;
         private int distancePanned;
 
         public bool IsPanning { get; private set; }
 
-        public Camera(HUD hud, List<IMenu> inventorySpawnablesList)
+        public ItemSelectionStateCamera(HUD hud, List<IMenu> inventorySpawnablesList)
         {
             this.hud = hud;
             inventorySelectionSpawnables = inventorySpawnablesList;
