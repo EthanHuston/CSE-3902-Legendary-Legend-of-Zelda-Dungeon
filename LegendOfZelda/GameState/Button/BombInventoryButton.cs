@@ -10,17 +10,19 @@ namespace LegendOfZelda.GameState.Button
         private readonly ITextureAtlasSprite sprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
-        public bool IsActive{ get; private set; }
+        private readonly IMenu owningMenu;
+        public bool IsActive { get; private set; }
 
         private Vector2 Size => GameStateConstants.StandardItemSpriteSize;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public BombInventoryButton(SpriteBatch spriteBatch, Point spawnPosition)
+        public BombInventoryButton(SpriteBatch spriteBatch, IMenu owner, Point relativePosition)
         {
             this.spriteBatch = spriteBatch;
-            Position = spawnPosition;
+            owningMenu = owner;
+            Position = relativePosition;
             sprite = GameStateSpriteFactory.Instance.CreateHudItemsSprite();
             safeToDespawn = false;
             IsActive = true;
@@ -34,7 +36,7 @@ namespace LegendOfZelda.GameState.Button
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, Position, GameStateConstants.BombTextureAtlasSource);
+            sprite.Draw(spriteBatch, owningMenu.Position + Position, GameStateConstants.BombTextureAtlasSource);
         }
 
         public Rectangle GetRectangle()

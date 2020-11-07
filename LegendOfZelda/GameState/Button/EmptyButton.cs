@@ -7,18 +7,21 @@ namespace LegendOfZelda.GameState.Button
     class EmptyButton : IButton
     {
         private bool safeToDespawn;
-        private Rectangle location;
+        private Rectangle size;
+        private readonly IMenu owningMenu;
+
         public bool IsActive { get; private set; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public EmptyButton(Rectangle location)
+        public EmptyButton(IMenu owner, Rectangle location)
         {
+            owningMenu = owner;
             Position = new Point(location.X, location.Y);
             safeToDespawn = false;
             IsActive = true;
-            this.location = location;
+            size = location;
         }
 
         public void Despawn()
@@ -34,7 +37,7 @@ namespace LegendOfZelda.GameState.Button
         {
             return !IsActive ?
                 Rectangle.Empty :
-                new Rectangle(Position.X, Position.Y, location.Width, location.Height);
+                new Rectangle(owningMenu.Position.X + Position.X, owningMenu.Position.Y + Position.Y, size.Width, size.Height);
         }
 
         public bool SafeToDespawn()

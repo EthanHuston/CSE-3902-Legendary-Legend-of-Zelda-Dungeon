@@ -77,8 +77,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             buttonsDict = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Map, new MapInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.MapHudLocation)},
-                { LinkConstants.ItemType.Compass, new CompassInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.CompassHudLocation)}
+                { LinkConstants.ItemType.Map, new MapInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.MapHudLocation)},
+                { LinkConstants.ItemType.Compass, new CompassInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.CompassHudLocation)}
             };
         }
     }

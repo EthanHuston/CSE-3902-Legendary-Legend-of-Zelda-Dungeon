@@ -80,11 +80,11 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             buttonsDict = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.BoomerangHudLocation)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.BombHudLocation)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.ArrowHudLocation)},
-                { LinkConstants.ItemType.Bow, new BowInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.BowHudLocation)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.CandleHudLocation)}
+                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.BoomerangHudLocation)},
+                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.BombHudLocation)},
+                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.ArrowHudLocation)},
+                { LinkConstants.ItemType.Bow, new BowInventoryButton(link.Game.SpriteBatch,this, GameStateConstants.BowHudLocation)},
+                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.CandleHudLocation)}
             };
         }
 
@@ -92,18 +92,18 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
             {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, Position + GameStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
+                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, GameStateConstants.SecondaryItemHudLocation)},
                 { LinkConstants.ItemType.None, GetEmptyButton() }
             };
         }
 
         private IButton GetEmptyButton()
         {
-            return new EmptyButton(new Rectangle(GameStateConstants.SecondaryItemHudLocation.X, GameStateConstants.SecondaryItemHudLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
+            return new EmptyButton(this, new Rectangle(GameStateConstants.SecondaryItemHudLocation.X, GameStateConstants.SecondaryItemHudLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
         }
     }
 }

@@ -110,7 +110,7 @@
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
-    <Compile Include="GameState\ItemSelectionState\Camera.cs" />
+    <Compile Include="GameState\ItemSelectionState\ItemSelectionStateCamera.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionStateConstants.cs" />
     <Compile Include="GameState\ItemSelectionState\MapMenu.cs" />
     <Compile Include="GameState\ItemSelectionState\InventoryMenu.cs" />
