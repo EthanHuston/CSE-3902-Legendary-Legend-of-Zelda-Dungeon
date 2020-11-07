@@ -20,7 +20,7 @@ namespace LegendOfZelda.GameState.Rooms
         public List<IPlayer> PlayerList { get; private set; }
         public List<ItemSelectionGameState> itemSelectionGameStates;
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
-        private readonly HUD hud;
+        public HUD Hud { get; private set; }
 
         public RoomMap RoomMap { get; private set; }
 
@@ -35,7 +35,7 @@ namespace LegendOfZelda.GameState.Rooms
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
             RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStatePosition + GameStateConstants.MapStartPosition);
             RoomMap.AddRoomToMap(CurrentRoom);
-            hud = new HUD(PlayerList);
+            Hud = new HUD(PlayerList);
 
             InitControllerList();
             InitItemSelectionGameStates();
@@ -70,13 +70,13 @@ namespace LegendOfZelda.GameState.Rooms
                 controller.Update();
             }
             CurrentRoom.Update();
-            hud.Update();
+            Hud.Update();
         }
 
         public void Draw()
         {
             CurrentRoom.Draw();
-            hud.Draw(Game.SpriteBatch);
+            Hud.Draw(Game.SpriteBatch);
         }
 
         public IPlayer GetPlayer(int playerNumber)
