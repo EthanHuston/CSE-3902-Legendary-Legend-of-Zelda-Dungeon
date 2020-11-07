@@ -100,7 +100,7 @@ namespace LegendOfZelda.GameState
             new Rectangle(135, 0, 8, 8) // 1111
         };
 
-        public static Point MapStartPosition => new Point((int)(128 * Constants.GameScaler), (int)(8 * Constants.GameScaler));
+        public static Point MapPosition => new Point((int)(128 * Constants.GameScaler), (int)(8 * Constants.GameScaler));
         public static Rectangle RoomMarkerTextureAtlasSource => new Rectangle(9, 18, 3, 3);
 
         public enum InputType

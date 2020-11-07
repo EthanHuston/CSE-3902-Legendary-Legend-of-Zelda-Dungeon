@@ -17,7 +17,15 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         private Dictionary<LinkConstants.ItemType, IButton> buttonsDict;
 
         private Point position;
-        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+        public Point Position
+        {
+            get => new Point(position.X, position.Y); 
+            set
+            {
+                position = new Point(value.X, value.Y);
+                roomMap.Position = Position + GameStateConstants.MapPosition;
+            }
+        }
 
         public List<IButton> Buttons
         {
@@ -31,10 +39,10 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public MapMenu(IPlayer link, RoomMap roomMap)
         {
-            mapBackgroundSprite = GameStateSpriteFactory.Instance.CreateMapBackgroundSprite();
-            Position = GameStateConstants.MapItemSelectStateStartPosition;
             this.roomMap = roomMap;
             this.link = link;
+            mapBackgroundSprite = GameStateSpriteFactory.Instance.CreateMapBackgroundSprite();
+            Position = GameStateConstants.MapItemSelectStateStartPosition;
             InitButtonsDictionary();
         }
 

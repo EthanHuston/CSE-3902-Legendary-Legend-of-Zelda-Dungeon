@@ -30,7 +30,8 @@ namespace LegendOfZelda.GameState.Rooms
             InitPlayersForGame();
             
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
-            RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStateStartPosition + GameStateConstants.MapStartPosition);
+            CurrentRoom.Visiting = true;
+            RoomMap = new RoomMap(game.SpriteBatch, GameStateConstants.MapPieceTextureAtlasSource, GameStateConstants.MapPieceTextureSize, GameStateConstants.MapItemSelectStateStartPosition + GameStateConstants.MapPosition);
             RoomMap.AddRoomToMap(CurrentRoom);
             Hud = new HUD(Game.SpriteBatch, PlayerList);
 
