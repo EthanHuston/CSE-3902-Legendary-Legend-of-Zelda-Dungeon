@@ -28,7 +28,7 @@ namespace LegendOfZelda.Link
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
         public LinkConstants.ItemType PrimaryItem => currentHealth == maxHealth ? LinkConstants.ItemType.SwordBeam : LinkConstants.ItemType.Sword;
         public LinkConstants.ItemType SecondaryItem { get; set; }
-        public int GetHealth { get; set; }
+        public double CurrentHealth { get => currentHealth; private set => currentHealth = value; }
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {

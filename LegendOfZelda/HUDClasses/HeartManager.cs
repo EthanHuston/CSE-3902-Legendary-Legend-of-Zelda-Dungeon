@@ -8,12 +8,12 @@ namespace LegendOfZelda.HUDClasses
     {
         private LinkPlayer link;
         private HUDHeart[] hearts;
-        private int linkHealth;
+        private double linkHealth;
 
         public HeartManager(LinkPlayer link)
         {
             this.link = link;
-            linkHealth = link.GetHealth;
+            linkHealth = link.CurrentHealth;
             hearts = new HUDHeart[LinkConstants.StartingHealth / Constants.HeartValue];
             for(int i = 0; i < hearts.Length; i++)
                 hearts[i] = new HUDHeart(2);
@@ -31,7 +31,7 @@ namespace LegendOfZelda.HUDClasses
 
         public void Update()
         {
-            if(link.GetHealth != linkHealth)
+            if(link.CurrentHealth != linkHealth)
             {
                 UpdateHearts();
             }
@@ -39,9 +39,9 @@ namespace LegendOfZelda.HUDClasses
 
         private void UpdateHearts()
         {
-            linkHealth = link.GetHealth;
-            int tensPlace = linkHealth / 10;
-            int onesPlace = linkHealth % 10;
+            linkHealth = (int)link.CurrentHealth;
+            int tensPlace = (int)linkHealth / 10;
+            int onesPlace = (int)linkHealth % 10;
             for(int i = 0; i < hearts.Length; i++)
             {
                 if (i < tensPlace)
