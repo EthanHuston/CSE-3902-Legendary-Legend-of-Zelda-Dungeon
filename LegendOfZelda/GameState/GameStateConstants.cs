@@ -7,7 +7,7 @@ namespace LegendOfZelda.GameState
     {
         private const double gameScaler = Constants.GameScaler;
 
-        public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 224);
+        public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 232);
 
         // Button Positions
         public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
