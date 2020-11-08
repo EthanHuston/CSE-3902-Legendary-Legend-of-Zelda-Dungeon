@@ -15,7 +15,7 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
-        private double health = 0.5;
+        private double health = 0.5 * Constants.HeartValue;
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;

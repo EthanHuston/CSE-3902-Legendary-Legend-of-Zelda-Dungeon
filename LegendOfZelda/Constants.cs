@@ -20,16 +20,16 @@ namespace LegendOfZelda
         public const int HalfYPos = MaxYPos / 2;
 
         // Damage from Different Items
-        public const double ArrowDamage = 2.0;
-        public const double BombDamage = 4.0;
-        public const double BoomerangDamage = .5;
-        public const double SwordBeamDamage = 1.0;
-        public const double FireballDamage = 0.5;
-        public const double SwordDamage = 1; // TODO lookup damage
-        public const double FireTileDamage = 0.5;
+        public const double ArrowDamage = 2 * HeartValue;
+        public const double BombDamage = 4.0 * HeartValue;
+        public const double BoomerangDamage = .5 * HeartValue;
+        public const double SwordBeamDamage = 1.0 * HeartValue;
+        public const double FireballDamage = 0.5 * HeartValue;
+        public const double SwordDamage = 1 * HeartValue; // TODO lookup damage
+        public const double FireTileDamage = 0.5 * HeartValue;
 
         // Damage from Enemies
-        public const double LinkEnemyCollisionDamage = 0.5;
+        public const double LinkEnemyCollisionDamage = 0.5 * HeartValue;
 
         // Directions
         public enum Direction

@@ -14,7 +14,7 @@ namespace LegendOfZelda.HUDClasses
         {
             this.link = link;
             linkHealth = link.CurrentHealth;
-            hearts = new HUDHeart[LinkConstants.StartingHealth / Constants.HeartValue];
+            hearts = new HUDHeart[LinkConstants.StartingHearts / Constants.HeartValue];
             for(int i = 0; i < hearts.Length; i++)
                 hearts[i] = new HUDHeart(2);
         }

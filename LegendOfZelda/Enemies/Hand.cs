@@ -14,7 +14,7 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
-        private double health = 4;
+        private double health = 4 * Constants.HeartValue;
         private readonly Random rand = RoomConstants.RandomGenerator;
         private bool safeToDespawn;
         private DateTime healthyDateTime;

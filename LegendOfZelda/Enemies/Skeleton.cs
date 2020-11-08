@@ -12,7 +12,7 @@ namespace LegendOfZelda.Enemies
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private int movementBuffer = 0;
-        private double health = 2;
+        private double health = 2 * Constants.HeartValue;
         private Constants.Direction direction = Constants.Direction.Down;
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private bool safeToDespawn = false;

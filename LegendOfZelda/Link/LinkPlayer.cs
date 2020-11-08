@@ -11,7 +11,6 @@ namespace LegendOfZelda.Link
 {
     internal class LinkPlayer : IPlayer
     {
-        private double currentHealth;
         private double maxHealth;
         private Dictionary<LinkConstants.ItemType, int> inventory;
         private readonly Dictionary<LinkConstants.ProjectileType, IProjectile> currentProjectiles;
@@ -26,14 +25,14 @@ namespace LegendOfZelda.Link
         public ILinkState State { get => state; set { if (!BlockStateChange) state = value; } }
         public Point Position { get => Mover.Position; set => Mover.Position = value; }
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
-        public LinkConstants.ItemType PrimaryItem => currentHealth == maxHealth ? LinkConstants.ItemType.SwordBeam : LinkConstants.ItemType.Sword;
+        public LinkConstants.ItemType PrimaryItem => CurrentHealth == maxHealth ? LinkConstants.ItemType.SwordBeam : LinkConstants.ItemType.Sword;
         public LinkConstants.ItemType SecondaryItem { get; set; }
-        public double CurrentHealth { get => currentHealth; private set => currentHealth = value; }
+        public double CurrentHealth { get; private set; }
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
-            currentHealth = LinkConstants.StartingHealth;
-            maxHealth = LinkConstants.StartingHealth;
+            CurrentHealth = LinkConstants.StartingHearts;
+            maxHealth = LinkConstants.StartingHearts;
             Game = game;
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             FacingDirection = Constants.Direction.Down;
@@ -52,10 +51,10 @@ namespace LegendOfZelda.Link
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && currentHealth <= 0;
+            safeToDespawn = !safeToDespawn && CurrentHealth <= 0;
             State.Update();
             if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
-            if(currentHealth <= 1.0)
+            if(CurrentHealth <= 1.0)
             {
                 SoundEffectInstance lowHealth = SoundFactory.Instance.CreateLowHealthSound();
                 lowHealth.IsLooped = true;
@@ -75,25 +74,25 @@ namespace LegendOfZelda.Link
 
         public void SubtractHealth(double damage)
         {
-            currentHealth -= damage;
+            CurrentHealth -= damage;
             SoundFactory.Instance.CreateLinkHurtSound().Play();
         }
 
         public void AddHealth(double healAmount)
         {
-            currentHealth += healAmount;
-            if (currentHealth > maxHealth) currentHealth = maxHealth;
+            CurrentHealth += healAmount;
+            if (CurrentHealth > maxHealth) CurrentHealth = maxHealth;
         }
 
         public void IncreaseMaxHealth(int amount)
         {
             maxHealth += amount;
-            currentHealth += amount;
+            CurrentHealth += amount;
         }
 
         public void GiveFullHealth()
         {
-            currentHealth = maxHealth;
+            CurrentHealth = maxHealth;
         }
 
         public void MoveUp()
