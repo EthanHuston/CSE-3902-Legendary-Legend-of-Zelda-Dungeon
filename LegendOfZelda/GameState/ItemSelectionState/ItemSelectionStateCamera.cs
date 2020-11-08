@@ -46,12 +46,20 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Update()
         {
-            IsPanning = distancePanned < distanceToPan;
             if (IsPanning)
             {
-                foreach (ISpawnable spawnable in inventorySelectionSpawnables) spawnable.Position += velocityWhenPan.ToPoint();
-                hud.Position += velocityWhenPan.ToPoint();
+                Vector2 moveVector = new Vector2(velocityWhenPan.X, velocityWhenPan.Y);
                 distancePanned += (int) velocityWhenPan.Length();
+
+                if(distancePanned > distanceToPan)
+                {
+                    IsPanning = false;
+                    moveVector.Normalize();
+                    moveVector *= distanceToPan - (distancePanned - (int)velocityWhenPan.Length());
+                }
+
+                foreach (ISpawnable spawnable in inventorySelectionSpawnables) spawnable.Position += moveVector.ToPoint();
+                hud.Position += moveVector.ToPoint();
             }
         }
     }
