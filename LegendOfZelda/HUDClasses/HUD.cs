@@ -19,6 +19,8 @@ namespace LegendOfZelda.HUDClasses
         private HUDNumber levelNum;
         private ISprite minimapSprite;
         private bool displayMinimap;
+        private LinkConstants.ItemType primaryItem;
+        LinkConstants.ItemType secondaryItem;
 
         private bool safeToDespawn = false;
         
@@ -31,6 +33,8 @@ namespace LegendOfZelda.HUDClasses
             this.players = players;
             heartManager = new HeartManager((LinkPlayer)players[0]);
             numberManager = new NumberManager((LinkPlayer)players[0]);
+            primaryItem = players[0].PrimaryItem;
+            secondaryItem = players[0].SecondaryItem;
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
             levelNum = new HUDNumber(1);
