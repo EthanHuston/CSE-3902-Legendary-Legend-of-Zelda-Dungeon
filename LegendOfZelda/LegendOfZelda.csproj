@@ -83,7 +83,8 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpawnSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
-    <Compile Include="Environment\DragonStatueSprite.cs" />
+    <Compile Include="Environment\DragonStatues.cs" />
+    <Compile Include="Environment\Sprite\DragonStatueSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
     <Compile Include="Environment\RoomWall.cs" />
