@@ -16,7 +16,7 @@ namespace LegendOfZelda.GameState.Button
         public RetryButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateResumeButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateRetryButtonSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;

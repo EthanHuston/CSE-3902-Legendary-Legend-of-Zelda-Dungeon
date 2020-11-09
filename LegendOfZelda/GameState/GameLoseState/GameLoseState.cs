@@ -1,5 +1,7 @@
-﻿using LegendOfZelda.GameState.Button;
+﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using System.Collections.Generic;
 
@@ -7,13 +9,15 @@ namespace LegendOfZelda.GameState.GameLoseState
 {
     class GameLoseState : AbstractGameState
     {
-        private readonly IGameState roomStatePreserved;
+        private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
+        private ISpawnableManager spawnableManager;
 
         public GameLoseState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
-            roomStatePreserved = oldRoomState;
+            roomStatePreserved = (RoomGameState)oldRoomState;
+            spawnableManager = roomStatePreserved.SpawnableManager;
             InitButtonsList();
             InitControllerList();
         }
@@ -23,7 +27,6 @@ namespace LegendOfZelda.GameState.GameLoseState
             buttons = new List<ISpawnable>()
             {
                 {new RetryButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
-                {new MainMenuButton(Game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) },
                 {new ExitButton(Game.SpriteBatch, GameStateConstants.PauseStateExitButtonLocation) }
             };
         }
