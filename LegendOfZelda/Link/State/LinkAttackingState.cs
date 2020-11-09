@@ -35,6 +35,12 @@ namespace LegendOfZelda.Link.State
             }
             link.Velocity = Vector2.Zero;
             link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X, link.Position.Y) + spawnOffset, link.FacingDirection, Constants.ProjectileOwner.Link));
+
+            if (link.CurrentHealth >= link.MaxHealth)
+            {
+                link.SpawnItem(new SwordBeamFlyingProjectile(link.Game.SpriteBatch, link.Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, link.FacingDirection));
+                SoundFactory.Instance.CreateSwordCombinedSound().Play();
+            }
         }
 
         protected override void UpdateState()
@@ -53,6 +59,11 @@ namespace LegendOfZelda.Link.State
         public override void Move(Constants.Direction direction)
         {
             // cannot move during this state
+        }
+
+        public override void UseSword()
+        {
+            // cannot use sword
         }
     }
 }

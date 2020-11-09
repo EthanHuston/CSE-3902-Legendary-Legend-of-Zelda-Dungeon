@@ -214,9 +214,6 @@ namespace LegendOfZelda.Link
                 case LinkConstants.ItemType.Sword:
                     UseSword();
                     break;
-                case LinkConstants.ItemType.SwordBeam:
-                    UseSwordBeam();
-                    break;
                 case LinkConstants.ItemType.Bow:
                     UseBow();
                     break;
@@ -259,13 +256,6 @@ namespace LegendOfZelda.Link
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
             SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingBoomerangSpawnOffset, Constants.ProjectileOwner.Link, this, velocity));
             SoundFactory.Instance.CreateArrowBoomerangSound().Play();
-        }
-
-        private void UseSwordBeam()
-        {
-            if (!CanSpawnProjectile(LinkConstants.ProjectileType.SwordBeam) || inventory[LinkConstants.ItemType.Sword] <= 0) return;
-            SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
-            SoundFactory.Instance.CreateSwordCombinedSound().Play();
         }
 
         private bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType)
