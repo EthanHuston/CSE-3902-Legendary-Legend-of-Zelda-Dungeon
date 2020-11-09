@@ -1,14 +1,16 @@
-﻿using LegendOfZelda.Link;
+﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.HUDClasses
 {
-    internal class HeartManager
+    internal class HeartManager : ISpawnable
     {
         private LinkPlayer link;
         private HUDHeart[] hearts;
         private double linkHealth;
+        private Point position;
 
         public HeartManager(LinkPlayer link)
         {
@@ -19,6 +21,14 @@ namespace LegendOfZelda.HUDClasses
                 hearts[i] = new HUDHeart(2);
         }
 
+
+        public Point Position { get => position; set => position = new Point(value.X, value.Y); }
+
+        public void Despawn()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Draw(SpriteBatch spriteBatch, Point hudPosition)
         {
             for(int i = 0; i < hearts.Length; i++)
@@ -27,6 +37,21 @@ namespace LegendOfZelda.HUDClasses
                 hearts[i].Draw(spriteBatch, hudPosition + heartPosition);
             }
                 
+        }
+
+        public void Draw()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Rectangle GetRectangle()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool SafeToDespawn()
+        {
+            throw new System.NotImplementedException();
         }
 
         public void Update()
