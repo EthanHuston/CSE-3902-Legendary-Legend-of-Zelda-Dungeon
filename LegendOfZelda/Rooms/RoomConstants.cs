@@ -42,7 +42,8 @@ namespace LegendOfZelda
         public const string LadderTile = "lad";
         public const string MovableBlock = "redblock";
         public const string Stairs = "stairs";
-        public const string Statue = "stat";
+        public const string FishStatue = "fstat";
+        public const string DragonStatue = "dstat";
         public const string BlueGrass = "bg";
         public const string Water = "water";
         //String Abbreviations for Border and Background in CSV File

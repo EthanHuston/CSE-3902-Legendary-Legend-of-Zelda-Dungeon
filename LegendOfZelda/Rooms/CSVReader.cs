@@ -84,8 +84,12 @@ namespace LegendOfZelda.Rooms
                     blockType = new Stairs(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
-                case RoomConstants.Statue:
-                    blockType = new Statues(spriteBatch, position);
+                case RoomConstants.FishStatue:
+                    blockType = new FishStatues(spriteBatch, position);
+                    allObjects.Spawn(blockType);
+                    break;
+                case RoomConstants.DragonStatue:
+                    blockType = new DragonStatues(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.BlueGrass:
