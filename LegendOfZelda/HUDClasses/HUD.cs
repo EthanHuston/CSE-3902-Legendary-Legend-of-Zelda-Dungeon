@@ -34,20 +34,9 @@ namespace LegendOfZelda.HUDClasses
         private IButton secondaryButton;
 
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
-
-        private bool safeToDespawn = false;
         
         private Point position;
         public Point Position { get => position; set => position = new Point(value.X, value.Y); }
-
-        public List<IButton> Buttons
-        {
-            get
-            {
-                List<IButton> list = new List<IButton>();
-                return list;
-            }
-        }
 
         public HUD(RoomGameState gameState)
         {
@@ -105,28 +94,15 @@ namespace LegendOfZelda.HUDClasses
                     triforceMinimapSquare.Draw(spriteBatch, position +  HUDConstants.MinimapSquarePositions[triforceRoomLocation]);
                 linkMinimapSquare.Draw(spriteBatch, position + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap]);
             }
-            foreach (IButton button in Buttons){
-                button.Draw();
-            }
             primaryButton.Draw();
             secondaryButton.Draw();
             numberManager.Draw(spriteBatch, Position);
             heartManager.Draw(spriteBatch, Position);
         }
 
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
         public Rectangle GetRectangle()
         {
             return hudSprite.GetPositionRectangle();
-        }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
         }
 
         public void fillSecondaryItemDictionary()
@@ -144,7 +120,7 @@ namespace LegendOfZelda.HUDClasses
 
         private IButton GetEmptyButton()
         {
-            return new EmptyButton((IMenu)this, new Rectangle(HUDConstants.SecondaryItemLocation.X, HUDConstants.SecondaryItemLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
+            return new EmptyButton(this, new Rectangle(HUDConstants.SecondaryItemLocation.X, HUDConstants.SecondaryItemLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
         }
     }
 }
