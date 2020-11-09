@@ -60,10 +60,5 @@ namespace LegendOfZelda.Link.State
         {
             // cannot move during this state
         }
-
-        public override void UseSword()
-        {
-            // cannot use sword
-        }
     }
 }
