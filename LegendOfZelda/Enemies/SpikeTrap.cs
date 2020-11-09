@@ -56,7 +56,7 @@ namespace LegendOfZelda.Enemies
             {
                 sprite.Update();
                 LinkPosition = link.GetRectangle();
-                TrapPosition = this.GetRectangle();
+                TrapPosition = GetRectangle();
                 if (going)
                 {
                     if (currentDirection == Constants.Direction.Left)

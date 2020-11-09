@@ -56,9 +56,6 @@ namespace LegendOfZelda.Enemies
             }
             else
             {
-                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) <= 0; // only compare if we're damaged
-                safeToDespawn = !safeToDespawn && health <= 0;
-
                 if (!inKnockback)
                 {
                     movementBuffer++;
