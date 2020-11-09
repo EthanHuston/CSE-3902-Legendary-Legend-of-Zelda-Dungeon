@@ -20,5 +20,6 @@ namespace LegendOfZelda.Link.Interface
         int GetQuantityInInventory(LinkConstants.ItemType itemType);
         void UsePrimary();
         void UseSecondary();
+        bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType);
     }
 }

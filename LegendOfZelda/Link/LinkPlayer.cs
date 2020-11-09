@@ -259,7 +259,7 @@ namespace LegendOfZelda.Link
             SoundFactory.Instance.CreateArrowBoomerangSound().Play();
         }
 
-        private bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType)
+        public bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType)
         {
             IProjectile currentProjectile;
 
