@@ -128,7 +128,8 @@ namespace LegendOfZelda.GameLogic
             {
                 // immovable blocks
                 {typeof(LockedDoor), new LinkImmovableBlockCollisionHandler() },
-                {typeof(Statues), new LinkImmovableBlockCollisionHandler() },
+                {typeof(FishStatues), new LinkImmovableBlockCollisionHandler() },
+                {typeof(DragonStatues), new LinkImmovableBlockCollisionHandler() },
                 {typeof(TileWater), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
                 {typeof(ShutDoor), new LinkImmovableBlockCollisionHandler() },
