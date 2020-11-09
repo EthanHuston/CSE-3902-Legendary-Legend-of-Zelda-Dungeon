@@ -95,6 +95,8 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\GameLoseState\GameLoseState.cs" />
+    <Compile Include="GameState\GameWinState\GameWinState.cs" />
     <Compile Include="GameState\IMenu.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
