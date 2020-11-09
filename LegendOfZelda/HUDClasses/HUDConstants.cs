@@ -18,6 +18,8 @@ namespace LegendOfZelda.HUDClasses
         public const int HeartX = (int)(184 * Constants.GameScaler);
         public const int HeartY = (int)(32 * Constants.GameScaler);
         public const int NumberWidth = (int)(8 * Constants.GameScaler);
+        public static Point SecondaryItemLocation = new Point((int)(Constants.GameScaler * 128), (int)(Constants.GameScaler * 24));
+        public static Point PrimaryItemLocation = new Point((int)(Constants.GameScaler * 152), (int)(Constants.GameScaler * 24));
 
         //Locations on HUDItemSpriteSheet
         public const int EmptyHeartX = 108, EmptyHeartY = 9;
