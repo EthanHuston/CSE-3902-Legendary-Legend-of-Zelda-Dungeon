@@ -108,7 +108,7 @@ namespace LegendOfZelda.Enemies
 
         public void CheckSafeToDespawn()
         {
-            safeToDespawn = !safeToDespawn && health <= 0;
+            safeToDespawn = safeToDespawn || health <= 0;
         }
 
         private void Attack()
