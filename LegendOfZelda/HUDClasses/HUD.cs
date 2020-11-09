@@ -25,6 +25,7 @@ namespace LegendOfZelda.HUDClasses
         private bool displayMinimap;
         private ISprite linkMinimapSquare;
         private ISprite triforceMinimapSquare;
+        private Point triforceRoomLocation = new Point(5, 4);
         private bool hasCompass;
 
         private LinkConstants.ItemType primaryItem;
@@ -101,8 +102,8 @@ namespace LegendOfZelda.HUDClasses
             {
                 minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation);
                 if (hasCompass)
-                    triforceMinimapSquare.Draw(spriteBatch, HUDConstants.MinimapSquarePositions[new Point(5, 4)]);
-                linkMinimapSquare.Draw(spriteBatch, HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap]);
+                    triforceMinimapSquare.Draw(spriteBatch, position +  HUDConstants.MinimapSquarePositions[triforceRoomLocation]);
+                linkMinimapSquare.Draw(spriteBatch, position + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap]);
             }
             foreach (IButton button in Buttons){
                 button.Draw();
