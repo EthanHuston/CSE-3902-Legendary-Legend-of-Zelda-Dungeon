@@ -79,4 +79,4 @@ namespace LegendOfZelda.GameState.GameLoseState
         }
     }
 }
-}
+
