@@ -93,8 +93,7 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.Up },
                 { Keys.Left },
                 { Keys.Down },
-                { Keys.Right },
-                { Keys.Q }
+                { Keys.Right }
             };
         }
     }
