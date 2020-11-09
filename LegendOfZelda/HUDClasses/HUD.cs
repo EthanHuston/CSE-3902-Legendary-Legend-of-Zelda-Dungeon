@@ -23,9 +23,9 @@ namespace LegendOfZelda.HUDClasses
         private bool displayMinimap;
         private LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
+        private IButton primaryButton;
         private IButton secondaryButton;
 
-        private Dictionary<LinkConstants.ItemType, IButton> primaryItemDictionary;
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
 
         private bool safeToDespawn = false;
@@ -51,6 +51,7 @@ namespace LegendOfZelda.HUDClasses
             primaryItem = players[0].PrimaryItem;
             secondaryItem = players[0].SecondaryItem;
             fillSecondaryItemDictionary();
+            primaryButton = new SwordInventoryButton(spriteBatch, this, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
@@ -84,6 +85,7 @@ namespace LegendOfZelda.HUDClasses
             foreach (IButton button in Buttons){
                 button.Draw();
             }
+            primaryButton.Draw();
             secondaryButton.Draw();
             numberManager.Draw(spriteBatch, Position);
             heartManager.Draw(spriteBatch, Position);
