@@ -44,7 +44,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && false; // some condition here if we want to despawn
+            safeToDespawn = safeToDespawn || false; // some condition here if we want to despawn
         }
 
     }
