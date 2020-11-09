@@ -6,9 +6,9 @@ namespace LegendOfZelda
     public static class Constants
     {
         public const int FrameDelay = 6;
-        public const double GameScaler = 2.5;
+        public const double GameScaler = 3;
         public const int HeartValue = 10;
-        public const float MusicVolume = 0f; // TODO: turn sound back on
+        public const float MusicVolume = 1f; // TODO: turn sound back on
 
         // Game Screen
         public static Vector2 GameSize => new Vector2(MaxXPos, MaxYPos);

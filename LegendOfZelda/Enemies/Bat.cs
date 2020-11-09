@@ -84,7 +84,7 @@ namespace LegendOfZelda.Enemies
                     ChooseDirection();
                 }
                 sprite.Update();
-                safeToDespawn = !safeToDespawn && health <= 0;
+                safeToDespawn = safeToDespawn || health <= 0;
             }
             if (safeToDespawn)
             {

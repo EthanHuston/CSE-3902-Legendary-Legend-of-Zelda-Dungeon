@@ -5,20 +5,20 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    internal class GapTile : IBlock
+    internal class DragonStatues : IBlock
     {
-        private readonly ISprite tileBlackSprite;
+        private readonly ISprite statueSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public GapTile(SpriteBatch spriteBatch, Point spawnPosition)
+        public DragonStatues(SpriteBatch spriteBatch, Point position)
         {
-            tileBlackSprite = EnvironmentSpriteFactory.Instance.CreateTileBlackSprite();
+            statueSprite = EnvironmentSpriteFactory.Instance.CreateDragonStatueSprite();
             sB = spriteBatch;
-            Position = spawnPosition;
+            Position = position;
             safeToDespawn = false;
         }
 
@@ -29,12 +29,12 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            tileBlackSprite.Draw(sB, Position);
+            statueSprite.Draw(sB, Position);
         }
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(Position.X, Position.Y, tileBlackSprite.GetPositionRectangle().Width, tileBlackSprite.GetPositionRectangle().Height);
+            return new Rectangle(Position.X, Position.Y, statueSprite.GetPositionRectangle().Width, statueSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()
@@ -44,8 +44,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = safeToDespawn || false; // some condition here if we want to despawn
+            statueSprite.Update();
         }
-
     }
 }

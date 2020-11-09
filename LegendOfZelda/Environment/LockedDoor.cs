@@ -47,7 +47,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && false; // put condition here for when door can be despawned
+            safeToDespawn = safeToDespawn || false; // put condition here for when door can be despawned
         }
 
         public bool SafeToDespawn()

@@ -9,7 +9,8 @@ namespace LegendOfZelda.Environment
     internal class EnvironmentSpriteFactory
     {
         private Texture2D squareSprite;
-        private Texture2D statueSprite;
+        private Texture2D fishStatueSprite;
+        private Texture2D dragonStatueSprite;
         private Texture2D stairSprite;
         private Texture2D doorSprite;
         private Texture2D ladderSprite;
@@ -29,7 +30,8 @@ namespace LegendOfZelda.Environment
         {
             //Load Environment Sprites
             squareSprite = content.Load<Texture2D>("Environment/Block");
-            statueSprite = content.Load<Texture2D>("Environment/Statue");
+            fishStatueSprite = content.Load<Texture2D>("Environment/Statue");
+            dragonStatueSprite = content.Load<Texture2D>("Environment/DragonStatue");
             stairSprite = content.Load<Texture2D>("Environment/Stairs");
             doorSprite = content.Load<Texture2D>("Environment/Doors");
             ladderSprite = content.Load<Texture2D>("Environment/Ladder");
@@ -54,9 +56,13 @@ namespace LegendOfZelda.Environment
         {
             return new SquareSprite(squareSprite);
         }
-        public ISprite CreateStatueSprite()
+        public ISprite CreateFishStatueSprite()
         {
-            return new StatueSprite(statueSprite);
+            return new FishStatueSprite(fishStatueSprite);
+        }
+        public ISprite CreateDragonStatueSprite()
+        {
+            return new DragonStatueSprite(dragonStatueSprite);
         }
         public ISprite CreateStairSprite()
         {

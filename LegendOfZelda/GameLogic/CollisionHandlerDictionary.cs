@@ -115,7 +115,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(BowItem), new LinkItemCollisionHandler() },
                 {typeof(ClockItem), new LinkItemCollisionHandler() },
                 {typeof(CompassItem), new LinkItemCollisionHandler() },
-                {typeof(FairyItem), new LinkItemCollisionHandler() },
+                {typeof(FairyItem), new LinkFairyCollisionHandler() },
                 {typeof(HeartContainerItem), new LinkItemCollisionHandler() },
                 {typeof(HeartItem), new LinkHeartCollisionHandler() },
                 {typeof(KeyItem), new LinkItemCollisionHandler() },
@@ -128,7 +128,8 @@ namespace LegendOfZelda.GameLogic
             {
                 // immovable blocks
                 {typeof(LockedDoor), new LinkImmovableBlockCollisionHandler() },
-                {typeof(Statues), new LinkImmovableBlockCollisionHandler() },
+                {typeof(FishStatues), new LinkImmovableBlockCollisionHandler() },
+                {typeof(DragonStatues), new LinkImmovableBlockCollisionHandler() },
                 {typeof(TileWater), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
                 {typeof(ShutDoor), new LinkImmovableBlockCollisionHandler() },

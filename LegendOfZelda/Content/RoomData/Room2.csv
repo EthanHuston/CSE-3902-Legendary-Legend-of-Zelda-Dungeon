@@ -1,8 +1,8 @@
 ﻿tealBack,locked,open,open,open,,,,,,,
 ---,---,---,---,---,---,---,---,---,---,---,---
----,stat,---,---,stat,---,---,stat,---,---,stat,---
+---,fstat,---,---,fstat,---,---,dstat,---,---,dstat,---
 ---,---,---,---,---,---,---,---,---,---,---,---
----,stat,---,---,stat,---,---,stat,---,---,stat,---
+---,fstat,---,---,fstat,---,---,dstat,---,---,dstat,---
 ---,---,---,---,---,bg,bg,---,---,---,---,---
----,stat,---,bg,stat,bg,bg,stat,bg,---,stat,---
+---,fstat,---,bg,fstat,bg,bg,dstat,bg,---,dstat,---
 ---,---,---,bg,bg,bg,bg,bg,bg,---,---,---

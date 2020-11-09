@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    internal class Statues : IBlock
+    internal class FishStatues : IBlock
     {
         private readonly ISprite statueSprite;
         private readonly SpriteBatch sB;
@@ -14,9 +14,9 @@ namespace LegendOfZelda.Environment
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public Statues(SpriteBatch spriteBatch, Point position)
+        public FishStatues(SpriteBatch spriteBatch, Point position)
         {
-            statueSprite = EnvironmentSpriteFactory.Instance.CreateStatueSprite();
+            statueSprite = EnvironmentSpriteFactory.Instance.CreateFishStatueSprite();
             sB = spriteBatch;
             Position = position;
             safeToDespawn = false;

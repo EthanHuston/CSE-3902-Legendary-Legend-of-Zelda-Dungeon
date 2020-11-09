@@ -11,7 +11,6 @@ namespace LegendOfZelda.Link
 {
     internal class LinkPlayer : IPlayer
     {
-        private double maxHealth;
         private Dictionary<LinkConstants.ItemType, int> inventory;
         private readonly Dictionary<LinkConstants.ProjectileType, IProjectile> currentProjectiles;
         private bool safeToDespawn;
@@ -25,14 +24,15 @@ namespace LegendOfZelda.Link
         public ILinkState State { get => state; set { if (!BlockStateChange) state = value; } }
         public Point Position { get => Mover.Position; set => Mover.Position = value; }
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
-        public LinkConstants.ItemType PrimaryItem => CurrentHealth == maxHealth ? LinkConstants.ItemType.SwordBeam : LinkConstants.ItemType.Sword;
+        public LinkConstants.ItemType PrimaryItem => LinkConstants.ItemType.Sword;
         public LinkConstants.ItemType SecondaryItem { get; set; }
+        public double MaxHealth { get; private set; }
         public double CurrentHealth { get; private set; }
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
             CurrentHealth = LinkConstants.StartingHearts;
-            maxHealth = LinkConstants.StartingHearts;
+            MaxHealth = LinkConstants.StartingHearts;
             Game = game;
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             FacingDirection = Constants.Direction.Down;
@@ -51,7 +51,7 @@ namespace LegendOfZelda.Link
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && CurrentHealth <= 0;
+            safeToDespawn = safeToDespawn || CurrentHealth <= 0;
             State.Update();
             if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
             if(CurrentHealth <= 1.0)
@@ -81,18 +81,18 @@ namespace LegendOfZelda.Link
         public void AddHealth(double healAmount)
         {
             CurrentHealth += healAmount;
-            if (CurrentHealth > maxHealth) CurrentHealth = maxHealth;
+            if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
         }
 
         public void IncreaseMaxHealth(int amount)
         {
-            maxHealth += amount;
+            MaxHealth += amount;
             CurrentHealth += amount;
         }
 
         public void GiveFullHealth()
         {
-            CurrentHealth = maxHealth;
+            CurrentHealth = MaxHealth;
         }
 
         public void MoveUp()
@@ -214,9 +214,6 @@ namespace LegendOfZelda.Link
                 case LinkConstants.ItemType.Sword:
                     UseSword();
                     break;
-                case LinkConstants.ItemType.SwordBeam:
-                    UseSwordBeam();
-                    break;
                 case LinkConstants.ItemType.Bow:
                     UseBow();
                     break;
@@ -259,13 +256,6 @@ namespace LegendOfZelda.Link
             Vector2 velocity = CreateVelocityVector(FacingDirection, LinkConstants.BoomerangSpeed);
             SpawnItem(new BoomerangFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingBoomerangSpawnOffset, Constants.ProjectileOwner.Link, this, velocity));
             SoundFactory.Instance.CreateArrowBoomerangSound().Play();
-        }
-
-        private void UseSwordBeam()
-        {
-            if (!CanSpawnProjectile(LinkConstants.ProjectileType.SwordBeam) || inventory[LinkConstants.ItemType.Sword] <= 0) return;
-            SpawnItem(new SwordBeamFlyingProjectile(Game.SpriteBatch, Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, FacingDirection));
-            SoundFactory.Instance.CreateSwordCombinedSound().Play();
         }
 
         private bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType)

@@ -83,6 +83,8 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpawnSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
+    <Compile Include="Environment\DragonStatues.cs" />
+    <Compile Include="Environment\Sprite\DragonStatueSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
     <Compile Include="Environment\RoomWall.cs" />
@@ -209,7 +211,7 @@
     <Compile Include="Environment\OpenDoor.cs" />
     <Compile Include="Environment\ShutDoor.cs" />
     <Compile Include="Environment\Stairs.cs" />
-    <Compile Include="Environment\Statues.cs" />
+    <Compile Include="Environment\FishStatues.cs" />
     <Compile Include="Environment\Walls.cs" />
     <Compile Include="Projectile\ArrowFlyingProjectile.cs" />
     <Compile Include="Projectile\BombExplodingProjectile.cs" />
@@ -297,7 +299,7 @@
     <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />
-    <Compile Include="Environment\Sprite\StatueSprite.cs" />
+    <Compile Include="Environment\Sprite\FishStatueSprite.cs" />
     <Compile Include="Environment\Sprite\TileBlueGrassSprite.cs" />
     <Compile Include="Environment\Sprite\TileBlackSprite.cs" />
     <Compile Include="Environment\Sprite\TileWaterSprite.cs" />

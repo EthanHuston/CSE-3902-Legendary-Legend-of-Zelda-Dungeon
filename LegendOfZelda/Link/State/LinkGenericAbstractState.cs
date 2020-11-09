@@ -55,7 +55,7 @@ namespace LegendOfZelda.Link.State
             link.State = new LinkStandingStillState(link, damaged, healthyDateTime);
         }
 
-        public void UseSword()
+        public virtual void UseSword()
         {
             link.State = new LinkAttackingState(link, damaged, healthyDateTime);
         }
