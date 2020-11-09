@@ -95,6 +95,8 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\GameLoseState\GameLoseState.cs" />
+    <Compile Include="GameState\GameWinState\GameWinState.cs" />
     <Compile Include="GameState\IMenu.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
@@ -434,10 +436,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameState\GameLoseState\" />
-    <Folder Include="GameState\GameWinState\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
