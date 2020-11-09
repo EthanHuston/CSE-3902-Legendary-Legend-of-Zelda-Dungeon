@@ -8,7 +8,9 @@ namespace LegendOfZelda.GameState.Rooms
 {
     internal class MouseController : IController
     {
-        private readonly Dictionary<Constants.Direction, ICommand> leftClickCommands;
+        private readonly Dictionary<Constants.Direction, ICommand> leftClickRoomCommands;
+        private readonly ICommand leftClickCommand;
+        private readonly ICommand rightClickCommand;
         private MouseState oldMouseState;
 
         public MouseController(IGameState gameState)
@@ -16,7 +18,9 @@ namespace LegendOfZelda.GameState.Rooms
             RoomGameState gameStateCast = (RoomGameState)gameState;
 
             oldMouseState = new MouseState();
-            leftClickCommands = new Dictionary<Constants.Direction, ICommand>();
+            leftClickCommand = new UsePrimaryItem(gameStateCast.GetPlayer(0));
+            rightClickCommand = new UseSecondaryItem(gameStateCast.GetPlayer(0));
+            leftClickRoomCommands = new Dictionary<Constants.Direction, ICommand>();
             RegisterCommand(Constants.Direction.Down, new ChangeRoomDownCommand(gameStateCast));
             RegisterCommand(Constants.Direction.Left, new ChangeRoomLeftCommand(gameStateCast));
             RegisterCommand(Constants.Direction.Right, new ChangeRoomRightCommand(gameStateCast));
@@ -35,7 +39,7 @@ namespace LegendOfZelda.GameState.Rooms
 
         public void RegisterCommand(Constants.Direction dir, ICommand command)
         {
-            leftClickCommands.Add(dir, command);
+            leftClickRoomCommands.Add(dir, command);
         }
 
         public void SetOldInputState(OldInputState oldInputState)
@@ -52,9 +56,19 @@ namespace LegendOfZelda.GameState.Rooms
             if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
             {
                 Constants.Direction dir = GetDirectionFromClick(newMouseState.Position);
-                if (leftClickCommands.ContainsKey(dir))
-                    leftClickCommands[dir].Execute();
+                if (leftClickRoomCommands.ContainsKey(dir))
+                {
+                    leftClickRoomCommands[dir].Execute();
+                }
+
+                leftClickCommand.Execute();
             }
+
+            if (newMouseState.RightButton == ButtonState.Pressed && localOldMouseState.RightButton != ButtonState.Pressed)
+            {
+                rightClickCommand.Execute();
+            }
+
             oldMouseState = newMouseState;
         }
 
