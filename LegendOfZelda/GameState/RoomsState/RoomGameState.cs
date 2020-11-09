@@ -34,7 +34,7 @@ namespace LegendOfZelda.GameState.Rooms
             CurrentRoom.Visiting = true;
             RoomMap = new RoomMap(game.SpriteBatch, ItemSelectionStateConstants.MapPieceTextureAtlasSource, ItemSelectionStateConstants.MapPieceTextureSize, Point.Zero);
             RoomMap.AddRoomToMap(CurrentRoom);
-            Hud = new HUD(Game.SpriteBatch, PlayerList);
+            Hud = new HUD(this);
 
             InitControllerList();
             InitItemSelectionGameStates();

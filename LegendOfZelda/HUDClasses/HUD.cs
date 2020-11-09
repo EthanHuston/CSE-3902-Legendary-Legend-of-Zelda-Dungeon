@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.ItemSelectionState;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -12,6 +13,7 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class HUD : IMenu
     {
+        private RoomGameState roomGameState;
         private SpriteBatch spriteBatch;
         private List<IPlayer> players;
         private HeartManager heartManager;
@@ -23,6 +25,7 @@ namespace LegendOfZelda.HUDClasses
         private bool displayMinimap;
         private ISprite linkMinimapSquare;
         private ISprite triforceMinimapSquare;
+        private bool hasCompass;
 
         private LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
@@ -45,10 +48,11 @@ namespace LegendOfZelda.HUDClasses
             }
         }
 
-        public HUD(SpriteBatch spriteBatch, List<IPlayer> players)
+        public HUD(RoomGameState gameState)
         {
-            this.spriteBatch = spriteBatch;
-            this.players = players;
+            roomGameState = gameState;
+            spriteBatch = gameState.Game.SpriteBatch;
+            players = gameState.PlayerList;
             heartManager = new HeartManager((LinkPlayer)players[0]);
             numberManager = new NumberManager((LinkPlayer)players[0]);
             primaryItem = players[0].PrimaryItem;
@@ -62,6 +66,7 @@ namespace LegendOfZelda.HUDClasses
             triforceMinimapSquare = HUDSpriteFactory.Instance.CreateTriforceMinimapSquareSprite();
             levelNum = new HUDNumber(1);
             displayMinimap = false;
+            hasCompass = false;
             Position = new Point(HUDConstants.hudx, HUDConstants.hudy);
         }
 
@@ -69,6 +74,8 @@ namespace LegendOfZelda.HUDClasses
         {
             if (players[0].GetQuantityInInventory(LinkConstants.ItemType.Map) != 0)
                 displayMinimap = true;
+            if (players[0].GetQuantityInInventory(LinkConstants.ItemType.Compass) != 0)
+                hasCompass = true;
             if (players[0].SecondaryItem != secondaryItem)
                 UpdateSecondaryItem();
             if (displayMinimap)
@@ -91,7 +98,12 @@ namespace LegendOfZelda.HUDClasses
             hudSprite.Draw(spriteBatch, position);
             levelNum.Draw(spriteBatch, Position + HUDConstants.LevelNumberLocation);
             if (displayMinimap)
+            {
                 minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation);
+                if (hasCompass)
+                    triforceMinimapSquare.Draw(spriteBatch, HUDConstants.MinimapSquarePositions[new Point(5, 4)]);
+                linkMinimapSquare.Draw(spriteBatch, HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap]);
+            }
             foreach (IButton button in Buttons){
                 button.Draw();
             }
