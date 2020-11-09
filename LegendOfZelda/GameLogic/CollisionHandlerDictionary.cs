@@ -121,7 +121,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(KeyItem), new LinkItemCollisionHandler() },
                 {typeof(MapItem), new LinkItemCollisionHandler() },
                 {typeof(RupeeItem), new LinkItemCollisionHandler() },
-                {typeof(TriforceItem), new LinkItemCollisionHandler() }
+                {typeof(TriforceItem), new LinkTriforceCollisionHandler() }
             };
 
             playerBlockDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IBlock>>()

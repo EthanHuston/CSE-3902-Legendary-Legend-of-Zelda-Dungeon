@@ -25,7 +25,6 @@ namespace LegendOfZelda.GameState.Rooms
             controllerMappings = new Dictionary<Keys, ICommand>
             { 
                 { Keys.Escape, new PauseGameCommand(gameState) },
-                { Keys.Q, new QuitGameCommand(gameState) },
                 { Keys.Tab, new ItemSelectCommand(gameState) },
 
                 // Register Player 1 Commands
@@ -38,7 +37,9 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.S, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.Down, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.D1, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
-                { Keys.D2, new UseSecondaryItem(gameStateCast.GetPlayer(0)) }
+                { Keys.D2, new UseSecondaryItem(gameStateCast.GetPlayer(0)) },
+                { Keys.Q, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
+                { Keys.E, new UseSecondaryItem(gameStateCast.GetPlayer(0)) }
             };
         }
 
