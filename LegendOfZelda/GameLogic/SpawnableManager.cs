@@ -72,6 +72,16 @@ namespace LegendOfZelda.GameLogic
             DrawList(ProjectileList);
             DrawList(ItemList);
         }
+        public void DrawGameLose()
+        {
+            DrawList(BackgroundList);
+            DrawList(PlayerList);
+        }
+        public void DrawGameWin()
+        {
+            DrawList(BackgroundList);
+            DrawList(PlayerList);
+        }
 
         private void DrawList<T>(List<T> list)
         {
