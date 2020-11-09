@@ -36,6 +36,7 @@ namespace LegendOfZelda
         private SoundEffect sword_shoot;
         private SoundEffect sword_slash;
         private SoundEffect text;
+        private SoundEffect title;
 
         public static SoundFactory Instance { get; } = new SoundFactory();
 
@@ -66,6 +67,7 @@ namespace LegendOfZelda
             sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot"); // Done
             sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash"); // Done
             text = content.Load<SoundEffect>("Sounds/LOZ_Text"); // Done
+            title = content.Load<SoundEffect>("Sounds/LOZ_Title2"); // Done
         }
 
         public SoundEffectInstance CreateArrowBoomerangSound()
@@ -191,6 +193,11 @@ namespace LegendOfZelda
         public SoundEffectInstance CreateTextSound()
         {
             return text.CreateInstance();
+        }
+
+        public SoundEffectInstance CreateTitleSound()
+        {
+            return title.CreateInstance();
         }
     }
 }
