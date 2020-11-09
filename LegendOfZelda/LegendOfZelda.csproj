@@ -96,7 +96,11 @@
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseState.cs" />
+    <Compile Include="GameState\GameLoseState\KeyboardController.cs" />
+    <Compile Include="GameState\GameLoseState\MouseController.cs" />
     <Compile Include="GameState\GameWinState\GameWinState.cs" />
+    <Compile Include="GameState\GameWinState\KeyboardController.cs" />
+    <Compile Include="GameState\GameWinState\MouseController.cs" />
     <Compile Include="GameState\IMenu.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
