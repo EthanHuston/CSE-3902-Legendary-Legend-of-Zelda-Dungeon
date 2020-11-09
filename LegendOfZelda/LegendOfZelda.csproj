@@ -434,7 +434,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="GameState\GameLoseState\" />
+    <Folder Include="GameState\GameWinState\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
