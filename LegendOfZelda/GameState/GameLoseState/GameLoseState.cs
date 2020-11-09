@@ -11,13 +11,13 @@ namespace LegendOfZelda.GameState.GameLoseState
     {
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
-        private ISpawnableManager spawnableManager;
+        private SpawnableManager spawnableManager;
 
         public GameLoseState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
             roomStatePreserved = (RoomGameState)oldRoomState;
-            spawnableManager = roomStatePreserved.SpawnableManager;
+            spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
             InitButtonsList();
             InitControllerList();
         }
@@ -42,7 +42,7 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void Draw()
         {
-            roomStatePreserved.Draw(); // continue to draw the old room in the background
+            spawnableManager.DrawGameLose(); // continue to draw the old room in the background
             foreach (ISpawnable button in buttons) button.Draw();
         }
 

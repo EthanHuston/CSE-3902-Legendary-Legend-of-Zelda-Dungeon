@@ -21,7 +21,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             InitRepeatableKeys();
             controllerMappings = new Dictionary<Keys, ICommand>();
 
-            RegisterCommand(Keys.Escape, new ResumeGameCommand(gameState));
+            RegisterCommand(Keys.Escape, new ExitGameCommand(gameState));
         }
 
         public GameStateConstants.InputType GetInputType()
