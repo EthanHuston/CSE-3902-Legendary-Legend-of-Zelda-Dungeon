@@ -56,9 +56,13 @@ namespace LegendOfZelda.Environment
         {
             return new SquareSprite(squareSprite);
         }
-        public ISprite CreateStatueSprite()
+        public ISprite CreateFishStatueSprite()
         {
-            return new StatueSprite(statueSprite);
+            return new FishStatueSprite(fishStatueSprite);
+        }
+        public ISprite CreateDragonStatueSprite()
+        {
+            return new DragonStatueSprite(dragonStatueSprite);
         }
         public ISprite CreateStairSprite()
         {

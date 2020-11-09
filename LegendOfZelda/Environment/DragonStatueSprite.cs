@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment.Sprite
 {
-    internal class StatueSprite : ISprite
+    internal class DragonStatueSprite : ISprite
     {
         private readonly Texture2D sprite;
 
-        public StatueSprite(Texture2D sprite)
+        public DragonStatueSprite(Texture2D sprite)
         {
             this.sprite = sprite;
         }
@@ -26,7 +26,7 @@ namespace LegendOfZelda.Environment.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int) (sprite.Width * Constants.GameScaler), (int) (sprite.Height * Constants.GameScaler));
+            return new Rectangle(0, 0, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
         }
     }
 }
