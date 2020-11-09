@@ -23,7 +23,7 @@ namespace LegendOfZelda.Enemies
         private readonly int changeDirection = 100;
         private bool boomerangActive = false;
         private readonly int attackWaitTime = 150;
-        private double health = 3 * Constants.Herat;
+        private double health = 3 * Constants.HeartValue;
         private bool inKnockback = false;
         private bool safeToDespawn = false;
         private DateTime healthyDateTime;
