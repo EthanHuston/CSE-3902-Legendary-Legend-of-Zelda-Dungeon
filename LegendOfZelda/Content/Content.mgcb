@@ -1069,6 +1069,18 @@
 /processorParam:TextureFormat=Color
 /build:Menu/InventoryBackground.png
 
+#begin Menu/LinkMinimapSquare.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menu/LinkMinimapSquare.png
+
 #begin Menu/MapBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1128,6 +1140,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Menu/TitleScreenBackground.png
+
+#begin Menu/TriforceMinimapSquare.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menu/TriforceMinimapSquare.png
 
 #begin NPC/Merchant.png
 /importer:TextureImporter

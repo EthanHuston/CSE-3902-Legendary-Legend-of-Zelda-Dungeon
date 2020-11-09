@@ -13,6 +13,8 @@ namespace LegendOfZelda.HUDClasses
         private Texture2D HUDSprite;
         private Texture2D HUDItemsTextureAtlas;
         private Texture2D HUDMiniMap;
+        private Texture2D LinkMinimapSquare;
+        private Texture2D TriforceMinimapSquare;
 
         public static HUDSpriteFactory Instance { get; } = new HUDSpriteFactory();
 
@@ -22,6 +24,8 @@ namespace LegendOfZelda.HUDClasses
             HUDSprite = content.Load<Texture2D>("Menu/HUD");
             HUDItemsTextureAtlas = content.Load<Texture2D>("Menu/HudItems");
             HUDMiniMap = content.Load<Texture2D>("Menu/MiniMap");
+            LinkMinimapSquare = content.Load<Texture2D>("Menu/LinkMinimapSquare");
+            TriforceMinimapSquare = content.Load<Texture2D>("Menu/TriforceMinimapSquare");
         }
 
         public ISprite CreateHUDSprite()
@@ -37,6 +41,16 @@ namespace LegendOfZelda.HUDClasses
         public ITextureAtlasSprite CreateHUDItemsTextureAtlas()
         {
             return new HUDItemsTextureAtlas(HUDItemsTextureAtlas);
+        }
+
+        public ISprite CreateLinkMinimapSquareSprite()
+        {
+            return new MinimapSquareSprite(LinkMinimapSquare);
+        }
+
+        public ISprite CreateTriforceMinimapSquareSprite()
+        {
+            return new MinimapSquareSprite(TriforceMinimapSquare);
         }
     }
 }

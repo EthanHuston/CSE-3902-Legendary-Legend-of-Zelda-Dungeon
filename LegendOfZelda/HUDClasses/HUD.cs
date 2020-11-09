@@ -21,6 +21,9 @@ namespace LegendOfZelda.HUDClasses
         private HUDNumber levelNum;
         private ISprite minimapSprite;
         private bool displayMinimap;
+        private ISprite linkMinimapSquare;
+        private ISprite triforceMinimapSquare;
+
         private LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
         private IButton primaryButton;
@@ -55,6 +58,8 @@ namespace LegendOfZelda.HUDClasses
             secondaryButton = secondaryItemDictionary[secondaryItem];
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
+            linkMinimapSquare = HUDSpriteFactory.Instance.CreateLinkMinimapSquareSprite();
+            triforceMinimapSquare = HUDSpriteFactory.Instance.CreateTriforceMinimapSquareSprite();
             levelNum = new HUDNumber(1);
             displayMinimap = false;
             Position = new Point(HUDConstants.hudx, HUDConstants.hudy);
@@ -66,6 +71,11 @@ namespace LegendOfZelda.HUDClasses
                 displayMinimap = true;
             if (players[0].SecondaryItem != secondaryItem)
                 UpdateSecondaryItem();
+            if (displayMinimap)
+            {
+                linkMinimapSquare.Update();
+                triforceMinimapSquare.Update();
+            }
             numberManager.Update();
             heartManager.Update();
         }

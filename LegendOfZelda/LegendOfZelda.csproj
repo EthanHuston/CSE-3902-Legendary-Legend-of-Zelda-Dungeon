@@ -144,6 +144,7 @@
     <Compile Include="HUDClasses\HUDConstants.cs" />
     <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
     <Compile Include="HUDClasses\HUD.cs" />
+    <Compile Include="HUDClasses\Sprites\MinimapSquareSprite.cs" />
     <Compile Include="HUDClasses\Sprites\HUDItemsTextureAtlas.cs" />
     <Compile Include="HUDClasses\Sprites\MinimapSprite.cs" />
     <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
