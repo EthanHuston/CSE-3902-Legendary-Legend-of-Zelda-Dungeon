@@ -95,6 +95,7 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\Button\RetryButton.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseState.cs" />
     <Compile Include="GameState\GameLoseState\KeyboardController.cs" />
     <Compile Include="GameState\GameLoseState\MouseController.cs" />

@@ -22,7 +22,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         {
             buttons = new List<ISpawnable>()
             {
-                {new ResumeButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
+                {new RetryButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
                 {new MainMenuButton(Game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) },
                 {new ExitButton(Game.SpriteBatch, GameStateConstants.PauseStateExitButtonLocation) }
             };
