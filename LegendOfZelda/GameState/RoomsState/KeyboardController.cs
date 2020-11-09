@@ -25,7 +25,6 @@ namespace LegendOfZelda.GameState.Rooms
             controllerMappings = new Dictionary<Keys, ICommand>
             { 
                 { Keys.Escape, new PauseGameCommand(gameState) },
-                { Keys.Q, new QuitGameCommand(gameState) },
                 { Keys.Tab, new ItemSelectCommand(gameState) },
 
                 // Register Player 1 Commands
