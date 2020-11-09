@@ -82,7 +82,7 @@ namespace LegendOfZelda.Enemies
 
                     KeepInBounds();
 
-                    if (updateCount % attackWaitTime == 0)
+                    if (updateCount % attackWaitTime == 0 && !boomerangActive)
                         Attack();
 
                     boomerangActive = boomer != null && !boomer.SafeToDespawn();
