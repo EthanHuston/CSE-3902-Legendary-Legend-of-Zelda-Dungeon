@@ -27,10 +27,10 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             controllerMappings = new Dictionary<Type, ICommand>
             {
-                {typeof(ArrowWoodInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Bow) },
+                {typeof(ArrowWoodInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Rupee) },
                 {typeof(BombInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Bomb) },
                 {typeof(BoomerangWoodInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Boomerang) },
-                {typeof(BowInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Bow) },
+                {typeof(BowInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Rupee) },
 
             };
         }

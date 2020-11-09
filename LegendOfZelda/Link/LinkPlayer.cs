@@ -215,6 +215,7 @@ namespace LegendOfZelda.Link
                     UseSword();
                     break;
                 case LinkConstants.ItemType.Bow:
+                case LinkConstants.ItemType.Rupee:
                     UseBow();
                     break;
                 case LinkConstants.ItemType.Bomb:
