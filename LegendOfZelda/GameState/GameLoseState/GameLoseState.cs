@@ -12,6 +12,8 @@ namespace LegendOfZelda.GameState.GameLoseState
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
+        private bool phaseOneDone = false;
+        private bool phaseTwoDone = false;
 
         public GameLoseState(Game1 game, IGameState oldRoomState)
         {
@@ -42,7 +44,10 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void Draw()
         {
-            spawnableManager.DrawGameLose(); // continue to draw the old room in the background
+            if (!phaseOneDone)
+            {
+                spawnableManager.DrawGameLose(); // continue to draw the old room in the background
+            }
             foreach (ISpawnable button in buttons) button.Draw();
         }
 
@@ -68,7 +73,17 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.Update();
+            if (!phaseOneDone)
+            {
+
+            } else if (!phaseTwoDone)
+            {
+
+            }
+            else
+            {
+                foreach (IController controller in controllerList) controller.Update();
+            }
         }
 
         protected override void SwitchingStateUpdate()
