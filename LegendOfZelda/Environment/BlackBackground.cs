@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            sprite.Draw(sb, position);
+            sprite.Draw(sb, position, Constants.DrawLayer.Background);
         }
 
         public Rectangle GetRectangle()

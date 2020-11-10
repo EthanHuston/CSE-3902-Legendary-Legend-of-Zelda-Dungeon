@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -17,11 +18,11 @@ namespace LegendOfZelda.Enemies.Sprite
             // no update needed
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Width));
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
 
         public Rectangle GetPositionRectangle()

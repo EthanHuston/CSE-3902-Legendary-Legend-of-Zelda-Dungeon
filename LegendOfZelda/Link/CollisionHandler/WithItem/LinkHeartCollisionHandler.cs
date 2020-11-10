@@ -8,6 +8,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
     {
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {
+            SoundFactory.Instance.CreateGetHeartSound().Play();
             link.BeHealthy(LinkConstants.HeartItemHealAmount);
             item.Despawn();
         }

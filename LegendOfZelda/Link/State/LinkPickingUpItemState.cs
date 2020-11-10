@@ -55,11 +55,8 @@ namespace LegendOfZelda.Link.State
                 case LinkConstants.ItemType.Fairy:
                     SoundFactory.Instance.CreateGetItemSound().Play();
                     break;
-                case LinkConstants.ItemType.Heart:
-                    SoundFactory.Instance.CreateGetHeartSound().Play();
-                    break;
                 case LinkConstants.ItemType.Key:
-                    SoundFactory.Instance.CreateGetItemSound().Play();
+                    SoundFactory.Instance.CreateGetHeartSound().Play();
                     break;
                 case LinkConstants.ItemType.Map:
                     SoundFactory.Instance.CreateGetItemSound().Play();

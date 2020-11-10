@@ -1,3 +1,4 @@
+using LegendOfZelda.HUDClasses;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -7,29 +8,65 @@ namespace LegendOfZelda
     {
         //Room Constants
         public const double SpriteMultiplier = Constants.GameScaler;
-        public const int roomBorderX = 0;
-        public const int roomBorderY = 0;
-        public const int roomWidth = (int)(256 * SpriteMultiplier);
-        public const int roomHeight = (int)(176 * SpriteMultiplier);
-        public const int tileLength = (int)(16 * SpriteMultiplier);
-        public const int wallWidth = (int)(32 * SpriteMultiplier);
-        public const int backgroundX = roomBorderX + wallWidth;
-        public const int backgroundY = roomBorderY + wallWidth;
-        public const int topDoorX = (roomWidth - wallWidth) / 2;
-        public const int topDoorY = roomBorderY;
-        public const int rightDoorX = roomWidth - wallWidth;
-        public const int rightDoorY = (roomHeight - wallWidth) / 2;
-        public const int bottomDoorX = topDoorX;
-        public const int bottomDoorY = roomHeight - wallWidth;
-        public const int leftDoorX = roomBorderX;
-        public const int leftDoorY = rightDoorY;
+        public const int RoomBorderX = 0;
+        public const int RoomBorderY = HUDConstants.hudHeight;
+        public const int RoomWidth = (int)(256 * SpriteMultiplier);
+        public const int RoomHeight = (int)(176 * SpriteMultiplier);
+        public const int TileLength = (int)(16 * SpriteMultiplier);
+        public const int WallWidth = (int)(32 * SpriteMultiplier);
+        public const int BottomOfScreen = RoomBorderY + RoomHeight;
+        public const int RightOfScreen = RoomBorderX + RoomWidth;
+        public const int BackgroundX = RoomBorderX + WallWidth;
+        public const int BackgroundY = RoomBorderY + WallWidth;
+        public const int TopDoorX = RoomBorderX + (RoomWidth - WallWidth) / 2;
+        public const int TopDoorY = RoomBorderY;
+        public const int RightDoorX = RoomBorderX + RoomWidth - WallWidth;
+        public const int RightDoorY = RoomBorderY + (RoomHeight - WallWidth) / 2;
+        public const int BottomDoorX = TopDoorX;
+        public const int BottomDoorY = RoomBorderY + RoomHeight - WallWidth;
+        public const int LeftDoorX = RoomBorderX;
+        public const int LeftDoorY = RightDoorY;
         public const int NumberRooms = 17;
-        private const int wallBlockShortener = 1;
-        public static Random randomGenerator = new Random();
-        public static Rectangle LeftWallRectangle => new Rectangle(0, 0, wallWidth - (int)(wallBlockShortener * SpriteMultiplier), roomHeight);
-        public static Rectangle RightWallRectangle => new Rectangle(roomWidth - wallWidth, 0, wallWidth + (int)(wallBlockShortener * SpriteMultiplier), roomHeight);
-        public static Rectangle UpWallRectangle => new Rectangle(0, 0, roomWidth - (int)(wallBlockShortener * SpriteMultiplier), wallWidth);
-        public static Rectangle DownWallRectangle => new Rectangle(0, roomHeight - wallWidth, roomWidth + (int)(wallBlockShortener * SpriteMultiplier), wallWidth);
+        public static Random RandomGenerator = new Random();
+        
+        // Wall Collision Rectangles
+        private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
+        private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
+        private const int wallBlockWidth = WallWidth;
+        private const int rightSideWallBlockX = RightOfScreen - WallWidth;
+        private const int rightTopBottomWallBlockX = RightOfScreen - upDownWallBlockLength;
+        private const int leftWallBlockX = 0;
+        private const int upWallBlockY = HUDConstants.hudHeight;
+        private const int downSideWallBlockY = BottomOfScreen - rightLeftWallBlockLength;
+        private const int downBottomWallBlockY = BottomOfScreen - WallWidth;
+        public static Rectangle LeftUpWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle LeftDownWallRectangle => new Rectangle(leftWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle RightUpWallRectangle => new Rectangle(rightSideWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle RightDownWallRectangle => new Rectangle(rightSideWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle UpLeftWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
+        public static Rectangle UpRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
+        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth); 
+        public static Rectangle DownRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
+
+        // Room Change Triggers
+        private const int roomChangeTriggerWidth = 20;
+        private const int roomChangeTriggerLength = WallWidth;
+        public static Rectangle RoomChangeRightTrigger => new Rectangle(RightDoorX + WallWidth - roomChangeTriggerWidth, RightDoorY, roomChangeTriggerWidth, roomChangeTriggerLength);
+        public static Rectangle RoomChangeLeftTrigger => new Rectangle(LeftDoorX, LeftDoorY, roomChangeTriggerWidth, roomChangeTriggerLength);
+        public static Rectangle RoomChangeDownTrigger => new Rectangle(BottomDoorX, BottomDoorY + WallWidth - roomChangeTriggerWidth, roomChangeTriggerLength, roomChangeTriggerWidth);
+        public static Rectangle RoomChangeUpTrigger => new Rectangle(TopDoorX, TopDoorY, roomChangeTriggerLength, roomChangeTriggerWidth);
+
+        // Door Locations on Texture Atlas
+        public const int OpenDoorColumn = 0;
+        public const int LockedDoorColumn = 1;
+        public const int CrackedDoorColumn = 2;
+        public const int BombedDoorColumn = 3;
+        public const int BombableDoorColumn = 4;
+        public const int UpDoorRow = 0;
+        public const int LeftDoorRow = 1;
+        public const int RightDoorRow = 2;
+        public const int DownDoorRow = 3;
+
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";
         public const string BrickTile = "brick";
@@ -38,7 +75,8 @@ namespace LegendOfZelda
         public const string LadderTile = "lad";
         public const string MovableBlock = "redblock";
         public const string Stairs = "stairs";
-        public const string Statue = "stat";
+        public const string FishStatue = "fstat";
+        public const string DragonStatue = "dstat";
         public const string BlueGrass = "bg";
         public const string Water = "water";
         //String Abbreviations for Border and Background in CSV File

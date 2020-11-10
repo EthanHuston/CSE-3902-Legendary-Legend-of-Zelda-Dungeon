@@ -82,6 +82,16 @@ namespace LegendOfZelda.GameLogic
             }
         }
 
+        private void DrawList(List<IItem> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                IItem spawnable = list[i];
+                if (typeof(KeyItem) == spawnable.GetType() && NpcList.Count != 0) continue; 
+                spawnable.Draw();
+            }
+        }
+
         public void UpdateAll()
         {
             UpdateList(BackgroundList);

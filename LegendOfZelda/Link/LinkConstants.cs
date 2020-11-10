@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link
         public const int ArrowSpeed = (int)(2 * SpriteScaler);
 
         // Misc. Values
-        public const int StartingHealth = 60;
+        public const int StartingHearts = 6 * HeartValue;
         public const int HeartValue = Constants.HeartValue;
         public const int HeartItemHealAmount = Constants.HeartValue;
 
@@ -23,11 +23,18 @@ namespace LegendOfZelda.Link
         public const int CollisionHelper = (int)(3 * SpriteScaler);
         public const int UsingSwordFrameDelay = 3;
 
-        // Spawn Locations : Entering into Rooms
-        public static Point DoorDownSpawnPosition => new Point((int)(120 * SpriteScaler), (int)(128 * SpriteScaler));
-        public static Point DoorUpSpawnPosition => new Point((int)(120 * SpriteScaler), (int)(32 * SpriteScaler));
-        public static Point DoorLeftSpawnPosition => new Point((int)(32 * SpriteScaler), (int)(80 * SpriteScaler));
-        public static Point DoorRightSpawnPosition => new Point((int)(208 * SpriteScaler), (int)(80 * SpriteScaler));
+        // Inventory Starting Quantities
+        public const int RupeeCount = 10;
+        public const int BombCount = 2;
+        public const int BoomerangCount = 1;
+        public const int SwordCount = 1;
+        public const int BowCount = 1; // TODO: change me after implementing secret room
+
+        // Spawn Locations : Entering into Room
+        public static Point DoorDownSpawnPosition => new Point(RoomConstants.BottomDoorX + RoomConstants.TileLength / 2, RoomConstants.BottomDoorY);
+        public static Point DoorUpSpawnPosition => new Point(RoomConstants.TopDoorX + RoomConstants.TileLength / 2, RoomConstants.TopDoorY + RoomConstants.TileLength);
+        public static Point DoorLeftSpawnPosition => new Point(RoomConstants.LeftDoorX + RoomConstants.TileLength, RoomConstants.LeftDoorY + RoomConstants.TileLength / 2);
+        public static Point DoorRightSpawnPosition => new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY + RoomConstants.TileLength / 2);
 
         // Spawn Offsets : Picking Up Items
         public static Point PickingUpBoomerangSpawnOffset => new Point((int)(0 * SpriteScaler), (int)(-9 * SpriteScaler));
@@ -62,7 +69,10 @@ namespace LegendOfZelda.Link
             Key,
             Map,
             Sword,
-            Triforce
+            SwordBeam,
+            Triforce,
+            None,
+            Candle
         }
 
         public enum ProjectileType

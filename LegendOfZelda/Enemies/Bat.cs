@@ -15,12 +15,12 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
-        private double health = 0.5;
+        private double health = 0.5 * Constants.HeartValue;
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
-        private readonly Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.RandomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -84,7 +84,7 @@ namespace LegendOfZelda.Enemies
                     ChooseDirection();
                 }
                 sprite.Update();
-                safeToDespawn = !safeToDespawn && health <= 0;
+                safeToDespawn = safeToDespawn || health <= 0;
             }
             if (safeToDespawn)
             {
@@ -96,11 +96,11 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                spawnSprite.Draw(spriteBatch, position);
+                spawnSprite.Draw(spriteBatch, position, Constants.DrawLayer.EnemySpawnSprite);
             }
             else
             {
-                sprite.Draw(spriteBatch, position, damaged);
+                sprite.Draw(spriteBatch, position, damaged, Constants.DrawLayer.Enemy);
             }
         }
 
@@ -111,6 +111,7 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckBounds()
         {
+            // TODO: use constant
             if (position.X + 16 > Constants.MaxXPos)
             {
                 ChooseDirection();

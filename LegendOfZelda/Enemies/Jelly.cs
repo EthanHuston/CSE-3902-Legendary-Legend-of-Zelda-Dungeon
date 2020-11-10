@@ -14,12 +14,12 @@ namespace LegendOfZelda.Enemies
         private int movementBuffer = 0;
         private int upDown = 0;
         private int leftRight = 0;
-        private double health = .5;
+        private double health = .5 * Constants.HeartValue;
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
-        private readonly Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.RandomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -38,7 +38,7 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = !safeToDespawn && health <= 0;
+            safeToDespawn = safeToDespawn || health <= 0;
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
@@ -56,8 +56,6 @@ namespace LegendOfZelda.Enemies
             }
             else
             {
-                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-                safeToDespawn = !safeToDespawn && health <= 0;
                 movementBuffer++;
                 if (movementBuffer == 16)
                 {
@@ -75,11 +73,11 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                spawnSprite.Draw(spriteBatch, position);
+                spawnSprite.Draw(spriteBatch, position, Constants.DrawLayer.EnemySpawnSprite);
             }
             else
             {
-                sprite.Draw(spriteBatch, position, damaged);
+                sprite.Draw(spriteBatch, position, damaged, Constants.DrawLayer.Enemy);
             }
         }
         private void ChooseDirection()

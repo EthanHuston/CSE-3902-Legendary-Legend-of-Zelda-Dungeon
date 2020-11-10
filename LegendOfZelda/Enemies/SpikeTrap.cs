@@ -56,7 +56,7 @@ namespace LegendOfZelda.Enemies
             {
                 sprite.Update();
                 LinkPosition = link.GetRectangle();
-                TrapPosition = this.GetRectangle();
+                TrapPosition = GetRectangle();
                 if (going)
                 {
                     if (currentDirection == Constants.Direction.Left)
@@ -105,11 +105,11 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                spawnSprite.Draw(spriteBatch, position);
+                spawnSprite.Draw(spriteBatch, position, Constants.DrawLayer.EnemySpawnSprite);
             }
             else
             {
-                sprite.Draw(spriteBatch, position);
+                sprite.Draw(spriteBatch, position, Constants.DrawLayer.Enemy);
             }
         }
         private void CheckOverlap()

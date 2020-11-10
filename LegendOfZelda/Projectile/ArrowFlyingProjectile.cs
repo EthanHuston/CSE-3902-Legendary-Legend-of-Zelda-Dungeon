@@ -30,11 +30,6 @@ namespace LegendOfZelda.Projectile
             sprite.Update();
         }
 
-        public override void Draw()
-        {
-            sprite.Draw(spriteBatch, Position);
-        }
-
         public override double DamageAmount()
         {
             return Constants.ArrowDamage;

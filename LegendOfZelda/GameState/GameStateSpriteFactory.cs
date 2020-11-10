@@ -13,33 +13,51 @@ namespace LegendOfZelda.GameState
         private Texture2D exitButtonSprite;
         private Texture2D mainMenuButtonSprite;
         private Texture2D titleScreenBackgroundSprite;
+        private Texture2D inventoryBackgroundSprite;
+        private Texture2D mapBackgroundSprite;
+        private Texture2D hudItems;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
         public void LoadAllTextures(ContentManager content)
         {
             //Load Item Sprites
-            resumeButtonSprite = content.Load<Texture2D>("Buttons/Resume");
-            exitButtonSprite = content.Load<Texture2D>("Buttons/Exit");
-            mainMenuButtonSprite = content.Load<Texture2D>("Buttons/Menu");
-            titleScreenBackgroundSprite = content.Load<Texture2D>("Environment/TitleScreenBackground");
+            resumeButtonSprite = content.Load<Texture2D>("Menu/ResumeButton");
+            exitButtonSprite = content.Load<Texture2D>("Menu/ExitButton");
+            mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton"); 
+            titleScreenBackgroundSprite = content.Load<Texture2D>("Menu/TitleScreenBackground");
+            inventoryBackgroundSprite = content.Load<Texture2D>("Menu/InventoryBackground");
+            mapBackgroundSprite = content.Load<Texture2D>("Menu/MapBackground");
+            hudItems = content.Load<Texture2D>("Menu/HudItems");
         }
 
         public ISprite CreateResumeButtonSprite()
-        {
-            return new ButtonSprite(resumeButtonSprite);
+        { 
+            return new GameStateSprite(resumeButtonSprite);
         }
         public ISprite CreateExitButtonSprite()
         {
-            return new ButtonSprite(exitButtonSprite);
+            return new GameStateSprite(exitButtonSprite);
         }
         public ISprite CreateMainMenuButtonSprite()
         {
-            return new ButtonSprite(mainMenuButtonSprite);
+            return new GameStateSprite(mainMenuButtonSprite);
         }
         public ITextureAtlasSprite CreateTitleScreenBackgroundSprite()
         {
-            return new TitleBackgroundSprite(titleScreenBackgroundSprite);
+            return new GameStateTextureAtlasSprite(titleScreenBackgroundSprite);
+        }
+        public ISprite CreateInventoryBackgroundSprite()
+        {
+            return new GameStateSprite(inventoryBackgroundSprite);
+        }
+        public ISprite CreateMapBackgroundSprite()
+        {
+            return new GameStateSprite(mapBackgroundSprite);
+        }
+        public ITextureAtlasSprite CreateHudItemsSprite()
+        {
+            return new GameStateTextureAtlasSprite(hudItems);
         }
     }
 }

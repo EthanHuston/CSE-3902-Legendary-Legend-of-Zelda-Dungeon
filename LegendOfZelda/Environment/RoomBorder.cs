@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            roomSprite.Draw(sb, position);
+            roomSprite.Draw(sb, position, Constants.DrawLayer.Wall);
         }
 
         public Rectangle GetRectangle()
@@ -44,7 +44,7 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && false; // condition to despawn
+            safeToDespawn = safeToDespawn || false; // condition to despawn
             roomSprite.Update();
         }
     }

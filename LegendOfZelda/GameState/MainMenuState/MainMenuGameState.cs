@@ -1,18 +1,15 @@
 ﻿using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.MainMenu
 {
-    class MainMenuGameState : IGameState
+    class MainMenuGameState : AbstractGameState
     {
-        private List<IController> controllerList;
         private readonly ITextureAtlasSprite backgroundSprite;
-        private const int textureMapColumn = 0;
-        private const int textureMapRow = 0;
-
-        public Game1 Game { get; private set; }
+        private SoundEffectInstance titleSound;
 
         public MainMenuGameState(Game1 game)
         {
@@ -30,37 +27,42 @@ namespace LegendOfZelda.GameState.MainMenu
             };
         }
 
-        public void Draw()
+        public override void Draw()
         {
-            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, new Point(textureMapColumn, textureMapRow));
+            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource, Constants.DrawLayer.Menu);
         }
 
-        public void SwitchToMainMenuState()
+        public override void SwitchToRoomState()
         {
-            // Already in main menu state
+            StartStateSwitch(new RoomGameState(Game));
         }
 
-        public void SwitchToPauseState()
+        public override void StateEntryProcedure()
         {
-            // cannot switch to pause state from here
+            titleSound = SoundFactory.Instance.CreateTitleSound();
+            titleSound.IsLooped = true;
+            titleSound.Volume = Constants.MusicVolume;
+            titleSound.Play();
         }
 
-        public void SwitchToRoomState()
+        public override void StateExitProcedure()
         {
-            Game.SetGameState(new RoomGameState(Game), GameStateConstants.GetOldInputState(controllerList));
+            titleSound.Stop();
         }
 
-        public void Update()
+        protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
+            foreach (IController controller in controllerList) controller.Update();
         }
 
-        public void SetControllerOldInputState(OldInputState oldInputState)
+        protected override void SwitchingStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
+            readyToSwitchState = true;
+        }
+
+        protected override void InitializingStateUpdate()
+        {
+            stateInitialized = true;
         }
     }
 }

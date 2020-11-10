@@ -8,6 +8,9 @@
         void SwitchToRoomState();
         void SwitchToPauseState();
         void SwitchToMainMenuState();
-        void SetControllerOldInputState(OldInputState oldInputState);
+        void SwitchToItemSelectionState();
+        void SetControllerOldInputState(OldInputState inputFromOldState);
+        void StateEntryProcedure();
+        void StateExitProcedure();
     }
 }

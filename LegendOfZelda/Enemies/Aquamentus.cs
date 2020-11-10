@@ -19,7 +19,7 @@ namespace LegendOfZelda.Enemies
         private readonly int attackTime = 90;
         private int attackUpdate = 0;
         private bool attacked = false;
-        private double health = 6;
+        private double health = 6 * Constants.HeartValue;
         private const int xVelocity = -2;
         private readonly ISpawnableManager itemSpawner;
         private bool safeToDespawn;
@@ -82,11 +82,11 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                spawnSprite.Draw(spriteBatch, position);
+                spawnSprite.Draw(spriteBatch, position, Constants.DrawLayer.EnemySpawnSprite);
             }
             else
             {
-                sprite.Draw(spriteBatch, position, damaged);
+                sprite.Draw(spriteBatch, position, damaged, Constants.DrawLayer.Enemy);
             }
         }
 
@@ -108,7 +108,7 @@ namespace LegendOfZelda.Enemies
 
         public void CheckSafeToDespawn()
         {
-            safeToDespawn = !safeToDespawn && health <= 0;
+            safeToDespawn = safeToDespawn || health <= 0;
         }
 
         private void Attack()

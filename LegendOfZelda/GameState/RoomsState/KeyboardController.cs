@@ -8,36 +8,45 @@ namespace LegendOfZelda.GameState.Rooms
 {
     internal class KeyboardController : IController
     {
-        private readonly Dictionary<Keys, ICommand> controllerMappings;
+        private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;
         private List<Keys> repeatableKeys;
 
         public KeyboardController(IGameState gameState)
         {
-            RoomGameState gameStateCast = (RoomGameState)gameState;
             oldKbState = new List<Keys>();
             InitRepeatableKeys();
-            controllerMappings = new Dictionary<Keys, ICommand>();
+            InitControllerMappings(gameState);
+        }
 
-            RegisterCommand(Keys.Escape, new PauseGameCommand(gameState));
-            RegisterCommand(Keys.Q, new QuitGameCommand(gameState));
+        private void InitControllerMappings(IGameState gameState)
+        {
+            RoomGameState gameStateCast = (RoomGameState)gameState;
+            controllerMappings = new Dictionary<Keys, ICommand>
+            { 
+                { Keys.Escape, new PauseGameCommand(gameState) },
+                { Keys.Tab, new ItemSelectCommand(gameState) },
 
-            // Register Player 1 Commands
-            RegisterCommand(Keys.W, new WalkingForwardCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.Up, new WalkingForwardCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.A, new WalkingLeftCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.Left, new WalkingLeftCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D, new WalkingRightCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.Right, new WalkingRightCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.S, new WalkingDownCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.Down, new WalkingDownCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.Z, new SwordAttackCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.N, new SwordAttackCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.E, new DamageLinkCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D4, new UseBowCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D8, new UseSwordBeamCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D6, new UseBoomerangCommand(gameStateCast.GetPlayer(0)));
-            RegisterCommand(Keys.D7, new UseBombCommand(gameStateCast.GetPlayer(0)));
+                // Register Player 1 Commands
+                { Keys.W, new WalkingForwardCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.Up, new WalkingForwardCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.A, new WalkingLeftCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.Left, new WalkingLeftCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.D, new WalkingRightCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.Right, new WalkingRightCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.S, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.Down, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.D1, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
+                { Keys.D2, new UseSecondaryItem(gameStateCast.GetPlayer(0)) },
+                { Keys.Q, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
+                { Keys.E, new UseSecondaryItem(gameStateCast.GetPlayer(0)) },
+
+                // TODO: Remove me. Temporary room changing commands
+                { Keys.NumPad8, new ChangeRoomUpCommand(gameStateCast) },
+                { Keys.NumPad6, new ChangeRoomRightCommand(gameStateCast) },
+                { Keys.NumPad2, new ChangeRoomDownCommand(gameStateCast) },
+                { Keys.NumPad4, new ChangeRoomLeftCommand(gameStateCast) }
+            };
         }
 
         public GameStateConstants.InputType GetInputType()

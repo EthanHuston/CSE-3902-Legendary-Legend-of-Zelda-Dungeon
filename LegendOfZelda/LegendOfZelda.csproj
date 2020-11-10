@@ -39,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
@@ -49,6 +50,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
@@ -81,6 +83,10 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpawnSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
+    <Compile Include="Environment\BombableOpening.cs" />
+    <Compile Include="Environment\DragonStatues.cs" />
+    <Compile Include="Environment\IDoor.cs" />
+    <Compile Include="Environment\Sprite\DragonStatueSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
     <Compile Include="Environment\RoomWall.cs" />
@@ -95,8 +101,32 @@
     <Compile Include="GameState\Command\QuitGameCommand.cs" />
     <Compile Include="GameState\Command\ResumeGameCommand.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
+    <Compile Include="GameLogic\ICamera.cs" />
+    <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\IMenu.cs" />
+    <Compile Include="GameState\Button\SwordInventoryButton.cs" />
+    <Compile Include="GameState\Button\CompassInventoryButton.cs" />
+    <Compile Include="GameState\Button\EmptyButton.cs" />
+    <Compile Include="GameState\Button\MapInventoryButton.cs" />
+    <Compile Include="GameState\Button\CandleBlueInventoryButton.cs" />
+    <Compile Include="GameState\Button\BowInventoryButton.cs" />
+    <Compile Include="GameState\Button\ArrowWoodInventoryButton.cs" />
+    <Compile Include="GameState\Button\BoomerangWoodInventoryButton.cs" />
+    <Compile Include="GameState\Button\BombInventoryButton.cs" />
+    <Compile Include="GameState\Button\IButton.cs" />
+    <Compile Include="GameState\Command\ExitGameCommand.cs" />
+    <Compile Include="GameState\Command\ItemSelectCommand.cs" />
+    <Compile Include="GameState\Command\MainMenuCommand.cs" />
+    <Compile Include="GameState\Command\QuitGameCommand.cs" />
+    <Compile Include="GameState\Command\ResumeGameCommand.cs" />
     <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
+    <Compile Include="GameState\Command\StartGameCommand.cs" />
+    <Compile Include="GameState\ItemSelectionState\ItemSelectionStateCamera.cs" />
+    <Compile Include="GameState\ItemSelectionState\ItemSelectionStateConstants.cs" />
+    <Compile Include="GameState\ItemSelectionState\MapMenu.cs" />
+    <Compile Include="GameState\ItemSelectionState\InventoryMenu.cs" />
+    <Compile Include="GameState\ItemSelectionState\ItemSelectionGameState.cs" />
     <Compile Include="GameState\MainMenuState\KeyboardController.cs" />
     <Compile Include="GameState\MainMenuState\MouseController.cs" />
     <Compile Include="GameState\MainMenuState\MainMenuGameState.cs" />
@@ -105,21 +135,36 @@
     <Compile Include="GameState\PauseState\MouseController.cs" />
     <Compile Include="GameState\PauseState\PauseGameState.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
-    <Compile Include="GameState\PauseState\ExitButton.cs" />
-    <Compile Include="GameState\PauseState\MainMenuButton.cs" />
-    <Compile Include="GameState\PauseState\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\ItemDrop.cs" />
-    <Compile Include="GameState\Sprite\ButtonSprite.cs" />
+    <Compile Include="GameState\Sprite\GameStateTextureAtlasSprite.cs" />
+    <Compile Include="GameState\Sprite\GameStateSprite.cs" />
+    <Compile Include="GameState\Command\PauseGameCommand.cs" />
+    <Compile Include="GameState\Button\ExitButton.cs" />
+    <Compile Include="GameState\Button\MainMenuButton.cs" />
+    <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
-    <Compile Include="GameState\Sprite\TitleBackgroundSprite.cs" />
+    <Compile Include="HUDClasses\NumberManager.cs" />
+    <Compile Include="HUDClasses\HeartManager.cs" />
+    <Compile Include="HUDClasses\HUDHeart.cs" />
+    <Compile Include="HUDClasses\HUDNumber.cs" />
+    <Compile Include="HUDClasses\HUDConstants.cs" />
+    <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
+    <Compile Include="HUDClasses\HUD.cs" />
+    <Compile Include="HUDClasses\Sprites\MinimapSquareSprite.cs" />
+    <Compile Include="HUDClasses\Sprites\HUDItemsTextureAtlas.cs" />
+    <Compile Include="HUDClasses\Sprites\MinimapSprite.cs" />
+    <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkLockedDoorCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkRoomChangeTriggerCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkDoorCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkFireCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkTriforceCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkFairyCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkHeartContainerCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkHeartCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\WithNpc\LinkMovableBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkMovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDamageCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkHandCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDoNothingCollisionHandler.cs" />
@@ -127,6 +172,10 @@
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
+    <Compile Include="Link\Command\ChangeSecondaryToItem.cs" />
+    <Compile Include="Link\Command\UseSecondaryItem.cs" />
+    <Compile Include="Link\Command\UsePrimaryItem.cs" />
+    <Compile Include="Projectile\CollisionHandler\BombDoorCollisionHandler.cs" />
     <Compile Include="Projectile\SwordAttackingProjectile.cs" />
     <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />
@@ -164,7 +213,6 @@
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Link\Interface\IPlayer.cs" />
     <Compile Include="Item\ItemSpriteFactory.cs" />
-    <Compile Include="Environment\BombedOpening.cs" />
     <Compile Include="Environment\BrickTile.cs" />
     <Compile Include="Environment\EnvironmentSpriteFactory.cs" />
     <Compile Include="Environment\Fire.cs" />
@@ -174,7 +222,7 @@
     <Compile Include="Environment\OpenDoor.cs" />
     <Compile Include="Environment\ShutDoor.cs" />
     <Compile Include="Environment\Stairs.cs" />
-    <Compile Include="Environment\Statues.cs" />
+    <Compile Include="Environment\FishStatues.cs" />
     <Compile Include="Environment\Walls.cs" />
     <Compile Include="Projectile\ArrowFlyingProjectile.cs" />
     <Compile Include="Projectile\BombExplodingProjectile.cs" />
@@ -204,12 +252,6 @@
     <Compile Include="Environment\TileBlueGrass.cs" />
     <Compile Include="Environment\TileWater.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkItemCollisionHandler.cs" />
-    <Compile Include="Link\Command\DamageLinkCommand.cs" />
-    <Compile Include="Link\Command\SwordAttackCommand.cs" />
-    <Compile Include="Link\Command\UseBombCommand.cs" />
-    <Compile Include="Link\Command\UseBoomerangCommand.cs" />
-    <Compile Include="Link\Command\UseBowCommand.cs" />
-    <Compile Include="Link\Command\UseSwordBeamCommand.cs" />
     <Compile Include="Link\Command\WalkingDownCommand.cs" />
     <Compile Include="Link\Command\WalkingForwardCommand.cs" />
     <Compile Include="Link\Command\WalkingLeftCommand.cs" />
@@ -264,18 +306,24 @@
     <Compile Include="Item\Sprite\RupeeSprite.cs" />
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
+    <Compile Include="Rooms\RoomMap.cs" />
+    <Compile Include="Rooms\RoomUtilities.cs" />
+    <Compile Include="Rooms\RoomChangeTrigger.cs" />
     <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />
-    <Compile Include="Environment\Sprite\StatueSprite.cs" />
+    <Compile Include="Environment\Sprite\FishStatueSprite.cs" />
     <Compile Include="Environment\Sprite\TileBlueGrassSprite.cs" />
     <Compile Include="Environment\Sprite\TileBlackSprite.cs" />
     <Compile Include="Environment\Sprite\TileWaterSprite.cs" />
     <Compile Include="Item\TriforceItem.cs" />
     <Compile Include="Item\Sprite\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
+    <Compile Include="Utility\SimpleDraw.cs" />
     <Compile Include="Utility\SpawnableMover.cs" />
     <Compile Include="Utility\UtilityMethods.cs" />
+    <Compile Include="GameState\ItemSelectionState\KeyboardController.cs" />
+    <Compile Include="GameState\ItemSelectionState\MouseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\RoomData\Room1.csv">
@@ -434,6 +482,8 @@
     <Content Include="Content\Sounds\LOZ_Sword_Slash.wav" />
     <Content Include="Content\Sounds\LOZ_Text.wav" />
     <Content Include="Content\Sounds\LOZ_Text_Slow.wav" />
+    <Content Include="Content\Sounds\LOZ_Title.mp3" />
+    <Content Include="Content\Sounds\LOZ_Title2.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

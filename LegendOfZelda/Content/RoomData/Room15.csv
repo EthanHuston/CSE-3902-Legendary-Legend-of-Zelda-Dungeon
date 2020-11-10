@@ -1,8 +1,8 @@
 ﻿tealBack,wall,wall,wall,open,,,,,,,
 ---,---,---,---,---,---,---,---,---,---,---,---
 ---,block,block,block,block,block,block,block,block,block,block,---
----,block,---,---,stat,---,---,stat,---,---,block,---
----,block,---,stat,---,triforce,---,---,stat,---,block,---
+---,block,---,---,fstat,---,---,dstat,---,---,block,---
+---,block,---,fstat,---,triforce,---,---,dstat,---,block,---
 ---,block,---,---,---,---,---,---,---,---,block,---
 ---,block,block,block,block,---,---,block,block,block,block,---
 ---,---,---,---,---,---,---,---,---,---,---,---

@@ -1,16 +1,14 @@
-﻿using LegendOfZelda.GameState.MainMenu;
+﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.Interface;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Pause
 {
-    class PauseGameState : IGameState
+    class PauseGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
-        private List<IController> controllerList;
         private List<ISpawnable> buttons;
-
-        public Game1 Game { get; private set; }
 
         public PauseGameState(Game1 game, IGameState oldRoomState)
         {
@@ -39,40 +37,45 @@ namespace LegendOfZelda.GameState.Pause
             };
         }
 
-        public void Draw()
+        public override void Draw()
         {
             roomStatePreserved.Draw(); // continue to draw the old room in the background
             foreach (ISpawnable button in buttons) button.Draw();
         }
 
-        public void SwitchToPauseState()
+        public override void SwitchToRoomState()
         {
-            // Already in pause state
+            StartStateSwitch(roomStatePreserved);
         }
 
-        public void SwitchToRoomState()
+        public override void SwitchToMainMenuState()
         {
-            Game.SetGameState(roomStatePreserved, GameStateConstants.GetOldInputState(controllerList));
+            StartStateSwitch(new MainMenuGameState(Game));
         }
 
-        public void SwitchToMainMenuState()
+        public override void StateEntryProcedure()
         {
-            Game.SetGameState(new MainMenuGameState(Game), GameStateConstants.GetOldInputState(controllerList));
+            // nothing fancy to do here
         }
 
-        public void Update()
+        public override void StateExitProcedure()
         {
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
-            // don't need to update buttons because they are non animated
-            // don't update old room because we don't want anything to move in the background
+            // nothing fancy to do here
         }
 
-        public void SetControllerOldInputState(OldInputState oldInputState)
+        protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.SetOldInputState(oldInputState);
+            foreach (IController controller in controllerList) controller.Update();
+        }
+
+        protected override void SwitchingStateUpdate()
+        {
+            readyToSwitchState = true; // nothing fancy to do here
+        }
+
+        protected override void InitializingStateUpdate()
+        {
+            stateInitialized = true; // nothing fancy to do here
         }
     }
 }

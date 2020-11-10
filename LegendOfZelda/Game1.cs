@@ -10,7 +10,7 @@ namespace LegendOfZelda
         private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
 
-        public IGameState State { get; private set; }
+        public IGameState State { get; set; }
 
         public Game1()
         {
@@ -31,7 +31,8 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            SetGameState(new MainMenuGameState(this), new OldInputState());
+            State = new MainMenuGameState(this);
+            State.StateEntryProcedure();
             base.Initialize();
         }
 
@@ -53,15 +54,9 @@ namespace LegendOfZelda
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            SpriteBatch.Begin(SpriteSortMode.Deferred, blendState: null, SamplerState.PointClamp);
+            SpriteBatch.Begin(SpriteSortMode.FrontToBack, blendState: null, SamplerState.PointClamp); 
             State.Draw();
             SpriteBatch.End();
-        }
-
-        public void SetGameState(IGameState gameState, OldInputState oldInputState)
-        {
-            State = gameState;
-            State.SetControllerOldInputState(oldInputState);
         }
     }
 }

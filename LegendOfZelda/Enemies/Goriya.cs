@@ -23,14 +23,14 @@ namespace LegendOfZelda.Enemies
         private readonly int changeDirection = 100;
         private bool boomerangActive = false;
         private readonly int attackWaitTime = 150;
-        private double health = 3;
+        private double health = 3 * Constants.HeartValue;
         private bool inKnockback = false;
         private bool safeToDespawn = false;
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
 
-        private readonly Random rand = RoomConstants.randomGenerator;
+        private readonly Random rand = RoomConstants.RandomGenerator;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -51,7 +51,7 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = !safeToDespawn && health <= 0;
+            safeToDespawn = safeToDespawn || health <= 0;
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
@@ -69,8 +69,6 @@ namespace LegendOfZelda.Enemies
             }
             else
             {
-                damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-                safeToDespawn = !safeToDespawn && health <= 0;
                 if (!inKnockback)
                 {
                     updateCount++;
@@ -98,13 +96,13 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            if(spawning)
+            if (spawning)
             {
-                spawnSprite.Draw(spriteBatch, position);
+                spawnSprite.Draw(spriteBatch, position, Constants.DrawLayer.EnemySpawnSprite);
             }
             else
             {
-                sprite.Draw(spriteBatch, position, damaged);
+                sprite.Draw(spriteBatch, position, damaged, Constants.DrawLayer.Enemy);
             }
         }
 
