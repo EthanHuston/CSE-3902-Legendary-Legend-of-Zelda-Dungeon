@@ -54,7 +54,7 @@ namespace LegendOfZelda.Link
             safeToDespawn = safeToDespawn || CurrentHealth <= 0;
             State.Update();
             if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
-            if(CurrentHealth <= 1.0)
+            if (CurrentHealth <= 1.0)
             {
                 SoundEffectInstance lowHealth = SoundFactory.Instance.CreateLowHealthSound();
                 lowHealth.IsLooped = true;
@@ -123,7 +123,7 @@ namespace LegendOfZelda.Link
             ((RoomGameState)Game.State).SpawnableManager.Spawn(projectile);
             currentProjectiles[projectile.GetProjectileType()] = projectile;
         }
-        
+
         public void Move(int distance, Vector2 velocity)
         {
             Mover.MoveDistance(distance, velocity);

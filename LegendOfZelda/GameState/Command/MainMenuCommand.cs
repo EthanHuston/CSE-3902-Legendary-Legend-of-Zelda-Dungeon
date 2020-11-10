@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.GameState.Command
 {
-    class MainMenuCommand : ICommand
+    internal class MainMenuCommand : ICommand
     {
         private readonly IGameState gameState;
 

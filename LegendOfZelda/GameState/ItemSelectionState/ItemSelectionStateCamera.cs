@@ -1,12 +1,11 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    class ItemSelectionStateCamera : ICamera
+    internal class ItemSelectionStateCamera : ICamera
     {
         private readonly ISpawnable hud;
         private readonly List<IMenu> inventorySelectionSpawnables;
@@ -49,9 +48,9 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             if (IsPanning)
             {
                 Vector2 moveVector = new Vector2(velocityWhenPan.X, velocityWhenPan.Y);
-                distancePanned += (int) velocityWhenPan.Length();
+                distancePanned += (int)velocityWhenPan.Length();
 
-                if(distancePanned > distanceToPan)
+                if (distancePanned > distanceToPan)
                 {
                     IsPanning = false;
                     moveVector.Normalize();

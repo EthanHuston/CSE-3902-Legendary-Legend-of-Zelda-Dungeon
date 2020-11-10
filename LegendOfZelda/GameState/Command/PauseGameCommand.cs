@@ -2,9 +2,9 @@
 
 namespace LegendOfZelda.GameState.Command
 {
-    class PauseGameCommand : ICommand
+    internal class PauseGameCommand : ICommand
     {
-        private IGameState gameState;
+        private readonly IGameState gameState;
 
         public PauseGameCommand(IGameState gameState)
         {

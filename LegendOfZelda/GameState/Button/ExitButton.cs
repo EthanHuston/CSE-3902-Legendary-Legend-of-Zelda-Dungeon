@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class ExitButton : IButton
+    internal class ExitButton : IButton
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;

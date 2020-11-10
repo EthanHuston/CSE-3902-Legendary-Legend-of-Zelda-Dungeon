@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda.GameState
 {
-    interface IController
+    internal interface IController
     {
         void Update();
         OldInputState GetOldInputState();

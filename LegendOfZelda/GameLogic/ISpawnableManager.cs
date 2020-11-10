@@ -17,7 +17,7 @@ namespace LegendOfZelda.GameLogic
         List<IBackground> BackgroundList { get; }
 
         void UpdateAll();
-        
+
         void DrawAll();
 
         void Spawn(INpc spawnable);

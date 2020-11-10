@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    class InventoryMenu : IMenu
+    internal class InventoryMenu : IMenu
     {
         private readonly IPlayer link;
         private readonly ISprite inventoryBackgroundSprite;

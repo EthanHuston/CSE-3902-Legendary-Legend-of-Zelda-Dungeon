@@ -55,7 +55,7 @@ namespace LegendOfZelda.Enemies
             {
                 sprite.Update();
             }
-            
+
         }
 
         public bool SafeToDespawn()

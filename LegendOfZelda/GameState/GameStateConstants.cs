@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
-    static class GameStateConstants
+    internal static class GameStateConstants
     {
         private const double gameScaler = Constants.GameScaler;
 

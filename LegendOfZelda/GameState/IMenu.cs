@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
-    interface IMenu : ISpawnable
+    internal interface IMenu : ISpawnable
     {
         List<IButton> Buttons { get; }
     }

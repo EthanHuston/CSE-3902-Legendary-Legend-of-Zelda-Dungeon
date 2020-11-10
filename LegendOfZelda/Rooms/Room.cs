@@ -1,11 +1,9 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms

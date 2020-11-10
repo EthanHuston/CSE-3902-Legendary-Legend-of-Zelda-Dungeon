@@ -24,7 +24,7 @@ namespace LegendOfZelda.GameState
             //Load Item Sprites
             resumeButtonSprite = content.Load<Texture2D>("Menu/ResumeButton");
             exitButtonSprite = content.Load<Texture2D>("Menu/ExitButton");
-            mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton"); 
+            mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton");
             titleScreenBackgroundSprite = content.Load<Texture2D>("Menu/TitleScreenBackground");
             inventoryBackgroundSprite = content.Load<Texture2D>("Menu/InventoryBackground");
             mapBackgroundSprite = content.Load<Texture2D>("Menu/MapBackground");
@@ -32,7 +32,7 @@ namespace LegendOfZelda.GameState
         }
 
         public ISprite CreateResumeButtonSprite()
-        { 
+        {
             return new GameStateSprite(resumeButtonSprite);
         }
         public ISprite CreateExitButtonSprite()

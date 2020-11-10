@@ -11,7 +11,7 @@ namespace LegendOfZelda.Enemies
     internal class Aquamentus : INpc
     {
         private IDamageableSprite sprite;
-        private SpawnSprite spawnSprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private readonly int vx = 1;
         private int updateCount = 0;
