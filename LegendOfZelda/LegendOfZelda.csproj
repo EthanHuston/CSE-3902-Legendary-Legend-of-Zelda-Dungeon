@@ -95,6 +95,12 @@
     <Compile Include="Environment\Sprite\WallSprite.cs" />
     <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
+    <Compile Include="GameState\Command\ExitGameCommand.cs" />
+    <Compile Include="GameState\Command\MainMenuCommand.cs" />
+    <Compile Include="GameState\Command\PauseGameCommand.cs" />
+    <Compile Include="GameState\Command\QuitGameCommand.cs" />
+    <Compile Include="GameState\Command\ResumeGameCommand.cs" />
+    <Compile Include="GameState\Command\StartGameCommand.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\IMenu.cs" />
@@ -130,6 +136,7 @@
     <Compile Include="GameState\PauseState\PauseGameState.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
     <Compile Include="GameState\RoomsState\ItemDrop.cs" />
+    <Compile Include="GameState\Sprite\ButtonSprite.cs" />
     <Compile Include="GameState\Sprite\GameStateTextureAtlasSprite.cs" />
     <Compile Include="GameState\Sprite\GameStateSprite.cs" />
     <Compile Include="GameState\Command\PauseGameCommand.cs" />
@@ -137,6 +144,7 @@
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="GameState\Sprite\TitleBackgroundSprite.cs" />
     <Compile Include="HUDClasses\NumberManager.cs" />
     <Compile Include="HUDClasses\HeartManager.cs" />
     <Compile Include="HUDClasses\HUDHeart.cs" />
