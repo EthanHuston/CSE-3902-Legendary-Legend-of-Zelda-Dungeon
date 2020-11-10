@@ -2,6 +2,7 @@
 using LegendOfZelda.Enemies.CollisionHandlers.WithBlock;
 using LegendOfZelda.Enemies.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Environment;
+using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;
@@ -11,6 +12,7 @@ using LegendOfZelda.Link.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Projectile.CollisionHandler;
+using LegendOfZelda.Rooms;
 using System;
 using System.Collections.Generic;
 
@@ -144,6 +146,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(ShutDoor), new LinkDoorCollisionHandler() },
                 {typeof(BombableOpening), new LinkDoorCollisionHandler() },
                 {typeof(LockedDoor), new LinkDoorCollisionHandler() },
+                {typeof(RoomChangeTrigger), new  LinkRoomChangeTriggerCollisionHandler() }
 
             };
         }

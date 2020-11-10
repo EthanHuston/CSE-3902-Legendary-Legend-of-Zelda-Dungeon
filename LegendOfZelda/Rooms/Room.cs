@@ -1,11 +1,9 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
@@ -93,6 +91,12 @@ namespace LegendOfZelda.Rooms
             AllObjects.Spawn(new RoomWall(RoomConstants.RightUpWallRectangle));
             AllObjects.Spawn(new RoomWall(RoomConstants.UpRightWallRectangle));
             AllObjects.Spawn(new RoomWall(RoomConstants.UpLeftWallRectangle));
+            
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Down));
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Right));
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Left));
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Up));
+
         }
         public void ResetClouds()
         {

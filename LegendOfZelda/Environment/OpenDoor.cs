@@ -25,7 +25,7 @@ namespace LegendOfZelda.Environment
             sB = spriteBatch;
             safeToDespawn = false;
             Position = spawnPosition;
-            IsOpen = false;
+            IsOpen = true;
         }
 
         public void Draw()
