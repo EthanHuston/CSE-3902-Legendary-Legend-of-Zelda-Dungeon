@@ -35,7 +35,7 @@ namespace LegendOfZelda.Link
             MaxHealth = LinkConstants.StartingHearts;
             Game = game;
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
-            FacingDirection = Constants.Direction.Down;
+            FacingDirection = Constants.Direction.Up;
             State = new LinkStandingStillState(this);
             safeToDespawn = false;
             BlockStateChange = false;
@@ -133,7 +133,7 @@ namespace LegendOfZelda.Link
         {
             return new Rectangle(
                 Position.X + LinkConstants.CollisionHelper,
-                Position.Y + LinkConstants.CollisionHelper,
+                Position.Y + LinkConstants.CollisionHelper * 2,
                 CurrentSprite.GetPositionRectangle().Width - LinkConstants.CollisionHelper * 2,
                 CurrentSprite.GetPositionRectangle().Height - LinkConstants.CollisionHelper * 2);
         }

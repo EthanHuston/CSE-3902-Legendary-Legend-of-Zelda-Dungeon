@@ -20,7 +20,7 @@ namespace LegendOfZelda.Link
         public const int DamageFlashDelayTicks = 5;
 
         public const int PickUpItemPauseTicks = 60;
-        public const int CollisionHelper = (int)(3 * SpriteScaler);
+        public const int CollisionHelper = (int)(5 * SpriteScaler);
         public const int UsingSwordFrameDelay = 3;
 
         // Inventory Starting Quantities
