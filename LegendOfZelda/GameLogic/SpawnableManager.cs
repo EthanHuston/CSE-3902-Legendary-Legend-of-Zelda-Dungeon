@@ -5,6 +5,7 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
+using System.CodeDom;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
@@ -18,7 +19,7 @@ namespace LegendOfZelda.GameLogic
         public List<IPlayer> PlayerList { get; private set; }
         public List<IBackground> BackgroundList { get; private set; }
 
-        private readonly ItemDrop itemDropper;
+        private ItemDrop itemDropper;
 
 
         public SpawnableManager(List<IPlayer> playerList)
@@ -86,7 +87,7 @@ namespace LegendOfZelda.GameLogic
             for (int i = 0; i < list.Count; i++)
             {
                 IItem spawnable = list[i];
-                if (typeof(KeyItem) == spawnable.GetType() && NpcList.Count != 0) continue;
+                if (typeof(KeyItem) == spawnable.GetType() && NpcList.Count != 0) continue; 
                 spawnable.Draw();
             }
         }
@@ -110,7 +111,7 @@ namespace LegendOfZelda.GameLogic
                 item.Update();
                 if (item.SafeToDespawn())
                 {
-                    if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
+                    if(item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
                     {
                         itemDropper.DropItem(item.Position);
                     }
@@ -131,8 +132,7 @@ namespace LegendOfZelda.GameLogic
 
         public void ResetClouds()
         {
-            foreach (INpc Npc in NpcList)
-            {
+            foreach(INpc Npc in NpcList){
                 Npc.ResetSpawnCloud();
             }
         }

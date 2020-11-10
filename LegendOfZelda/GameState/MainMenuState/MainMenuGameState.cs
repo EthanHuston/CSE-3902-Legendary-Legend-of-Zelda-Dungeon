@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.MainMenu
 {
-    internal class MainMenuGameState : AbstractGameState
+    class MainMenuGameState : AbstractGameState
     {
         private readonly ITextureAtlasSprite backgroundSprite;
         private SoundEffectInstance titleSound;

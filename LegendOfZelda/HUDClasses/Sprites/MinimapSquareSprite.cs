@@ -38,7 +38,7 @@ namespace LegendOfZelda.HUDClasses.Sprite
             {
                 currentFrame = 0;
             }
-
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    internal class CompassInventoryButton : IButton
+    class CompassInventoryButton : IButton
     {
         private readonly ITextureAtlasSprite sprite;
         private readonly SpriteBatch spriteBatch;

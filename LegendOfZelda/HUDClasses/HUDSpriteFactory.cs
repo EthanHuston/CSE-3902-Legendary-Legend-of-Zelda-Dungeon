@@ -1,4 +1,6 @@
-﻿using LegendOfZelda.HUDClasses.Sprite;
+﻿
+using LegendOfZelda.GameState.Sprite;
+using LegendOfZelda.HUDClasses.Sprite;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

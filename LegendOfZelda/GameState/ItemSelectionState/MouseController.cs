@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using LegendOfZelda.Link.Interface;

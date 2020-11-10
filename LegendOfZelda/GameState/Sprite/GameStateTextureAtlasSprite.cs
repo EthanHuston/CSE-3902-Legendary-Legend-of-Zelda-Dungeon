@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Sprite
 {
-    internal class GameStateTextureAtlasSprite : ITextureAtlasSprite
+    class GameStateTextureAtlasSprite : ITextureAtlasSprite
     {
         private readonly Texture2D sprite;
         private const int numRows = 1;

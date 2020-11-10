@@ -1,12 +1,13 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.HUDClasses.Sprite
 {
-    internal class HUDItemsTextureAtlas : ITextureAtlasSprite
+    class HUDItemsTextureAtlas : ITextureAtlasSprite
     {
-        private readonly Texture2D sprite;
+        private Texture2D sprite;
 
         public HUDItemsTextureAtlas(Texture2D sprite)
         {

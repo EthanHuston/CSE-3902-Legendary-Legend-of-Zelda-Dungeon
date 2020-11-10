@@ -1,6 +1,8 @@
-﻿namespace LegendOfZelda.Environment
+﻿using LegendOfZelda.Interface;
+
+namespace LegendOfZelda.Environment
 {
-    internal interface IDoor : IBlock
+    interface IDoor : IBlock
     {
         bool IsOpen { get; }
         void OpenDoor();

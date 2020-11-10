@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
@@ -12,30 +13,30 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class HUD : IMenu
     {
-        private readonly RoomGameState roomGameState;
-        private readonly SpriteBatch spriteBatch;
-        private readonly List<IPlayer> players;
-        private readonly HeartManager heartManager;
-        private readonly NumberManager numberManager;
-        private readonly ISprite hudSprite;
-
-        private readonly HUDNumber levelNum;
-        private readonly ISprite minimapSprite;
+        private RoomGameState roomGameState;
+        private SpriteBatch spriteBatch;
+        private List<IPlayer> players;
+        private HeartManager heartManager;
+        private NumberManager numberManager;
+        private ISprite hudSprite;
+        
+        private HUDNumber levelNum;
+        private ISprite minimapSprite;
         private bool displayMinimap;
-        private readonly ISprite linkMinimapSquare;
-        private readonly ISprite triforceMinimapSquare;
+        private ISprite linkMinimapSquare;
+        private ISprite triforceMinimapSquare;
         private Point triforceRoomLocation = new Point(5, 4);
         private bool hasCompass;
 
-        private readonly LinkConstants.ItemType primaryItem;
+        private LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
-        private readonly IButton primaryButton;
+        private IButton primaryButton;
         private IButton secondaryButton;
 
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
 
         private bool safeToDespawn = false;
-
+        
         private Point position;
         public Point Position { get => position; set => position = new Point(value.X, value.Y); }
 
@@ -57,7 +58,7 @@ namespace LegendOfZelda.HUDClasses
             numberManager = new NumberManager((LinkPlayer)players[0]);
             primaryItem = players[0].PrimaryItem;
             secondaryItem = players[0].SecondaryItem;
-            FillSecondaryItemDictionary();
+            fillSecondaryItemDictionary();
             primaryButton = new SwordInventoryButton(spriteBatch, this, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
@@ -101,11 +102,10 @@ namespace LegendOfZelda.HUDClasses
             {
                 minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation, Constants.DrawLayer.Map);
                 if (hasCompass)
-                    triforceMinimapSquare.Draw(spriteBatch, position + HUDConstants.MinimapSquarePositions[triforceRoomLocation], Constants.DrawLayer.MapMarker);
+                    triforceMinimapSquare.Draw(spriteBatch, position +  HUDConstants.MinimapSquarePositions[triforceRoomLocation], Constants.DrawLayer.MapMarker);
                 linkMinimapSquare.Draw(spriteBatch, position + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap], Constants.DrawLayer.MapMarker);
             }
-            foreach (IButton button in Buttons)
-            {
+            foreach (IButton button in Buttons){
                 button.Draw();
             }
             primaryButton.Draw();
@@ -129,7 +129,7 @@ namespace LegendOfZelda.HUDClasses
             safeToDespawn = true;
         }
 
-        private void FillSecondaryItemDictionary()
+        public void fillSecondaryItemDictionary()
         {
             secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
             {
@@ -144,7 +144,7 @@ namespace LegendOfZelda.HUDClasses
 
         private IButton GetEmptyButton()
         {
-            return new EmptyButton(this, new Rectangle(HUDConstants.SecondaryItemLocation.X, HUDConstants.SecondaryItemLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
+            return new EmptyButton((IMenu)this, new Rectangle(HUDConstants.SecondaryItemLocation.X, HUDConstants.SecondaryItemLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
         }
     }
 }

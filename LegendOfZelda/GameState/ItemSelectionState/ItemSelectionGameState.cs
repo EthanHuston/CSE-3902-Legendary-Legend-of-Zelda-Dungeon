@@ -1,12 +1,13 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    internal class ItemSelectionGameState : AbstractGameState
+    class ItemSelectionGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
         private readonly IMenu inventoryMenu;

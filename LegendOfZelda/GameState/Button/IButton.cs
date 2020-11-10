@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.GameState.Button
 {
-    internal interface IButton : ISpawnable
+    interface IButton : ISpawnable
     {
         bool IsActive { get; }
         void MakeActive();

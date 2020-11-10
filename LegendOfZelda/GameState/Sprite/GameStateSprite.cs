@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Sprite
 {
-    internal class GameStateSprite : ISprite
+    class GameStateSprite : ISprite
     {
         private readonly Texture2D sprite;
 
@@ -27,7 +27,7 @@ namespace LegendOfZelda.GameState.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
+            return new Rectangle(0, 0, (int) (sprite.Width * Constants.GameScaler), (int) (sprite.Height * Constants.GameScaler));
         }
     }
 }

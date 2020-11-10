@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    internal class BoomerangWoodInventoryButton : IButton
+    class BoomerangWoodInventoryButton : IButton
     {
         private readonly ITextureAtlasSprite sprite;
         private readonly SpriteBatch spriteBatch;

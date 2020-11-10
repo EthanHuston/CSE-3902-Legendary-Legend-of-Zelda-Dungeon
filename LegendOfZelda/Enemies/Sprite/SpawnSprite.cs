@@ -1,16 +1,21 @@
 ﻿using LegendOfZelda.Interface;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
-    internal class SpawnSprite : ISprite
+    class SpawnSprite : ISprite
     {
         private readonly Texture2D sprite;
         private int bufferFrame;
-        private readonly int frameDelay = 5;
-        private readonly int numRows = 1;
-        private readonly int numColumns = 3;
+        private int frameDelay = 5;
+        private int numRows = 1;
+        private int numColumns = 3;
         private int currentFrame;
         private readonly int totalFrames;
         private readonly int width;
@@ -30,17 +35,17 @@ namespace LegendOfZelda.Enemies.Sprite
         public void Update()
         {
             bufferFrame++;
-            if (bufferFrame == frameDelay)
+            if(bufferFrame == frameDelay)
             {
                 currentFrame++;
                 bufferFrame = 0;
             }
-            if (currentFrame == totalFrames)
+            if(currentFrame == totalFrames)
             {
                 animationDone = true;
                 currentFrame = 0;
             }
-
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)

@@ -1,10 +1,11 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.GameState.Button
 {
-    internal class BombInventoryButton : IButton
+    class BombInventoryButton : IButton
     {
         private readonly ITextureAtlasSprite sprite;
         private readonly SpriteBatch spriteBatch;

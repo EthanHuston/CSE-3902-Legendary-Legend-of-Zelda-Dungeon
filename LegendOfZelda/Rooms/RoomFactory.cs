@@ -44,7 +44,7 @@ namespace LegendOfZelda.Rooms
 
             // Row 1
             row++;
-
+            
             column = 2;
             roomsList[4].LocationOnMap = new Point(column, row);
 
@@ -86,7 +86,7 @@ namespace LegendOfZelda.Rooms
             // Row 5
             row++;
             roomsList[16].ConnectRoom(roomsList[17], Constants.Direction.Right); // connect 16-17
-
+            
             column = 1;
             roomsList[16].LocationOnMap = new Point(column++, row);
             roomsList[17].LocationOnMap = new Point(column, row);

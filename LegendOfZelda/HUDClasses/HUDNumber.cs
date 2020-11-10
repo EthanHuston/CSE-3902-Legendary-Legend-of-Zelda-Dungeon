@@ -6,8 +6,8 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class HUDNumber
     {
-        private readonly ITextureAtlasSprite hudItemsAtlas;
-        private Rectangle sourceRectangle;
+        ITextureAtlasSprite hudItemsAtlas;
+        Rectangle sourceRectangle;
 
         public HUDNumber(int num)
         {
@@ -17,7 +17,7 @@ namespace LegendOfZelda.HUDClasses
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            hudItemsAtlas.Draw(spriteBatch, position, sourceRectangle, layer);
+            hudItemsAtlas.Draw(spriteBatch, position, sourceRectangle);
         }
 
         public void AssignNumber(int num)

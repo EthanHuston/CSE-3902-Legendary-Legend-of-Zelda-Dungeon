@@ -1,4 +1,10 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Environment;
+using LegendOfZelda.GameState;
+using LegendOfZelda.Item;
+using LegendOfZelda.Link;
+using LegendOfZelda.Projectile;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
 namespace LegendOfZelda

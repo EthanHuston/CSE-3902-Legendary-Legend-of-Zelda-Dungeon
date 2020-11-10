@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    internal class MapMenu : IMenu
+    class MapMenu : IMenu
     {
         private readonly IPlayer link;
         private readonly ISprite mapBackgroundSprite;
@@ -19,7 +19,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         private Point position;
         public Point Position
         {
-            get => new Point(position.X, position.Y);
+            get => new Point(position.X, position.Y); 
             set
             {
                 position = new Point(value.X, value.Y);

@@ -3,7 +3,7 @@ using static LegendOfZelda.GameState.GameStateConstants;
 
 namespace LegendOfZelda.GameState
 {
-    internal abstract class AbstractGameState : IGameState
+    abstract class AbstractGameState : IGameState
     {
         protected List<IController> controllerList;
         protected bool changingStates;

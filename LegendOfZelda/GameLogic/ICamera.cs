@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.GameLogic
 {
-    internal interface ICamera
+    interface ICamera
     {
         bool IsPanning { get; }
         void Pan(Vector2 velocity, int distance);

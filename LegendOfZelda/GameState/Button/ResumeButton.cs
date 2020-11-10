@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    internal class ResumeButton : IButton
+    class ResumeButton : IButton
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;

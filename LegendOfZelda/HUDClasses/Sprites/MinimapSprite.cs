@@ -1,12 +1,13 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.HUDClasses.Sprite
 {
-    internal class MinimapSprite : ISprite
+    class MinimapSprite : ISprite
     {
-        private readonly Texture2D sprite;
+        private Texture2D sprite;
 
         public MinimapSprite(Texture2D sprite)
         {

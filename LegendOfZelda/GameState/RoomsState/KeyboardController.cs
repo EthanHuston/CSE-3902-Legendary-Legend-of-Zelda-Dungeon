@@ -23,7 +23,7 @@ namespace LegendOfZelda.GameState.Rooms
         {
             RoomGameState gameStateCast = (RoomGameState)gameState;
             controllerMappings = new Dictionary<Keys, ICommand>
-            {
+            { 
                 { Keys.Escape, new PauseGameCommand(gameState) },
                 { Keys.Tab, new ItemSelectCommand(gameState) },
 

@@ -6,7 +6,7 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class NumberManager
     {
-        private readonly LinkPlayer link;
+        private LinkPlayer link;
         private HUDNumber[] numRupees;
         private HUDNumber[] numKeys;
         private HUDNumber[] numBombs;
@@ -49,7 +49,7 @@ namespace LegendOfZelda.HUDClasses
 
         public void Update()
         {
-
+            
             if (link.GetQuantityInInventory(LinkConstants.ItemType.Rupee) != linkRupeeCount)
                 UpdateNumRupees();
             if (link.GetQuantityInInventory(LinkConstants.ItemType.Key) != linkKeyCount)

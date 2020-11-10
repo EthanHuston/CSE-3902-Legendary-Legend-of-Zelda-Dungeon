@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Microsoft.VisualBasic.Logging;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Interface
 {

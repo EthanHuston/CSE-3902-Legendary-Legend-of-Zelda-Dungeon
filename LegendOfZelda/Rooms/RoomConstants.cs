@@ -28,7 +28,7 @@ namespace LegendOfZelda
         public const int LeftDoorY = RightDoorY;
         public const int NumberRooms = 17;
         public static Random RandomGenerator = new Random();
-
+        
         // Wall Collision Rectangles
         private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
         private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
@@ -45,7 +45,7 @@ namespace LegendOfZelda
         public static Rectangle RightDownWallRectangle => new Rectangle(rightSideWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
         public static Rectangle UpLeftWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
         public static Rectangle UpRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
-        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
+        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth); 
         public static Rectangle DownRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
 
         // Door Locations on Texture Atlas

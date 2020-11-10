@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Pause
 {
-    internal class PauseGameState : AbstractGameState
+    class PauseGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
         private List<ISpawnable> buttons;

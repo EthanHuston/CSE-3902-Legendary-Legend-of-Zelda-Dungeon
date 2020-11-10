@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Utility
 {
-    internal static class SimpleDraw
+    static class SimpleDraw
     {
         public static void Draw(SpriteBatch spriteBatch, Texture2D sprite, Rectangle destinationRectangle, Rectangle sourceRectangle, Color color, float rotation, Vector2 rotationOrigin, SpriteEffects effects, float layer)
         {
