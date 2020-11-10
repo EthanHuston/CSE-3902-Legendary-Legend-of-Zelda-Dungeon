@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link.Interface;
+using System;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
@@ -10,7 +11,9 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
-            // not implemented yet, but call some command to take stairs
+            SoundFactory.Instance.CreateStairsSound();
+            // TODO: implement me
+            throw new NotImplementedException();
         }
     }
 }
