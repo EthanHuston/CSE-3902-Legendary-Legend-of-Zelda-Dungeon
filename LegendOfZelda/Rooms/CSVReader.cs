@@ -217,7 +217,7 @@ namespace LegendOfZelda.Rooms
                     allObjects.Spawn(blockType);
                     break;
                 case RoomConstants.BombableWall:
-                    blockType = new Walls(spriteBatch, position);
+                    blockType = new BombableOpening(spriteBatch, position);
                     allObjects.Spawn(blockType);
                     break;
                 default:
