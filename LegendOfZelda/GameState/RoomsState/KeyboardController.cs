@@ -39,7 +39,13 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.D1, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
                 { Keys.D2, new UseSecondaryItem(gameStateCast.GetPlayer(0)) },
                 { Keys.Q, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
-                { Keys.E, new UseSecondaryItem(gameStateCast.GetPlayer(0)) }
+                { Keys.E, new UseSecondaryItem(gameStateCast.GetPlayer(0)) },
+
+                // TODO: Remove me. Temporary room changing commands
+                { Keys.NumPad8, new ChangeRoomUpCommand(gameStateCast) },
+                { Keys.NumPad6, new ChangeRoomRightCommand(gameStateCast) },
+                { Keys.NumPad2, new ChangeRoomDownCommand(gameStateCast) },
+                { Keys.NumPad4, new ChangeRoomLeftCommand(gameStateCast) }
             };
         }
 

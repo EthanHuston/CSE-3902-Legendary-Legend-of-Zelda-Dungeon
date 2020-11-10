@@ -13,6 +13,7 @@ namespace LegendOfZelda.Rooms
         private readonly Dictionary<Constants.Direction, Room> roomDictionary;
         private readonly Dictionary<Constants.Direction, IDoor> roomDoors;
         private readonly CollisionManager collisionManager;
+        private MovableSquare movableSquare;
 
         public bool Visiting { get; set; }
         public int RoomType { get; private set; }
@@ -93,16 +94,17 @@ namespace LegendOfZelda.Rooms
             AllObjects.Spawn(new RoomWall(RoomConstants.RightUpWallRectangle));
             AllObjects.Spawn(new RoomWall(RoomConstants.UpRightWallRectangle));
             AllObjects.Spawn(new RoomWall(RoomConstants.UpLeftWallRectangle));
-            
+
             AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Down));
             AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Right));
             AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Left));
             AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Up));
 
         }
-        public void ResetClouds()
+        public void ResetRoom()
         {
             AllObjects.ResetClouds();
+            if (movableSquare != null) movableSquare.RoomReset();
         }
 
         public void AddDoor(IDoor door)
@@ -113,6 +115,11 @@ namespace LegendOfZelda.Rooms
         public IDoor GetDoor(Constants.Direction side)
         {
             return roomDoors.ContainsKey(side) ? roomDoors[side] : null;
+        }
+
+        public void AddMovableSquare(MovableSquare square)
+        {
+            movableSquare = square;
         }
     }
 }

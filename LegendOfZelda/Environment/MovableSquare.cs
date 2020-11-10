@@ -14,7 +14,8 @@ namespace LegendOfZelda.Environment
         private bool hasBeenPushed;
         private bool pushingInProgress;
         private int totalDistanceTravelled;
-        private const int travelDistance = 16;
+        private Point originalPosition;
+        private const int travelDistance = (int) (16 * Constants.GameScaler);
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -24,6 +25,7 @@ namespace LegendOfZelda.Environment
             blockSprite = EnvironmentSpriteFactory.Instance.CreateSquareSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
+            originalPosition = spawnPosition;
             velocity = Vector2.Zero;
             safeToDespawn = false;
             hasBeenPushed = false;
@@ -89,6 +91,13 @@ namespace LegendOfZelda.Environment
         public bool HasBeenPushed()
         {
             return hasBeenPushed;
+        }
+
+        public void RoomReset()
+        {
+            hasBeenPushed = false;
+            Position = originalPosition;
+            pushingInProgress = false;
         }
     }
 }
