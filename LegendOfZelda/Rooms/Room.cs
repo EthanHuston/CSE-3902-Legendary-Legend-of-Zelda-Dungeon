@@ -85,10 +85,14 @@ namespace LegendOfZelda.Rooms
 
         private void SpawnWalls()
         {
-            AllObjects.Spawn(new RoomWall(RoomConstants.LeftWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.RightWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.UpWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.DownWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.LeftUpWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.LeftDownWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.DownLeftWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.DownRightWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.RightDownWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.RightUpWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.UpRightWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.UpLeftWallRectangle));
         }
         public void ResetClouds()
         {

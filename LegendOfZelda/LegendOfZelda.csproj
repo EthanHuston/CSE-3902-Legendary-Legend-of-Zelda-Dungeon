@@ -83,7 +83,9 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpawnSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
+    <Compile Include="Environment\BombableOpening.cs" />
     <Compile Include="Environment\DragonStatues.cs" />
+    <Compile Include="Environment\IDoor.cs" />
     <Compile Include="Environment\Sprite\DragonStatueSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
@@ -202,7 +204,6 @@
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Link\Interface\IPlayer.cs" />
     <Compile Include="Item\ItemSpriteFactory.cs" />
-    <Compile Include="Environment\BombedOpening.cs" />
     <Compile Include="Environment\BrickTile.cs" />
     <Compile Include="Environment\EnvironmentSpriteFactory.cs" />
     <Compile Include="Environment\Fire.cs" />
@@ -297,6 +298,7 @@
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
     <Compile Include="Rooms\RoomMap.cs" />
+    <Compile Include="Rooms\RoomUtilities.cs" />
     <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />

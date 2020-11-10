@@ -139,7 +139,7 @@ namespace LegendOfZelda.GameLogic
                 // interactive blocks
                 {typeof(Fire), new LinkFireCollisionHandler() },
                 {typeof(OpenDoor), new LinkDoorCollisionHandler() },
-                {typeof(BombedOpening), new LinkDoorCollisionHandler() },
+                {typeof(BombableOpening), new LinkDoorCollisionHandler() },
                 {typeof(Stairs), new LinkStairsCollisionHandler() },
                 {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() }
 

@@ -9,12 +9,13 @@ namespace LegendOfZelda.Environment.Sprite
         private readonly Texture2D sprite;
         private readonly int frameWidth;
         private readonly int frameHeight;
-
+        private const int numRows = 4;
+        private const int numColumns = 5;
         public DoorSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            frameWidth = sprite.Width / 4;
-            frameHeight = sprite.Height / 4;
+            frameWidth = sprite.Width / numColumns;
+            frameHeight = sprite.Height / numRows;
         }
         public void Draw(SpriteBatch spriteBatch, Point position)
         {
@@ -23,10 +24,8 @@ namespace LegendOfZelda.Environment.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation)
         {
-            int width = sprite.Width / 4;
-            int height = sprite.Height / 4;
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
-            Rectangle sourceRectangle = new Rectangle(width * textureLocation.X, height * textureLocation.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * frameWidth), (int)(Constants.GameScaler * frameHeight));
+            Rectangle sourceRectangle = new Rectangle(frameWidth * textureLocation.X, frameHeight * textureLocation.Y, frameWidth, frameHeight);
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
