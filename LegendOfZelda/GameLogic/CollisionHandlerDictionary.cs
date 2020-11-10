@@ -127,31 +127,24 @@ namespace LegendOfZelda.GameLogic
             playerBlockDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IBlock>>()
             {
                 // immovable blocks
-                {typeof(LockedDoor), new LinkImmovableBlockCollisionHandler() },
                 {typeof(FishStatues), new LinkImmovableBlockCollisionHandler() },
                 {typeof(DragonStatues), new LinkImmovableBlockCollisionHandler() },
                 {typeof(TileWater), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
-                {typeof(ShutDoor), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Square), new LinkImmovableBlockCollisionHandler() },
                 {typeof(RoomWall), new LinkImmovableBlockCollisionHandler() },
 
                 // interactive blocks
                 {typeof(Fire), new LinkFireCollisionHandler() },
-                {typeof(OpenDoor), new LinkDoorCollisionHandler() },
-                {typeof(BombableOpening), new LinkDoorCollisionHandler() },
                 {typeof(Stairs), new LinkStairsCollisionHandler() },
-                {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() }
+                {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() },
 
+                // doors
+                {typeof(OpenDoor), new LinkDoorCollisionHandler() },
+                {typeof(ShutDoor), new LinkDoorCollisionHandler() },
+                {typeof(BombableOpening), new LinkDoorCollisionHandler() },
+                {typeof(LockedDoor), new LinkDoorCollisionHandler() },
 
-                // no collision detection
-                // BlackBackground, RoomBorder, TileBackground, TileBlueGrass
-
-                // unmovable block
-                    // water
-                    // wall
-                    // gap tile
-                    // statue
             };
         }
 

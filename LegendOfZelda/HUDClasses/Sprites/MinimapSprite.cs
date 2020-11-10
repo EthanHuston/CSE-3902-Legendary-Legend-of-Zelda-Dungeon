@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -23,7 +24,7 @@ namespace LegendOfZelda.HUDClasses.Sprite
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height));
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
 
         public Rectangle GetPositionRectangle()

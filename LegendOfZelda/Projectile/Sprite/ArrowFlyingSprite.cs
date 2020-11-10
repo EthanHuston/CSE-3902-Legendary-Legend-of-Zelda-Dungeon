@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Utility;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Projectile.Sprite
@@ -15,8 +16,8 @@ namespace LegendOfZelda.Projectile.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position, new Point((int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler)));
-
-            spriteBatch.Draw(sprite, destinationRectangle, Color.White);
+            Rectangle sourceRectangle = sprite.Bounds;
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
 
         public void Update()

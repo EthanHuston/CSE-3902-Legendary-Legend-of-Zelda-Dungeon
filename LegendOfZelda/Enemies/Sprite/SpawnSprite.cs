@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using LegendOfZelda.Utility;
 
 namespace LegendOfZelda.Enemies.Sprite
 {
@@ -55,7 +56,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
 
         public Rectangle GetPositionRectangle()

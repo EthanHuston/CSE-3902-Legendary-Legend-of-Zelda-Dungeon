@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -34,8 +35,8 @@ namespace LegendOfZelda.Link.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position, new Point((int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height)));
-
-            spriteBatch.Draw(sprite, destinationRectangle, flashRed && drawWithDamage ? Color.Red : Color.White);
+            Rectangle sourceRectangle = sprite.Bounds;
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White, layer);
         }
 
         public bool FinishedAnimation()

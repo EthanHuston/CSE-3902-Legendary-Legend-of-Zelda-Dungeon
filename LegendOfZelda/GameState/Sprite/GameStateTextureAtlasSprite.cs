@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -31,7 +32,7 @@ namespace LegendOfZelda.GameState.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * textureSource.Width), (int)(RoomConstants.SpriteMultiplier * textureSource.Height));
-            spriteBatch.Draw(sprite, destinationRectangle, textureSource, Color.White);
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, textureSource, Color.White, layer);
         }
         public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer)
         {

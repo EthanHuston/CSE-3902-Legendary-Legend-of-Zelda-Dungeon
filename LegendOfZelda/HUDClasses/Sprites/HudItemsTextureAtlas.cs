@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -17,7 +18,7 @@ namespace LegendOfZelda.HUDClasses.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(textureSource.Width * Constants.GameScaler), (int)(textureSource.Height * Constants.GameScaler));
-            spriteBatch.Draw(sprite, destinationRectangle, textureSource, Color.White);
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, textureSource, Color.White, layer);
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer)
