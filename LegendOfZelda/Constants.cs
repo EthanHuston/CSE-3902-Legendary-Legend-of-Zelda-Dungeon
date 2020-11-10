@@ -75,8 +75,13 @@ namespace LegendOfZelda
             public const float Item = 5;
             public const float OpenDoor = 6;
             public const float Menu = 7;
+            public const float HUD = 7;
+            public const float InventoryMenu = 7;
+            public const float MapMenu = 7;
             public const float MenuButton = 7.1f;
+            public const float MenuIcon = 7.1f;
             public const float Map = 7.2f;
+            public const float MapIcon = 7.2f;
             public const float MapMarker = 7.3f;
         }
 

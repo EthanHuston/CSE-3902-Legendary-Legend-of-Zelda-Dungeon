@@ -96,14 +96,14 @@ namespace LegendOfZelda.HUDClasses
 
         public void Draw()
         {
-            hudSprite.Draw(spriteBatch, position);
-            levelNum.Draw(spriteBatch, Position + HUDConstants.LevelNumberLocation);
+            hudSprite.Draw(spriteBatch, position, Constants.DrawLayer.HUD);
+            levelNum.Draw(spriteBatch, Position + HUDConstants.LevelNumberLocation, Constants.DrawLayer.MenuIcon);
             if (displayMinimap)
             {
-                minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation);
+                minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation, Constants.DrawLayer.Map);
                 if (hasCompass)
-                    triforceMinimapSquare.Draw(spriteBatch, position +  HUDConstants.MinimapSquarePositions[triforceRoomLocation]);
-                linkMinimapSquare.Draw(spriteBatch, position + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap]);
+                    triforceMinimapSquare.Draw(spriteBatch, position +  HUDConstants.MinimapSquarePositions[triforceRoomLocation], Constants.DrawLayer.MapMarker);
+                linkMinimapSquare.Draw(spriteBatch, position + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap], Constants.DrawLayer.MapMarker);
             }
             foreach (IButton button in Buttons){
                 button.Draw();

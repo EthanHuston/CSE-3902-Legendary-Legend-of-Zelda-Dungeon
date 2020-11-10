@@ -67,7 +67,6 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetSpawnCloud()
         {
-            spawning = true;
         }
     }
 }

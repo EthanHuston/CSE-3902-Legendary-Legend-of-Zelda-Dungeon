@@ -27,7 +27,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, float layer)
         {
-            Draw(spriteBatch, position, false);
+            Draw(spriteBatch, position, false, Constants.DrawLayer.Enemy);
         }
 
         public Rectangle GetPositionRectangle()

@@ -63,7 +63,7 @@ namespace LegendOfZelda.HUDClasses
             for (int i = 0; i < numRupees.Length; i++)
             {
                 Point position = new Point(HUDConstants.RupeeNumberX + i * HUDConstants.NumberWidth, HUDConstants.RupeeNumberY);
-                numRupees[i].Draw(spriteBatch, hudPosition + position);
+                numRupees[i].Draw(spriteBatch, hudPosition + position, Constants.DrawLayer.MenuIcon);
             }
         }
         private void DrawNumKeys(SpriteBatch spriteBatch, Point hudPosition)
@@ -71,7 +71,7 @@ namespace LegendOfZelda.HUDClasses
             for (int i = 0; i < numKeys.Length; i++)
             {
                 Point position = new Point(HUDConstants.KeyNumberX + i * HUDConstants.NumberWidth, HUDConstants.KeyNumberY);
-                numKeys[i].Draw(spriteBatch, hudPosition + position);
+                numKeys[i].Draw(spriteBatch, hudPosition + position, Constants.DrawLayer.MenuIcon);
             }
         }
         private void DrawNumBombs(SpriteBatch spriteBatch, Point hudPosition)
@@ -79,7 +79,7 @@ namespace LegendOfZelda.HUDClasses
             for (int i = 0; i < numBombs.Length; i++)
             {
                 Point position = new Point(HUDConstants.BombNumberX + i * HUDConstants.NumberWidth, HUDConstants.BombNumberY);
-                numBombs[i].Draw(spriteBatch, hudPosition + position);
+                numBombs[i].Draw(spriteBatch, hudPosition + position, Constants.DrawLayer.MenuIcon);
             }
         }
 
