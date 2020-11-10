@@ -1,6 +1,8 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Utility;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
@@ -16,21 +18,10 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
                 return;
             }
 
-            switch (side)
-            {
-                case Constants.Direction.Up:
-                    squareCast.Push(Constants.Direction.Down);
-                    break;
-                case Constants.Direction.Down:
-                    squareCast.Push(Constants.Direction.Up);
-                    break;
-                case Constants.Direction.Left:
-                    squareCast.Push(Constants.Direction.Right);
-                    break;
-                case Constants.Direction.Right:
-                    squareCast.Push(Constants.Direction.Left);
-                    break;
-            }
+            squareCast.Push(UtilityMethods.InvertDirection(side));
+            if (UtilityMethods.InvertDirection(side) != squareCast.TriggerDirection) return;
+            IDoor doorToOpen = ((RoomGameState)link.Game.State).CurrentRoom.GetDoor(Constants.Direction.Left);
+            if (doorToOpen != null) doorToOpen.OpenDoor();
         }
     }
 }

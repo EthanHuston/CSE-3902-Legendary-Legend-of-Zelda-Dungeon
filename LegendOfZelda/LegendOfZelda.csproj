@@ -158,7 +158,7 @@
     <Compile Include="Link\CollisionHandler\WithItem\LinkFairyCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkHeartContainerCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkHeartCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\WithNpc\LinkMovableBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkMovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDamageCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkHandCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDoNothingCollisionHandler.cs" />

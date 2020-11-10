@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
 namespace LegendOfZelda.Environment
 {
     internal class MovableSquare : IBlock
@@ -15,7 +14,9 @@ namespace LegendOfZelda.Environment
         private bool pushingInProgress;
         private int totalDistanceTravelled;
         private Point originalPosition;
-        private const int travelDistance = (int) (16 * Constants.GameScaler);
+        private const int travelDistance = (int)(16 * Constants.GameScaler);
+
+        public readonly Constants.Direction TriggerDirection = Constants.Direction.Left;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -68,18 +69,26 @@ namespace LegendOfZelda.Environment
         public void Push(Constants.Direction direction)
         {
             if (hasBeenPushed) return;
-            pushingInProgress = true;
+            switch (direction)
+            {
+                case Constants.Direction.Up:
+                    velocity.Y = -1 * Constants.MovableSquareVelocity;
+                    break;
+                case Constants.Direction.Down:
+                    velocity.Y = Constants.MovableSquareVelocity;
+                    break;
+                case Constants.Direction.Left:
+                    velocity.X = -1 * Constants.MovableSquareVelocity;
+                    break;
+                case Constants.Direction.Right:
+                    velocity.X = Constants.MovableSquareVelocity;
+                    break;
+                default:
+                    return;
+            }
+
             hasBeenPushed = true;
-            if (direction == Constants.Direction.Up)
-                velocity.Y = -1 * Constants.MovableSquareVelocity;
-            else if (direction == Constants.Direction.Down)
-                velocity.Y = Constants.MovableSquareVelocity;
-            else if (direction == Constants.Direction.Left)
-                velocity.X = -1 * Constants.MovableSquareVelocity;
-            else if (direction == Constants.Direction.Right)
-                velocity.X = Constants.MovableSquareVelocity;
-            else
-                hasBeenPushed = false;
+            pushingInProgress = true;
         }
 
         public void EndPush()
@@ -98,6 +107,7 @@ namespace LegendOfZelda.Environment
             hasBeenPushed = false;
             Position = originalPosition;
             pushingInProgress = false;
+            totalDistanceTravelled = 0;
         }
     }
 }
