@@ -8,10 +8,16 @@ namespace LegendOfZelda.Environment.Sprite
     internal class WallSprite : ITextureAtlasSprite
     {
         private readonly Texture2D sprite;
+        private const int numRows = 4;
+        private const int numColumns = 1;
+        private readonly int width;
+        private readonly int height;
 
         public WallSprite(Texture2D sprite)
         {
             this.sprite = sprite;
+            width = sprite.Width / numColumns;
+            height = sprite.Height / numRows;
         }
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
@@ -20,8 +26,6 @@ namespace LegendOfZelda.Environment.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer)
         {
-            int width = sprite.Width;
-            int height = sprite.Height / 4;
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * width), (int)(RoomConstants.SpriteMultiplier * height));
             Rectangle sourceRectangle = new Rectangle(width * textureLocation.X, height * textureLocation.Y, width, height);
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
@@ -34,7 +38,7 @@ namespace LegendOfZelda.Environment.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int) (sprite.Width * Constants.GameScaler), (int) (sprite.Height * Constants.GameScaler));
+            return new Rectangle(0, 0, (int) (width * Constants.GameScaler), (int) (height * Constants.GameScaler));
         }
 
         public void Update()
