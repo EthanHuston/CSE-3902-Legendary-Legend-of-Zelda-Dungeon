@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,6 +13,7 @@ namespace LegendOfZelda.Environment
         private bool safeToDespawn;
         private int textureMapRow;
         private const int textureMapColumn = 0;
+        private Constants.Direction side;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -22,6 +24,7 @@ namespace LegendOfZelda.Environment
             sB = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
+            side = RoomUtilities.GetDoorSide(spawnPosition);
         }
 
         public void Despawn()
@@ -31,28 +34,13 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            if ((position.X == RoomConstants.TopDoorX) && (position.Y == RoomConstants.TopDoorY))
-            {
-                textureMapRow = 0;
-            }
-            else if ((position.X == RoomConstants.LeftDoorX) && (position.Y == RoomConstants.LeftDoorY))
-            {
-                textureMapRow = 1;
-            }
-            else if ((position.X == RoomConstants.RightDoorX) && (position.Y == RoomConstants.RightDoorY))
-            {
-                textureMapRow = 2;
-            }
-            else if ((position.X == RoomConstants.BottomDoorX) && (position.Y == RoomConstants.BottomDoorY))
-            {
-                textureMapRow = 3;
-            }
-            wallSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+            textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(side);
+            wallSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), Constants.DrawLayer.Wall);
         }
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(0, 0, wallSprite.GetPositionRectangle().Width, wallSprite.GetPositionRectangle().Height);
+            return new Rectangle(Position.X, Position.Y, wallSprite.GetPositionRectangle().Width, wallSprite.GetPositionRectangle().Height);
         }
 
         public bool SafeToDespawn()

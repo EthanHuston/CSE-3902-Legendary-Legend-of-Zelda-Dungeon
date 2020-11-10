@@ -31,7 +31,7 @@ namespace LegendOfZelda.Item
 
         public virtual void Draw()
         {
-            sprite.Draw(spriteBatch, position);
+            sprite.Draw(spriteBatch, position, Constants.DrawLayer.Item);
         }
 
         public Rectangle GetRectangle()

@@ -6,7 +6,7 @@ namespace LegendOfZelda
     public static class Constants
     {
         public const int FrameDelay = 6;
-        public const double GameScaler = 3;
+        public const double GameScaler = 4;
         public const int HeartValue = 10;
         public const float MusicVolume = 0.1f; // TODO: turn sound back on
 
@@ -56,6 +56,33 @@ namespace LegendOfZelda
         public const float EnemyNoMove = 0;
         public const int EnemyDamageEffectTimeMs = 500;
         public const int EnemyDamageFlashDelayTicks = 5;
+
+        // Drawing Layers
+        public static class DrawLayer
+        {
+            public const float Background = 0;
+            public const float FloorTile = 0.1f;
+            public const float Stair = 0.2f;
+            public const float Wall = 0.1f;
+            public const float ClosedDoor = Wall;
+            public const float Block = 1;
+            public const float Enemy = 2;
+            public const float Npc = 2;
+            public const float EnemySpawnSprite = 2.1f;
+            public const float Player = 3;
+            public const float Projectile = 4;
+            public const float Item = 5;
+            public const float OpenDoor = 6;
+            public const float Menu = 7;
+            public const float HUD = 7;
+            public const float InventoryMenu = 7;
+            public const float MapMenu = 7;
+            public const float MenuButton = 7.1f;
+            public const float MenuIcon = 7.1f;
+            public const float Map = 7.2f;
+            public const float MapIcon = 7.2f;
+            public const float MapMarker = 7.3f;
+        }
 
     }
 }

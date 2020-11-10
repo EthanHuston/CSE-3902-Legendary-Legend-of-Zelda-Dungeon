@@ -273,5 +273,10 @@ namespace LegendOfZelda.Link
 
             return currentProjectile == null || currentProjectile.SafeToDespawn();
         }
+
+        public void ConsumeKey()
+        {
+            inventory[LinkConstants.ItemType.Key]--;
+        }
     }
 }

@@ -47,7 +47,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Draw()
         {
-            inventoryBackgroundSprite.Draw(link.Game.SpriteBatch, Position);
+            inventoryBackgroundSprite.Draw(link.Game.SpriteBatch, Position, Constants.DrawLayer.Menu);
             secondaryItem.Draw();
             foreach (KeyValuePair<LinkConstants.ItemType, IButton> button in buttonsDict)
             {

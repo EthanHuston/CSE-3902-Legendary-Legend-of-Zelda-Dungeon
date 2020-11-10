@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Rooms;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,27 +12,29 @@ namespace LegendOfZelda.Environment
         private readonly ITextureAtlasSprite doorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
-        private int textureMapRow;
         private const int textureMapColumn = 0;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
-
         public bool IsOpen { get; private set; }
+        public Constants.Direction Side { get; private set; }
+        public Room Location { get; private set; }
 
-        public OpenDoor(SpriteBatch spriteBatch, Point spawnPosition)
+        public OpenDoor(SpriteBatch spriteBatch, Point spawnPosition, Room room)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             safeToDespawn = false;
             Position = spawnPosition;
-            IsOpen = false;
+            IsOpen = true;
+            Side = RoomUtilities.GetDoorSide(spawnPosition);
+            Location = room;
         }
 
         public void Draw()
         {
-            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
-            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+            int textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), Constants.DrawLayer.OpenDoor);
         }
 
         public Rectangle GetRectangle()
@@ -56,7 +59,10 @@ namespace LegendOfZelda.Environment
 
         void IDoor.OpenDoor()
         {
+            if (IsOpen) return;
             IsOpen = true;
+            // also open door on other side of wall
+            Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).OpenDoor();
         }
     }
 }

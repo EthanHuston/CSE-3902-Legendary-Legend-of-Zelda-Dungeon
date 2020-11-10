@@ -1,11 +1,9 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
@@ -13,6 +11,7 @@ namespace LegendOfZelda.Rooms
     internal class Room
     {
         private readonly Dictionary<Constants.Direction, Room> roomDictionary;
+        private readonly Dictionary<Constants.Direction, IDoor> roomDoors;
         private readonly CollisionManager collisionManager;
 
         public bool Visiting { get; set; }
@@ -25,8 +24,9 @@ namespace LegendOfZelda.Rooms
         public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
             AllObjects = new SpawnableManager(playerList);
-            new CSVReader(spriteBatch, AllObjects, fileName);
             roomDictionary = new Dictionary<Constants.Direction, Room>();
+            roomDoors = new Dictionary<Constants.Direction, IDoor>();
+            new CSVReader(spriteBatch, this, fileName);
             collisionManager = new CollisionManager(AllObjects);
             LocationOnMap = new Point(-1, -1);
             RoomType = 0;
@@ -85,14 +85,34 @@ namespace LegendOfZelda.Rooms
 
         private void SpawnWalls()
         {
-            AllObjects.Spawn(new RoomWall(RoomConstants.LeftWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.RightWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.UpWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.DownWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.LeftUpWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.LeftDownWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.DownLeftWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.DownRightWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.RightDownWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.RightUpWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.UpRightWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.UpLeftWallRectangle));
+            
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Down));
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Right));
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Left));
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Up));
+
         }
         public void ResetClouds()
         {
             AllObjects.ResetClouds();
+        }
+
+        public void AddDoor(IDoor door)
+        {
+            roomDoors.Add(door.Side, door);
+        }
+
+        public IDoor GetDoor(Constants.Direction side)
+        {
+            return roomDoors.ContainsKey(side) ? roomDoors[side] : null;
         }
     }
 }

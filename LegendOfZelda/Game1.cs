@@ -54,7 +54,7 @@ namespace LegendOfZelda
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            SpriteBatch.Begin(SpriteSortMode.Deferred, blendState: null, SamplerState.PointClamp); 
+            SpriteBatch.Begin(SpriteSortMode.FrontToBack, blendState: null, SamplerState.PointClamp); 
             State.Draw();
             SpriteBatch.End();
         }

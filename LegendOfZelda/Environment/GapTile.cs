@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            tileBlackSprite.Draw(sB, Position);
+            tileBlackSprite.Draw(sB, Position, Constants.DrawLayer.FloorTile);
         }
 
         public Rectangle GetRectangle()

@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock

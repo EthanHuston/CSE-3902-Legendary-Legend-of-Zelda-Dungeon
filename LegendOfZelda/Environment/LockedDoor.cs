@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Rooms;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,23 +17,27 @@ namespace LegendOfZelda.Environment
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
-
         public bool IsOpen { get; private set; }
+        public Constants.Direction Side { get; private set; }
+        public Room Location { get; private set; }
 
-        public LockedDoor(SpriteBatch spriteBatch, Point spawnPosition)
+        public LockedDoor(SpriteBatch spriteBatch, Point spawnPosition, Room room)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
             IsOpen = false;
+            Side = RoomUtilities.GetDoorSide(spawnPosition);
+            Location = room;
         }
 
         public void Draw()
         {
-            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
+            int textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
             textureMapColumn = IsOpen ? RoomConstants.OpenDoorColumn : RoomConstants.LockedDoorColumn;
-            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+            float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);
         }
 
         public void Update()
@@ -57,7 +62,10 @@ namespace LegendOfZelda.Environment
 
         public void OpenDoor()
         {
+            if (IsOpen) return;
             IsOpen = true;
+            // also open door on other side of wall
+            Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).OpenDoor();
         }
     }
 }

@@ -9,7 +9,6 @@ namespace LegendOfZelda.Enemies
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;
         protected bool itemIsExpired;
-        private bool spawning;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -23,7 +22,7 @@ namespace LegendOfZelda.Enemies
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, position);
+            sprite.Draw(spriteBatch, position, Constants.DrawLayer.Npc);
         }
 
         public void Update()
@@ -68,7 +67,6 @@ namespace LegendOfZelda.Enemies
         }
         public void ResetSpawnCloud()
         {
-            spawning = true;
         }
     }
 }
