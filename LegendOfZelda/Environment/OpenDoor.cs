@@ -1,11 +1,12 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
 namespace LegendOfZelda.Environment
 {
-    internal class OpenDoor : IBlock
+    internal class OpenDoor : IDoor
     {
         private readonly ITextureAtlasSprite doorSprite;
         private readonly SpriteBatch sB;
@@ -16,32 +17,20 @@ namespace LegendOfZelda.Environment
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
+        public bool IsOpen { get; private set; }
+
         public OpenDoor(SpriteBatch spriteBatch, Point spawnPosition)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             safeToDespawn = false;
             Position = spawnPosition;
+            IsOpen = false;
         }
 
         public void Draw()
         {
-            if ((position.X == RoomConstants.TopDoorX) && (position.Y == RoomConstants.TopDoorY))
-            {
-                textureMapRow = 0;
-            }
-            else if ((position.X == RoomConstants.LeftDoorX) && (position.Y == RoomConstants.LeftDoorY))
-            {
-                textureMapRow = 1;
-            }
-            else if ((position.X == RoomConstants.RightDoorX) && (position.Y == RoomConstants.RightDoorY))
-            {
-                textureMapRow = 2;
-            }
-            else if ((position.X == RoomConstants.BottomDoorX) && (position.Y == RoomConstants.BottomDoorY))
-            {
-                textureMapRow = 3;
-            }
+            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
@@ -63,6 +52,11 @@ namespace LegendOfZelda.Environment
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        void IDoor.OpenDoor()
+        {
+            IsOpen = true;
         }
     }
 }

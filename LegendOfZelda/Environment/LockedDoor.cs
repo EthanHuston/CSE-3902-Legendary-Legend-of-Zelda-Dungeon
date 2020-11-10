@@ -1,20 +1,23 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
 namespace LegendOfZelda.Environment
 {
-    internal class LockedDoor : IBlock
+    internal class LockedDoor : IDoor
     {
         private readonly ITextureAtlasSprite doorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
         private int textureMapRow;
-        private readonly int textureMapColumn = 1;
+        private int textureMapColumn;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public bool IsOpen { get; private set; }
 
         public LockedDoor(SpriteBatch spriteBatch, Point spawnPosition)
         {
@@ -22,32 +25,19 @@ namespace LegendOfZelda.Environment
             sB = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
+            IsOpen = false;
         }
 
         public void Draw()
         {
-            if ((position.X == RoomConstants.TopDoorX) && (position.Y == RoomConstants.TopDoorY))
-            {
-                textureMapRow = 0;
-            }
-            else if ((position.X == RoomConstants.LeftDoorX) && (position.Y == RoomConstants.LeftDoorY))
-            {
-                textureMapRow = 1;
-            }
-            else if ((position.X == RoomConstants.RightDoorX) && (position.Y == RoomConstants.RightDoorY))
-            {
-                textureMapRow = 2;
-            }
-            else if ((position.X == RoomConstants.BottomDoorX) && (position.Y == RoomConstants.BottomDoorY))
-            {
-                textureMapRow = 3;
-            }
+            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
+            textureMapColumn = IsOpen ? RoomConstants.OpenDoorColumn : RoomConstants.LockedDoorColumn;
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
         public void Update()
         {
-            safeToDespawn = safeToDespawn || false; // put condition here for when door can be despawned
+            safeToDespawn = !safeToDespawn && false; // put condition here for when door can be despawned
         }
 
         public bool SafeToDespawn()
@@ -63,6 +53,11 @@ namespace LegendOfZelda.Environment
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void OpenDoor()
+        {
+            IsOpen = true;
         }
     }
 }

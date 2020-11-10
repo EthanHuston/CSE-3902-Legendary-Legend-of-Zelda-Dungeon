@@ -1,20 +1,23 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
 namespace LegendOfZelda.Environment
 {
-    internal class ShutDoor : IBlock
+    internal class ShutDoor : IDoor
     {
         private readonly ITextureAtlasSprite doorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
-        private const int textureMapColumn = 2;
+        private int textureMapColumn;
         private int textureMapRow;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public bool IsOpen { get; private set; }
 
         public ShutDoor(SpriteBatch spriteBatch, Point position)
         {
@@ -22,26 +25,13 @@ namespace LegendOfZelda.Environment
             sB = spriteBatch;
             Position = position;
             safeToDespawn = false;
+            IsOpen = false;
         }
 
         public void Draw()
         {
-            if ((position.X == RoomConstants.TopDoorX) && (position.Y == RoomConstants.TopDoorY))
-            {
-                textureMapRow = 0;
-            }
-            else if ((position.X == RoomConstants.LeftDoorX) && (position.Y == RoomConstants.LeftDoorY))
-            {
-                textureMapRow = 1;
-            }
-            else if ((position.X == RoomConstants.RightDoorX) && (position.Y == RoomConstants.RightDoorY))
-            {
-                textureMapRow = 2;
-            }
-            else if ((position.X == RoomConstants.BottomDoorX) && (position.Y == RoomConstants.BottomDoorY))
-            {
-                textureMapRow = 3;
-            }
+            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
+            textureMapColumn = IsOpen ? RoomConstants.OpenDoorColumn : RoomConstants.CrackedDoorColumn;
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
         }
 
@@ -63,6 +53,11 @@ namespace LegendOfZelda.Environment
         public void Despawn()
         {
             safeToDespawn = true;
+        }
+
+        public void OpenDoor()
+        {
+            IsOpen = true;
         }
     }
 }
