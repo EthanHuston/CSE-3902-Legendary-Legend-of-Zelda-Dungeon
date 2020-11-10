@@ -32,7 +32,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            blockSprite.Draw(spriteBatch, position);
+            blockSprite.Draw(spriteBatch, position, Constants.DrawLayer.Block);
         }
 
         public void Update()

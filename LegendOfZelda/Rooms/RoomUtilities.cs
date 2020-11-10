@@ -4,7 +4,7 @@ namespace LegendOfZelda.Rooms
 {
     static class RoomUtilities
     {
-        public static int GetDoorTextureAtlasRow(Point position)
+        public static int GetDirectionalTextureAtlasRow(Point position)
         {
             if ((position.X == RoomConstants.TopDoorX) && (position.Y == RoomConstants.TopDoorY))
                 return RoomConstants.UpDoorRow;

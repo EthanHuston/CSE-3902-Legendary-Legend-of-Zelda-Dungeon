@@ -7,16 +7,10 @@ namespace LegendOfZelda.GameState.Sprite
     class GameStateTextureAtlasSprite : ITextureAtlasSprite
     {
         private readonly Texture2D sprite;
-        private const int numRows = 1;
-        private const int numColumns = 3;
-        private readonly int frameWidth;
-        private readonly int frameHeight;
 
         public GameStateTextureAtlasSprite(Texture2D sprite)
         {
             this.sprite = sprite;
-            frameWidth = sprite.Width / numColumns;
-            frameHeight = sprite.Height / numRows;
         }
 
         public void Update()
@@ -26,7 +20,7 @@ namespace LegendOfZelda.GameState.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Draw(spriteBatch, position, Rectangle.Empty);
+            Draw(spriteBatch, position, Rectangle.Empty, layer);
         }
 
         public Rectangle GetPositionRectangle()
@@ -41,7 +35,7 @@ namespace LegendOfZelda.GameState.Sprite
         }
         public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer)
         {
-            Draw(spriteBatch, position, Rectangle.Empty);
+            Draw(spriteBatch, position, Rectangle.Empty, layer);
         }
     }
 }

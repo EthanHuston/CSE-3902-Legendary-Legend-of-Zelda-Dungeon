@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            stairSprite.Draw(sB, Position);
+            stairSprite.Draw(sB, Position, Constants.DrawLayer.Stair);
         }
 
         public Rectangle GetRectangle()

@@ -30,9 +30,10 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
+            textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Position);
             textureMapColumn = IsOpen ? RoomConstants.OpenDoorColumn : RoomConstants.CrackedDoorColumn;
-            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+            float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);
         }
 
         public void Update()

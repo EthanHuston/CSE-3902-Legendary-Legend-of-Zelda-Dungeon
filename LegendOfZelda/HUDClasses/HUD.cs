@@ -58,7 +58,7 @@ namespace LegendOfZelda.HUDClasses
             numberManager = new NumberManager((LinkPlayer)players[0]);
             primaryItem = players[0].PrimaryItem;
             secondaryItem = players[0].SecondaryItem;
-            fillSecondaryItemDictionary();
+            FillSecondaryItemDictionary();
             primaryButton = new SwordInventoryButton(spriteBatch, this, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
@@ -129,7 +129,7 @@ namespace LegendOfZelda.HUDClasses
             safeToDespawn = true;
         }
 
-        public void fillSecondaryItemDictionary()
+        private void FillSecondaryItemDictionary()
         {
             secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
             {

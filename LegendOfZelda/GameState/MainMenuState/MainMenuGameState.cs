@@ -29,7 +29,7 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public override void Draw()
         {
-            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource);
+            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource, Constants.DrawLayer.Menu);
         }
 
         public override void SwitchToRoomState()

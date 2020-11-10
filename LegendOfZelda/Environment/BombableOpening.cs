@@ -27,7 +27,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            int textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
+            int textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Position);
             int textureMapColumn = IsOpen ? RoomConstants.BombedDoorColumn : RoomConstants.BombableDoorColumn;
             float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);

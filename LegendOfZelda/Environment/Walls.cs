@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -31,23 +32,8 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            if ((position.X == RoomConstants.TopDoorX) && (position.Y == RoomConstants.TopDoorY))
-            {
-                textureMapRow = 0;
-            }
-            else if ((position.X == RoomConstants.LeftDoorX) && (position.Y == RoomConstants.LeftDoorY))
-            {
-                textureMapRow = 1;
-            }
-            else if ((position.X == RoomConstants.RightDoorX) && (position.Y == RoomConstants.RightDoorY))
-            {
-                textureMapRow = 2;
-            }
-            else if ((position.X == RoomConstants.BottomDoorX) && (position.Y == RoomConstants.BottomDoorY))
-            {
-                textureMapRow = 3;
-            }
-            wallSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+            textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Position);
+            wallSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), Constants.DrawLayer.Wall);
         }
 
         public Rectangle GetRectangle()

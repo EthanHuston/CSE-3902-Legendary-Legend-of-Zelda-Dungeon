@@ -65,8 +65,7 @@ namespace LegendOfZelda
             public const float Stair = 0.2f;
             public const float Wall = 0.1f;
             public const float ClosedDoor = 0;
-            public const float Statue = 1;
-            public const float MovableBlock = 1;
+            public const float Block = 1;
             public const float Enemy = 2;
             public const float Npc = 2;
             public const float EnemySpawnSprite = 2.1f;

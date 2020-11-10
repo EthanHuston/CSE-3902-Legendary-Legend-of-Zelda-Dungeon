@@ -30,8 +30,8 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
-            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+            textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Position);
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), Constants.DrawLayer.OpenDoor);
         }
 
         public Rectangle GetRectangle()
