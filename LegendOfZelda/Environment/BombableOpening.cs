@@ -39,7 +39,7 @@ namespace LegendOfZelda.Environment
             int textureMapColumn = IsOpen ? RoomConstants.BombedDoorColumn : RoomConstants.BombableDoorColumn;
             float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);
-            if (IsOpen) doorFloorSprite.Draw(sB, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
+            if (IsOpen) doorFloorSprite.Draw(sB, Position, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
         }
 
         public Rectangle GetRectangle()

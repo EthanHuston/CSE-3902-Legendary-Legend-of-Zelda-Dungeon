@@ -61,8 +61,8 @@ namespace LegendOfZelda
         public static class DrawLayer
         {
             public const float Background = 0;
-            public const float FloorTile = 0.1f;
-            public const float Stair = 0.2f;
+            public const float FloorTile = 0.2f;
+            public const float Stair = 0.3f;
             public const float Wall = 0.1f;
             public const float ClosedDoor = Wall;
             public const float Block = 1;

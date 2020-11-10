@@ -41,7 +41,7 @@ namespace LegendOfZelda.Environment
             textureMapColumn = IsOpen ? RoomConstants.OpenDoorColumn : RoomConstants.LockedDoorColumn;
             float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);
-            if (IsOpen) doorFloorSprite.Draw(sB, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
+            if (IsOpen) doorFloorSprite.Draw(sB, Position, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
         }
 
         public void Update()

@@ -14,7 +14,7 @@ namespace LegendOfZelda.Environment
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
         private const int textureMapColumn = 0;
-        private const int doorFloorTextureMapColumn = 6;
+        private const int doorFloorTextureMapColumn = 5;
         private readonly int textureMapRow;
 
         private Point position;
@@ -38,8 +38,8 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), Constants.DrawLayer.OpenDoor);
-            doorFloorSprite.Draw(sB, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
+            doorSprite.Draw(sB, Position, new Point(textureMapColumn, textureMapRow), Constants.DrawLayer.OpenDoor);
+            doorFloorSprite.Draw(sB, Position, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
         }
 
         public Rectangle GetRectangle()
