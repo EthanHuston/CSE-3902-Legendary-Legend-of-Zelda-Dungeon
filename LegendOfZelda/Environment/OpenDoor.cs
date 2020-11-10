@@ -10,9 +10,12 @@ namespace LegendOfZelda.Environment
     internal class OpenDoor : IDoor
     {
         private readonly ITextureAtlasSprite doorSprite;
+        private readonly ITextureAtlasSprite doorFloorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
         private const int textureMapColumn = 0;
+        private const int doorFloorTextureMapColumn = 6;
+        private readonly int textureMapRow;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -23,18 +26,20 @@ namespace LegendOfZelda.Environment
         public OpenDoor(SpriteBatch spriteBatch, Point spawnPosition, Room room)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
+            doorFloorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             safeToDespawn = false;
             Position = spawnPosition;
             IsOpen = true;
             Side = RoomUtilities.GetDoorSide(spawnPosition);
+            textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
             Location = room;
         }
 
         public void Draw()
         {
-            int textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), Constants.DrawLayer.OpenDoor);
+            doorFloorSprite.Draw(sB, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
         }
 
         public Rectangle GetRectangle()

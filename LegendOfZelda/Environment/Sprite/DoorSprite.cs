@@ -11,7 +11,7 @@ namespace LegendOfZelda.Environment.Sprite
         private readonly int frameWidth;
         private readonly int frameHeight;
         private const int numRows = 4;
-        private const int numColumns = 5;
+        private const int numColumns = 7;
 
         public DoorSprite(Texture2D sprite)
         {

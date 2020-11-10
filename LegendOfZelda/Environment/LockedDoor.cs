@@ -10,10 +10,12 @@ namespace LegendOfZelda.Environment
     internal class LockedDoor : IDoor
     {
         private readonly ITextureAtlasSprite doorSprite;
+        private readonly ITextureAtlasSprite doorFloorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
-        private int textureMapRow;
+        private readonly int textureMapRow;
         private int textureMapColumn;
+        private const int doorFloorTextureMapColumn = 5;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -24,20 +26,22 @@ namespace LegendOfZelda.Environment
         public LockedDoor(SpriteBatch spriteBatch, Point spawnPosition, Room room)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
+            doorFloorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             Position = spawnPosition;
             safeToDespawn = false;
             IsOpen = false;
             Side = RoomUtilities.GetDoorSide(spawnPosition);
+            textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
             Location = room;
         }
 
         public void Draw()
         {
-            int textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
             textureMapColumn = IsOpen ? RoomConstants.OpenDoorColumn : RoomConstants.LockedDoorColumn;
             float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);
+            if (IsOpen) doorFloorSprite.Draw(sB, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
         }
 
         public void Update()
