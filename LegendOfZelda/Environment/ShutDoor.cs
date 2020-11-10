@@ -66,6 +66,7 @@ namespace LegendOfZelda.Environment
             IsOpen = true;
             // also open door on other side of wall
             Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).OpenDoor();
+            SoundFactory.Instance.CreateDoorUnlockSound().Play();
         }
     }
 }

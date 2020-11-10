@@ -59,10 +59,7 @@ namespace LegendOfZelda.Environment
 
         void IDoor.OpenDoor()
         {
-            if (IsOpen) return;
-            IsOpen = true;
-            // also open door on other side of wall
-            Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).OpenDoor();
+            // already open
         }
     }
 }
