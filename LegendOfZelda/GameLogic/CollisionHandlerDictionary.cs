@@ -181,7 +181,7 @@ namespace LegendOfZelda.GameLogic
             {
                 {typeof(ArrowFlyingProjectile), new ArrowBlockCollisionHandler() },
                 {typeof(BoomerangFlyingProjectile), new BoomerangBlockCollisionHandler() },
-                {typeof(BombExplodingProjectile), new ProjectileBlockDoNothingCollisionHandler() },
+                {typeof(BombExplodingProjectile), new BombDoorCollisionHandler() },
                 {typeof(FireballProjectile), new FireballBlockCollisionHandler() },
                 {typeof(SwordAttackingProjectile), new ProjectileBlockDoNothingCollisionHandler()},
                 {typeof(SwordBeamFlyingProjectile), new SwordBeamBlockCollisionHandler() }
