@@ -21,5 +21,6 @@ namespace LegendOfZelda.Link.Interface
         void UsePrimary();
         void UseSecondary();
         bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType);
+        void ConsumeKey();
     }
 }

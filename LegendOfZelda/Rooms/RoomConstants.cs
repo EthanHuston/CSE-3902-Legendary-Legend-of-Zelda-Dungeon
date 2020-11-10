@@ -54,7 +54,7 @@ namespace LegendOfZelda
         public static Rectangle RoomChangeRightTrigger => new Rectangle(RightDoorX + WallWidth - roomChangeTriggerWidth, RightDoorY, roomChangeTriggerWidth, roomChangeTriggerLength);
         public static Rectangle RoomChangeLeftTrigger => new Rectangle(LeftDoorX, LeftDoorY, roomChangeTriggerWidth, roomChangeTriggerLength);
         public static Rectangle RoomChangeDownTrigger => new Rectangle(BottomDoorX, BottomDoorY + WallWidth - roomChangeTriggerWidth, roomChangeTriggerLength, roomChangeTriggerWidth);
-        public static Rectangle RoomChangeUpTrigger => new Rectangle(TopDoorX, TopDoorY, roomChangeTriggerWidth, roomChangeTriggerLength);
+        public static Rectangle RoomChangeUpTrigger => new Rectangle(TopDoorX, TopDoorY, roomChangeTriggerLength, roomChangeTriggerWidth);
 
         // Door Locations on Texture Atlas
         public const int OpenDoorColumn = 0;
