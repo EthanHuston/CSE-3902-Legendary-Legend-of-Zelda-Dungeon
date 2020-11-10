@@ -17,10 +17,10 @@ namespace LegendOfZelda.HUDClasses
         public NumberManager(LinkPlayer link)
         {
             this.link = link;
-            initNumberArrays();
+            InitNumberArrays();
         }
 
-        private void initNumberArrays()
+        private void InitNumberArrays()
         {
             numRupees = new HUDNumber[3];
             numKeys = new HUDNumber[3];
