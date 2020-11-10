@@ -11,6 +11,7 @@ namespace LegendOfZelda.Rooms
     internal class Room
     {
         private readonly Dictionary<Constants.Direction, Room> roomDictionary;
+        private readonly Dictionary<Constants.Direction, IDoor> roomDoors;
         private readonly CollisionManager collisionManager;
 
         public bool Visiting { get; set; }
@@ -23,8 +24,9 @@ namespace LegendOfZelda.Rooms
         public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
             AllObjects = new SpawnableManager(playerList);
-            new CSVReader(spriteBatch, AllObjects, fileName);
             roomDictionary = new Dictionary<Constants.Direction, Room>();
+            roomDoors = new Dictionary<Constants.Direction, IDoor>();
+            new CSVReader(spriteBatch, this, fileName);
             collisionManager = new CollisionManager(AllObjects);
             LocationOnMap = new Point(-1, -1);
             RoomType = 0;
@@ -101,6 +103,16 @@ namespace LegendOfZelda.Rooms
         public void ResetClouds()
         {
             AllObjects.ResetClouds();
+        }
+
+        public void AddDoor(IDoor door)
+        {
+            roomDoors.Add(door.Side, door);
+        }
+
+        public IDoor GetDoor(Constants.Direction side)
+        {
+            return roomDoors.ContainsKey(side) ? roomDoors[side] : null;
         }
     }
 }
