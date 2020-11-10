@@ -18,7 +18,7 @@ namespace LegendOfZelda.Item.Sprite
             // No update needed for an unchanging object.
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height));
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);

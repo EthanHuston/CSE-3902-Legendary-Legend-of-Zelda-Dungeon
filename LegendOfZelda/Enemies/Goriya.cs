@@ -96,13 +96,13 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            if(spawning)
+            if (spawning)
             {
-                spawnSprite.Draw(spriteBatch, position);
+                spawnSprite.Draw(spriteBatch, position, Constants.DrawLayer.EnemySpawnSprite);
             }
             else
             {
-                sprite.Draw(spriteBatch, position, damaged);
+                sprite.Draw(spriteBatch, position, damaged, Constants.DrawLayer.Enemy);
             }
         }
 

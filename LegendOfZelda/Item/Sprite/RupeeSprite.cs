@@ -39,7 +39,7 @@ namespace LegendOfZelda.Item.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             int row = currentFrame % numColumns;
             int column = currentFrame % numColumns;

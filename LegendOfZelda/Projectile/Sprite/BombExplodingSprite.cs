@@ -42,7 +42,7 @@ namespace LegendOfZelda.Projectile.Sprite
             animationIsFinished = currentFrame >= totalFrames - 1;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             if (FinishedAnimation()) return;
 

@@ -24,7 +24,7 @@ namespace LegendOfZelda.GameState.Sprite
             // No update needed for an unchanging object.
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Draw(spriteBatch, position, Rectangle.Empty);
         }
@@ -34,12 +34,12 @@ namespace LegendOfZelda.GameState.Sprite
             return Rectangle.Empty;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource)
+        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * textureSource.Width), (int)(RoomConstants.SpriteMultiplier * textureSource.Height));
             spriteBatch.Draw(sprite, destinationRectangle, textureSource, Color.White);
         }
-        public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation)
+        public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer)
         {
             Draw(spriteBatch, position, Rectangle.Empty);
         }

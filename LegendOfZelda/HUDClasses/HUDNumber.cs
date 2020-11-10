@@ -15,7 +15,7 @@ namespace LegendOfZelda.HUDClasses
             AssignNumber(num);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             hudItemsAtlas.Draw(spriteBatch, position, sourceRectangle);
         }

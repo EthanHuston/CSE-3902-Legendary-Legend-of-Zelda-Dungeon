@@ -54,12 +54,12 @@ namespace LegendOfZelda.Enemies.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Draw(spriteBatch, position, false);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, float layer)
         {
             row = currentFrame % numRows;
             column = currentFrame % numColumns;

@@ -12,12 +12,12 @@ namespace LegendOfZelda.Environment.Sprite
         {
             this.sprite = sprite;
         }
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Draw(spriteBatch, position, Point.Zero);
+            Draw(spriteBatch, position, Point.Zero, layer);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation)
+        public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer)
         {
             int width = sprite.Width;
             int height = sprite.Height / 4;
@@ -26,9 +26,9 @@ namespace LegendOfZelda.Environment.Sprite
             spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource)
+        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource, float layer)
         {
-            Draw(spriteBatch, position, new Point(textureSource.X, textureSource.Y));
+            Draw(spriteBatch, position, new Point(textureSource.X, textureSource.Y), layer);
         }
 
         public Rectangle GetPositionRectangle()

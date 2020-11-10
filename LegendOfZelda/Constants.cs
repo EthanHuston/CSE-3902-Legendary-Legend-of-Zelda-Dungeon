@@ -57,5 +57,28 @@ namespace LegendOfZelda
         public const int EnemyDamageEffectTimeMs = 500;
         public const int EnemyDamageFlashDelayTicks = 5;
 
+        // Drawing Layers
+        public static class DrawLayer
+        {
+            public const float Background = 0;
+            public const float FloorTile = 0.1f;
+            public const float Stair = 0.2f;
+            public const float Wall = 0.1f;
+            public const float ClosedDoor = 0;
+            public const float Statue = 1;
+            public const float MovableBlock = 1;
+            public const float Enemy = 2;
+            public const float Npc = 2;
+            public const float EnemySpawnSprite = 2.1f;
+            public const float Player = 3;
+            public const float Projectile = 4;
+            public const float Item = 5;
+            public const float OpenDoor = 6;
+            public const float Menu = 7;
+            public const float MenuButton = 7.1f;
+            public const float Map = 7.2f;
+            public const float MapMarker = 7.3f;
+        }
+
     }
 }

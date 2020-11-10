@@ -48,7 +48,7 @@ namespace LegendOfZelda.Projectile.Sprite
             animationIsFinished = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2)) > explosionRange;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             int width, height;
             int currentRow = 0;

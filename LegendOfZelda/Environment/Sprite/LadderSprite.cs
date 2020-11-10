@@ -12,7 +12,7 @@ namespace LegendOfZelda.Environment.Sprite
         {
             this.sprite = sprite;
         }
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.SpriteMultiplier * sprite.Width), (int)(RoomConstants.SpriteMultiplier * sprite.Height));
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);

@@ -14,18 +14,18 @@ namespace LegendOfZelda.HUDClasses.Sprite
             this.sprite = sprite;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource)
+        public void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(textureSource.Width * Constants.GameScaler), (int)(textureSource.Height * Constants.GameScaler));
             spriteBatch.Draw(sprite, destinationRectangle, textureSource, Color.White);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation)
+        public void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer)
         {
             //Not needed
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             //Not needed
         }

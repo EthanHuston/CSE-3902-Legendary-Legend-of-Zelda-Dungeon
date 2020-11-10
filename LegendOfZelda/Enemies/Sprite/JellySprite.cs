@@ -48,7 +48,7 @@ namespace LegendOfZelda.Enemies.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, float layer)
         {
             int row = currentFrame % numRows;
             int column = currentFrame % numColumns;
@@ -64,7 +64,7 @@ namespace LegendOfZelda.Enemies.Sprite
             return new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Draw(spriteBatch, position, false);
         }

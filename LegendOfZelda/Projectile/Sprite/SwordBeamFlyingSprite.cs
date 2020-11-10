@@ -34,7 +34,7 @@ namespace LegendOfZelda.Projectile.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             int currentRow = 0;
             int currentColumn = currentFrame;

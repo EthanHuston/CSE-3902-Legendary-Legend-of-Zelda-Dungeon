@@ -34,12 +34,12 @@ namespace LegendOfZelda.Link.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Draw(spriteBatch, position, false);
+            Draw(spriteBatch, position, false, Constants.DrawLayer.Player);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Height);
 

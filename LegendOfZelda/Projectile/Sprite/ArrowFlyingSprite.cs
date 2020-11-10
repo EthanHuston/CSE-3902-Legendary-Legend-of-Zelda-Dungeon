@@ -12,7 +12,7 @@ namespace LegendOfZelda.Projectile.Sprite
             this.sprite = sprite;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position, new Point((int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler)));
 

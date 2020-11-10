@@ -10,8 +10,6 @@ namespace LegendOfZelda.Environment
         private readonly ITextureAtlasSprite doorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
-        private int textureMapRow;
-        private int textureMapColumn;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -29,9 +27,10 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
-            textureMapColumn = IsOpen ? RoomConstants.BombedDoorColumn : RoomConstants.BombableDoorColumn;
-            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow));
+            int textureMapRow = RoomUtilities.GetDoorTextureAtlasRow(Position);
+            int textureMapColumn = IsOpen ? RoomConstants.BombedDoorColumn : RoomConstants.BombableDoorColumn;
+            float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
+            doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);
         }
 
         public Rectangle GetRectangle()
