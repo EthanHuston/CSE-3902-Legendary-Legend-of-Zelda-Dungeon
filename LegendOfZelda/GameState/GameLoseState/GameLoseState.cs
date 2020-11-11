@@ -12,6 +12,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
+        private ISprite gameOverSprite;
         private bool phaseOneDone = false;
         private bool phaseTwoDone = false;
 
@@ -20,6 +21,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             Game = game;
             roomStatePreserved = (RoomGameState)oldRoomState;
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
+            gameOverSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
             InitButtonsList();
             InitControllerList();
         }
@@ -28,7 +30,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         {
             buttons = new List<ISpawnable>()
             {
-                {new RetryButtonBlack(Game.SpriteBatch, GameStateConstants.LostStateRetryButtonLocation) },
+                {new RetryButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateRetryButtonLocation) },
                 {new ExitButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateExitButtonLocation) }
             };
         }
@@ -44,9 +46,9 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void Draw()
         {
-            if (!phaseOneDone)
+            if (phaseOneDone)
             {
-                spawnableManager.DrawGameLose(); // continue to draw the old room in the background
+                gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation);
             }
             foreach (ISpawnable button in buttons) button.Draw();
         }
@@ -64,6 +66,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         public override void StateEntryProcedure()
         {
             // Despawn enemies, draw environment red, start link spinning
+            phaseOneDone = true;
         }
 
         public override void StateExitProcedure()
@@ -73,14 +76,12 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         protected override void NormalStateUpdate()
         {
-            if (!phaseOneDone)
+            if (phaseOneDone)
             {
 
-            } else if (!phaseTwoDone)
-            {
 
             }
-            else
+            else if(phaseTwoDone)
             {
                 foreach (IController controller in controllerList) controller.Update();
             }

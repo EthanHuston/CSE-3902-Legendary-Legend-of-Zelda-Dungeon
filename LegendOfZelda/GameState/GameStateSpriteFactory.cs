@@ -17,6 +17,7 @@ namespace LegendOfZelda.GameState
         private Texture2D mainMenuButtonSprite;
         private Texture2D titleScreenBackgroundSprite;
         private Texture2D inventoryBackgroundSprite;
+        private Texture2D gameOverSprite;
         private Texture2D mapBackgroundSprite;
         private Texture2D hudItems;
 
@@ -32,6 +33,7 @@ namespace LegendOfZelda.GameState
             mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton");
             titleScreenBackgroundSprite = content.Load<Texture2D>("Menu/TitleScreenBackground");
             inventoryBackgroundSprite = content.Load<Texture2D>("Menu/InventoryBackground");
+            gameOverSprite = content.Load<Texture2D>("Menu/GameOver");
             mapBackgroundSprite = content.Load<Texture2D>("Menu/MapBackground");
             hudItems = content.Load<Texture2D>("Menu/HudItems");
         }
@@ -67,6 +69,10 @@ namespace LegendOfZelda.GameState
         public ISprite CreateMapBackgroundSprite()
         {
             return new GameStateSprite(mapBackgroundSprite);
+        }
+        public ISprite CreateGameOverSprite()
+        {
+            return new GameStateSprite(gameOverSprite);
         }
         public ITextureAtlasSprite CreateHudItemsSprite()
         {

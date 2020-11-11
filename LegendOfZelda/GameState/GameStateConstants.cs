@@ -13,8 +13,10 @@ namespace LegendOfZelda.GameState
         public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
         public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
         public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 64));
-        public static Point LostStateRetryButtonLocation => new Point((int)(gameScaler *96), (int)(gameScaler * 64));
+        public static Point LoseStateRetryButtonLocation => new Point((int)(gameScaler *96), (int)(gameScaler * 64));
         public static Point LoseStateExitButtonLocation => new Point((int)(gameScaler *96), (int)(gameScaler*96));
+        public static Point LoseStateGameOverSpriteLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
+
 
 
         // Item Positions in HudItems.png Texture Atlas
