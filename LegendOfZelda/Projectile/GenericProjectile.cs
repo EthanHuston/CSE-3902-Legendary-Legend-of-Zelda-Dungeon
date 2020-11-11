@@ -34,7 +34,7 @@ namespace LegendOfZelda.Projectile
 
         public virtual void Draw()
         {
-            sprite.Draw(spriteBatch, Position);
+            sprite.Draw(spriteBatch, Position, Constants.DrawLayer.Projectile);
         }
 
         public Rectangle GetRectangle()

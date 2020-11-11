@@ -42,6 +42,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public override void StateEntryProcedure()
         {
+            inventoryMenu.Update();
+            mapMenu.Update();
             camera.Pan(ItemSelectionStateConstants.CameraVelocity, ItemSelectionStateConstants.CameraPanDistance);
         }
 

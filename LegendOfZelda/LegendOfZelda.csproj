@@ -83,7 +83,9 @@
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpawnSprite.cs" />
     <Compile Include="Enemies\Sprite\SpikeTrapSprite.cs" />
+    <Compile Include="Environment\BombableOpening.cs" />
     <Compile Include="Environment\DragonStatues.cs" />
+    <Compile Include="Environment\IDoor.cs" />
     <Compile Include="Environment\Sprite\DragonStatueSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />
     <Compile Include="Environment\MovableSquare.cs" />
@@ -150,9 +152,12 @@
     <Compile Include="HUDClasses\HUDConstants.cs" />
     <Compile Include="HUDClasses\HUDSpriteFactory.cs" />
     <Compile Include="HUDClasses\HUD.cs" />
+    <Compile Include="HUDClasses\Sprites\MinimapSquareSprite.cs" />
     <Compile Include="HUDClasses\Sprites\HUDItemsTextureAtlas.cs" />
     <Compile Include="HUDClasses\Sprites\MinimapSprite.cs" />
     <Compile Include="HUDClasses\Sprites\HUDSprite.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkLockedDoorCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkRoomChangeTriggerCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkStairsCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkDoorCollisionHandler.cs" />
@@ -161,7 +166,7 @@
     <Compile Include="Link\CollisionHandler\WithItem\LinkFairyCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkHeartContainerCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkHeartCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\WithNpc\LinkMovableBlockCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithBlock\LinkMovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDamageCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkHandCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDoNothingCollisionHandler.cs" />
@@ -172,6 +177,7 @@
     <Compile Include="Link\Command\ChangeSecondaryToItem.cs" />
     <Compile Include="Link\Command\UseSecondaryItem.cs" />
     <Compile Include="Link\Command\UsePrimaryItem.cs" />
+    <Compile Include="Projectile\CollisionHandler\BombDoorCollisionHandler.cs" />
     <Compile Include="Link\State\LinkDeathState.cs" />
     <Compile Include="Projectile\SwordAttackingProjectile.cs" />
     <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
@@ -210,7 +216,6 @@
     <Compile Include="Item\GenericItem.cs" />
     <Compile Include="Link\Interface\IPlayer.cs" />
     <Compile Include="Item\ItemSpriteFactory.cs" />
-    <Compile Include="Environment\BombedOpening.cs" />
     <Compile Include="Environment\BrickTile.cs" />
     <Compile Include="Environment\EnvironmentSpriteFactory.cs" />
     <Compile Include="Environment\Fire.cs" />
@@ -305,6 +310,8 @@
     <Compile Include="Enemies\Skeleton.cs" />
     <Compile Include="Enemies\SpikeTrap.cs" />
     <Compile Include="Rooms\RoomMap.cs" />
+    <Compile Include="Rooms\RoomUtilities.cs" />
+    <Compile Include="Rooms\RoomChangeTrigger.cs" />
     <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />
@@ -315,6 +322,7 @@
     <Compile Include="Item\TriforceItem.cs" />
     <Compile Include="Item\Sprite\TriforceSprite.cs" />
     <Compile Include="Link\Sprite\WalkingLinkSprite.cs" />
+    <Compile Include="Utility\SimpleDraw.cs" />
     <Compile Include="Utility\SpawnableMover.cs" />
     <Compile Include="Utility\UtilityMethods.cs" />
     <Compile Include="GameState\ItemSelectionState\KeyboardController.cs" />
@@ -479,6 +487,8 @@
     <Content Include="Content\Sounds\LOZ_Sword_Slash.wav" />
     <Content Include="Content\Sounds\LOZ_Text.wav" />
     <Content Include="Content\Sounds\LOZ_Text_Slow.wav" />
+    <Content Include="Content\Sounds\LOZ_Title.mp3" />
+    <Content Include="Content\Sounds\LOZ_Title2.mp3" />
     <Content Include="Content\Sounds\LOZ_Win.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

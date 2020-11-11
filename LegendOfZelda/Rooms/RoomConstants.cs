@@ -27,12 +27,45 @@ namespace LegendOfZelda
         public const int LeftDoorX = RoomBorderX;
         public const int LeftDoorY = RightDoorY;
         public const int NumberRooms = 17;
-        private const int wallBlockShortener = 1;
         public static Random RandomGenerator = new Random();
-        public static Rectangle LeftWallRectangle => new Rectangle(RoomBorderX, RoomBorderY, WallWidth - (int)(wallBlockShortener * SpriteMultiplier), BottomOfScreen);
-        public static Rectangle RightWallRectangle => new Rectangle(RightOfScreen - WallWidth, RoomBorderY, WallWidth - (int)(wallBlockShortener * SpriteMultiplier), BottomOfScreen);
-        public static Rectangle UpWallRectangle => new Rectangle(RoomBorderX, RoomBorderY, RoomWidth - (int)(wallBlockShortener * SpriteMultiplier), WallWidth);
-        public static Rectangle DownWallRectangle => new Rectangle(RoomBorderX, BottomOfScreen - WallWidth, RoomWidth - (int)(wallBlockShortener * SpriteMultiplier), WallWidth);
+        
+        // Wall Collision Rectangles
+        private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
+        private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
+        private const int wallBlockWidth = WallWidth;
+        private const int rightSideWallBlockX = RightOfScreen - WallWidth;
+        private const int rightTopBottomWallBlockX = RightOfScreen - upDownWallBlockLength;
+        private const int leftWallBlockX = 0;
+        private const int upWallBlockY = HUDConstants.hudHeight;
+        private const int downSideWallBlockY = BottomOfScreen - rightLeftWallBlockLength;
+        private const int downBottomWallBlockY = BottomOfScreen - WallWidth;
+        public static Rectangle LeftUpWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle LeftDownWallRectangle => new Rectangle(leftWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle RightUpWallRectangle => new Rectangle(rightSideWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle RightDownWallRectangle => new Rectangle(rightSideWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
+        public static Rectangle UpLeftWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
+        public static Rectangle UpRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
+        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth); 
+        public static Rectangle DownRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
+
+        // Room Change Triggers
+        private const int roomChangeTriggerWidth = 20;
+        private const int roomChangeTriggerLength = WallWidth;
+        public static Rectangle RoomChangeRightTrigger => new Rectangle(RightDoorX + WallWidth - roomChangeTriggerWidth, RightDoorY, roomChangeTriggerWidth, roomChangeTriggerLength);
+        public static Rectangle RoomChangeLeftTrigger => new Rectangle(LeftDoorX, LeftDoorY, roomChangeTriggerWidth, roomChangeTriggerLength);
+        public static Rectangle RoomChangeDownTrigger => new Rectangle(BottomDoorX, BottomDoorY + WallWidth - roomChangeTriggerWidth, roomChangeTriggerLength, roomChangeTriggerWidth);
+        public static Rectangle RoomChangeUpTrigger => new Rectangle(TopDoorX, TopDoorY, roomChangeTriggerLength, roomChangeTriggerWidth);
+
+        // Door Locations on Texture Atlas
+        public const int OpenDoorColumn = 0;
+        public const int LockedDoorColumn = 1;
+        public const int CrackedDoorColumn = 2;
+        public const int BombedDoorColumn = 3;
+        public const int BombableDoorColumn = 4;
+        public const int UpDoorRow = 0;
+        public const int LeftDoorRow = 1;
+        public const int RightDoorRow = 2;
+        public const int DownDoorRow = 3;
 
         //String Abbreviations for Tiles in CSV File
         public const string Block = "block";

@@ -5,7 +5,7 @@ namespace LegendOfZelda.Interface
 {
     internal interface ITextureAtlasSprite : ISprite
     {
-        void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource);
-        void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation);
+        void Draw(SpriteBatch spriteBatch, Point position, Rectangle textureSource, float layer);
+        void Draw(SpriteBatch spriteBatch, Point position, Point textureLocation, float layer);
     }
 }

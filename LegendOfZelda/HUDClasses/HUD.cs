@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.ItemSelectionState;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -12,6 +13,7 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class HUD : IMenu
     {
+        private RoomGameState roomGameState;
         private SpriteBatch spriteBatch;
         private List<IPlayer> players;
         private HeartManager heartManager;
@@ -21,6 +23,11 @@ namespace LegendOfZelda.HUDClasses
         private HUDNumber levelNum;
         private ISprite minimapSprite;
         private bool displayMinimap;
+        private ISprite linkMinimapSquare;
+        private ISprite triforceMinimapSquare;
+        private Point triforceRoomLocation = new Point(5, 4);
+        private bool hasCompass;
+
         private LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
         private IButton primaryButton;
@@ -42,21 +49,25 @@ namespace LegendOfZelda.HUDClasses
             }
         }
 
-        public HUD(SpriteBatch spriteBatch, List<IPlayer> players)
+        public HUD(RoomGameState gameState)
         {
-            this.spriteBatch = spriteBatch;
-            this.players = players;
+            roomGameState = gameState;
+            spriteBatch = gameState.Game.SpriteBatch;
+            players = gameState.PlayerList;
             heartManager = new HeartManager((LinkPlayer)players[0]);
             numberManager = new NumberManager((LinkPlayer)players[0]);
             primaryItem = players[0].PrimaryItem;
             secondaryItem = players[0].SecondaryItem;
-            fillSecondaryItemDictionary();
+            FillSecondaryItemDictionary();
             primaryButton = new SwordInventoryButton(spriteBatch, this, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
+            linkMinimapSquare = HUDSpriteFactory.Instance.CreateLinkMinimapSquareSprite();
+            triforceMinimapSquare = HUDSpriteFactory.Instance.CreateTriforceMinimapSquareSprite();
             levelNum = new HUDNumber(1);
             displayMinimap = false;
+            hasCompass = false;
             Position = new Point(HUDConstants.hudx, HUDConstants.hudy);
         }
 
@@ -64,8 +75,15 @@ namespace LegendOfZelda.HUDClasses
         {
             if (players[0].GetQuantityInInventory(LinkConstants.ItemType.Map) != 0)
                 displayMinimap = true;
+            if (players[0].GetQuantityInInventory(LinkConstants.ItemType.Compass) != 0)
+                hasCompass = true;
             if (players[0].SecondaryItem != secondaryItem)
                 UpdateSecondaryItem();
+            if (displayMinimap)
+            {
+                linkMinimapSquare.Update();
+                triforceMinimapSquare.Update();
+            }
             numberManager.Update();
             heartManager.Update();
         }
@@ -78,10 +96,15 @@ namespace LegendOfZelda.HUDClasses
 
         public void Draw()
         {
-            hudSprite.Draw(spriteBatch, position);
-            levelNum.Draw(spriteBatch, Position + HUDConstants.LevelNumberLocation);
+            hudSprite.Draw(spriteBatch, position, Constants.DrawLayer.HUD);
+            levelNum.Draw(spriteBatch, Position + HUDConstants.LevelNumberLocation, Constants.DrawLayer.MenuIcon);
             if (displayMinimap)
-                minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation);
+            {
+                minimapSprite.Draw(spriteBatch, Position + HUDConstants.MinimapLocation, Constants.DrawLayer.Map);
+                if (hasCompass)
+                    triforceMinimapSquare.Draw(spriteBatch, position +  HUDConstants.MinimapSquarePositions[triforceRoomLocation], Constants.DrawLayer.MapMarker);
+                linkMinimapSquare.Draw(spriteBatch, position + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap], Constants.DrawLayer.MapMarker);
+            }
             foreach (IButton button in Buttons){
                 button.Draw();
             }
@@ -106,7 +129,7 @@ namespace LegendOfZelda.HUDClasses
             safeToDespawn = true;
         }
 
-        public void fillSecondaryItemDictionary()
+        private void FillSecondaryItemDictionary()
         {
             secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
             {

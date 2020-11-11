@@ -8,7 +8,9 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
     {
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
-            // not implemented yet, but call some command to switch rooms
+            IDoor door = (IDoor)block;
+            if (door.IsOpen) return;
+            new LinkImmovableBlockCollisionHandler().HandleCollision(link, block, side);
         }
     }
 }

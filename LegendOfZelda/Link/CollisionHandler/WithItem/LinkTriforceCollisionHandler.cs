@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.Interface;
+using System;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithItem
 {
@@ -8,7 +9,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
     {
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {
-            // TODO: implement me
+            throw new NotImplementedException();
         }
     }
 }

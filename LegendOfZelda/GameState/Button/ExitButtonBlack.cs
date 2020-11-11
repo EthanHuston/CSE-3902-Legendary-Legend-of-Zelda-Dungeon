@@ -30,7 +30,7 @@ namespace LegendOfZelda.GameState.Button
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, Position);
+            sprite.Draw(spriteBatch, Position, Constants.DrawLayer.MenuButton);
         }
 
         public Rectangle GetRectangle()

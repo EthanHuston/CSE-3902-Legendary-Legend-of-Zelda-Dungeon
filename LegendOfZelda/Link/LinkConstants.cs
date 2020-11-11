@@ -30,11 +30,11 @@ namespace LegendOfZelda.Link
         public const int SwordCount = 1;
         public const int BowCount = 1; // TODO: change me after implementing secret room
 
-        // Spawn Locations : Entering into Rooms
-        public static Point DoorDownSpawnPosition => new Point(RoomConstants.BottomDoorX + RoomConstants.TileLength / 2, RoomConstants.BottomDoorY - RoomConstants.TileLength);
-        public static Point DoorUpSpawnPosition => new Point(RoomConstants.TopDoorX + RoomConstants.TileLength / 2, RoomConstants.TopDoorY + RoomConstants.TileLength * 2);
-        public static Point DoorLeftSpawnPosition => new Point(RoomConstants.LeftDoorX + RoomConstants.TileLength * 2, RoomConstants.LeftDoorY + RoomConstants.TileLength / 2);
-        public static Point DoorRightSpawnPosition => new Point(RoomConstants.RightDoorX - RoomConstants.TileLength, RoomConstants.RightDoorY + RoomConstants.TileLength / 2);
+        // Spawn Locations : Entering into Room
+        public static Point DoorDownSpawnPosition => new Point(RoomConstants.BottomDoorX + RoomConstants.TileLength / 2, RoomConstants.BottomDoorY);
+        public static Point DoorUpSpawnPosition => new Point(RoomConstants.TopDoorX + RoomConstants.TileLength / 2, RoomConstants.TopDoorY + RoomConstants.TileLength);
+        public static Point DoorLeftSpawnPosition => new Point(RoomConstants.LeftDoorX + RoomConstants.TileLength, RoomConstants.LeftDoorY + RoomConstants.TileLength / 2);
+        public static Point DoorRightSpawnPosition => new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY + RoomConstants.TileLength / 2);
 
         // Spawn Offsets : Picking Up Items
         public static Point PickingUpBoomerangSpawnOffset => new Point((int)(0 * SpriteScaler), (int)(-9 * SpriteScaler));

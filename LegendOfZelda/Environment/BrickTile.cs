@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            brickTileSprite.Draw(sB, Position);
+            brickTileSprite.Draw(sB, Position, Constants.DrawLayer.FloorTile);
         }
 
         public Point GetPosition()

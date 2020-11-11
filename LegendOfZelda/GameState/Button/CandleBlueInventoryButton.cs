@@ -35,7 +35,7 @@ namespace LegendOfZelda.GameState.Button
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, owningMenu.Position + Position, GameStateConstants.CandleBlueTextureAtlasSource);
+            sprite.Draw(spriteBatch, owningMenu.Position + Position, GameStateConstants.CandleBlueTextureAtlasSource, Constants.DrawLayer.MenuButton);
         }
 
         public Rectangle GetRectangle()
