@@ -149,6 +149,7 @@ namespace LegendOfZelda.GameState.Rooms
             CurrentRoom.Update();
             if(PlayerList[0].SafeToDespawn())
             {
+                dungeonMusic.Stop();
                 Game.State = new GameLoseGameState(Game, this);
             }
             Hud.Update();
