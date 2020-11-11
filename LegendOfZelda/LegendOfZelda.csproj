@@ -95,12 +95,6 @@
     <Compile Include="Environment\Sprite\WallSprite.cs" />
     <Compile Include="Environment\BlackBackground.cs" />
     <Compile Include="Environment\TileBackground.cs" />
-    <Compile Include="GameState\Command\ExitGameCommand.cs" />
-    <Compile Include="GameState\Command\MainMenuCommand.cs" />
-    <Compile Include="GameState\Command\PauseGameCommand.cs" />
-    <Compile Include="GameState\Command\QuitGameCommand.cs" />
-    <Compile Include="GameState\Command\ResumeGameCommand.cs" />
-    <Compile Include="GameState\Command\StartGameCommand.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\IMenu.cs" />
