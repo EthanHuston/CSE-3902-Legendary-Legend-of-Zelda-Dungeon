@@ -30,10 +30,10 @@ namespace LegendOfZelda.HUDClasses
         {
             if (displayMinimap)
             {
-                minimapSprite.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapLocation);
+                minimapSprite.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapLocation, Constants.DrawLayer.HUD);
                 if (hasCompass)
-                    triforceMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[triforceRoomLocation]);
-                linkMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap]);
+                    triforceMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[triforceRoomLocation], Constants.DrawLayer.HUD);
+                linkMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap], Constants.DrawLayer.HUD);
             }
 
         }
