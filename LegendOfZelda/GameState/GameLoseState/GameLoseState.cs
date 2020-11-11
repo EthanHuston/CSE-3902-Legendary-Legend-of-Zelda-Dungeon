@@ -70,7 +70,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         {
             // Despawn enemies, draw environment red, start link spinning
             spawnableManager.DrawGameLose();
-            roomStatePreserved.GetPlayer(0);
+            roomStatePreserved.GetPlayer(0).StartDeathAnimation();
             phaseOneDone = true;
         }
 

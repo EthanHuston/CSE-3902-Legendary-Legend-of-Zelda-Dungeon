@@ -172,6 +172,7 @@
     <Compile Include="Link\Command\ChangeSecondaryToItem.cs" />
     <Compile Include="Link\Command\UseSecondaryItem.cs" />
     <Compile Include="Link\Command\UsePrimaryItem.cs" />
+    <Compile Include="Link\State\LinkDeathState.cs" />
     <Compile Include="Projectile\SwordAttackingProjectile.cs" />
     <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />

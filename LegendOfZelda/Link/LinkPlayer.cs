@@ -117,6 +117,10 @@ namespace LegendOfZelda.Link
         {
             State.StopMoving();
         }
+        public void StartDeathAnimation()
+        {
+            State.StartDeath();
+        }
 
         public void SpawnItem(IProjectile projectile)
         {

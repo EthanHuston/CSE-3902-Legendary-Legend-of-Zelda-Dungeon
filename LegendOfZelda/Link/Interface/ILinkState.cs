@@ -10,5 +10,6 @@ namespace LegendOfZelda.Link.Interface
         void StopMoving();
         void PickUpItem(LinkConstants.ItemType itemType);
         void UseSword();
+        void StartDeath();
     }
 }
