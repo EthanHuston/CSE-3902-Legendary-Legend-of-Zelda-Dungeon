@@ -57,7 +57,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOne)
             {
                 spawnableManager.DrawGameLose();
-                redOverlaySprite.Draw(Game.SpriteBatch, new Point(0, 0), Constants.DrawLayer.RedDeathBlanket);
+                redOverlaySprite.Draw(Game.SpriteBatch, new Point(Constants.MinXPos, Constants.MinYPos), Constants.DrawLayer.RedDeathBlanket);
                 SoundFactory.Instance.CreateLinkDieSound().Play();
             } else if (phaseTwo)
             {
