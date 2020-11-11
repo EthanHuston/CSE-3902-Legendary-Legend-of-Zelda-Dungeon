@@ -127,11 +127,39 @@ namespace LegendOfZelda.GameLogic
                     {
                         itemDropper.DropItem(item.Position);
                     }
-                    if(item.GetType() != typeof(LinkPlayer))
+                    indicesToRemove.Add(i);
+                }
+            }
+
+            for (int i = 0; i < indicesToRemove.Count; i++)
+            {
+                list.RemoveAt(indicesToRemove[i] - i);
+            }
+        }
+
+        private void UpdateList(List<IPlayer> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                ISpawnable item = list[i];
+                item.Update();
+            }
+        }
+
+        private void UpdateList(List<INpc> list)
+        {
+            List<int> indicesToRemove = new List<int>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                ISpawnable item = list[i];
+                item.Update();
+                if (item.SafeToDespawn())
+                {
+                    if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
                     {
-                        indicesToRemove.Add(i);
+                        itemDropper.DropItem(item.Position);
                     }
-                    
+                    indicesToRemove.Add(i);
                 }
             }
 
