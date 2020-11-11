@@ -99,7 +99,7 @@
     <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\Button\ExitButtonBlack.cs" />
     <Compile Include="GameState\Button\RetryButtonBlack.cs" />
-    <Compile Include="GameState\GameLoseState\GameLoseState.cs" />
+    <Compile Include="GameState\GameLoseState\GameLoseGameState.cs" />
     <Compile Include="GameState\GameLoseState\KeyboardController.cs" />
     <Compile Include="GameState\GameLoseState\MouseController.cs" />
     <Compile Include="GameState\GameWinState\GameWinState.cs" />
