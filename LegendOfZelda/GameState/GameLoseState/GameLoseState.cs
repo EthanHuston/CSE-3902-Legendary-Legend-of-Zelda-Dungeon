@@ -13,8 +13,9 @@ namespace LegendOfZelda.GameState.GameLoseState
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
         private ISprite gameOverSprite;
-        private bool phaseOneDone = false;
-        private bool phaseTwoDone = false;
+        private bool phaseOne = true;
+        private bool phaseTwo = false;
+        private bool phaseThree = false;
         private int phaseTwoBuffer = 0;
 
         public GameLoseState(Game1 game, IGameState oldRoomState)
@@ -47,10 +48,14 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void Draw()
         {
-            if (phaseOneDone)
+            if (phaseOne)
+            {
+                spawnableManager.DrawGameLose();
+                gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation);
+            } else if (phaseTwo)
             {
                 gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation);
-            } else if (phaseTwoDone)
+            } else if (phaseThree)
             {
                 foreach (ISpawnable button in buttons) button.Draw();
             }
@@ -69,9 +74,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         public override void StateEntryProcedure()
         {
             // Despawn enemies, draw environment red, start link spinning
-            spawnableManager.DrawGameLose();
             roomStatePreserved.GetPlayer(0).StartDeathAnimation();
-            phaseOneDone = true;
         }
 
         public override void StateExitProcedure()
@@ -81,16 +84,21 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         protected override void NormalStateUpdate()
         {
-            if (phaseOneDone)
+            if (phaseOne)
             {
-                phaseTwoBuffer++;
-                if(phaseTwoBuffer > 30)
-                {
-                    phaseTwoDone = true;
-                }
 
             }
-            else if(phaseTwoDone)
+            else if(phaseTwo)
+            {
+                phaseTwoBuffer++;
+                if (phaseTwoBuffer > 30)
+                {
+                    phaseOne = false;
+                    phaseTwo = false;
+                    phaseThree = true;
+                }
+
+            } else if (phaseThree)
             {
                 foreach (IController controller in controllerList) controller.Update();
             }

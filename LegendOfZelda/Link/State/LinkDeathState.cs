@@ -8,7 +8,6 @@ namespace LegendOfZelda.Link.State
 {
     class LinkDeathState : LinkGenericAbstractState
     {
-        private Constants.Direction currentDirection = Constants.Direction.Down;
         private int spinBuffer = 0;
         private int totalSpins = 0;
         public LinkDeathState(LinkPlayer link, bool damaged, DateTime healthyDateTime) : base(link, damaged, healthyDateTime)
