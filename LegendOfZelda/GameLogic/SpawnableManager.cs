@@ -3,6 +3,7 @@ using LegendOfZelda.Environment;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
+using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using System.CodeDom;
@@ -126,7 +127,11 @@ namespace LegendOfZelda.GameLogic
                     {
                         itemDropper.DropItem(item.Position);
                     }
-                    indicesToRemove.Add(i);
+                    if(item.GetType() != typeof(LinkPlayer))
+                    {
+                        indicesToRemove.Add(i);
+                    }
+                    
                 }
             }
 

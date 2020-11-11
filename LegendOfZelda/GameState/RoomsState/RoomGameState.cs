@@ -147,7 +147,7 @@ namespace LegendOfZelda.GameState.Rooms
                 controller.Update();
             }
             CurrentRoom.Update();
-            if(PlayerList.Count == 0)
+            if(PlayerList[0].SafeToDespawn())
             {
                 Game.State = new GameLoseGameState(Game, this);
             }
