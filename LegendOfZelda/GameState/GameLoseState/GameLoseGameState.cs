@@ -99,6 +99,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOne)
             {
                 phaseOneBuffer++;
+                spawnableManager.PlayerList[0].Update();
                 if(phaseOneBuffer == 240)
                 {
                     phaseOne = false;

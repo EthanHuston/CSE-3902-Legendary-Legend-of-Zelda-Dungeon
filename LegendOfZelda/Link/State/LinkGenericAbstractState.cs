@@ -39,7 +39,7 @@ namespace LegendOfZelda.Link.State
             int posY = link.Position.Y + spawnOffset.Y;
             if (link.SafeToDespawn())
             {
-                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.LinkDead);
+                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), !damaged, Constants.DrawLayer.LinkDead);
             }
             else
             {
