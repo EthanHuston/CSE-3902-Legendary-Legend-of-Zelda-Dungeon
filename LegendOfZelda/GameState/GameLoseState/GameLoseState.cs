@@ -52,7 +52,6 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOne)
             {
                 spawnableManager.DrawGameLose();
-                gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation);
             } else if (phaseTwo)
             {
                 gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation);
