@@ -86,7 +86,6 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void StateEntryProcedure()
         {
-            // Despawn enemies, draw environment red, start link spinning
             roomStatePreserved.GetPlayer(0).StartDeathAnimation();
         }
 
