@@ -28,8 +28,8 @@ namespace LegendOfZelda.GameState.GameLoseState
         {
             controllerMappings = new Dictionary<Type, ICommand>
             {
-                {typeof(RetryButton), new MainMenuCommand(gameState) },
-                {typeof(ExitButton), new ExitGameCommand(gameState) }
+                {typeof(RetryButtonBlack), new MainMenuCommand(gameState) },
+                {typeof(ExitButtonBlack), new ExitGameCommand(gameState) }
             };
         }
 

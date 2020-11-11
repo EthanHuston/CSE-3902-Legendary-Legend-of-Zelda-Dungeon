@@ -2,10 +2,10 @@
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using LegendOfZelda.Interface;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace LegendOfZelda.GameState.GameWinState
 {
