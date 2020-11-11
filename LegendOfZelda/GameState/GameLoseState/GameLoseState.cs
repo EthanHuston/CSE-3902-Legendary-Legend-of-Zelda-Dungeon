@@ -63,7 +63,7 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void StateEntryProcedure()
         {
-            // nothing fancy to do here
+            // Despawn enemies, draw environment red, start link spinning
         }
 
         public override void StateExitProcedure()
