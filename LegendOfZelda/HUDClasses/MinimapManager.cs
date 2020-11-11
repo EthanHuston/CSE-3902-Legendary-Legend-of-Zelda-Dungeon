@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,51 +8,46 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class MinimapManager
     {
-        private LinkPlayer link;
-        private HUDHeart[] hearts;
-        private double linkHealth;
-        private Point position;
+        private RoomGameState roomGameState;
+        private ISprite minimapSprite;
+        private bool displayMinimap;
+        private ISprite linkMinimapSquare;
+        private ISprite triforceMinimapSquare;
+        private Point triforceRoomLocation = new Point(5, 4);
+        private bool hasCompass;
 
-        public MinimapManager(LinkPlayer link)
+        public MinimapManager(RoomGameState roomGameState)
         {
-            this.link = link;
-            linkHealth = link.CurrentHealth;
-            hearts = new HUDHeart[LinkConstants.StartingHearts / Constants.HeartValue];
-            for(int i = 0; i < hearts.Length; i++)
-                hearts[i] = new HUDHeart(2);
+            this.roomGameState = roomGameState;
+            minimapSprite = HUDSpriteFactory.Instance.CreateMiniMapSprite();
+            linkMinimapSquare = HUDSpriteFactory.Instance.CreateLinkMinimapSquareSprite();
+            triforceMinimapSquare = HUDSpriteFactory.Instance.CreateTriforceMinimapSquareSprite();
+            displayMinimap = false;
+            hasCompass = false;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point hudPosition)
+        public void Draw(Point hudPosition)
         {
-            for(int i = 0; i < hearts.Length; i++)
+            if (displayMinimap)
             {
-                Point heartPosition = new Point(HUDConstants.HeartX + i * HUDConstants.NumberWidth, HUDConstants.HeartY);
-                hearts[i].Draw(spriteBatch, hudPosition + heartPosition);
+                minimapSprite.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapLocation);
+                if (hasCompass)
+                    triforceMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[triforceRoomLocation]);
+                linkMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap]);
             }
-                
+
         }
 
         public void Update()
         {
-            if(link.CurrentHealth != linkHealth)
+            if (!displayMinimap && roomGameState.PlayerList[0].GetQuantityInInventory(LinkConstants.ItemType.Map) != 0)
+                displayMinimap = true;
+            if (!hasCompass && roomGameState.PlayerList[0].GetQuantityInInventory(LinkConstants.ItemType.Compass) != 0)
+                hasCompass = true;
+            if (displayMinimap)
             {
-                UpdateHearts();
-            }
-        }
-
-        private void UpdateHearts()
-        {
-            linkHealth = (int)link.CurrentHealth;
-            int tensPlace = (int)linkHealth / 10;
-            int onesPlace = (int)linkHealth % 10;
-            for(int i = 0; i < hearts.Length; i++)
-            {
-                if (i < tensPlace)
-                    hearts[i].AssignNumber(2);
-                else if (i == tensPlace && onesPlace > 4)
-                    hearts[i].AssignNumber(1);
-                else
-                    hearts[i].AssignNumber(0);
+                linkMinimapSquare.Update();
+                triforceMinimapSquare.Update();
             }
         }
     }
