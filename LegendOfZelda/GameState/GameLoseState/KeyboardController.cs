@@ -1,11 +1,11 @@
 ﻿using LegendOfZelda.GameState.Command;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using Microsoft.Xna.Framework.Input;
+using LegendOfZelda.Interface;
 
 namespace LegendOfZelda.GameState.GameLoseState
 {
