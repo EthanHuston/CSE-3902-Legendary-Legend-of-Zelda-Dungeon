@@ -50,7 +50,7 @@ namespace LegendOfZelda.GameState
         }
         public ISprite CreateRedOverlaySprite()
         {
-            return new GameStateSprite(redOverlaySprite);
+            return new RedOverlaySprite(redOverlaySprite);
         }
         public ISprite CreateExitButtonBlackSprite()
         {
