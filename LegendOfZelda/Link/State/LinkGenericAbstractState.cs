@@ -97,6 +97,7 @@ namespace LegendOfZelda.Link.State
         {
             link.BlockStateChange = false;
             link.State = new LinkDeathState(link, damaged, healthyDateTime);
+            link.BlockStateChange = true;
         }
     }
 }

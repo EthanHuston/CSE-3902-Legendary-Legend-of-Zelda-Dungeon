@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,26 +18,26 @@ namespace LegendOfZelda.Link.State
         protected override void InitClass()
         {
             link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkDownSprite();
-            link.BlockStateChange = true;
+            link.Velocity = Vector2.Zero;
         }
 
         protected override void UpdateState()
         {
-            if (totalSpins < 4)
+            if (totalSpins < 3)
             {
                 spinBuffer++;
                 switch (spinBuffer)
                 {
-                    case 15:
+                    case 10:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
                         break;
-                    case 30:
+                    case 20:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkUpSprite();
                         break;
-                    case 45:
+                    case 30:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkLeftSprite();
                         break;
-                    case 60:
+                    case 40:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkDownSprite();
                         totalSpins++;
                         spinBuffer = 0;
