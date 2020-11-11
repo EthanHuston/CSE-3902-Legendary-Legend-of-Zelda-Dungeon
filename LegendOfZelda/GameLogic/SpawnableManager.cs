@@ -75,6 +75,7 @@ namespace LegendOfZelda.GameLogic
         public void DrawGameLose()
         {
             DrawList(BackgroundList);
+            DrawList(BlockList);
             DrawList(PlayerList);
         }
         public void DrawGameWin()

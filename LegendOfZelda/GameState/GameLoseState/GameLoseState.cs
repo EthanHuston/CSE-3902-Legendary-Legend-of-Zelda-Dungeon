@@ -15,6 +15,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private ISprite gameOverSprite;
         private bool phaseOneDone = false;
         private bool phaseTwoDone = false;
+        private int phaseTwoBuffer = 0;
 
         public GameLoseState(Game1 game, IGameState oldRoomState)
         {
@@ -49,8 +50,10 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOneDone)
             {
                 gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation);
+            } else if (phaseTwoDone)
+            {
+                foreach (ISpawnable button in buttons) button.Draw();
             }
-            foreach (ISpawnable button in buttons) button.Draw();
         }
 
         public override void SwitchToRoomState()
@@ -66,6 +69,8 @@ namespace LegendOfZelda.GameState.GameLoseState
         public override void StateEntryProcedure()
         {
             // Despawn enemies, draw environment red, start link spinning
+            spawnableManager.DrawGameLose();
+            roomStatePreserved.GetPlayer(0).StartDeathAnimation();
             phaseOneDone = true;
         }
 
@@ -78,7 +83,11 @@ namespace LegendOfZelda.GameState.GameLoseState
         {
             if (phaseOneDone)
             {
-
+                phaseTwoBuffer++;
+                if(phaseTwoBuffer > 30)
+                {
+                    phaseTwoDone = true;
+                }
 
             }
             else if(phaseTwoDone)

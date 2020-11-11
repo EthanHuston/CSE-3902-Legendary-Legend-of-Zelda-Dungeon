@@ -85,5 +85,10 @@ namespace LegendOfZelda.Link.State
         {
             link.State = new LinkPickingUpItemState(link, itemType, damaged, healthyDateTime);
         }
+
+        public void StartDeath()
+        {
+            link.State = new LinkDeathState(link, damaged, healthyDateTime);
+        }
     }
 }
