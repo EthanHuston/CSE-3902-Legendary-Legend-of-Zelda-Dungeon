@@ -107,7 +107,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             else if(phaseTwo)
             {
                 phaseTwoBuffer++;
-                if (phaseTwoBuffer > 30)
+                if (phaseTwoBuffer > 80)
                 {
                     phaseTwo = false;
                     phaseThree = true;
