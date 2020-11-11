@@ -16,11 +16,13 @@ namespace LegendOfZelda
         private SoundEffect bomb_drop;
         private SoundEffect boss_hit;
         private SoundEffect boss_scream;
+        private SoundEffect die;
         private SoundEffect door_unlock;
         private SoundEffect dungeon_music;
         private SoundEffect enemy_die;
         private SoundEffect enemy_hit;
         private SoundEffect fanfare;
+        private SoundEffect game_over;
         private SoundEffect get_heart;
         private SoundEffect get_item;
         private SoundEffect get_rupee;
@@ -36,6 +38,7 @@ namespace LegendOfZelda
         private SoundEffect sword_shoot;
         private SoundEffect sword_slash;
         private SoundEffect text;
+        private SoundEffect win;
 
         public static SoundFactory Instance { get; } = new SoundFactory();
 
@@ -46,11 +49,13 @@ namespace LegendOfZelda
             bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop"); // Done
             boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit"); // Done
             boss_scream = content.Load<SoundEffect>("Sounds/LOZ_Boss_Scream1");
+            die = content.Load<SoundEffect>("Sounds/LOZ_Die");
             door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock");
             dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon"); // Done
             enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die"); // Done
             enemy_hit = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Hit"); // Done
             fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare"); // Done
+            game_over = content.Load<SoundEffect>("Sounds/LOZ_GameOver");
             get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart"); // Done
             get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item"); // Done
             get_rupee = content.Load<SoundEffect>("Sounds/LOZ_Get_Rupee"); // Done
@@ -66,6 +71,7 @@ namespace LegendOfZelda
             sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot"); // Done
             sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash"); // Done
             text = content.Load<SoundEffect>("Sounds/LOZ_Text"); // Done
+            win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
         public SoundEffectInstance CreateArrowBoomerangSound()
@@ -93,6 +99,11 @@ namespace LegendOfZelda
             return boss_scream.CreateInstance();
         }
 
+        public SoundEffectInstance CreateDieSound()
+        {
+            return die.CreateInstance();
+        }
+
         public SoundEffectInstance CreateDoorUnlockSound()
         {
             return door_unlock.CreateInstance();
@@ -116,6 +127,11 @@ namespace LegendOfZelda
         public SoundEffectInstance CreateFanfareSound()
         {
             return fanfare.CreateInstance();
+        }
+
+        public SoundEffectInstance CreateGameOverSound()
+        {
+            return game_over.CreateInstance();
         }
 
         public SoundEffectInstance CreateGetHeartSound()
@@ -191,6 +207,11 @@ namespace LegendOfZelda
         public SoundEffectInstance CreateTextSound()
         {
             return text.CreateInstance();
+        }
+
+        public SoundEffectInstance CreateWinSound()
+        {
+            return win.CreateInstance();
         }
     }
 }

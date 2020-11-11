@@ -1237,6 +1237,12 @@
 /processorParam:Quality=Best
 /build:Sounds/LOZ_Candle.wav
 
+#begin Sounds/LOZ_Die.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/LOZ_Die.mp3
+
 #begin Sounds/LOZ_Door_Unlock.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -1266,6 +1272,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/LOZ_Fanfare.wav
+
+#begin Sounds/LOZ_GameOver.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/LOZ_GameOver.mp3
 
 #begin Sounds/LOZ_Get_Heart.wav
 /importer:WavImporter
@@ -1380,4 +1392,10 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/LOZ_Text_Slow.wav
+
+#begin Sounds/LOZ_Win.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/LOZ_Win.mp3
 
