@@ -15,6 +15,7 @@ namespace LegendOfZelda.Link
         private readonly Dictionary<LinkConstants.ProjectileType, IProjectile> currentProjectiles;
         private bool safeToDespawn;
         private ILinkState state;
+        private SoundEffectInstance lowHealth;
 
         public Game1 Game { get; private set; }
         public Constants.Direction FacingDirection { get; set; }
@@ -33,6 +34,7 @@ namespace LegendOfZelda.Link
         {
             CurrentHealth = LinkConstants.StartingHearts;
             MaxHealth = LinkConstants.StartingHearts;
+            lowHealth = SoundFactory.Instance.CreateLowHealthSound();
             Game = game;
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             FacingDirection = Constants.Direction.Up;
@@ -54,11 +56,14 @@ namespace LegendOfZelda.Link
             safeToDespawn = safeToDespawn || CurrentHealth <= 0;
             State.Update();
             if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
-            if(CurrentHealth <= 1.0)
+            if(CurrentHealth <= Constants.HeartValue && CurrentHealth > 0)
             {
-                SoundEffectInstance lowHealth = SoundFactory.Instance.CreateLowHealthSound();
                 lowHealth.IsLooped = true;
                 lowHealth.Play();
+            }
+            if (safeToDespawn || CurrentHealth > Constants.HeartValue)
+            {
+                lowHealth.Stop();
             }
         }
 
