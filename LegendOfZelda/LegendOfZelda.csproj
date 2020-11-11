@@ -97,6 +97,7 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\IButtonMenu.cs" />
     <Compile Include="GameState\IMenu.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
@@ -137,6 +138,8 @@
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="HUDClasses\ItemsManager.cs" />
+    <Compile Include="HUDClasses\MinimapManager.cs" />
     <Compile Include="HUDClasses\NumberManager.cs" />
     <Compile Include="HUDClasses\HeartManager.cs" />
     <Compile Include="HUDClasses\HUDHeart.cs" />

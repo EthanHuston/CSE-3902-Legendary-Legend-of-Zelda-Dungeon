@@ -8,7 +8,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 {
     class ItemSelectionStateCamera : ICamera
     {
-        private readonly ISpawnable hud;
+        private readonly IMenu hud;
         private readonly List<IMenu> inventorySelectionSpawnables;
         private Vector2 velocityWhenPan;
         private int distanceToPan;
@@ -16,7 +16,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public bool IsPanning { get; private set; }
 
-        public ItemSelectionStateCamera(ISpawnable hud, List<IMenu> inventorySpawnablesList)
+        public ItemSelectionStateCamera(IMenu hud, List<IMenu> inventorySpawnablesList)
         {
             this.hud = hud;
             inventorySelectionSpawnables = inventorySpawnablesList;
@@ -25,7 +25,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Draw()
         {
-            foreach (ISpawnable spawnable in inventorySelectionSpawnables) spawnable.Draw();
+            foreach (IMenu spawnable in inventorySelectionSpawnables) spawnable.Draw();
             hud.Draw();
         }
 
@@ -58,7 +58,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
                     moveVector *= distanceToPan - (distancePanned - (int)velocityWhenPan.Length());
                 }
 
-                foreach (ISpawnable spawnable in inventorySelectionSpawnables) spawnable.Position += moveVector.ToPoint();
+                foreach (IMenu spawnable in inventorySelectionSpawnables) spawnable.Position += moveVector.ToPoint();
                 hud.Position += moveVector.ToPoint();
             }
         }
