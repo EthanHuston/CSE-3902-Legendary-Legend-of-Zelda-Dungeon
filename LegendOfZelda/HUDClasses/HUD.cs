@@ -44,7 +44,7 @@ namespace LegendOfZelda.HUDClasses
         public void Draw()
         {
             hudSprite.Draw(spriteBatch, position, Constants.DrawLayer.HUD);
-            levelNum.Draw(spriteBatch, position + HUDConstants.LevelNumberLocation, Constants.DrawLayer.HUD);
+            levelNum.Draw(spriteBatch, position + HUDConstants.LevelNumberLocation, Constants.DrawLayer.HUDMinimap);
             numberManager.Draw(spriteBatch, position);
             heartManager.Draw(spriteBatch, position);
             minimapManager.Draw(position);
