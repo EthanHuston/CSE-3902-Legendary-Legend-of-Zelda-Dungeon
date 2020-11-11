@@ -16,7 +16,6 @@ namespace LegendOfZelda
         private SoundEffect bomb_drop;
         private SoundEffect boss_hit;
         private SoundEffect boss_scream;
-        private SoundEffect die;
         private SoundEffect door_unlock;
         private SoundEffect dungeon_music;
         private SoundEffect enemy_die;
@@ -49,7 +48,6 @@ namespace LegendOfZelda
             bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop"); // Done
             boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit"); // Done
             boss_scream = content.Load<SoundEffect>("Sounds/LOZ_Boss_Scream1");
-            die = content.Load<SoundEffect>("Sounds/LOZ_Die");
             door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock");
             dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon"); // Done
             enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die"); // Done
@@ -97,11 +95,6 @@ namespace LegendOfZelda
         public SoundEffectInstance CreateBossScreamSound()
         {
             return boss_scream.CreateInstance();
-        }
-
-        public SoundEffectInstance CreateDieSound()
-        {
-            return die.CreateInstance();
         }
 
         public SoundEffectInstance CreateDoorUnlockSound()
