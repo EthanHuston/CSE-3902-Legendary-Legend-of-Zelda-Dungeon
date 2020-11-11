@@ -9,6 +9,7 @@
         void SwitchToPauseState();
         void SwitchToMainMenuState();
         void SwitchToItemSelectionState();
+        void SwitchToDeathState();
         void SetControllerOldInputState(OldInputState inputFromOldState);
         void StateEntryProcedure();
         void StateExitProcedure();

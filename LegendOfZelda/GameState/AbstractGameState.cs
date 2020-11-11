@@ -64,6 +64,7 @@ namespace LegendOfZelda.GameState
         public virtual void SwitchToMainMenuState() { }
         public virtual void SwitchToPauseState() { }
         public virtual void SwitchToRoomState() { }
+        public virtual void SwitchToDeathState() { }
         public abstract void StateEntryProcedure();
         public abstract void StateExitProcedure();
         protected abstract void NormalStateUpdate();
