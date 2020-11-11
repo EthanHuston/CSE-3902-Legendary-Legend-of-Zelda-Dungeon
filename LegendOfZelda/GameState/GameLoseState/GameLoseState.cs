@@ -3,6 +3,7 @@ using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameLoseState
@@ -13,6 +14,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
         private ISprite gameOverSprite;
+        private SoundEffectInstance game_over;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -52,9 +54,13 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOne)
             {
                 spawnableManager.DrawGameLose();
+                SoundFactory.Instance.CreateLinkDieSound().Play();
             } else if (phaseTwo)
             {
                 gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation, Constants.DrawLayer.MenuButton);
+                game_over = SoundFactory.Instance.CreateGameOverSound();
+                game_over.IsLooped = true;
+                game_over.Play();
             } else if (phaseThree)
             {
                 foreach (ISpawnable button in buttons) button.Draw();
@@ -68,6 +74,7 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void SwitchToMainMenuState()
         {
+            game_over.Stop();
             StartStateSwitch(new MainMenuGameState(Game));
         }
 
