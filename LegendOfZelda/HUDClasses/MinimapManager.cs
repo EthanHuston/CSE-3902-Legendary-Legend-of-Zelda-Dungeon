@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.HUDClasses
 {
-    internal class HeartManager
+    internal class MinimapManager
     {
         private LinkPlayer link;
         private HUDHeart[] hearts;
         private double linkHealth;
+        private Point position;
 
-        public HeartManager(LinkPlayer link)
+        public MinimapManager(LinkPlayer link)
         {
             this.link = link;
             linkHealth = link.CurrentHealth;

@@ -21,7 +21,7 @@ namespace LegendOfZelda.GameState.Rooms
         public Room CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
-        public ISpawnable Hud { get; private set; }
+        public IMenu Hud { get; private set; }
         public RoomMap RoomMap { get; private set; }
 
         public RoomGameState(Game1 game)
