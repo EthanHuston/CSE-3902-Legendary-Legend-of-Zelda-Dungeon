@@ -13,6 +13,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
         private ISprite gameOverSprite;
+        private ISprite redOverlaySprite;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -25,6 +26,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             roomStatePreserved = (RoomGameState)oldRoomState;
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
             gameOverSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
+            redOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
             InitButtonsList();
             InitControllerList();
         }
