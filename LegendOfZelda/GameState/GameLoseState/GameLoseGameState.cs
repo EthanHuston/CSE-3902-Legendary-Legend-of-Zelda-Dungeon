@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameLoseState
 {
-    class GameLoseState : AbstractGameState
+    class GameLoseGameState : AbstractGameState
     {
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
@@ -23,7 +23,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private int phaseOneBuffer = 0;
         private int phaseTwoBuffer = 0;
 
-        public GameLoseState(Game1 game, IGameState oldRoomState)
+        public GameLoseGameState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
             roomStatePreserved = (RoomGameState)oldRoomState;

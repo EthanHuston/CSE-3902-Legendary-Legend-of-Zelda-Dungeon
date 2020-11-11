@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.Pause;
+using LegendOfZelda.GameState.GameLoseState;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
@@ -146,6 +147,10 @@ namespace LegendOfZelda.GameState.Rooms
                 controller.Update();
             }
             CurrentRoom.Update();
+            if(PlayerList.Count == 0)
+            {
+                Game.State = new GameLoseGameState(Game, this);
+            }
             Hud.Update();
         }
 
