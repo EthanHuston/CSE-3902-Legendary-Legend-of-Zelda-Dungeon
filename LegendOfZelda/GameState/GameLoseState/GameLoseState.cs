@@ -3,6 +3,7 @@ using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
@@ -14,6 +15,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
         private ISprite gameOverSprite;
+        private ISprite redOverlaySprite;
         private SoundEffectInstance game_over;
         private bool phaseOne = true;
         private bool phaseTwo = false;
@@ -27,6 +29,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             roomStatePreserved = (RoomGameState)oldRoomState;
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
             gameOverSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
+            redOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
             InitButtonsList();
             InitControllerList();
         }
@@ -54,6 +57,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOne)
             {
                 spawnableManager.DrawGameLose();
+                redOverlaySprite.Draw(Game.SpriteBatch, new Point(0, 0), Constants.DrawLayer.RedDeathBlanket);
                 SoundFactory.Instance.CreateLinkDieSound().Play();
             } else if (phaseTwo)
             {
