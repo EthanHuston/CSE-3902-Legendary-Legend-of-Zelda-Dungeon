@@ -54,7 +54,7 @@ namespace LegendOfZelda.GameState.GameLoseState
                 spawnableManager.DrawGameLose();
             } else if (phaseTwo)
             {
-                gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation);
+                gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation, Constants.DrawLayer.MenuButton);
             } else if (phaseThree)
             {
                 foreach (ISpawnable button in buttons) button.Draw();

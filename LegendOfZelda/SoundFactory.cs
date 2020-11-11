@@ -1,10 +1,4 @@
-﻿using LegendOfZelda.Enemies;
-using LegendOfZelda.Environment;
-using LegendOfZelda.GameState;
-using LegendOfZelda.Item;
-using LegendOfZelda.Link;
-using LegendOfZelda.Projectile;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
 namespace LegendOfZelda
@@ -70,6 +64,8 @@ namespace LegendOfZelda
             sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot"); // Done
             sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash"); // Done
             text = content.Load<SoundEffect>("Sounds/LOZ_Text"); // Done
+            title = content.Load<SoundEffect>("Sounds/LOZ_Title"); // Done
+            win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
         public SoundEffectInstance CreateArrowBoomerangSound()
@@ -200,6 +196,16 @@ namespace LegendOfZelda
         public SoundEffectInstance CreateTextSound()
         {
             return text.CreateInstance();
+        }
+
+        public SoundEffectInstance CreateTitleSound()
+        {
+            return title.CreateInstance();
+        }
+
+        public SoundEffectInstance CreateWinSound()
+        {
+            return win.CreateInstance();
         }
     }
 }
