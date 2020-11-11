@@ -17,6 +17,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private ISprite gameOverSprite;
         private ISprite redOverlaySprite;
         private SoundEffectInstance game_over;
+        private SoundEffectInstance link_die;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -28,6 +29,8 @@ namespace LegendOfZelda.GameState.GameLoseState
             Game = game;
             roomStatePreserved = (RoomGameState)oldRoomState;
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
+            link_die = SoundFactory.Instance.CreateLinkDieSound();
+            game_over = SoundFactory.Instance.CreateGameOverSound();
             gameOverSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
             redOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
             InitButtonsList();
@@ -58,11 +61,10 @@ namespace LegendOfZelda.GameState.GameLoseState
             {
                 spawnableManager.DrawGameLose();
                 redOverlaySprite.Draw(Game.SpriteBatch, new Point(Constants.MinXPos, Constants.MinYPos), Constants.DrawLayer.RedDeathBlanket);
-                SoundFactory.Instance.CreateLinkDieSound().Play();
+                link_die.Play();
             } else if (phaseTwo)
             {
                 gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation, Constants.DrawLayer.MenuButton);
-                game_over = SoundFactory.Instance.CreateGameOverSound();
                 game_over.IsLooped = true;
                 game_over.Play();
             } else if (phaseThree)
