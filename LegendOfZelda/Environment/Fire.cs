@@ -28,7 +28,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            fireSprite.Draw(sB, Position);
+            fireSprite.Draw(sB, Position, Constants.DrawLayer.Block);
         }
 
         public Rectangle GetRectangle()

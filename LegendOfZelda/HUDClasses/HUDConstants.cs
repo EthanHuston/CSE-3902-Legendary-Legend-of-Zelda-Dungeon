@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.HUDClasses
 {
@@ -20,6 +21,28 @@ namespace LegendOfZelda.HUDClasses
         public const int NumberWidth = (int)(8 * Constants.GameScaler);
         public static Point SecondaryItemLocation = new Point((int)(Constants.GameScaler * 128), (int)(Constants.GameScaler * 24));
         public static Point PrimaryItemLocation = new Point((int)(Constants.GameScaler * 152), (int)(Constants.GameScaler * 24));
+
+        //Minimap Square Locations
+        public static Dictionary<Point, Point> MinimapSquarePositions = new Dictionary<Point, Point>
+        {
+            { new Point(1, 0), new Point((int)(30 * Constants.GameScaler), (int)(43 * Constants.GameScaler)) },
+            { new Point(2, 0), new Point((int)(38 * Constants.GameScaler), (int)(43 * Constants.GameScaler)) },
+            { new Point(3, 0), new Point((int)(46 * Constants.GameScaler), (int)(43 * Constants.GameScaler)) },
+            { new Point(2, 1), new Point((int)(38 * Constants.GameScaler), (int)(39 * Constants.GameScaler)) },
+            { new Point(1, 2), new Point((int)(30 * Constants.GameScaler), (int)(35 * Constants.GameScaler)) },
+            { new Point(2, 2), new Point((int)(38 * Constants.GameScaler), (int)(35 * Constants.GameScaler)) },
+            { new Point(3, 2), new Point((int)(46 * Constants.GameScaler), (int)(35 * Constants.GameScaler)) },
+            { new Point(0, 3), new Point((int)(22 * Constants.GameScaler), (int)(31 * Constants.GameScaler)) },
+            { new Point(1, 3), new Point((int)(30 * Constants.GameScaler), (int)(31 * Constants.GameScaler)) },
+            { new Point(2, 3), new Point((int)(38 * Constants.GameScaler), (int)(31 * Constants.GameScaler)) },
+            { new Point(3, 3), new Point((int)(46 * Constants.GameScaler), (int)(31 * Constants.GameScaler)) },
+            { new Point(4, 3), new Point((int)(54 * Constants.GameScaler), (int)(31 * Constants.GameScaler)) },
+            { new Point(2, 4), new Point((int)(38 * Constants.GameScaler), (int)(27 * Constants.GameScaler)) },
+            { new Point(4, 4), new Point((int)(54 * Constants.GameScaler), (int)(27 * Constants.GameScaler)) },
+            { new Point(5, 4), new Point((int)(62 * Constants.GameScaler), (int)(27 * Constants.GameScaler)) },
+            { new Point(1, 5), new Point((int)(30 * Constants.GameScaler), (int)(23 * Constants.GameScaler)) },
+            { new Point(2, 5), new Point((int)(38 * Constants.GameScaler), (int)(23 * Constants.GameScaler)) },
+        };
 
         //Locations on HUDItemSpriteSheet
         public const int EmptyHeartX = 108, EmptyHeartY = 9;

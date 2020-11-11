@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.MainMenu
@@ -8,6 +9,7 @@ namespace LegendOfZelda.GameState.MainMenu
     class MainMenuGameState : AbstractGameState
     {
         private readonly ITextureAtlasSprite backgroundSprite;
+        private SoundEffectInstance titleSound;
 
         public MainMenuGameState(Game1 game)
         {
@@ -27,7 +29,7 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public override void Draw()
         {
-            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource);
+            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource, Constants.DrawLayer.Menu);
         }
 
         public override void SwitchToRoomState()
@@ -37,12 +39,15 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public override void StateEntryProcedure()
         {
-            // shouldn't need to do anything here
+            titleSound = SoundFactory.Instance.CreateTitleSound();
+            titleSound.IsLooped = true;
+            titleSound.Volume = Constants.MusicVolume;
+            titleSound.Play();
         }
 
         public override void StateExitProcedure()
         {
-            // shouldn't need to do anything here
+            titleSound.Stop();
         }
 
         protected override void NormalStateUpdate()

@@ -53,7 +53,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void Draw()
         {
-            mapBackgroundSprite.Draw(link.Game.SpriteBatch, Position);
+            mapBackgroundSprite.Draw(link.Game.SpriteBatch, Position, Constants.DrawLayer.Menu);
             foreach (KeyValuePair<LinkConstants.ItemType, IButton> button in buttonsDict)
             {
                 if (button.Value.IsActive) button.Value.Draw();

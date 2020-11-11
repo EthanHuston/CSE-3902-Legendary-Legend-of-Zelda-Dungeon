@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -48,12 +49,12 @@ namespace LegendOfZelda.Enemies.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position)
+        public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Draw(spriteBatch, position, false);
+            Draw(spriteBatch, position, false, Constants.DrawLayer.Enemy);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged)
+        public void Draw(SpriteBatch spriteBatch, Point position, bool damaged, float layer)
         {
             int row = (int)(currentFrame / (float)numColumns);
             int column = currentFrame % numColumns;
@@ -61,8 +62,7 @@ namespace LegendOfZelda.Enemies.Sprite
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
 
-            spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White);
-
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White, layer);
         }
         public Rectangle GetPositionRectangle()
         {

@@ -105,11 +105,11 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                spawnSprite.Draw(spriteBatch, position);
+                spawnSprite.Draw(spriteBatch, position, Constants.DrawLayer.EnemySpawnSprite);
             }
             else
             {
-                sprite.Draw(spriteBatch, position);
+                sprite.Draw(spriteBatch, position, Constants.DrawLayer.Enemy);
             }
         }
         private void CheckOverlap()

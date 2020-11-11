@@ -2,6 +2,7 @@
 using LegendOfZelda.Enemies.CollisionHandlers.WithBlock;
 using LegendOfZelda.Enemies.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Environment;
+using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;
@@ -11,6 +12,7 @@ using LegendOfZelda.Link.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Projectile.CollisionHandler;
+using LegendOfZelda.Rooms;
 using System;
 using System.Collections.Generic;
 
@@ -127,31 +129,25 @@ namespace LegendOfZelda.GameLogic
             playerBlockDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IBlock>>()
             {
                 // immovable blocks
-                {typeof(LockedDoor), new LinkImmovableBlockCollisionHandler() },
                 {typeof(FishStatues), new LinkImmovableBlockCollisionHandler() },
                 {typeof(DragonStatues), new LinkImmovableBlockCollisionHandler() },
                 {typeof(TileWater), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
-                {typeof(ShutDoor), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Square), new LinkImmovableBlockCollisionHandler() },
                 {typeof(RoomWall), new LinkImmovableBlockCollisionHandler() },
 
                 // interactive blocks
                 {typeof(Fire), new LinkFireCollisionHandler() },
-                {typeof(OpenDoor), new LinkDoorCollisionHandler() },
-                {typeof(BombedOpening), new LinkDoorCollisionHandler() },
                 {typeof(Stairs), new LinkStairsCollisionHandler() },
-                {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() }
+                {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() },
 
+                // doors
+                {typeof(OpenDoor), new LinkDoorCollisionHandler() },
+                {typeof(ShutDoor), new LinkDoorCollisionHandler() },
+                {typeof(BombableOpening), new LinkDoorCollisionHandler() },
+                {typeof(LockedDoor), new LinkLockedDoorCollisionHandler() },
+                {typeof(RoomChangeTrigger), new  LinkRoomChangeTriggerCollisionHandler() }
 
-                // no collision detection
-                // BlackBackground, RoomBorder, TileBackground, TileBlueGrass
-
-                // unmovable block
-                    // water
-                    // wall
-                    // gap tile
-                    // statue
             };
         }
 
@@ -185,7 +181,7 @@ namespace LegendOfZelda.GameLogic
             {
                 {typeof(ArrowFlyingProjectile), new ArrowBlockCollisionHandler() },
                 {typeof(BoomerangFlyingProjectile), new BoomerangBlockCollisionHandler() },
-                {typeof(BombExplodingProjectile), new ProjectileBlockDoNothingCollisionHandler() },
+                {typeof(BombExplodingProjectile), new BombDoorCollisionHandler() },
                 {typeof(FireballProjectile), new FireballBlockCollisionHandler() },
                 {typeof(SwordAttackingProjectile), new ProjectileBlockDoNothingCollisionHandler()},
                 {typeof(SwordBeamFlyingProjectile), new SwordBeamBlockCollisionHandler() }

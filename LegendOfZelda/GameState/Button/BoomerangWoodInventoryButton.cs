@@ -35,7 +35,7 @@ namespace LegendOfZelda.GameState.Button
 
         public void Draw()
         {
-            sprite.Draw(spriteBatch, owningMenu.Position + Position, GameStateConstants.BoomerangWoodTextureAtlasSource);
+            sprite.Draw(spriteBatch, owningMenu.Position + Position, GameStateConstants.BoomerangWoodTextureAtlasSource, Constants.DrawLayer.MenuButton);
         }
 
         public Rectangle GetRectangle()
