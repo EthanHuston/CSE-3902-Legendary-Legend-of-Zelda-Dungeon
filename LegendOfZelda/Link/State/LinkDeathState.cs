@@ -22,7 +22,7 @@ namespace LegendOfZelda.Link.State
 
         protected override void UpdateState()
         {
-            if (totalSpins <= 4)
+            if (totalSpins < 4)
             {
                 spinBuffer++;
                 switch (spinBuffer)
@@ -44,6 +44,10 @@ namespace LegendOfZelda.Link.State
                     default:
                         break;
                 }
+            }
+            else
+            {
+                link.BlockStateChange = false;
             }
             
         }

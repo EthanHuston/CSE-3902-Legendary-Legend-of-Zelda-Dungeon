@@ -16,6 +16,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
+        private int phaseOneBuffer = 0;
         private int phaseTwoBuffer = 0;
 
         public GameLoseState(Game1 game, IGameState oldRoomState)
@@ -86,14 +87,18 @@ namespace LegendOfZelda.GameState.GameLoseState
         {
             if (phaseOne)
             {
-
+                phaseOneBuffer++;
+                if(phaseOneBuffer == 240)
+                {
+                    phaseOne = false;
+                    phaseTwo = true;
+                }
             }
             else if(phaseTwo)
             {
                 phaseTwoBuffer++;
                 if (phaseTwoBuffer > 30)
                 {
-                    phaseOne = false;
                     phaseTwo = false;
                     phaseThree = true;
                 }
