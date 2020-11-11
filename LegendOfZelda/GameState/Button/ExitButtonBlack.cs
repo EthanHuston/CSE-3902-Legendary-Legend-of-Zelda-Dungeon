@@ -17,7 +17,7 @@ namespace LegendOfZelda.GameState.Button
         public ExitButtonBlack(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateExitButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateExitButtonBlackSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;
