@@ -27,16 +27,16 @@ namespace LegendOfZelda.Link.State
                 spinBuffer++;
                 switch (spinBuffer)
                 {
-                    case 20:
+                    case 15:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkRightSprite();
                         break;
-                    case 40:
+                    case 30:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkUpSprite();
                         break;
-                    case 60:
+                    case 45:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkLeftSprite();
                         break;
-                    case 80:
+                    case 60:
                         link.CurrentSprite = LinkSpriteFactory.Instance.CreateIdleLinkDownSprite();
                         totalSpins++;
                         spinBuffer = 0;

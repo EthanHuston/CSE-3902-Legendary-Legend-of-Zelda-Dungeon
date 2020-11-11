@@ -37,7 +37,14 @@ namespace LegendOfZelda.Link.State
         {
             int posX = link.Position.X + spawnOffset.X;
             int posY = link.Position.Y + spawnOffset.Y;
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.Player);
+            if (link.SafeToDespawn())
+            {
+                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.LinkDead);
+            }
+            else
+            {
+                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.Player);
+            }
         }
 
         public void Update()
