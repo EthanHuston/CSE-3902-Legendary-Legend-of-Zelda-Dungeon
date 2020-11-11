@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda.GameState.Button
 {
-    class RetryButton : IButton
+    class RetryButtonBlack : IButton
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;
@@ -13,10 +13,10 @@ namespace LegendOfZelda.GameState.Button
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public RetryButton(SpriteBatch spriteBatch, Point spawnPosition)
+        public RetryButtonBlack(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateRetryButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateRetryButtonBlackSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;

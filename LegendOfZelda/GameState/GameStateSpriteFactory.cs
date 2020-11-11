@@ -11,8 +11,9 @@ namespace LegendOfZelda.GameState
     internal class GameStateSpriteFactory
     {
         private Texture2D resumeButtonSprite;
-        private Texture2D retryButtonSprite;
+        private Texture2D retryButtonBlackSprite;
         private Texture2D exitButtonSprite;
+        private Texture2D exitButtonBlackSprite;
         private Texture2D mainMenuButtonSprite;
         private Texture2D titleScreenBackgroundSprite;
         private Texture2D inventoryBackgroundSprite;
@@ -25,8 +26,9 @@ namespace LegendOfZelda.GameState
         {
             //Load Item Sprites
             resumeButtonSprite = content.Load<Texture2D>("Menu/ResumeButton");
-            retryButtonSprite = content.Load<Texture2D>("Menu/RetryButton");
+            retryButtonBlackSprite = content.Load<Texture2D>("Menu/RetryButtonBlack");
             exitButtonSprite = content.Load<Texture2D>("Menu/ExitButton");
+            exitButtonBlackSprite = content.Load<Texture2D>("Menu/ExitButtonBlack");
             mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton");
             titleScreenBackgroundSprite = content.Load<Texture2D>("Menu/TitleScreenBackground");
             inventoryBackgroundSprite = content.Load<Texture2D>("Menu/InventoryBackground");
@@ -38,9 +40,13 @@ namespace LegendOfZelda.GameState
         {
             return new GameStateSprite(resumeButtonSprite);
         }
-        public ISprite CreateRetryButtonSprite()
+        public ISprite CreateRetryButtonBlackSprite()
         {
-            return new GameStateSprite(retryButtonSprite);
+            return new GameStateSprite(retryButtonBlackSprite);
+        }
+        public ISprite CreateExitButtonBlackSprite()
+        {
+            return new GameStateSprite(exitButtonBlackSprite);
         }
         public ISprite CreateExitButtonSprite()
         {
