@@ -163,6 +163,11 @@ namespace LegendOfZelda.Link
             safeToDespawn = true;
         }
 
+        public void PickupTriforce()
+        {
+            state.PickUpItem(LinkConstants.ItemType.Triforce);
+        }
+
         private void InitInventoryDict()
         {
             inventory = new Dictionary<LinkConstants.ItemType, int>()

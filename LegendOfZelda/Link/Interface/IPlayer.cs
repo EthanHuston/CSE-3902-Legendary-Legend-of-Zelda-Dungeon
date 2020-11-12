@@ -17,6 +17,7 @@ namespace LegendOfZelda.Link.Interface
         void MoveRight();
         void StopMoving();
         void PickupItem(LinkConstants.ItemType itemType);
+        void PickupTriforce();
         int GetQuantityInInventory(LinkConstants.ItemType itemType);
         void UsePrimary();
         void UseSecondary();
