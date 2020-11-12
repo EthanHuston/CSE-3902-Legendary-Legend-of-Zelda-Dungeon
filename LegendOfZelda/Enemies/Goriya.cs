@@ -22,7 +22,7 @@ namespace LegendOfZelda.Enemies
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
         private readonly int changeDirection = 125;
         private bool boomerangActive = false;
-        private int boomerangIndex = 0;
+        private int boomerangIndex = 9999;
         private readonly int attackWaitTime = 200;
         private double health = 3 * Constants.HeartValue;
         private bool inKnockback = false;
@@ -56,10 +56,7 @@ namespace LegendOfZelda.Enemies
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
-                if (boomerangActive)
-                {
-                    itemSpawner.ProjectileList[boomerangIndex].Despawn();
-                }
+                boomer.Despawn();
             }
             if (spawning)
             {
