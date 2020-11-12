@@ -1,46 +1,49 @@
-﻿using LegendOfZelda.GameState.Button;
+﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameLoseState
 {
     class GameWinState : AbstractGameState
     {
-        private readonly IGameState roomStatePreserved;
+        private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
+        private SpawnableManager spawnableManager;
+        private ISprite winSprite;
+        private ISprite blackOverlaySprite;
+        private SoundEffectInstance win;
+        private bool phaseOne = true;
+        private bool phaseTwo = false;
+        private int phaseOneBuffer = 0;
 
         public GameWinState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
-            roomStatePreserved = oldRoomState;
-            InitButtonsList();
-            InitControllerList();
-        }
-
-        private void InitButtonsList()
-        {
-            buttons = new List<ISpawnable>()
-            {
-                {new ResumeButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
-                {new MainMenuButton(Game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) },
-                {new ExitButton(Game.SpriteBatch, GameStateConstants.PauseStateExitButtonLocation) }
-            };
-        }
-
-        private void InitControllerList()
-        {
-            controllerList = new List<IController>()
-            {
-                {new KeyboardController(this) },
-                {new MouseController(this, buttons) }
-            };
+            roomStatePreserved = (RoomGameState)oldRoomState;
+            spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
+            win = SoundFactory.Instance.CreateWinSound();
+            winSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
+            blackOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
         }
 
         public override void Draw()
         {
-            roomStatePreserved.Draw(); // continue to draw the old room in the background
-            foreach (ISpawnable button in buttons) button.Draw();
+            if (phaseOne)
+            {
+                // Music play
+                // Screen flashes white twice?
+                // Heart refill
+            }
+            else if (phaseTwo)
+            {
+                // Black Screen closes in
+                // Game quits
+            }
         }
 
         public override void SwitchToRoomState()
