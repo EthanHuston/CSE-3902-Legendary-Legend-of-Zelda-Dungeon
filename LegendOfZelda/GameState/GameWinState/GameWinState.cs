@@ -35,8 +35,10 @@ namespace LegendOfZelda.GameState.GameLoseState
         {
             if (phaseOne)
             {
-                // Music play
-                // Screen flashes white twice?
+                spawnableManager.DrawGameWin();
+                winSprite.Draw(Game.SpriteBatch, GameStateConstants.WinStateSpriteLocation, Constants.DrawLayer.Background);
+                win.Play();
+                // If we want to flash the screen white, we can add something here.
                 // Heart refill
             }
             else if (phaseTwo)
@@ -68,7 +70,20 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.Update();
+            if (phaseOne)
+            {
+                phaseOneBuffer++;
+                spawnableManager.PlayerList[0].Update();
+                if (phaseOneBuffer == 150)
+                {
+                    phaseOne = false;
+                    phaseTwo = true;
+                }
+            }
+            else if (phaseTwo)
+            {
+                foreach (IController controller in controllerList) controller.Update();
+            }
         }
 
         protected override void SwitchingStateUpdate()

@@ -82,6 +82,7 @@ namespace LegendOfZelda.GameLogic
         public void DrawGameWin()
         {
             DrawList(BackgroundList);
+            DrawList(BlockList);
             DrawList(PlayerList);
         }
 
