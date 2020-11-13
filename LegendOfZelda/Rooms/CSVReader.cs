@@ -165,6 +165,10 @@ namespace LegendOfZelda.Rooms
                     itemType = new TriforceItem(spriteBatch, position);
                     room.AllObjects.Spawn(itemType);
                     break;
+                case RoomConstants.HeartContainer:
+                    itemType = new HeartContainerItem(spriteBatch, position);
+                    room.AllObjects.Spawn(itemType);
+                    break;
 
                 default:
                     break;
