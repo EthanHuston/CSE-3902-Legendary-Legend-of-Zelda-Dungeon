@@ -60,6 +60,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOne)
             {
                 spawnableManager.DrawGameLose();
+                roomStatePreserved.Hud.Draw();
                 redOverlaySprite.Draw(Game.SpriteBatch, new Point(Constants.MinXPos, Constants.MinYPos), Constants.DrawLayer.RedDeathBlanket);
                 link_die.Play();
             } else if (phaseTwo)
