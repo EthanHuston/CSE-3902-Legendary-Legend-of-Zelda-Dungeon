@@ -34,7 +34,8 @@ namespace LegendOfZelda.GameState.GameWinState
 
         public void Update()
         {
-
+            leftPos.X += 10;
+            rightPos.X -= 10;
         }
     }
 }
