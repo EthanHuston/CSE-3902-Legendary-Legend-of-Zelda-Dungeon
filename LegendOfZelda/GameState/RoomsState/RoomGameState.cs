@@ -2,6 +2,7 @@
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.Pause;
 using LegendOfZelda.GameState.GameLoseState;
+using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;

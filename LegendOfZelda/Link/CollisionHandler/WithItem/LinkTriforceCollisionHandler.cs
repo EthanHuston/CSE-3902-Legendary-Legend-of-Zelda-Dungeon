@@ -10,6 +10,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {
             link.PickupTriforce();
+            link.Game.State.SwitchToWinState();
         }
     }
 }

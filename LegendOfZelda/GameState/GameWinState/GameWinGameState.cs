@@ -71,6 +71,11 @@ namespace LegendOfZelda.GameState.GameWinState
             // nothing fancy to do here
         }
 
+        public override void SetControllerOldInputState(OldInputState inputFromOldState)
+        {
+            // This does nothing.
+        }
+
         protected override void NormalStateUpdate()
         {
             roomStatePreserved.Hud.Update();

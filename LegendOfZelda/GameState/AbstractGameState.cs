@@ -37,7 +37,7 @@ namespace LegendOfZelda.GameState
             }
         }
 
-        public void SetControllerOldInputState(OldInputState inputFromOldState)
+        public virtual void SetControllerOldInputState(OldInputState inputFromOldState)
         {
             foreach (IController controller in controllerList) controller.SetOldInputState(inputFromOldState);
         }
