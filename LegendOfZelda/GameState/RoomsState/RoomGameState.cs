@@ -135,6 +135,12 @@ namespace LegendOfZelda.GameState.Rooms
             StartStateSwitch(new GameLoseGameState(Game, this));
         }
 
+        public override void SwitchToWinState()
+        {
+            dungeonMusic.Stop();
+            StartStateSwitch(new GameWinGameState(Game, this));
+        }
+
         public override void StateEntryProcedure()
         {
             // TODO: initialize a camera to move between rooms here

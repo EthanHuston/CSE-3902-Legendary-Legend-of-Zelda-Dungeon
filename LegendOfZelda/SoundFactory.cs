@@ -48,12 +48,12 @@ namespace LegendOfZelda
             enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die"); // Done
             enemy_hit = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Hit"); // Done
             fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare"); // Done
-            game_over = content.Load<SoundEffect>("Sounds/LOZ_GameOver");
+            game_over = content.Load<SoundEffect>("Sounds/LOZ_GameOver"); // Done
             get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart"); // Done
             get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item"); // Done
             get_rupee = content.Load<SoundEffect>("Sounds/LOZ_Get_Rupee"); // Done
-            key_appear = content.Load<SoundEffect>("Sounds/LOZ_Key_Appear");
-            link_die = content.Load<SoundEffect>("Sounds/LOZ_Link_Die"); // BACKBURNER!!!!!!!!!!!!!!!!!!!
+            key_appear = content.Load<SoundEffect>("Sounds/LOZ_Key_Appear"); // Done
+            link_die = content.Load<SoundEffect>("Sounds/LOZ_Link_Die"); // Done
             link_hurt = content.Load<SoundEffect>("Sounds/LOZ_Link_Hurt"); // Done
             low_health = content.Load<SoundEffect>("Sounds/LOZ_LowHealth"); // Done
             refill = content.Load<SoundEffect>("Sounds/LOZ_Refill_Loop"); // Done
@@ -65,7 +65,7 @@ namespace LegendOfZelda
             sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash"); // Done
             text = content.Load<SoundEffect>("Sounds/LOZ_Text"); // Done
             title = content.Load<SoundEffect>("Sounds/LOZ_Title"); // Done
-            win = content.Load<SoundEffect>("Sounds/LOZ_Win");
+            win = content.Load<SoundEffect>("Sounds/LOZ_Win"); // Done
         }
 
         public SoundEffectInstance CreateArrowBoomerangSound()

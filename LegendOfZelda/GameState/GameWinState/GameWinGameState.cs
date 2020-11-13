@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.GameLoseState
+namespace LegendOfZelda.GameState.GameWinState
 {
-    class GameWinState : AbstractGameState
+    class GameWinGameState : AbstractGameState
     {
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
@@ -22,7 +22,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         private int phaseOneBuffer = 0;
         private int phaseTwoBuffer = 0;
 
-        public GameWinState(Game1 game, IGameState oldRoomState)
+        public GameWinGameState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
             roomStatePreserved = (RoomGameState)oldRoomState;
