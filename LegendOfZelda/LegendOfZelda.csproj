@@ -200,6 +200,7 @@
     <Compile Include="Rooms\Commands\ChangeRoomUpCommand.cs" />
     <Compile Include="Rooms\IRoom.cs" />
     <Compile Include="Rooms\Room5.cs" />
+    <Compile Include="Rooms\RoomAquamentus.cs" />
     <Compile Include="Rooms\RoomFactory.cs" />
     <Compile Include="GameLogic\CollisionHandlerDictionary.cs" />
     <Compile Include="GameLogic\CollisionManager.cs" />
