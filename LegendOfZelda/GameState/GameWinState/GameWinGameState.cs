@@ -16,6 +16,7 @@ namespace LegendOfZelda.GameState.GameWinState
         private SpawnableManager spawnableManager;
         private ISprite blackOverlaySprite;
         private SoundEffectInstance win;
+        private SoundEffectInstance refill;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -28,6 +29,7 @@ namespace LegendOfZelda.GameState.GameWinState
             roomStatePreserved = (RoomGameState)oldRoomState;
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
             win = SoundFactory.Instance.CreateWinSound();
+            refill = SoundFactory.Instance.CreateRefillSound();
             blackOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
         }
 
@@ -93,9 +95,11 @@ namespace LegendOfZelda.GameState.GameWinState
             else if (phaseTwo)
             {
                 phaseTwoBuffer++;
-                if (phaseTwoBuffer == 60)
+                if (phaseTwoBuffer == 5)
                 {
                     spawnableManager.PlayerList[0].BeHealthy(Constants.HeartValue / 2);
+                    refill.Play();
+                    phaseTwoBuffer = 0;
                 }
 
                 if (spawnableManager.PlayerList[0].CurrentHealth == spawnableManager.PlayerList[0].MaxHealth)
