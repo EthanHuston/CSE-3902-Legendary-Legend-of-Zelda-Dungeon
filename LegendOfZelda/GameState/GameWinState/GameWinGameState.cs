@@ -105,7 +105,7 @@ namespace LegendOfZelda.GameState.GameWinState
             {
                 curtain.Update();
                 cBuffer++;
-                if (cBuffer == 500)
+                if (cBuffer == 450)
                 {
                     phaseThree = false;
                     phaseFour = true;
