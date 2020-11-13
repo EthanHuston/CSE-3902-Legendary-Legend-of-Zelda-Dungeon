@@ -206,7 +206,7 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(blockType);
                     break;
                 case RoomConstants.OpenDoor:
-                    blockType = new OpenDoor(spriteBatch, position, room);
+                    blockType = new OpenedDoor(spriteBatch, position, room);
                     room.AddDoor((IDoor)blockType);
                     room.AllObjects.Spawn(blockType);
                     break;

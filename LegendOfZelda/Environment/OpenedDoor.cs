@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    internal class ShutDoor : IDoor
+    internal class OpenedDoor : IDoor
     {
         private readonly ITextureAtlasSprite doorSprite;
         private readonly ITextureAtlasSprite doorFloorSprite;
@@ -23,14 +23,14 @@ namespace LegendOfZelda.Environment
         public Constants.Direction Side { get; private set; }
         public Room Location { get; private set; }
 
-        public ShutDoor(SpriteBatch spriteBatch, Point position, Room room)
+        public OpenedDoor(SpriteBatch spriteBatch, Point position, Room room)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             doorFloorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             Position = position;
             safeToDespawn = false;
-            IsOpen = false;
+            IsOpen = true;
             Side = RoomUtilities.GetDoorSide(position);
             textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
             Location = room;
@@ -77,7 +77,7 @@ namespace LegendOfZelda.Environment
         {
             if (!IsOpen) return;
             IsOpen = false;
-            // also open door on other side of wall
+            // also close door on other side of wall
             Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).CloseDoor();
             SoundFactory.Instance.CreateDoorUnlockSound().Play();
         }

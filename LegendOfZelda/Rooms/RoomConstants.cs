@@ -30,8 +30,8 @@ namespace LegendOfZelda
         public static Random RandomGenerator = new Random();
         
         // Wall Collision Rectangles
-        private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
-        private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2 + (int)(5 * SpriteMultiplier);
+        private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2 + (int)(8 * SpriteMultiplier);
+        private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2 + (int)(8 * SpriteMultiplier);
         private const int wallBlockWidth = WallWidth;
         private const int rightSideWallBlockX = RightOfScreen - WallWidth;
         private const int rightTopBottomWallBlockX = RightOfScreen - upDownWallBlockLength;

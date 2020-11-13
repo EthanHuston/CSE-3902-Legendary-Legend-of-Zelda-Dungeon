@@ -8,6 +8,7 @@ namespace LegendOfZelda.Environment
         Constants.Direction Side { get; }
         bool IsOpen { get; }
         void OpenDoor();
+        void CloseDoor();
         Room Location { get; }
     }
 }

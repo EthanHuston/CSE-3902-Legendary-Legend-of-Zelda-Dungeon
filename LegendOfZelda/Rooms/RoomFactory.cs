@@ -23,7 +23,16 @@ namespace LegendOfZelda.Rooms
             roomsList.Add(null); // room files start at 1
             for (int i = 1; i <= RoomConstants.NumberRooms; i++)
             {
-                roomsList.Add(new Room(spriteBatch, roomDataDirectory + "Room" + i + ".csv", playerList));
+                string filename = roomDataDirectory + "Room" + i + ".csv";
+                switch (i)
+                {
+                    case 5:
+                        roomsList.Add(new Room5(spriteBatch, filename, playerList));
+                        break;
+                    default:
+                        roomsList.Add(new Room(spriteBatch, filename, playerList));
+                        break;
+                }
             }
         }
 
