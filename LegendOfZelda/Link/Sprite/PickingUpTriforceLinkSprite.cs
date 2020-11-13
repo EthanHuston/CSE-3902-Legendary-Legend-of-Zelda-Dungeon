@@ -71,7 +71,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public bool FinishedAnimation()
         {
-            return animationIsDone;
+            return false;
         }
 
         public Rectangle GetPositionRectangle()
