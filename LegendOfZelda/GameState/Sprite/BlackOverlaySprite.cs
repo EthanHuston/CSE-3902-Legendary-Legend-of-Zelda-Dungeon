@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
+using LegendOfZelda.HUDClasses;
 
 namespace LegendOfZelda.GameState.Sprite
 {
@@ -25,7 +26,7 @@ namespace LegendOfZelda.GameState.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.RoomWidth), Constants.MaxYPos);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.RoomWidth), (int)(HUDConstants.hudHeight));
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
