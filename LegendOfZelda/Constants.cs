@@ -56,6 +56,7 @@ namespace LegendOfZelda
         public const float EnemyNoMove = 0;
         public const int EnemyDamageEffectTimeMs = 500;
         public const int EnemyDamageFlashDelayTicks = 5;
+        public const int HandDragLinkTimeMs = 2000;
 
         // Drawing Layers
         public static class DrawLayer

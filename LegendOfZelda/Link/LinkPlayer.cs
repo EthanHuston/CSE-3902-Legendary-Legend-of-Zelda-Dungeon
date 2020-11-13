@@ -292,5 +292,10 @@ namespace LegendOfZelda.Link
         {
             inventory[LinkConstants.ItemType.Key]--;
         }
+
+        public void ForceMoveToPoint(Point position)
+        {
+            Mover.ForceMoveToPoint(position);
+        }
     }
 }

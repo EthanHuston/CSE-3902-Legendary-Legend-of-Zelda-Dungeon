@@ -30,9 +30,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
                     break;
                 default:
                     break;
-
             }
-
         }
     }
 }

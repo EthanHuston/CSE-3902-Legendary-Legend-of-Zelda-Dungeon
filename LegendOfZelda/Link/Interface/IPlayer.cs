@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Interface
 {
@@ -26,5 +27,6 @@ namespace LegendOfZelda.Link.Interface
         bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType);
         void StartDeathAnimation();
         void ConsumeKey();
+        void ForceMoveToPoint(Point position);
     }
 }
