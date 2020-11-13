@@ -142,7 +142,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() },
 
                 // doors
-                {typeof(OpenDoor), new LinkDoorCollisionHandler() },
+                {typeof(OpenedDoor), new LinkDoorCollisionHandler() },
                 {typeof(ShutDoor), new LinkDoorCollisionHandler() },
                 {typeof(BombableOpening), new LinkDoorCollisionHandler() },
                 {typeof(LockedDoor), new LinkLockedDoorCollisionHandler() },
