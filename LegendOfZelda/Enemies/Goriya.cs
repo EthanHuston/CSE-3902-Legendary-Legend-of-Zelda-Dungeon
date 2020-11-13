@@ -17,12 +17,13 @@ namespace LegendOfZelda.Enemies
         private IProjectile boomer;
         private readonly int velocity;
         private int updateCount = 0;
-        private const int boomerangVelocity = 1;
+        private const int boomerangVelocity = 3;
         private Constants.Direction direction = Constants.Direction.Down;
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
-        private readonly int changeDirection = 100;
+        private readonly int changeDirection = 125;
         private bool boomerangActive = false;
-        private readonly int attackWaitTime = 150;
+        private int boomerangIndex = 9999;
+        private readonly int attackWaitTime = 200;
         private double health = 3 * Constants.HeartValue;
         private bool inKnockback = false;
         private bool safeToDespawn = false;
@@ -55,6 +56,7 @@ namespace LegendOfZelda.Enemies
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
+                boomer.Despawn();
             }
             if (spawning)
             {
@@ -232,7 +234,9 @@ namespace LegendOfZelda.Enemies
             }
 
             boomer = new BoomerangFlyingProjectile(spriteBatch, Position, Constants.ProjectileOwner.Enemy, this, v);
+            boomerangIndex = itemSpawner.ProjectileList.Count;
             itemSpawner.Spawn(boomer);
+            SoundFactory.Instance.CreateArrowBoomerangSound().Play();
         }
 
         private void KeepInBounds()

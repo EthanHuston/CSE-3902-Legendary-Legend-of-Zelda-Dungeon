@@ -37,7 +37,7 @@ namespace LegendOfZelda.GameState
             }
         }
 
-        public void SetControllerOldInputState(OldInputState inputFromOldState)
+        public virtual void SetControllerOldInputState(OldInputState inputFromOldState)
         {
             foreach (IController controller in controllerList) controller.SetOldInputState(inputFromOldState);
         }
@@ -64,6 +64,8 @@ namespace LegendOfZelda.GameState
         public virtual void SwitchToMainMenuState() { }
         public virtual void SwitchToPauseState() { }
         public virtual void SwitchToRoomState() { }
+        public virtual void SwitchToDeathState() { }
+        public virtual void SwitchToWinState() { }
         public abstract void StateEntryProcedure();
         public abstract void StateExitProcedure();
         protected abstract void NormalStateUpdate();
