@@ -18,7 +18,9 @@ namespace LegendOfZelda.GameState.GameLoseState
         private SoundEffectInstance win;
         private bool phaseOne = true;
         private bool phaseTwo = false;
+        private bool phaseThree = false;
         private int phaseOneBuffer = 0;
+        private int phaseTwoBuffer = 0;
 
         public GameWinState(Game1 game, IGameState oldRoomState)
         {
@@ -32,6 +34,7 @@ namespace LegendOfZelda.GameState.GameLoseState
         public override void Draw()
         {
             spawnableManager.DrawGameWin();
+            roomStatePreserved.Hud.Draw();
             if (phaseOne)
             {
                 // If we want to flash the screen white, we can add something here.
@@ -41,6 +44,10 @@ namespace LegendOfZelda.GameState.GameLoseState
             {
                 // Black Screen closes in
                 // Game quits
+            }
+            else if (phaseThree)
+            {
+
             }
         }
 
@@ -66,19 +73,35 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         protected override void NormalStateUpdate()
         {
+            roomStatePreserved.Hud.Update();
+            spawnableManager.PlayerList[0].Update();
             if (phaseOne)
             {
                 phaseOneBuffer++;
-                spawnableManager.PlayerList[0].Update();
                 if (phaseOneBuffer == 150)
                 {
                     phaseOne = false;
                     phaseTwo = true;
                 }
+                
             }
             else if (phaseTwo)
             {
-                foreach (IController controller in controllerList) controller.Update();
+                phaseTwoBuffer++;
+                if (phaseTwoBuffer == 60)
+                {
+                    spawnableManager.PlayerList[0].BeHealthy(Constants.HeartValue / 2);
+                }
+
+                if (spawnableManager.PlayerList[0].CurrentHealth == spawnableManager.PlayerList[0].MaxHealth)
+                {
+                    phaseTwo = false;
+                    phaseThree = true;
+                }
+            }
+            else if (phaseThree)
+            {
+
             }
         }
 
