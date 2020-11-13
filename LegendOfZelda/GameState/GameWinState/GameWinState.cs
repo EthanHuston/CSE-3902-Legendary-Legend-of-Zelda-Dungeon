@@ -14,7 +14,6 @@ namespace LegendOfZelda.GameState.GameLoseState
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
-        private ISprite winSprite;
         private ISprite blackOverlaySprite;
         private SoundEffectInstance win;
         private bool phaseOne = true;
@@ -27,17 +26,14 @@ namespace LegendOfZelda.GameState.GameLoseState
             roomStatePreserved = (RoomGameState)oldRoomState;
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
             win = SoundFactory.Instance.CreateWinSound();
-            winSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
             blackOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
         }
 
         public override void Draw()
         {
+            spawnableManager.DrawGameWin();
             if (phaseOne)
             {
-                spawnableManager.DrawGameWin();
-                winSprite.Draw(Game.SpriteBatch, GameStateConstants.WinStateSpriteLocation, Constants.DrawLayer.Background);
-                win.Play();
                 // If we want to flash the screen white, we can add something here.
                 // Heart refill
             }
@@ -60,7 +56,7 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public override void StateEntryProcedure()
         {
-            // nothing fancy to do here
+            win.Play();
         }
 
         public override void StateExitProcedure()
