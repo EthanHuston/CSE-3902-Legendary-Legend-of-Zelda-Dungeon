@@ -16,6 +16,7 @@ namespace LegendOfZelda.GameState.GameWinState
         private SpawnableManager spawnableManager;
         private SoundEffectInstance win;
         private SoundEffectInstance refill;
+        private Curtain curtain;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -27,6 +28,7 @@ namespace LegendOfZelda.GameState.GameWinState
             Game = game;
             roomStatePreserved = (RoomGameState)oldRoomState;
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
+            curtain = new Curtain(game.SpriteBatch);
             win = SoundFactory.Instance.CreateWinSound();
             refill = SoundFactory.Instance.CreateRefillSound();
         }
@@ -37,8 +39,7 @@ namespace LegendOfZelda.GameState.GameWinState
             roomStatePreserved.Hud.Draw();
             if (phaseThree)
             {
-                blackOverlaySpriteLeft.Draw(Game.SpriteBatch, GameStateConstants.WinStateSpriteLocationLeft, Constants.DrawLayer.BlackLayer);
-                blackOverlaySpriteRight.Draw(Game.SpriteBatch, GameStateConstants.WinStateSpriteLocationRight, Constants.DrawLayer.BlackLayer);
+                curtain.Draw();
             }
         }
 
@@ -99,8 +100,7 @@ namespace LegendOfZelda.GameState.GameWinState
             }
             else if (phaseThree)
             {
-                blackOverlaySpriteLeft.Update();
-                blackOverlaySpriteRight.Update();
+                curtain.Update();
             }
         }
 
