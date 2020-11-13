@@ -10,9 +10,9 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     class ItemSelectionGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
-        private readonly IMenu inventoryMenu;
+        private readonly IButtonMenu inventoryMenu;
         private readonly IMenu mapMenu;
-        private readonly ISpawnable hud;
+        private readonly IMenu hud;
         private readonly ICamera camera;
 
         public ItemSelectionGameState(IPlayer player, RoomGameState oldRoomState)

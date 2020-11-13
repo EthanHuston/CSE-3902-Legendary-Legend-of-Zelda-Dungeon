@@ -4,11 +4,8 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
-    interface IMenu
+    interface IButtonMenu : IMenu
     {
-        Point Position { get; set; }
-        void Update();
-        void Draw();
-        Rectangle GetRectangle();
+        List<IButton> Buttons { get; }
     }
 }
