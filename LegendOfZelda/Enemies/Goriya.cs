@@ -236,6 +236,7 @@ namespace LegendOfZelda.Enemies
             boomer = new BoomerangFlyingProjectile(spriteBatch, Position, Constants.ProjectileOwner.Enemy, this, v);
             boomerangIndex = itemSpawner.ProjectileList.Count;
             itemSpawner.Spawn(boomer);
+            SoundFactory.Instance.CreateArrowBoomerangSound().Play();
         }
 
         private void KeepInBounds()

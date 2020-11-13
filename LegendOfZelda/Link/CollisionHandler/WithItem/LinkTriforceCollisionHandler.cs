@@ -9,7 +9,8 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
     {
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {
-            throw new NotImplementedException();
+            link.PickupTriforce();
+            link.Game.State.SwitchToWinState();
         }
     }
 }

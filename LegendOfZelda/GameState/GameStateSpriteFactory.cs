@@ -1,4 +1,5 @@
 ﻿
+using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.Sprite;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Content;
@@ -10,12 +11,17 @@ namespace LegendOfZelda.GameState
     internal class GameStateSpriteFactory
     {
         private Texture2D resumeButtonSprite;
+        private Texture2D retryButtonBlackSprite;
         private Texture2D exitButtonSprite;
+        private Texture2D exitButtonBlackSprite;
         private Texture2D mainMenuButtonSprite;
         private Texture2D titleScreenBackgroundSprite;
         private Texture2D inventoryBackgroundSprite;
+        private Texture2D gameOverSprite;
         private Texture2D mapBackgroundSprite;
         private Texture2D hudItems;
+        private Texture2D redOverlaySprite;
+        private Texture2D blackOverlaySprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -23,17 +29,38 @@ namespace LegendOfZelda.GameState
         {
             //Load Item Sprites
             resumeButtonSprite = content.Load<Texture2D>("Menu/ResumeButton");
+            retryButtonBlackSprite = content.Load<Texture2D>("Menu/RetryButtonBlack");
             exitButtonSprite = content.Load<Texture2D>("Menu/ExitButton");
-            mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton"); 
+            exitButtonBlackSprite = content.Load<Texture2D>("Menu/ExitButtonBlack");
+            mainMenuButtonSprite = content.Load<Texture2D>("Menu/MenuButton");
             titleScreenBackgroundSprite = content.Load<Texture2D>("Menu/TitleScreenBackground");
             inventoryBackgroundSprite = content.Load<Texture2D>("Menu/InventoryBackground");
+            gameOverSprite = content.Load<Texture2D>("Menu/GameOver");
             mapBackgroundSprite = content.Load<Texture2D>("Menu/MapBackground");
+            redOverlaySprite = content.Load<Texture2D>("Menu/RedOverlay");
+            blackOverlaySprite = content.Load<Texture2D>("Menu/BlackOverlay");
             hudItems = content.Load<Texture2D>("Menu/HudItems");
         }
 
         public ISprite CreateResumeButtonSprite()
-        { 
+        {
             return new GameStateSprite(resumeButtonSprite);
+        }
+        public ISprite CreateRetryButtonBlackSprite()
+        {
+            return new GameStateSprite(retryButtonBlackSprite);
+        }
+        public ISprite CreateRedOverlaySprite()
+        {
+            return new RedOverlaySprite(redOverlaySprite);
+        }
+        public ISprite CreateBlackOverlaySprite()
+        {
+            return new BlackOverlaySprite(blackOverlaySprite);
+        }
+        public ISprite CreateExitButtonBlackSprite()
+        {
+            return new GameStateSprite(exitButtonBlackSprite);
         }
         public ISprite CreateExitButtonSprite()
         {
@@ -54,6 +81,10 @@ namespace LegendOfZelda.GameState
         public ISprite CreateMapBackgroundSprite()
         {
             return new GameStateSprite(mapBackgroundSprite);
+        }
+        public ISprite CreateGameOverSprite()
+        {
+            return new GameStateSprite(gameOverSprite);
         }
         public ITextureAtlasSprite CreateHudItemsSprite()
         {

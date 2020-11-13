@@ -84,6 +84,10 @@ namespace LegendOfZelda
             public const float Map = 7.2f;
             public const float MapIcon = 7.2f;
             public const float MapMarker = 7.3f;
+            public const float RedDeathBlanket = 8;
+            public const float BlackLayer = 8;
+            public const float LinkDead = 8.1f;
+            public const float TopLayer = 10;
         }
 
     }

@@ -1,6 +1,8 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.Pause;
+using LegendOfZelda.GameState.GameLoseState;
+using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
@@ -27,9 +29,9 @@ namespace LegendOfZelda.GameState.Rooms
         public RoomGameState(Game1 game)
         {
             Game = game;
-            
+
             InitPlayersForGame();
-            
+
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
             CurrentRoom.Visiting = true;
             RoomMap = new RoomMap(game.SpriteBatch, ItemSelectionStateConstants.MapPieceTextureAtlasSource, ItemSelectionStateConstants.MapPieceTextureSize, Point.Zero);
@@ -38,7 +40,7 @@ namespace LegendOfZelda.GameState.Rooms
 
             InitControllerList();
             InitItemSelectionGameStates();
-                        
+
             dungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
             dungeonMusic.IsLooped = true;
             dungeonMusic.Volume = Constants.MusicVolume;
@@ -57,7 +59,7 @@ namespace LegendOfZelda.GameState.Rooms
         private void InitItemSelectionGameStates()
         {
             itemSelectionGameStates = new List<ItemSelectionGameState>();
-            foreach(IPlayer player in PlayerList)
+            foreach (IPlayer player in PlayerList)
             {
                 itemSelectionGameStates.Add(new ItemSelectionGameState(player, this));
             }
@@ -128,10 +130,22 @@ namespace LegendOfZelda.GameState.Rooms
             StartStateSwitch(itemSelectionGameStates[0]);
         }
 
+        public override void SwitchToDeathState()
+        {
+            dungeonMusic.Stop();
+            StartStateSwitch(new GameLoseGameState(Game, this));
+        }
+
+        public override void SwitchToWinState()
+        {
+            dungeonMusic.Stop();
+            StartStateSwitch(new GameWinGameState(Game, this));
+        }
+
         public override void StateEntryProcedure()
         {
             // TODO: initialize a camera to move between rooms here
-            if(dungeonMusic.State != SoundState.Playing) dungeonMusic.Resume();
+            if (dungeonMusic.State != SoundState.Playing) dungeonMusic.Resume();
         }
 
         public override void StateExitProcedure()
@@ -146,6 +160,10 @@ namespace LegendOfZelda.GameState.Rooms
                 controller.Update();
             }
             CurrentRoom.Update();
+            if (PlayerList[0].SafeToDespawn())
+            {
+                SwitchToDeathState();
+            }
             Hud.Update();
         }
 

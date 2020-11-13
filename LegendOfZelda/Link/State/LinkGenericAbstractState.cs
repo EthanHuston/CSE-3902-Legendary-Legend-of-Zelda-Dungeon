@@ -37,7 +37,14 @@ namespace LegendOfZelda.Link.State
         {
             int posX = link.Position.X + spawnOffset.X;
             int posY = link.Position.Y + spawnOffset.Y;
-            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.Player);
+            if (link.SafeToDespawn())
+            {
+                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.LinkDead);
+            }
+            else
+            {
+                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.Player);
+            }
         }
 
         public void Update()
@@ -84,6 +91,13 @@ namespace LegendOfZelda.Link.State
         public void PickUpItem(LinkConstants.ItemType itemType)
         {
             link.State = new LinkPickingUpItemState(link, itemType, damaged, healthyDateTime);
+        }
+
+        public void StartDeath()
+        {
+            link.BlockStateChange = false;
+            link.State = new LinkDeathState(link, damaged, healthyDateTime);
+            link.BlockStateChange = true;
         }
     }
 }
