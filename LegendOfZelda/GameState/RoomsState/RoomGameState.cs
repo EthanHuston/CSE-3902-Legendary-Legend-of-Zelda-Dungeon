@@ -18,7 +18,7 @@ namespace LegendOfZelda.GameState.Rooms
         private readonly SoundEffectInstance dungeonMusic;
         public List<ItemSelectionGameState> itemSelectionGameStates;
 
-        public Room CurrentRoom { get; private set; }
+        public IRoom CurrentRoom { get; private set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
         public ISpawnable Hud { get; private set; }
@@ -70,7 +70,7 @@ namespace LegendOfZelda.GameState.Rooms
 
         public void MoveRoom(Constants.Direction direction)
         {
-            Room newRoom = CurrentRoom.GetRoom(direction);
+            IRoom newRoom = CurrentRoom.GetRoom(direction);
             Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
 
             if (newRoom != null)

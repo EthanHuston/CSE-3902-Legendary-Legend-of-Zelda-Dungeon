@@ -183,6 +183,8 @@
     <Compile Include="GameState\RoomsState\RoomGameState.cs" />
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomUpCommand.cs" />
+    <Compile Include="Rooms\IRoom.cs" />
+    <Compile Include="Rooms\Room5.cs" />
     <Compile Include="Rooms\RoomFactory.cs" />
     <Compile Include="GameLogic\CollisionHandlerDictionary.cs" />
     <Compile Include="GameLogic\CollisionManager.cs" />
@@ -213,7 +215,7 @@
     <Compile Include="Environment\GapTile.cs" />
     <Compile Include="Environment\LadderTile.cs" />
     <Compile Include="Environment\LockedDoor.cs" />
-    <Compile Include="Environment\OpenDoor.cs" />
+    <Compile Include="Environment\OpenedDoor.cs" />
     <Compile Include="Environment\ShutDoor.cs" />
     <Compile Include="Environment\Stairs.cs" />
     <Compile Include="Environment\FishStatues.cs" />

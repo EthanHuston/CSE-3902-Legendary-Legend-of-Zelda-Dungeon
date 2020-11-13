@@ -11,7 +11,7 @@ namespace LegendOfZelda.Rooms
     class RoomMap : ISpawnable
     {
         private bool safeToDespawn;
-        private readonly List<Room> roomsInMap;
+        private readonly List<IRoom> roomsInMap;
         private readonly ITextureAtlasSprite roomIconSprite;
         private readonly SpriteBatch spriteBatch;
         private readonly Rectangle[] spriteSourceRectangles;
@@ -24,7 +24,7 @@ namespace LegendOfZelda.Rooms
         public RoomMap(SpriteBatch spriteBatch, Rectangle[] spriteSourceRectangles, Vector2 sourceRectangleSize, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            roomsInMap = new List<Room>();
+            roomsInMap = new List<IRoom>();
             roomIconSprite = GameStateSpriteFactory.Instance.CreateHudItemsSprite();
             Position = spawnPosition;
             this.spriteSourceRectangles = spriteSourceRectangles;
@@ -64,7 +64,7 @@ namespace LegendOfZelda.Rooms
             // no updates needed
         }
 
-        public void AddRoomToMap(Room roomToAdd)
+        public void AddRoomToMap(IRoom roomToAdd)
         {
             roomsInMap.Add(roomToAdd);
         }
