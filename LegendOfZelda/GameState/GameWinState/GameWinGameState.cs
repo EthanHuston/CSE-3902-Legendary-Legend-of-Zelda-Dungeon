@@ -23,6 +23,7 @@ namespace LegendOfZelda.GameState.GameWinState
         private bool phaseFour = false;
         private int phaseOneBuffer = 0;
         private int phaseTwoBuffer = 0;
+        private int cBuffer = 0;
 
         public GameWinGameState(Game1 game, IGameState oldRoomState)
         {
@@ -71,7 +72,6 @@ namespace LegendOfZelda.GameState.GameWinState
 
         protected override void NormalStateUpdate()
         {
-            int cBuffer = 0;
             roomStatePreserved.Hud.Update();
             spawnableManager.PlayerList[0].Update();
             if (phaseOne)
@@ -105,7 +105,7 @@ namespace LegendOfZelda.GameState.GameWinState
             {
                 curtain.Update();
                 cBuffer++;
-                if (cBuffer == 10)
+                if (cBuffer == 500)
                 {
                     phaseThree = false;
                     phaseFour = true;
