@@ -10,8 +10,8 @@ namespace LegendOfZelda.Enemies
     internal class Hand : INpc
     {
         private const int draggingCooldownMs = 5000;
-        private const int directionChangeDelay = 30;
-        private const int velocityScalar = 3;
+        private const int directionChangeDelay = 50;
+        private const int velocityScalar = 1;
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
