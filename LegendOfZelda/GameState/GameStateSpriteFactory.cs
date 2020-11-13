@@ -21,6 +21,7 @@ namespace LegendOfZelda.GameState
         private Texture2D mapBackgroundSprite;
         private Texture2D hudItems;
         private Texture2D redOverlaySprite;
+        private Texture2D blackOverlaySprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -37,6 +38,7 @@ namespace LegendOfZelda.GameState
             gameOverSprite = content.Load<Texture2D>("Menu/GameOver");
             mapBackgroundSprite = content.Load<Texture2D>("Menu/MapBackground");
             redOverlaySprite = content.Load<Texture2D>("Menu/RedOverlay");
+            blackOverlaySprite = content.Load<Texture2D>("Menu/BlackOverlay");
             hudItems = content.Load<Texture2D>("Menu/HudItems");
         }
 
@@ -51,6 +53,10 @@ namespace LegendOfZelda.GameState
         public ISprite CreateRedOverlaySprite()
         {
             return new RedOverlaySprite(redOverlaySprite);
+        }
+        public ISprite CreateBlackOverlaySprite()
+        {
+            return new BlackOverlaySprite(blackOverlaySprite);
         }
         public ISprite CreateExitButtonBlackSprite()
         {

@@ -139,6 +139,7 @@
     <Compile Include="GameState\PauseState\PauseGameState.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
     <Compile Include="GameState\RoomsState\ItemDrop.cs" />
+    <Compile Include="GameState\Sprite\BlackOverlaySprite.cs" />
     <Compile Include="GameState\Sprite\GameStateTextureAtlasSprite.cs" />
     <Compile Include="GameState\Sprite\GameStateSprite.cs" />
     <Compile Include="GameState\Command\PauseGameCommand.cs" />

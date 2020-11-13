@@ -37,17 +37,7 @@ namespace LegendOfZelda.GameState.GameWinState
         {
             spawnableManager.DrawGameWin();
             roomStatePreserved.Hud.Draw();
-            if (phaseOne)
-            {
-                // If we want to flash the screen white, we can add something here.
-                // Heart refill
-            }
-            else if (phaseTwo)
-            {
-                // Black Screen closes in
-                // Game quits
-            }
-            else if (phaseThree)
+            if (phaseThree)
             {
 
             }
