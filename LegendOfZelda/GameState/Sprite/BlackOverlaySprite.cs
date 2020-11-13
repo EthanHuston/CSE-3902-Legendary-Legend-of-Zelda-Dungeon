@@ -25,7 +25,7 @@ namespace LegendOfZelda.GameState.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.RoomWidth), (int)(RoomConstants.RoomHeight));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.RoomWidth), Constants.MaxYPos);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
