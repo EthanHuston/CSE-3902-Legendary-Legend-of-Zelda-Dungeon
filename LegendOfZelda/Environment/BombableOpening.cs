@@ -70,5 +70,10 @@ namespace LegendOfZelda.Environment
             Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).OpenDoor();
             SoundFactory.Instance.CreateDoorUnlockSound().Play();
         }
+
+        public void CloseDoor()
+        {
+            // do nothing - once open can't close again
+        }
     }
 }
