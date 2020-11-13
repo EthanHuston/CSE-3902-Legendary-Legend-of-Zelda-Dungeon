@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.HUDClasses;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
@@ -18,8 +19,8 @@ namespace LegendOfZelda.GameState
         public static Point LoseStateGameOverSpriteLocation => new Point((int)(gameScaler * 65), (int)(gameScaler * 96));
 
         // Black Overlay for Win State
-        public static Point WinStateSpriteLocationLeft => new Point((int)(gameScaler * -1 * Constants.MaxXPos), 0);
-        public static Point WinStateSpriteLocationRight => new Point((int)(gameScaler * Constants.MaxXPos), 0);
+        public static Point WinStateSpriteLocationLeft => new Point((int)(gameScaler * -1 * Constants.MaxXPos), HUDConstants.hudHeight);
+        public static Point WinStateSpriteLocationRight => new Point((int)(gameScaler * Constants.MaxXPos), HUDConstants.hudHeight);
 
 
         // Item Positions in HudItems.png Texture Atlas
