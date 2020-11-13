@@ -53,7 +53,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Draw(spriteBatch, position, false, Constants.DrawLayer.Player);
+            Draw(spriteBatch, position, false, Constants.DrawLayer.LinkDead);
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage, float layer)
@@ -66,12 +66,12 @@ namespace LegendOfZelda.Link.Sprite
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
 
-            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White, layer);
+            SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White, Constants.DrawLayer.LinkDead);
         }
 
         public bool FinishedAnimation()
         {
-            return animationIsDone;
+            return false;
         }
 
         public Rectangle GetPositionRectangle()

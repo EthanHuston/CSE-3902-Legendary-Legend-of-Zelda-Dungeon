@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.HUDClasses;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
@@ -13,6 +14,13 @@ namespace LegendOfZelda.GameState
         public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
         public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
         public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 64));
+        public static Point LoseStateRetryButtonLocation => new Point((int)(gameScaler *96), (int)(gameScaler * 64));
+        public static Point LoseStateExitButtonLocation => new Point((int)(gameScaler *96), (int)(gameScaler*96));
+        public static Point LoseStateGameOverSpriteLocation => new Point((int)(gameScaler * 65), (int)(gameScaler * 96));
+
+        // Black Overlay for Win State
+        public static Point WinStateSpriteLocationLeft => new Point((int)(gameScaler * -1 * Constants.MaxXPos), HUDConstants.hudHeight);
+        public static Point WinStateSpriteLocationRight => new Point((int)(gameScaler * Constants.MaxXPos), HUDConstants.hudHeight);
 
 
         // Item Positions in HudItems.png Texture Atlas

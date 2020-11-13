@@ -45,7 +45,11 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.NumPad8, new ChangeRoomUpCommand(gameStateCast) },
                 { Keys.NumPad6, new ChangeRoomRightCommand(gameStateCast) },
                 { Keys.NumPad2, new ChangeRoomDownCommand(gameStateCast) },
-                { Keys.NumPad4, new ChangeRoomLeftCommand(gameStateCast) }
+                { Keys.NumPad4, new ChangeRoomLeftCommand(gameStateCast) },
+                { Keys.I, new ChangeRoomUpCommand(gameStateCast) },
+                { Keys.L, new ChangeRoomRightCommand(gameStateCast) },
+                { Keys.K, new ChangeRoomDownCommand(gameStateCast) },
+                { Keys.J, new ChangeRoomLeftCommand(gameStateCast) }
             };
         }
 

@@ -97,7 +97,16 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\GameWinState\Curtain.cs" />
     <Compile Include="GameState\IButtonMenu.cs" />
+    <Compile Include="GameState\Button\ExitButtonBlack.cs" />
+    <Compile Include="GameState\Button\RetryButtonBlack.cs" />
+    <Compile Include="GameState\GameLoseState\GameLoseGameState.cs" />
+    <Compile Include="GameState\GameLoseState\KeyboardController.cs" />
+    <Compile Include="GameState\GameLoseState\MouseController.cs" />
+    <Compile Include="GameState\GameWinState\GameWinGameState.cs" />
+    <Compile Include="GameState\GameWinState\KeyboardController.cs" />
+    <Compile Include="GameState\GameWinState\MouseController.cs" />
     <Compile Include="GameState\IMenu.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
@@ -131,6 +140,7 @@
     <Compile Include="GameState\PauseState\PauseGameState.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
     <Compile Include="GameState\RoomsState\ItemDrop.cs" />
+    <Compile Include="GameState\Sprite\BlackOverlaySprite.cs" />
     <Compile Include="GameState\Sprite\GameStateTextureAtlasSprite.cs" />
     <Compile Include="GameState\Sprite\GameStateSprite.cs" />
     <Compile Include="GameState\Command\PauseGameCommand.cs" />
@@ -138,6 +148,7 @@
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="GameState\Sprite\RedOverlaySprite.cs" />
     <Compile Include="HUDClasses\ItemsManager.cs" />
     <Compile Include="HUDClasses\MinimapManager.cs" />
     <Compile Include="HUDClasses\NumberManager.cs" />
@@ -173,6 +184,7 @@
     <Compile Include="Link\Command\UseSecondaryItem.cs" />
     <Compile Include="Link\Command\UsePrimaryItem.cs" />
     <Compile Include="Projectile\CollisionHandler\BombDoorCollisionHandler.cs" />
+    <Compile Include="Link\State\LinkDeathState.cs" />
     <Compile Include="Projectile\SwordAttackingProjectile.cs" />
     <Compile Include="Projectile\CollisionHandler\ProjectileBlockDoNothingCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\FireballBlockCollisionHandler.cs" />
@@ -455,11 +467,13 @@
     <Content Include="Content\Sounds\LOZ_Boss_Scream2.wav" />
     <Content Include="Content\Sounds\LOZ_Boss_Scream3.wav" />
     <Content Include="Content\Sounds\LOZ_Candle.wav" />
+    <Content Include="Content\Sounds\LOZ_Die.mp3" />
     <Content Include="Content\Sounds\LOZ_Door_Unlock.wav" />
     <Content Include="Content\Sounds\LOZ_Dungeon.mp3" />
     <Content Include="Content\Sounds\LOZ_Enemy_Die.wav" />
     <Content Include="Content\Sounds\LOZ_Enemy_Hit.wav" />
     <Content Include="Content\Sounds\LOZ_Fanfare.wav" />
+    <Content Include="Content\Sounds\LOZ_GameOver.mp3" />
     <Content Include="Content\Sounds\LOZ_Get_Heart.wav" />
     <Content Include="Content\Sounds\LOZ_Get_Item.wav" />
     <Content Include="Content\Sounds\LOZ_Get_Rupee.wav" />
@@ -481,6 +495,7 @@
     <Content Include="Content\Sounds\LOZ_Text_Slow.wav" />
     <Content Include="Content\Sounds\LOZ_Title.mp3" />
     <Content Include="Content\Sounds\LOZ_Title2.mp3" />
+    <Content Include="Content\Sounds\LOZ_Win.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

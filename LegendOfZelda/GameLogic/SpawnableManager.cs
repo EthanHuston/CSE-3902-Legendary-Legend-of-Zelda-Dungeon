@@ -3,6 +3,7 @@ using LegendOfZelda.Environment;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
+using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using System.CodeDom;
@@ -72,6 +73,18 @@ namespace LegendOfZelda.GameLogic
             DrawList(ProjectileList);
             DrawList(ItemList);
         }
+        public void DrawGameLose()
+        {
+            DrawList(BackgroundList);
+            DrawList(BlockList);
+            DrawList(PlayerList);
+        }
+        public void DrawGameWin()
+        {
+            DrawList(BackgroundList);
+            DrawList(BlockList);
+            DrawList(PlayerList);
+        }
 
         private void DrawList<T>(List<T> list)
         {
@@ -112,6 +125,38 @@ namespace LegendOfZelda.GameLogic
                 if (item.SafeToDespawn())
                 {
                     if(item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
+                    {
+                        itemDropper.DropItem(item.Position);
+                    }
+                    indicesToRemove.Add(i);
+                }
+            }
+
+            for (int i = 0; i < indicesToRemove.Count; i++)
+            {
+                list.RemoveAt(indicesToRemove[i] - i);
+            }
+        }
+
+        private void UpdateList(List<IPlayer> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                ISpawnable item = list[i];
+                item.Update();
+            }
+        }
+
+        private void UpdateList(List<INpc> list)
+        {
+            List<int> indicesToRemove = new List<int>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                ISpawnable item = list[i];
+                item.Update();
+                if (item.SafeToDespawn())
+                {
+                    if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
                     {
                         itemDropper.DropItem(item.Position);
                     }
