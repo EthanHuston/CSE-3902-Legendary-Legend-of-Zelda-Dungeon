@@ -14,8 +14,6 @@ namespace LegendOfZelda.GameState.GameWinState
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
-        private ISprite blackOverlaySpriteLeft;
-        private ISprite blackOverlaySpriteRight;
         private SoundEffectInstance win;
         private SoundEffectInstance refill;
         private bool phaseOne = true;
@@ -31,8 +29,6 @@ namespace LegendOfZelda.GameState.GameWinState
             spawnableManager = (SpawnableManager)roomStatePreserved.SpawnableManager;
             win = SoundFactory.Instance.CreateWinSound();
             refill = SoundFactory.Instance.CreateRefillSound();
-            blackOverlaySpriteLeft = GameStateSpriteFactory.Instance.CreateBlackOverlaySprite();
-            blackOverlaySpriteRight = GameStateSpriteFactory.Instance.CreateBlackOverlaySprite();
         }
 
         public override void Draw()
@@ -103,7 +99,8 @@ namespace LegendOfZelda.GameState.GameWinState
             }
             else if (phaseThree)
             {
-
+                blackOverlaySpriteLeft.Update();
+                blackOverlaySpriteRight.Update();
             }
         }
 

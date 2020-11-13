@@ -97,6 +97,7 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\GameWinState\Curtain.cs" />
     <Compile Include="GameState\IButtonMenu.cs" />
     <Compile Include="GameState\Button\ExitButtonBlack.cs" />
     <Compile Include="GameState\Button\RetryButtonBlack.cs" />

@@ -16,9 +16,10 @@ namespace LegendOfZelda.GameState
         public static Point LoseStateRetryButtonLocation => new Point((int)(gameScaler *96), (int)(gameScaler * 64));
         public static Point LoseStateExitButtonLocation => new Point((int)(gameScaler *96), (int)(gameScaler*96));
         public static Point LoseStateGameOverSpriteLocation => new Point((int)(gameScaler * 65), (int)(gameScaler * 96));
-        public static Point WinStateSpriteLocationLeft => new Point((int)(gameScaler * 65), (int)(gameScaler * 96));
-        public static Point WinStateSpriteLocationRight => new Point((int)(gameScaler * 65), (int)(gameScaler * 96));
 
+        // Black Overlay for Win State
+        public static Point WinStateSpriteLocationLeft => new Point((int)(gameScaler * -1 * Constants.MaxXPos), 0);
+        public static Point WinStateSpriteLocationRight => new Point((int)(gameScaler * Constants.MaxXPos), 0);
 
 
         // Item Positions in HudItems.png Texture Atlas
