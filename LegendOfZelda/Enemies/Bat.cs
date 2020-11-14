@@ -8,10 +8,11 @@ namespace LegendOfZelda.Enemies
 {
     internal class Bat : INpc
     {
+        private const int directionChangeDelay = 75;
+        private const int velocityScalar = (int)(0.5 * Constants.GameScaler);
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
-        private const int directionChangeDelay = 30;
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
@@ -57,26 +58,9 @@ namespace LegendOfZelda.Enemies
                 movementBuffer++;
                 //Move based on current chosen direction for some time.
                 CheckBounds();
-                if (xDir == 0 && yDir == 0)
-                {
-                    position.X--;
-                    position.Y--;
-                }
-                else if (xDir == 0 && yDir == 1)
-                {
-                    position.X--;
-                    position.Y++;
-                }
-                else if (xDir == 1 && yDir == 0)
-                {
-                    position.X++;
-                    position.Y--;
-                }
-                else
-                {
-                    position.Y++;
-                    position.X++;
-                }
+
+                position.X += xDir == 0 ? -1 * velocityScalar : velocityScalar;
+                position.Y += yDir == 0 ? -1 * velocityScalar : velocityScalar;
 
                 if (movementBuffer > directionChangeDelay)
                 {

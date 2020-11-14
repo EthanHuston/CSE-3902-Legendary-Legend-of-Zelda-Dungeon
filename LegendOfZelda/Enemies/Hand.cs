@@ -1,5 +1,8 @@
 using LegendOfZelda.Enemies.Sprite;
+using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,24 +11,26 @@ namespace LegendOfZelda.Enemies
 {
     internal class Hand : INpc
     {
+        private readonly int velocityScalar = (int) Math.Ceiling(0.5 * Constants.GameScaler);
+        private double health = 3 * Constants.HeartValue;
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
-        private int movementBuffer = 0;
-        private int xDir = 0;
-        private int yDir = 0;
-        private double health = 4 * Constants.HeartValue;
-        private readonly Random rand = RoomConstants.RandomGenerator;
+        private readonly IRoom roomToJumpTo;
+        private Vector2 velocity;
         private bool safeToDespawn;
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
+        private IPlayer link;
+
+        public bool DraggingLink { get; private set; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
 
-        public Hand(SpriteBatch spriteBatch, Point spawnPosition)
+        public Hand(SpriteBatch spriteBatch, Point spawnPosition, IRoom roomToJumpTo)
         {
             sprite = EnemySpriteFactory.Instance.CreateHandSprite();
             spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
@@ -35,7 +40,22 @@ namespace LegendOfZelda.Enemies
             healthyDateTime = DateTime.Now;
             damaged = false;
             spawning = true;
+            DraggingLink = false;
+            this.roomToJumpTo = roomToJumpTo;
+            velocity = SetVelocityFromPosition(spawnPosition);
         }
+
+        private Vector2 SetVelocityFromPosition(Point spawnPosition)
+        {
+            Vector2 velocity = Vector2.Zero;
+            if (spawnPosition.X <= Constants.MinXPos) velocity.X = velocityScalar;
+            else if (spawnPosition.X >= Constants.MaxXPos) velocity.X = -1 * velocityScalar;
+            else if (spawnPosition.Y <= Constants.MinYPos) velocity.Y = velocityScalar;
+            else if (spawnPosition.Y >= Constants.MaxYPos) velocity.Y = -1 * velocityScalar;
+
+            return velocity;
+        }
+
         public void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
@@ -57,38 +77,30 @@ namespace LegendOfZelda.Enemies
             }
             else
             {
-                movementBuffer++;
-                CheckBounds();
-                //Move based on current chosen direction for some time.
-                if (xDir == 0 && yDir == 0)
+                if (DraggingLink)
                 {
-                    position.X--;
-                    position.Y--;
+                    link.ForceMoveToPoint(Position);
+                    if(safeToDespawn) // if enemy dies drop Link
+                    {
+                        DraggingLink = false;
+                        link.BeingDragged = false;
+                    }
                 }
-                else if (xDir == 0 && yDir == 1)
+                CheckBounds(); // checks if we should move Link to new room
+                if (!safeToDespawn)
                 {
-                    position.X--;
-                    position.Y++;
-                }
-                else if (xDir == 1 && yDir == 0)
-                {
-                    position.X++;
-                    position.Y--;
-                }
-                else
-                {
-                    position.Y++;
-                    position.X++;
-                }
-
-                if (movementBuffer > 20)
-                {
-                    movementBuffer = 0;
-                    ChooseDirection();
-                }
-                sprite.Update();
+                    sprite.Update();
+                    UpdatePosition();
+                } 
             }
         }
+
+        private void UpdatePosition()
+        {
+            position.X += (int)velocity.X;
+            position.Y += (int)velocity.Y;
+        }
+
         public void Draw()
         {
             if (spawning)
@@ -100,39 +112,33 @@ namespace LegendOfZelda.Enemies
                 sprite.Draw(spriteBatch, position, damaged, Constants.DrawLayer.Enemy);
             }
         }
+
         private void CheckBounds()
         {
-            if (position.X <= Constants.MinXPos)
+            bool changeRoom = 
+                position.X > Constants.HandSpawnRightX ||
+                position.X < Constants.HandSpawnLeftX ||
+                position.Y > Constants.HandSpawnDownY ||
+                position.Y < Constants.HandSpawnUpY;
+            
+            if(DraggingLink && changeRoom) // once outside map, jump back to beginning room
             {
-                position.X++;
-            }
-            else if (position.X >= Constants.MaxXPos)
-            {
-                position.X--;
-            }
-            else if (position.Y <= Constants.MinYPos)
-            {
-                position.Y++;
-            }
-            else if (position.Y >= Constants.MaxYPos)
-            {
-                position.Y--;
+                link.BeingDragged = false;
+                ((RoomGameState)link.Game.State).MoveToRoom(roomToJumpTo, Constants.Direction.Down);
             }
         }
-        private void ChooseDirection()
-        {
-            xDir = rand.Next(0, 2); // 0 for x, 1 for y
-            yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
-        }
+
         public void Move(Vector2 distance)
         {
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
+
         public bool SafeToDespawn()
         {
             return safeToDespawn;
         }
+
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
@@ -163,9 +169,19 @@ namespace LegendOfZelda.Enemies
         {
             return Constants.LinkEnemyCollisionDamage;
         }
+
         public void ResetSpawnCloud()
         {
             spawning = true;
+        }
+
+        public void DragLink(IPlayer link)
+        {
+            DraggingLink = true;
+            this.link = link;
+            link.BeingDragged = true;
+            velocity.X = 0;
+            velocity.Y = 2 * velocityScalar;
         }
     }
 }

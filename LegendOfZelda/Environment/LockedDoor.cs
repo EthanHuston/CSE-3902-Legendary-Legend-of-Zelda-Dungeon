@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Rooms;
+using LegendOfZelda.Rooms.RoomImplementation;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -70,6 +71,15 @@ namespace LegendOfZelda.Environment
             IsOpen = true;
             // also open door on other side of wall
             Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).OpenDoor();
+            SoundFactory.Instance.CreateDoorUnlockSound().Play();
+        }
+
+        public void CloseDoor()
+        {
+            if (!IsOpen) return;
+            IsOpen = false;
+            // also open door on other side of wall
+            Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).CloseDoor();
             SoundFactory.Instance.CreateDoorUnlockSound().Play();
         }
     }

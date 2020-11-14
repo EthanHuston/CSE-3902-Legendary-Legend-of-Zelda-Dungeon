@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link
         public const int ArrowSpeed = (int)(2 * SpriteScaler);
 
         // Misc. Values
-        public const int StartingHearts = 6 * HeartValue;
+        public const int StartingHearts = 3 * HeartValue;
         public const int HeartValue = Constants.HeartValue;
         public const int HeartItemHealAmount = Constants.HeartValue;
 

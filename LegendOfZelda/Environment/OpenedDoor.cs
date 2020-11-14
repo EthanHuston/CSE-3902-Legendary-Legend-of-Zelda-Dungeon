@@ -5,16 +5,18 @@ using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace LegendOfZelda.Environment
 {
-    internal class BombableOpening : IDoor
+    internal class OpenedDoor : IDoor
     {
         private readonly ITextureAtlasSprite doorSprite;
         private readonly ITextureAtlasSprite doorFloorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
-        private const int doorFloorTextureMapColumn = 6;
+        private int textureMapColumn;
         private readonly int textureMapRow;
+        private const int doorFloorTextureMapColumn = 5;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -22,30 +24,30 @@ namespace LegendOfZelda.Environment
         public Constants.Direction Side { get; private set; }
         public Room Location { get; private set; }
 
-        public BombableOpening(SpriteBatch spriteBatch, Point spawnPosition, Room room)
+        public OpenedDoor(SpriteBatch spriteBatch, Point position, Room room)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             doorFloorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
-            Position = spawnPosition;
+            Position = position;
             safeToDespawn = false;
-            IsOpen = false;
-            Side = RoomUtilities.GetDoorSide(spawnPosition);
+            IsOpen = true;
+            Side = RoomUtilities.GetDoorSide(position);
             textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
             Location = room;
         }
 
         public void Draw()
         {
-            int textureMapColumn = IsOpen ? RoomConstants.BombedDoorColumn : RoomConstants.BombableDoorColumn;
+            textureMapColumn = IsOpen ? RoomConstants.OpenDoorColumn : RoomConstants.CrackedDoorColumn;
             float drawLayer = IsOpen ? Constants.DrawLayer.OpenDoor : Constants.DrawLayer.ClosedDoor;
             doorSprite.Draw(sB, position, new Point(textureMapColumn, textureMapRow), drawLayer);
             if (IsOpen) doorFloorSprite.Draw(sB, Position, new Point(doorFloorTextureMapColumn, textureMapRow), Constants.DrawLayer.FloorTile);
         }
 
-        public Rectangle GetRectangle()
+        public void Update()
         {
-            return new Rectangle(Position.X, Position.Y, doorSprite.GetPositionRectangle().Width, doorSprite.GetPositionRectangle().Height);
+            doorSprite.Update();
         }
 
         public bool SafeToDespawn()
@@ -53,9 +55,9 @@ namespace LegendOfZelda.Environment
             return safeToDespawn;
         }
 
-        public void Update()
+        public Rectangle GetRectangle()
         {
-            doorSprite.Update();
+            return new Rectangle(Position.X, Position.Y, doorSprite.GetPositionRectangle().Width, doorSprite.GetPositionRectangle().Height);
         }
 
         public void Despawn()
@@ -74,7 +76,11 @@ namespace LegendOfZelda.Environment
 
         public void CloseDoor()
         {
-            // do nothing - once open can't close again
+            if (!IsOpen) return;
+            IsOpen = false;
+            // also close door on other side of wall
+            Location.GetRoom(Side).GetDoor(UtilityMethods.InvertDirection(Side)).CloseDoor();
+            SoundFactory.Instance.CreateDoorUnlockSound().Play();
         }
     }
 }

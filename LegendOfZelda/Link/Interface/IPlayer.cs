@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interface;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.Interface
 {
@@ -7,6 +8,7 @@ namespace LegendOfZelda.Link.Interface
         Game1 Game { get; }
         LinkConstants.ItemType PrimaryItem { get; }
         LinkConstants.ItemType SecondaryItem { get; set; }
+        bool BeingDragged { get; set; }
         double MaxHealth { get; }
         double CurrentHealth { get; }
         void BeHealthy(double healAmount);
@@ -26,5 +28,6 @@ namespace LegendOfZelda.Link.Interface
         bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType);
         void StartDeathAnimation();
         void ConsumeKey();
+        void ForceMoveToPoint(Point position);
     }
 }

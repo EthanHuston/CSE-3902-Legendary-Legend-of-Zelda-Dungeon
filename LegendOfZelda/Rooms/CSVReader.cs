@@ -2,6 +2,7 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Item;
+using LegendOfZelda.Rooms.RoomImplementation;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -120,7 +121,7 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Hand:
-                    npcType = new Hand(spriteBatch, position);
+                    npcType = new Hand(spriteBatch, position, ((RoomWallMaster)room).GetWallMasterRoomToJumpTo());
                     room.AllObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Jelly:
@@ -165,6 +166,10 @@ namespace LegendOfZelda.Rooms
                     itemType = new TriforceItem(spriteBatch, position);
                     room.AllObjects.Spawn(itemType);
                     break;
+                case RoomConstants.HeartContainer:
+                    itemType = new HeartContainerItem(spriteBatch, position);
+                    room.AllObjects.Spawn(itemType);
+                    break;
 
                 default:
                     break;
@@ -206,7 +211,7 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(blockType);
                     break;
                 case RoomConstants.OpenDoor:
-                    blockType = new OpenDoor(spriteBatch, position, room);
+                    blockType = new OpenedDoor(spriteBatch, position, room);
                     room.AddDoor((IDoor)blockType);
                     room.AllObjects.Spawn(blockType);
                     break;

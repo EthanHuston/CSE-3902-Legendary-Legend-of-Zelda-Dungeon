@@ -2,6 +2,7 @@
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
 {
@@ -9,7 +10,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
     {
         public void HandleCollision(INpc enemy, IBlock block, Constants.Direction side)
         {
-            if (block.GetType() == typeof(RoomWall))
+            if (CheckCollision(block.GetType()))
             {
                 Vector2 direction = new Vector2();
                 switch (side)
@@ -30,6 +31,17 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
                 ((Bat)enemy).ChooseDirection();
                 ((Bat)enemy).Move(direction);
             }
+        }
+
+        private bool CheckCollision(Type blockType)
+        {
+            return
+                blockType == typeof(RoomWall) ||
+                blockType == typeof(BombableOpening) ||
+                blockType == typeof(Walls) ||
+                blockType == typeof(OpenedDoor) ||
+                blockType == typeof(LockedDoor) ||
+                blockType == typeof(ShutDoor);
         }
     }
 }
