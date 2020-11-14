@@ -19,9 +19,9 @@ namespace LegendOfZelda.Environment
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
         public bool IsOpen { get; private set; }
         public Constants.Direction Side { get; private set; }
-        public Room Location { get; private set; }
+        public IRoom Location { get; private set; }
 
-        public BombableOpening(SpriteBatch spriteBatch, Point spawnPosition, Room room)
+        public BombableOpening(SpriteBatch spriteBatch, Point spawnPosition, IRoom room)
         {
             doorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             doorFloorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();

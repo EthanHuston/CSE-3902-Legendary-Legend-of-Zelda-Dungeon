@@ -9,6 +9,6 @@ namespace LegendOfZelda.Environment
         bool IsOpen { get; }
         void OpenDoor();
         void CloseDoor();
-        Room Location { get; }
+        IRoom Location { get; }
     }
 }
