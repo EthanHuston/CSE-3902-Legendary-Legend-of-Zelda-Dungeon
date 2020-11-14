@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Environment
 {
-    internal class LadderTile : IBlock
+    internal class LadderTile : IBackground
     {
         private readonly ISprite ladderSprite;
         private readonly SpriteBatch sB;

@@ -22,10 +22,7 @@ namespace LegendOfZelda.Rooms
         public List<IPlayer> PlayerList { get => AllObjects.PlayerList; }
         public RoomMap RoomMap { get; private set; }
 
-        protected Room()
-        {
-
-        }
+        protected Room() { }
 
         public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
@@ -84,7 +81,7 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        public IRoom GetRoom(Constants.Direction direction)
+        public virtual IRoom GetRoom(Constants.Direction direction)
         {
             return roomDictionary.ContainsKey(direction) ? roomDictionary[direction] : null;
         }

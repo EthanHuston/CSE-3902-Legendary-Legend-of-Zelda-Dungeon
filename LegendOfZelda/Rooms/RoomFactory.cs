@@ -33,6 +33,9 @@ namespace LegendOfZelda.Rooms
                     case 14:
                         roomsList.Add(new RoomAquamentus(spriteBatch, filename, playerList));
                         break;
+                    case 16:
+                        roomsList.Add(new RoomBeforeSecretRoom(spriteBatch, filename, playerList));
+                        break;
                     default:
                         roomsList.Add(new Room(spriteBatch, filename, playerList));
                         break;

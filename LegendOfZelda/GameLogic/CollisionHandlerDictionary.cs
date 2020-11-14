@@ -147,8 +147,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(ShutDoor), new LinkDoorCollisionHandler() },
                 {typeof(BombableOpening), new LinkDoorCollisionHandler() },
                 {typeof(LockedDoor), new LinkLockedDoorCollisionHandler() },
-                {typeof(RoomChangeTrigger), new  LinkRoomChangeTriggerCollisionHandler() }
-
+                {typeof(RoomChangeTrigger), new  LinkRoomChangeTriggerCollisionHandler() },
             };
         }
 
