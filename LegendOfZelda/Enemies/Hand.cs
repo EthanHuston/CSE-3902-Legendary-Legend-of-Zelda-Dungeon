@@ -12,7 +12,7 @@ namespace LegendOfZelda.Enemies
     internal class Hand : INpc
     {
         private readonly int velocityScalar = (int) Math.Ceiling(0.5 * Constants.GameScaler);
-        private double health = 2 * Constants.HeartValue;
+        private double health = 3 * Constants.HeartValue;
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
@@ -80,13 +80,18 @@ namespace LegendOfZelda.Enemies
                 if (DraggingLink)
                 {
                     link.ForceMoveToPoint(Position);
+                    if(safeToDespawn) // if enemy dies drop Link
+                    {
+                        DraggingLink = false;
+                        link.BeingDragged = false;
+                    }
                 }
-                CheckBounds();
+                CheckBounds(); // checks if we should move Link to new room
                 if (!safeToDespawn)
                 {
                     sprite.Update();
                     UpdatePosition();
-                }
+                } 
             }
         }
 
@@ -110,13 +115,13 @@ namespace LegendOfZelda.Enemies
 
         private void CheckBounds()
         {
-            safeToDespawn = safeToDespawn ||
+            bool changeRoom = 
                 position.X > Constants.HandSpawnRightX ||
                 position.X < Constants.HandSpawnLeftX ||
                 position.Y > Constants.HandSpawnDownY ||
                 position.Y < Constants.HandSpawnUpY;
             
-            if(DraggingLink && safeToDespawn) // once outside map, jump back to beginning room
+            if(DraggingLink && changeRoom) // once outside map, jump back to beginning room
             {
                 link.BeingDragged = false;
                 ((RoomGameState)link.Game.State).MoveToRoom(roomToJumpTo, Constants.Direction.Down);

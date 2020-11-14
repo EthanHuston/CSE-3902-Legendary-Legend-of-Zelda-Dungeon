@@ -9,11 +9,13 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class RoomWallMaster : Room
     {
-        private const int wallMasterMaxCount = 10;
+        private const int wallMasterSpawnDelay = 80;
+        private const int initialWallMasterCount = 5;
+        private int spawnDelayCounter;
         private readonly IRoom roomToJumpTo;
         private readonly SpriteBatch spriteBatch;
         private readonly Random rand;
-        private const int up = 0, right = 1, down = 2, left = 3;
+        private const int up = 0, right = 1, down = 2;
 
         public RoomWallMaster(SpriteBatch spriteBatch, string filename, List<IPlayer> playerList, IRoom roomToJumpTo) : base(spriteBatch, filename, playerList)
         {
@@ -24,9 +26,11 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public override void Update()
         {
-            if (AllObjects.NpcList.Count < wallMasterMaxCount)
+            spawnDelayCounter++;
+            if (spawnDelayCounter >= wallMasterSpawnDelay)
             {
                 AllObjects.Spawn(new Hand(spriteBatch, GenerateRandomWallMasterSpawnPoint(), roomToJumpTo));
+                spawnDelayCounter = 0;
             }
             base.Update();
         }
@@ -34,7 +38,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private Point GenerateRandomWallMasterSpawnPoint()
         {
             Point position = new Point();
-            int direction = rand.Next(up, left + 1);
+            int direction = rand.Next(up, down + 1);
             if (direction == up || direction == down)
             {
                 position.X = rand.Next(Constants.HandUpDownMinX, Constants.HandUpDownMaxX);
@@ -56,7 +60,13 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public override void ResetRoom()
         {
             AllObjects.NpcList.Clear();
+            SpawnInitialWallMaster();
             base.ResetRoom();
+        }
+
+        private void SpawnInitialWallMaster()
+        {
+            for (int i = 0; i < initialWallMasterCount; i++) AllObjects.Spawn(new Hand(spriteBatch, GenerateRandomWallMasterSpawnPoint(), roomToJumpTo));
         }
     }
 }
