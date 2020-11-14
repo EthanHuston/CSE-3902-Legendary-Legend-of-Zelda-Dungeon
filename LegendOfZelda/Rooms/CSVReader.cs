@@ -2,6 +2,7 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Item;
+using LegendOfZelda.Rooms.RoomImplementation;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
