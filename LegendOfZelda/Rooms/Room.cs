@@ -8,9 +8,9 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    internal class Room
+    internal class Room : IRoom
     {
-        private readonly Dictionary<Constants.Direction, Room> roomDictionary;
+        private readonly Dictionary<Constants.Direction, IRoom> roomDictionary;
         private readonly Dictionary<Constants.Direction, IDoor> roomDoors;
         private readonly CollisionManager collisionManager;
         private MovableSquare movableSquare;
@@ -25,7 +25,7 @@ namespace LegendOfZelda.Rooms
         public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
             AllObjects = new SpawnableManager(playerList);
-            roomDictionary = new Dictionary<Constants.Direction, Room>();
+            roomDictionary = new Dictionary<Constants.Direction, IRoom>();
             roomDoors = new Dictionary<Constants.Direction, IDoor>();
             new CSVReader(spriteBatch, this, fileName);
             collisionManager = new CollisionManager(AllObjects);
@@ -35,18 +35,18 @@ namespace LegendOfZelda.Rooms
             SpawnWalls();
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             AllObjects.DrawAll();
         }
 
-        public void Update()
+        public virtual void Update()
         {
             AllObjects.UpdateAll();
             collisionManager.CheckAndHandleAllCollisions();
         }
 
-        public bool ConnectRoom(Room newRoom, Constants.Direction direction)
+        public bool ConnectRoom(IRoom newRoom, Constants.Direction direction)
         {
             // connects a room each way - returning true if successful, else false
             Constants.Direction invertedDirection = UtilityMethods.InvertDirection(direction);
@@ -79,7 +79,7 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        public Room GetRoom(Constants.Direction direction)
+        public IRoom GetRoom(Constants.Direction direction)
         {
             return roomDictionary.ContainsKey(direction) ? roomDictionary[direction] : null;
         }
@@ -101,6 +101,7 @@ namespace LegendOfZelda.Rooms
             AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Up));
 
         }
+
         public void ResetRoom()
         {
             AllObjects.ResetClouds();

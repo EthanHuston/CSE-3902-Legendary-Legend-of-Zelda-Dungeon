@@ -165,6 +165,10 @@ namespace LegendOfZelda.Rooms
                     itemType = new TriforceItem(spriteBatch, position);
                     room.AllObjects.Spawn(itemType);
                     break;
+                case RoomConstants.HeartContainer:
+                    itemType = new HeartContainerItem(spriteBatch, position);
+                    room.AllObjects.Spawn(itemType);
+                    break;
 
                 default:
                     break;
@@ -206,7 +210,7 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(blockType);
                     break;
                 case RoomConstants.OpenDoor:
-                    blockType = new OpenDoor(spriteBatch, position, room);
+                    blockType = new OpenedDoor(spriteBatch, position, room);
                     room.AddDoor((IDoor)blockType);
                     room.AllObjects.Spawn(blockType);
                     break;

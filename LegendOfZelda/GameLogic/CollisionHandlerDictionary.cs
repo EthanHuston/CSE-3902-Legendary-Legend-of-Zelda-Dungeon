@@ -118,7 +118,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(ClockItem), new LinkItemCollisionHandler() },
                 {typeof(CompassItem), new LinkItemCollisionHandler() },
                 {typeof(FairyItem), new LinkFairyCollisionHandler() },
-                {typeof(HeartContainerItem), new LinkItemCollisionHandler() },
+                {typeof(HeartContainerItem), new LinkHeartContainerCollisionHandler() },
                 {typeof(HeartItem), new LinkHeartCollisionHandler() },
                 {typeof(KeyItem), new LinkItemCollisionHandler() },
                 {typeof(MapItem), new LinkItemCollisionHandler() },
@@ -142,7 +142,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(MovableSquare), new LinkMovableBlockCollisionHandler() },
 
                 // doors
-                {typeof(OpenDoor), new LinkDoorCollisionHandler() },
+                {typeof(OpenedDoor), new LinkDoorCollisionHandler() },
                 {typeof(ShutDoor), new LinkDoorCollisionHandler() },
                 {typeof(BombableOpening), new LinkDoorCollisionHandler() },
                 {typeof(LockedDoor), new LinkLockedDoorCollisionHandler() },
