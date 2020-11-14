@@ -176,7 +176,7 @@ namespace LegendOfZelda.Link
                 {LinkConstants.ItemType.Bomb, LinkConstants.BombCount },
                 {LinkConstants.ItemType.Clock, 0 },
                 {LinkConstants.ItemType.Compass, 0 },
-                {LinkConstants.ItemType.Key, 0 },
+                {LinkConstants.ItemType.Key, 5 },
                 {LinkConstants.ItemType.Map, 0 },
                 {LinkConstants.ItemType.Boomerang, LinkConstants.BoomerangCount },
                 {LinkConstants.ItemType.Bow, LinkConstants.BowCount },

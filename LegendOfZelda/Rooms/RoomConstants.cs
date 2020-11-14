@@ -79,6 +79,7 @@ namespace LegendOfZelda
         public const string DragonStatue = "dstat";
         public const string BlueGrass = "bg";
         public const string Water = "water";
+        public const string RoomBorder = "roomBorder";
         //String Abbreviations for Border and Background in CSV File
         public const string TileBackground = "tealBack";
         public const string BlackBackground = "blackBack";

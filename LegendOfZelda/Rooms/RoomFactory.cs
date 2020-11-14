@@ -38,6 +38,7 @@ namespace LegendOfZelda.Rooms
                         break;
                 }
             }
+            roomsList.Add(new SecretRoom(spriteBatch, roomDataDirectory + "SecretRoom.csv", playerList));
         }
 
         private static void ConnectRooms(List<Room> roomsList)
@@ -123,6 +124,9 @@ namespace LegendOfZelda.Rooms
 
             // Row 5 <-> 6
             roomsList[13].ConnectRoom(roomsList[17], Constants.Direction.Up); // connect 15-17
+
+            // Connect Secret Room
+            roomsList[18].ConnectRoom(roomsList[16], Constants.Direction.Stairs);
         }
     }
 }

@@ -135,6 +135,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Square), new LinkImmovableBlockCollisionHandler() },
                 {typeof(RoomWall), new LinkImmovableBlockCollisionHandler() },
+                {typeof(BrickTile), new LinkImmovableBlockCollisionHandler() },
 
                 // interactive blocks
                 {typeof(Fire), new LinkFireCollisionHandler() },

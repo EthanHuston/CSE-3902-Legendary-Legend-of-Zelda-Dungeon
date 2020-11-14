@@ -10,17 +10,22 @@ namespace LegendOfZelda.Rooms
 {
     internal class Room : IRoom
     {
-        private readonly Dictionary<Constants.Direction, IRoom> roomDictionary;
-        private readonly Dictionary<Constants.Direction, IDoor> roomDoors;
-        private readonly CollisionManager collisionManager;
-        private MovableSquare movableSquare;
+        protected Dictionary<Constants.Direction, IRoom> roomDictionary;
+        protected Dictionary<Constants.Direction, IDoor> roomDoors;
+        protected CollisionManager collisionManager;
+        protected MovableSquare movableSquare;
 
         public bool Visiting { get; set; }
-        public int RoomType { get; private set; }
+        public int RoomType { get; protected set; }
         public Point LocationOnMap { get; set; }
-        public ISpawnableManager AllObjects { get; private set; }
+        public ISpawnableManager AllObjects { get; protected set; }
         public List<IPlayer> PlayerList { get => AllObjects.PlayerList; }
         public RoomMap RoomMap { get; private set; }
+
+        protected Room()
+        {
+
+        }
 
         public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {

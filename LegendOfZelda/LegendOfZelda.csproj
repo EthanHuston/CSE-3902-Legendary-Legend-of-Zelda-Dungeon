@@ -321,6 +321,7 @@
     <Compile Include="Rooms\RoomMap.cs" />
     <Compile Include="Rooms\RoomUtilities.cs" />
     <Compile Include="Rooms\RoomChangeTrigger.cs" />
+    <Compile Include="Rooms\SecretRoom.cs" />
     <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />

@@ -40,6 +40,8 @@ namespace LegendOfZelda.Utility
                     return Constants.Direction.Up;
                 case Constants.Direction.Up:
                     return Constants.Direction.Down;
+                case Constants.Direction.Stairs:
+                    return Constants.Direction.Stairs;
                 default:
                     return Constants.Direction.None;
             }
