@@ -3,18 +3,18 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {
-    class UseSecondaryItem : ICommand
+    class StopMovingCommand : ICommand
     {
         private readonly IPlayer link;
 
-        public UseSecondaryItem(IPlayer link)
+        public StopMovingCommand(IPlayer link)
         {
             this.link = link;
         }
 
         public void Execute()
         {
-            link.UseSecondary();
+            link.StopMoving();
         }
     }
 }

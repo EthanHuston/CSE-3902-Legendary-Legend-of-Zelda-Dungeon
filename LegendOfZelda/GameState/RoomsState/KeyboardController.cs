@@ -1,7 +1,9 @@
 ﻿using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Rooms
@@ -11,6 +13,7 @@ namespace LegendOfZelda.GameState.Rooms
         private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;
         private List<Keys> repeatableKeys;
+        private List<ICommand> playerStopCommands;
 
         public KeyboardController(IGameState gameState)
         {
@@ -36,10 +39,10 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.Right, new WalkingRightCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.S, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.Down, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.D1, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
-                { Keys.D2, new UseSecondaryItem(gameStateCast.GetPlayer(0)) },
-                { Keys.Q, new UsePrimaryItem(gameStateCast.GetPlayer(0)) },
-                { Keys.E, new UseSecondaryItem(gameStateCast.GetPlayer(0)) },
+                { Keys.D1, new UsePrimaryItemCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.D2, new UseSecondaryItemCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.Q, new UsePrimaryItemCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.E, new UseSecondaryItemCommand(gameStateCast.GetPlayer(0)) },
 
                 // TODO: Remove me. Temporary room changing commands
                 { Keys.NumPad8, new ChangeRoomUpCommand(gameStateCast) },
@@ -51,6 +54,16 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.K, new ChangeRoomDownCommand(gameStateCast) },
                 { Keys.J, new ChangeRoomLeftCommand(gameStateCast) }
             };
+
+            InitPlayerStopMovingCommands(gameStateCast);
+        }
+
+        private void InitPlayerStopMovingCommands(RoomGameState gameStateCast)
+        {
+            for (int i = 0; i < gameStateCast.PlayerList.Count; i++) 
+            {
+                playerStopCommands.Add(new StopMovingCommand(gameStateCast.PlayerList[i]));
+            }
         }
 
         public GameStateConstants.InputType GetInputType()
