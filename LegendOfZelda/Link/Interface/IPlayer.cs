@@ -8,6 +8,7 @@ namespace LegendOfZelda.Link.Interface
         Game1 Game { get; }
         LinkConstants.ItemType PrimaryItem { get; }
         LinkConstants.ItemType SecondaryItem { get; set; }
+        bool BeingDragged { get; set; }
         double MaxHealth { get; }
         double CurrentHealth { get; }
         void BeHealthy(double healAmount);

@@ -5,12 +5,11 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class RoomWallMaster : Room
     {
-        private const int wallMasterSpawnDelay = 20;
-        private int spawnDelayCounter;
+        private const int wallMasterMaxCount = 10;
         private readonly IRoom roomToJumpTo;
         private readonly SpriteBatch spriteBatch;
         private readonly Random rand;
@@ -18,7 +17,6 @@ namespace LegendOfZelda.Rooms
 
         public RoomWallMaster(SpriteBatch spriteBatch, string filename, List<IPlayer> playerList, IRoom roomToJumpTo) : base(spriteBatch, filename, playerList)
         {
-            spawnDelayCounter = 20;
             this.spriteBatch = spriteBatch;
             rand = RoomConstants.RandomGenerator;
             this.roomToJumpTo = roomToJumpTo;
@@ -26,11 +24,9 @@ namespace LegendOfZelda.Rooms
 
         public override void Update()
         {
-            spawnDelayCounter++;
-            if (spawnDelayCounter >= wallMasterSpawnDelay)
+            if (AllObjects.NpcList.Count < wallMasterMaxCount)
             {
                 AllObjects.Spawn(new Hand(spriteBatch, GenerateRandomWallMasterSpawnPoint(), roomToJumpTo));
-                spawnDelayCounter = 0;
             }
             base.Update();
         }
@@ -38,15 +34,16 @@ namespace LegendOfZelda.Rooms
         private Point GenerateRandomWallMasterSpawnPoint()
         {
             Point position = new Point();
-            int direction = rand.Next(up, left);
-            if(direction == up || direction == down)
+            int direction = rand.Next(up, left + 1);
+            if (direction == up || direction == down)
             {
-                position.X = rand.Next(RoomConstants.WallWidth, RoomConstants.RoomWidth - RoomConstants.WallWidth);
-                position.Y = direction == up ? Constants.MinYPos - RoomConstants.WallWidth : Constants.MaxYPos;
-            } else
+                position.X = rand.Next(Constants.HandUpDownMinX, Constants.HandUpDownMaxX);
+                position.Y = direction == up ? Constants.HandSpawnUpY : Constants.HandSpawnDownY;
+            }
+            else // left or right
             {
-                position.X = direction == right ? Constants.MinXPos - RoomConstants.WallWidth : Constants.MaxXPos;
-                position.Y = rand.Next(Constants.MinYPos + RoomConstants.WallWidth, Constants.MaxYPos - RoomConstants.WallWidth);
+                position.X = direction == right ? Constants.HandSpawnRightX : Constants.HandSpawnLeftX;
+                position.Y = rand.Next(Constants.HandLeftRightMinY, Constants.HandLeftRightMaxY);
             }
             return position;
         }

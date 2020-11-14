@@ -11,9 +11,8 @@ namespace LegendOfZelda.Link.CollisionHandler.WithNpc
         public void HandleCollision(IPlayer link, INpc enemy, Constants.Direction side)
         {
             Hand hand = (Hand)enemy;
-            if (hand.DraggingLink) return;
+            if (link.BeingDragged) return;
             hand.DragLink(link);
-            link.BeDamaged(enemy.GetDamageAmount());
         }
     }
 }

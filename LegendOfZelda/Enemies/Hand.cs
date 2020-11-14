@@ -11,8 +11,8 @@ namespace LegendOfZelda.Enemies
 {
     internal class Hand : INpc
     {
-        private const int velocityScalar = 1;
-        private double health = 4 * Constants.HeartValue;
+        private readonly int velocityScalar = (int) Math.Ceiling(0.5 * Constants.GameScaler);
+        private double health = 2 * Constants.HeartValue;
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
@@ -48,7 +48,7 @@ namespace LegendOfZelda.Enemies
         private Vector2 SetVelocityFromPosition(Point spawnPosition)
         {
             Vector2 velocity = Vector2.Zero;
-            if (spawnPosition.X <= 0) velocity.X = velocityScalar;
+            if (spawnPosition.X <= Constants.MinXPos) velocity.X = velocityScalar;
             else if (spawnPosition.X >= Constants.MaxXPos) velocity.X = -1 * velocityScalar;
             else if (spawnPosition.Y <= Constants.MinYPos) velocity.Y = velocityScalar;
             else if (spawnPosition.Y >= Constants.MaxYPos) velocity.Y = -1 * velocityScalar;
@@ -110,14 +110,15 @@ namespace LegendOfZelda.Enemies
 
         private void CheckBounds()
         {
-            safeToDespawn =
-                position.X > Constants.MaxXPos ||
-                position.X < Constants.MinXPos - sprite.GetPositionRectangle().Width ||
-                position.Y > Constants.MaxYPos ||
-                position.Y < Constants.MinYPos - sprite.GetPositionRectangle().Height;
+            safeToDespawn = safeToDespawn ||
+                position.X > Constants.HandSpawnRightX ||
+                position.X < Constants.HandSpawnLeftX ||
+                position.Y > Constants.HandSpawnDownY ||
+                position.Y < Constants.HandSpawnUpY;
             
             if(DraggingLink && safeToDespawn) // once outside map, jump back to beginning room
             {
+                link.BeingDragged = false;
                 ((RoomGameState)link.Game.State).MoveToRoom(roomToJumpTo, Constants.Direction.Down);
             }
         }
@@ -173,8 +174,9 @@ namespace LegendOfZelda.Enemies
         {
             DraggingLink = true;
             this.link = link;
-            velocity.X = -2 * velocityScalar;
-            velocity.Y = 0;
+            link.BeingDragged = true;
+            velocity.X = 0;
+            velocity.Y = 2 * velocityScalar;
         }
     }
 }

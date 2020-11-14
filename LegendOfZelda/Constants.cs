@@ -57,6 +57,15 @@ namespace LegendOfZelda
         public const int EnemyDamageEffectTimeMs = 500;
         public const int EnemyDamageFlashDelayTicks = 5;
         public const int HandDragLinkTimeMs = 2000;
+        private const int HandSpriteWidthHeight = (int)(16 * GameScaler);
+        public const int HandSpawnLeftX = MinXPos - HandSpriteWidthHeight;
+        public const int HandSpawnRightX = MaxXPos + HandSpriteWidthHeight;
+        public const int HandSpawnUpY = MinYPos - HandSpriteWidthHeight;
+        public const int HandSpawnDownY = MaxYPos + HandSpriteWidthHeight;
+        public const int HandUpDownMinX = MinXPos + RoomConstants.WallWidth;
+        public const int HandUpDownMaxX = MaxXPos - RoomConstants.WallWidth - HandSpriteWidthHeight;
+        public const int HandLeftRightMinY = MinYPos + RoomConstants.WallWidth;
+        public const int HandLeftRightMaxY = MaxYPos - RoomConstants.WallWidth - HandSpriteWidthHeight;
 
         // Drawing Layers
         public static class DrawLayer

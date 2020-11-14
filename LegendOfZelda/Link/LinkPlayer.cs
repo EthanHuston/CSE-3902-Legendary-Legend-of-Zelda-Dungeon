@@ -29,6 +29,7 @@ namespace LegendOfZelda.Link
         public LinkConstants.ItemType SecondaryItem { get; set; }
         public double MaxHealth { get; private set; }
         public double CurrentHealth { get; private set; }
+        public bool BeingDragged { get; set; }
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
@@ -43,6 +44,7 @@ namespace LegendOfZelda.Link
             BlockStateChange = false;
             currentProjectiles = new Dictionary<LinkConstants.ProjectileType, IProjectile>();
             SecondaryItem = LinkConstants.ItemType.None;
+            BeingDragged = false;
             InitInventoryDict();
         }
 
