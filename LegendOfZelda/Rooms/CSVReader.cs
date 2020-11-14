@@ -2,6 +2,7 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Item;
+using LegendOfZelda.Rooms.RoomImplementation;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -120,7 +121,7 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Hand:
-                    npcType = new Hand(spriteBatch, position);
+                    npcType = new Hand(spriteBatch, position, ((RoomWallMaster)room).GetWallMasterRoomToJumpTo());
                     room.AllObjects.Spawn(npcType);
                     break;
                 case RoomConstants.Jelly:

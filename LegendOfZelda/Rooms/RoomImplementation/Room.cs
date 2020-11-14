@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.Rooms.RoomImplementation
 {
     internal class Room : IRoom
     {
@@ -102,7 +102,7 @@ namespace LegendOfZelda.Rooms
 
         }
 
-        public void ResetRoom()
+        public virtual void ResetRoom()
         {
             AllObjects.ResetClouds();
             if (movableSquare != null) movableSquare.RoomReset();

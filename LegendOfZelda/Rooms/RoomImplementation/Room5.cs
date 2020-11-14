@@ -2,13 +2,13 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class Room5 : Room
     {
         private bool doorHasBeenClosed;
         private bool doorHasBeenOpened;
-        public Room5 (SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList) : base(spriteBatch, fileName, playerList)
+        public Room5(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList) : base(spriteBatch, fileName, playerList)
         {
             doorHasBeenClosed = false;
             doorHasBeenOpened = false;
@@ -33,7 +33,7 @@ namespace LegendOfZelda.Rooms
         {
             foreach (IPlayer player in PlayerList)
             {
-                if(player.Position.X >= RoomConstants.RightDoorX - player.GetRectangle().Width)
+                if (player.Position.X >= RoomConstants.RightDoorX - player.GetRectangle().Width)
                 {
                     return false;
                 }

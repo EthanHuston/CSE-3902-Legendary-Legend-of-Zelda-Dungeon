@@ -1,8 +1,8 @@
 ﻿tealBack,locked,wall,wall,open,,,,,,,
----,---,hand,hand,---,---,---,---,---,hand,hand,---
+---,---,---,---,---,---,---,---,---,---,---,---
 ---,block,---,block,---,block,block,---,block,---,block,---
 ---,---,---,---,---,---,---,---,---,---,---,---
-hand,block,---,block,---,block,block,---,block,---,block,---
-hand,---,---,---,---,---,---,---,---,---,---,hand
----,block,---,block,---,block,block,---,block,---,block,hand
+---,block,---,block,---,block,block,---,block,---,block,---
+---,---,---,---,---,---,---,---,---,---,---,---
+---,block,---,block,---,block,block,---,block,---,block,---
 ---,---,---,---,---,---,---,---,---,---,---,---

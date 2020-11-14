@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Rooms;
+using LegendOfZelda.Rooms.RoomImplementation;
 
 namespace LegendOfZelda.Environment
 {

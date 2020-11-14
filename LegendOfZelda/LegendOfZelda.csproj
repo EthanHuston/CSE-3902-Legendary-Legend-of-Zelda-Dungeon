@@ -192,6 +192,7 @@
     <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
+    <Compile Include="Rooms\RoomImplementation\RoomWallMaster.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomRightCommand.cs" />
@@ -199,8 +200,8 @@
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomUpCommand.cs" />
     <Compile Include="Rooms\IRoom.cs" />
-    <Compile Include="Rooms\Room5.cs" />
-    <Compile Include="Rooms\RoomAquamentus.cs" />
+    <Compile Include="Rooms\RoomImplementation\Room5.cs" />
+    <Compile Include="Rooms\RoomImplementation\RoomAquamentus.cs" />
     <Compile Include="Rooms\RoomFactory.cs" />
     <Compile Include="GameLogic\CollisionHandlerDictionary.cs" />
     <Compile Include="GameLogic\CollisionManager.cs" />
@@ -248,7 +249,7 @@
     <Compile Include="Projectile\Sprite\SwordBeamFlyingSprite.cs" />
     <Compile Include="Projectile\SwordBeamFlyingProjectile.cs" />
     <Compile Include="Rooms\CSVReader.cs" />
-    <Compile Include="Rooms\Room.cs" />
+    <Compile Include="Rooms\RoomImplementation\Room.cs" />
     <Compile Include="Projectile\FireballProjectile.cs" />
     <Compile Include="Item\BombItem.cs" />
     <Compile Include="Item\BoomerangItem.cs" />

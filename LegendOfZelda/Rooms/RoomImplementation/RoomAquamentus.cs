@@ -3,7 +3,7 @@ using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class RoomAquamentus : Room
     {
@@ -23,7 +23,7 @@ namespace LegendOfZelda.Rooms
             {
                 GetDoor(Constants.Direction.Right).OpenDoor();
                 openedDoor = true;
-                if(heartContainer != null) AllObjects.Spawn(heartContainer);
+                if (heartContainer != null) AllObjects.Spawn(heartContainer);
             }
             base.Update();
         }
@@ -31,10 +31,10 @@ namespace LegendOfZelda.Rooms
         private IItem RemoveHeartContainerFromSpawnList()
         {
             IItem item;
-            for (int i = 0; i < AllObjects.ItemList.Count; i++) 
+            for (int i = 0; i < AllObjects.ItemList.Count; i++)
             {
                 item = AllObjects.ItemList[i];
-                if(item.GetType() == typeof(HeartContainerItem))
+                if (item.GetType() == typeof(HeartContainerItem))
                 {
                     AllObjects.ItemList.RemoveAt(i);
                     return item;
