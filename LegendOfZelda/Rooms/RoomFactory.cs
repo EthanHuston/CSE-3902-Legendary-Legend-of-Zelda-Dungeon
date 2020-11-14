@@ -10,7 +10,7 @@ namespace LegendOfZelda.Rooms
         private const int startingRoomNumber = 2;
         private const string roomDataDirectory = "Content\\RoomData\\";
 
-        public static Room BuildMapAndGetStartRoom(SpriteBatch spriteBatch, List<IPlayer> playerList)
+        public static IRoom BuildMapAndGetStartRoom(SpriteBatch spriteBatch, List<IPlayer> playerList)
         {
             List<Room> roomsList = new List<Room>();
             InitRoomsList(roomsList, spriteBatch, playerList);
@@ -29,6 +29,9 @@ namespace LegendOfZelda.Rooms
                 {
                     case 5:
                         roomsList.Add(new Room5(spriteBatch, filename, playerList));
+                        break;
+                    case 12:
+                        roomsList.Add(new RoomWallMaster(spriteBatch, filename, playerList, roomsList[startingRoomNumber]));
                         break;
                     case 14:
                         roomsList.Add(new RoomAquamentus(spriteBatch, filename, playerList));

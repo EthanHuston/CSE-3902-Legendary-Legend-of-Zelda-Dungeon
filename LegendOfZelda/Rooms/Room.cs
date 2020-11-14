@@ -102,7 +102,7 @@ namespace LegendOfZelda.Rooms
 
         }
 
-        public void ResetRoom()
+        public virtual void ResetRoom()
         {
             AllObjects.ResetClouds();
             if (movableSquare != null) movableSquare.RoomReset();

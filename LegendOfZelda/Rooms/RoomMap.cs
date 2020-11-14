@@ -38,7 +38,7 @@ namespace LegendOfZelda.Rooms
 
         public void Draw()
         {
-            foreach (Room room in roomsInMap)
+            foreach (IRoom room in roomsInMap)
             {
                 Point drawLocation = new Point(
                     Position.X + (int)(room.LocationOnMap.X * sourceRectangleSize.X * Constants.GameScaler),
