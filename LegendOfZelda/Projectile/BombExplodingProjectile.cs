@@ -11,6 +11,7 @@ namespace LegendOfZelda.Projectile
         {
             projectileType = LinkConstants.ProjectileType.Bomb;
             sprite = ProjectileSpriteFactory.Instance.CreateBombExplodingSprite();
+            Position = new Point(Position.X - Constants.BombSpawnOffsetX, Position.Y - Constants.BombSpawnOffsetY);
         }
 
         public override void Update()

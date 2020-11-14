@@ -178,7 +178,6 @@
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkBoomerangCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
     <Compile Include="Link\Command\ChangeSecondaryToItem.cs" />
     <Compile Include="Link\Command\UseSecondaryItem.cs" />
