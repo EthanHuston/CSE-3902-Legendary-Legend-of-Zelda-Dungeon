@@ -42,7 +42,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage, float layer)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, sprite.Width, sprite.Height);
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
             Rectangle sourceRectangle = sprite.Bounds;
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White, layer);
         }

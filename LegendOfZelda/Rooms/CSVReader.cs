@@ -80,8 +80,8 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(blockType);
                     break;
                 case RoomConstants.LadderTile:
-                    blockType = new LadderTile(spriteBatch, position);
-                    room.AllObjects.Spawn(blockType);
+                    backgroundType = new LadderTile(spriteBatch, position);
+                    room.AllObjects.Spawn(backgroundType);
                     break;
                 case RoomConstants.Stairs:
                     blockType = new Stairs(spriteBatch, position);

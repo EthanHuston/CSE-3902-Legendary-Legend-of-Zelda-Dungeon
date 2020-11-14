@@ -72,7 +72,7 @@ namespace LegendOfZelda
         public const string BrickTile = "brick";
         public const string Fire = "fire";
         public const string GapTile = "black";
-        public const string LadderTile = "lad";
+        public const string LadderTile = "ladder";
         public const string MovableBlock = "redblock";
         public const string Stairs = "stairs";
         public const string FishStatue = "fstat";
