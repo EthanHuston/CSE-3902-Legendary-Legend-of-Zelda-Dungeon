@@ -104,5 +104,6 @@ namespace LegendOfZelda
         public const string Map = "map";
         public const string Triforce = "triforce";
         public const string HeartContainer = "hrtcontainer";
+        public const string Bow = "bow";
     }
 }
