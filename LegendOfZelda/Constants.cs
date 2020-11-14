@@ -67,6 +67,11 @@ namespace LegendOfZelda
         public const int HandLeftRightMinY = MinYPos + RoomConstants.WallWidth;
         public const int HandLeftRightMaxY = MaxYPos - RoomConstants.WallWidth - HandSpriteWidthHeight;
 
+        // Misc
+        private const int bombSpriteWidth = 16;
+        public const int BombSpawnOffsetX = (int)(bombSpriteWidth * GameScaler);
+        public const int BombSpawnOffsetY = (int)(bombSpriteWidth * GameScaler);
+
         // Drawing Layers
         public static class DrawLayer
         {

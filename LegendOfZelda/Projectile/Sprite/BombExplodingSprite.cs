@@ -11,9 +11,9 @@ namespace LegendOfZelda.Projectile.Sprite
         private int delayBeforeExplosionCounter;
         private int bufferFrame;
         private int currentFrame;
-        private const int totalFrames = 4;
+        private readonly int totalFrames;
         private const int numRows = 1;
-        private const int numColumns = 4;
+        private const int numColumns = 7;
         private const int delayBeforeExplosion = 60;
         private bool isExploding;
         private readonly int width;
@@ -28,6 +28,7 @@ namespace LegendOfZelda.Projectile.Sprite
             isExploding = false;
             width = sprite.Width / numColumns;
             height = sprite.Height / numRows;
+            totalFrames = numRows * numColumns;
         }
 
         public void Update()
@@ -63,7 +64,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, width, height);
+            return new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
         }
 
         public bool IsExploding()
