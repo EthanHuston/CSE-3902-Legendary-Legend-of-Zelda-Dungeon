@@ -4,6 +4,7 @@ using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
+using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameState.RoomTransitionState
@@ -41,6 +42,9 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             velocity = GetVelocity(direction);
             counter = 0;
             UpdateObjectPositions(nextRoom, initialMoveDistance);
+
+            // TODO: remove me after changing link's position with room 
+            UpdatePlayersPositions(UtilityMethods.InvertDirection(direction));
         }
 
         private Vector2 GetInitialMoveDistance(Constants.Direction direction)
