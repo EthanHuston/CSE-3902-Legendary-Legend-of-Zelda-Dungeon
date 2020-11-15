@@ -35,6 +35,8 @@ namespace LegendOfZelda.Link
         public static Point DoorUpSpawnPosition => new Point(RoomConstants.TopDoorX + RoomConstants.TileLength / 2, RoomConstants.TopDoorY + RoomConstants.TileLength);
         public static Point DoorLeftSpawnPosition => new Point(RoomConstants.LeftDoorX + RoomConstants.TileLength, RoomConstants.LeftDoorY + RoomConstants.TileLength / 2);
         public static Point DoorRightSpawnPosition => new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY + RoomConstants.TileLength / 2);
+        public static Point SecretRoomEnterSpawnPosition => new Point(RoomConstants.TileLength * 3, Constants.MinYPos);
+        public static Point SecretRoomExitSpawnPosition => new Point(RoomConstants.WallWidth + 5 * RoomConstants.TileLength, Constants.MinYPos + RoomConstants.WallWidth + 3 * RoomConstants.TileLength);
 
         // Spawn Offsets : Picking Up Items
         public static Point PickingUpBoomerangSpawnOffset => new Point((int)(0 * SpriteScaler), (int)(-9 * SpriteScaler));

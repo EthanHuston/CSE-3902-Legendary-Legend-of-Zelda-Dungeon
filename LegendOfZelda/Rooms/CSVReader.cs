@@ -11,13 +11,14 @@ namespace LegendOfZelda.Rooms
 {
     internal class CSVReader
     {
-        public Room room;
+        public IRoom room;
         private readonly SpriteBatch spriteBatch;
 
-        public CSVReader(SpriteBatch spriteBatch, Room room, string fileName)
+        public CSVReader(SpriteBatch spriteBatch, IRoom room, string fileName)
         {
             this.room = room;
             this.spriteBatch = spriteBatch;
+            bool spawningSecretRoom = room.GetType() == typeof(SecretRoom);
             // Directory.GetCurrentDirectory() + "\\" + 
             TextFieldParser parser = new TextFieldParser(fileName)
             {
@@ -30,8 +31,6 @@ namespace LegendOfZelda.Rooms
                 string[] fields = parser.ReadFields();
                 if (j == 0)
                 {
-                    IBackground roomBorder = new RoomBorder(spriteBatch, new Point(RoomConstants.RoomBorderX, RoomConstants.RoomBorderY));
-                    room.AllObjects.Spawn(roomBorder);
                     for (int i = 0; i < fields.Length; i++)
                     {
                         SpawnWallsAndBackground(fields[i], i);
@@ -41,17 +40,21 @@ namespace LegendOfZelda.Rooms
                 {
                     for (int i = 0; i < fields.Length; i++)
                     {
-                        SpawnFromString(fields[i], i, j - 1);
+                        SpawnFromString(fields[i], 
+                            spawningSecretRoom ? RoomConstants.RoomBorderX : RoomConstants.BackgroundX,
+                            spawningSecretRoom ? RoomConstants.RoomBorderY : RoomConstants.BackgroundY,
+                            i, 
+                            j - 1);
                     }
                 }
                 j++;
             }
         }
 
-        private void SpawnFromString(string spawnType, int gridX, int gridY)
+        private void SpawnFromString(string spawnType, int offsetX, int offsetY, int gridX, int gridY)
         {
-            int posX = RoomConstants.BackgroundX + gridX * RoomConstants.TileLength;
-            int posY = RoomConstants.BackgroundY + gridY * RoomConstants.TileLength;
+            int posX = offsetX + gridX * RoomConstants.TileLength;
+            int posY = offsetY + gridY * RoomConstants.TileLength;
             Point position = new Point(posX, posY);
             IBlock blockType;
             INpc npcType;
@@ -78,8 +81,8 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(blockType);
                     break;
                 case RoomConstants.LadderTile:
-                    blockType = new LadderTile(spriteBatch, position);
-                    room.AllObjects.Spawn(blockType);
+                    backgroundType = new LadderTile(spriteBatch, position);
+                    room.AllObjects.Spawn(backgroundType);
                     break;
                 case RoomConstants.Stairs:
                     blockType = new Stairs(spriteBatch, position);
@@ -170,6 +173,10 @@ namespace LegendOfZelda.Rooms
                     itemType = new HeartContainerItem(spriteBatch, position);
                     room.AllObjects.Spawn(itemType);
                     break;
+                case RoomConstants.Bow:
+                    itemType = new BowItem(spriteBatch, position);
+                    room.AllObjects.Spawn(itemType);
+                    break;
 
                 default:
                     break;
@@ -186,12 +193,14 @@ namespace LegendOfZelda.Rooms
             if (i == 0)
                 position = new Point(RoomConstants.BackgroundX, RoomConstants.BackgroundY);
             else if (i == 1)
-                position = new Point(RoomConstants.TopDoorX, RoomConstants.TopDoorY);
+                position = new Point(RoomConstants.RoomBorderX, RoomConstants.RoomBorderY);
             else if (i == 2)
-                position = new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY);
+                position = new Point(RoomConstants.TopDoorX, RoomConstants.TopDoorY);
             else if (i == 3)
-                position = new Point(RoomConstants.BottomDoorX, RoomConstants.BottomDoorY);
+                position = new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY);
             else if (i == 4)
+                position = new Point(RoomConstants.BottomDoorX, RoomConstants.BottomDoorY);
+            else if (i == 5)
                 position = new Point(RoomConstants.LeftDoorX, RoomConstants.LeftDoorY);
             else
                 position = Point.Zero;
@@ -200,6 +209,10 @@ namespace LegendOfZelda.Rooms
             {
                 case RoomConstants.TileBackground:
                     backgroundType = new TileBackground(spriteBatch, position);
+                    room.AllObjects.Spawn(backgroundType);
+                    break;
+                case RoomConstants.RoomBorder:
+                    backgroundType = new RoomBorder(spriteBatch, position);
                     room.AllObjects.Spawn(backgroundType);
                     break;
                 case RoomConstants.BlackBackground:

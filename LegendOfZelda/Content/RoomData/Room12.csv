@@ -1,5 +1,5 @@
-﻿tealBack,locked,wall,wall,open,,,,,,,
----,---,---,---,---,---,---,---,---,---,---,---
+﻿tealBack,roomBorder,locked,wall,wall,open,,,,,,
+---,---,hand,hand,---,---,---,---,---,hand,hand,---
 ---,block,---,block,---,block,block,---,block,---,block,---
 ---,---,---,---,---,---,---,---,---,---,---,---
 ---,block,---,block,---,block,block,---,block,---,block,---
