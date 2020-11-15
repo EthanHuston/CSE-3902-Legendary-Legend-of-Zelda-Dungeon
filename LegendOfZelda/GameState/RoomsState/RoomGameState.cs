@@ -12,7 +12,7 @@ using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
-using LegendOfZelda.Rooms.RoomImplementation;
+using LegendOfZelda.GameState.RoomTransitionState;
 
 namespace LegendOfZelda.GameState.Rooms
 {
@@ -74,18 +74,10 @@ namespace LegendOfZelda.GameState.Rooms
         public void MoveRoom(Constants.Direction direction)
         {
             IRoom newRoom = CurrentRoom.GetRoom(direction);
-            Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
-            Game.State = new RoomTransitions(this, direction);
             if (newRoom != null)
             {
-                StartStateSwitch(Game.State);
-//                CurrentRoom.Visiting = false;
-//                newRoom.Visiting = true;
-//
-//                CurrentRoom = newRoom;
-                UpdatePlayersPositions(doorLocation);
-//                CurrentRoom.ResetRoom();
-                RoomMap.AddRoomToMap(CurrentRoom);
+                StartStateSwitch(new RoomTransitionGameState(this, direction));
+                RoomMap.AddRoomToMap(newRoom);
             }
         }
 

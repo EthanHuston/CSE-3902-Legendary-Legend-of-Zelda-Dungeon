@@ -1,80 +1,105 @@
 ﻿using LegendOfZelda.Environment;
-using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
-using LegendOfZelda.Utility;
+using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms.RoomImplementation
+namespace LegendOfZelda.GameState.RoomTransitionState
 {
-    class RoomTransitions : IGameState
+    class RoomTransitionGameState : IGameState
     {
 
 
         public Game1 Game { get; protected set; }
 
-        private RoomGameState roomGame;
+        private readonly RoomGameState roomGameState;
 
-        private IRoom currentRoom;
+        private readonly IRoom currentRoom;
 
-        private IRoom nextRoom;
+        private readonly IRoom nextRoom;
 
-        private Constants.Direction direction;
-
-        private Point point;
-
+        private Vector2 initialMoveDistance;
+        private readonly int distanceToMove;
+        private const int velocityScalar = 10;
         private Vector2 velocity;
 
         private int counter;
 
-        public RoomTransitions(RoomGameState roomGameState, Constants.Direction direction)
+        public RoomTransitionGameState(RoomGameState roomGameState, Constants.Direction direction)
         {
-            roomGame = roomGameState;
-            Game = roomGame.Game;
-            this.direction = direction;
+            this.roomGameState = roomGameState;
+            Game = this.roomGameState.Game;
+
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);
+            
+            initialMoveDistance = GetInitialMoveDistance(direction);
+            distanceToMove = (int) initialMoveDistance.Length();
+
+            velocity = GetVelocity(direction);
+            counter = 0;
+            UpdateObjectPositions(nextRoom, initialMoveDistance);
+        }
+
+        private Vector2 GetInitialMoveDistance(Constants.Direction direction)
+        {
+            Vector2 distance = Vector2.Zero;
             switch (direction)
             {
                 case Constants.Direction.Right:
-                    point = new Point(RoomConstants.RoomWidth,0);
+                    distance.X = RoomConstants.RoomWidth;
                     break;
                 case Constants.Direction.Left:
-                    point = new Point(-1 * RoomConstants.RoomWidth, 0);
+                    distance.X = -1 * RoomConstants.RoomWidth;
                     break;
                 case Constants.Direction.Up:
-                    point = new Point(0, RoomConstants.RoomHeight);
+                    distance.Y = -1 * RoomConstants.RoomHeight;
                     break;
                 case Constants.Direction.Down:
-                    point = new Point(0, -1 * RoomConstants.RoomHeight);
+                    distance.Y = RoomConstants.RoomHeight;
                     break;
             }
-            velocity.X = point.X / 100;
-            velocity.Y = point.Y / 100;
-            counter = (int) velocity.Length();
-            updateObjectPositions();
+            return distance;
         }
 
-        private void updateObjectPositions()
+        private Vector2 GetVelocity(Constants.Direction direction)
         {
-            foreach(IBlock block in nextRoom.AllObjects.BlockList)
+            Vector2 velocity = Vector2.Zero;
+            switch (direction)
             {
-                block.Position += point;
+                case Constants.Direction.Right:
+                    velocity.X = -1 * velocityScalar;
+                    break;
+                case Constants.Direction.Left:
+                    velocity.X = velocityScalar;
+                    break;
+                case Constants.Direction.Up:
+                    velocity.Y = velocityScalar;
+                    break;
+                case Constants.Direction.Down:
+                    velocity.Y = -1 * velocityScalar;
+                    break;
             }
-            foreach (IBackground background in nextRoom.AllObjects.BackgroundList)
-            {
-                background.Position += point;
-            }
+            return velocity;
+        }
 
+        private void UpdateObjectPositions(IRoom room, Vector2 distance)
+        {
+            foreach (IBlock block in room.AllObjects.BlockList)
+            {
+                block.Position += distance.ToPoint();
+            }
+            foreach (IBackground background in room.AllObjects.BackgroundList)
+            {
+                background.Position += distance.ToPoint();
+            }
         }
 
         public void Draw()
         {
+            roomGameState.Hud.Draw();
             foreach (IBlock block in currentRoom.AllObjects.BlockList)
             {
                 block.Draw();
@@ -130,9 +155,11 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public void SwitchToRoomState()
         {
+            UpdateObjectPositions(currentRoom, initialMoveDistance);
+            roomGameState.CurrentRoom = nextRoom;
             nextRoom.ResetRoom();
-            roomGame.StateEntryProcedure();
-            Game.State = roomGame;
+            roomGameState.StateEntryProcedure();
+            Game.State = roomGameState;
         }
 
         public void SwitchToWinState()
@@ -142,39 +169,45 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public void Update()
         {
-            UpdateBlockPositions();
-            counter += (int) velocity.Length();
-            if (counter >= point.X  || counter >= point.Y)
+            counter += (int)velocity.Length();
+            if (counter >= distanceToMove)
             {
-                roomGame.CurrentRoom = nextRoom;
+                Vector2 fixVector = new Vector2(velocity.X, velocity.Y);
+                fixVector.Normalize();
+                fixVector *= distanceToMove - (counter- (int)velocity.Length());
+                counter += (int) fixVector.Length();
+                UpdateBlockPositions(fixVector);
                 SwitchToRoomState();
+            } else
+            {
+                UpdateBlockPositions(velocity);
             }
         }
 
-        private void UpdateBlockPositions()
+        private void UpdateBlockPositions(Vector2 distance)
         {
             //no controller required
             foreach (IBlock block in currentRoom.AllObjects.BlockList)
             {
-                block.Position -= velocity.ToPoint();
+                block.Position += distance.ToPoint();
             }
             foreach (IBackground background in currentRoom.AllObjects.BackgroundList)
             {
-                background.Position -= velocity.ToPoint();
+                background.Position += distance.ToPoint();
             }
             foreach (IBlock block in nextRoom.AllObjects.BlockList)
             {
-                block.Position -= velocity.ToPoint();
+                block.Position += distance.ToPoint();
             }
             foreach (IBackground background in nextRoom.AllObjects.BackgroundList)
             {
-                background.Position -= velocity.ToPoint();
+                background.Position += distance.ToPoint();
             }
         }
         private void UpdatePlayersPositions(Constants.Direction doorLocation)
         {
 
-            foreach (IPlayer player in roomGame.PlayerList)
+            foreach (IPlayer player in roomGameState.PlayerList)
             {
                 player.StopMoving();
                 switch (doorLocation)
