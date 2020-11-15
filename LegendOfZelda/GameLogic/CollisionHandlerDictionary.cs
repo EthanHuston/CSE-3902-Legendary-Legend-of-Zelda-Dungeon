@@ -134,6 +134,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Walls), new LinkImmovableBlockCollisionHandler() },
                 {typeof(Square), new LinkImmovableBlockCollisionHandler() },
                 {typeof(RoomWall), new LinkImmovableBlockCollisionHandler() },
+                {typeof(BrickTile), new LinkImmovableBlockCollisionHandler() },
 
                 // interactive blocks
                 {typeof(Fire), new LinkFireCollisionHandler() },
@@ -145,8 +146,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(ShutDoor), new LinkDoorCollisionHandler() },
                 {typeof(BombableOpening), new LinkDoorCollisionHandler() },
                 {typeof(LockedDoor), new LinkLockedDoorCollisionHandler() },
-                {typeof(RoomChangeTrigger), new  LinkRoomChangeTriggerCollisionHandler() }
-
+                {typeof(RoomChangeTrigger), new  LinkRoomChangeTriggerCollisionHandler() },
             };
         }
 

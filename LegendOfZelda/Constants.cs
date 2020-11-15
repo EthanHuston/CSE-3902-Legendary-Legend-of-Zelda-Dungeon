@@ -34,7 +34,7 @@ namespace LegendOfZelda
         // Directions
         public enum Direction
         {
-            Up, Right, Down, Left, None
+            Up, Right, Down, Left, Stairs, None
         }
 
         public enum ProjectileOwner

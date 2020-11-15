@@ -6,7 +6,16 @@ namespace LegendOfZelda.Environment
     {
         private Rectangle positionRectangle;
         private bool safeToDespawn;
-        public Point Position { get; set; }
+
+        public Point Position
+        {
+            get => new Point(positionRectangle.X, positionRectangle.Y);
+            set
+            {
+                positionRectangle.X = value.X;
+                positionRectangle.Y = value.Y;
+            }
+        }
 
         public RoomWall(Rectangle positionSize)
         {
