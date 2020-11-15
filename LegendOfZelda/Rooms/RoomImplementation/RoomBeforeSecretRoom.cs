@@ -3,7 +3,7 @@ using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class RoomBeforeSecretRoom : Room
     {
@@ -13,7 +13,7 @@ namespace LegendOfZelda.Rooms
 
         public override IRoom GetRoom(Constants.Direction direction)
         {
-            if (direction == Constants.Direction.Stairs) UpdatePlayerPositions(); 
+            if (direction == Constants.Direction.Stairs) UpdatePlayerPositions();
             return base.GetRoom(direction);
         }
 

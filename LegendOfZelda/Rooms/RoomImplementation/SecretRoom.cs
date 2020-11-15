@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Rooms
+namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class SecretRoom : Room
     {
@@ -26,6 +26,6 @@ namespace LegendOfZelda.Rooms
         {
 
         }
-            
+
     }
 }
