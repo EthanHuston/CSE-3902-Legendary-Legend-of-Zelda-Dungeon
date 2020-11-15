@@ -36,7 +36,6 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             roomGame = roomGameState;
             Game = roomGame.Game;
-            Game.State = roomGame;
             this.direction = direction;
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);

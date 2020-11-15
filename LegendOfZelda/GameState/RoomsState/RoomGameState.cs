@@ -21,7 +21,7 @@ namespace LegendOfZelda.GameState.Rooms
         private readonly SoundEffectInstance dungeonMusic;
         public List<ItemSelectionGameState> itemSelectionGameStates;
 
-        public IRoom CurrentRoom { get; private set; }
+        public IRoom CurrentRoom { get; set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
         public IMenu Hud { get; private set; }
