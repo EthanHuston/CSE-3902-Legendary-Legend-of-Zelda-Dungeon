@@ -141,7 +141,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public void Update()
         {
             UpdateBlockPositions();
-
+            counter += velocity;
             if (counter.X == point.X  || counter.Y == point.Y)
             {
                 currentRoom = nextRoom;
