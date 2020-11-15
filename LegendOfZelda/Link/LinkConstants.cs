@@ -25,7 +25,7 @@ namespace LegendOfZelda.Link
 
         // Inventory Starting Quantities
         public const int RupeeCount = 10;
-        public const int BombCount = 2;
+        public const int BombCount = 10;
         public const int BoomerangCount = 1;
         public const int SwordCount = 1;
         public const int BowCount = 1; // TODO: change me after implementing secret room

@@ -8,7 +8,6 @@ using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;
 using LegendOfZelda.Link.CollisionHandler.WithNpc;
 using LegendOfZelda.Link.CollisionHandler.WithProjectile;
-using LegendOfZelda.Link.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using LegendOfZelda.Projectile.CollisionHandler;
@@ -102,7 +101,7 @@ namespace LegendOfZelda.GameLogic
             playerProjectileDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>>()
             {
                 {typeof(ArrowFlyingProjectile), new LinkProjectileDoNothingCollisionHandler() },
-                {typeof(BombExplodingProjectile), new LinkBombCollisionHandler() },
+                {typeof(BombExplodingProjectile), new LinkProjectileDoNothingCollisionHandler() },
                 {typeof(BoomerangFlyingProjectile), new LinkBoomerangCollisionHandler() },
                 {typeof(FireballProjectile), new LinkFireballCollisionHandler() },
                 {typeof(SwordAttackingProjectile), new LinkProjectileDoNothingCollisionHandler() },

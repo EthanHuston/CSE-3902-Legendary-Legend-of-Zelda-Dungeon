@@ -89,6 +89,17 @@ namespace LegendOfZelda.GameState.Rooms
             }
         }
 
+        public void MoveToRoom(IRoom newRoom, Constants.Direction doorToEnter)
+        {
+            CurrentRoom.Visiting = false;
+            newRoom.Visiting = true;
+
+            CurrentRoom = newRoom;
+            UpdatePlayersPositions(doorToEnter);
+            CurrentRoom.ResetRoom();
+            RoomMap.AddRoomToMap(CurrentRoom);
+        }
+
         private void UpdatePlayersPositions(Constants.Direction doorLocation)
         {
             foreach (IPlayer player in PlayerList)
