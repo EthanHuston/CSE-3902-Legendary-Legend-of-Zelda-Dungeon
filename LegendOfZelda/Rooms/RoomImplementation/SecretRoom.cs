@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
+using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -22,9 +23,25 @@ namespace LegendOfZelda.Rooms.RoomImplementation
             SpawnWalls();
         }
 
+        public override IRoom GetRoom(Constants.Direction direction)
+        {
+            if (direction == Constants.Direction.Stairs) UpdatePlayerPositions();
+            return base.GetRoom(direction);
+        }
+
+        private void UpdatePlayerPositions()
+        {
+            foreach (IPlayer player in AllObjects.PlayerList) player.Position = LinkConstants.SecretRoomExitSpawnPosition;
+        }
+
         private void SpawnWalls()
         {
+            AllObjects.Spawn(new RoomWall(RoomConstants.LeftWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.MiddleWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.RightWallRectangle));
+            AllObjects.Spawn(new RoomWall(RoomConstants.TopWallRectangle));
 
+            AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Stairs, RoomConstants.SecretRoomRoomChangeTrigger));
         }
 
     }
