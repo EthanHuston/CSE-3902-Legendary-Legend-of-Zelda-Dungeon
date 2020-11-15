@@ -75,11 +75,10 @@ namespace LegendOfZelda.GameState.Rooms
         {
             IRoom newRoom = CurrentRoom.GetRoom(direction);
             Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
-            RoomTransitions roomTransitions = new RoomTransitions(this, direction);
+            Game.State = new RoomTransitions(this, direction);
             if (newRoom != null)
             {
-                roomTransitions.Update();
-                roomTransitions.Draw();
+                StartStateSwitch(Game.State);
 //                CurrentRoom.Visiting = false;
 //                newRoom.Visiting = true;
 //

@@ -35,6 +35,8 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public RoomTransitions(RoomGameState roomGameState, Constants.Direction direction)
         {
             roomGame = roomGameState;
+            Game = roomGame.Game;
+            Game.State = roomGame;
             this.direction = direction;
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);
@@ -131,6 +133,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             nextRoom.ResetRoom();
             roomGame.StateEntryProcedure();
+            Game.State = roomGame;
         }
 
         public void SwitchToWinState()
@@ -142,9 +145,9 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             UpdateBlockPositions();
             counter += velocity;
-            if (counter.X == point.X  || counter.Y == point.Y)
+            if (counter.X >= point.X  || counter.Y >= point.Y)
             {
-                currentRoom = nextRoom;
+                roomGame.CurrentRoom = nextRoom;
                 SwitchToRoomState();
             }
         }
