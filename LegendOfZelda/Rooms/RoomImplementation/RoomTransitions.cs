@@ -28,9 +28,9 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         private Point point;
 
-        private Point velocity;
+        private Vector2 velocity;
 
-        private Point counter;
+        private int counter;
 
         public RoomTransitions(RoomGameState roomGameState, Constants.Direction direction)
         {
@@ -56,7 +56,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
             }
             velocity.X = point.X / 100;
             velocity.Y = point.Y / 100;
-            counter = velocity;
+            counter = (int) velocity.Length();
             updateObjectPositions();
         }
 
@@ -143,8 +143,8 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public void Update()
         {
             UpdateBlockPositions();
-            counter += velocity;
-            if (counter.X >= point.X  || counter.Y >= point.Y)
+            counter += (int) velocity.Length();
+            if (counter >= point.X  || counter >= point.Y)
             {
                 roomGame.CurrentRoom = nextRoom;
                 SwitchToRoomState();
@@ -156,19 +156,19 @@ namespace LegendOfZelda.Rooms.RoomImplementation
             //no controller required
             foreach (IBlock block in currentRoom.AllObjects.BlockList)
             {
-                block.Position -= velocity;
+                block.Position -= velocity.ToPoint();
             }
             foreach (IBackground background in currentRoom.AllObjects.BackgroundList)
             {
-                background.Position -= velocity;
+                background.Position -= velocity.ToPoint();
             }
             foreach (IBlock block in nextRoom.AllObjects.BlockList)
             {
-                block.Position -= velocity;
+                block.Position -= velocity.ToPoint();
             }
             foreach (IBackground background in nextRoom.AllObjects.BackgroundList)
             {
-                background.Position -= velocity;
+                background.Position -= velocity.ToPoint();
             }
         }
         private void UpdatePlayersPositions(Constants.Direction doorLocation)
