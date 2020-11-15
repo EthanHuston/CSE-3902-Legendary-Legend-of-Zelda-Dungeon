@@ -11,6 +11,12 @@ namespace LegendOfZelda.Rooms
         public Constants.Direction Side { get; private set; }
         public Point Position { get; set; }
 
+        public RoomChangeTrigger(Constants.Direction side, Rectangle locationSize)
+        {
+            Side = side;
+            positionRectangle = locationSize;
+        }
+
         public RoomChangeTrigger(Constants.Direction side)
         {
             Side = side;

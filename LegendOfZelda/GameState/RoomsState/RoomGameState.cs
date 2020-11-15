@@ -42,6 +42,8 @@ namespace LegendOfZelda.GameState.Rooms
             InitControllerList();
             InitItemSelectionGameStates();
 
+            UpdatePlayersPositions(Constants.Direction.Down);
+
             dungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
             dungeonMusic.IsLooped = true;
             dungeonMusic.Volume = Constants.MusicVolume;

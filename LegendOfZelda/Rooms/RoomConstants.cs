@@ -28,7 +28,7 @@ namespace LegendOfZelda
         public const int LeftDoorY = RightDoorY;
         public const int NumberRooms = 17;
         public static Random RandomGenerator = new Random();
-        
+
         // Wall Collision Rectangles
         private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2 + (int)(8 * SpriteMultiplier);
         private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2 + (int)(8 * SpriteMultiplier);
@@ -45,8 +45,16 @@ namespace LegendOfZelda
         public static Rectangle RightDownWallRectangle => new Rectangle(rightSideWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
         public static Rectangle UpLeftWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
         public static Rectangle UpRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
-        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth); 
+        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
         public static Rectangle DownRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
+
+        // Secret Room Wall Rectangles
+        private const int heightBooster = (int)(5 * Constants.GameScaler);
+        public static Rectangle LeftWallRectangle => new Rectangle(2 * TileLength, Constants.MinYPos + 7 * TileLength, TileLength, TileLength + heightBooster);
+        public static Rectangle MiddleWallRectangle => new Rectangle(4 * TileLength, Constants.MinYPos + 7 * TileLength, 6 * TileLength, TileLength + heightBooster);
+        public static Rectangle RightWallRectangle => new Rectangle(11 * TileLength, Constants.MinYPos + 7 * TileLength, 2 * TileLength, TileLength + heightBooster);
+        public static Rectangle TopWallRectangle => new Rectangle(6 * TileLength, Constants.MinYPos + 3 * TileLength, 7 * TileLength, 2 * TileLength + heightBooster);
+        public static Rectangle SecretRoomRoomChangeTrigger => new Rectangle(3 * TileLength, Constants.MinYPos - roomChangeTriggerWidth, roomChangeTriggerLength, roomChangeTriggerWidth);
 
         // Room Change Triggers
         private const int roomChangeTriggerWidth = 20;
@@ -72,13 +80,14 @@ namespace LegendOfZelda
         public const string BrickTile = "brick";
         public const string Fire = "fire";
         public const string GapTile = "black";
-        public const string LadderTile = "lad";
+        public const string LadderTile = "ladder";
         public const string MovableBlock = "redblock";
         public const string Stairs = "stairs";
         public const string FishStatue = "fstat";
         public const string DragonStatue = "dstat";
         public const string BlueGrass = "bg";
         public const string Water = "water";
+        public const string RoomBorder = "roomBorder";
         //String Abbreviations for Border and Background in CSV File
         public const string TileBackground = "tealBack";
         public const string BlackBackground = "blackBack";
@@ -103,5 +112,6 @@ namespace LegendOfZelda
         public const string Map = "map";
         public const string Triforce = "triforce";
         public const string HeartContainer = "hrtcontainer";
+        public const string Bow = "bow";
     }
 }

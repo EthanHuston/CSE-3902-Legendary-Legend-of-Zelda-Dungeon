@@ -2,27 +2,27 @@
 using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.HUDClasses
 {
     internal class HeartManager
     {
         private LinkPlayer link;
-        private HUDHeart[] hearts;
+        private List<HUDHeart> hearts;
         private double linkHealth;
 
         public HeartManager(LinkPlayer link)
         {
             this.link = link;
             linkHealth = link.CurrentHealth;
-            hearts = new HUDHeart[LinkConstants.StartingHearts / Constants.HeartValue];
-            for(int i = 0; i < hearts.Length; i++)
-                hearts[i] = new HUDHeart(2);
+            hearts = new List<HUDHeart>();
+            UpdateTotalHeartList();
         }
 
         public void Draw(SpriteBatch spriteBatch, Point hudPosition)
         {
-            for(int i = 0; i < hearts.Length; i++)
+            for(int i = 0; i < hearts.Count; i++)
             {
                 Point heartPosition = new Point(HUDConstants.HeartX + i * HUDConstants.NumberWidth, HUDConstants.HeartY);
                 hearts[i].Draw(spriteBatch, hudPosition + heartPosition);
@@ -40,10 +40,11 @@ namespace LegendOfZelda.HUDClasses
 
         private void UpdateHearts()
         {
+            UpdateTotalHeartList();
             linkHealth = (int)link.CurrentHealth;
             int tensPlace = (int)linkHealth / 10;
             int onesPlace = (int)linkHealth % 10;
-            for(int i = 0; i < hearts.Length; i++)
+            for(int i = 0; i < hearts.Count; i++)
             {
                 if (i < tensPlace)
                     hearts[i].AssignNumber(2);
@@ -51,6 +52,14 @@ namespace LegendOfZelda.HUDClasses
                     hearts[i].AssignNumber(1);
                 else
                     hearts[i].AssignNumber(0);
+            }
+        }
+
+        private void UpdateTotalHeartList()
+        {
+            while(hearts.Count < link.MaxHealth / Constants.HeartValue)
+            {
+                hearts.Add(new HUDHeart(2));
             }
         }
     }

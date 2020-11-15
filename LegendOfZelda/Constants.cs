@@ -34,7 +34,7 @@ namespace LegendOfZelda
         // Directions
         public enum Direction
         {
-            Up, Right, Down, Left, None
+            Up, Right, Down, Left, Stairs, None
         }
 
         public enum ProjectileOwner
@@ -66,6 +66,11 @@ namespace LegendOfZelda
         public const int HandUpDownMaxX = MaxXPos - RoomConstants.WallWidth - HandSpriteWidthHeight;
         public const int HandLeftRightMinY = MinYPos + RoomConstants.WallWidth;
         public const int HandLeftRightMaxY = MaxYPos - RoomConstants.WallWidth - HandSpriteWidthHeight;
+
+        // Misc
+        private const int bombSpriteWidth = 16;
+        public const int BombSpawnOffsetX = (int)(bombSpriteWidth * GameScaler);
+        public const int BombSpawnOffsetY = (int)(bombSpriteWidth * GameScaler);
 
         // Drawing Layers
         public static class DrawLayer

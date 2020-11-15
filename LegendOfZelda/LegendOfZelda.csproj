@@ -178,7 +178,6 @@
     <Compile Include="Link\CollisionHandler\WithNpc\LinkNpcDoNothingCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkBoomerangCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkProjectileDoNothingCollisionHandler.cs" />
-    <Compile Include="Link\CollisionHandler\WithProjectile\LinkBombCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithProjectile\LinkFireballCollisionHandler.cs" />
     <Compile Include="Link\Command\ChangeSecondaryToItem.cs" />
     <Compile Include="Link\Command\UseSecondaryItem.cs" />
@@ -203,6 +202,7 @@
     <Compile Include="Rooms\IRoom.cs" />
     <Compile Include="Rooms\RoomImplementation\Room5.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomAquamentus.cs" />
+    <Compile Include="Rooms\RoomImplementation\RoomBeforeSecretRoom.cs" />
     <Compile Include="Rooms\RoomFactory.cs" />
     <Compile Include="GameLogic\CollisionHandlerDictionary.cs" />
     <Compile Include="GameLogic\CollisionManager.cs" />
@@ -323,6 +323,7 @@
     <Compile Include="Rooms\RoomMap.cs" />
     <Compile Include="Rooms\RoomUtilities.cs" />
     <Compile Include="Rooms\RoomChangeTrigger.cs" />
+    <Compile Include="Rooms\RoomImplementation\SecretRoom.cs" />
     <Compile Include="SoundFactory.cs" />
     <Compile Include="SpriteFactory.cs" />
     <Compile Include="Environment\Square.cs" />
