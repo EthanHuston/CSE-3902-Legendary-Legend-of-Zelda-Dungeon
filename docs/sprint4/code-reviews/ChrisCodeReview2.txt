@@ -1,0 +1,13 @@
+  
+Chris Lenart
+11/16/2020
+Sprint 4
+ItemSelectionGameState.cs
+Ryan Stuckey
+15 Minutes
+Readability
+The readability for this class is very good. Implementing the AbstarctGameState class makes this class shorter and easier to understand. 
+Also, the variable and method names are easy to understand which helps the reader understand the function of this class.
+Maintainability
+The maintainability of this class is very good as well. Again, implementing the AbstarctGameState class makes this class shorter and easier to update in the future.
+Also, using the classes like inventoryMenu and mapMenu helps to simplify this class and lower coupling, which makes it easier to maintain.
