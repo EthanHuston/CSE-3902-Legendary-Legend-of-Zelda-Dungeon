@@ -89,7 +89,7 @@ namespace LegendOfZelda.Item.Sprite
         }
         private void CheckBounds()
         {
-            if (position.X <= Constants.MinXPos + (Constants.GameScaler * RoomConstants.WallWidth))
+            /*if (position.X <= Constants.MinXPos + (Constants.GameScaler * RoomConstants.WallWidth))
             {
                 position.X += 5;
             }
@@ -102,6 +102,22 @@ namespace LegendOfZelda.Item.Sprite
                 position.Y += 5; ;
             }
             else if (position.Y >= Constants.MaxYPos - (Constants.GameScaler * RoomConstants.WallWidth))
+            {
+                position.Y -= 5;
+            }*/
+            if (position.X < RoomConstants.BackgroundX)
+            {
+                position.X += 5;
+            }
+            else if (position.X > RoomConstants.RightDoorX)
+            {
+                position.X -= 5; ;
+            }
+            else if (position.Y < RoomConstants.RoomBorderY)
+            {
+                position.Y += 5; ;
+            }
+            else if (position.Y > RoomConstants.BottomDoorY )
             {
                 position.Y -= 5;
             }
