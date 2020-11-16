@@ -115,5 +115,14 @@ namespace LegendOfZelda
         public const string Triforce = "triforce";
         public const string HeartContainer = "hrtcontainer";
         public const string Bow = "bow";
+
+        // String Abbreviations for room implementation in CSV file
+        public const string RoomNormal = "roomNormal";
+        public const string RoomWithPushableSquare = "roomPushableSquare";
+        public const string Room5 = "room5";
+        public const string RoomAquamentus = "roomAquamentus";
+        public const string RoomBeforeSecretRoom = "roomBeforeSecretRoom";
+        public const string RoomSecret = "roomSecret";
+        public const string RoomWallMaster = "roomWallMaster";
     }
 }

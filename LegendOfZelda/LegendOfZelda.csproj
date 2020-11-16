@@ -202,7 +202,7 @@
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomUpCommand.cs" />
     <Compile Include="Rooms\IRoom.cs" />
-    <Compile Include="Rooms\RoomImplementation\Room5.cs" />
+    <Compile Include="Rooms\RoomImplementation\RoomKillAllEnemies.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomAquamentus.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomBeforeSecretRoom.cs" />
     <Compile Include="Rooms\RoomFactory.cs" />

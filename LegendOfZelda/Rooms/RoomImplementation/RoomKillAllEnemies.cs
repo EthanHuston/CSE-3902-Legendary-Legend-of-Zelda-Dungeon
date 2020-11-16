@@ -1,14 +1,15 @@
-﻿using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class Room5 : Room
+    class RoomKillAllEnemies : Room
     {
         private bool doorHasBeenClosed;
         private bool doorHasBeenOpened;
-        public Room5(List<IPlayer> playerList) : base(playerList)
+        public RoomKillAllEnemies(List<IPlayer> playerList) : base(playerList)
         {
             doorHasBeenClosed = false;
             doorHasBeenOpened = false;
@@ -18,12 +19,19 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             if (!doorHasBeenClosed && SafeToCloseDoor())
             {
-                GetDoor(Constants.Direction.Right).CloseDoor();
+                foreach (KeyValuePair<Constants.Direction, IDoor> keyValuePair in roomDoors) GetDoor(keyValuePair.Key).CloseDoor();
                 doorHasBeenClosed = true;
             }
             if (doorHasBeenClosed && !doorHasBeenOpened && AllObjects.NpcList.Count <= 0)
             {
-                GetDoor(Constants.Direction.Right).OpenDoor();
+                foreach (KeyValuePair<Constants.Direction, IDoor> keyValuePair in roomDoors)
+                {
+                    if ((keyValuePair.Value.GetType() == typeof(LockedDoor) ||
+                           keyValuePair.Value.GetType() == typeof(BombableOpening)) && 
+                        !keyValuePair.Value.IsOpen
+                        ) continue;
+                    GetDoor(keyValuePair.Key).OpenDoor();
+                }
                 doorHasBeenOpened = true;
             }
             base.Update();

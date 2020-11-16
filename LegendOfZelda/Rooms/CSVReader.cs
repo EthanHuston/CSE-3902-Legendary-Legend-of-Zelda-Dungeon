@@ -12,6 +12,10 @@ namespace LegendOfZelda.Rooms
 {
     internal static class CSVReader
     {
+        private const int csvRoomMetaDataRow = 0;
+        private const int csvRoomBorderRow = 1;
+        private const int csvRoomConnectionsRow = 2;
+        private const int csvRoomWallsRow = 3;
 
         public static IRoom GetRoomFromFile(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
@@ -29,18 +33,18 @@ namespace LegendOfZelda.Rooms
                 int i;
                 switch (j)
                 {
-                    case 0: // set room metadata
+                    case csvRoomMetaDataRow: // set room metadata
                         room = GetRoomFromString(fields[0], spriteBatch, playerList);
                         room.RoomId = fields[1];
                         room.LocationOnMap = new Point(int.Parse(fields[2]), int.Parse(fields[3]));
                         break;
-                    case 1: // spawn walls and border
+                    case csvRoomBorderRow: // spawn walls and border
                         spawningLargeRoom = string.Equals("large", fields[0]);
                         i = 1;
                         SpawnBackgroundAndBorder(spriteBatch, room, fields[i], i++);
                         SpawnBackgroundAndBorder(spriteBatch, room, fields[i], i++);
                         break;
-                    case 2:
+                    case csvRoomConnectionsRow: // connect rooms
                         i = 0;
                         room.AddRoomConnection(Constants.Direction.Up, fields[i++]);
                         room.AddRoomConnection(Constants.Direction.Right, fields[i++]);
@@ -48,7 +52,7 @@ namespace LegendOfZelda.Rooms
                         room.AddRoomConnection(Constants.Direction.Left, fields[i++]);
                         room.AddRoomConnection(Constants.Direction.Stairs, fields[i]);
                         break;
-                    case 3:
+                    case csvRoomWallsRow:
                         for(i = 0; i < 4; i++) SpawnWalls(spriteBatch, room, fields[i], i);
                         break;
                     default:
@@ -294,19 +298,19 @@ namespace LegendOfZelda.Rooms
         {
             switch (roomType)
             {
-                case "roomNormal":
+                case RoomConstants.RoomNormal:
                     return new Room(playerList);
-                case "roomPushableSquare":
+                case RoomConstants.RoomWithPushableSquare:
                     return new RoomWithMovableSquare(playerList);
-                case "room5":
-                    return new Room5(playerList);
-                case "roomAquamentus":
+                case RoomConstants.Room5:
+                    return new RoomKillAllEnemies(playerList);
+                case RoomConstants.RoomAquamentus:
                     return new RoomAquamentus(playerList);
-                case "roomBeforeSecretRoom":
+                case RoomConstants.RoomBeforeSecretRoom:
                     return new RoomBeforeSecretRoom(playerList);
-                case "roomSecret":
+                case RoomConstants.RoomSecret:
                     return new SecretRoom(playerList);
-                case "roomWallMaster":
+                case RoomConstants.RoomWallMaster:
                     return new RoomWallMaster(spriteBatch, playerList);
                 default:
                     return null;
