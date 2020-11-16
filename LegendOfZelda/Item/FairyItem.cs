@@ -19,9 +19,9 @@ namespace LegendOfZelda.Item
         }
         public override void Update()
         {
+            sprite.Update();
             movementBuffer++;
             CheckBounds();
-            //Move based on current chosen direction for some time.
             if (xDir == 0 && yDir == 0)
             {
                 position.X--;
@@ -48,7 +48,6 @@ namespace LegendOfZelda.Item
                 movementBuffer = 0;
                 ChooseDirection();
             }
-            sprite.Update();
         }
 
         protected override void CheckItemIsExpired()
