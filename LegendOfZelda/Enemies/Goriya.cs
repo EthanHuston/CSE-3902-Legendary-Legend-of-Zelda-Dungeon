@@ -56,7 +56,8 @@ namespace LegendOfZelda.Enemies
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
-                boomer.Despawn();
+                if(boomer != null)
+                    boomer.Despawn();
             }
             if (spawning)
             {
