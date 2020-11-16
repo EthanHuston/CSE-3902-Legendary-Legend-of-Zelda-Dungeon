@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomBeforeSecretRoom : Room
+    class RoomBeforeSecretRoom : RoomWithMovableSquare
     {
         public RoomBeforeSecretRoom(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList) : base(spriteBatch, fileName, playerList)
         {

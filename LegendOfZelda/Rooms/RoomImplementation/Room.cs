@@ -13,7 +13,6 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         protected Dictionary<Constants.Direction, IRoom> roomDictionary;
         protected Dictionary<Constants.Direction, IDoor> roomDoors;
         protected CollisionManager collisionManager;
-        protected MovableSquare movableSquare;
 
         public bool Visiting { get; set; }
         public int RoomType { get; protected set; }
@@ -113,7 +112,6 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public virtual void ResetRoom()
         {
             AllObjects.ResetClouds();
-            if (movableSquare != null) movableSquare.RoomReset();
         }
 
         public void AddDoor(IDoor door)
@@ -124,11 +122,6 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public IDoor GetDoor(Constants.Direction side)
         {
             return roomDoors.ContainsKey(side) ? roomDoors[side] : null;
-        }
-
-        public void AddMovableSquare(MovableSquare square)
-        {
-            movableSquare = square;
         }
     }
 }

@@ -107,7 +107,7 @@ namespace LegendOfZelda.Rooms
                     break;
                 case RoomConstants.MovableBlock:
                     blockType = new MovableSquare(spriteBatch, position);
-                    room.AddMovableSquare((MovableSquare)blockType);
+                    ((RoomWithMovableSquare)room).AddMovableSquare((MovableSquare)blockType);
                     room.AllObjects.Spawn(blockType);
                     break;
 

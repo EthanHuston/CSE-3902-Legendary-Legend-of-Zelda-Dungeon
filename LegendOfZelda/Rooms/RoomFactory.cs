@@ -31,6 +31,9 @@ namespace LegendOfZelda.Rooms
                     case 5:
                         roomsList.Add(new Room5(spriteBatch, filename, playerList));
                         break;
+                    case 9:
+                        roomsList.Add(new RoomWithMovableSquare(spriteBatch, filename, playerList));
+                        break;
                     case 12:
                         roomsList.Add(new RoomWallMaster(spriteBatch, filename, playerList, roomsList[startingRoomNumber]));
                         break;

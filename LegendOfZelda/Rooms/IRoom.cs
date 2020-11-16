@@ -29,7 +29,5 @@ namespace LegendOfZelda.Rooms
         void AddDoor(IDoor door);
 
         IDoor GetDoor(Constants.Direction side);
-
-        void AddMovableSquare(MovableSquare square);
     }
 }
