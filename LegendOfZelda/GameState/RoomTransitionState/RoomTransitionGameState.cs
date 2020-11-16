@@ -25,14 +25,14 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         private readonly int distanceToMove;
         private const int velocityScalar = 10;
         private Vector2 velocity;
-
+        private Constants.Direction direction;
         private int counter;
 
         public RoomTransitionGameState(RoomGameState roomGameState, Constants.Direction direction)
         {
             this.roomGameState = roomGameState;
             Game = this.roomGameState.Game;
-
+            this.direction = direction;
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);
             
@@ -42,9 +42,6 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             velocity = GetVelocity(direction);
             counter = 0;
             UpdateObjectPositions(nextRoom, initialMoveDistance);
-
-            // TODO: remove me after changing link's position with room 
-            UpdatePlayersPositions(UtilityMethods.InvertDirection(direction));
         }
 
         private Vector2 GetInitialMoveDistance(Constants.Direction direction)
@@ -159,6 +156,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
 
         public void SwitchToRoomState()
         {
+            UpdatePlayersPositions(UtilityMethods.InvertDirection(direction));
             UpdateObjectPositions(currentRoom, initialMoveDistance);
             roomGameState.CurrentRoom = nextRoom;
             nextRoom.ResetRoom();
