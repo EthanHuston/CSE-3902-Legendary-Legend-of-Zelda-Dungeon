@@ -6,6 +6,7 @@ namespace LegendOfZelda.Link.Interface
     internal interface IPlayer : IDynamic
     {
         Game1 Game { get; }
+        ILinkState State { get; }
         LinkConstants.ItemType PrimaryItem { get; }
         LinkConstants.ItemType SecondaryItem { get; set; }
         bool BeingDragged { get; set; }

@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Link.State;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
@@ -11,6 +12,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
+            if (link.State.GetType() == typeof(LinkPickingUpItemState)) return;
             Vector2 correctDirection;
             switch (side)
             {
