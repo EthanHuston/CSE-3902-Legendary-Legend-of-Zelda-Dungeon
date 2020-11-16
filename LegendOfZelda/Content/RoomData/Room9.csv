@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,wall,open,locked,shut,,,,,,
+﻿roomPushableSquare,room9,1,3,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+,room10,room5,room8,,,,,,,,
+wall,open,locked,shut,,,,,,,,
 ---,---,---,---,---,---,---,---,---,---,---,---
 ---,---,---,---,---,jelly,---,---,---,---,---,---
 ---,---,---,---,---,---,---,---,---,---,---,---

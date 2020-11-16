@@ -8,7 +8,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         private bool doorHasBeenClosed;
         private bool doorHasBeenOpened;
-        public Room5(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList) : base(spriteBatch, fileName, playerList)
+        public Room5(List<IPlayer> playerList) : base(playerList)
         {
             doorHasBeenClosed = false;
             doorHasBeenOpened = false;

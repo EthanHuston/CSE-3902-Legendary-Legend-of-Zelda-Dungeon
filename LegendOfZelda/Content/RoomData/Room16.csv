@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,wall,locked,wall,wall,,,,,,
+﻿roomBeforeSecretRoom,room16,1,5,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+,room17,,,secretRoom,,,,,,,
+wall,locked,wall,wall,,,,,,,,
 spiketrap,---,---,---,---,---,---,---,---,---,---,spiketrap
 ---,---,---,---,---,---,block,---,---,---,---,---
 ---,---,---,---,---,block,---,block,---,---,---,---

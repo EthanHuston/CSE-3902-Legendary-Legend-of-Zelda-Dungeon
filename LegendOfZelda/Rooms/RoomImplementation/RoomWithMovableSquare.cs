@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.Link.Interface;
-using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
@@ -9,7 +8,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         protected MovableSquare movableSquare;
 
-        public RoomWithMovableSquare(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList) : base(spriteBatch, fileName, playerList)
+        public RoomWithMovableSquare(List<IPlayer> playerList) : base(playerList)
         {
 
         }

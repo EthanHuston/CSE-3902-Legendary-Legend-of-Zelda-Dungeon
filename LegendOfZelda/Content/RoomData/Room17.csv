@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,wall,wall,locked,locked,,,,,,
+﻿roomNormal,room17,2,5,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+,,room13,room16,,,,,,,,
+wall,wall,locked,locked,,,,,,,,
 ---,---,---,---,---,---,---,goriya,---,---,---,---
 ---,water,water,water,---,---,key,---,water,water,water,---
 ---,water,---,---,---,---,goriya,---,---,---,water,---

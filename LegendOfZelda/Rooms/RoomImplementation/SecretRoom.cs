@@ -10,12 +10,14 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class SecretRoom : Room
     {
-        public SecretRoom(SpriteBatch spriteBatch, string filename, List<IPlayer> playerList)
+        public SecretRoom(List<IPlayer> playerList)
         {
             AllObjects = new SpawnableManager(playerList);
+
             roomDictionary = new Dictionary<Constants.Direction, IRoom>();
             roomDoors = new Dictionary<Constants.Direction, IDoor>();
-            new CSVReader(spriteBatch, this, filename);
+            roomConnectionStrings = new Dictionary<Constants.Direction, string>();
+
             collisionManager = new CollisionManager(AllObjects);
             LocationOnMap = new Point(-1, -1);
             RoomType = 0;

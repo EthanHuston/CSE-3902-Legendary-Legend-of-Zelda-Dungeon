@@ -12,15 +12,19 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private const int wallMasterSpawnDelay = 80;
         private const int initialWallMasterCount = 5;
         private int spawnDelayCounter;
-        private readonly IRoom roomToJumpTo;
+        private IRoom roomToJumpTo;
         private readonly SpriteBatch spriteBatch;
         private readonly Random rand;
         private const int up = 0, right = 1, down = 2;
 
-        public RoomWallMaster(SpriteBatch spriteBatch, string filename, List<IPlayer> playerList, IRoom roomToJumpTo) : base(spriteBatch, filename, playerList)
+        public RoomWallMaster(SpriteBatch spriteBatch, List<IPlayer> playerList) : base(playerList)
         {
             this.spriteBatch = spriteBatch;
             rand = RoomConstants.RandomGenerator;
+        }
+
+        public void AddRoomToJumpTo(IRoom roomToJumpTo)
+        {
             this.roomToJumpTo = roomToJumpTo;
         }
 

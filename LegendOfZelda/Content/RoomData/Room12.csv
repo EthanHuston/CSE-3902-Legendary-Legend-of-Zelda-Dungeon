@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,locked,wall,wall,open,,,,,,
+﻿roomWallMaster,room12,4,3,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+room14,,,room11,,,,,,,,
+locked,wall,wall,open,,,,,,,,
 ---,---,hand,hand,---,---,---,---,---,hand,hand,---
 ---,block,---,block,---,block,block,---,block,---,block,---
 ---,---,---,---,---,---,---,---,---,---,---,---

@@ -3,7 +3,6 @@ using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
@@ -12,8 +11,10 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         protected Dictionary<Constants.Direction, IRoom> roomDictionary;
         protected Dictionary<Constants.Direction, IDoor> roomDoors;
+        protected Dictionary<Constants.Direction, string> roomConnectionStrings;
         protected CollisionManager collisionManager;
 
+        public string RoomId { get; set; }
         public bool Visiting { get; set; }
         public int RoomType { get; protected set; }
         public Point LocationOnMap { get; set; }
@@ -23,12 +24,14 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         protected Room() { }
 
-        public Room(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
+        public Room(List<IPlayer> playerList)
         {
             AllObjects = new SpawnableManager(playerList);
+            
             roomDictionary = new Dictionary<Constants.Direction, IRoom>();
             roomDoors = new Dictionary<Constants.Direction, IDoor>();
-            new CSVReader(spriteBatch, this, fileName);
+            roomConnectionStrings = new Dictionary<Constants.Direction, string>();
+
             collisionManager = new CollisionManager(AllObjects);
             LocationOnMap = new Point(-1, -1);
             RoomType = 0;
@@ -123,5 +126,21 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             return roomDoors.ContainsKey(side) ? roomDoors[side] : null;
         }
+
+
+        public void FinalizeRoomConnections(Dictionary<string, IRoom> roomIdToRoomDictionary)
+        {
+            foreach(KeyValuePair<Constants.Direction, string> keyValuePair in roomConnectionStrings)
+            {
+                ConnectRoom(roomIdToRoomDictionary[keyValuePair.Value], keyValuePair.Key);
+            }
+        }
+
+        public void AddRoomConnection(Constants.Direction direction, string roomId)
+        {
+            if (string.Equals("", roomId)) return;
+            roomConnectionStrings.Add(direction, roomId);
+        }
+
     }
 }

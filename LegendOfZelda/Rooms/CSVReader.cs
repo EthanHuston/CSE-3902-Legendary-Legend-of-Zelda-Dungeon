@@ -1,25 +1,22 @@
 ﻿using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
-using LegendOfZelda.GameLogic;
 using LegendOfZelda.Item;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms.RoomImplementation;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    internal class CSVReader
+    internal static class CSVReader
     {
-        public IRoom room;
-        private readonly SpriteBatch spriteBatch;
 
-        public CSVReader(SpriteBatch spriteBatch, IRoom room, string fileName)
+        public static IRoom GetRoomFromFile(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
         {
-            this.room = room;
-            this.spriteBatch = spriteBatch;
-            bool spawningSecretRoom = room.GetType() == typeof(SecretRoom);
-            // Directory.GetCurrentDirectory() + "\\" + 
+            IRoom room = null;
+            bool spawningLargeRoom = false;
             TextFieldParser parser = new TextFieldParser(fileName)
             {
                 Delimiters = new string[] { "," } //Delimiters are like separators in NextWordOrSeparator
@@ -29,29 +26,50 @@ namespace LegendOfZelda.Rooms
             while (!parser.EndOfData)
             {
                 string[] fields = parser.ReadFields();
-                if (j == 0)
+                int i;
+                switch (j)
                 {
-                    for (int i = 0; i < fields.Length; i++)
-                    {
-                        SpawnWallsAndBackground(fields[i], i);
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < fields.Length; i++)
-                    {
-                        SpawnFromString(fields[i], 
-                            spawningSecretRoom ? RoomConstants.RoomBorderX : RoomConstants.BackgroundX,
-                            spawningSecretRoom ? RoomConstants.RoomBorderY : RoomConstants.BackgroundY,
-                            i, 
-                            j - 1);
-                    }
+                    case 0: // set room metadata
+                        room = GetRoomFromString(fields[0], spriteBatch, playerList);
+                        room.RoomId = fields[1];
+                        room.LocationOnMap = new Point(int.Parse(fields[2]), int.Parse(fields[3]));
+                        break;
+                    case 1: // spawn walls and border
+                        spawningLargeRoom = string.Equals("large", fields[0]);
+                        i = 1;
+                        SpawnBackgroundAndBorder(spriteBatch, room, fields[i], i++);
+                        SpawnBackgroundAndBorder(spriteBatch, room, fields[i], i++);
+                        break;
+                    case 2:
+                        i = 0;
+                        room.AddRoomConnection(Constants.Direction.Up, fields[i++]);
+                        room.AddRoomConnection(Constants.Direction.Right, fields[i++]);
+                        room.AddRoomConnection(Constants.Direction.Down, fields[i++]);
+                        room.AddRoomConnection(Constants.Direction.Left, fields[i++]);
+                        break;
+                    case 3:
+                        for(i = 0; i < 4; i++) SpawnWalls(spriteBatch, room, fields[i], i);
+                        break;
+                    default:
+                        for (i = 0; i < fields.Length; i++)
+                        {
+                            SpawnFromString(room,
+                                spriteBatch,
+                                fields[i],
+                                spawningLargeRoom ? RoomConstants.RoomBorderX : RoomConstants.BackgroundX,
+                                spawningLargeRoom ? RoomConstants.RoomBorderY : RoomConstants.BackgroundY,
+                                i,
+                                j - 4);
+                        }
+                        break;
                 }
                 j++;
             }
+
+            return room;
         }
 
-        private void SpawnFromString(string spawnType, int offsetX, int offsetY, int gridX, int gridY)
+        private static void SpawnFromString(IRoom room, SpriteBatch spriteBatch, string spawnType, int offsetX, int offsetY, int gridX, int gridY)
         {
             int posX = offsetX + gridX * RoomConstants.TileLength;
             int posY = offsetY + gridY * RoomConstants.TileLength;
@@ -186,24 +204,15 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        private void SpawnWallsAndBackground(string spawnType, int i)
+        private static void SpawnBackgroundAndBorder(SpriteBatch spriteBatch, IRoom room, string spawnType, int i)
         {
             IBackground backgroundType;
-            IBlock blockType;
             Point position;
 
-            if (i == 0)
+            if (i == 1)
                 position = new Point(RoomConstants.BackgroundX, RoomConstants.BackgroundY);
-            else if (i == 1)
-                position = new Point(RoomConstants.RoomBorderX, RoomConstants.RoomBorderY);
             else if (i == 2)
-                position = new Point(RoomConstants.TopDoorX, RoomConstants.TopDoorY);
-            else if (i == 3)
-                position = new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY);
-            else if (i == 4)
-                position = new Point(RoomConstants.BottomDoorX, RoomConstants.BottomDoorY);
-            else if (i == 5)
-                position = new Point(RoomConstants.LeftDoorX, RoomConstants.LeftDoorY);
+                position = new Point(RoomConstants.RoomBorderX, RoomConstants.RoomBorderY);
             else
                 position = Point.Zero;
 
@@ -225,6 +234,31 @@ namespace LegendOfZelda.Rooms
                     backgroundType = new OldBackground(spriteBatch, position);
                     room.AllObjects.Spawn(backgroundType);
                     break;
+                default:
+                    break;
+
+            }
+
+        }
+
+        private static void SpawnWalls(SpriteBatch spriteBatch, IRoom room, string spawnType, int i)
+        {
+            IBlock blockType;
+            Point position;
+
+            if (i == 0)
+                position = new Point(RoomConstants.TopDoorX, RoomConstants.TopDoorY);
+            else if (i == 1)
+                position = new Point(RoomConstants.RightDoorX, RoomConstants.RightDoorY);
+            else if (i == 2)
+                position = new Point(RoomConstants.BottomDoorX, RoomConstants.BottomDoorY);
+            else if (i == 3)
+                position = new Point(RoomConstants.LeftDoorX, RoomConstants.LeftDoorY);
+            else
+                position = Point.Zero;
+
+            switch (spawnType)
+            {
                 case RoomConstants.WallPiece:
                     blockType = new Walls(spriteBatch, position);
                     room.AllObjects.Spawn(blockType);
@@ -253,7 +287,29 @@ namespace LegendOfZelda.Rooms
                     break;
 
             }
+        }
 
+        private static IRoom GetRoomFromString(string roomType, SpriteBatch spriteBatch, List<IPlayer> playerList)
+        {
+            switch (roomType)
+            {
+                case "roomNormal":
+                    return new Room(playerList);
+                case "roomPushableSquare":
+                    return new RoomWithMovableSquare(playerList);
+                case "room5":
+                    return new Room5(playerList);
+                case "roomAquamentus":
+                    return new RoomAquamentus(playerList);
+                case "roomBeforeSecretRoom":
+                    return new RoomBeforeSecretRoom(playerList);
+                case "roomSecret":
+                    return new SecretRoom(playerList);
+                case "roomWallMaster":
+                    return new RoomWallMaster(spriteBatch, playerList);
+                default:
+                    return null;
+            }
         }
     }
 }

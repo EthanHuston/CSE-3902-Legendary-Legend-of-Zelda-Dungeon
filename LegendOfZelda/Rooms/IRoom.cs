@@ -8,6 +8,7 @@ namespace LegendOfZelda.Rooms
 {
     interface IRoom
     {
+        string RoomId { get; set; }
         bool Visiting { get; set; }
         int RoomType { get; }
         Point LocationOnMap { get; set; }
@@ -21,6 +22,7 @@ namespace LegendOfZelda.Rooms
         void ClockUpdate();
 
         bool ConnectRoom(IRoom newRoom, Constants.Direction direction);
+        void AddRoomConnection(Constants.Direction direction, string roomId);
 
         IRoom GetRoom(Constants.Direction direction);
 
@@ -29,5 +31,6 @@ namespace LegendOfZelda.Rooms
         void AddDoor(IDoor door);
 
         IDoor GetDoor(Constants.Direction side);
+        void FinalizeRoomConnections(Dictionary<string, IRoom> roomIdToRoomDictionary);
     }
 }

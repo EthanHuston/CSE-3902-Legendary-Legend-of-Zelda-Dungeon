@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,locked,wall,open,wall,,,,,,
+﻿roomNormal,room13,2,4,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+room17,,room10,,,,,,,,,
+locked,wall,open,wall,,,,,,,,
 water,water,water,water,water,---,---,water,water,water,water,water
 water,skeleton,---,---,water,---,---,---,---,water,---,water
 water,---,water,---,water,---,water,water,---,water,skeleton,water

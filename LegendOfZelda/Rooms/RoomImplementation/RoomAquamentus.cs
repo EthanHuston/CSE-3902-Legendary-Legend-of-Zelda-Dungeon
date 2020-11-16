@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.Item;
 using LegendOfZelda.Link.Interface;
-using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
@@ -10,7 +9,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private bool openedDoor;
         private readonly IItem heartContainer;
 
-        public RoomAquamentus(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList) : base(spriteBatch, fileName, playerList)
+        public RoomAquamentus(List<IPlayer> playerList) : base(playerList)
         {
             openedDoor = false;
             heartContainer = RemoveHeartContainerFromSpawnList();

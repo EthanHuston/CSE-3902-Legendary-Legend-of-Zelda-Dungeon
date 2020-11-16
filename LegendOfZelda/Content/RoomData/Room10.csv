@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,open,locked,wallBom,open,,,,,,
+﻿roomNormal,room10,2,3,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+room13,room11,room6,room9,,,,,,,,
+open,locked,wallBom,open,,,,,,,,
 ---,---,jelly,---,---,---,---,jelly,---,---,---,---
 ---,block,block,---,---,---,---,---,---,block,block,---
 ---,---,---,jelly,---,---,---,---,jelly,---,---,---

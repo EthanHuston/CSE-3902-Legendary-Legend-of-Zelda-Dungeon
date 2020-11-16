@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,wall,wall,wall,open,,,,,,
+﻿roomNormal,room3,3,0,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+,,,startRoom,,,,,,,,
+wall,wall,wall,open,,,,,,,,
 ---,---,---,---,---,---,---,---,---,---,---,---
 ---,---,---,---,---,---,skeleton,---,---,skeleton,---,---
 ---,---,block,block,---,---,---,---,block,block,---,---

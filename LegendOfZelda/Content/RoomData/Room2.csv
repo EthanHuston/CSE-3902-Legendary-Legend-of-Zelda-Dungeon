@@ -1,4 +1,7 @@
-﻿tealBack,roomBorder,locked,open,open,open,,,,,,
+﻿roomNormal,startRoom,2,0,,,,,,,,
+small,tealBack,roomBorder,,,,,,,,,
+room4,room3,,room1,,,,,,,,
+locked,open,open,open,,,,,,,,
 ---,---,---,---,---,---,---,---,---,---,---,---
 ---,fstat,---,---,fstat,---,---,dstat,---,---,dstat,---
 ---,---,---,---,---,---,---,---,---,---,---,---
