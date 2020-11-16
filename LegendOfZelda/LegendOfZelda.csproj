@@ -499,6 +499,7 @@
     <Content Include="Content\Sounds\LOZ_Text.wav" />
     <Content Include="Content\Sounds\LOZ_Text_Slow.wav" />
     <Content Include="Content\Sounds\LOZ_TimeFlows.mp3" />
+    <Content Include="Content\Sounds\LOZ_TimeFlows2.mp3" />
     <Content Include="Content\Sounds\LOZ_Title.mp3" />
     <Content Include="Content\Sounds\LOZ_Title2.mp3" />
     <Content Include="Content\Sounds\LOZ_Win.mp3" />
