@@ -1,0 +1,12 @@
+Chris Lenart
+11/16/2020
+Sprint 4
+MapMenu.cs
+Ryan Stuckey
+15 Minutes
+Readability
+The readability for this class is good. Each method is very short and the variable names are self explanatory 
+so it is pretty easy to understand what this class is doing.
+Maintainability
+The maintainability of this class is good for this project. The the only issue I can see with this class is we would 
+have to add some code if we implemented new items. However, this is fine for the state of the project right now.
