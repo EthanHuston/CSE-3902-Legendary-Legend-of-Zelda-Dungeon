@@ -92,7 +92,7 @@ namespace LegendOfZelda.Enemies
         public void ClockUpdate()
         {
             DraggingLink = false;
-            link.BeingDragged = false;
+            if (link!= null) link.BeingDragged = false;
 
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             safeToDespawn = safeToDespawn || health <= 0;
