@@ -60,6 +60,7 @@ namespace LegendOfZelda.GameState.Rooms
 
         private void InitPlayerStopMovingCommands(RoomGameState gameStateCast)
         {
+            playerStopCommands = new List<ICommand>();
             for (int i = 0; i < gameStateCast.PlayerList.Count; i++) 
             {
                 playerStopCommands.Add(new StopMovingCommand(gameStateCast.PlayerList[i]));
