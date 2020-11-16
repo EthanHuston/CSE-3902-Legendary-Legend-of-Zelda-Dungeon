@@ -16,10 +16,12 @@ namespace LegendOfZelda.Item.Sprite
         private readonly int frameHeight;
         private int currentFrame;
         private int bufferFrame;
-        private Point position;
         private int movementBuffer = 0;
         private int xDir = 0;
         private int yDir = 0;
+
+        private Point position;
+        public Point Position { get => position; set => position = new Point(value.X, value.Y); }
 
         public FairySprite(Texture2D sprite, Point spawnPosition)
         {
