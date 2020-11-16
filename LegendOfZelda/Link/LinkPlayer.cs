@@ -15,7 +15,7 @@ namespace LegendOfZelda.Link
         private readonly Dictionary<LinkConstants.ProjectileType, IProjectile> currentProjectiles;
         private bool safeToDespawn;
         private ILinkState state;
-        private SoundEffectInstance lowHealth;
+        private readonly SoundEffectInstance lowHealth;
         private int clockUpdateCount = 0, clockCount = 0;
 
         public Game1 Game { get; private set; }

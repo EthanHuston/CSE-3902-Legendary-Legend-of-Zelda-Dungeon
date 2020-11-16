@@ -48,7 +48,7 @@ namespace LegendOfZelda.Link.State
             if (link.CurrentSprite.FinishedAnimation())
             {
                 link.BlockStateChange = false;
-                StopMoving();
+                StopMovingLocal();
             }
             else
             {
@@ -64,6 +64,15 @@ namespace LegendOfZelda.Link.State
         public override void UseSword()
         {
             // cannot use sword
+        }
+
+        private void StopMovingLocal()
+        {
+            link.State = new LinkStandingStillState(link, damaged, healthyDateTime);
+        }
+
+        public override void StopMoving()
+        {
         }
     }
 }

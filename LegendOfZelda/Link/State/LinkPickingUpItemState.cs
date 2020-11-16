@@ -75,7 +75,7 @@ namespace LegendOfZelda.Link.State
             if (link.CurrentSprite.FinishedAnimation())
             {
                 link.BlockStateChange = false;
-                StopMoving();
+                StopMovingLocal();
             }
             else
             {
@@ -86,6 +86,15 @@ namespace LegendOfZelda.Link.State
         public override void Move(Constants.Direction direction)
         {
             // do not allow Link to move from this state
+        }
+
+        private void StopMovingLocal()
+        {
+            link.State = new LinkStandingStillState(link, damaged, healthyDateTime);
+        }
+
+        public override void StopMoving()
+        {
         }
     }
 }
