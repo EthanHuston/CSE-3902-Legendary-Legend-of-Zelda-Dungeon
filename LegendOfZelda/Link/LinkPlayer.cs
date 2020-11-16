@@ -80,8 +80,12 @@ namespace LegendOfZelda.Link
             if (clockActive)
             {
                 clockUpdateCount++;
-                if (clockUpdateCount >= 150)
+                if (clockUpdateCount >= 350)
+                {
                     clockActive = false;
+                    SoundFactory.Instance.CreateTimeFlowsSound().Play();
+                }
+                    
             }
         }
 

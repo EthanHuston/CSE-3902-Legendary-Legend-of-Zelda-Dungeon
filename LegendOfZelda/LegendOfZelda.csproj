@@ -78,7 +78,6 @@
     <Compile Include="Enemies\Sprite\GoriyaSprite.cs" />
     <Compile Include="Enemies\Sprite\HandSprite.cs" />
     <Compile Include="Enemies\Sprite\JellySprite.cs" />
-    <Compile Include="Enemies\Sprite\MerchantSprite.cs" />
     <Compile Include="Enemies\Sprite\OldManSprite.cs" />
     <Compile Include="Enemies\Sprite\SkeletonSprite.cs" />
     <Compile Include="Enemies\Sprite\SpawnSprite.cs" />
@@ -108,8 +107,6 @@
     <Compile Include="GameState\GameLoseState\KeyboardController.cs" />
     <Compile Include="GameState\GameLoseState\MouseController.cs" />
     <Compile Include="GameState\GameWinState\GameWinGameState.cs" />
-    <Compile Include="GameState\GameWinState\KeyboardController.cs" />
-    <Compile Include="GameState\GameWinState\MouseController.cs" />
     <Compile Include="GameState\IMenu.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
     <Compile Include="GameState\Button\CompassInventoryButton.cs" />
@@ -316,7 +313,6 @@
     <Compile Include="Link\Sprite\PickingUpTriforceLinkSprite.cs" />
     <Compile Include="Link\Sprite\StrikingLinkSprite.cs" />
     <Compile Include="Item\Sprite\MapSprite.cs" />
-    <Compile Include="Enemies\Merchant.cs" />
     <Compile Include="Item\Sprite\KeySprite.cs" />
     <Compile Include="Enemies\OldMan.cs" />
     <Compile Include="Program.cs" />
