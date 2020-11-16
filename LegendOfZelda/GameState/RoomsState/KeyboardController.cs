@@ -4,7 +4,6 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Rooms
@@ -64,7 +63,8 @@ namespace LegendOfZelda.GameState.Rooms
                         {Constants.Direction.Left, new Keys[] { Keys.A, Keys.Left } },
                         {Constants.Direction.Down, new Keys[] { Keys.S, Keys.Down } }
                     }
-                ));
+                )
+            );
         }
 
         public GameStateConstants.InputType GetInputType()
@@ -112,16 +112,9 @@ namespace LegendOfZelda.GameState.Rooms
 
         private void InitRepeatableKeys()
         {
+            // current do not have any repeatable keys
             repeatableKeys = new List<Keys>()
             {
-                { Keys.W },
-                { Keys.S },
-                { Keys.A },
-                { Keys.D },
-                { Keys.Up },
-                { Keys.Left },
-                { Keys.Down },
-                { Keys.Right }
             };
         }
     }

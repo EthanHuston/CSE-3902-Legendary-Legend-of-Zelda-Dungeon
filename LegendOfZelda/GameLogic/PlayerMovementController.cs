@@ -9,24 +9,18 @@ namespace LegendOfZelda.GameLogic
     class PlayerMovementController
     {
         private readonly IPlayer player;
-        private Dictionary<Keys, bool> moveKeysPressed;
         private Dictionary<Keys, ICommand> movementControlsDictionary;
-        private ICommand stopMovingCommand;
-        private Keys previousMovementKey;
-        bool keyPressedPreviously;
+        private readonly ICommand stopMovingCommand;
 
         public PlayerMovementController(IPlayer player, Dictionary<Constants.Direction, Keys[]> directionToKeys)
         {
             stopMovingCommand = new StopMovingCommand(player);
             this.player = player;
-            keyPressedPreviously = false;
-            previousMovementKey = Keys.None;
             InitCommandDictionary(directionToKeys);
         }
 
         private void InitCommandDictionary(Dictionary<Constants.Direction, Keys[]> directionToKeys)
         {
-            moveKeysPressed = new Dictionary<Keys, bool>();
             movementControlsDictionary = new Dictionary<Keys, ICommand>();
             foreach (KeyValuePair<Constants.Direction, Keys[]> keyValuePair in directionToKeys)
                 RegisterMovementCommand(keyValuePair.Value, GetCommandFromDirection(keyValuePair.Key));
@@ -36,7 +30,6 @@ namespace LegendOfZelda.GameLogic
         {
             foreach (Keys key in keys)
             {
-                moveKeysPressed.Add(key, false);
                 movementControlsDictionary.Add(key, command);
             }
         }
@@ -51,7 +44,6 @@ namespace LegendOfZelda.GameLogic
                 if(keyPressed)
                 {
                     movementControlsDictionary[key].Execute();
-                    previousMovementKey = key;
                     return;
                 }
             }
