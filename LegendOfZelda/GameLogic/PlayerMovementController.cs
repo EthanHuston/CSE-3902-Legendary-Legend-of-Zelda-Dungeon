@@ -50,6 +50,7 @@ namespace LegendOfZelda.GameLogic
                 {
                     previousMovementKey = keyValuePair.Key;
                     movementControlsDictionary[keyValuePair.Key].Execute();
+                    return;
                 }
                 keysToUpdate.Add(keyValuePair.Key, keyPressed);
             }
