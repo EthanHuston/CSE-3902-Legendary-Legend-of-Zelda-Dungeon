@@ -18,6 +18,7 @@ namespace LegendOfZelda.Enemies
         private bool safeToDespawn = false;
         private bool inKnockback = false;
         private bool knockbackGuard = false;
+        private int knockbackDist = 0;
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
@@ -67,7 +68,16 @@ namespace LegendOfZelda.Enemies
                 }
                 else
                 {
-                    MoveKnockback(knockbackOrigin);
+                    knockbackDist++;
+                    if(knockbackDist > 40)
+                    {
+                        SetKnockBack(false, Constants.Direction.None);
+                        knockbackDist = 0;
+                    }
+                    else
+                    {
+                        MoveKnockback(knockbackOrigin);
+                    }
                 }
                 sprite.Update();
             }
