@@ -12,11 +12,14 @@ namespace LegendOfZelda.GameLogic
         private Dictionary<Keys, bool> moveKeysPressed;
         private Dictionary<Keys, ICommand> movementControlsDictionary;
         private ICommand stopMovingCommand;
+        private Keys previousMovementKey;
+        bool keyPressedPreviously;
 
         public PlayerMovementController(IPlayer player, Dictionary<Constants.Direction, Keys[]> directionToKeys)
         {
             stopMovingCommand = new StopMovingCommand(player);
             this.player = player;
+            keyPressedPreviously = false;
             InitCommandDictionary(directionToKeys);
         }
 
@@ -43,27 +46,37 @@ namespace LegendOfZelda.GameLogic
             foreach (KeyValuePair<Keys, bool> keyValuePair in moveKeysPressed)
             {
                 bool keyPressed = keyboardState.IsKeyDown(keyValuePair.Key);
-                if (!keyValuePair.Value && keyPressed) movementControlsDictionary[keyValuePair.Key].Execute();
+                if (keyPressed && previousMovementKey != keyValuePair.Key)
+                {
+                    previousMovementKey = keyValuePair.Key;
+                    movementControlsDictionary[keyValuePair.Key].Execute();
+                    return;
+                }
                 keysToUpdate.Add(keyValuePair.Key, keyPressed);
             }
 
-            foreach(KeyValuePair<Keys, bool> keyValuePair in keysToUpdate)
+            foreach (KeyValuePair<Keys, bool> keyValuePair in keysToUpdate)
             {
                 moveKeysPressed[keyValuePair.Key] = keyValuePair.Value;
             }
-            
 
-
-            foreach(KeyValuePair<Keys, bool> keyValuePair in moveKeysPressed)
+            foreach (KeyValuePair<Keys, bool> keyValuePair in moveKeysPressed)
             {
-                if (keyValuePair.Value) return; // if key pressed then return
+                if (keyValuePair.Value)
+                {
+                    previousMovementKey = keyValuePair.Key;
+                    keyPressedPreviously = true;
+                    return; // if key pressed then return
+                }
             }
+            keyPressedPreviously = false;
+            previousMovementKey = Keys.None;
             stopMovingCommand.Execute();
         }
 
         private ICommand GetCommandFromDirection(Constants.Direction direction)
         {
-            switch(direction)
+            switch (direction)
             {
                 case Constants.Direction.Right:
                     return new WalkingRightCommand(player);

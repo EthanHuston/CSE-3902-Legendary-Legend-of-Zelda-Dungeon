@@ -48,11 +48,5 @@ namespace LegendOfZelda.Link.State
         {
             distanceWalked += (int)link.Velocity.Length();
         }
-
-        public override void Move(Constants.Direction direction)
-        {
-            // TODO: see what happens if we start moving from here
-            // Link can only start moving from the LinkStandingStill state
-        }
     }
 }
