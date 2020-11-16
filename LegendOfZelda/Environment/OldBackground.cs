@@ -16,7 +16,7 @@ namespace LegendOfZelda.Environment
 
         public OldBackground(SpriteBatch spriteBatch, Point position)
         {
-            sprite = EnvironmentSpriteFactory.Instance.CreateBlackBackgroundSprite();
+            sprite = EnvironmentSpriteFactory.Instance.CreateOldBackgroundSprite();
             sb = spriteBatch;
             Position = position;
             safeToDespawn = false;

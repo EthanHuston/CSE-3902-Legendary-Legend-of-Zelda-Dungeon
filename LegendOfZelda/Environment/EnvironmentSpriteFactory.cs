@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void LoadAllTextures(ContentManager content)
         {
-            //Load Environment Sprites
+            //Load Environme    nt Sprites
             squareSprite = content.Load<Texture2D>("Environment/Block");
             fishStatueSprite = content.Load<Texture2D>("Environment/Statue");
             dragonStatueSprite = content.Load<Texture2D>("Environment/DragonStatue");
@@ -41,7 +41,7 @@ namespace LegendOfZelda.Environment
 
             //Load Tile Sprites
             blackBackgroundSprite = content.Load<Texture2D>("Environment/BlackBackground");
-            oldBackgroundSprite = content.Load<Texture2D>("Environment/BlackBackground");
+            oldBackgroundSprite = content.Load<Texture2D>("Environment/OldManBackground");
             tileBackgroundSprite = content.Load<Texture2D>("Environment/TileBackground");
             tileBlackSprite = content.Load<Texture2D>("Environment/BlackTile");
             tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");
