@@ -138,8 +138,6 @@ namespace LegendOfZelda.Enemies
         }
         private void MoveKnockback(Constants.Direction direction)
         {
-            if (direction == this.direction)
-            {
                 inKnockback = true;
                 switch (direction)
                 {
@@ -158,7 +156,7 @@ namespace LegendOfZelda.Enemies
                     default:
                         break;
                 }
-            }
+            
         }
 
         private void ChangeDirection()
