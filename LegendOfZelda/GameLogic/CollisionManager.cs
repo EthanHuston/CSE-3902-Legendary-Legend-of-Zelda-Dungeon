@@ -130,6 +130,11 @@ namespace LegendOfZelda.GameLogic
             if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(npc.GetRectangle(), projectile.GetRectangle(), collisionFound);
+                if (projectile.GetType() == typeof(SwordAttackingProjectile))
+                {
+                    SwordAttackingProjectile tempProjectile = (SwordAttackingProjectile)projectile;
+                     side = tempProjectile.Direction;
+                }
                 handlerDictionary.GetNpcProjectileHandler(projectile.GetType()).HandleCollision(npc, projectile, side);
             }
         }
