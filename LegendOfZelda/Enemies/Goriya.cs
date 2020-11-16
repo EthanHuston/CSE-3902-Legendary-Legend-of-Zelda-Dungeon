@@ -21,7 +21,7 @@ namespace LegendOfZelda.Enemies
         private const int boomerangVelocity = 3;
         private Constants.Direction direction = Constants.Direction.Down;
         private Constants.Direction knockbackOrigin = Constants.Direction.Down;
-        private readonly int changeDirection = 125;
+        private readonly int changeDirection = 75;
         private bool boomerangActive = false;
         private int boomerangIndex = 9999;
         private readonly int attackWaitTime = 200;
@@ -144,16 +144,16 @@ namespace LegendOfZelda.Enemies
                 switch (direction)
                 {
                     case Constants.Direction.Up: // Up
-                        position.Y += velocity * 4;
-                        break;
-                    case Constants.Direction.Down: // Down
                         position.Y -= velocity * 4;
                         break;
+                    case Constants.Direction.Down: // Down
+                        position.Y += velocity * 4;
+                        break;
                     case Constants.Direction.Left: // Left
-                        position.X += velocity * 4;
+                        position.X -= velocity * 4;
                         break;
                     case Constants.Direction.Right: // Right
-                        position.X -= velocity * 4;
+                        position.X += velocity * 4;
                         break;
                     default:
                         break;
