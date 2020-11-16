@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Enemies.Sprite;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -27,6 +28,9 @@ namespace LegendOfZelda.Enemies
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
+        private IPlayer link;
+        private double attackAngle;
+        private double angleOffset = Math.PI / 6;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -42,6 +46,8 @@ namespace LegendOfZelda.Enemies
             healthyDateTime = DateTime.Now;
             damaged = false;
             spawning = true;
+            link = itemSpawner.GetPlayer(0);
+            attackAngle = Math.PI;
         }
 
         public void Update()
@@ -70,6 +76,7 @@ namespace LegendOfZelda.Enemies
                 sprite.Update();
 
                 CheckSafeToDespawn();
+
             }
             if (safeToDespawn)
             {
@@ -125,12 +132,26 @@ namespace LegendOfZelda.Enemies
             safeToDespawn = safeToDespawn || health <= 0;
         }
 
+        private void UpdateAttackAngle()
+        {
+            double x = position.X - link.Position.X;
+            double y = position.Y - link.Position.Y;
+            if (x < 0)
+                attackAngle = Math.Atan(y / x) + Math.PI;
+            else
+                attackAngle = Math.Atan(y / x);
+        }
+
         private void Attack()
         {
+            UpdateAttackAngle();
             Point spawnPosition = new Point(position.X, position.Y);
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, -1), Constants.ProjectileOwner.Enemy));
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 0), Constants.ProjectileOwner.Enemy));
-            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, new Vector2(xVelocity, 1), Constants.ProjectileOwner.Enemy));
+            Vector2 fireballVelocity1 = new Vector2(xVelocity * (float)Math.Cos(attackAngle), xVelocity * (float)Math.Sin(attackAngle));
+            Vector2 fireballVelocity2 = new Vector2(xVelocity * (float)Math.Cos(attackAngle + angleOffset), xVelocity * (float)Math.Sin(attackAngle + angleOffset));
+            Vector2 fireballVelocity3 = new Vector2(xVelocity * (float)Math.Cos(attackAngle - angleOffset), xVelocity * (float)Math.Sin(attackAngle - angleOffset));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, fireballVelocity1, Constants.ProjectileOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, fireballVelocity2, Constants.ProjectileOwner.Enemy));
+            itemSpawner.Spawn(new FireballProjectile(spriteBatch, spawnPosition, fireballVelocity3, Constants.ProjectileOwner.Enemy));
             attacked = true;
             attackUpdate = updateCount;
         }
