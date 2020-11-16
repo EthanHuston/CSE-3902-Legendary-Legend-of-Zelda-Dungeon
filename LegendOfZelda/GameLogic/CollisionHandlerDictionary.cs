@@ -94,8 +94,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Jelly), new LinkNpcDamageCollisionHandler() },
                 {typeof(Skeleton), new LinkNpcDamageCollisionHandler() },
                 {typeof(SpikeTrap), new LinkNpcDamageCollisionHandler() },
-                {typeof(OldMan), new LinkNpcDoNothingCollisionHandler() },
-                {typeof(Merchant), new LinkNpcDoNothingCollisionHandler() },
+                {typeof(OldMan), new LinkNpcDoNothingCollisionHandler() }
             };
 
             playerProjectileDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IProjectile>>()

@@ -92,10 +92,6 @@ namespace LegendOfZelda.Enemies
         {
             return new OldManSprite(oldManSprite);
         }
-        public ISprite CreateMerchantSprite()
-        {
-            return new MerchantSprite(merchantSprite);
-        }
         public ISprite CreateSpawnSprite()
         {
             return new SpawnSprite(spawnSprite);
