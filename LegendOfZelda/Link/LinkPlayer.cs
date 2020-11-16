@@ -80,7 +80,7 @@ namespace LegendOfZelda.Link
             if (clockActive)
             {
                 clockUpdateCount++;
-                if (clockUpdateCount >= 150)
+                if (clockUpdateCount >= 450)
                     clockActive = false;
             }
         }
