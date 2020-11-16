@@ -230,11 +230,9 @@ namespace LegendOfZelda.Enemies
 
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
+
             inKnockback = changeKnockback;
-            if (inKnockback)
-            {
-                knockbackOrigin = knockDirection;
-            }
+            knockbackOrigin = knockDirection;
         }
 
         public double GetDamageAmount()
