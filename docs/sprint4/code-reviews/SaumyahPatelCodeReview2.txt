@@ -1,0 +1,6 @@
+Saumyah Patel
+11/15/2020
+Sprint 4
+SoundFactory.cs
+Nathan Murphy
+Large class, but it is a factory so it must be big. All correct sounds are loaded in, and the similar structure to SpriteFactory makes everything clean and neat. Good job.
