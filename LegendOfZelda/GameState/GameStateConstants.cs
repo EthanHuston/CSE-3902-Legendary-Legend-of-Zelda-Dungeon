@@ -7,7 +7,7 @@ namespace LegendOfZelda.GameState
     {
         private const double gameScaler = Constants.GameScaler;
 
-        public const int ClockModeLengthMs = 30000;
+        public const int ClockModeLengthMs = 5000;
 
         public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 232);
 
