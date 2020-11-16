@@ -12,7 +12,6 @@ namespace LegendOfZelda.GameState.GameWinState
     class GameWinGameState : AbstractGameState
     {
         private readonly RoomGameState roomStatePreserved;
-        private List<ISpawnable> buttons;
         private SpawnableManager spawnableManager;
         private SoundEffectInstance win;
         private SoundEffectInstance refill;
