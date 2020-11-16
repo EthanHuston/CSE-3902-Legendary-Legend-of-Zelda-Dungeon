@@ -110,9 +110,10 @@ namespace LegendOfZelda.GameLogic
             UpdateList(BackgroundList);
             UpdateList(BlockList);
             UpdateList(PlayerList);
-            UpdateList(NpcList);
             UpdateList(ItemList);
             UpdateList(ProjectileList);
+            if(PlayerList[0].GetQuantityInInventory(LinkConstants.ItemType.Clock) == 0)
+                UpdateList(NpcList);
         }
 
         private void UpdateList<T>(List<T> list)
