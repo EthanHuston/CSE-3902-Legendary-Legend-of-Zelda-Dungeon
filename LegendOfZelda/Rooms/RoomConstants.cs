@@ -91,6 +91,7 @@ namespace LegendOfZelda
         //String Abbreviations for Border and Background in CSV File
         public const string TileBackground = "tealBack";
         public const string BlackBackground = "blackBack";
+        public const string OldBackground = "oldBack";
         public const string WallPiece = "wall";
         public const string OpenDoor = "open";
         public const string LockedDoor = "locked";
