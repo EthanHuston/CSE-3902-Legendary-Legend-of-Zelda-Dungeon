@@ -128,7 +128,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         }
 
 
-        public void FinalizeRoomConnections(Dictionary<string, IRoom> roomIdToRoomDictionary)
+        public virtual void FinalizeRoomConnections(Dictionary<string, IRoom> roomIdToRoomDictionary)
         {
             foreach(KeyValuePair<Constants.Direction, string> keyValuePair in roomConnectionStrings)
             {

@@ -9,6 +9,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class RoomWallMaster : Room
     {
+        private const string roomIdToJumpTo = "startRoom";
         private const int wallMasterSpawnDelay = 80;
         private const int initialWallMasterCount = 5;
         private int spawnDelayCounter;
@@ -66,6 +67,12 @@ namespace LegendOfZelda.Rooms.RoomImplementation
             AllObjects.NpcList.Clear();
             SpawnInitialWallMaster();
             base.ResetRoom();
+        }
+
+        public override void FinalizeRoomConnections(Dictionary<string, IRoom> roomIdToRoomDictionary)
+        {
+            roomToJumpTo = roomIdToRoomDictionary[roomIdToJumpTo];
+            base.FinalizeRoomConnections(roomIdToRoomDictionary);
         }
 
         private void SpawnInitialWallMaster()
