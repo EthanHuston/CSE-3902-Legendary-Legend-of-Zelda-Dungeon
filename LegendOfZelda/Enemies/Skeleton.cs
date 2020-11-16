@@ -136,16 +136,16 @@ namespace LegendOfZelda.Enemies
             switch (knockDirection)
             {
                 case Constants.Direction.Up: // Up
-                    position.Y++;
+                    position.Y = position.Y + 5;
                     break;
                 case Constants.Direction.Down: // Down
-                    position.Y--;
+                    position.Y = position.Y - 5;
                     break;
                 case Constants.Direction.Left: // Left
-                    position.X++;
+                    position.X = position.X + 5;
                     break;
                 case Constants.Direction.Right: // Right
-                    position.X--;
+                    position.X = position.X - 5;
                     break;
                 default:
                     break;
