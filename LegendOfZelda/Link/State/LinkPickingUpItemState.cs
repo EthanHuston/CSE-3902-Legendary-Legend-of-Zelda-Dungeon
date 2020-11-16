@@ -49,21 +49,27 @@ namespace LegendOfZelda.Link.State
                 case LinkConstants.ItemType.Clock:
                     SoundFactory.Instance.CreateGetItemSound().Play();
                     // For Sprint 5: SoundFactory.Instance.CreateClockPickUpSound().Play();
+                    StopMovingLocal();
                     break;
                 case LinkConstants.ItemType.Compass:
                     SoundFactory.Instance.CreateGetItemSound().Play();
+                    StopMovingLocal();
                     break;
                 case LinkConstants.ItemType.Fairy:
                     SoundFactory.Instance.CreateGetItemSound().Play();
+                    StopMovingLocal();
                     break;
                 case LinkConstants.ItemType.Key:
                     SoundFactory.Instance.CreateGetHeartSound().Play();
+                    StopMovingLocal();
                     break;
                 case LinkConstants.ItemType.Map:
                     SoundFactory.Instance.CreateGetItemSound().Play();
+                    StopMovingLocal();
                     break;
                 case LinkConstants.ItemType.Rupee:
                     SoundFactory.Instance.CreateGetRupeeSound().Play();
+                    StopMovingLocal();
                     break;
                 default:
                     break;
@@ -74,6 +80,7 @@ namespace LegendOfZelda.Link.State
         {
             if (link.CurrentSprite.FinishedAnimation())
             {
+                
                 link.BlockStateChange = false;
                 StopMovingLocal();
             }
