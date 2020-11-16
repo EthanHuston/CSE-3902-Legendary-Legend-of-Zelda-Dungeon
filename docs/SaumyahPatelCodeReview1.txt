@@ -1,0 +1,7 @@
+Saumyah Patel
+11/15/2020
+Sprint 4
+HUD.cs
+Chris Lenart
+Very little method, good job of keeping everything compact. The constructor only creates what is necessary.
+The draw and update are seperate, and the little curtain at the end is perfect.
