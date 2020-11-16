@@ -46,6 +46,7 @@ namespace LegendOfZelda.Rooms
                         room.AddRoomConnection(Constants.Direction.Right, fields[i++]);
                         room.AddRoomConnection(Constants.Direction.Down, fields[i++]);
                         room.AddRoomConnection(Constants.Direction.Left, fields[i++]);
+                        room.AddRoomConnection(Constants.Direction.Stairs, fields[i]);
                         break;
                     case 3:
                         for(i = 0; i < 4; i++) SpawnWalls(spriteBatch, room, fields[i], i);
