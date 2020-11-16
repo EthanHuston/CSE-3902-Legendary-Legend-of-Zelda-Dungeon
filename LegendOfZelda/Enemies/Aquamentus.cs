@@ -21,7 +21,7 @@ namespace LegendOfZelda.Enemies
         private int attackUpdate = 0;
         private bool attacked = false;
         private double health = 8 * Constants.HeartValue;
-        private const int xVelocity = -2;
+        private const int xVelocity = -6;
         private readonly ISpawnableManager itemSpawner;
         private bool safeToDespawn;
         private DateTime healthyDateTime;
