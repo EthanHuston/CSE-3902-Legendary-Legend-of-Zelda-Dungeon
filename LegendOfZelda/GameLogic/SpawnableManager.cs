@@ -20,10 +20,7 @@ namespace LegendOfZelda.GameLogic
         public List<IPlayer> PlayerList { get; private set; }
         public List<IBackground> BackgroundList { get; private set; }
 
-        private ItemDrop itemDropper;
-
-        private LinkPlayer link;
-
+        private readonly ItemDrop itemDropper;
 
         public SpawnableManager(List<IPlayer> playerList)
         {
@@ -34,7 +31,6 @@ namespace LegendOfZelda.GameLogic
             BackgroundList = new List<IBackground>();
             PlayerList = playerList;
             itemDropper = new ItemDrop(this);
-            link = (LinkPlayer)PlayerList[0];
         }
 
         public void Spawn(INpc spawnable)
@@ -115,8 +111,17 @@ namespace LegendOfZelda.GameLogic
             UpdateList(PlayerList);
             UpdateList(ItemList);
             UpdateList(ProjectileList);
-            if(!link.clockActive)
-                UpdateList(NpcList);
+            UpdateList(NpcList);
+        }
+
+        public void ClockUpdateAll()
+        {
+            UpdateList(BackgroundList);
+            UpdateList(BlockList);
+            UpdateList(PlayerList);
+            UpdateList(ItemList);
+            UpdateList(ProjectileList);
+            ClockUpdateList(NpcList);
         }
 
         private void UpdateList<T>(List<T> list)
@@ -126,14 +131,7 @@ namespace LegendOfZelda.GameLogic
             {
                 ISpawnable item = (ISpawnable)list[i];
                 item.Update();
-                if (item.SafeToDespawn())
-                {
-                    if(item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
-                    {
-                        itemDropper.DropItem(item.Position);
-                    }
-                    indicesToRemove.Add(i);
-                }
+                if (item.SafeToDespawn()) indicesToRemove.Add(i);
             }
 
             for (int i = 0; i < indicesToRemove.Count; i++)
@@ -158,6 +156,29 @@ namespace LegendOfZelda.GameLogic
             {
                 ISpawnable item = list[i];
                 item.Update();
+                if (item.SafeToDespawn())
+                {
+                    if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
+                    {
+                        itemDropper.DropItem(item.Position);
+                    }
+                    indicesToRemove.Add(i);
+                }
+            }
+
+            for (int i = 0; i < indicesToRemove.Count; i++)
+            {
+                list.RemoveAt(indicesToRemove[i] - i);
+            }
+        }
+
+        private void ClockUpdateList(List<INpc> list)
+        {
+            List<int> indicesToRemove = new List<int>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                INpc item = list[i];
+                item.ClockUpdate();
                 if (item.SafeToDespawn())
                 {
                     if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))

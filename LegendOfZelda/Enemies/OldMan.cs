@@ -42,21 +42,16 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                if (!spawnSprite.AnimationDone())
-                {
-                    spawnSprite.Update();
-                }
-                else
-                {
-                    spawning = false;
-                }
+                spawnSprite.Update();
+                spawning = !spawnSprite.AnimationDone();
             }
             else
             {
                 sprite.Update();
             }
-            
         }
+
+        public void ClockUpdate() { }
 
         public bool SafeToDespawn()
         {

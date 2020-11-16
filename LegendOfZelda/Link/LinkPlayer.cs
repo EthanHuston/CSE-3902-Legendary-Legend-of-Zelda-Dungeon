@@ -70,23 +70,6 @@ namespace LegendOfZelda.Link
             {
                 lowHealth.Stop();
             }
-
-            if (inventory[LinkConstants.ItemType.Clock] != clockCount)
-            {
-                clockActive = true;
-                clockCount++;
-                clockUpdateCount = 0;
-            }
-            if (clockActive)
-            {
-                clockUpdateCount++;
-                if (clockUpdateCount >= 200)
-                {
-                    clockActive = false;
-                    // For Sprint 5: SoundFactory.Instance.CreateTimeFlowsSound().Play();
-                }
-                    
-            }
         }
 
         public void BeHealthy(double healAmount)
@@ -196,9 +179,8 @@ namespace LegendOfZelda.Link
             {
                 {LinkConstants.ItemType.Rupee, LinkConstants.RupeeCount },
                 {LinkConstants.ItemType.Bomb, LinkConstants.BombCount },
-                {LinkConstants.ItemType.Clock, 0 },
                 {LinkConstants.ItemType.Compass, 0 },
-                {LinkConstants.ItemType.Key, 5 },
+                {LinkConstants.ItemType.Key, 0 },
                 {LinkConstants.ItemType.Map, 0 },
                 {LinkConstants.ItemType.Boomerang, LinkConstants.BoomerangCount },
                 {LinkConstants.ItemType.Bow, LinkConstants.BowCount },

@@ -2,7 +2,6 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Security.AccessControl;
 
 namespace LegendOfZelda.Enemies.Sprite
 {

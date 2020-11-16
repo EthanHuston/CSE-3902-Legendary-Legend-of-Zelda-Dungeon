@@ -1,18 +1,17 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.ItemSelectionState;
-using LegendOfZelda.GameState.Pause;
 using LegendOfZelda.GameState.GameLoseState;
 using LegendOfZelda.GameState.GameWinState;
+using LegendOfZelda.GameState.ItemSelectionState;
+using LegendOfZelda.GameState.Pause;
+using LegendOfZelda.GameState.RoomTransitionState;
 using LegendOfZelda.HUDClasses;
-using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
-using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using System;
 using System.Collections.Generic;
-using LegendOfZelda.GameState.RoomTransitionState;
 
 namespace LegendOfZelda.GameState.Rooms
 {
@@ -20,6 +19,8 @@ namespace LegendOfZelda.GameState.Rooms
     {
         private readonly SoundEffectInstance dungeonMusic;
         public List<ItemSelectionGameState> itemSelectionGameStates;
+        private bool clockModeOn;
+        private DateTime clockModeOffTime;
 
         public IRoom CurrentRoom { get; set; }
         public List<IPlayer> PlayerList { get; private set; }
@@ -48,6 +49,8 @@ namespace LegendOfZelda.GameState.Rooms
             dungeonMusic.IsLooped = true;
             dungeonMusic.Volume = Constants.MusicVolume;
             dungeonMusic.Play();
+
+            clockModeOn = false;
         }
 
         private void InitControllerList()
@@ -162,15 +165,18 @@ namespace LegendOfZelda.GameState.Rooms
 
         protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList)
+            foreach (IController controller in controllerList) controller.Update();
+
+            if (clockModeOn)
             {
-                controller.Update();
+                clockModeOn = DateTime.Compare(DateTime.Now, clockModeOffTime) < 0;
+                CurrentRoom.ClockUpdate();
+                // For Sprint 5: if(!clockModeOn) SoundFactory.Instance.CreateTimeFlowsSound().Play();
             }
-            CurrentRoom.Update();
-            if (PlayerList[0].SafeToDespawn())
-            {
-                SwitchToDeathState();
-            }
+            else CurrentRoom.Update();
+
+            if (PlayerList[0].SafeToDespawn()) SwitchToDeathState();
+            
             Hud.Update();
         }
 
@@ -190,6 +196,12 @@ namespace LegendOfZelda.GameState.Rooms
         {
             CurrentRoom.Draw();
             Hud.Draw();
+        }
+
+        public void ActivateClockMode()
+        {
+            clockModeOn = true;
+            clockModeOffTime = DateTime.Now + TimeSpan.FromMilliseconds(GameStateConstants.ClockModeLengthMs);
         }
     }
 }

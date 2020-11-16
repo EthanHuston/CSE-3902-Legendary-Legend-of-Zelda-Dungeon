@@ -168,6 +168,7 @@
     <Compile Include="Link\CollisionHandler\WithBlock\LinkImmovableBlockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkDoorCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithBlock\LinkFireCollisionHandler.cs" />
+    <Compile Include="Link\CollisionHandler\WithItem\LinkClockCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkTriforceCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkFairyCollisionHandler.cs" />
     <Compile Include="Link\CollisionHandler\WithItem\LinkHeartContainerCollisionHandler.cs" />

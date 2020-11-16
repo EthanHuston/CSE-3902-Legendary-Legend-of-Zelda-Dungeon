@@ -43,14 +43,8 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                if (!spawnSprite.AnimationDone())
-                {
-                    spawnSprite.Update();
-                }
-                else
-                {
-                    spawning = false;
-                }
+                spawnSprite.Update();
+                spawning = !spawnSprite.AnimationDone();
             }
             else
             {
@@ -101,6 +95,16 @@ namespace LegendOfZelda.Enemies
                 }
             }
         }
+
+        public void ClockUpdate()
+        {
+            if (spawning)
+            {
+                spawnSprite.Update();
+                spawning = !spawnSprite.AnimationDone();
+            }
+        }
+
         public void Draw()
         {
             if (spawning)

@@ -48,6 +48,12 @@ namespace LegendOfZelda.Rooms.RoomImplementation
             collisionManager.CheckAndHandleAllCollisions();
         }
 
+        public virtual void ClockUpdate()
+        {
+            AllObjects.ClockUpdateAll();
+            collisionManager.CheckAndHandleAllCollisions();
+        }
+
         public bool ConnectRoom(IRoom newRoom, Constants.Direction direction)
         {
             // connects a room each way - returning true if successful, else false
