@@ -24,7 +24,7 @@ namespace LegendOfZelda.GameState.RoomsState
         }
         public void DropItem(Point position)
         {
-            /*int dropItem = rand.Next(0, 401);
+            int dropItem = rand.Next(0, 401);
 
             if (dropItem >= 0 && dropItem <= 150)
             {
@@ -53,8 +53,9 @@ namespace LegendOfZelda.GameState.RoomsState
             {
                 spawnableManager.Spawn(new FairyItem(player.Game.SpriteBatch, position));
                 //Drop a Fairy
-            }*/
+            }
             spawnableManager.Spawn(new FairyItem(player.Game.SpriteBatch, position));
+
         }
     }
 }
