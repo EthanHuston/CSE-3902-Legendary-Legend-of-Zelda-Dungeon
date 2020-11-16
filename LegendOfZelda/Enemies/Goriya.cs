@@ -290,6 +290,7 @@ namespace LegendOfZelda.Enemies
         }
         public void Move(Vector2 distance)
         {
+            ChangeDirection();
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
