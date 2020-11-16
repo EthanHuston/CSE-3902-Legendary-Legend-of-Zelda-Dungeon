@@ -136,6 +136,7 @@ namespace LegendOfZelda.Rooms
 
                 //Npcs
                 case RoomConstants.Aquamentus:
+                    position.Y += RoomConstants.TileLength / 2;
                     npcType = new Aquamentus(spriteBatch, position, room.AllObjects);
                     room.AllObjects.Spawn(npcType);
                     break;
