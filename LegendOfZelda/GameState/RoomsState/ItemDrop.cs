@@ -13,6 +13,7 @@ namespace LegendOfZelda.GameState.RoomsState
 {
     class ItemDrop
     {
+        private const int rupeeDrop = 150, bombDrop = 300, heartDrop = 350, clockDrop = 380, fairyDrop = 390, maxDrop = 401; 
         private Random rand = RoomConstants.RandomGenerator;
         private ISpawnableManager spawnableManager;
         private LinkPlayer player;
@@ -24,27 +25,27 @@ namespace LegendOfZelda.GameState.RoomsState
         }
         public void DropItem(Point position)
         {
-            int dropItem = rand.Next(0, 401);
+            int dropItem = rand.Next(0, maxDrop);
 
-            if (dropItem >= 0 && dropItem <= 150)
+            if (dropItem >= 0 && dropItem <= rupeeDrop)
             {
                 //Drop nothing
             }
-            else if (dropItem > 150 && dropItem <= 300)
+            else if (dropItem > rupeeDrop && dropItem <= bombDrop)
             {
                 spawnableManager.Spawn(new RupeeItem(player.Game.SpriteBatch, position));
             }
-            else if (dropItem > 300 && dropItem <= 350)
+            else if (dropItem > bombDrop && dropItem <= heartDrop)
             {
                 //Drop a bomb
                 spawnableManager.Spawn(new BombItem(player.Game.SpriteBatch, position));
             }
-            else if (dropItem > 350 && dropItem <= 380)
+            else if (dropItem > heartDrop && dropItem <= clockDrop)
             {
                 //Drop a heart
                 spawnableManager.Spawn(new HeartItem(player.Game.SpriteBatch, position));
             }
-            else if (dropItem > 380 && dropItem <= 390)
+            else if (dropItem > clockDrop && dropItem <= fairyDrop)
             {
                 //Drop a Clock
                 spawnableManager.Spawn(new ClockItem(player.Game.SpriteBatch, position));
