@@ -219,6 +219,10 @@ namespace LegendOfZelda.Rooms
                     backgroundType = new BlackBackground(spriteBatch, position);
                     room.AllObjects.Spawn(backgroundType);
                     break;
+                case RoomConstants.OldBackground:
+                    backgroundType = new OldBackground(spriteBatch, position);
+                    room.AllObjects.Spawn(backgroundType);
+                    break;
                 case RoomConstants.WallPiece:
                     blockType = new Walls(spriteBatch, position);
                     room.AllObjects.Spawn(blockType);
