@@ -20,6 +20,7 @@ namespace LegendOfZelda.GameLogic
             stopMovingCommand = new StopMovingCommand(player);
             this.player = player;
             keyPressedPreviously = false;
+            previousMovementKey = Keys.None;
             InitCommandDictionary(directionToKeys);
         }
 
@@ -42,35 +43,18 @@ namespace LegendOfZelda.GameLogic
 
         public void Update(KeyboardState keyboardState)
         {
-            Dictionary<Keys, bool> keysToUpdate = new Dictionary<Keys, bool>();
-            foreach (KeyValuePair<Keys, bool> keyValuePair in moveKeysPressed)
+            foreach(KeyValuePair<Keys, ICommand> keyValuePair in movementControlsDictionary)
             {
-                bool keyPressed = keyboardState.IsKeyDown(keyValuePair.Key);
-                if (keyPressed && previousMovementKey != keyValuePair.Key)
+                Keys key = keyValuePair.Key;
+                bool keyPressed = keyboardState.IsKeyDown(key);
+
+                if(keyPressed)
                 {
-                    previousMovementKey = keyValuePair.Key;
-                    movementControlsDictionary[keyValuePair.Key].Execute();
+                    movementControlsDictionary[key].Execute();
+                    previousMovementKey = key;
                     return;
                 }
-                keysToUpdate.Add(keyValuePair.Key, keyPressed);
             }
-
-            foreach (KeyValuePair<Keys, bool> keyValuePair in keysToUpdate)
-            {
-                moveKeysPressed[keyValuePair.Key] = keyValuePair.Value;
-            }
-
-            foreach (KeyValuePair<Keys, bool> keyValuePair in moveKeysPressed)
-            {
-                if (keyValuePair.Value)
-                {
-                    previousMovementKey = keyValuePair.Key;
-                    keyPressedPreviously = true;
-                    return; // if key pressed then return
-                }
-            }
-            keyPressedPreviously = false;
-            previousMovementKey = Keys.None;
             stopMovingCommand.Execute();
         }
 
