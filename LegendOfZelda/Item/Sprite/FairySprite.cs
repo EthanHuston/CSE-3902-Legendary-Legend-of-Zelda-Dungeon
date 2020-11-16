@@ -83,28 +83,12 @@ namespace LegendOfZelda.Item.Sprite
             int column = currentFrame % numColumns;
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width / 1.5), (int)(Constants.GameScaler * sprite.Height / 1.5));
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
         private void CheckBounds()
         {
-            /*if (position.X <= Constants.MinXPos + (Constants.GameScaler * RoomConstants.WallWidth))
-            {
-                position.X += 5;
-            }
-            else if (position.X >= Constants.MaxXPos - (Constants.GameScaler * RoomConstants.WallWidth))
-            {
-                position.X -= 5; ;
-            }
-            else if (position.Y <= Constants.MinYPos + (Constants.GameScaler * RoomConstants.WallWidth))
-            {
-                position.Y += 5; ;
-            }
-            else if (position.Y >= Constants.MaxYPos - (Constants.GameScaler * RoomConstants.WallWidth))
-            {
-                position.Y -= 5;
-            }*/
             if (position.X < RoomConstants.BackgroundX)
             {
                 position.X += 5;
