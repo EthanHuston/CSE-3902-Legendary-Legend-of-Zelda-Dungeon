@@ -16,7 +16,12 @@ namespace LegendOfZelda.Item.Sprite
         private readonly int frameHeight;
         private int currentFrame;
         private int bufferFrame;
+        private int movementBuffer = 0;
+        private int xDir = 0;
+        private int yDir = 0;
+
         private Point position;
+        public Point Position { get => position; set => position = new Point(value.X, value.Y); }
 
         public FairySprite(Texture2D sprite, Point spawnPosition)
         {
@@ -31,6 +36,35 @@ namespace LegendOfZelda.Item.Sprite
         }
         public void Update()
         {
+            movementBuffer++;
+            CheckBounds();
+            //Move based on current chosen direction for some time.
+            if (xDir == 0 && yDir == 0)
+            {
+                position.X--;
+                position.Y--;
+            }
+            else if (xDir == 0 && yDir == 1)
+            {
+                position.X--;
+                position.Y++;
+            }
+            else if (xDir == 1 && yDir == 0)
+            {
+                position.X++;
+                position.Y--;
+            }
+            else
+            {
+                position.X++;
+                position.Y++;
+            }
+
+            if (movementBuffer > 10)
+            {
+                movementBuffer = 0;
+                ChooseDirection();
+            }
             bufferFrame++;
             if (bufferFrame == 6)
             {
@@ -52,6 +86,47 @@ namespace LegendOfZelda.Item.Sprite
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height));
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
+        }
+        private void CheckBounds()
+        {
+            /*if (position.X <= Constants.MinXPos + (Constants.GameScaler * RoomConstants.WallWidth))
+            {
+                position.X += 5;
+            }
+            else if (position.X >= Constants.MaxXPos - (Constants.GameScaler * RoomConstants.WallWidth))
+            {
+                position.X -= 5; ;
+            }
+            else if (position.Y <= Constants.MinYPos + (Constants.GameScaler * RoomConstants.WallWidth))
+            {
+                position.Y += 5; ;
+            }
+            else if (position.Y >= Constants.MaxYPos - (Constants.GameScaler * RoomConstants.WallWidth))
+            {
+                position.Y -= 5;
+            }*/
+            if (position.X < RoomConstants.BackgroundX)
+            {
+                position.X += 5;
+            }
+            else if (position.X > RoomConstants.RightDoorX)
+            {
+                position.X -= 5; ;
+            }
+            else if (position.Y < RoomConstants.RoomBorderY)
+            {
+                position.Y += 5; ;
+            }
+            else if (position.Y > RoomConstants.BottomDoorY )
+            {
+                position.Y -= 5;
+            }
+        }
+        private void ChooseDirection()
+        {
+            Random rand = new Random();
+            xDir = rand.Next(0, 2); // 0 for x, 1 for y
+            yDir = rand.Next(0, 2); // 0 right/down. 1 for left/up
         }
 
         public Rectangle GetPositionRectangle()
