@@ -1453,12 +1453,6 @@
 /processorParam:Quality=Best
 /build:Sounds/LOZ_Title.mp3
 
-#begin Sounds/LOZ_Title2.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/LOZ_Title2.mp3
-
 #begin Sounds/LOZ_Win.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
