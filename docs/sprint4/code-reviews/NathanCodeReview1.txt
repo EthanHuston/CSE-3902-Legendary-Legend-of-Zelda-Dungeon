@@ -1,0 +1,13 @@
+Nathan Murphy
+11/15/2020
+Sprint 4
+GameLoseGameState.cs
+Ethan Huston
+12 Minutes
+Readability
+Even though this game state has to worry about nothing but itself and its own function, the class has really good readability. Each function has a great name that
+is clear to what its goal is, while also keeping each function to the point (the only exception would be NormalStateUpdate()). However, with the method in question,
+nothing could really have been done to avoid this length. Variables also have clear names to what they are holding. Overall, this is great in terms of readability.
+Maintainability
+The class overall has great maintainability as well. It would easy for this implementation to be expanded upon (say for multiple player deaths). The code clearly is
+written for expansion later on. Overall, this is a great example of a maintainable class.

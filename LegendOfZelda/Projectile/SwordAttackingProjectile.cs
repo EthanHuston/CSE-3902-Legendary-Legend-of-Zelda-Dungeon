@@ -6,6 +6,7 @@ namespace LegendOfZelda.Projectile
 {
     internal class SwordAttackingProjectile : GenericProjectile
     {
+        public Constants.Direction Direction { get; private set; }
         public SwordAttackingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.Direction direction, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             projectileType = LinkConstants.ProjectileType.Sword;
@@ -25,6 +26,7 @@ namespace LegendOfZelda.Projectile
                     sprite = ProjectileSpriteFactory.Instance.CreateSwordAttackingLeftSprite();
                     break;
             }
+            Direction = direction;
         }
 
         public override void Update()

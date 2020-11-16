@@ -1,0 +1,14 @@
+Nathan Murphy
+11/15/2020
+Sprint 4
+InventoryMenu.cs
+Ryan Stuckey
+15 Minuets
+Readability
+This class has really good readability (which is not surprising given who wrote this class). First off, this class is really short; in turn having really short
+methods. For what this class is in charge of, this is really coo1. Also, each of the methods and variables have really good names to tell the reader what they
+are doing throughout the code. Overall, this was really well done in terms of readability.
+Maintainability
+Again, the writer of the code knocked it out of the parks in terms of maintainability. If the group wanted to implement a different system for the item menu, or
+rather add onto its current form, it would be super easy to do. Everything is compact and separate from each other, which makes for great coupling. Overall, this
+was very well done.
