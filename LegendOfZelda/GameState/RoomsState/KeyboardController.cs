@@ -36,7 +36,7 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.Q, new UsePrimaryItemCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.E, new UseSecondaryItemCommand(gameStateCast.GetPlayer(0)) },
 
-                /* Keys to change rooms for debugging
+                /*Keys to change rooms for debugging
                 { Keys.NumPad8, new ChangeRoomUpCommand(gameStateCast) },
                 { Keys.NumPad6, new ChangeRoomRightCommand(gameStateCast) },
                 { Keys.NumPad2, new ChangeRoomDownCommand(gameStateCast) },
@@ -45,7 +45,7 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.L, new ChangeRoomRightCommand(gameStateCast) },
                 { Keys.K, new ChangeRoomDownCommand(gameStateCast) },
                 { Keys.J, new ChangeRoomLeftCommand(gameStateCast) }
-                */
+                /**/
             };
 
             InitPlayerMovementControllers(gameStateCast);
