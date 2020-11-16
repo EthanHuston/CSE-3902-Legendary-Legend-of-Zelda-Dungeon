@@ -81,7 +81,8 @@ namespace LegendOfZelda.GameState.Rooms
             IRoom newRoom = CurrentRoom.GetRoom(direction);
             if (newRoom != null)
             {
-                StartStateSwitch(new RoomTransitionGameState(this, direction));
+                if (direction != Constants.Direction.Stairs) StartStateSwitch(new RoomTransitionGameState(this, direction));
+                else MoveToRoom(newRoom, direction);
                 RoomMap.AddRoomToMap(newRoom);
             }
         }
