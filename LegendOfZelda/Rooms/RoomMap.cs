@@ -8,9 +8,8 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    class RoomMap : ISpawnable
+    class RoomMap : IMenu
     {
-        private bool safeToDespawn;
         private readonly List<IRoom> roomsInMap;
         private readonly ITextureAtlasSprite roomIconSprite;
         private readonly SpriteBatch spriteBatch;
@@ -31,11 +30,6 @@ namespace LegendOfZelda.Rooms
             this.sourceRectangleSize = new Vector2(sourceRectangleSize.X, sourceRectangleSize.Y);
         }
 
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
         public void Draw()
         {
             foreach (IRoom room in roomsInMap)
@@ -52,11 +46,6 @@ namespace LegendOfZelda.Rooms
         public Rectangle GetRectangle()
         {
             return Rectangle.Empty;
-        }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
         }
 
         public void Update()
