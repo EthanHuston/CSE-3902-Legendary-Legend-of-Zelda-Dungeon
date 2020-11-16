@@ -57,7 +57,9 @@ namespace LegendOfZelda.Enemies
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
-                if(boomer != null)
+                if(boomerangActive)
+                    itemSpawner.Spawn(new BoomerangItem(spriteBatch, boomer.Position));
+                if (boomer != null)
                     boomer.Despawn();
             }
             if (spawning)
@@ -316,8 +318,6 @@ namespace LegendOfZelda.Enemies
         public void Despawn()
         {
             safeToDespawn = true;
-            //if(boomerangActive)
-            itemSpawner.Spawn(new BoomerangItem(spriteBatch, position));
         }
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
