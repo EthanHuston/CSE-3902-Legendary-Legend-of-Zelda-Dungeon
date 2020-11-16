@@ -27,6 +27,7 @@ namespace LegendOfZelda.Enemies
         private readonly int attackWaitTime = 200;
         private double health = 3 * Constants.HeartValue;
         private bool inKnockback = false;
+        private int knockbackDist = 0;
         private bool safeToDespawn = false;
         private DateTime healthyDateTime;
         private bool damaged;
@@ -87,7 +88,16 @@ namespace LegendOfZelda.Enemies
                 }
                 else
                 {
-                    MoveKnockback(knockbackOrigin);
+                    knockbackDist++;
+                    if(knockbackDist > 40)
+                    {
+                        knockbackDist = 0;
+                        SetKnockBack(false, Constants.Direction.None);
+                    }
+                    else
+                    {
+                        MoveKnockback(knockbackOrigin);
+                    }
                 }
 
                 sprite.Update();
