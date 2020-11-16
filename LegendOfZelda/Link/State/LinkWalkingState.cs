@@ -47,10 +47,6 @@ namespace LegendOfZelda.Link.State
         protected override void UpdateState()
         {
             distanceWalked += (int)link.Velocity.Length();
-            if (distanceWalked > walkDistance)
-            {
-                StopMoving();
-            }
         }
 
         public override void Move(Constants.Direction direction)

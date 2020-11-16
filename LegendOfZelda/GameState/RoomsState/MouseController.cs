@@ -17,8 +17,8 @@ namespace LegendOfZelda.GameState.Rooms
             RoomGameState gameStateCast = (RoomGameState)gameState;
 
             oldMouseState = new MouseState();
-            leftClickCommand = new UsePrimaryItem(gameStateCast.GetPlayer(0));
-            rightClickCommand = new UseSecondaryItem(gameStateCast.GetPlayer(0));
+            leftClickCommand = new UsePrimaryItemCommand(gameStateCast.GetPlayer(0));
+            rightClickCommand = new UseSecondaryItemCommand(gameStateCast.GetPlayer(0));
         }
 
         public GameStateConstants.InputType GetInputType()
