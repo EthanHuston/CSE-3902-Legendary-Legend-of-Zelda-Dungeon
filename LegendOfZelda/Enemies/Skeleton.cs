@@ -231,13 +231,13 @@ namespace LegendOfZelda.Enemies
 
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
-            if(!changeKnockback && !knockbackGuard)
+            if(changeKnockback && !knockbackGuard)
             {
                 inKnockback = changeKnockback;
                 knockbackGuard = true;
                 knockbackOrigin = knockDirection;
             }
-            else if(!inKnockback)
+            else if(!changeKnockback)
             {
                 inKnockback = changeKnockback;
                 knockbackGuard = false;
