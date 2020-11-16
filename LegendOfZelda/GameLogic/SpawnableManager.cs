@@ -22,6 +22,8 @@ namespace LegendOfZelda.GameLogic
 
         private ItemDrop itemDropper;
 
+        private LinkPlayer link;
+
 
         public SpawnableManager(List<IPlayer> playerList)
         {
@@ -32,6 +34,7 @@ namespace LegendOfZelda.GameLogic
             BackgroundList = new List<IBackground>();
             PlayerList = playerList;
             itemDropper = new ItemDrop(this);
+            link = (LinkPlayer)PlayerList[0];
         }
 
         public void Spawn(INpc spawnable)
@@ -112,7 +115,7 @@ namespace LegendOfZelda.GameLogic
             UpdateList(PlayerList);
             UpdateList(ItemList);
             UpdateList(ProjectileList);
-            if(PlayerList[0].GetQuantityInInventory(LinkConstants.ItemType.Clock) == 0)
+            if(!link.clockActive)
                 UpdateList(NpcList);
         }
 

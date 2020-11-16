@@ -16,6 +16,7 @@ namespace LegendOfZelda.Link
         private bool safeToDespawn;
         private ILinkState state;
         private SoundEffectInstance lowHealth;
+        private int clockUpdateCount = 0, clockCount = 0;
 
         public Game1 Game { get; private set; }
         public Constants.Direction FacingDirection { get; set; }
@@ -30,6 +31,7 @@ namespace LegendOfZelda.Link
         public double MaxHealth { get; private set; }
         public double CurrentHealth { get; private set; }
         public bool BeingDragged { get; set; }
+        public bool clockActive { get; set; }
 
         public LinkPlayer(Game1 game, Point spawnPosition)
         {
@@ -46,6 +48,7 @@ namespace LegendOfZelda.Link
             SecondaryItem = LinkConstants.ItemType.None;
             BeingDragged = false;
             InitInventoryDict();
+            clockActive = false;
         }
 
         public void Draw()
@@ -66,6 +69,19 @@ namespace LegendOfZelda.Link
             if (safeToDespawn || CurrentHealth > Constants.HeartValue)
             {
                 lowHealth.Stop();
+            }
+
+            if (inventory[LinkConstants.ItemType.Clock] != clockCount)
+            {
+                clockActive = true;
+                clockCount++;
+                clockUpdateCount = 0;
+            }
+            if (clockActive)
+            {
+                clockUpdateCount++;
+                if (clockUpdateCount >= 150)
+                    clockActive = false;
             }
         }
 
