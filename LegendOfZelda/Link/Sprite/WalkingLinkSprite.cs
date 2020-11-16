@@ -36,7 +36,11 @@ namespace LegendOfZelda.Link.Sprite
             animationIsDone = currentFrame >= totalFrames;
             if (FinishedAnimation()) return;
 
-            currentFrame += ++bufferFrame % walkingFrameDelay == 0 ? 1 : 0;
+            if(bufferFrame++ == walkingFrameDelay)
+            {
+                bufferFrame = 0;
+                currentFrame = currentFrame == 1 ? 0 : 1;
+            }
 
             if (++damageColorCounter == LinkConstants.DamageFlashDelayTicks)
             {

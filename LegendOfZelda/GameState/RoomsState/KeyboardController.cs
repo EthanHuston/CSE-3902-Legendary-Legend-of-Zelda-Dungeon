@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.GameState.Command;
+﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using LegendOfZelda.Link.Interface;
@@ -13,7 +14,7 @@ namespace LegendOfZelda.GameState.Rooms
         private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;
         private List<Keys> repeatableKeys;
-        private List<ICommand> playerStopCommands;
+        private List<PlayerMovementController> playerMovementControllerList;
 
         public KeyboardController(IGameState gameState)
         {
@@ -26,19 +27,11 @@ namespace LegendOfZelda.GameState.Rooms
         {
             RoomGameState gameStateCast = (RoomGameState)gameState;
             controllerMappings = new Dictionary<Keys, ICommand>
-            { 
+            {
                 { Keys.Escape, new PauseGameCommand(gameState) },
                 { Keys.Tab, new ItemSelectCommand(gameState) },
 
                 // Register Player 1 Commands
-                { Keys.W, new WalkingForwardCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.Up, new WalkingForwardCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.A, new WalkingLeftCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.Left, new WalkingLeftCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.D, new WalkingRightCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.Right, new WalkingRightCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.S, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
-                { Keys.Down, new WalkingDownCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.D1, new UsePrimaryItemCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.D2, new UseSecondaryItemCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.Q, new UsePrimaryItemCommand(gameStateCast.GetPlayer(0)) },
@@ -55,16 +48,23 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.J, new ChangeRoomLeftCommand(gameStateCast) }
             };
 
-            InitPlayerStopMovingCommands(gameStateCast);
+            InitPlayerMovementControllers(gameStateCast);
         }
 
-        private void InitPlayerStopMovingCommands(RoomGameState gameStateCast)
+        private void InitPlayerMovementControllers(RoomGameState gameStateCast)
         {
-            playerStopCommands = new List<ICommand>();
-            for (int i = 0; i < gameStateCast.PlayerList.Count; i++) 
-            {
-                playerStopCommands.Add(new StopMovingCommand(gameStateCast.PlayerList[i]));
-            }
+            playerMovementControllerList = new List<PlayerMovementController>();
+            List<IPlayer> playerList = gameStateCast.PlayerList;
+            playerMovementControllerList.Add(
+                new PlayerMovementController(playerList[0],
+                new Dictionary<Constants.Direction, Keys[]>
+                    {
+                        {Constants.Direction.Right, new Keys[] { Keys.D, Keys.Right } },
+                        {Constants.Direction.Up, new Keys[] { Keys.W, Keys.Up } },
+                        {Constants.Direction.Left, new Keys[] { Keys.A, Keys.Left } },
+                        {Constants.Direction.Down, new Keys[] { Keys.S, Keys.Down } }
+                    }
+                ));
         }
 
         public GameStateConstants.InputType GetInputType()
@@ -89,7 +89,8 @@ namespace LegendOfZelda.GameState.Rooms
 
         public void Update()
         {
-            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            KeyboardState keyboardState = Keyboard.GetState();
+            Keys[] pressedKeys = keyboardState.GetPressedKeys();
             bool changedKbState = false;
 
             foreach (Keys key in pressedKeys)
@@ -103,6 +104,9 @@ namespace LegendOfZelda.GameState.Rooms
                     controllerMappings[key].Execute();
                 }
             }
+
+            foreach (PlayerMovementController controller in playerMovementControllerList) controller.Update(keyboardState);
+
             if (!changedKbState) oldKbState = new List<Keys>();
         }
 
