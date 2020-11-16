@@ -37,5 +37,9 @@ namespace LegendOfZelda.Link.State
         {
             // no updates to do-- handled by parent
         }
+        public override void StopMoving()
+        {
+            // already not moving
+        }
     }
 }
