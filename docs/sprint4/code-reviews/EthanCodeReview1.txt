@@ -1,0 +1,13 @@
+Ethan Huston
+11/15/2020
+Sprint 4
+GameWinGameState.cs
+Nathan Murphy
+10 Minutes
+Readability
+The readability for this class is very well done, being a state it only has to worry about its own workload and nothing else.
+The methods are short, the update method is the longest, but its is neatly separated into phases so it is still very simple.
+Overall an easy class to read, and everything makes sense within.
+Maintainability
+The maintainability of this code is fairly good as well. Given this is the game winning state, there shouldnt be any changes needed later on. 
+If something needs to be changed later on then the class is simple enough that this will still be easy to maintain through any and all changes needed.
