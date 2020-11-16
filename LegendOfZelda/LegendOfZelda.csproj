@@ -191,6 +191,7 @@
     <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
+    <Compile Include="GameState\RoomTransitionState\RoomTransitionGameState.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomWallMaster.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />

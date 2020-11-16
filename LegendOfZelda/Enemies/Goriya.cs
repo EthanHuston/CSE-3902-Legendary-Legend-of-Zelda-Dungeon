@@ -142,16 +142,16 @@ namespace LegendOfZelda.Enemies
                 switch (direction)
                 {
                     case Constants.Direction.Up: // Up
-                        position.Y += velocity;
+                        position.Y += velocity * 4;
                         break;
                     case Constants.Direction.Down: // Down
-                        position.Y -= velocity;
+                        position.Y -= velocity * 4;
                         break;
                     case Constants.Direction.Left: // Left
-                        position.X += velocity;
+                        position.X += velocity * 4;
                         break;
                     case Constants.Direction.Right: // Right
-                        position.X -= velocity;
+                        position.X -= velocity * 4;
                         break;
                     default:
                         break;

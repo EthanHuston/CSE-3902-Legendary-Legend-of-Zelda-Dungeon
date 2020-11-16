@@ -12,6 +12,7 @@ using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
+using LegendOfZelda.GameState.RoomTransitionState;
 
 namespace LegendOfZelda.GameState.Rooms
 {
@@ -20,7 +21,7 @@ namespace LegendOfZelda.GameState.Rooms
         private readonly SoundEffectInstance dungeonMusic;
         public List<ItemSelectionGameState> itemSelectionGameStates;
 
-        public IRoom CurrentRoom { get; private set; }
+        public IRoom CurrentRoom { get; set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
         public IMenu Hud { get; private set; }
@@ -75,17 +76,10 @@ namespace LegendOfZelda.GameState.Rooms
         public void MoveRoom(Constants.Direction direction)
         {
             IRoom newRoom = CurrentRoom.GetRoom(direction);
-            Constants.Direction doorLocation = UtilityMethods.InvertDirection(direction);
-
             if (newRoom != null)
             {
-                CurrentRoom.Visiting = false;
-                newRoom.Visiting = true;
-
-                CurrentRoom = newRoom;
-                UpdatePlayersPositions(doorLocation);
-                CurrentRoom.ResetRoom();
-                RoomMap.AddRoomToMap(CurrentRoom);
+                StartStateSwitch(new RoomTransitionGameState(this, direction));
+                RoomMap.AddRoomToMap(newRoom);
             }
         }
 
