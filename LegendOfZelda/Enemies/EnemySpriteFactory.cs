@@ -40,7 +40,6 @@ namespace LegendOfZelda.Enemies
             skeletonSprite = content.Load<Texture2D>("Enemies/Skeleton");
             spikeTrapSprite = content.Load<Texture2D>("Enemies/SpikeTrap");
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
-            merchantSprite = content.Load<Texture2D>("NPC/Merchant");
             spawnSprite = content.Load<Texture2D>("Enemies/EnemySpawn");
         }
 
