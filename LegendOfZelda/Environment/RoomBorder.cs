@@ -29,7 +29,7 @@ namespace LegendOfZelda.Environment
 
         public void Draw()
         {
-            roomSprite.Draw(sb, position, Constants.DrawLayer.Wall);
+            roomSprite.Draw(sb, position, Constants.DrawLayer.Border);
         }
 
         public Rectangle GetRectangle()
