@@ -1,0 +1,12 @@
+Ethan Huston
+11/15/2020
+Sprint 4
+RoomTransitionGameState.cs
+Saumyah Patel
+20 Minutes
+Readability
+The readability for this class is very well done for such a complicated state class. The methods needed are very simple, split into switches and if elses with minimal
+logic within the bodies. All of the logic that is manipulated is also easy to follow as it is simply changing vectors and point positions. Overall the class is well done.
+Maintainability
+The maintainability of this class, while it shouldnt need to be changed for any reason, is also good as its tied in to the simplicity of the code. 
+The class is reliant on some other utility classes, but changes there will be minimal in disrupting this class.
