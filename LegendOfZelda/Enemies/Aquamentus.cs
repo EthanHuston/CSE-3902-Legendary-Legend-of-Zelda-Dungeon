@@ -3,6 +3,7 @@ using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -75,6 +76,10 @@ namespace LegendOfZelda.Enemies
                 sprite.Update();
 
                 CheckSafeToDespawn();
+            }
+            if (safeToDespawn)
+            {
+                SoundFactory.Instance.CreateBossScreamSound().Play();
             }
         }
 

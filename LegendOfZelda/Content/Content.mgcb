@@ -1285,6 +1285,12 @@
 /processorParam:Quality=Best
 /build:Sounds/LOZ_Candle.wav
 
+#begin Sounds/LOZ_ClockPickUp.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/LOZ_ClockPickUp.mp3
+
 #begin Sounds/LOZ_Die.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
@@ -1440,6 +1446,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/LOZ_Text_Slow.wav
+
+#begin Sounds/LOZ_TimeFlows.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/LOZ_TimeFlows.mp3
 
 #begin Sounds/LOZ_Title.mp3
 /importer:Mp3Importer

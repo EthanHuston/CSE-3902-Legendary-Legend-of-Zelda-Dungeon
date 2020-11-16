@@ -192,6 +192,7 @@
     <Compile Include="Projectile\CollisionHandler\BoomerangBlockCollisionHandler.cs" />
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
+    <Compile Include="GameState\RoomTransitionState\RoomTransitionGameState.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomWallMaster.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />
@@ -473,6 +474,7 @@
     <Content Include="Content\Sounds\LOZ_Boss_Scream2.wav" />
     <Content Include="Content\Sounds\LOZ_Boss_Scream3.wav" />
     <Content Include="Content\Sounds\LOZ_Candle.wav" />
+    <Content Include="Content\Sounds\LOZ_ClockPickUp.mp3" />
     <Content Include="Content\Sounds\LOZ_Die.mp3" />
     <Content Include="Content\Sounds\LOZ_Door_Unlock.wav" />
     <Content Include="Content\Sounds\LOZ_Dungeon.mp3" />
@@ -499,6 +501,7 @@
     <Content Include="Content\Sounds\LOZ_Sword_Slash.wav" />
     <Content Include="Content\Sounds\LOZ_Text.wav" />
     <Content Include="Content\Sounds\LOZ_Text_Slow.wav" />
+    <Content Include="Content\Sounds\LOZ_TimeFlows.mp3" />
     <Content Include="Content\Sounds\LOZ_Title.mp3" />
     <Content Include="Content\Sounds\LOZ_Title2.mp3" />
     <Content Include="Content\Sounds\LOZ_Win.mp3" />

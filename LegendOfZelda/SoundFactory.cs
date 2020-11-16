@@ -10,6 +10,7 @@ namespace LegendOfZelda
         private SoundEffect bomb_drop;
         private SoundEffect boss_hit;
         private SoundEffect boss_scream;
+        private SoundEffect clock_pickup;
         private SoundEffect door_unlock;
         private SoundEffect dungeon_music;
         private SoundEffect enemy_die;
@@ -31,6 +32,7 @@ namespace LegendOfZelda
         private SoundEffect sword_shoot;
         private SoundEffect sword_slash;
         private SoundEffect text;
+        private SoundEffect time_flows;
         private SoundEffect title;
         private SoundEffect win;
 
@@ -38,34 +40,36 @@ namespace LegendOfZelda
 
         public void LoadAllSounds(ContentManager content)
         {
-            arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang"); // Done
-            bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow"); // Done
-            bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop"); // Done
-            boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit"); // Done
+            arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang");
+            bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow");
+            bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop");
+            boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit");
             boss_scream = content.Load<SoundEffect>("Sounds/LOZ_Boss_Scream1");
-            door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock"); // Done
-            dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon"); // Done
-            enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die"); // Done
-            enemy_hit = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Hit"); // Done
-            fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare"); // Done
-            game_over = content.Load<SoundEffect>("Sounds/LOZ_GameOver"); // Done
-            get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart"); // Done
-            get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item"); // Done
-            get_rupee = content.Load<SoundEffect>("Sounds/LOZ_Get_Rupee"); // Done
-            key_appear = content.Load<SoundEffect>("Sounds/LOZ_Key_Appear"); // Done
-            link_die = content.Load<SoundEffect>("Sounds/LOZ_Link_Die"); // Done
-            link_hurt = content.Load<SoundEffect>("Sounds/LOZ_Link_Hurt"); // Done
-            low_health = content.Load<SoundEffect>("Sounds/LOZ_LowHealth"); // Done
-            refill = content.Load<SoundEffect>("Sounds/LOZ_Refill_Loop"); // Done
+            clock_pickup = content.Load<SoundEffect>("Sounds/LOZ_ClockPickUp");
+            door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock");
+            dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon");
+            enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die");
+            enemy_hit = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Hit");
+            fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare");
+            game_over = content.Load<SoundEffect>("Sounds/LOZ_GameOver");
+            get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart");
+            get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item");
+            get_rupee = content.Load<SoundEffect>("Sounds/LOZ_Get_Rupee");
+            key_appear = content.Load<SoundEffect>("Sounds/LOZ_Key_Appear");
+            link_die = content.Load<SoundEffect>("Sounds/LOZ_Link_Die");
+            link_hurt = content.Load<SoundEffect>("Sounds/LOZ_Link_Hurt");
+            low_health = content.Load<SoundEffect>("Sounds/LOZ_LowHealth");
+            refill = content.Load<SoundEffect>("Sounds/LOZ_Refill_Loop");
             secret = content.Load<SoundEffect>("Sounds/LOZ_Secret");
-            shield = content.Load<SoundEffect>("Sounds/LOZ_Shield"); // Done
+            shield = content.Load<SoundEffect>("Sounds/LOZ_Shield");
             stairs = content.Load<SoundEffect>("Sounds/LOZ_Stairs");
-            sword_combined = content.Load<SoundEffect>("Sounds/LOZ_Sword_Combined"); // Done
-            sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot"); // Done
-            sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash"); // Done
-            text = content.Load<SoundEffect>("Sounds/LOZ_Text"); // Done
-            title = content.Load<SoundEffect>("Sounds/LOZ_Title"); // Done
-            win = content.Load<SoundEffect>("Sounds/LOZ_Win"); // Done
+            sword_combined = content.Load<SoundEffect>("Sounds/LOZ_Sword_Combined");
+            sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot");
+            sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash");
+            text = content.Load<SoundEffect>("Sounds/LOZ_Text");
+            time_flows = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
+            title = content.Load<SoundEffect>("Sounds/LOZ_Title");
+            win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
         public SoundEffectInstance CreateArrowBoomerangSound()
@@ -91,6 +95,11 @@ namespace LegendOfZelda
         public SoundEffectInstance CreateBossScreamSound()
         {
             return boss_scream.CreateInstance();
+        }
+
+        public SoundEffectInstance CreateClockPickUpSound()
+        {
+            return clock_pickup.CreateInstance();
         }
 
         public SoundEffectInstance CreateDoorUnlockSound()
@@ -196,6 +205,11 @@ namespace LegendOfZelda
         public SoundEffectInstance CreateTextSound()
         {
             return text.CreateInstance();
+        }
+
+        public SoundEffectInstance CreateTimeFlowsSound()
+        {
+            return time_flows.CreateInstance();
         }
 
         public SoundEffectInstance CreateTitleSound()
