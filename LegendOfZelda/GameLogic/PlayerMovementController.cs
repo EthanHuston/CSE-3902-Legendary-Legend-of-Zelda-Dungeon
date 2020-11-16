@@ -9,23 +9,18 @@ namespace LegendOfZelda.GameLogic
     class PlayerMovementController
     {
         private readonly IPlayer player;
-        private Dictionary<Keys, bool> moveKeysPressed;
         private Dictionary<Keys, ICommand> movementControlsDictionary;
-        private ICommand stopMovingCommand;
-        private Keys previousMovementKey;
-        bool keyPressedPreviously;
+        private readonly ICommand stopMovingCommand;
 
         public PlayerMovementController(IPlayer player, Dictionary<Constants.Direction, Keys[]> directionToKeys)
         {
             stopMovingCommand = new StopMovingCommand(player);
             this.player = player;
-            keyPressedPreviously = false;
             InitCommandDictionary(directionToKeys);
         }
 
         private void InitCommandDictionary(Dictionary<Constants.Direction, Keys[]> directionToKeys)
         {
-            moveKeysPressed = new Dictionary<Keys, bool>();
             movementControlsDictionary = new Dictionary<Keys, ICommand>();
             foreach (KeyValuePair<Constants.Direction, Keys[]> keyValuePair in directionToKeys)
                 RegisterMovementCommand(keyValuePair.Value, GetCommandFromDirection(keyValuePair.Key));
@@ -35,42 +30,23 @@ namespace LegendOfZelda.GameLogic
         {
             foreach (Keys key in keys)
             {
-                moveKeysPressed.Add(key, false);
                 movementControlsDictionary.Add(key, command);
             }
         }
 
         public void Update(KeyboardState keyboardState)
         {
-            Dictionary<Keys, bool> keysToUpdate = new Dictionary<Keys, bool>();
-            foreach (KeyValuePair<Keys, bool> keyValuePair in moveKeysPressed)
+            foreach(KeyValuePair<Keys, ICommand> keyValuePair in movementControlsDictionary)
             {
-                bool keyPressed = keyboardState.IsKeyDown(keyValuePair.Key);
-                if (keyPressed && previousMovementKey != keyValuePair.Key)
+                Keys key = keyValuePair.Key;
+                bool keyPressed = keyboardState.IsKeyDown(key);
+
+                if(keyPressed)
                 {
-                    previousMovementKey = keyValuePair.Key;
-                    movementControlsDictionary[keyValuePair.Key].Execute();
+                    movementControlsDictionary[key].Execute();
                     return;
                 }
-                keysToUpdate.Add(keyValuePair.Key, keyPressed);
             }
-
-            foreach (KeyValuePair<Keys, bool> keyValuePair in keysToUpdate)
-            {
-                moveKeysPressed[keyValuePair.Key] = keyValuePair.Value;
-            }
-
-            foreach (KeyValuePair<Keys, bool> keyValuePair in moveKeysPressed)
-            {
-                if (keyValuePair.Value)
-                {
-                    previousMovementKey = keyValuePair.Key;
-                    keyPressedPreviously = true;
-                    return; // if key pressed then return
-                }
-            }
-            keyPressedPreviously = false;
-            previousMovementKey = Keys.None;
             stopMovingCommand.Execute();
         }
 

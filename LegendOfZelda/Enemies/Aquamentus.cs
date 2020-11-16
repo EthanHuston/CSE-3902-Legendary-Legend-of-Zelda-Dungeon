@@ -48,14 +48,8 @@ namespace LegendOfZelda.Enemies
         {
             if (spawning)
             {
-                if (!spawnSprite.AnimationDone())
-                {
-                    spawnSprite.Update();
-                }
-                else
-                {
-                    spawning = false;
-                }
+                spawnSprite.Update();
+                spawning = !spawnSprite.AnimationDone();
             }
             else
             {
@@ -76,6 +70,21 @@ namespace LegendOfZelda.Enemies
                 sprite.Update();
 
                 CheckSafeToDespawn();
+            }
+            if (safeToDespawn)
+            {
+                SoundFactory.Instance.CreateBossScreamSound().Play();
+            }
+        }
+
+        public void ClockUpdate()
+        {
+            damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
+            CheckSafeToDespawn();
+            if (spawning)
+            {
+                spawnSprite.Update();
+                spawning = !spawnSprite.AnimationDone();
             }
             if (safeToDespawn)
             {
@@ -111,7 +120,7 @@ namespace LegendOfZelda.Enemies
             return safeToDespawn;
         }
 
-        public void CheckSafeToDespawn()
+        private void CheckSafeToDespawn()
         {
             safeToDespawn = safeToDespawn || health <= 0;
         }

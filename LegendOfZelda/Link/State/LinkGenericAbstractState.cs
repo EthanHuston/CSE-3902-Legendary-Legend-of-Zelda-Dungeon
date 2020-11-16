@@ -57,7 +57,7 @@ namespace LegendOfZelda.Link.State
 
         protected abstract void UpdateState();
 
-        public void StopMoving()
+        public virtual void StopMoving()
         {
             link.State = new LinkStandingStillState(link, damaged, healthyDateTime);
         }

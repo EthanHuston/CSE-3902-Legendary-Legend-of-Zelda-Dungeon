@@ -77,6 +77,7 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(blockType);
                     break;
                 case RoomConstants.Fire:
+                    position.X += RoomConstants.TileLength / 2;
                     blockType = new Fire(spriteBatch, position);
                     room.AllObjects.Spawn(blockType);
                     break;
@@ -132,6 +133,7 @@ namespace LegendOfZelda.Rooms
                     room.AllObjects.Spawn(npcType);
                     break;
                 case RoomConstants.OldMan:
+                    position.X += RoomConstants.TileLength / 2;
                     npcType = new OldMan(spriteBatch, position);
                     room.AllObjects.Spawn(npcType);
                     break;

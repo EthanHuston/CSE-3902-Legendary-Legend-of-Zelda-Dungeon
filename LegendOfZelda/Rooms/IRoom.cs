@@ -18,6 +18,7 @@ namespace LegendOfZelda.Rooms
         void Draw();
 
         void Update();
+        void ClockUpdate();
 
         bool ConnectRoom(IRoom newRoom, Constants.Direction direction);
 

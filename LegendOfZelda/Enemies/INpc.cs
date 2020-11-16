@@ -10,5 +10,6 @@ namespace LegendOfZelda.Enemies
         double GetDamageAmount();
         void Move(Vector2 correctDirection);
         void ResetSpawnCloud();
+        void ClockUpdate();
     }
 }

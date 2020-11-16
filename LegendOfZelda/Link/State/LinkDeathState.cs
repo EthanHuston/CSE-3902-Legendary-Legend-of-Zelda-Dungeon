@@ -46,7 +46,6 @@ namespace LegendOfZelda.Link.State
             {
                 link.BlockStateChange = false;
             }
-            
         }
     }
 }

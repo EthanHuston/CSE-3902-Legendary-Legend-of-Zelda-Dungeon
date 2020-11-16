@@ -1,12 +1,13 @@
 ﻿using LegendOfZelda.HUDClasses;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
     static class GameStateConstants
     {
         private const double gameScaler = Constants.GameScaler;
+
+        public const int ClockModeLengthMs = 5000;
 
         public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 232);
 

@@ -30,8 +30,9 @@ namespace LegendOfZelda
         public static Random RandomGenerator = new Random();
 
         // Wall Collision Rectangles
-        private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2 + (int)(8 * SpriteMultiplier);
-        private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2 + (int)(8 * SpriteMultiplier);
+        private const int upDownWallBlockLength = RoomWidth - RoomWidth / 2 - WallWidth / 2;
+        private const int rightLeftWallBlockLength = RoomHeight - RoomHeight / 2 - WallWidth / 2;
+        private const int wallBlockLengthBooster = (int)(8 * SpriteMultiplier);
         private const int wallBlockWidth = WallWidth;
         private const int rightSideWallBlockX = RightOfScreen - WallWidth;
         private const int rightTopBottomWallBlockX = RightOfScreen - upDownWallBlockLength;
@@ -39,14 +40,14 @@ namespace LegendOfZelda
         private const int upWallBlockY = HUDConstants.hudHeight;
         private const int downSideWallBlockY = BottomOfScreen - rightLeftWallBlockLength;
         private const int downBottomWallBlockY = BottomOfScreen - WallWidth;
-        public static Rectangle LeftUpWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
-        public static Rectangle LeftDownWallRectangle => new Rectangle(leftWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
-        public static Rectangle RightUpWallRectangle => new Rectangle(rightSideWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
-        public static Rectangle RightDownWallRectangle => new Rectangle(rightSideWallBlockX, downSideWallBlockY, wallBlockWidth, rightLeftWallBlockLength);
-        public static Rectangle UpLeftWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
-        public static Rectangle UpRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, upWallBlockY, upDownWallBlockLength, wallBlockWidth);
-        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
-        public static Rectangle DownRightWallRectangle => new Rectangle(rightTopBottomWallBlockX, downBottomWallBlockY, upDownWallBlockLength, wallBlockWidth);
+        public static Rectangle LeftUpWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength + wallBlockLengthBooster);
+        public static Rectangle LeftDownWallRectangle => new Rectangle(leftWallBlockX, downSideWallBlockY - wallBlockLengthBooster, wallBlockWidth, rightLeftWallBlockLength + wallBlockLengthBooster);
+        public static Rectangle RightUpWallRectangle => new Rectangle(rightSideWallBlockX, upWallBlockY, wallBlockWidth, rightLeftWallBlockLength + wallBlockLengthBooster);
+        public static Rectangle RightDownWallRectangle => new Rectangle(rightSideWallBlockX, downSideWallBlockY - wallBlockLengthBooster, wallBlockWidth, rightLeftWallBlockLength + wallBlockLengthBooster);
+        public static Rectangle UpLeftWallRectangle => new Rectangle(leftWallBlockX, upWallBlockY, upDownWallBlockLength + wallBlockLengthBooster, wallBlockWidth);
+        public static Rectangle UpRightWallRectangle => new Rectangle(rightTopBottomWallBlockX - wallBlockLengthBooster, upWallBlockY, upDownWallBlockLength + wallBlockLengthBooster, wallBlockWidth);
+        public static Rectangle DownLeftWallRectangle => new Rectangle(leftWallBlockX, downBottomWallBlockY, upDownWallBlockLength + wallBlockLengthBooster, wallBlockWidth);
+        public static Rectangle DownRightWallRectangle => new Rectangle(rightTopBottomWallBlockX - wallBlockLengthBooster, downBottomWallBlockY, upDownWallBlockLength + wallBlockLengthBooster, wallBlockWidth);
 
         // Secret Room Wall Rectangles
         private const int heightBooster = (int)(5 * Constants.GameScaler);

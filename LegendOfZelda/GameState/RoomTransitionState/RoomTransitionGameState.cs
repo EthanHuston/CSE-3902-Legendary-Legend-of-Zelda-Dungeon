@@ -35,6 +35,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             this.direction = direction;
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);
+            nextRoom.ResetRoom();
             
             initialMoveDistance = GetInitialMoveDistance(direction);
             distanceToMove = (int) initialMoveDistance.Length();
@@ -159,7 +160,6 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             UpdatePlayersPositions(UtilityMethods.InvertDirection(direction));
             UpdateObjectPositions(currentRoom, initialMoveDistance);
             roomGameState.CurrentRoom = nextRoom;
-            nextRoom.ResetRoom();
             roomGameState.StateEntryProcedure();
             Game.State = roomGameState;
         }
