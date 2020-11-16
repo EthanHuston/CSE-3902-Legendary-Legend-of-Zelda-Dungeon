@@ -1,6 +1,7 @@
 using LegendOfZelda.Enemies.Sprite;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Item;
 using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -315,6 +316,8 @@ namespace LegendOfZelda.Enemies
         public void Despawn()
         {
             safeToDespawn = true;
+            //if(boomerangActive)
+            itemSpawner.Spawn(new BoomerangItem(spriteBatch, position));
         }
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
