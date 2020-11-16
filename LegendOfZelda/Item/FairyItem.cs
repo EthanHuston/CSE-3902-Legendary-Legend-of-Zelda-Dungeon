@@ -48,6 +48,7 @@ namespace LegendOfZelda.Item
                 movementBuffer = 0;
                 ChooseDirection();
             }
+            sprite.Update();
         }
 
         protected override void CheckItemIsExpired()
