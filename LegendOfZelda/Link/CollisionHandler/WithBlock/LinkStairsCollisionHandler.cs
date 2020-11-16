@@ -10,7 +10,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithBlock
     {
         public void HandleCollision(IPlayer link, IBlock block, Constants.Direction side)
         {
-            SoundFactory.Instance.CreateStairsSound();
+            SoundFactory.Instance.CreateStairsSound().Play();
             ((RoomGameState)link.Game.State).MoveRoom(Constants.Direction.Stairs);
         }
     }
