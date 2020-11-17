@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Link;
+﻿using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -8,11 +7,11 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class HeartManager
     {
-        private LinkPlayer link;
+        private IPlayer link;
         private List<HUDHeart> hearts;
         private double linkHealth;
 
-        public HeartManager(LinkPlayer link)
+        public HeartManager(IPlayer link)
         {
             this.link = link;
             linkHealth = link.CurrentHealth;
