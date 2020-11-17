@@ -16,7 +16,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             if(bossRoom.AllObjects.NpcList.Count > 0)
             {
-                // TODO: play cool sound
+                SoundFactory.Instance.CreateBossScreamSound().Play();
             }
         }
 
