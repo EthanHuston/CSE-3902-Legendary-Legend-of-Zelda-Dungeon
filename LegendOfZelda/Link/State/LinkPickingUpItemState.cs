@@ -37,11 +37,6 @@ namespace LegendOfZelda.Link.State
                     spawnOffset = LinkConstants.PickingUpBowSpawnOffset;
                     SoundFactory.Instance.CreateFanfareSound().Play();
                     break;
-                case LinkConstants.ItemType.HeartContainer:
-                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpHeartContainerSprite();
-                    spawnOffset = LinkConstants.PickingUpHeartContainerSpawnOffset;
-                    SoundFactory.Instance.CreateFanfareSound().Play();
-                    break;
                 case LinkConstants.ItemType.Sword:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpSwordSprite();
                     spawnOffset = LinkConstants.PickingUpSwordSpawnOffset;
