@@ -30,10 +30,10 @@ Repo link: https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dun
 ### In Game
 |Action |Control   |
 |:-|:-:|
-|Walk Up | W |
-|Walk Down | S |
-|Walk Left | A |
-|Walk Right | D |
+|Walk Up | W or Up Arrow |
+|Walk Down | S or Down Arrow |
+|Walk Left | A or Left Arrow |
+|Walk Right | D or Right Arrow |
 |Use Primary | LMB or Q |
 |Use Secondary | RMB or E |
 |Open Inventory | Tab |
