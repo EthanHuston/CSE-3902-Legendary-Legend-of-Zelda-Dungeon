@@ -134,6 +134,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Square), new LinkImmovableBlockCollisionHandler() },
                 {typeof(RoomWall), new LinkImmovableBlockCollisionHandler() },
                 {typeof(BrickTile), new LinkImmovableBlockCollisionHandler() },
+                {typeof(SecretRoomWall), new LinkImmovableBlockCollisionHandler() },
 
                 // interactive blocks
                 {typeof(Fire), new LinkFireCollisionHandler() },
@@ -169,7 +170,7 @@ namespace LegendOfZelda.GameLogic
                 {typeof(Hand), new HandBlockCollisionHandler() },
                 {typeof(Jelly), new JellyBlockCollisionHandler() },
                 {typeof(Skeleton), new SkeletonBlockCollisionHandler() },
-                {typeof(SpikeTrap), new SpikeTrapBlockCollisionHandler() },
+                {typeof(SpikeTrap), new SpikeTrapBlockCollisionHandler() }
             };
         }
 

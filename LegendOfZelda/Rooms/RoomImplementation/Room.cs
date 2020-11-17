@@ -1,6 +1,7 @@
 using LegendOfZelda.Environment;
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Projectile;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -142,5 +143,14 @@ namespace LegendOfZelda.Rooms.RoomImplementation
             roomConnectionStrings.Add(direction, roomId);
         }
 
+        public virtual void RunRoomEntryProcedure()
+        { 
+        }
+
+        public virtual void RunRoomExitProcedure()
+        {
+            foreach (IProjectile projectile in AllObjects.ProjectileList) projectile.Despawn();
+            AllObjects.ProjectileList.Clear();
+        }
     }
 }

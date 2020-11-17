@@ -10,6 +10,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
         {
             link.IncreaseMaxHealth(Constants.HeartValue);
             item.Despawn();
+            SoundFactory.Instance.CreateFanfareSound().Play();
         }
     }
 }

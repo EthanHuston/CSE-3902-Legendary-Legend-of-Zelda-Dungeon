@@ -41,6 +41,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithBlock
                 blockType == typeof(Walls) ||
                 blockType == typeof(OpenedDoor) ||
                 blockType == typeof(LockedDoor) ||
+                blockType == typeof(BrickTile) ||
                 blockType == typeof(ShutDoor);
         }
     }

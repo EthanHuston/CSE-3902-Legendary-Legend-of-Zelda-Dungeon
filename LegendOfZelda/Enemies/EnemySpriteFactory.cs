@@ -20,7 +20,6 @@ namespace LegendOfZelda.Enemies
         private Texture2D skeletonSprite;
         private Texture2D spikeTrapSprite;
         private Texture2D oldManSprite;
-        private Texture2D merchantSprite;
         private Texture2D spawnSprite;
 
         public static EnemySpriteFactory Instance { get; } = new EnemySpriteFactory();

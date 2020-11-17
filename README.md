@@ -9,6 +9,7 @@ Repo link: https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dun
 ### Contents
 - [Sprint 2/](docs/sprint2)
 - [Sprint 3/](docs/sprint3)
+- [Sprint 4/](docs/sprint4)
 - [Code/](LegendOfZelda)
 
 ### Team
@@ -20,28 +21,21 @@ Repo link: https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dun
 
 ---
 ## Controls
-### General
+### Main Menu
 |Action | Control |
 |:-|:-:|
-|Quit Game | Q |
-|Reset Game | R |
-|Switch Room | Click on door with LMB |
+|Quit Game | Esc |
+|Start Game | LMB |
 
-### Link
+### In Game
 |Action |Control   |
 |:-|:-:|
-|Walk Up | W |
-|Walk Down | S |
-|Walk Left | A |
-|Walk Right | D |
-|Use Sword | Z or N |
-|Damage Link | E |
-|Pick Up Heart Container | 1 |
-|Pick Up Triforce Piece | 2 |
-|Pick Up Bow | 3 |
-|Use Bow | 4 |
-|Pick Up Boomerang | 5 |
-|Use Boomerang | 6 |
-|Use Bomb | 7 |
-|Use Sword Beam | 8 | 
-
+|Walk Up | W or Up Arrow |
+|Walk Down | S or Down Arrow |
+|Walk Left | A or Left Arrow |
+|Walk Right | D or Right Arrow |
+|Use Primary | LMB or Q |
+|Use Secondary | RMB or E |
+|Open Inventory | Tab |
+|Change Secondary | LMB in Inventory |
+|Pause | Esc |

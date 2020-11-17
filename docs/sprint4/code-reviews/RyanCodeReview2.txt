@@ -1,0 +1,10 @@
+Ryan Stuckey
+11/16/2020
+Sprint 4
+HUDNumber.cs
+Chris Lenart
+7 minutes
+Readability
+Overall pretty good. Method signatures names are descriptive yet to the point. However, there are some magic numbers in the AssignNumber method that you have to look at for a bit before understanding what is going on. But, other than that small issue, readability is good.
+Maintainability
+Maintainability is great! The class is very reuseable, as it is used across the game to draw numbers in various places, like the HUD. The coupling is great as it has few dependencies. Cohesion is also great as the class does exactly what it needs to while also not doing too much.

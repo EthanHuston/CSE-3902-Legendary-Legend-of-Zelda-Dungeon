@@ -38,10 +38,10 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         private void SpawnWalls()
         {
-            AllObjects.Spawn(new RoomWall(RoomConstants.LeftWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.MiddleWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.RightWallRectangle));
-            AllObjects.Spawn(new RoomWall(RoomConstants.TopWallRectangle));
+            AllObjects.Spawn(new SecretRoomWall(RoomConstants.LeftWallRectangle));
+            AllObjects.Spawn(new SecretRoomWall(RoomConstants.MiddleWallRectangle));
+            AllObjects.Spawn(new SecretRoomWall(RoomConstants.RightWallRectangle));
+            AllObjects.Spawn(new SecretRoomWall(RoomConstants.TopWallRectangle));
 
             AllObjects.Spawn(new RoomChangeTrigger(Constants.Direction.Stairs, RoomConstants.SecretRoomRoomChangeTrigger));
         }

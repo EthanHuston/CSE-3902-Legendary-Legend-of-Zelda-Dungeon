@@ -1,0 +1,10 @@
+Ryan Stuckey
+11/16/2020
+Sprint 4
+HeartManager.cs
+Chris Lenart
+9 minutes
+Readability
+Very well done. Methods are short and to the point. Variable names are good and are assigned as constants/readonly with proper visibility. Variable and method names work to self-document code.
+Maintainability
+Maintainability is great as well. The class has great cohesion and fits in nicely when it is used, ensuring is can be used in multiple places as necessary. Coupling is also good, as it makes use of interfaces where possible to ensure it can be reused with multiple classes.

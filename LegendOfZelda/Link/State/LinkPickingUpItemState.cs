@@ -23,6 +23,11 @@ namespace LegendOfZelda.Link.State
             switch (itemType)
             {
                 case LinkConstants.ItemType.Boomerang:
+                    if (link.GetQuantityInInventory(LinkConstants.ItemType.Boomerang) > 1)
+                    {
+                        StopMovingLocal();
+                        break;
+                    }
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
                     spawnOffset = LinkConstants.PickingUpBoomerangSpawnOffset;
                     SoundFactory.Instance.CreateGetItemSound().Play();
@@ -30,11 +35,6 @@ namespace LegendOfZelda.Link.State
                 case LinkConstants.ItemType.Bow:
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBowSprite();
                     spawnOffset = LinkConstants.PickingUpBowSpawnOffset;
-                    SoundFactory.Instance.CreateFanfareSound().Play();
-                    break;
-                case LinkConstants.ItemType.HeartContainer:
-                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpHeartContainerSprite();
-                    spawnOffset = LinkConstants.PickingUpHeartContainerSpawnOffset;
                     SoundFactory.Instance.CreateFanfareSound().Play();
                     break;
                 case LinkConstants.ItemType.Sword:

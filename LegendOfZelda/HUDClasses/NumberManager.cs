@@ -26,7 +26,7 @@ namespace LegendOfZelda.HUDClasses
             numKeys = new HUDNumber[3];
             numBombs = new HUDNumber[3];
 
-            //-1 assings the HUDNumber to the "X"
+            //-1 assigns the HUDNumber to the "X"
             numRupees[0] = new HUDNumber(-1);
             numKeys[0] = new HUDNumber(-1);
             numBombs[0] = new HUDNumber(-1);

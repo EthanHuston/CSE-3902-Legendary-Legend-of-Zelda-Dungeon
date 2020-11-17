@@ -86,6 +86,7 @@
     <Compile Include="Environment\OldBackground.cs" />
     <Compile Include="Environment\DragonStatues.cs" />
     <Compile Include="Environment\IDoor.cs" />
+    <Compile Include="Environment\SecretRoomWall.cs" />
     <Compile Include="Environment\Sprite\OldBackgroundSprite.cs" />
     <Compile Include="Environment\Sprite\DragonStatueSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />
@@ -341,6 +342,7 @@
     <Compile Include="Utility\UtilityMethods.cs" />
     <Compile Include="GameState\ItemSelectionState\KeyboardController.cs" />
     <Compile Include="GameState\ItemSelectionState\MouseController.cs" />
+    <Compile Include="Rooms\RoomImplementation\RoomBeforeBoss.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\RoomData\Room1.csv">

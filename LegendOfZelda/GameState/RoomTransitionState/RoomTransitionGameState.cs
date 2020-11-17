@@ -159,9 +159,13 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         {
             UpdatePlayersPositions(UtilityMethods.InvertDirection(direction));
             UpdateObjectPositions(currentRoom, initialMoveDistance);
+
+            currentRoom.RunRoomExitProcedure();
+            nextRoom.RunRoomEntryProcedure();
+
             roomGameState.CurrentRoom = nextRoom;
-            roomGameState.StateEntryProcedure();
             Game.State = roomGameState;
+            roomGameState.CurrentRoom.RunRoomEntryProcedure();
         }
 
         public void SwitchToWinState()
