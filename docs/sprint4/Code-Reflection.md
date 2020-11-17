@@ -1,8 +1,8 @@
 # Code Maintainability, Readability, and Analysis
-Overall, we are happy with our code maintainability. We found that the state the code was in from Sprint 3 allowed us to implement new features with ease. Many of the methods or frameworks that we needed were already were already available from previous features within the game.
+Overall, we are happy with our code maintainability. We found that the state the code was in from Sprint 3 allowed us to implement new features with ease, while also keeping ahold of our group's project goals. Many of the methods or frameworks that we needed were already were already available from previous features within the game.
 
 ### Warnings and Errors
-This Sprint, we had much less warnings than previous Sprints as we learned proper coding style and when to apply certain modifiers like readonly, private, or const. Most of the errors that we had came from logical errors, like certain features not working during the game or the game crashing due to null pointer exceptions. Throughout the code, we have objects that are referred to by multiple variables. Because of this, we had to ensure we were performing null checks when we called methods on many objects. 
+This Sprint, we had much less warnings than previous Sprints as we learned proper coding style and when to apply certain modifiers, like readonly, private, or const. Most of the errors that we had came from logical errors, like certain features not working during the game or the game crashing due to null pointer exceptions. Throughout the code, we have objects that are referred to by multiple variables. Because of this, we had to ensure we were performing null checks when we called methods on many objects. 
 
 Some of the other errors also appeared as we implemented more features. One example was the hearts in the HUD. Previously, we did not have the heart container implemented. However, after implementing the heart container, we found that Link's max health would increase, but this would not be reflected in the HUD. This was a fairly simple fix, as we just had to add another heart and draw it anytime Link's max health changed.
 
