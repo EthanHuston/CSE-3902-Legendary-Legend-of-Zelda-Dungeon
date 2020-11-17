@@ -70,9 +70,9 @@ namespace LegendOfZelda.GameState
         {
             return new GameStateSprite(mainMenuButtonSprite);
         }
-        public ITextureAtlasSprite CreateTitleScreenBackgroundSprite()
+        public ISprite CreateTitleScreenBackgroundSprite()
         {
-            return new GameStateTextureAtlasSprite(titleScreenBackgroundSprite);
+            return new MainMenuSprite(titleScreenBackgroundSprite);
         }
         public ISprite CreateInventoryBackgroundSprite()
         {

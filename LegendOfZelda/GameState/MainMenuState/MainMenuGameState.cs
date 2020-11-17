@@ -8,7 +8,7 @@ namespace LegendOfZelda.GameState.MainMenu
 {
     class MainMenuGameState : AbstractGameState
     {
-        private readonly ITextureAtlasSprite backgroundSprite;
+        private readonly ISprite backgroundSprite;
         private SoundEffectInstance titleSound;
 
         public MainMenuGameState(Game1 game)
@@ -29,7 +29,7 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public override void Draw()
         {
-            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, GameStateConstants.MainMenuTextureMapSource, Constants.DrawLayer.Menu);
+            backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, Constants.DrawLayer.Menu);
         }
 
         public override void SwitchToRoomState()
@@ -53,6 +53,7 @@ namespace LegendOfZelda.GameState.MainMenu
         protected override void NormalStateUpdate()
         {
             foreach (IController controller in controllerList) controller.Update();
+            backgroundSprite.Update();
         }
 
         protected override void SwitchingStateUpdate()

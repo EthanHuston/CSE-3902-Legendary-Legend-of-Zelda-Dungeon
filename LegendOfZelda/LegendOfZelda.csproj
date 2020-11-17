@@ -149,6 +149,7 @@
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\RoomsState\MouseController.cs" />
+    <Compile Include="GameState\Sprite\MainMenuSprite.cs" />
     <Compile Include="GameState\Sprite\RedOverlaySprite.cs" />
     <Compile Include="HUDClasses\ItemsManager.cs" />
     <Compile Include="HUDClasses\MinimapManager.cs" />
