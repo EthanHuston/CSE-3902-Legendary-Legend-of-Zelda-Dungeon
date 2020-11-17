@@ -3,10 +3,8 @@ using LegendOfZelda.Environment;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Item;
-using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
-using System.CodeDom;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic

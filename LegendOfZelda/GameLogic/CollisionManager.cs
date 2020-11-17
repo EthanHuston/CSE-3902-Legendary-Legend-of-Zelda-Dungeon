@@ -106,7 +106,6 @@ namespace LegendOfZelda.GameLogic
         private void CheckIntersectionAndHandleCollision(IPlayer player, IItem item)
         {
             Rectangle collisionFound = Rectangle.Intersect(player.GetRectangle(), item.GetRectangle());
-            if (typeof(KeyItem) == item.GetType() && spawnableManager.NpcList.Count > 0) return;
             if (!collisionFound.IsEmpty)
             {
                 Constants.Direction side = UtilityMethods.GetCollisionDirection(player.GetRectangle(), item.GetRectangle(), collisionFound);
