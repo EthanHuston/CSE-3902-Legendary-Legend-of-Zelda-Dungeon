@@ -1,6 +1,6 @@
 # docs/sprint4
 ## General Notes
-
+Overall this sprint went better than sprint 3. We did work up until the due date, but we also implemented a more features relative to sprint 3. As we implemented new features, we found that our maintainability that we had from previous sprints allowed us to implement new feature relatively easily.
 
 ---
 ## Contents
