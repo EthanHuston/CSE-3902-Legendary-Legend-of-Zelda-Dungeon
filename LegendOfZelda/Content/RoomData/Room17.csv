@@ -1,8 +1,8 @@
-﻿roomNormal,room17,2,5,,,,,,,,
+﻿roomWithKey,room17,2,5,,,,,,,,
 small,tealBack,roomBorder,,,,,,,,,
 ,,room13,room16,,,,,,,,
 wall,wall,locked,locked,,,,,,,,
----,---,---,---,---,---,---,goriya,---,---,---,---
+---,---,---,---,---,---,---,goriya,---,---,---,key
 ---,water,water,water,---,---,---,---,water,water,water,---
 ---,water,---,---,---,---,goriya,---,---,---,water,---
 ---,water,---,water,water,water,water,water,water,---,water,---
