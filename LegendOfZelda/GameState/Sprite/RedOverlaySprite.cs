@@ -1,18 +1,13 @@
 ﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Sprite
 {
-    class RedOverlaySprite : ISprite
+    internal class RedOverlaySprite : ISprite
     {
-        private Texture2D sprite;
+        private readonly Texture2D sprite;
         public RedOverlaySprite(Texture2D sprite)
         {
             this.sprite = sprite;
@@ -25,7 +20,7 @@ namespace LegendOfZelda.GameState.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(RoomConstants.RoomWidth), (int)(RoomConstants.RoomHeight));
+            Rectangle destinationRectangle = new Rectangle(position.X, position.Y, RoomConstants.RoomWidth, RoomConstants.RoomHeight);
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White * .6f, layer);
         }

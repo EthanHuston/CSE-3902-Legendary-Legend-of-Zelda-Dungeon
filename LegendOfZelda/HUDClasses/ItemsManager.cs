@@ -1,7 +1,5 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Rooms;
-using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,11 +9,11 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class ItemsManager
     {
-        private HUD hud;
-        private SpriteBatch spriteBatch;
-        private LinkConstants.ItemType primaryItem;
+        private readonly HUD hud;
+        private readonly SpriteBatch spriteBatch;
+        private readonly LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
-        private IButton primaryButton;
+        private readonly IButton primaryButton;
         private IButton secondaryButton;
 
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;

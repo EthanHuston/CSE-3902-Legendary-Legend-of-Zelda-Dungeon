@@ -1,19 +1,14 @@
 ﻿using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.GameState.GameWinState
 {
-    class Curtain
+    internal class Curtain
     {
-        private SpriteBatch spriteBatch;
-        private ISprite blackOverlaySpriteLeft;
-        private ISprite blackOverlaySpriteRight;
+        private readonly SpriteBatch spriteBatch;
+        private readonly ISprite blackOverlaySpriteLeft;
+        private readonly ISprite blackOverlaySpriteRight;
         private Point leftPos;
         private Point rightPos;
 

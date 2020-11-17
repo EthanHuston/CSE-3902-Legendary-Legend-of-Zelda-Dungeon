@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomWithKey : Room
+    internal class RoomWithKey : Room
     {
         private IItem key;
         private bool spawnedKey;
@@ -17,7 +17,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public override void Update()
         {
-            if(!spawnedKey && AllObjects.NpcList.Count == 0 && key != null)
+            if (!spawnedKey && AllObjects.NpcList.Count == 0 && key != null)
             {
                 AllObjects.Spawn(key);
                 spawnedKey = true;
@@ -29,9 +29,9 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private void RemoveKeyFromRoom()
         {
             int keyIndex = -1;
-            for(int i = 0; i < AllObjects.ItemList.Count; i++)
+            for (int i = 0; i < AllObjects.ItemList.Count; i++)
             {
-                if(typeof(KeyItem) == AllObjects.ItemList[i].GetType())
+                if (typeof(KeyItem) == AllObjects.ItemList[i].GetType())
                 {
                     keyIndex = i;
                     break;
@@ -46,7 +46,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public override void RunRoomEntryProcedure()
         {
-            if(!spawnedKey) RemoveKeyFromRoom();
+            if (!spawnedKey) RemoveKeyFromRoom();
         }
     }
 }

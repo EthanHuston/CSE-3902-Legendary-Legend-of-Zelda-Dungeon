@@ -10,8 +10,8 @@ namespace LegendOfZelda.GameState.MainMenu
         private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;
         private List<Keys> repeatableKeys;
-        private ICommand exitGameCommand;
-        private ICommand startGameCommand;
+        private readonly ICommand exitGameCommand;
+        private readonly ICommand startGameCommand;
 
         public KeyboardController(IGameState gameState)
         {

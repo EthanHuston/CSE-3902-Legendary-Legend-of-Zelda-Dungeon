@@ -6,7 +6,7 @@ using LegendOfZelda.Rooms;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {
-    class LinkRoomChangeTriggerCollisionHandler : ICollisionHandler<IPlayer, IBlock>
+    internal class LinkRoomChangeTriggerCollisionHandler : ICollisionHandler<IPlayer, IBlock>
     {
         public void HandleCollision(IPlayer link, IBlock roomChangeTrigger, Constants.Direction side)
         {

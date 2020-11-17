@@ -3,7 +3,7 @@ using LegendOfZelda.GameLogic;
 
 namespace LegendOfZelda.Projectile.CollisionHandler
 {
-    class BombDoorCollisionHandler : ICollisionHandler<IProjectile, IBlock>
+    internal class BombDoorCollisionHandler : ICollisionHandler<IProjectile, IBlock>
     {
         public void HandleCollision(IProjectile projectile, IBlock block, Constants.Direction side)
         {

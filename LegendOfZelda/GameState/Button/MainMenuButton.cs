@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class MainMenuButton : IButton
+    internal class MainMenuButton : IButton
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameLogic
 {
-    class PlayerMovementController
+    internal class PlayerMovementController
     {
         private readonly IPlayer player;
         private Dictionary<Keys, ICommand> movementControlsDictionary;
@@ -36,12 +36,12 @@ namespace LegendOfZelda.GameLogic
 
         public void Update(KeyboardState keyboardState)
         {
-            foreach(KeyValuePair<Keys, ICommand> keyValuePair in movementControlsDictionary)
+            foreach (KeyValuePair<Keys, ICommand> keyValuePair in movementControlsDictionary)
             {
                 Keys key = keyValuePair.Key;
                 bool keyPressed = keyboardState.IsKeyDown(key);
 
-                if(keyPressed)
+                if (keyPressed)
                 {
                     movementControlsDictionary[key].Execute();
                     return;

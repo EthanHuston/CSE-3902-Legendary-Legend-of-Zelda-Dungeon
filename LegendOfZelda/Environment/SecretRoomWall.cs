@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Environment
 {
-    class SecretRoomWall : RoomWall
+    internal class SecretRoomWall : RoomWall
     {
         public SecretRoomWall(Rectangle positionRectangle) : base(positionRectangle) { }
     }

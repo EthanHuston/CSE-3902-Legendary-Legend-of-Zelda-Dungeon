@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    interface IRoom
+    internal interface IRoom
     {
         string RoomId { get; set; }
         bool Visiting { get; set; }

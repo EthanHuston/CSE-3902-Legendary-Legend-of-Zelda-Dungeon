@@ -4,7 +4,6 @@ using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Projectile;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -13,7 +12,7 @@ namespace LegendOfZelda.Enemies
     internal class Aquamentus : INpc
     {
         private IDamageableSprite sprite;
-        private SpawnSprite spawnSprite;
+        private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private readonly int vx = 1;
         private int updateCount = 0;
@@ -28,9 +27,9 @@ namespace LegendOfZelda.Enemies
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
-        private IPlayer link;
+        private readonly IPlayer link;
         private double attackAngle;
-        private double angleOffset = Math.PI / 6;
+        private readonly double angleOffset = Math.PI / 6;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }

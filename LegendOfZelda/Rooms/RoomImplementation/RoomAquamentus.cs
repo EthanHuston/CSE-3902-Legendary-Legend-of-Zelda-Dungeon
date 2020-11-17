@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomAquamentus : Room
+    internal class RoomAquamentus : Room
     {
         private bool openedDoor;
         private readonly IItem heartContainer;

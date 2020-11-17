@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.Link.Interface;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomBeforeBoss : Room
+    internal class RoomBeforeBoss : Room
     {
         private const string bossRoomName = "room14";
         private IRoom bossRoom;
@@ -14,7 +14,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public override void RunRoomEntryProcedure()
         {
-            if(bossRoom.AllObjects.NpcList.Count > 0)
+            if (bossRoom.AllObjects.NpcList.Count > 0)
             {
                 SoundFactory.Instance.CreateBossScreamSound().Play();
             }

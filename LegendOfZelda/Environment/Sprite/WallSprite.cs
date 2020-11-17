@@ -38,7 +38,7 @@ namespace LegendOfZelda.Environment.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int) (width * Constants.GameScaler), (int) (height * Constants.GameScaler));
+            return new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
         }
 
         public void Update()

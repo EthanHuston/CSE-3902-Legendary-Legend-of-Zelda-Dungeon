@@ -80,7 +80,7 @@ namespace LegendOfZelda.Link.State
         {
             if (link.CurrentSprite.FinishedAnimation())
             {
-                
+
                 link.BlockStateChange = false;
                 StopMovingLocal();
             }

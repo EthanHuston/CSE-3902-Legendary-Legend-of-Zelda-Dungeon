@@ -13,7 +13,7 @@ namespace LegendOfZelda.Environment
         private bool safeToDespawn;
         private int textureMapRow;
         private const int textureMapColumn = 0;
-        private Constants.Direction side;
+        private readonly Constants.Direction side;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }

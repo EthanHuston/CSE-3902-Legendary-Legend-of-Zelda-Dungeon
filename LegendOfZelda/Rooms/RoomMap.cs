@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.ItemSelectionState;
-using LegendOfZelda.GameState.Sprite;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms
 {
-    class RoomMap : IMenu
+    internal class RoomMap : IMenu
     {
         private readonly List<IRoom> roomsInMap;
         private readonly ITextureAtlasSprite roomIconSprite;
@@ -37,7 +36,7 @@ namespace LegendOfZelda.Rooms
                 Point drawLocation = new Point(
                     Position.X + (int)(room.LocationOnMap.X * sourceRectangleSize.X * Constants.GameScaler),
                     Position.Y + (int)((MapGridSize.Y - room.LocationOnMap.Y) * sourceRectangleSize.Y * Constants.GameScaler) - (int)(sourceRectangleSize.Y * Constants.GameScaler));
-                
+
                 roomIconSprite.Draw(spriteBatch, drawLocation, spriteSourceRectangles[room.RoomType], Constants.DrawLayer.MapIcon);
                 if (room.Visiting && room.LocationOnMap.X != -1) roomIconSprite.Draw(spriteBatch, drawLocation + ItemSelectionStateConstants.RoomMarkerDrawOffset, GameStateConstants.RoomMarkerTextureAtlasSource, Constants.DrawLayer.MapMarker);
             }

@@ -179,7 +179,7 @@ namespace LegendOfZelda.GameState.Rooms
             else CurrentRoom.Update();
 
             if (PlayerList[0].SafeToDespawn()) SwitchToDeathState();
-            
+
             Hud.Update();
         }
 

@@ -51,7 +51,7 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int) (frameWidth * Constants.GameScaler), (int) (frameHeight * Constants.GameScaler));
+            return new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
         }
     }
 }

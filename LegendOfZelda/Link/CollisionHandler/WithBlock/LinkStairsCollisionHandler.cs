@@ -2,7 +2,6 @@
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
-using System;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithBlock
 {

@@ -28,7 +28,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public Room(List<IPlayer> playerList)
         {
             AllObjects = new SpawnableManager(playerList);
-            
+
             roomDictionary = new Dictionary<Constants.Direction, IRoom>();
             roomDoors = new Dictionary<Constants.Direction, IDoor>();
             roomConnectionStrings = new Dictionary<Constants.Direction, string>();
@@ -131,7 +131,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public virtual void FinalizeRoomConnections(Dictionary<string, IRoom> roomIdToRoomDictionary)
         {
-            foreach(KeyValuePair<Constants.Direction, string> keyValuePair in roomConnectionStrings)
+            foreach (KeyValuePair<Constants.Direction, string> keyValuePair in roomConnectionStrings)
             {
                 ConnectRoom(roomIdToRoomDictionary[keyValuePair.Value], keyValuePair.Key);
             }
@@ -144,7 +144,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         }
 
         public virtual void RunRoomEntryProcedure()
-        { 
+        {
         }
 
         public virtual void RunRoomExitProcedure()

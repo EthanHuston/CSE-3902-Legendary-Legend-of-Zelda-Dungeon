@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomBeforeSecretRoom : RoomWithMovableSquare
+    internal class RoomBeforeSecretRoom : RoomWithMovableSquare
     {
         public RoomBeforeSecretRoom(List<IPlayer> playerList) : base(playerList) { }
 

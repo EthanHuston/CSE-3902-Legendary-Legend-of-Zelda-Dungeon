@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    static class ItemSelectionStateConstants
+    internal static class ItemSelectionStateConstants
     {
         private const double gameScaler = Constants.GameScaler;
 
@@ -26,7 +26,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public static Point RingHudLocation => new Point((int)(164 * Constants.GameScaler), (int)(24 * Constants.GameScaler));
         public static Point LadderHudLocation => new Point((int)(176 * Constants.GameScaler), (int)(24 * Constants.GameScaler));
         public static Point KeyMagicHudLocation => new Point((int)(196 * Constants.GameScaler), (int)(24 * Constants.GameScaler));
-        public static Point PowerBraceletHudLocation => new Point((int)(208 * Constants.GameScaler), (int)24);
+        public static Point PowerBraceletHudLocation => new Point((int)(208 * Constants.GameScaler), 24);
         public static Point BoomerangHudLocation => new Point((int)(132 * Constants.GameScaler), (int)(48 * Constants.GameScaler));
         public static Point BombHudLocation => new Point((int)(156 * Constants.GameScaler), (int)(48 * Constants.GameScaler));
         public static Point ArrowHudLocation => new Point((int)(176 * Constants.GameScaler), (int)(48 * Constants.GameScaler));

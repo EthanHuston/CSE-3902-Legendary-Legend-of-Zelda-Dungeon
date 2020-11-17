@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Sprite
 {
-    class MainMenuSprite : ISprite
+    internal class MainMenuSprite : ISprite
     {
         private readonly Texture2D sprite;
         private const int frameUpdateDelay = 30;

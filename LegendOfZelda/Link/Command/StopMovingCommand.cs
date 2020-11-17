@@ -3,7 +3,7 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {
-    class StopMovingCommand : ICommand
+    internal class StopMovingCommand : ICommand
     {
         private readonly IPlayer link;
 

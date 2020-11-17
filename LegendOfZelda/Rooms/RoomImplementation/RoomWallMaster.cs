@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomWallMaster : RoomBeforeBoss
+    internal class RoomWallMaster : RoomBeforeBoss
     {
         private const string roomIdToJumpTo = "startRoom";
         private const int wallMasterSpawnDelay = 80;

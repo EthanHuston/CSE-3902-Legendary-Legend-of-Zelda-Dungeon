@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomWithMovableSquare : Room
+    internal class RoomWithMovableSquare : Room
     {
         protected MovableSquare movableSquare;
 

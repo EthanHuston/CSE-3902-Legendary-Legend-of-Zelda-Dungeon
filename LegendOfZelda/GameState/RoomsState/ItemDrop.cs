@@ -1,22 +1,17 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link;
-using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.GameState.RoomsState
 {
-    class ItemDrop
+    internal class ItemDrop
     {
-        private const int rupeeDrop = 150, bombDrop = 300, heartDrop = 350, clockDrop = 380, fairyDrop = 390, maxDrop = 401; 
-        private Random rand = RoomConstants.RandomGenerator;
-        private ISpawnableManager spawnableManager;
-        private LinkPlayer player;
+        private const int rupeeDrop = 150, bombDrop = 300, heartDrop = 350, clockDrop = 380, fairyDrop = 390, maxDrop = 401;
+        private readonly Random rand = RoomConstants.RandomGenerator;
+        private readonly ISpawnableManager spawnableManager;
+        private readonly LinkPlayer player;
 
         public ItemDrop(ISpawnableManager spawnableManager)
         {

@@ -68,7 +68,7 @@ namespace LegendOfZelda.Enemies
                 else
                 {
                     knockbackDist++;
-                    if(knockbackDist > 40)
+                    if (knockbackDist > 40)
                     {
                         SetKnockBack(false, Constants.Direction.None);
                         knockbackDist = 0;

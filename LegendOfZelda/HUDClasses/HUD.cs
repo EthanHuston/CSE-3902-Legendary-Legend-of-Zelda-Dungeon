@@ -10,13 +10,13 @@ namespace LegendOfZelda.HUDClasses
     internal class HUD : IMenu
     {
         public RoomGameState roomGameState;
-        private SpriteBatch spriteBatch;
-        private ISprite hudSprite;
-        private HeartManager heartManager;
-        private NumberManager numberManager;
-        private MinimapManager minimapManager;
-        private ItemsManager itemsManager;
-        private HUDNumber levelNum;
+        private readonly SpriteBatch spriteBatch;
+        private readonly ISprite hudSprite;
+        private readonly HeartManager heartManager;
+        private readonly NumberManager numberManager;
+        private readonly MinimapManager minimapManager;
+        private readonly ItemsManager itemsManager;
+        private readonly HUDNumber levelNum;
         private Point position;
         public Point Position { get => position; set => position = new Point(value.X, value.Y); }
 

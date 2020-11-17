@@ -3,12 +3,11 @@ using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class SecretRoom : Room
+    internal class SecretRoom : Room
     {
         public SecretRoom(List<IPlayer> playerList)
         {

@@ -58,7 +58,7 @@ namespace LegendOfZelda.Enemies
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
-                if(boomerangActive)
+                if (boomerangActive)
                     itemSpawner.Spawn(new BoomerangItem(spriteBatch, boomer.Position));
                 if (boomer != null)
                     boomer.Despawn();
@@ -89,7 +89,7 @@ namespace LegendOfZelda.Enemies
                 else
                 {
                     knockbackDist++;
-                    if(knockbackDist > 40)
+                    if (knockbackDist > 40)
                     {
                         knockbackDist = 0;
                         SetKnockBack(false, Constants.Direction.None);
@@ -161,25 +161,25 @@ namespace LegendOfZelda.Enemies
         }
         private void MoveKnockback(Constants.Direction direction)
         {
-                inKnockback = true;
-                switch (direction)
-                {
-                    case Constants.Direction.Up: // Up
-                        position.Y -= velocity * 4;
-                        break;
-                    case Constants.Direction.Down: // Down
-                        position.Y += velocity * 4;
-                        break;
-                    case Constants.Direction.Left: // Left
-                        position.X -= velocity * 4;
-                        break;
-                    case Constants.Direction.Right: // Right
-                        position.X += velocity * 4;
-                        break;
-                    default:
-                        break;
-                }
-            
+            inKnockback = true;
+            switch (direction)
+            {
+                case Constants.Direction.Up: // Up
+                    position.Y -= velocity * 4;
+                    break;
+                case Constants.Direction.Down: // Down
+                    position.Y += velocity * 4;
+                    break;
+                case Constants.Direction.Left: // Left
+                    position.X -= velocity * 4;
+                    break;
+                case Constants.Direction.Right: // Right
+                    position.X += velocity * 4;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void ChangeDirection()

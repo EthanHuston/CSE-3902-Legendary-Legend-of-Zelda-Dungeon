@@ -1,7 +1,6 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.Interface;
-using System;
 
 namespace LegendOfZelda.Link.CollisionHandler.WithItem
 {

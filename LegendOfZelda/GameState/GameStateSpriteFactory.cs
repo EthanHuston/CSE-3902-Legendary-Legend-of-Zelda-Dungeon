@@ -1,6 +1,4 @@
-﻿
-using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Sprite;
+﻿using LegendOfZelda.GameState.Sprite;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

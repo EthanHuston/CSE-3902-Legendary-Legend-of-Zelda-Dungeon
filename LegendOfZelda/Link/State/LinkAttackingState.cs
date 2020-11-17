@@ -36,7 +36,7 @@ namespace LegendOfZelda.Link.State
             link.Velocity = Vector2.Zero;
             link.SpawnItem(new SwordAttackingProjectile(link.Game.SpriteBatch, new Point(link.Position.X, link.Position.Y) + spawnOffset, link.FacingDirection, Constants.ProjectileOwner.Link));
 
-            if (link.CurrentHealth >= link.MaxHealth &&  link.CanSpawnProjectile(LinkConstants.ProjectileType.SwordBeam))
+            if (link.CurrentHealth >= link.MaxHealth && link.CanSpawnProjectile(LinkConstants.ProjectileType.SwordBeam))
             {
                 link.SpawnItem(new SwordBeamFlyingProjectile(link.Game.SpriteBatch, link.Position + LinkConstants.ShootingSwordBeamSpawnOffset, Constants.ProjectileOwner.Link, link.FacingDirection));
                 SoundFactory.Instance.CreateSwordCombinedSound().Play();

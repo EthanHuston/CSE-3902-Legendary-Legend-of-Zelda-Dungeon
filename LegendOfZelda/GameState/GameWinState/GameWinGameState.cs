@@ -1,21 +1,17 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.GameState.Rooms;
-using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameWinState
 {
-    class GameWinGameState : AbstractGameState
+    internal class GameWinGameState : AbstractGameState
     {
         private readonly RoomGameState roomStatePreserved;
-        private SpawnableManager spawnableManager;
-        private SoundEffectInstance win;
-        private SoundEffectInstance refill;
-        private Curtain curtain;
+        private readonly SpawnableManager spawnableManager;
+        private readonly SoundEffectInstance win;
+        private readonly SoundEffectInstance refill;
+        private readonly Curtain curtain;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -81,7 +77,7 @@ namespace LegendOfZelda.GameState.GameWinState
                     phaseOne = false;
                     phaseTwo = true;
                 }
-                
+
             }
             else if (phaseTwo)
             {

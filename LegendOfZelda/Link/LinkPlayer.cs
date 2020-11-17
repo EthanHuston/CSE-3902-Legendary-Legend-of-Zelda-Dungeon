@@ -58,7 +58,7 @@ namespace LegendOfZelda.Link
             safeToDespawn = safeToDespawn || CurrentHealth <= 0;
             State.Update();
             if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
-            if(CurrentHealth <= Constants.HeartValue && CurrentHealth > 0)
+            if (CurrentHealth <= Constants.HeartValue && CurrentHealth > 0)
             {
                 lowHealth.Play();
             }
@@ -133,7 +133,7 @@ namespace LegendOfZelda.Link
             ((RoomGameState)Game.State).SpawnableManager.Spawn(projectile);
             currentProjectiles[projectile.GetProjectileType()] = projectile;
         }
-        
+
         public void Move(int distance, Vector2 velocity)
         {
             Mover.MoveDistance(distance, velocity);

@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.Rooms
 {
-    static class RoomUtilities
+    internal static class RoomUtilities
     {
         public static int GetDirectionalTextureAtlasRow(Constants.Direction side)
         {

@@ -2,17 +2,16 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.HUDClasses
 {
     internal class MinimapManager
     {
-        private RoomGameState roomGameState;
-        private ISprite minimapSprite;
+        private readonly RoomGameState roomGameState;
+        private readonly ISprite minimapSprite;
         private bool displayMinimap;
-        private ISprite linkMinimapSquare;
-        private ISprite triforceMinimapSquare;
+        private readonly ISprite linkMinimapSquare;
+        private readonly ISprite triforceMinimapSquare;
         private Point triforceRoomLocation = new Point(5, 4);
         private bool hasCompass;
         private Point secretRoomLocation = new Point(-1, -1);
@@ -35,7 +34,7 @@ namespace LegendOfZelda.HUDClasses
                 if (hasCompass)
                     triforceMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[triforceRoomLocation], Constants.DrawLayer.HUDMinimapItem);
                 Point currentRoomLocation = roomGameState.CurrentRoom.LocationOnMap;
-                if(!currentRoomLocation.Equals(secretRoomLocation))
+                if (!currentRoomLocation.Equals(secretRoomLocation))
                     linkMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap], Constants.DrawLayer.HUDMinimapItem);
             }
 

@@ -101,7 +101,7 @@ namespace LegendOfZelda.Item.Sprite
             {
                 position.Y += 5; ;
             }
-            else if (position.Y > RoomConstants.BottomDoorY )
+            else if (position.Y > RoomConstants.BottomDoorY)
             {
                 position.Y -= 5;
             }
@@ -115,7 +115,7 @@ namespace LegendOfZelda.Item.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int) (frameWidth * Constants.GameScaler), (int) (frameHeight * Constants.GameScaler));
+            return new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
         }
     }
 }

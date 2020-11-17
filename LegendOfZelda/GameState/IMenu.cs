@@ -1,10 +1,8 @@
-﻿using LegendOfZelda.GameState.Button;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameState
 {
-    interface IMenu
+    internal interface IMenu
     {
         Point Position { get; set; }
         void Update();

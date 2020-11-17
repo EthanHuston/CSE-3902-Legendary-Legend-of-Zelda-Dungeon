@@ -3,7 +3,7 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {
-    class UsePrimaryItemCommand : ICommand
+    internal class UsePrimaryItemCommand : ICommand
     {
         private readonly IPlayer link;
 

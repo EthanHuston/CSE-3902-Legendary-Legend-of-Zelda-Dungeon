@@ -1,10 +1,8 @@
-﻿using LegendOfZelda.Interface;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class EmptyButton : IButton
+    internal class EmptyButton : IButton
     {
         private bool safeToDespawn;
         private Rectangle size;

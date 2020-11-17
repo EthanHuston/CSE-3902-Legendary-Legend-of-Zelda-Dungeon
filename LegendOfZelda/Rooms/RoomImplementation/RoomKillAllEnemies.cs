@@ -1,11 +1,10 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.Link.Interface;
-using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomKillAllEnemies : Room
+    internal class RoomKillAllEnemies : Room
     {
         private bool doorHasBeenClosed;
         private bool doorHasBeenOpened;
@@ -27,7 +26,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
                 foreach (KeyValuePair<Constants.Direction, IDoor> keyValuePair in roomDoors)
                 {
                     if ((keyValuePair.Value.GetType() == typeof(LockedDoor) ||
-                           keyValuePair.Value.GetType() == typeof(BombableOpening)) && 
+                           keyValuePair.Value.GetType() == typeof(BombableOpening)) &&
                         !keyValuePair.Value.IsOpen
                         ) continue;
                     GetDoor(keyValuePair.Key).OpenDoor();

@@ -2,9 +2,9 @@
 
 namespace LegendOfZelda.GameState.Command
 {
-    class ItemSelectCommand : ICommand
+    internal class ItemSelectCommand : ICommand
     {
-        private IGameState gameState;
+        private readonly IGameState gameState;
 
         public ItemSelectCommand(IGameState gameState)
         {

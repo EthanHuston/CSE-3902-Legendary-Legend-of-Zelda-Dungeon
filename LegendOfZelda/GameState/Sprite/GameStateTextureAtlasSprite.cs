@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Sprite
 {
-    class GameStateTextureAtlasSprite : ITextureAtlasSprite
+    internal class GameStateTextureAtlasSprite : ITextureAtlasSprite
     {
         private readonly Texture2D sprite;
 

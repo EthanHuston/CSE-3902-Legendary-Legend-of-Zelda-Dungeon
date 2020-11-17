@@ -1,10 +1,8 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Rooms;
-using LegendOfZelda.Rooms.RoomImplementation;
+﻿using LegendOfZelda.Rooms;
 
 namespace LegendOfZelda.Environment
 {
-    interface IDoor : IBlock
+    internal interface IDoor : IBlock
     {
         Constants.Direction Side { get; }
         bool IsOpen { get; }

@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.Environment;
-using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -9,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameState.RoomTransitionState
 {
-    class RoomTransitionGameState : IGameState
+    internal class RoomTransitionGameState : IGameState
     {
 
 
@@ -25,7 +24,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         private readonly int distanceToMove;
         private const int velocityScalar = 10;
         private Vector2 velocity;
-        private Constants.Direction direction;
+        private readonly Constants.Direction direction;
         private int counter;
 
         public RoomTransitionGameState(RoomGameState roomGameState, Constants.Direction direction)
@@ -36,9 +35,9 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);
             nextRoom.ResetRoom();
-            
+
             initialMoveDistance = GetInitialMoveDistance(direction);
-            distanceToMove = (int) initialMoveDistance.Length();
+            distanceToMove = (int)initialMoveDistance.Length();
 
             velocity = GetVelocity(direction);
             counter = 0;
@@ -180,11 +179,12 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             {
                 Vector2 fixVector = new Vector2(velocity.X, velocity.Y);
                 fixVector.Normalize();
-                fixVector *= distanceToMove - (counter- (int)velocity.Length());
-                counter += (int) fixVector.Length();
+                fixVector *= distanceToMove - (counter - (int)velocity.Length());
+                counter += (int)fixVector.Length();
                 UpdateBlockPositions(fixVector);
                 SwitchToRoomState();
-            } else
+            }
+            else
             {
                 UpdateBlockPositions(velocity);
             }

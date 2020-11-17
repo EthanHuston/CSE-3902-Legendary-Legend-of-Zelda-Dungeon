@@ -2,9 +2,9 @@
 
 namespace LegendOfZelda.GameState.Command
 {
-    class ExitGameCommand : ICommand
+    internal class ExitGameCommand : ICommand
     {
-        private IGameState gameState;
+        private readonly IGameState gameState;
 
         public ExitGameCommand(IGameState gameState)
         {

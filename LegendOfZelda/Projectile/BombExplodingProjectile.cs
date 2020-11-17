@@ -8,7 +8,7 @@ namespace LegendOfZelda.Projectile
 {
     internal class BombExplodingProjectile : GenericProjectile
     {
-        private SoundEffectInstance bomb_blow;
+        private readonly SoundEffectInstance bomb_blow;
         public BombExplodingProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner) : base(spriteBatch, spawnPosition, owner)
         {
             projectileType = LinkConstants.ProjectileType.Bomb;
@@ -22,7 +22,7 @@ namespace LegendOfZelda.Projectile
             Mover.Update();
             sprite.Update();
             CheckItemIsExpired();
-            if(((BombExplodingSprite)sprite).IsExploding())
+            if (((BombExplodingSprite)sprite).IsExploding())
             {
                 bomb_blow.Play();
             }

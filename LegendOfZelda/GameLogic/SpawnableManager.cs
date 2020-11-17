@@ -199,7 +199,8 @@ namespace LegendOfZelda.GameLogic
 
         public void ResetClouds()
         {
-            foreach(INpc Npc in NpcList){
+            foreach (INpc Npc in NpcList)
+            {
                 Npc.ResetSpawnCloud();
             }
         }

@@ -2,7 +2,6 @@
 using LegendOfZelda.Enemies.CollisionHandlers.WithBlock;
 using LegendOfZelda.Enemies.CollisionHandlers.WithProjectile;
 using LegendOfZelda.Environment;
-using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.CollisionHandler.WithBlock;
 using LegendOfZelda.Link.CollisionHandler.WithItem;

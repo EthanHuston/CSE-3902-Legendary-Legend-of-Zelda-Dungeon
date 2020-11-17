@@ -11,7 +11,7 @@ namespace LegendOfZelda.Enemies
 {
     internal class Hand : INpc
     {
-        private readonly int velocityScalar = (int) Math.Ceiling(0.5 * Constants.GameScaler);
+        private readonly int velocityScalar = (int)Math.Ceiling(0.5 * Constants.GameScaler);
         private double health = 3 * Constants.HeartValue;
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
@@ -74,7 +74,7 @@ namespace LegendOfZelda.Enemies
                 if (DraggingLink)
                 {
                     link.ForceMoveToPoint(Position);
-                    if(safeToDespawn) // if enemy dies drop Link
+                    if (safeToDespawn) // if enemy dies drop Link
                     {
                         DraggingLink = false;
                         link.BeingDragged = false;
@@ -85,18 +85,18 @@ namespace LegendOfZelda.Enemies
                 {
                     sprite.Update();
                     UpdatePosition();
-                } 
+                }
             }
         }
 
         public void ClockUpdate()
         {
             DraggingLink = false;
-            if (link!= null) link.BeingDragged = false;
+            if (link != null) link.BeingDragged = false;
 
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             safeToDespawn = safeToDespawn || health <= 0;
-            
+
             if (safeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
@@ -134,13 +134,13 @@ namespace LegendOfZelda.Enemies
 
         private void CheckBounds()
         {
-            bool changeRoom = 
+            bool changeRoom =
                 position.X > Constants.HandSpawnRightX ||
                 position.X < Constants.HandSpawnLeftX ||
                 position.Y > Constants.HandSpawnDownY ||
                 position.Y < Constants.HandSpawnUpY;
-            
-            if(DraggingLink && changeRoom) // once outside map, jump back to beginning room
+
+            if (DraggingLink && changeRoom) // once outside map, jump back to beginning room
             {
                 link.BeingDragged = false;
                 ((RoomGameState)link.Game.State).MoveToRoom(roomToJumpTo, Constants.Direction.Down);

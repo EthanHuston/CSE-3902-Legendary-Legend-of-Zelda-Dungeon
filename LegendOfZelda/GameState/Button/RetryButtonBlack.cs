@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda.GameState.Button
 {
-    class RetryButtonBlack : IButton
+    internal class RetryButtonBlack : IButton
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;

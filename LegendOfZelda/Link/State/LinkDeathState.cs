@@ -3,7 +3,7 @@ using System;
 
 namespace LegendOfZelda.Link.State
 {
-    class LinkDeathState : LinkGenericAbstractState
+    internal class LinkDeathState : LinkGenericAbstractState
     {
         private int spinBuffer = 0;
         private int totalSpins = 0;

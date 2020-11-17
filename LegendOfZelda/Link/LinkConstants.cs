@@ -21,7 +21,7 @@ namespace LegendOfZelda.Link
 
         public const int PickUpItemPauseTicks = 60;
         public const int CollisionHelper = (int)(3 * SpriteScaler);
-        
+
         public const int UsingSwordFrameDelay = 3;
         public const int SwordHitboxShortener = (int)(4 * SpriteScaler);
 

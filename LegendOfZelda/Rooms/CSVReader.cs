@@ -53,7 +53,7 @@ namespace LegendOfZelda.Rooms
                         room.AddRoomConnection(Constants.Direction.Stairs, fields[i]);
                         break;
                     case csvRoomWallsRow:
-                        for(i = 0; i < 4; i++) SpawnWalls(spriteBatch, room, fields[i], i);
+                        for (i = 0; i < 4; i++) SpawnWalls(spriteBatch, room, fields[i], i);
                         break;
                     default:
                         for (i = 0; i < fields.Length; i++)

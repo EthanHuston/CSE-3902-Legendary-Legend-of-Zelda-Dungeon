@@ -7,7 +7,7 @@ namespace LegendOfZelda.Rooms
     {
         private Rectangle positionRectangle;
         private bool safeToDespawn;
-        
+
         public Constants.Direction Side { get; private set; }
         public Point Position { get; set; }
 

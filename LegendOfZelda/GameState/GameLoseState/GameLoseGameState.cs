@@ -9,15 +9,15 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameLoseState
 {
-    class GameLoseGameState : AbstractGameState
+    internal class GameLoseGameState : AbstractGameState
     {
         private readonly RoomGameState roomStatePreserved;
         private List<ISpawnable> buttons;
-        private SpawnableManager spawnableManager;
-        private ISprite gameOverSprite;
-        private ISprite redOverlaySprite;
-        private SoundEffectInstance game_over;
-        private SoundEffectInstance link_die;
+        private readonly SpawnableManager spawnableManager;
+        private readonly ISprite gameOverSprite;
+        private readonly ISprite redOverlaySprite;
+        private readonly SoundEffectInstance game_over;
+        private readonly SoundEffectInstance link_die;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -63,12 +63,14 @@ namespace LegendOfZelda.GameState.GameLoseState
                 roomStatePreserved.Hud.Draw();
                 redOverlaySprite.Draw(Game.SpriteBatch, new Point(Constants.MinXPos, Constants.MinYPos), Constants.DrawLayer.RedDeathBlanket);
                 link_die.Play();
-            } else if (phaseTwo)
+            }
+            else if (phaseTwo)
             {
                 gameOverSprite.Draw(Game.SpriteBatch, GameStateConstants.LoseStateGameOverSpriteLocation, Constants.DrawLayer.MenuButton);
                 game_over.IsLooped = true;
                 game_over.Play();
-            } else if (phaseThree)
+            }
+            else if (phaseThree)
             {
                 foreach (ISpawnable button in buttons) button.Draw();
             }
@@ -101,13 +103,13 @@ namespace LegendOfZelda.GameState.GameLoseState
             {
                 phaseOneBuffer++;
                 spawnableManager.PlayerList[0].Update();
-                if(phaseOneBuffer == 150)
+                if (phaseOneBuffer == 150)
                 {
                     phaseOne = false;
                     phaseTwo = true;
                 }
             }
-            else if(phaseTwo)
+            else if (phaseTwo)
             {
                 phaseTwoBuffer++;
                 if (phaseTwoBuffer > 150)
@@ -116,7 +118,8 @@ namespace LegendOfZelda.GameState.GameLoseState
                     phaseThree = true;
                 }
 
-            } else if (phaseThree)
+            }
+            else if (phaseThree)
             {
                 foreach (IController controller in controllerList) controller.Update();
             }

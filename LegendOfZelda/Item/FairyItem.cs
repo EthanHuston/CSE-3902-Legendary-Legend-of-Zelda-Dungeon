@@ -8,7 +8,7 @@ namespace LegendOfZelda.Item
 {
     internal class FairyItem : GenericItem
     {
-        FairySprite fairySprite;
+        private readonly FairySprite fairySprite;
         public FairyItem(SpriteBatch spriteBatch, Point spawnPosition) : base(spriteBatch, spawnPosition)
         {
             sprite = ItemSpriteFactory.Instance.CreateFairySprite(spawnPosition);
