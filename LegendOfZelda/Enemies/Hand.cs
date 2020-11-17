@@ -144,10 +144,13 @@ namespace LegendOfZelda.Enemies
             {
                 link.BeingDragged = false;
                 ((RoomGameState)link.Game.State).MoveToRoom(roomToJumpTo, Constants.Direction.Down);
-                Despawn();
             }
 
-            if (changeRoom) Despawn();
+            if (changeRoom) // if outside bounds reverse direction
+            {
+                velocity.X *= -1;
+                velocity.Y *= -1;
+            }
         }
 
         public void Move(Vector2 distance)
