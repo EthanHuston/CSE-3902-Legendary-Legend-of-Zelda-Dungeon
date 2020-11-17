@@ -26,7 +26,7 @@ namespace LegendOfZelda.Link
         public const int SwordHitboxShortener = (int)(4 * SpriteScaler);
 
         // Inventory Starting Quantities
-        public const int RupeeCount = 10;
+        public const int RupeeCount = 5;
         public const int BombCount = 2;
         public const int BoomerangCount = 0;
         public const int SwordCount = 1;
