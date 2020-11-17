@@ -1,8 +1,20 @@
 # Code Maintainability, Readability, and Analysis
-
+Overall, we are happy with our code maintainability. We found that the state the code was in from Sprint 3 allowed us to implement new features with ease. Many of the methods or frameworks that we needed were already were already available from previous features within the game.
 
 ### Warnings and Errors
+This Sprint, we had much less warnings than previous Sprints as we learned proper coding style and when to apply certain modifiers like readonly, private, or const. Most of the errors that we had came from logical errors, like certain features not working during the game or the game crashing due to null pointer exceptions. Throughout the code, we have objects that are referred to by multiple variables. Because of this, we had to ensure we were performing null checks when we called methods on many objects. 
 
+Some of the other errors also appeared as we implemented more features. One example was the hearts in the HUD. Previously, we did not have the heart container implemented. However, after implementing the heart container, we found that Link's max health would increase, but this would not be reflected in the HUD. This was a fairly simple fix, as we just had to add another heart and draw it anytime Link's max health changed.
+
+Another issue was the implementation of the WallMaster enemy. The enemy drags Link offscreen and back to the first room in the dungeon. However, after implementing item drops, we found that Link would randomly get new item/more health after being dragged back to the first dungeon room. This was an issue with the despawning of the hands; after a hand moved outside of the screen, we made it despawn, meaning it could drop an item. This meant that Link would collect this item before jumping to the first room. We fixed this by not despawning the hand, but instead by reversing their direction so they move back into the room. Because we never despawned the hands, we also had to limit the number of hands that could spawn.
+
+Most of the other issues were small errors in logic. One example was an error in our Room CSV files that caused the wrong rooms to be connected together, putting the player into an infinite loop of rooms. Other error fixes just involved tweaking a few constants to get the optimal behavior.
 
 ### Maintainability and Readability
+Coming into this spring, we were very happy with our readability and maintainability. Throughout the spring, we found that many features were easier to implement because of how we had designed our code previously. We made use of interfaces, abstract classes, class inheritance, and C#'s properties to give precise control over what we were doing and how we did it.
 
+As mentioned before, we were happy with our maintainability coming into this sprint and we are still happy with it. In many places, we were able to easily implement new features as we needed them using pre-existing classes or interfaces. We were also able to reuse many classes in various places by extending them or slightly modifying them. We also greatly simplified the code from the previous sprint by making use of abstract classes to avoid re-implementing many methods that had the same pieces of code. As we brainstorm ideas for Sprint 5, we have found that many new features we might try to implement should be fairly easy to do.
+
+For readability, we are also happy with our code. In most places, we used variable and method names that describe exactly what they do. Additionally, we made use of helper methods and utility methods to avoid duplicating code and improve readability. If a method was getting too complicated, we moved part of it into a helper method that better described what was going on. However, while we worked to improved readability as much as possible, there were some places where it was hard to improve it more, especially in the implementations of enemies, which had complicated movement and attacking behavior.
+
+Moving forward, we think we are in a great place in terms of maintainability and readability to extend our code to implement new features in sprint 5. 
