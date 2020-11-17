@@ -10,10 +10,16 @@ namespace LegendOfZelda.GameState.MainMenu
         private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> oldKbState;
         private List<Keys> repeatableKeys;
+        private ICommand exitGameCommand;
+        private ICommand startGameCommand;
 
         public KeyboardController(IGameState gameState)
         {
             oldKbState = new List<Keys>();
+
+            exitGameCommand = new ExitGameCommand(gameState);
+            startGameCommand = new StartGameCommand(gameState);
+
             InitRepeatableKeys();
             InitControllerMappings(gameState);
         }
@@ -22,7 +28,7 @@ namespace LegendOfZelda.GameState.MainMenu
         {
             controllerMappings = new Dictionary<Keys, ICommand>
             {
-                {Keys.Escape, new ExitGameCommand(gameState) }
+                {Keys.Escape, exitGameCommand }
             };
         }
 
@@ -61,6 +67,7 @@ namespace LegendOfZelda.GameState.MainMenu
                 {
                     controllerMappings[key].Execute();
                 }
+                if (key != Keys.Escape) startGameCommand.Execute();
             }
             if (!changedKbState) oldKbState = new List<Keys>();
         }
