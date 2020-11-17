@@ -1,8 +1,8 @@
 # Code Maintainability, Readability, and Analysis
-Overall, we are happy with our code maintainability. We found that the state the code was in from Sprint 3 allowed us to implement new features with ease. Many of the methods or frameworks that we needed were already were already available from previous features within the game.
+Overall, we are happy with our code maintainability. We found that the state the code was in from Sprint 3 allowed us to implement new features with ease, while also keeping ahold of our group's project goals. Many of the methods or frameworks that we needed were already available from previous features within the game.
 
 ### Warnings and Errors
-This Sprint, we had much less warnings than previous Sprints as we learned proper coding style and when to apply certain modifiers like readonly, private, or const. Most of the errors that we had came from logical errors, like certain features not working during the game or the game crashing due to null pointer exceptions. Throughout the code, we have objects that are referred to by multiple variables. Because of this, we had to ensure we were performing null checks when we called methods on many objects. 
+This Sprint, we had much less warnings than previous Sprints as we learned proper coding style and when to apply certain modifiers, like readonly, private, or const. Most of the errors that we had came from logical errors, like certain features not working during the game or the game crashing due to null pointer exceptions. Throughout the code, we have objects that are referred to by multiple variables. Because of this, we had to ensure we were performing null checks when we called methods on many objects. 
 
 Some of the other errors also appeared as we implemented more features. One example was the hearts in the HUD. Previously, we did not have the heart container implemented. However, after implementing the heart container, we found that Link's max health would increase, but this would not be reflected in the HUD. This was a fairly simple fix, as we just had to add another heart and draw it anytime Link's max health changed.
 
@@ -11,7 +11,7 @@ Another issue was the implementation of the WallMaster enemy. The enemy drags Li
 Most of the other issues were small errors in logic. One example was an error in our Room CSV files that caused the wrong rooms to be connected together, putting the player into an infinite loop of rooms. Other error fixes just involved tweaking a few constants to get the optimal behavior.
 
 ### Maintainability and Readability
-Coming into this spring, we were very happy with our readability and maintainability. Throughout the spring, we found that many features were easier to implement because of how we had designed our code previously. We made use of interfaces, abstract classes, class inheritance, and C#'s properties to give precise control over what we were doing and how we did it.
+Coming into this spring, we were very happy with our readability and maintainability. Throughout the sprint, we found that many features were easier to implement because of how we had designed our code previously. We made use of interfaces, abstract classes, class inheritance, and C#'s properties to give precise control over what we were doing and how we did it.
 
 As mentioned before, we were happy with our maintainability coming into this sprint and we are still happy with it. In many places, we were able to easily implement new features as we needed them using pre-existing classes or interfaces. We were also able to reuse many classes in various places by extending them or slightly modifying them. We also greatly simplified the code from the previous sprint by making use of abstract classes to avoid re-implementing many methods that had the same pieces of code. As we brainstorm ideas for Sprint 5, we have found that many new features we might try to implement should be fairly easy to do.
 
