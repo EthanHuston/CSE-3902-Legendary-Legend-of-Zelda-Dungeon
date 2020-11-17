@@ -6,8 +6,8 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class HUDNumber
     {
-        ITextureAtlasSprite hudItemsAtlas;
-        Rectangle sourceRectangle;
+        private ITextureAtlasSprite hudItemsAtlas;
+        private Rectangle sourceRectangle;
 
         public HUDNumber(int num)
         {
