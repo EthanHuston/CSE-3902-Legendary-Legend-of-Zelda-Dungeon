@@ -341,6 +341,7 @@
     <Compile Include="Utility\UtilityMethods.cs" />
     <Compile Include="GameState\ItemSelectionState\KeyboardController.cs" />
     <Compile Include="GameState\ItemSelectionState\MouseController.cs" />
+    <Compile Include="Rooms\RoomImplementation\RoomBeforeBoss.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\RoomData\Room1.csv">

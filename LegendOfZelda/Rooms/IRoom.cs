@@ -20,17 +20,13 @@ namespace LegendOfZelda.Rooms
 
         void Update();
         void ClockUpdate();
-
         bool ConnectRoom(IRoom newRoom, Constants.Direction direction);
         void AddRoomConnection(Constants.Direction direction, string roomId);
-
         IRoom GetRoom(Constants.Direction direction);
-
         void ResetRoom();
-
         void AddDoor(IDoor door);
-
         IDoor GetDoor(Constants.Direction side);
         void FinalizeRoomConnections(Dictionary<string, IRoom> roomIdToRoomDictionary);
+        void RunRoomEntryProcedure();
     }
 }

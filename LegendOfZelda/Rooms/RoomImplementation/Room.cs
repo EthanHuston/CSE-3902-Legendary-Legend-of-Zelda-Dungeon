@@ -142,5 +142,8 @@ namespace LegendOfZelda.Rooms.RoomImplementation
             roomConnectionStrings.Add(direction, roomId);
         }
 
+        public virtual void RunRoomEntryProcedure()
+        { 
+        }
     }
 }
