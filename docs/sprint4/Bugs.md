@@ -1,8 +1,7 @@
 # Bugs
-For the most part everything works pretty good. However, we did have some issues with functionality of certain elements of the game:
 
 ### Sprint 4
-
+Our testing plan included personally testing features as they were implemented as to ensure their functionality and also allowing outside parties(mainly roomates of team members) to play test the game and find potential bugs which the team wouldnt be able to think of. Through this test plan we found some bugs but were able to eliminate all bugs that we discovered in our testing. Additionally all known bugs from previous sprints were also fixed during this sprint.
 
 ### From Sprint 3
 - [[fixed]: ](../sprint3/Bugs.md)Hand enemies drag Link, but they are also able to go outside the wall and can carry Link out. When releasing Link outside of walls, Link's collision handling takes over and weird things happen
