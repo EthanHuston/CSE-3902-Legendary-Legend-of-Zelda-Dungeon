@@ -23,6 +23,11 @@ namespace LegendOfZelda.Link.State
             switch (itemType)
             {
                 case LinkConstants.ItemType.Boomerang:
+                    if (link.GetQuantityInInventory(LinkConstants.ItemType.Boomerang) > 1)
+                    {
+                        StopMovingLocal();
+                        break;
+                    }
                     link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpBoomerangSprite();
                     spawnOffset = LinkConstants.PickingUpBoomerangSpawnOffset;
                     SoundFactory.Instance.CreateGetItemSound().Play();

@@ -86,6 +86,7 @@
     <Compile Include="Environment\OldBackground.cs" />
     <Compile Include="Environment\DragonStatues.cs" />
     <Compile Include="Environment\IDoor.cs" />
+    <Compile Include="Environment\SecretRoomWall.cs" />
     <Compile Include="Environment\Sprite\OldBackgroundSprite.cs" />
     <Compile Include="Environment\Sprite\DragonStatueSprite.cs" />
     <Compile Include="Environment\IBackground.cs" />

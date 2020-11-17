@@ -60,7 +60,6 @@ namespace LegendOfZelda.Link
             if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
             if(CurrentHealth <= Constants.HeartValue && CurrentHealth > 0)
             {
-                lowHealth.IsLooped = true;
                 lowHealth.Play();
             }
             if (safeToDespawn || CurrentHealth > Constants.HeartValue)
