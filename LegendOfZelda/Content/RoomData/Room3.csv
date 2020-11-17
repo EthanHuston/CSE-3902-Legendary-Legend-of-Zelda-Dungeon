@@ -1,4 +1,4 @@
-﻿roomNormal,room3,3,0,,,,,,,,
+﻿roomWithKey,room3,3,0,,,,,,,,
 small,tealBack,roomBorder,,,,,,,,,
 ,,,startRoom,,,,,,,,
 wall,wall,wall,open,,,,,,,,
@@ -7,5 +7,5 @@ wall,wall,wall,open,,,,,,,,
 ---,---,block,block,---,---,---,---,block,block,---,---
 ---,---,block,block,---,---,---,---,block,block,---,---
 ---,---,block,block,---,---,---,skeleton,block,block,---,---
----,---,---,skeleton,---,---,---,---,---,---,skeleton,---
+---,---,---,skeleton,---,---,---,---,key,---,skeleton,---
 ---,---,---,---,---,---,---,---,---,---,---,---

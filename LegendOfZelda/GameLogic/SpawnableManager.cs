@@ -99,7 +99,6 @@ namespace LegendOfZelda.GameLogic
             for (int i = 0; i < list.Count; i++)
             {
                 IItem spawnable = list[i];
-                if (typeof(KeyItem) == spawnable.GetType() && NpcList.Count != 0) continue; 
                 spawnable.Draw();
             }
         }

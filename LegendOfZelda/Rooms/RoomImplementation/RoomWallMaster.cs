@@ -11,7 +11,8 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         private const string roomIdToJumpTo = "startRoom";
         private const int wallMasterSpawnDelay = 80;
-        private const int initialWallMasterCount = 5;
+        private int wallMasterCounter = 3;
+        private const int wallMasterToSpawn = 12;
         private int spawnDelayCounter;
         private IRoom roomToJumpTo;
         private readonly SpriteBatch spriteBatch;
@@ -22,6 +23,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             this.spriteBatch = spriteBatch;
             rand = RoomConstants.RandomGenerator;
+            wallMasterCounter = 3;
         }
 
         public void AddRoomToJumpTo(IRoom roomToJumpTo)
@@ -32,10 +34,11 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         public override void Update()
         {
             spawnDelayCounter++;
-            if (spawnDelayCounter >= wallMasterSpawnDelay)
+            if (spawnDelayCounter >= wallMasterSpawnDelay && wallMasterCounter <= wallMasterToSpawn)
             {
                 AllObjects.Spawn(new Hand(spriteBatch, GenerateRandomWallMasterSpawnPoint(), roomToJumpTo));
                 spawnDelayCounter = 0;
+                wallMasterCounter++;
             }
             base.Update();
         }
@@ -77,7 +80,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         private void SpawnInitialWallMaster()
         {
-            for (int i = 0; i < initialWallMasterCount; i++) AllObjects.Spawn(new Hand(spriteBatch, GenerateRandomWallMasterSpawnPoint(), roomToJumpTo));
+            for (int i = 0; i < wallMasterCounter; i++) AllObjects.Spawn(new Hand(spriteBatch, GenerateRandomWallMasterSpawnPoint(), roomToJumpTo));
         }
     }
 }

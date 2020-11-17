@@ -313,6 +313,8 @@ namespace LegendOfZelda.Rooms
                     return new SecretRoom(playerList);
                 case RoomConstants.RoomWallMaster:
                     return new RoomWallMaster(spriteBatch, playerList);
+                case RoomConstants.RoomWithKey:
+                    return new RoomWithKey(playerList);
                 default:
                     return null;
             }

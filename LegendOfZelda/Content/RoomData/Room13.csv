@@ -1,9 +1,9 @@
-﻿roomNormal,room13,2,4,,,,,,,,
+﻿roomWithKey,room13,2,4,,,,,,,,
 small,tealBack,roomBorder,,,,,,,,,
 room17,,room10,,,,,,,,,
 locked,wall,open,wall,,,,,,,,
 water,water,water,water,water,---,---,water,water,water,water,water
-water,skeleton,---,---,water,---,---,---,---,water,---,water
+water,skeleton,---,---,water,---,---,---,---,water,key,water
 water,---,water,---,water,---,water,water,---,water,skeleton,water
 ---,---,water,---,water,---,---,water,---,water,---,---
 water,---,water,skeleton,water,water,---,water,---,water,---,water

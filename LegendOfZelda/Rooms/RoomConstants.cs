@@ -124,5 +124,6 @@ namespace LegendOfZelda
         public const string RoomBeforeSecretRoom = "roomBeforeSecretRoom";
         public const string RoomSecret = "roomSecret";
         public const string RoomWallMaster = "roomWallMaster";
+        public const string RoomWithKey = "roomWithKey";
     }
 }
