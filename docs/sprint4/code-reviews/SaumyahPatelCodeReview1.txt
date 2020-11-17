@@ -4,4 +4,4 @@ Sprint 4
 HUD.cs
 Chris Lenart
 Very little method, good job of keeping everything compact. The constructor only creates what is necessary.
-The draw and update are seperate, and the little curtain at the end is perfect.
+The draw and update are separate, and the little curtain at the end is perfect.
