@@ -77,7 +77,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             }
             else if (phaseThree)
             {
-                foreach (ISpawnable button in buttons) button.Draw();
+                foreach (IButton button in buttons) button.Draw();
             }
         }
 
