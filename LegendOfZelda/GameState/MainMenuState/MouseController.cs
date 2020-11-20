@@ -1,33 +1,49 @@
 ﻿using LegendOfZelda.GameState.Command;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Menu;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.MainMenu
 {
     internal class MouseController : IController
     {
+        private readonly Dictionary<MouseButton, ICommand> mouseButtonMappings;
+        private readonly Dictionary<Type, ICommand> buttonMappings;
+        private readonly List<IButton> buttons;
         private MouseState oldMouseState;
-        private readonly ICommand startGameCommand;
 
-        public MouseController(IGameState gameState)
+        public InputType InputType { get; } = InputType.Mouse;
+        public InputStates OldInputState
+        {
+            get => new InputStates { MouseState = oldMouseState };
+            set => oldMouseState = value.MouseState;
+        }
+
+        public MouseController(IGameState gameState, List<IButton> buttons)
         {
             oldMouseState = new MouseState();
-            startGameCommand = new StartGameCommand(gameState);
+            this.buttons = buttons;
+            buttonMappings = GetButtonMappings(gameState);
+            mouseButtonMappings = GetMouseButtonsMappings(gameState);
         }
 
-        public GameStateConstants.InputType GetInputType()
+        private Dictionary<Type, ICommand> GetButtonMappings(IGameState gameState)
         {
-            return GameStateConstants.InputType.Mouse;
+            return new Dictionary<Type, ICommand>
+            {
+            };
         }
 
-        public OldInputState GetOldInputState()
+        private Dictionary<MouseButton, ICommand> GetMouseButtonsMappings(IGameState gameState)
         {
-            return new OldInputState { oldMouseState = oldMouseState };
-        }
-
-        public void SetOldInputState(OldInputState oldInputState)
-        {
-            oldMouseState = oldInputState.oldMouseState;
+            return new Dictionary<MouseButton, ICommand>
+            {
+                {MouseButton.LeftButton, new StartGameCommand(gameState) }
+            };
         }
 
         public void Update()
@@ -36,9 +52,40 @@ namespace LegendOfZelda.GameState.MainMenu
             MouseState localOldMouseState = oldMouseState;
             oldMouseState = newMouseState;
 
-            if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed) startGameCommand.Execute();
+            foreach (KeyValuePair<MouseButton, ICommand> keyValuePair in mouseButtonMappings)
+            {
+                if (GetMouseButtonState(newMouseState, keyValuePair.Key) == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
+                    keyValuePair.Value.Execute();
+            }
 
-            oldMouseState = newMouseState;
+            if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
+            {
+                Point mousePosition = newMouseState.Position;
+                foreach (ISpawnable button in buttons)
+                {
+                    Rectangle buttonRectangle = button.GetRectangle();
+                    if (mousePosition.X > buttonRectangle.Left &&
+                        mousePosition.X < buttonRectangle.Right &&
+                        mousePosition.Y > buttonRectangle.Top &&
+                        mousePosition.Y < buttonRectangle.Bottom)
+                        buttonMappings[button.GetType()].Execute();
+                }
+            }
+        }
+
+        private ButtonState GetMouseButtonState(MouseState mouseState, MouseButton button)
+        {
+            switch (button)
+            {
+                case MouseButton.LeftButton:
+                    return mouseState.LeftButton;
+                case MouseButton.RightButton:
+                    return mouseState.RightButton;
+                case MouseButton.MiddleButton:
+                    return mouseState.MiddleButton;
+                default:
+                    return ButtonState.Released;
+            }
         }
     }
 }

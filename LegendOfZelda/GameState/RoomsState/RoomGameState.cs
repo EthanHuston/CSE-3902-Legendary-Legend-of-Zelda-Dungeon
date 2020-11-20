@@ -2,11 +2,13 @@
 using LegendOfZelda.GameState.GameLoseState;
 using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.GameState.ItemSelectionState;
-using LegendOfZelda.GameState.Pause;
+using LegendOfZelda.GameState.PauseState;
 using LegendOfZelda.GameState.RoomTransitionState;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Menu;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -58,7 +60,7 @@ namespace LegendOfZelda.GameState.Rooms
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this) }
+                {new MouseController(this, new List<IButton>()) }
             };
         }
 
@@ -185,13 +187,11 @@ namespace LegendOfZelda.GameState.Rooms
 
         protected override void SwitchingStateUpdate()
         {
-            // TODO: use me when we start doing room transitions to update camera
             readyToSwitchState = true;
         }
 
         protected override void InitializingStateUpdate()
         {
-            // TODO: potentially use me when doing room transitions
             stateInitialized = true;
         }
 

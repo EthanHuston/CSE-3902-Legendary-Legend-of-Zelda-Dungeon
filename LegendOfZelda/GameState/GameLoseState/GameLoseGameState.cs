@@ -2,7 +2,9 @@
 using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
@@ -12,7 +14,7 @@ namespace LegendOfZelda.GameState.GameLoseState
     internal class GameLoseGameState : AbstractGameState
     {
         private readonly RoomGameState roomStatePreserved;
-        private List<ISpawnable> buttons;
+        private List<IButton> buttons;
         private readonly SpawnableManager spawnableManager;
         private readonly ISprite gameOverSprite;
         private readonly ISprite redOverlaySprite;
@@ -39,7 +41,7 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         private void InitButtonsList()
         {
-            buttons = new List<ISpawnable>()
+            buttons = new List<IButton>()
             {
                 {new RetryButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateRetryButtonLocation) },
                 {new ExitButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateExitButtonLocation) }

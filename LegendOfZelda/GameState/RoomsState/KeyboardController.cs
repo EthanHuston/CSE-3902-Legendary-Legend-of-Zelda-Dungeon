@@ -1,8 +1,7 @@
-﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.Command;
+﻿using LegendOfZelda.GameState.Command;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
-using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
@@ -10,22 +9,28 @@ namespace LegendOfZelda.GameState.Rooms
 {
     internal class KeyboardController : IController
     {
-        private Dictionary<Keys, ICommand> controllerMappings;
-        private List<Keys> oldKbState;
-        private List<Keys> repeatableKeys;
-        private List<PlayerMovementController> playerMovementControllerList;
+        private readonly Dictionary<Keys, ICommand> controllerMappings;
+        private KeyboardState oldKbState;
+        private readonly List<Keys> repeatableKeys;
+        
+        public InputType InputType { get; } = InputType.Keyboard;
+        public InputStates OldInputState
+        {
+            get => new InputStates { KeyboardState = oldKbState };
+            set => oldKbState = value.KeyboardState;
+        }
 
         public KeyboardController(IGameState gameState)
         {
-            oldKbState = new List<Keys>();
-            InitRepeatableKeys();
-            InitControllerMappings(gameState);
+            oldKbState = new KeyboardState();
+            controllerMappings = GetKeyboardMappings(gameState);
+            repeatableKeys = GetRepeatableKeys();
         }
 
-        private void InitControllerMappings(IGameState gameState)
+        private Dictionary<Keys, ICommand> GetKeyboardMappings(IGameState gameState)
         {
             RoomGameState gameStateCast = (RoomGameState)gameState;
-            controllerMappings = new Dictionary<Keys, ICommand>
+            return new Dictionary<Keys, ICommand>
             {
                 { Keys.Escape, new PauseGameCommand(gameState) },
                 { Keys.Tab, new ItemSelectCommand(gameState) },
@@ -35,8 +40,12 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.D2, new UseSecondaryItemCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.Q, new UsePrimaryItemCommand(gameStateCast.GetPlayer(0)) },
                 { Keys.E, new UseSecondaryItemCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.W, new MoveUpCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.D, new MoveRightCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.S, new MoveDownCommand(gameStateCast.GetPlayer(0)) },
+                { Keys.A, new MoveLeftCommand(gameStateCast.GetPlayer(0)) },
 
-                /*Keys to change rooms for debugging
+                /* Keys to change rooms for debugging
                 { Keys.NumPad8, new ChangeRoomUpCommand(gameStateCast) },
                 { Keys.NumPad6, new ChangeRoomRightCommand(gameStateCast) },
                 { Keys.NumPad2, new ChangeRoomDownCommand(gameStateCast) },
@@ -47,75 +56,34 @@ namespace LegendOfZelda.GameState.Rooms
                 { Keys.J, new ChangeRoomLeftCommand(gameStateCast) }
                 /**/
             };
-
-            InitPlayerMovementControllers(gameStateCast);
-        }
-
-        private void InitPlayerMovementControllers(RoomGameState gameStateCast)
-        {
-            playerMovementControllerList = new List<PlayerMovementController>();
-            List<IPlayer> playerList = gameStateCast.PlayerList;
-            playerMovementControllerList.Add(
-                new PlayerMovementController(playerList[0],
-                new Dictionary<Constants.Direction, Keys[]>
-                    {
-                        {Constants.Direction.Right, new Keys[] { Keys.D, Keys.Right } },
-                        {Constants.Direction.Up, new Keys[] { Keys.W, Keys.Up } },
-                        {Constants.Direction.Left, new Keys[] { Keys.A, Keys.Left } },
-                        {Constants.Direction.Down, new Keys[] { Keys.S, Keys.Down } }
-                    }
-                )
-            );
-        }
-
-        public GameStateConstants.InputType GetInputType()
-        {
-            return GameStateConstants.InputType.Keyboard;
-        }
-
-        public OldInputState GetOldInputState()
-        {
-            return new OldInputState { oldKeyboardState = oldKbState };
-        }
-
-        public void RegisterCommand(Keys key, ICommand command)
-        {
-            controllerMappings.Add(key, command);
-        }
-
-        public void SetOldInputState(OldInputState oldInputState)
-        {
-            oldKbState = oldInputState.oldKeyboardState;
         }
 
         public void Update()
         {
             KeyboardState keyboardState = Keyboard.GetState();
             Keys[] pressedKeys = keyboardState.GetPressedKeys();
-            bool changedKbState = false;
 
             foreach (Keys key in pressedKeys)
             {
-                changedKbState = true;
-                bool inOldKbState = oldKbState.Contains(key);
-                if (inOldKbState) oldKbState.Remove(key);
-                if (!repeatableKeys.Contains(key)) oldKbState.Add(key);
-                if (controllerMappings.ContainsKey(key) && !inOldKbState)
+                bool inOldKbState = oldKbState.IsKeyDown(key);
+                bool repeatableKey = repeatableKeys.Contains(key);
+                if (controllerMappings.ContainsKey(key) && (!inOldKbState || repeatableKey))
                 {
                     controllerMappings[key].Execute();
                 }
             }
 
-            foreach (PlayerMovementController controller in playerMovementControllerList) controller.Update(keyboardState);
-
-            if (!changedKbState) oldKbState = new List<Keys>();
+            oldKbState = keyboardState;
         }
 
-        private void InitRepeatableKeys()
+        private List<Keys> GetRepeatableKeys()
         {
-            // current do not have any repeatable keys
-            repeatableKeys = new List<Keys>()
+            return new List<Keys>()
             {
+                Keys.W,
+                Keys.D,
+                Keys.S,
+                Keys.A
             };
         }
     }

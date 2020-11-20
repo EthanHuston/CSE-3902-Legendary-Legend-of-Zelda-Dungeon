@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace LegendOfZelda.GameState.MainMenu
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this) }
+                {new MouseController(this, new List<IButton>()) }
             };
         }
 

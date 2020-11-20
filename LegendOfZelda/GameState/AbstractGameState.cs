@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using static LegendOfZelda.GameState.GameStateConstants;
+﻿using LegendOfZelda.GameState.Utilities;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
@@ -37,9 +37,9 @@ namespace LegendOfZelda.GameState
             }
         }
 
-        public virtual void SetControllerOldInputState(OldInputState inputFromOldState)
+        public virtual void SetControllerOldInputState(InputStates inputFromOldState)
         {
-            foreach (IController controller in controllerList) controller.SetOldInputState(inputFromOldState);
+            foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
 
         protected void StartStateSwitch(IGameState gameState)
@@ -73,20 +73,24 @@ namespace LegendOfZelda.GameState
         protected abstract void InitializingStateUpdate();
         public abstract void Draw();
 
-        private OldInputState GetOldInputState()
+        private InputStates GetOldInputState()
         {
-            OldInputState oldInputState = new OldInputState();
+            InputStates oldInputState = new InputStates();
 
             foreach (IController controller in controllerList)
             {
-                switch (controller.GetInputType())
+                switch (controller.InputType)
                 {
                     case InputType.Keyboard:
-                        oldInputState.oldKeyboardState = controller.GetOldInputState().oldKeyboardState;
+                        oldInputState.KeyboardState = controller.OldInputState.KeyboardState;
                         break;
 
                     case InputType.Mouse:
-                        oldInputState.oldMouseState = controller.GetOldInputState().oldMouseState;
+                        oldInputState.MouseState = controller.OldInputState.MouseState;
+                        break;
+
+                    case InputType.Gamepad:
+                        oldInputState.GamePadState = controller.OldInputState.GamePadState;
                         break;
                 }
             }

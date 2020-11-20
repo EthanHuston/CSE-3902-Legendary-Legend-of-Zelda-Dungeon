@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Menu;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
@@ -29,7 +30,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(player, inventoryMenu.Buttons) }
+                {new MouseController(this, inventoryMenu.Buttons, player) }
             };
         }
 

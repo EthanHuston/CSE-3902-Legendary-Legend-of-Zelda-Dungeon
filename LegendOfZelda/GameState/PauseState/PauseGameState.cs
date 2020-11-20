@@ -1,14 +1,16 @@
 ﻿using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Menu;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Pause
+namespace LegendOfZelda.GameState.PauseState
 {
     internal class PauseGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
-        private List<ISpawnable> buttons;
+        private List<IButton> buttons;
 
         public PauseGameState(Game1 game, IGameState oldRoomState)
         {
@@ -20,7 +22,7 @@ namespace LegendOfZelda.GameState.Pause
 
         private void InitButtonsList()
         {
-            buttons = new List<ISpawnable>()
+            buttons = new List<IButton>()
             {
                 {new ResumeButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
                 {new MainMenuButton(Game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) },

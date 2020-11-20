@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameState.Command;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -8,62 +9,53 @@ namespace LegendOfZelda.GameState.GameLoseState
     internal class KeyboardController : IController
     {
         private readonly Dictionary<Keys, ICommand> controllerMappings;
-        private List<Keys> oldKbState;
-        private List<Keys> repeatableKeys;
+        private KeyboardState oldKbState;
+        private readonly List<Keys> repeatableKeys;
+
+        public InputType InputType { get; } = InputType.Keyboard;
+        public InputStates OldInputState
+        {
+            get => new InputStates { KeyboardState = oldKbState };
+            set => oldKbState = value.KeyboardState;
+        }
 
         public KeyboardController(IGameState gameState)
         {
-            oldKbState = new List<Keys>();
-            InitRepeatableKeys();
-            controllerMappings = new Dictionary<Keys, ICommand>();
-
-            RegisterCommand(Keys.Escape, new ExitGameCommand(gameState));
+            oldKbState = new KeyboardState();
+            controllerMappings = GetKeyboardMappings(gameState);
+            repeatableKeys = GetRepeatableKeys();
         }
 
-        public GameStateConstants.InputType GetInputType()
+        private Dictionary<Keys, ICommand> GetKeyboardMappings(IGameState gameState)
         {
-            return GameStateConstants.InputType.Keyboard;
-        }
-
-        public OldInputState GetOldInputState()
-        {
-            return new OldInputState { oldKeyboardState = oldKbState };
-        }
-
-        public void RegisterCommand(Keys key, ICommand command)
-        {
-            controllerMappings.Add(key, command);
-        }
-
-        public void SetOldInputState(OldInputState oldInputState)
-        {
-            oldKbState = oldInputState.oldKeyboardState;
+            return new Dictionary<Keys, ICommand>
+            {
+                {Keys.Escape, new ExitGameCommand(gameState) }
+            };
         }
 
         public void Update()
         {
-            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            bool changedKbState = false;
+            KeyboardState keyboardState = Keyboard.GetState();
+            Keys[] pressedKeys = keyboardState.GetPressedKeys();
 
             foreach (Keys key in pressedKeys)
             {
-                changedKbState = true;
-                bool inOldKbState = oldKbState.Contains(key);
-                if (inOldKbState) oldKbState.Remove(key);
-                if (!repeatableKeys.Contains(key)) oldKbState.Add(key);
-                if (controllerMappings.ContainsKey(key) && !inOldKbState)
+                bool inOldKbState = oldKbState.IsKeyDown(key);
+                bool repeatableKey = repeatableKeys.Contains(key);
+                if (controllerMappings.ContainsKey(key) && (!inOldKbState || repeatableKey))
                 {
                     controllerMappings[key].Execute();
                 }
             }
-            if (!changedKbState) oldKbState = new List<Keys>();
+
+            oldKbState = keyboardState;
         }
 
-        private void InitRepeatableKeys()
+        private List<Keys> GetRepeatableKeys()
         {
-            repeatableKeys = new List<Keys>()
+            return new List<Keys>()
             {
-                // TODO: Add repeatable keys here
             };
         }
     }

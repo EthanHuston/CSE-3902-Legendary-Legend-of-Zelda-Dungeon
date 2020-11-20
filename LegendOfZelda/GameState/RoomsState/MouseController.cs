@@ -1,37 +1,57 @@
-﻿using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameState.Utilities;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
+using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Menu;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Rooms
 {
     internal class MouseController : IController
     {
-        private readonly ICommand leftClickCommand;
-        private readonly ICommand rightClickCommand;
+        private readonly Dictionary<MouseButton, ICommand> mouseButtonMappings;
+        private readonly Dictionary<Type, ICommand> buttonMappings;
+        private readonly List<IButton> buttons;
         private MouseState oldMouseState;
 
-        public MouseController(IGameState gameState)
+        public InputType InputType { get; } = InputType.Mouse;
+        public InputStates OldInputState
+        {
+            get => new InputStates { MouseState = oldMouseState };
+            set => oldMouseState = value.MouseState;
+        }
+
+        public MouseController(IGameState gameState, List<IButton> buttons)
         {
             RoomGameState gameStateCast = (RoomGameState)gameState;
 
+            // temporary until we pass in pre-made command dictionary
+            IPlayer player = gameStateCast.GetPlayer(0);
+            // end temp
+
             oldMouseState = new MouseState();
-            leftClickCommand = new UsePrimaryItemCommand(gameStateCast.GetPlayer(0));
-            rightClickCommand = new UseSecondaryItemCommand(gameStateCast.GetPlayer(0));
+            this.buttons = buttons;
+            buttonMappings = GetButtonMappings(gameState);
+            mouseButtonMappings = GetMouseButtonsMappings(player);
         }
 
-        public GameStateConstants.InputType GetInputType()
+        private Dictionary<Type, ICommand> GetButtonMappings(IGameState gameState)
         {
-            return GameStateConstants.InputType.Mouse;
+            return new Dictionary<Type, ICommand>
+            {
+            };
         }
 
-        public OldInputState GetOldInputState()
+        private Dictionary<MouseButton, ICommand> GetMouseButtonsMappings(IPlayer player)
         {
-            return new OldInputState { oldMouseState = oldMouseState };
-        }
-
-        public void SetOldInputState(OldInputState oldInputState)
-        {
-            oldMouseState = oldInputState.oldMouseState;
+            return new Dictionary<MouseButton, ICommand>
+            {
+                {MouseButton.LeftButton, new UsePrimaryItemCommand(player) },
+                {MouseButton.RightButton, new UseSecondaryItemCommand(player) }
+            };
         }
 
         public void Update()
@@ -40,14 +60,40 @@ namespace LegendOfZelda.GameState.Rooms
             MouseState localOldMouseState = oldMouseState;
             oldMouseState = newMouseState;
 
+            foreach (KeyValuePair<MouseButton, ICommand> keyValuePair in mouseButtonMappings)
+            {
+                if (GetMouseButtonState(newMouseState, keyValuePair.Key) == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
+                    keyValuePair.Value.Execute();
+            }
+
             if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
-                leftClickCommand.Execute();
+            {
+                Point mousePosition = newMouseState.Position;
+                foreach (ISpawnable button in buttons)
+                {
+                    Rectangle buttonRectangle = button.GetRectangle();
+                    if (mousePosition.X > buttonRectangle.Left &&
+                        mousePosition.X < buttonRectangle.Right &&
+                        mousePosition.Y > buttonRectangle.Top &&
+                        mousePosition.Y < buttonRectangle.Bottom)
+                        buttonMappings[button.GetType()].Execute();
+                }
+            }
+        }
 
-
-            if (newMouseState.RightButton == ButtonState.Pressed && localOldMouseState.RightButton != ButtonState.Pressed)
-                rightClickCommand.Execute();
-
-            oldMouseState = newMouseState;
+        private ButtonState GetMouseButtonState(MouseState mouseState, MouseButton button)
+        {
+            switch (button)
+            {
+                case MouseButton.LeftButton:
+                    return mouseState.LeftButton;
+                case MouseButton.RightButton:
+                    return mouseState.RightButton;
+                case MouseButton.MiddleButton:
+                    return mouseState.MiddleButton;
+                default:
+                    return ButtonState.Released;
+            }
         }
     }
 }
