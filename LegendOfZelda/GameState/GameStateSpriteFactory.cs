@@ -1,5 +1,7 @@
 ﻿using LegendOfZelda.GameState.Sprite;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Menu;
+using LegendOfZelda.Menu.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -20,6 +22,7 @@ namespace LegendOfZelda.GameState
         private Texture2D hudItems;
         private Texture2D redOverlaySprite;
         private Texture2D blackOverlaySprite;
+        private Texture2D buttonSelectorSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -38,6 +41,7 @@ namespace LegendOfZelda.GameState
             redOverlaySprite = content.Load<Texture2D>("Menu/RedOverlay");
             blackOverlaySprite = content.Load<Texture2D>("Menu/BlackOverlay");
             hudItems = content.Load<Texture2D>("Menu/HudItems");
+            buttonSelectorSprite = content.Load<Texture2D>("Menu/ButtonSelector");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -87,6 +91,22 @@ namespace LegendOfZelda.GameState
         public ITextureAtlasSprite CreateHudItemsSprite()
         {
             return new GameStateTextureAtlasSprite(hudItems);
+        }
+        public ISprite CreateTopRightButtonSelectorSprite()
+        {
+            return new TopRightSelectorSprite(buttonSelectorSprite);
+        }
+        public ISprite CreateTopLeftButtonSelectorSprite()
+        {
+            return new TopLeftSelectorSprite(buttonSelectorSprite);
+        }
+        public ISprite CreateBottomRightButtonSelectorSprite()
+        {
+            return new BottomRightSelectorSprite(buttonSelectorSprite);
+        }
+        public ISprite CreateBottomLeftButtonSelectorSprite()
+        {
+            return new BottomLeftSelectorSprite(buttonSelectorSprite);
         }
     }
 }
