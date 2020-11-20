@@ -12,12 +12,13 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 {
     internal class InventoryMenu : IButtonMenu
     {
-        private readonly Dictionary<LinkConstants.ItemType, IButton> buttonsDictionary;
-        private readonly Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
+        private readonly int numItemsPerRow = 4;
+        private readonly List<Tuple<LinkConstants.ItemType, IButton, IButton>> itemButtonsTupleList; // <item type, button in inventory, button in selected item slot>
         private readonly IPlayer link;
         private readonly ISprite inventoryBackgroundSprite;
-        private IButton secondaryItem;
-        private bool safeToDespawn;
+        private readonly ButtonSelector buttonSelector;
+        private Tuple<LinkConstants.ItemType, IButton, IButton> secondaryItem;
+        private int secondaryItemIndex;
 
         public IButton SelectedButton { get; private set; }
 
@@ -31,27 +32,29 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             inventoryBackgroundSprite = GameStateSpriteFactory.Instance.CreateInventoryBackgroundSprite();
             Position = ItemSelectionStateConstants.InventoryPaneStartPosition;
             this.link = link;
-            secondaryItem = GetEmptyButton();
-            buttonsDictionary = GetButtonsDictionary();
-            Buttons = GetButtonsList(buttonsDictionary);
-            secondaryItemDictionary = GetSecondaryItemDictionary();
+            buttonSelector = new ButtonSelector(link.Game.SpriteBatch, this);
+            itemButtonsTupleList = GetItemButtonsTupleList();
+            Buttons = GetButtonsList(itemButtonsTupleList);
+            secondaryItemIndex = 0;
         }
 
-        private List<IButton> GetButtonsList(Dictionary<LinkConstants.ItemType, IButton> buttonsDictionary)
+        private List<IButton> GetButtonsList(List<Tuple<LinkConstants.ItemType, IButton, IButton>> itemButtonTupleList)
         {
             List<IButton> list = new List<IButton>();
-            foreach (KeyValuePair<LinkConstants.ItemType, IButton> button in buttonsDictionary) list.Add(button.Value);
+            foreach (var tuple in itemButtonTupleList)
+                if (tuple.Item2 != null) list.Add(tuple.Item2);
             return list;
         }
 
         public void Draw()
         {
             inventoryBackgroundSprite.Draw(link.Game.SpriteBatch, Position, Constants.DrawLayer.Menu);
-            secondaryItem.Draw();
-            foreach (KeyValuePair<LinkConstants.ItemType, IButton> button in buttonsDictionary)
+            secondaryItem.Item3.Draw();
+            foreach (var button in itemButtonsTupleList)
             {
-                if (button.Value.IsActive) button.Value.Draw();
+                if (button.Item2 != null && button.Item2.IsActive) button.Item2.Draw();
             }
+            buttonSelector.Draw();
         }
 
         public Rectangle GetRectangle()
@@ -62,36 +65,54 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public void Update()
         {
             inventoryBackgroundSprite.Update();
-            secondaryItem = secondaryItemDictionary[link.SecondaryItem];
-            foreach (KeyValuePair<LinkConstants.ItemType, IButton> item in buttonsDictionary)
+            buttonSelector.Update();
+
+            secondaryItem = itemButtonsTupleList[secondaryItemIndex];
+            buttonSelector.ButtonSelected = secondaryItem.Item2;
+            link.SecondaryItem = secondaryItem.Item1;
+
+            foreach (var tuple in itemButtonsTupleList)
             {
-                if (link.GetQuantityInInventory(item.Key) > 0) item.Value.MakeActive();
-                else item.Value.MakeInactive();
+                if (tuple.Item2 == null) continue;
+                if (link.GetQuantityInInventory(tuple.Item1) > 0) tuple.Item2.MakeActive();
+                else tuple.Item2.MakeInactive();
             }
         }
 
-        private Dictionary<LinkConstants.ItemType, IButton> GetButtonsDictionary()
+        private List<Tuple<LinkConstants.ItemType, IButton, IButton>> GetItemButtonsTupleList()
         {
-            return new Dictionary<LinkConstants.ItemType, IButton>
+            return new List<Tuple<LinkConstants.ItemType, IButton, IButton>>
             {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.BoomerangHudLocation)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.BombHudLocation)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.ArrowHudLocation)},
-                { LinkConstants.ItemType.Bow, new BowInventoryButton(link.Game.SpriteBatch,this, ItemSelectionStateConstants.BowHudLocation)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.CandleHudLocation)}
-            };
-        }
+                Tuple.Create(
+                    LinkConstants.ItemType.Boomerang,
+                    (IButton) new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.BoomerangHudLocation),
+                    (IButton) new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)
+                    ),
 
-        private Dictionary<LinkConstants.ItemType, IButton> GetSecondaryItemDictionary()
-        {
-            return new Dictionary<LinkConstants.ItemType, IButton>
-            {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)},
-                { LinkConstants.ItemType.None, GetEmptyButton() }
+                Tuple.Create(
+                    LinkConstants.ItemType.Bomb,
+                    (IButton) new BombInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.BombHudLocation),
+                    (IButton) new BombInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)
+                    ),
+
+                Tuple.Create(
+                    LinkConstants.ItemType.Rupee,
+                    (IButton) new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.ArrowHudLocation),
+                    (IButton) new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)
+                    ),
+
+                Tuple.Create(
+                    LinkConstants.ItemType.Bow,
+                    (IButton) new BowInventoryButton(link.Game.SpriteBatch,this, ItemSelectionStateConstants.BowHudLocation),
+                    (IButton) new ArrowWoodInventoryButton(link.Game.SpriteBatch, this, ItemSelectionStateConstants.SecondaryItemHudLocation)
+                    ),
+
+                Tuple.Create(
+                    LinkConstants.ItemType.None,
+                    (IButton) null,
+                    GetEmptyButton()
+                    )
+
             };
         }
 
@@ -102,7 +123,20 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void MoveSelection(Constants.Direction direction)
         {
-            throw new System.NotImplementedException();
+        }
+
+        public void UpdateSecondaryItem(LinkConstants.ItemType item)
+        {
+            for (int i = 0; i < itemButtonsTupleList.Count; i++)
+            {
+                var tuple = itemButtonsTupleList[i];
+                if (tuple.Item1 == item)
+                {
+                    secondaryItemIndex = i;
+                    secondaryItem = tuple;
+                    return;
+                }
+            }
         }
     }
 }

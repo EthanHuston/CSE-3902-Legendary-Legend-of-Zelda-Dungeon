@@ -22,7 +22,10 @@ namespace LegendOfZelda.GameState
         private Texture2D hudItems;
         private Texture2D redOverlaySprite;
         private Texture2D blackOverlaySprite;
-        private Texture2D buttonSelectorSprite;
+        private Texture2D buttonSelectorTopLeftSprite;
+        private Texture2D buttonSelectorTopRightSprite;
+        private Texture2D buttonSelectorBottomRightSprite;
+        private Texture2D buttonSelectorBottomLeftSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -41,7 +44,10 @@ namespace LegendOfZelda.GameState
             redOverlaySprite = content.Load<Texture2D>("Menu/RedOverlay");
             blackOverlaySprite = content.Load<Texture2D>("Menu/BlackOverlay");
             hudItems = content.Load<Texture2D>("Menu/HudItems");
-            buttonSelectorSprite = content.Load<Texture2D>("Menu/ButtonSelector");
+            buttonSelectorTopLeftSprite = content.Load<Texture2D>("Menu/ButtonSelectorTopLeft");
+            buttonSelectorTopRightSprite = content.Load<Texture2D>("Menu/ButtonSelectorTopRight");
+            buttonSelectorBottomRightSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomRight");
+            buttonSelectorBottomLeftSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomLeft");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -94,19 +100,19 @@ namespace LegendOfZelda.GameState
         }
         public ISprite CreateTopRightButtonSelectorSprite()
         {
-            return new TopRightSelectorSprite(buttonSelectorSprite);
+            return new TopRightSelectorSprite(buttonSelectorTopRightSprite);
         }
         public ISprite CreateTopLeftButtonSelectorSprite()
         {
-            return new TopLeftSelectorSprite(buttonSelectorSprite);
+            return new TopLeftSelectorSprite(buttonSelectorTopLeftSprite);
         }
         public ISprite CreateBottomRightButtonSelectorSprite()
         {
-            return new BottomRightSelectorSprite(buttonSelectorSprite);
+            return new BottomRightSelectorSprite(buttonSelectorBottomRightSprite);
         }
         public ISprite CreateBottomLeftButtonSelectorSprite()
         {
-            return new BottomLeftSelectorSprite(buttonSelectorSprite);
+            return new BottomLeftSelectorSprite(buttonSelectorBottomLeftSprite);
         }
     }
 }

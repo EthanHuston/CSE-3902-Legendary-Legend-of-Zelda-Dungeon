@@ -17,7 +17,7 @@ namespace LegendOfZelda.GameState.Button
         private Vector2 Size => GameStateConstants.StandardItemSpriteSize;
 
         private Point position;
-        public Point Position { get => owningMenu.Position + position; set => position = new Point(value.X, value.Y); }
+        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
         public CompassInventoryButton(SpriteBatch spriteBatch, IMenu owner, Point relativePosition)
         {

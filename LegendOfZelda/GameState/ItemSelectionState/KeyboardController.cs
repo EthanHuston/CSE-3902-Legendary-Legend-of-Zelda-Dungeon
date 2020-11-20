@@ -32,10 +32,13 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             return new Dictionary<Keys, ICommand>
             {
                 {Keys.Tab, new ResumeGameCommand(gameState) },
+                
+                /**/
                 {Keys.W, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Up) },
                 {Keys.D, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Right) },
                 {Keys.S, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Down) },
                 {Keys.A, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Left) }
+                /**/            
             };
         }
 

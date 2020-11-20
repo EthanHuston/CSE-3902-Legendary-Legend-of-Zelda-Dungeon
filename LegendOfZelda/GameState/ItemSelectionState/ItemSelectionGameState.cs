@@ -9,28 +9,28 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     internal class ItemSelectionGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
-        private readonly IButtonMenu inventoryMenu;
         private readonly IMenu mapMenu;
         private readonly IMenu hud;
         private readonly ICamera camera;
+        public IButtonMenu InventoryMenu { get; private set; }
 
         public ItemSelectionGameState(IPlayer player, RoomGameState oldRoomState)
         {
             Game = player.Game;
-            inventoryMenu = new InventoryMenu(player);
+            InventoryMenu = new InventoryMenu(player);
             mapMenu = new MapMenu(player, oldRoomState.RoomMap);
             hud = oldRoomState.Hud;
-            camera = new ItemSelectionStateCamera(hud, new List<IMenu> { inventoryMenu, mapMenu });
+            camera = new ItemSelectionStateCamera(hud, new List<IMenu> { InventoryMenu, mapMenu });
             roomStatePreserved = oldRoomState;
-            InitControllerList(player);
+            InitControllerList();
         }
 
-        private void InitControllerList(IPlayer player)
+        private void InitControllerList()
         {
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, inventoryMenu.Buttons, player) }
+                {new MouseController(this, InventoryMenu.Buttons) }
             };
         }
 
@@ -41,7 +41,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public override void StateEntryProcedure()
         {
-            inventoryMenu.Update();
+            InventoryMenu.Update();
             mapMenu.Update();
             camera.Pan(ItemSelectionStateConstants.CameraVelocity, ItemSelectionStateConstants.CameraPanDistance);
         }
@@ -54,7 +54,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         protected override void NormalStateUpdate()
         {
             foreach (IController controller in controllerList) controller.Update();
-            inventoryMenu.Update();
+            InventoryMenu.Update();
             mapMenu.Update();
             hud.Update();
         }
@@ -74,7 +74,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public override void Draw()
         {
             roomStatePreserved.Draw(); // hud gets drawn with room
-            inventoryMenu.Draw();
+            InventoryMenu.Draw();
             mapMenu.Draw();
         }
     }

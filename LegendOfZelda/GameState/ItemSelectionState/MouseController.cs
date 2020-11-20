@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.Command;
 using LegendOfZelda.GameState.Rooms;
 using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
@@ -26,22 +27,23 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             set => oldMouseState = value.MouseState;
         }
 
-        public MouseController(IGameState gameState, List<IButton> buttons, IPlayer player)
+        public MouseController(IGameState gameState, List<IButton> buttons)
         {
             oldMouseState = new MouseState();
             this.buttons = buttons;
-            buttonMappings = GetButtonMappings(player);
+            buttonMappings = GetButtonMappings(gameState);
             mouseButtonMappings = GetMouseButtonsMappings(gameState);
         }
 
-        private Dictionary<Type, ICommand> GetButtonMappings(IPlayer player)
+        private Dictionary<Type, ICommand> GetButtonMappings(IGameState gameState)
         {
+            ItemSelectionGameState gameStateCast = (ItemSelectionGameState)gameState;
             return new Dictionary<Type, ICommand>
             {
-                {typeof(ArrowWoodInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Rupee) },
-                {typeof(BombInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Bomb) },
-                {typeof(BoomerangWoodInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Boomerang) },
-                {typeof(BowInventoryButton), new ChangeSecondaryToItem(player, Link.LinkConstants.ItemType.Rupee) },
+                {typeof(ArrowWoodInventoryButton), new ChangeSecondaryToItem(gameStateCast.InventoryMenu, Link.LinkConstants.ItemType.Rupee) },
+                {typeof(BombInventoryButton), new ChangeSecondaryToItem(gameStateCast.InventoryMenu, Link.LinkConstants.ItemType.Bomb) },
+                {typeof(BoomerangWoodInventoryButton), new ChangeSecondaryToItem(gameStateCast.InventoryMenu, Link.LinkConstants.ItemType.Boomerang) },
+                {typeof(BowInventoryButton), new ChangeSecondaryToItem(gameStateCast.InventoryMenu, Link.LinkConstants.ItemType.Rupee) },
 
             };
         }

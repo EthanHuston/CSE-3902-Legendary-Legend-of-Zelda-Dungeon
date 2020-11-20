@@ -7,6 +7,7 @@ namespace LegendOfZelda.Menu
 {
     class ButtonSelector
     {
+        private readonly IMenu owningMenu;
         private readonly SpriteBatch spriteBatch;
         private readonly ISprite[] selectorSprites;
         private const int topLeftSelector = 0, topRightSeletor = 1, bottomRightSelector = 2, bottomLeftSelector = 3;
@@ -14,9 +15,11 @@ namespace LegendOfZelda.Menu
 
         public IButton ButtonSelected { get; set; }
 
-        public ButtonSelector(SpriteBatch spriteBatch)
+        public ButtonSelector(SpriteBatch spriteBatch, IButtonMenu owningMenu)
         {
+            this.owningMenu = owningMenu;
             this.spriteBatch = spriteBatch;
+
             selectorSprites = new ISprite[4];
             selectorSprites[topLeftSelector] = GameStateSpriteFactory.Instance.CreateTopLeftButtonSelectorSprite();
             selectorSprites[topRightSeletor] = GameStateSpriteFactory.Instance.CreateTopRightButtonSelectorSprite();
@@ -29,10 +32,10 @@ namespace LegendOfZelda.Menu
             if (ButtonSelected == null || !ButtonSelected.IsActive) return;
 
             Rectangle buttonRectangle = ButtonSelected.GetRectangle();
-            int topButtonY = buttonRectangle.Y;
-            int bottomButtonY = buttonRectangle.Y + buttonRectangle.Height - selectorLength;
-            int leftButtonX = buttonRectangle.X;
-            int rightButtonX = buttonRectangle.X + buttonRectangle.Width - selectorLength;
+            int topButtonY = owningMenu.Position.Y + buttonRectangle.Y;
+            int bottomButtonY = owningMenu.Position.Y + buttonRectangle.Y + buttonRectangle.Height - selectorLength;
+            int leftButtonX = owningMenu.Position.X + buttonRectangle.X;
+            int rightButtonX = owningMenu.Position.X + buttonRectangle.X + buttonRectangle.Width - selectorLength;
 
             selectorSprites[topLeftSelector].Draw(spriteBatch,
                 new Point(leftButtonX, topButtonY),
