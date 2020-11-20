@@ -55,7 +55,7 @@ namespace LegendOfZelda.GameState
             readyToSwitchState = false;
             changingStates = false;
             stateInitialized = false;
-            pendingGameState.SetControllerOldInputState(GetOldInputState());
+            pendingGameState.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
             Game.State = pendingGameState;
             Game.State.StateEntryProcedure();
         }
@@ -72,30 +72,5 @@ namespace LegendOfZelda.GameState
         protected abstract void SwitchingStateUpdate();
         protected abstract void InitializingStateUpdate();
         public abstract void Draw();
-
-        private InputStates GetOldInputState()
-        {
-            InputStates oldInputState = new InputStates();
-
-            foreach (IController controller in controllerList)
-            {
-                switch (controller.InputType)
-                {
-                    case InputType.Keyboard:
-                        oldInputState.KeyboardState = controller.OldInputState.KeyboardState;
-                        break;
-
-                    case InputType.Mouse:
-                        oldInputState.MouseState = controller.OldInputState.MouseState;
-                        break;
-
-                    case InputType.Gamepad:
-                        oldInputState.GamePadState = controller.OldInputState.GamePadState;
-                        break;
-                }
-            }
-
-            return oldInputState;
-        }
     }
 }

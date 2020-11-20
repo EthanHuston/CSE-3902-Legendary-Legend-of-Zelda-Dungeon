@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.HUDClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Utilities
 {
@@ -71,5 +72,33 @@ namespace LegendOfZelda.GameState.Utilities
         LeftButton,
         MiddleButton,
         RightButton
+    }
+
+    static class GameStateMethods
+    {
+        public static InputStates GetOldInputState(List<IController> controllerList)
+        {
+            InputStates oldInputState = new InputStates();
+
+            foreach (IController controller in controllerList)
+            {
+                switch (controller.InputType)
+                {
+                    case InputType.Keyboard:
+                        oldInputState.KeyboardState = controller.OldInputState.KeyboardState;
+                        break;
+
+                    case InputType.Mouse:
+                        oldInputState.MouseState = controller.OldInputState.MouseState;
+                        break;
+
+                    case InputType.Gamepad:
+                        oldInputState.GamePadState = controller.OldInputState.GamePadState;
+                        break;
+                }
+            }
+
+            return oldInputState;
+        }
     }
 }
