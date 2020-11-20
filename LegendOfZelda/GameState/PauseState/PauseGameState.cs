@@ -42,7 +42,7 @@ namespace LegendOfZelda.GameState.PauseState
         public override void Draw()
         {
             roomStatePreserved.Draw(); // continue to draw the old room in the background
-            foreach (ISpawnable button in buttons) button.Draw();
+            foreach (IButton button in buttons) button.Draw();
         }
 
         public override void SwitchToRoomState()

@@ -64,7 +64,7 @@ namespace LegendOfZelda.GameState.PauseState
             if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
             {
                 Point mousePosition = newMouseState.Position;
-                foreach (ISpawnable button in buttons)
+                foreach (IButton button in buttons)
                 {
                     Rectangle buttonRectangle = button.GetRectangle();
                     if (mousePosition.X > buttonRectangle.Left &&
