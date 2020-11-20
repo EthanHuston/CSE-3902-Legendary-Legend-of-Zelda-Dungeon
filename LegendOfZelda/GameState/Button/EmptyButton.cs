@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Menu;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameState.Button
 {

@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.Interface;
 
-namespace LegendOfZelda.GameState.Button
+namespace LegendOfZelda.Menu
 {
     internal interface IButton : ISpawnable
     {

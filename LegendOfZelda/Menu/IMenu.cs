@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.GameState
+namespace LegendOfZelda.Menu
 {
     internal interface IMenu
     {
