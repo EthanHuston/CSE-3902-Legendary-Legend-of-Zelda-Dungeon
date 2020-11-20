@@ -11,15 +11,16 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameLoseState
 {
-    internal class GameLoseGameState : AbstractGameState
+    internal class GameLoseGameState : IGameState
     {
+        private readonly List<IController> controllerList;
         private readonly RoomGameState roomStatePreserved;
-        private List<IButton> buttons;
         private readonly SpawnableManager spawnableManager;
         private readonly ISprite gameOverSprite;
         private readonly ISprite redOverlaySprite;
         private readonly SoundEffectInstance game_over;
         private readonly SoundEffectInstance link_die;
+        private readonly List<IButton> buttons;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -35,29 +36,31 @@ namespace LegendOfZelda.GameState.GameLoseState
             game_over = SoundFactory.Instance.CreateGameOverSound();
             gameOverSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
             redOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
-            InitButtonsList();
-            InitControllerList();
+            buttons = GetButtonsList(game);
+            controllerList = GetControllerList(buttons);
         }
 
-        private void InitButtonsList()
+        public Game1 Game { get; protected set; }
+
+        private List<IButton> GetButtonsList(Game1 game)
         {
-            buttons = new List<IButton>()
+            return new List<IButton>()
             {
-                {new RetryButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateRetryButtonLocation) },
-                {new ExitButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateExitButtonLocation) }
+                {new RetryButtonBlack(game.SpriteBatch, GameStateConstants.LoseStateRetryButtonLocation) },
+                {new ExitButtonBlack(game.SpriteBatch, GameStateConstants.LoseStateExitButtonLocation) }
             };
         }
 
-        private void InitControllerList()
+        private List<IController> GetControllerList(List<IButton> buttons)
         {
-            controllerList = new List<IController>()
+            return new List<IController>()
             {
                 {new KeyboardController(this) },
                 {new MouseController(this, buttons) }
             };
         }
 
-        public override void Draw()
+        public void Draw()
         {
             if (phaseOne)
             {
@@ -78,28 +81,25 @@ namespace LegendOfZelda.GameState.GameLoseState
             }
         }
 
-        public override void SwitchToRoomState()
-        {
-            StartStateSwitch(roomStatePreserved);
-        }
+        public void SwitchToRoomState() { }
 
-        public override void SwitchToMainMenuState()
+        public void SwitchToMainMenuState()
         {
             game_over.Stop();
-            StartStateSwitch(new MainMenuGameState(Game));
+            StateExitProcedure();
+            Game.State = new MainMenuGameState(Game);
+            Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
+            Game.State.StateEntryProcedure();
         }
 
-        public override void StateEntryProcedure()
+        public void StateEntryProcedure()
         {
             roomStatePreserved.GetPlayer(0).StartDeathAnimation();
         }
 
-        public override void StateExitProcedure()
-        {
-            // nothing fancy to do here
-        }
+        public void StateExitProcedure() { }
 
-        protected override void NormalStateUpdate()
+        public void Update()
         {
             if (phaseOne)
             {
@@ -127,15 +127,18 @@ namespace LegendOfZelda.GameState.GameLoseState
             }
         }
 
-        protected override void SwitchingStateUpdate()
+        public void SetControllerOldInputState(InputStates inputFromOldState)
         {
-            readyToSwitchState = true; // nothing fancy to do here
+            foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
 
-        protected override void InitializingStateUpdate()
-        {
-            stateInitialized = true; // nothing fancy to do here
-        }
+        public void SwitchToPauseState() { }
+
+        public void SwitchToItemSelectionState() { }
+
+        public void SwitchToDeathState() { }
+
+        public void SwitchToWinState() { }
     }
 }
 
