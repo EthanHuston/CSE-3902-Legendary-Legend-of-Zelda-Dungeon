@@ -1,11 +1,11 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.MainMenu;
 using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.Utilities;
 using Microsoft.Xna.Framework.Audio;
 
 namespace LegendOfZelda.GameState.GameWinState
 {
-    internal class GameWinGameState : AbstractGameState
+    internal class GameWinGameState : IGameState
     {
         private readonly RoomGameState roomStatePreserved;
         private readonly SpawnableManager spawnableManager;
@@ -20,6 +20,8 @@ namespace LegendOfZelda.GameState.GameWinState
         private int phaseTwoBuffer = 0;
         private int cBuffer = 0;
 
+        public Game1 Game { get; private set; }
+
         public GameWinGameState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
@@ -30,42 +32,13 @@ namespace LegendOfZelda.GameState.GameWinState
             refill = SoundFactory.Instance.CreateRefillSound();
         }
 
-        public override void Draw()
-        {
-            spawnableManager.DrawGameWin();
-            roomStatePreserved.Hud.Draw();
-            if (phaseThree)
-            {
-                curtain.Draw();
-            }
-        }
+        public void SetControllerOldInputState(InputStates inputFromOldState) { }
 
-        public override void SwitchToRoomState()
-        {
-            StartStateSwitch(roomStatePreserved);
-        }
+        public void StateEntryProcedure() { win.Play(); }
 
-        public override void SwitchToMainMenuState()
-        {
-            StartStateSwitch(new MainMenuGameState(Game));
-        }
+        public void StateExitProcedure() { }
 
-        public override void StateEntryProcedure()
-        {
-            win.Play();
-        }
-
-        public override void StateExitProcedure()
-        {
-            // nothing fancy to do here
-        }
-
-        public override void SetControllerOldInputState(OldInputState inputFromOldState)
-        {
-            // This does nothing.
-        }
-
-        protected override void NormalStateUpdate()
+        public void Update()
         {
             roomStatePreserved.Hud.Update();
             spawnableManager.PlayerList[0].Update();
@@ -112,15 +85,27 @@ namespace LegendOfZelda.GameState.GameWinState
             }
         }
 
-        protected override void SwitchingStateUpdate()
+        public void Draw()
         {
-            readyToSwitchState = true; // nothing fancy to do here
+            spawnableManager.DrawGameWin();
+            roomStatePreserved.Hud.Draw();
+            if (phaseThree)
+            {
+                curtain.Draw();
+            }
         }
 
-        protected override void InitializingStateUpdate()
-        {
-            stateInitialized = true; // nothing fancy to do here
-        }
+        public void SwitchToPauseState() { }
+
+        public void SwitchToItemSelectionState() { }
+
+        public void SwitchToDeathState() { }
+
+        public void SwitchToWinState() { }
+
+        public void SwitchToRoomState() { }
+
+        public void SwitchToMainMenuState() { }
     }
 }
 
