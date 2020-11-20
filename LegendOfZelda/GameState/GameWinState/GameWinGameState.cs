@@ -7,6 +7,9 @@ namespace LegendOfZelda.GameState.GameWinState
 {
     internal class GameWinGameState : IGameState
     {
+        private const int curtainMoveTime = 450;
+        private const int phaseOneTime = 150;
+        private const int phaseTwoTime = 5;
         private readonly RoomGameState roomStatePreserved;
         private readonly SpawnableManager spawnableManager;
         private readonly SoundEffectInstance win;
@@ -18,7 +21,7 @@ namespace LegendOfZelda.GameState.GameWinState
         private bool phaseFour = false;
         private int phaseOneBuffer = 0;
         private int phaseTwoBuffer = 0;
-        private int cBuffer = 0;
+        private int curtainBuffer = 0;
 
         public Game1 Game { get; private set; }
 
@@ -45,7 +48,7 @@ namespace LegendOfZelda.GameState.GameWinState
             if (phaseOne)
             {
                 phaseOneBuffer++;
-                if (phaseOneBuffer == 150)
+                if (phaseOneBuffer == phaseOneTime)
                 {
                     phaseOne = false;
                     phaseTwo = true;
@@ -55,7 +58,7 @@ namespace LegendOfZelda.GameState.GameWinState
             else if (phaseTwo)
             {
                 phaseTwoBuffer++;
-                if (phaseTwoBuffer == 5)
+                if (phaseTwoBuffer == phaseTwoTime)
                 {
                     spawnableManager.PlayerList[0].BeHealthy(Constants.HeartValue / 2);
                     refill.Play();
@@ -72,8 +75,8 @@ namespace LegendOfZelda.GameState.GameWinState
             else if (phaseThree)
             {
                 curtain.Update();
-                cBuffer++;
-                if (cBuffer == 450)
+                curtainBuffer++;
+                if (curtainBuffer == curtainMoveTime)
                 {
                     phaseThree = false;
                     phaseFour = true;
