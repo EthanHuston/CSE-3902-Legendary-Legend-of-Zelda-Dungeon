@@ -354,6 +354,7 @@
     <Compile Include="GameState\Command\SelectButtonCommand.cs" />
     <Compile Include="GameState\PauseState\GamepadController.cs" />
     <Compile Include="GameState\ItemSelectionState\GamepadController.cs" />
+    <Compile Include="GameState\MainMenuState\GamepadController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\RoomData\Room1.csv">

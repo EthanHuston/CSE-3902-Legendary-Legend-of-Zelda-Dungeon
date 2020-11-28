@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.MainMenu
+namespace LegendOfZelda.GameState.MainMenuState
 {
     internal class MainMenuGameState : AbstractGameState
     {
@@ -24,7 +24,8 @@ namespace LegendOfZelda.GameState.MainMenu
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, new List<IButton>()) }
+                {new MouseController(this, new List<IButton>()) },
+                {new GamepadController(this) }
             };
         }
 

@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;

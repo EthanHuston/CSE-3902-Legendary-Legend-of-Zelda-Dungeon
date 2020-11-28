@@ -4,7 +4,7 @@ using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.MainMenu
+namespace LegendOfZelda.GameState.MainMenuState
 {
     internal class KeyboardController : IController
     {

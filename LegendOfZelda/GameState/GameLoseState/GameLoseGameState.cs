@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.MainMenu
+namespace LegendOfZelda.GameState.MainMenuState
 {
     internal class MouseController : IController
     {
