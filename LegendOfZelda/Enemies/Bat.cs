@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
     internal class Bat : INpc
     {
         private const int directionChangeDelay = 75;
-        private const int velocityScalar = (int)(0.5 * Constants.GameScaler);
+        private const int velocityScalar = (int)(0.75 * Constants.GameScaler);
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
