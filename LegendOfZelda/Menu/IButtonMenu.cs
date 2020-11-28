@@ -6,6 +6,5 @@ namespace LegendOfZelda.Menu
     {
         List<IButton> Buttons { get; }
         void MoveSelection(Constants.Direction direction);
-        IButton SelectedButton { get; }
     }
 }

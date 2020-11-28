@@ -12,19 +12,17 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 {
     internal class InventoryMenu : IButtonMenu
     {
+        private const int numRows = 2, numColumns = 5;
         private readonly int numItemsPerRow = 4;
         private readonly List<Tuple<LinkConstants.ItemType, IButton, IButton>> itemButtonsTupleList; // <item type, button in inventory, button in selected item slot>
         private readonly IPlayer link;
         private readonly ISprite inventoryBackgroundSprite;
-        private readonly ButtonSelector buttonSelector;
         private Tuple<LinkConstants.ItemType, IButton, IButton> secondaryItem;
-        private int secondaryItemIndex;
-
-        public IButton SelectedButton { get; private set; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
+        public ButtonSelector buttonSelector { get; private set; }
         public List<IButton> Buttons { get; private set; }
 
         public InventoryMenu(IPlayer link)
@@ -32,10 +30,10 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             inventoryBackgroundSprite = GameStateSpriteFactory.Instance.CreateInventoryBackgroundSprite();
             Position = ItemSelectionStateConstants.InventoryPaneStartPosition;
             this.link = link;
-            buttonSelector = new ButtonSelector(link.Game.SpriteBatch, this);
             itemButtonsTupleList = GetItemButtonsTupleList();
             Buttons = GetButtonsList(itemButtonsTupleList);
-            secondaryItemIndex = 0;
+            buttonSelector = new ButtonSelector(link.Game.SpriteBatch, this, Buttons, numRows, numColumns);
+            secondaryItem = itemButtonsTupleList[itemButtonsTupleList.Count - 1];
         }
 
         private List<IButton> GetButtonsList(List<Tuple<LinkConstants.ItemType, IButton, IButton>> itemButtonTupleList)
@@ -66,10 +64,6 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             inventoryBackgroundSprite.Update();
             buttonSelector.Update();
-
-            secondaryItem = itemButtonsTupleList[secondaryItemIndex];
-            buttonSelector.ButtonSelected = secondaryItem.Item2;
-            link.SecondaryItem = secondaryItem.Item1;
 
             foreach (var tuple in itemButtonsTupleList)
             {
@@ -112,17 +106,12 @@ namespace LegendOfZelda.GameState.ItemSelectionState
                     (IButton) null,
                     GetEmptyButton()
                     )
-
             };
         }
 
         private IButton GetEmptyButton()
         {
             return new EmptyButton(this, new Rectangle(ItemSelectionStateConstants.SecondaryItemHudLocation.X, ItemSelectionStateConstants.SecondaryItemHudLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
-        }
-
-        public void MoveSelection(Constants.Direction direction)
-        {
         }
 
         public void UpdateSecondaryItem(LinkConstants.ItemType item)
@@ -132,11 +121,19 @@ namespace LegendOfZelda.GameState.ItemSelectionState
                 var tuple = itemButtonsTupleList[i];
                 if (tuple.Item1 == item)
                 {
-                    secondaryItemIndex = i;
+                    buttonSelector.SelectedCurrentIndex = i;
                     secondaryItem = tuple;
+                    link.SecondaryItem = tuple.Item1;
                     return;
                 }
             }
+        }
+
+        public void MoveSelection(Constants.Direction direction)
+        {
+            buttonSelector.MoveSelector(direction);
+            secondaryItem = itemButtonsTupleList[buttonSelector.SelectedCurrentIndex];
+            link.SecondaryItem = secondaryItem.Item1;
         }
     }
 }
