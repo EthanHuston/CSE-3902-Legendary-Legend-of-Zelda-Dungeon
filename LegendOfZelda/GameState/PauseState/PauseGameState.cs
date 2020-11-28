@@ -10,24 +10,14 @@ namespace LegendOfZelda.GameState.PauseState
     internal class PauseGameState : AbstractGameState
     {
         private readonly IGameState roomStatePreserved;
-        private List<IButton> buttons;
+        public IButtonMenu PauseGameMenu { get; private set; }
 
         public PauseGameState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
             roomStatePreserved = oldRoomState;
-            InitButtonsList();
+            PauseGameMenu = new PauseGameMenu(Game);
             InitControllerList();
-        }
-
-        private void InitButtonsList()
-        {
-            buttons = new List<IButton>()
-            {
-                {new ResumeButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
-                {new MainMenuButton(Game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) },
-                {new ExitButton(Game.SpriteBatch, GameStateConstants.PauseStateExitButtonLocation) }
-            };
         }
 
         private void InitControllerList()
@@ -35,14 +25,14 @@ namespace LegendOfZelda.GameState.PauseState
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, buttons) }
+                {new MouseController(this, PauseGameMenu.Buttons) }
             };
         }
 
         public override void Draw()
         {
             roomStatePreserved.Draw(); // continue to draw the old room in the background
-            foreach (IButton button in buttons) button.Draw();
+            PauseGameMenu.Draw();
         }
 
         public override void SwitchToRoomState()
@@ -68,6 +58,7 @@ namespace LegendOfZelda.GameState.PauseState
         protected override void NormalStateUpdate()
         {
             foreach (IController controller in controllerList) controller.Update();
+            PauseGameMenu.Update();
         }
 
         protected override void SwitchingStateUpdate()

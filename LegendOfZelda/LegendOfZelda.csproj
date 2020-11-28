@@ -350,6 +350,8 @@
     <Compile Include="GameState\ItemSelectionState\MouseController.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomBeforeBoss.cs" />
     <Compile Include="GameState\RoomsState\GamepadController.cs" />
+    <Compile Include="GameState\PauseState\PauseGameMenu.cs" />
+    <Compile Include="GameState\Command\SelectButtonCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\RoomData\Room1.csv">

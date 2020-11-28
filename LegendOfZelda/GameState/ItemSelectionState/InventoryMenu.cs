@@ -17,11 +17,11 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         private readonly IPlayer link;
         private readonly ISprite inventoryBackgroundSprite;
         private Tuple<LinkConstants.ItemType, IButton, IButton> secondaryItem;
+        public ButtonSelector ButtonSelector { get; private set; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
-        public ButtonSelector buttonSelector { get; private set; }
         public List<IButton> Buttons { get; private set; }
 
         public InventoryMenu(IPlayer link)
@@ -31,7 +31,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             this.link = link;
             itemButtonsTupleList = GetItemButtonsTupleList();
             Buttons = GetButtonsList(itemButtonsTupleList);
-            buttonSelector = new ButtonSelector(link.Game.SpriteBatch, this, Buttons, numRows, numColumns);
+            ButtonSelector = new ButtonSelector(link.Game.SpriteBatch, this, Buttons, numRows, numColumns);
             secondaryItem = itemButtonsTupleList[itemButtonsTupleList.Count - 1];
         }
 
@@ -51,7 +51,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             {
                 if (button.Item2 != null && button.Item2.IsActive) button.Item2.Draw();
             }
-            buttonSelector.Draw();
+            ButtonSelector.Draw();
         }
 
         public Rectangle GetRectangle()
@@ -62,7 +62,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         public void Update()
         {
             inventoryBackgroundSprite.Update();
-            buttonSelector.Update();
+            ButtonSelector.Update();
 
             foreach (var tuple in itemButtonsTupleList)
             {
@@ -120,7 +120,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
                 var tuple = itemButtonsTupleList[i];
                 if (tuple.Item1 == item)
                 {
-                    buttonSelector.SelectedCurrentIndex = i;
+                    ButtonSelector.SelectedCurrentIndex = i;
                     secondaryItem = tuple;
                     link.SecondaryItem = tuple.Item1;
                     return;
@@ -130,8 +130,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         public void MoveSelection(Constants.Direction direction)
         {
-            buttonSelector.MoveSelector(direction);
-            secondaryItem = itemButtonsTupleList[buttonSelector.SelectedCurrentIndex];
+            ButtonSelector.MoveSelector(direction);
+            secondaryItem = itemButtonsTupleList[ButtonSelector.SelectedCurrentIndex];
             link.SecondaryItem = secondaryItem.Item1;
         }
     }
