@@ -51,7 +51,7 @@ namespace LegendOfZelda.GameState.RoomsState
 
         public void Update()
         {
-            GamePadState newGamepadState = GamePad.GetState(0, GamePadDeadZone.Circular);
+            GamePadState newGamepadState = GamePad.GetState(0, GamePadDeadZone.IndependentAxes);
             GamePadState localOldGamePadState = oldGamepadState;
             oldGamepadState = newGamepadState;
 
