@@ -7,9 +7,12 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.PauseState
 {
-    internal class PauseGameState : AbstractGameState
+    internal class PauseGameState : IGameState
     {
+        private List<IController> controllerList;
         private readonly IGameState roomStatePreserved;
+
+        public Game1 Game { get; private set; }
         public IButtonMenu PauseGameMenu { get; private set; }
 
         public PauseGameState(Game1 game, IGameState oldRoomState)
@@ -17,58 +20,68 @@ namespace LegendOfZelda.GameState.PauseState
             Game = game;
             roomStatePreserved = oldRoomState;
             PauseGameMenu = new PauseGameMenu(Game);
-            InitControllerList();
+            controllerList = GetControllerList();
         }
 
-        private void InitControllerList()
+        private List<IController> GetControllerList()
         {
-            controllerList = new List<IController>()
+            return new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, PauseGameMenu.Buttons) }
+                {new MouseController(this, PauseGameMenu.Buttons) },
+                {new GamepadController(this) }
             };
         }
 
-        public override void Draw()
+        public void Draw()
         {
             roomStatePreserved.Draw(); // continue to draw the old room in the background
             PauseGameMenu.Draw();
         }
 
-        public override void SwitchToRoomState()
+        public void SwitchToRoomState()
         {
-            StartStateSwitch(roomStatePreserved);
+            StateExitProcedure();
+            Game.State = roomStatePreserved;
+            Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
+            Game.State.StateEntryProcedure();
         }
 
-        public override void SwitchToMainMenuState()
+        public void SwitchToMainMenuState()
         {
-            StartStateSwitch(new MainMenuGameState(Game));
+            StateExitProcedure();
+            Game.State = new MainMenuGameState(Game);
+            Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
+            Game.State.StateEntryProcedure();
         }
 
-        public override void StateEntryProcedure()
+        public void StateEntryProcedure()
         {
             // nothing fancy to do here
         }
 
-        public override void StateExitProcedure()
+        public void StateExitProcedure()
         {
             // nothing fancy to do here
         }
 
-        protected override void NormalStateUpdate()
+        public void Update()
         {
             foreach (IController controller in controllerList) controller.Update();
             PauseGameMenu.Update();
         }
 
-        protected override void SwitchingStateUpdate()
-        {
-            readyToSwitchState = true; // nothing fancy to do here
-        }
+        public void SwitchToPauseState() { }
 
-        protected override void InitializingStateUpdate()
+        public void SwitchToItemSelectionState() { }
+
+        public void SwitchToDeathState() { }
+
+        public void SwitchToWinState() { }
+
+        public void SetControllerOldInputState(InputStates inputFromOldState)
         {
-            stateInitialized = true; // nothing fancy to do here
+            foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
     }
 }
