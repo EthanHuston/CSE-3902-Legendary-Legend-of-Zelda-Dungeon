@@ -1,14 +1,13 @@
-﻿using LegendOfZelda.GameState.Button;
+﻿using System.Collections.Generic;
 using LegendOfZelda.GameState.Command;
+using LegendOfZelda.GameState.PauseState;
 using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.PauseState
+namespace LegendOfZelda.GameState.ItemSelectionState
 {
-    internal class GamepadController : IController
+    class GamepadController : IController
     {
         private readonly Dictionary<Buttons, ICommand> buttonMappings;
         private GamePadState oldGamepadState;
@@ -30,27 +29,16 @@ namespace LegendOfZelda.GameState.PauseState
 
         private Dictionary<Buttons, ICommand> GetGamepadMappings(IGameState gameState)
         {
-            PauseGameState gameStateCast = (PauseGameState)gameState;
+            ItemSelectionGameState gameStateCast = (ItemSelectionGameState)gameState;
             ICommand resumeGameCommand = new ResumeGameCommand(gameState);
             return new Dictionary<Buttons, ICommand>
             {
-                { Buttons.Start, resumeGameCommand },
                 { Buttons.B, resumeGameCommand },
-                { Buttons.LeftThumbstickUp, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Up) },
-                { Buttons.LeftThumbstickRight, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Right) },
-                { Buttons.LeftThumbstickDown, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Down) },
-                { Buttons.LeftThumbstickLeft, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Left) },
-                { Buttons.A, new SelectButtonCommand(gameStateCast.PauseGameMenu.ButtonSelector, GetButtonMappings(gameState)) }
-            };
-        }
-
-        private Dictionary<Type, ICommand> GetButtonMappings(IGameState gameState)
-        {
-            return new Dictionary<Type, ICommand>
-            {
-                {typeof(ResumeButton), new ResumeGameCommand(gameState) },
-                {typeof(MainMenuButton), new MainMenuCommand(gameState) },
-                {typeof(ExitButton), new ExitGameCommand(gameState) }
+                { Buttons.X, resumeGameCommand },
+                { Buttons.LeftThumbstickUp, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Up) },
+                { Buttons.LeftThumbstickRight, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Right) },
+                { Buttons.LeftThumbstickDown, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Down) },
+                { Buttons.LeftThumbstickLeft, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Left) },
             };
         }
 

@@ -12,6 +12,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         private readonly IMenu mapMenu;
         private readonly IMenu hud;
         private readonly ICamera camera;
+
         public IButtonMenu InventoryMenu { get; private set; }
 
         public ItemSelectionGameState(IPlayer player, RoomGameState oldRoomState)
@@ -30,7 +31,8 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, InventoryMenu.Buttons) }
+                {new MouseController(this, InventoryMenu.Buttons) },
+                {new GamepadController(this) }
             };
         }
 

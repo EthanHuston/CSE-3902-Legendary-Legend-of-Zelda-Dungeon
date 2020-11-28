@@ -11,8 +11,8 @@ namespace LegendOfZelda.GameState.RoomsState
     internal class GamepadController : IController
     {
         private readonly Dictionary<Buttons, ICommand> buttonMappings;
-        private GamePadState oldGamepadState;
         private readonly List<Buttons> repeatableButtons;
+        private GamePadState oldGamepadState;
 
         public InputType InputType { get; } = InputType.Gamepad;
         public InputStates OldInputState
