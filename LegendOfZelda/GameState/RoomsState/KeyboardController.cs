@@ -5,7 +5,7 @@ using LegendOfZelda.Link.Command;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Rooms
+namespace LegendOfZelda.GameState.RoomsState
 {
     internal class KeyboardController : IController
     {

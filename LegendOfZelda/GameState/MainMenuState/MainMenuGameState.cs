@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.GameState.Rooms;
+﻿using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;

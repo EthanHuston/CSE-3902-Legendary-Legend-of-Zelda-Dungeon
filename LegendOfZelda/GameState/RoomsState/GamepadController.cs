@@ -6,7 +6,7 @@ using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Rooms
+namespace LegendOfZelda.GameState.RoomsState
 {
     internal class GamepadController : IController
     {
@@ -14,7 +14,7 @@ namespace LegendOfZelda.GameState.Rooms
         private GamePadState oldGamepadState;
         private readonly List<Buttons> repeatableButtons;
 
-        public InputType InputType { get; } = InputType.Mouse;
+        public InputType InputType { get; } = InputType.Gamepad;
         public InputStates OldInputState
         {
             get => new InputStates { GamePadState = oldGamepadState };

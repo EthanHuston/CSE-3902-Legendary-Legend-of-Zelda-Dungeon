@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Rooms
+namespace LegendOfZelda.GameState.RoomsState
 {
     internal class RoomGameState : AbstractGameState
     {

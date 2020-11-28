@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Rooms
+namespace LegendOfZelda.GameState.RoomsState
 {
     internal class MouseController : IController
     {

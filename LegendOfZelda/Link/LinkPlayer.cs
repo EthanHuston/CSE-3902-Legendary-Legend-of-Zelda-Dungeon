@@ -1,4 +1,4 @@
-using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State;
 using LegendOfZelda.Projectile;
