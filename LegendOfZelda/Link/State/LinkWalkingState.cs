@@ -54,7 +54,6 @@ namespace LegendOfZelda.Link.State
         public override void Move(Constants.Direction direction)
         {
             if (direction == link.FacingDirection) stillMoving = true;
-            else base.Move(direction);
         }
     }
 }
