@@ -60,7 +60,8 @@ namespace LegendOfZelda.GameState.Rooms
             controllerList = new List<IController>()
             {
                 {new KeyboardController(this) },
-                {new MouseController(this, new List<IButton>()) }
+                {new MouseController(this, new List<IButton>()) },
+                {new GamepadController(this) }
             };
         }
 
@@ -68,9 +69,7 @@ namespace LegendOfZelda.GameState.Rooms
         {
             itemSelectionGameStates = new List<ItemSelectionGameState>();
             foreach (IPlayer player in PlayerList)
-            {
                 itemSelectionGameStates.Add(new ItemSelectionGameState(player, this));
-            }
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -159,14 +158,10 @@ namespace LegendOfZelda.GameState.Rooms
 
         public override void StateEntryProcedure()
         {
-            // TODO: initialize a camera to move between rooms here
             if (dungeonMusic.State != SoundState.Playing) dungeonMusic.Resume();
         }
 
-        public override void StateExitProcedure()
-        {
-            // TODO: do some exit stuff here, might not need to do anything at all
-        }
+        public override void StateExitProcedure() { }
 
         protected override void NormalStateUpdate()
         {

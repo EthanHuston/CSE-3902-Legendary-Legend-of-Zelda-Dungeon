@@ -13,7 +13,6 @@ namespace LegendOfZelda.GameState.ItemSelectionState
     internal class InventoryMenu : IButtonMenu
     {
         private const int numRows = 2, numColumns = 5;
-        private readonly int numItemsPerRow = 4;
         private readonly List<Tuple<LinkConstants.ItemType, IButton, IButton>> itemButtonsTupleList; // <item type, button in inventory, button in selected item slot>
         private readonly IPlayer link;
         private readonly ISprite inventoryBackgroundSprite;
