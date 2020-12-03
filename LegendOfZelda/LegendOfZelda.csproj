@@ -365,6 +365,7 @@
     <None Include="Content\RoomData\Room6.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\RoomData\Room69.csv" />
     <None Include="Content\RoomData\Room7.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
