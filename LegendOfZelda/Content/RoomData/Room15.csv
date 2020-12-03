@@ -1,7 +1,7 @@
 ﻿roomNormal,room15,5,4,,,,,,,,
 small,tealBack,roomBorder,,,,,,,,,
-,,,room14,,,,,,,,
-wall,wall,wall,open,,,,,,,,
+room69,,,room14,,,,,,,,
+wallBom,wall,wall,open,,,,,,,,
 ---,---,---,---,---,---,---,---,---,---,---,---
 ---,block,block,block,block,block,block,block,block,block,block,---
 ---,block,---,---,fstat,---,---,dstat,---,---,block,---
