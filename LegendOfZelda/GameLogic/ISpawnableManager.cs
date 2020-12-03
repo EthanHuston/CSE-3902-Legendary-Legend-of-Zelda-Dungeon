@@ -9,6 +9,7 @@ namespace LegendOfZelda.GameLogic
 {
     internal interface ISpawnableManager
     {
+        Game1 Game { get; }
         List<IItem> ItemList { get; }
         List<IProjectile> ProjectileList { get; }
         List<INpc> NpcList { get; }

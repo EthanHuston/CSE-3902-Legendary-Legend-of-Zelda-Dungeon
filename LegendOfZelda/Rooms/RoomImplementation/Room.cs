@@ -15,6 +15,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         protected Dictionary<Constants.Direction, string> roomConnectionStrings;
         protected CollisionManager collisionManager;
 
+        public Game1 Game { get; protected set; }
         public string RoomId { get; set; }
         public bool Visiting { get; set; }
         public int RoomType { get; protected set; }
@@ -25,16 +26,16 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         protected Room() { }
 
-        public Room(List<IPlayer> playerList)
+        public Room(List<IPlayer> playerList, Game1 game)
         {
-            AllObjects = new SpawnableManager(playerList);
+            Game = game;
+            AllObjects = new SpawnableManager(playerList, Game);
 
             roomDictionary = new Dictionary<Constants.Direction, IRoom>();
             roomDoors = new Dictionary<Constants.Direction, IDoor>();
             roomConnectionStrings = new Dictionary<Constants.Direction, string>();
 
             collisionManager = new CollisionManager(AllObjects);
-            LocationOnMap = new Point(-1, -1);
             RoomType = 0;
             Visiting = false;
             SpawnWalls();

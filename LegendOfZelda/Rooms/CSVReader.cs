@@ -17,7 +17,7 @@ namespace LegendOfZelda.Rooms
         private const int csvRoomConnectionsRow = 2;
         private const int csvRoomWallsRow = 3;
 
-        public static IRoom GetRoomFromFile(SpriteBatch spriteBatch, string fileName, List<IPlayer> playerList)
+        public static IRoom GetRoomFromFile(Game1 game, string fileName, List<IPlayer> playerList)
         {
             IRoom room = null;
             bool spawningLargeRoom = false;
@@ -34,15 +34,15 @@ namespace LegendOfZelda.Rooms
                 switch (j)
                 {
                     case csvRoomMetaDataRow: // set room metadata
-                        room = GetRoomFromString(fields[0], spriteBatch, playerList);
+                        room = GetRoomFromString(fields[0], game, playerList);
                         room.RoomId = fields[1];
                         room.LocationOnMap = new Point(int.Parse(fields[2]), int.Parse(fields[3]));
                         break;
                     case csvRoomBorderRow: // spawn walls and border
                         spawningLargeRoom = string.Equals("large", fields[0]);
                         i = 1;
-                        SpawnBackgroundAndBorder(spriteBatch, room, fields[i], i++);
-                        SpawnBackgroundAndBorder(spriteBatch, room, fields[i], i++);
+                        SpawnBackgroundAndBorder(game.SpriteBatch, room, fields[i], i++);
+                        SpawnBackgroundAndBorder(game.SpriteBatch, room, fields[i], i++);
                         break;
                     case csvRoomConnectionsRow: // connect rooms
                         i = 0;
@@ -53,13 +53,13 @@ namespace LegendOfZelda.Rooms
                         room.AddRoomConnection(Constants.Direction.Stairs, fields[i]);
                         break;
                     case csvRoomWallsRow:
-                        for (i = 0; i < 4; i++) SpawnWalls(spriteBatch, room, fields[i], i);
+                        for (i = 0; i < 4; i++) SpawnWalls(game.SpriteBatch, room, fields[i], i);
                         break;
                     default:
                         for (i = 0; i < fields.Length; i++)
                         {
                             SpawnFromString(room,
-                                spriteBatch,
+                                game.SpriteBatch,
                                 fields[i],
                                 spawningLargeRoom ? RoomConstants.RoomBorderX : RoomConstants.BackgroundX,
                                 spawningLargeRoom ? RoomConstants.RoomBorderY : RoomConstants.BackgroundY,
@@ -295,26 +295,26 @@ namespace LegendOfZelda.Rooms
             }
         }
 
-        private static IRoom GetRoomFromString(string roomType, SpriteBatch spriteBatch, List<IPlayer> playerList)
+        private static IRoom GetRoomFromString(string roomType, Game1 game, List<IPlayer> playerList)
         {
             switch (roomType)
             {
                 case RoomConstants.RoomNormal:
-                    return new Room(playerList);
+                    return new Room(playerList, game);
                 case RoomConstants.RoomWithPushableSquare:
-                    return new RoomWithMovableSquare(playerList);
+                    return new RoomWithMovableSquare(playerList, game);
                 case RoomConstants.Room5:
-                    return new RoomKillAllEnemies(playerList);
+                    return new RoomKillAllEnemies(playerList, game);
                 case RoomConstants.RoomAquamentus:
-                    return new RoomAquamentus(playerList);
+                    return new RoomAquamentus(playerList, game);
                 case RoomConstants.RoomBeforeSecretRoom:
-                    return new RoomBeforeSecretRoom(playerList);
+                    return new RoomBeforeSecretRoom(playerList, game);
                 case RoomConstants.RoomSecret:
-                    return new SecretRoom(playerList);
+                    return new SecretRoom(playerList, game);
                 case RoomConstants.RoomWallMaster:
-                    return new RoomWallMaster(spriteBatch, playerList);
+                    return new RoomWallMaster(playerList, game);
                 case RoomConstants.RoomWithKey:
-                    return new RoomWithKey(playerList);
+                    return new RoomWithKey(playerList, game);
                 default:
                     return null;
             }
