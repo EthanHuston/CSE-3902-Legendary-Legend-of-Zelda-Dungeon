@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Menu;
@@ -28,11 +29,12 @@ namespace LegendOfZelda.GameState.ItemSelectionState
 
         private void InitControllerList()
         {
+            IGameStateControllerMappings mappings = new ItemSelectionStateMappings(this);
             controllerList = new List<IController>()
             {
-                {new KeyboardController(this) },
-                {new MouseController(this, InventoryMenu.Buttons) },
-                {new GamepadController(this) }
+                {new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys) },
+                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, InventoryMenu.Buttons) },
+                {new GamepadController(mappings.GamepadMappings, mappings.RepeatableGamepadButtons) }
             };
         }
 

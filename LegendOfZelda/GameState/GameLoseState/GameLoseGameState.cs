@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.GameState.Utilities;
@@ -53,10 +54,11 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         private List<IController> GetControllerList(List<IButton> buttons)
         {
+            IGameStateControllerMappings mappings = new GameLoseStateMappings(this);
             return new List<IController>()
             {
-                {new KeyboardController(this) },
-                {new MouseController(this, buttons) }
+                {new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys) },
+                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, buttons) }
             };
         }
 

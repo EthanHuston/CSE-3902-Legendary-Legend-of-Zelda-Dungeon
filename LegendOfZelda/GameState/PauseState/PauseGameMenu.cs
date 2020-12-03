@@ -18,7 +18,7 @@ namespace LegendOfZelda.GameState.PauseState
         public PauseGameMenu(Game1 game)
         {
             Buttons = GetButtonsList(game);
-            ButtonSelector = new ButtonSelector(game.SpriteBatch, this, Buttons, numRows, numColumns);
+            ButtonSelector = new ButtonSelector(game.SpriteBatch, this, Buttons, numColumns);
         }
 
         private List<IButton> GetButtonsList(Game1 game)

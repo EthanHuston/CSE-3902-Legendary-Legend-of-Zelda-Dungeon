@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.GameLoseState;
 using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.GameState.ItemSelectionState;
@@ -30,19 +31,19 @@ namespace LegendOfZelda.GameState.RoomsState
         public IMenu Hud { get; private set; }
         public RoomMap RoomMap { get; private set; }
 
-        public RoomGameState(Game1 game)
+        public RoomGameState(Game1 game, int numPlayers)
         {
             Game = game;
 
-            InitPlayersForGame();
+            InitPlayersForGame(numPlayers);
 
-            CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
+            CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game, PlayerList);
             CurrentRoom.Visiting = true;
             RoomMap = new RoomMap(game.SpriteBatch, ItemSelectionStateConstants.MapPieceTextureAtlasSource, ItemSelectionStateConstants.MapPieceTextureSize, Point.Zero);
             RoomMap.AddRoomToMap(CurrentRoom);
             Hud = new HUD(this);
 
-            InitControllerList();
+            InitControllerList(PlayerList);
             InitItemSelectionGameStates();
 
             UpdatePlayersPositions(Constants.Direction.Down);
@@ -55,13 +56,25 @@ namespace LegendOfZelda.GameState.RoomsState
             clockModeOn = false;
         }
 
-        private void InitControllerList()
+        private void InitControllerList(List<IPlayer> playerList)
         {
-            controllerList = new List<IController>()
+            controllerList = new List<IController>();
+            foreach (IPlayer player in playerList)
             {
-                {new KeyboardController(this) },
-                {new MouseController(this, new List<IButton>()) },
-                {new GamepadController(this) }
+                IGameStateControllerMappings mappings = null;
+                switch (player.PlayerNumber)
+                {
+                    case 0:
+                        mappings = new RoomsStateMappingsPlayerOne(this, player);
+                        break;
+                    case 1:
+                        mappings = new RoomsStateMappingsPlayerTwo(this, player);
+                        break;
+                }
+
+                controllerList.Add(new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys));
+                controllerList.Add(new MouseController(mappings.MouseMappings, mappings.ButtonMappings, new List<IButton>()));
+                controllerList.Add(new GamepadController(mappings.GamepadMappings, mappings.RepeatableGamepadButtons));
             };
         }
 
@@ -124,12 +137,11 @@ namespace LegendOfZelda.GameState.RoomsState
             }
         }
 
-        private void InitPlayersForGame()
+        private void InitPlayersForGame(int numPlayers)
         {
-            PlayerList = new List<IPlayer>()
-            {
-                {new LinkPlayer(Game, LinkConstants.DoorDownSpawnPosition) }
-            };
+            PlayerList = new List<IPlayer>();
+            for (int i = 0; i < numPlayers; i++)
+                PlayerList.Add(new LinkPlayer(Game, LinkConstants.DoorDownSpawnPosition, i));
         }
 
         public override void SwitchToPauseState()

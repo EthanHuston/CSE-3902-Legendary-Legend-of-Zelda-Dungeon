@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
@@ -100,14 +100,20 @@
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\Command\MoveSelectorCommand.cs" />
+    <Compile Include="GameState\GameLoseState\GameLoseStateMappings.cs" />
     <Compile Include="GameState\GameWinState\Curtain.cs" />
+    <Compile Include="GameState\IGameStateControllerMappings.cs" />
+    <Compile Include="GameState\ItemSelectionState\ItemSelectionStateMappings.cs" />
+    <Compile Include="GameState\MainMenuState\MainMenuStateMappings.cs" />
+    <Compile Include="GameState\PauseState\PauseStateMappings.cs" />
+    <Compile Include="GameState\RoomsState\IItemDropper.cs" />
+    <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerOne.cs" />
+    <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerTwo.cs" />
     <Compile Include="Menu\ButtonSelector.cs" />
     <Compile Include="Menu\IButtonMenu.cs" />
     <Compile Include="GameState\Button\ExitButtonBlack.cs" />
     <Compile Include="GameState\Button\RetryButtonBlack.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseGameState.cs" />
-    <Compile Include="GameState\GameLoseState\KeyboardController.cs" />
-    <Compile Include="GameState\GameLoseState\MouseController.cs" />
     <Compile Include="GameState\GameWinState\GameWinGameState.cs" />
     <Compile Include="Menu\IMenu.cs" />
     <Compile Include="GameState\Button\SwordInventoryButton.cs" />
@@ -133,11 +139,7 @@
     <Compile Include="GameState\ItemSelectionState\MapMenu.cs" />
     <Compile Include="GameState\ItemSelectionState\InventoryMenu.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionGameState.cs" />
-    <Compile Include="GameState\MainMenuState\KeyboardController.cs" />
-    <Compile Include="GameState\MainMenuState\MouseController.cs" />
     <Compile Include="GameState\MainMenuState\MainMenuGameState.cs" />
-    <Compile Include="GameState\PauseState\KeyboardController.cs" />
-    <Compile Include="GameState\PauseState\MouseController.cs" />
     <Compile Include="GameState\PauseState\PauseGameState.cs" />
     <Compile Include="GameLogic\ICollisionManager.cs" />
     <Compile Include="GameState\RoomsState\ItemDrop.cs" />
@@ -148,7 +150,6 @@
     <Compile Include="GameState\Button\ExitButton.cs" />
     <Compile Include="GameState\Button\MainMenuButton.cs" />
     <Compile Include="GameState\Button\ResumeButton.cs" />
-    <Compile Include="GameState\RoomsState\MouseController.cs" />
     <Compile Include="GameState\Sprite\MainMenuSprite.cs" />
     <Compile Include="GameState\Sprite\RedOverlaySprite.cs" />
     <Compile Include="HUDClasses\ItemsManager.cs" />
@@ -315,7 +316,6 @@
     <Compile Include="Link\LinkSpriteFactory.cs" />
     <Compile Include="Link\Sprite\IdleLinkSprite.cs" />
     <Compile Include="Enemies\Jelly.cs" />
-    <Compile Include="GameState\RoomsState\KeyboardController.cs" />
     <Compile Include="Link\Sprite\PickingUpItemLinkSprite.cs" />
     <Compile Include="Link\Sprite\PickingUpTriforceLinkSprite.cs" />
     <Compile Include="Link\Sprite\StrikingLinkSprite.cs" />
@@ -346,15 +346,12 @@
     <Compile Include="Utility\SimpleDraw.cs" />
     <Compile Include="Utility\SpawnableMover.cs" />
     <Compile Include="Utility\UtilityMethods.cs" />
-    <Compile Include="GameState\ItemSelectionState\KeyboardController.cs" />
-    <Compile Include="GameState\ItemSelectionState\MouseController.cs" />
+    <Compile Include="GameState\Controller\KeyboardController.cs" />
+    <Compile Include="GameState\Controller\MouseController.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomBeforeBoss.cs" />
-    <Compile Include="GameState\RoomsState\GamepadController.cs" />
     <Compile Include="GameState\PauseState\PauseGameMenu.cs" />
     <Compile Include="GameState\Command\SelectButtonCommand.cs" />
-    <Compile Include="GameState\PauseState\GamepadController.cs" />
-    <Compile Include="GameState\ItemSelectionState\GamepadController.cs" />
-    <Compile Include="GameState\MainMenuState\GamepadController.cs" />
+    <Compile Include="GameState\Controller\GamepadController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\RoomData\Room1.csv">
