@@ -10,6 +10,7 @@ namespace LegendOfZelda.Environment
         private readonly ISprite tileBlackSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -19,14 +20,9 @@ namespace LegendOfZelda.Environment
             tileBlackSprite = EnvironmentSpriteFactory.Instance.CreateTileBlackSprite();
             sB = spriteBatch;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             tileBlackSprite.Draw(sB, Position, Constants.DrawLayer.FloorTile);
@@ -36,15 +32,10 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, tileBlackSprite.GetPositionRectangle().Width, tileBlackSprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
-            safeToDespawn = safeToDespawn || false; // some condition here if we want to despawn
+            SafeToDespawn = SafeToDespawn || false; // some condition here if we want to despawn
         }
 
     }

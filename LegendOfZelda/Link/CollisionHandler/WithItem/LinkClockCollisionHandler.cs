@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.Interface;
 
@@ -11,7 +11,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
         {
             SoundFactory.Instance.CreateGetItemSound().Play();
             ((RoomGameState)link.Game.State).ActivateClockMode();
-            item.Despawn();
+            item.SafeToDespawn = true;
         }
     }
 }

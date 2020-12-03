@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Environment;
-using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.RoomsState;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
@@ -10,22 +11,17 @@ namespace LegendOfZelda.GameState.RoomTransitionState
 {
     internal class RoomTransitionGameState : IGameState
     {
-
-
-        public Game1 Game { get; protected set; }
-
-        private readonly RoomGameState roomGameState;
-
-        private readonly IRoom currentRoom;
-
-        private readonly IRoom nextRoom;
-
-        private Vector2 initialMoveDistance;
-        private readonly int distanceToMove;
         private const int velocityScalar = 10;
-        private Vector2 velocity;
+        private readonly RoomGameState roomGameState;
+        private readonly IRoom currentRoom;
+        private readonly IRoom nextRoom;
+        private readonly int distanceToMove;
         private readonly Constants.Direction direction;
-        private int counter;
+        private Vector2 initialMoveDistance;
+        private Vector2 velocity;
+        private int distanceMoved;
+
+        public Game1 Game { get; private set; }
 
         public RoomTransitionGameState(RoomGameState roomGameState, Constants.Direction direction)
         {
@@ -40,7 +36,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             distanceToMove = (int)initialMoveDistance.Length();
 
             velocity = GetVelocity(direction);
-            counter = 0;
+            distanceMoved = 0;
             UpdateObjectPositions(nextRoom, initialMoveDistance);
         }
 
@@ -119,41 +115,6 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             }
         }
 
-        public void SetControllerOldInputState(OldInputState inputFromOldState)
-        {
-            //no controller required
-        }
-
-        public void StateEntryProcedure()
-        {
-            //not needed
-        }
-
-        public void StateExitProcedure()
-        {
-            //not needed
-        }
-
-        public void SwitchToDeathState()
-        {
-            //not needed
-        }
-
-        public void SwitchToItemSelectionState()
-        {
-            //not needed
-        }
-
-        public void SwitchToMainMenuState()
-        {
-            //not needed
-        }
-
-        public void SwitchToPauseState()
-        {
-            //not needed
-        }
-
         public void SwitchToRoomState()
         {
             UpdatePlayersPositions(UtilityMethods.InvertDirection(direction));
@@ -167,20 +128,15 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             roomGameState.CurrentRoom.RunRoomEntryProcedure();
         }
 
-        public void SwitchToWinState()
-        {
-            //not needed
-        }
-
         public void Update()
         {
-            counter += (int)velocity.Length();
-            if (counter >= distanceToMove)
+            distanceMoved += (int)velocity.Length();
+            if (distanceMoved >= distanceToMove)
             {
                 Vector2 fixVector = new Vector2(velocity.X, velocity.Y);
                 fixVector.Normalize();
-                fixVector *= distanceToMove - (counter - (int)velocity.Length());
-                counter += (int)fixVector.Length();
+                fixVector *= distanceToMove - (distanceMoved - (int)velocity.Length());
+                distanceMoved += (int)fixVector.Length();
                 UpdateBlockPositions(fixVector);
                 SwitchToRoomState();
             }
@@ -210,6 +166,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
                 background.Position += distance.ToPoint();
             }
         }
+
         private void UpdatePlayersPositions(Constants.Direction doorLocation)
         {
 
@@ -233,5 +190,21 @@ namespace LegendOfZelda.GameState.RoomTransitionState
                 }
             }
         }
+
+        public void SetControllerOldInputState(InputStates inputFromOldState) { }
+
+        public void StateEntryProcedure() { }
+
+        public void StateExitProcedure() { }
+
+        public void SwitchToDeathState() { }
+
+        public void SwitchToItemSelectionState(int playerNum) { }
+
+        public void SwitchToMainMenuState() { }
+
+        public void SwitchToPauseState() { }
+
+        public void SwitchToWinState() { }
     }
 }

@@ -10,8 +10,10 @@ namespace LegendOfZelda.Link.Interface
         LinkConstants.ItemType PrimaryItem { get; }
         LinkConstants.ItemType SecondaryItem { get; set; }
         bool BeingDragged { get; set; }
+        bool IsDead { get; }
         double MaxHealth { get; }
         double CurrentHealth { get; }
+        int PlayerNumber { get; }
         void BeHealthy(double healAmount);
         void BeDamaged(double damage);
         void IncreaseMaxHealth(int amount);
@@ -23,12 +25,12 @@ namespace LegendOfZelda.Link.Interface
         void StopMoving();
         void PickupItem(LinkConstants.ItemType itemType);
         void PickupTriforce();
-        int GetQuantityInInventory(LinkConstants.ItemType itemType);
         void UsePrimary();
         void UseSecondary();
         bool CanSpawnProjectile(LinkConstants.ProjectileType projectileType);
         void StartDeathAnimation();
         void ConsumeKey();
         void ForceMoveToPoint(Point position);
+        int GetQuantityInInventory(LinkConstants.ItemType itemType);
     }
 }

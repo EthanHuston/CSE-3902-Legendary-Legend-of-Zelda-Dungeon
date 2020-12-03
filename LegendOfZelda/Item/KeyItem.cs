@@ -12,10 +12,5 @@ namespace LegendOfZelda.Item
             sprite = ItemSpriteFactory.Instance.CreateKeySprite();
             itemType = LinkConstants.ItemType.Key;
         }
-
-        protected override void CheckItemIsExpired()
-        {
-            itemIsExpired = itemIsExpired && true;
-        }
     }
 }

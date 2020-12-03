@@ -9,7 +9,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private bool openedDoor;
         private readonly IItem heartContainer;
 
-        public RoomAquamentus(List<IPlayer> playerList) : base(playerList)
+        public RoomAquamentus(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
             openedDoor = false;
             heartContainer = RemoveHeartContainerFromSpawnList();

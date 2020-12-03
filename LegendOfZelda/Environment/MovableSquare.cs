@@ -10,6 +10,7 @@ namespace LegendOfZelda.Environment
         private readonly SpriteBatch spriteBatch;
         private Vector2 velocity;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private bool hasBeenPushed;
         private bool pushingInProgress;
         private int totalDistanceTravelled;
@@ -28,7 +29,7 @@ namespace LegendOfZelda.Environment
             Position = spawnPosition;
             originalPosition = spawnPosition;
             velocity = Vector2.Zero;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             hasBeenPushed = false;
             pushingInProgress = false;
         }
@@ -54,16 +55,8 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, blockSprite.GetPositionRectangle().Width, blockSprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
+        
+        
 
         // 0=Up, 1=Down, 2=Left, 3=Right
         public void Push(Constants.Direction direction)

@@ -1,19 +1,22 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.GameLoseState;
 using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.GameState.ItemSelectionState;
-using LegendOfZelda.GameState.Pause;
+using LegendOfZelda.GameState.PauseState;
 using LegendOfZelda.GameState.RoomTransitionState;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Menu;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Rooms
+namespace LegendOfZelda.GameState.RoomsState
 {
     internal class RoomGameState : AbstractGameState
     {
@@ -28,19 +31,19 @@ namespace LegendOfZelda.GameState.Rooms
         public IMenu Hud { get; private set; }
         public RoomMap RoomMap { get; private set; }
 
-        public RoomGameState(Game1 game)
+        public RoomGameState(Game1 game, int numPlayers)
         {
             Game = game;
 
-            InitPlayersForGame();
+            InitPlayersForGame(numPlayers);
 
-            CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game.SpriteBatch, PlayerList);
+            CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game, PlayerList);
             CurrentRoom.Visiting = true;
             RoomMap = new RoomMap(game.SpriteBatch, ItemSelectionStateConstants.MapPieceTextureAtlasSource, ItemSelectionStateConstants.MapPieceTextureSize, Point.Zero);
             RoomMap.AddRoomToMap(CurrentRoom);
             Hud = new HUD(this);
 
-            InitControllerList();
+            InitControllerList(PlayerList);
             InitItemSelectionGameStates();
 
             UpdatePlayersPositions(Constants.Direction.Down);
@@ -60,22 +63,33 @@ namespace LegendOfZelda.GameState.Rooms
             clockModeOn = false;
         }
 
-        private void InitControllerList()
+        private void InitControllerList(List<IPlayer> playerList)
         {
-            controllerList = new List<IController>()
+            controllerList = new List<IController>();
+            for(int i = 0; i < PlayerList.Count; i++)
             {
-                {new KeyboardController(this) },
-                {new MouseController(this) }
+                IGameStateControllerMappings mappings = null;
+                switch (PlayerList[i].PlayerNumber)
+                {
+                    case 0:
+                        mappings = new RoomsStateMappingsPlayerOne(this, PlayerList[i]);
+                        break;
+                    case 1:
+                        mappings = new RoomsStateMappingsPlayerTwo(this, PlayerList[i]);
+                        break;
+                }
+
+                controllerList.Add(new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys));
+                controllerList.Add(new MouseController(mappings.MouseMappings, mappings.ButtonMappings, new List<IButton>()));
+                controllerList.Add(new GamepadController(mappings.GamepadMappings, mappings.RepeatableGamepadButtons));
             };
         }
 
         private void InitItemSelectionGameStates()
         {
             itemSelectionGameStates = new List<ItemSelectionGameState>();
-            foreach (IPlayer player in PlayerList)
-            {
-                itemSelectionGameStates.Add(new ItemSelectionGameState(player, this));
-            }
+            for (int i = 0; i < PlayerList.Count; i++)
+                itemSelectionGameStates.Add(new ItemSelectionGameState(PlayerList[i], this));
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -130,12 +144,11 @@ namespace LegendOfZelda.GameState.Rooms
             }
         }
 
-        private void InitPlayersForGame()
+        private void InitPlayersForGame(int numPlayers)
         {
-            PlayerList = new List<IPlayer>()
-            {
-                {new LinkPlayer(Game, LinkConstants.DoorDownSpawnPosition) }
-            };
+            PlayerList = new List<IPlayer>();
+            for (int i = 0; i < numPlayers; i++)
+                PlayerList.Add(new LinkPlayer(Game, LinkConstants.DoorDownSpawnPosition, i));
         }
 
         public override void SwitchToPauseState()
@@ -144,10 +157,10 @@ namespace LegendOfZelda.GameState.Rooms
             StartStateSwitch(new PauseGameState(Game, this));
         }
 
-        public override void SwitchToItemSelectionState()
+        public override void SwitchToItemSelectionState(int playerNum)
         {
             // player 0 inventory for now - in case we add multiplayer later
-            StartStateSwitch(itemSelectionGameStates[0]);
+            StartStateSwitch(itemSelectionGameStates[playerNum]);
         }
 
         public override void SwitchToDeathState()
@@ -164,18 +177,18 @@ namespace LegendOfZelda.GameState.Rooms
 
         public override void StateEntryProcedure()
         {
-            // TODO: initialize a camera to move between rooms here
             if (dungeonMusic.State != SoundState.Playing) dungeonMusic.Resume();
         }
 
-        public override void StateExitProcedure()
-        {
-            // TODO: do some exit stuff here, might not need to do anything at all
-        }
+        public override void StateExitProcedure() { }
 
         protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.Update();
+            for (int i = 0; i < controllerList.Count; i++)
+            {
+                if (PlayerList[i / (controllerList.Count / PlayerList.Count)].SafeToDespawn) continue;
+                controllerList[i].Update();
+            }
 
             if (clockModeOn)
             {
@@ -185,20 +198,24 @@ namespace LegendOfZelda.GameState.Rooms
             }
             else CurrentRoom.Update();
 
-            if (PlayerList[0].SafeToDespawn()) SwitchToDeathState();
+            bool allPlayersDead = true;
+            foreach(IPlayer player in PlayerList)
+            {
+                allPlayersDead = allPlayersDead && player.IsDead;
+            }
+
+            if (allPlayersDead) SwitchToDeathState();
 
             Hud.Update();
         }
 
         protected override void SwitchingStateUpdate()
         {
-            // TODO: use me when we start doing room transitions to update camera
             readyToSwitchState = true;
         }
 
         protected override void InitializingStateUpdate()
         {
-            // TODO: potentially use me when doing room transitions
             stateInitialized = true;
         }
 

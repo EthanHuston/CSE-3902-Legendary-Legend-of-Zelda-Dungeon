@@ -11,6 +11,7 @@ namespace LegendOfZelda.Enemies
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private bool spawning;
 
         private Point position;
@@ -22,7 +23,7 @@ namespace LegendOfZelda.Enemies
             spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             spawning = true;
         }
 
@@ -52,22 +53,12 @@ namespace LegendOfZelda.Enemies
         }
 
         public void ClockUpdate() { }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void TakeDamage(double damage)
         {
             // old man knoweth not the concept of damage

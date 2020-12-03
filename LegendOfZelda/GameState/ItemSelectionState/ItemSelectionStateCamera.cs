@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 

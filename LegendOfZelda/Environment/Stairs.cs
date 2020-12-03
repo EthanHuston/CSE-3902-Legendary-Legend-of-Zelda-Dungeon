@@ -10,6 +10,7 @@ namespace LegendOfZelda.Environment
         private readonly ISprite stairSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -19,14 +20,9 @@ namespace LegendOfZelda.Environment
             stairSprite = EnvironmentSpriteFactory.Instance.CreateStairSprite();
             sB = spriteBatch;
             Position = new Point(position.X, position.Y);
-            safeToDespawn = false;
+            SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             stairSprite.Draw(sB, Position, Constants.DrawLayer.Stair);
@@ -36,12 +32,7 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, stairSprite.GetPositionRectangle().Width, stairSprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
             stairSprite.Update();

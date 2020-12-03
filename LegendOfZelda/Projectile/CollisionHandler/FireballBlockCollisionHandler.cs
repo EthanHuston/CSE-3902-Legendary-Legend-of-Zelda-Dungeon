@@ -10,7 +10,7 @@ namespace LegendOfZelda.Projectile.CollisionHandler
         {
             Type blockType = block.GetType();
             if (blockType == typeof(TileWater) || blockType == typeof(SecretRoomWall)) return;
-            fireball.Despawn();
+            fireball.SafeToDespawn = true;
         }
     }
 }

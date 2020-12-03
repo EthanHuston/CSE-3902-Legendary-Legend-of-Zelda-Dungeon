@@ -9,7 +9,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private IItem key;
         private bool spawnedKey;
 
-        public RoomWithKey(List<IPlayer> playerList) : base(playerList)
+        public RoomWithKey(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
             spawnedKey = false;
             key = null;

@@ -37,17 +37,10 @@ namespace LegendOfZelda.Link.State
         {
             int posX = link.Position.X + spawnOffset.X;
             int posY = link.Position.Y + spawnOffset.Y;
-            if (link.SafeToDespawn())
-            {
-                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.LinkDead);
-            }
-            else
-            {
-                link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.Player);
-            }
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), damaged, Constants.DrawLayer.Player);
         }
 
-        public void Update()
+        public virtual void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.Mover.Update();
@@ -85,6 +78,7 @@ namespace LegendOfZelda.Link.State
 
         public virtual void Move(Constants.Direction direction)
         {
+            if (link.BlockStateChange) return;
             link.State = new LinkWalkingState(link, direction, damaged, healthyDateTime);
         }
 

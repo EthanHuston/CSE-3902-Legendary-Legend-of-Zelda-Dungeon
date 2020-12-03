@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
     internal class Bat : INpc
     {
         private const int directionChangeDelay = 75;
-        private const int velocityScalar = (int)(0.5 * Constants.GameScaler);
+        private const int velocityScalar = (int)(0.75 * Constants.GameScaler);
         private readonly IDamageableSprite sprite;
         private readonly SpawnSprite spawnSprite;
         private readonly SpriteBatch spriteBatch;
@@ -18,6 +18,7 @@ namespace LegendOfZelda.Enemies
         private int yDir = 0;
         private double health = 0.5 * Constants.HeartValue;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
@@ -32,7 +33,7 @@ namespace LegendOfZelda.Enemies
             spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
             position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             healthyDateTime = DateTime.Now;
             damaged = false;
             spawning = true;
@@ -62,9 +63,9 @@ namespace LegendOfZelda.Enemies
                     ChooseDirection();
                 }
                 sprite.Update();
-                safeToDespawn = safeToDespawn || health <= 0;
+                SafeToDespawn = SafeToDespawn || health <= 0;
             }
-            if (safeToDespawn)
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
             }
@@ -73,13 +74,13 @@ namespace LegendOfZelda.Enemies
         public void ClockUpdate()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = safeToDespawn || health <= 0;
+            SafeToDespawn = SafeToDespawn || health <= 0;
             if (spawning)
             {
                 spawnSprite.Update();
                 spawning = !spawnSprite.AnimationDone();
             }
-            if (safeToDespawn)
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
             }
@@ -138,21 +139,13 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
         public Rectangle GetRectangle()
         {
 
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             // bat has no knockback

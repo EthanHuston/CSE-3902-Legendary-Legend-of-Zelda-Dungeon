@@ -1,23 +1,27 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.MainMenu;
-using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.Controller;
+using LegendOfZelda.GameState.MainMenuState;
+using LegendOfZelda.GameState.RoomsState;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameLoseState
 {
-    internal class GameLoseGameState : AbstractGameState
+    internal class GameLoseGameState : IGameState
     {
+        private readonly List<IController> controllerList;
         private readonly RoomGameState roomStatePreserved;
-        private List<ISpawnable> buttons;
         private readonly SpawnableManager spawnableManager;
         private readonly ISprite gameOverSprite;
         private readonly ISprite redOverlaySprite;
         private readonly SoundEffectInstance game_over;
         private readonly SoundEffectInstance link_die;
+        private readonly List<IButton> buttons;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
@@ -33,29 +37,32 @@ namespace LegendOfZelda.GameState.GameLoseState
             game_over = SoundFactory.Instance.CreateGameOverSound();
             gameOverSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
             redOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
-            InitButtonsList();
-            InitControllerList();
+            buttons = GetButtonsList(game);
+            controllerList = GetControllerList(buttons);
         }
 
-        private void InitButtonsList()
+        public Game1 Game { get; protected set; }
+
+        private List<IButton> GetButtonsList(Game1 game)
         {
-            buttons = new List<ISpawnable>()
+            return new List<IButton>()
             {
-                {new RetryButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateRetryButtonLocation) },
-                {new ExitButtonBlack(Game.SpriteBatch, GameStateConstants.LoseStateExitButtonLocation) }
+                {new RetryButtonBlack(game.SpriteBatch, GameStateConstants.LoseStateRetryButtonLocation) },
+                {new ExitButtonBlack(game.SpriteBatch, GameStateConstants.LoseStateExitButtonLocation) }
             };
         }
 
-        private void InitControllerList()
+        private List<IController> GetControllerList(List<IButton> buttons)
         {
-            controllerList = new List<IController>()
+            IGameStateControllerMappings mappings = new GameLoseStateMappings(this);
+            return new List<IController>()
             {
-                {new KeyboardController(this) },
-                {new MouseController(this, buttons) }
+                {new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys) },
+                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, buttons) }
             };
         }
 
-        public override void Draw()
+        public void Draw()
         {
             if (phaseOne)
             {
@@ -72,37 +79,35 @@ namespace LegendOfZelda.GameState.GameLoseState
             }
             else if (phaseThree)
             {
-                foreach (ISpawnable button in buttons) button.Draw();
+                foreach (IButton button in buttons) button.Draw();
             }
         }
 
-        public override void SwitchToRoomState()
-        {
-            StartStateSwitch(roomStatePreserved);
-        }
+        public void SwitchToRoomState() { }
 
-        public override void SwitchToMainMenuState()
+        public void SwitchToMainMenuState()
         {
             game_over.Stop();
-            StartStateSwitch(new MainMenuGameState(Game));
+            StateExitProcedure();
+            Game.State = new MainMenuGameState(Game);
+            Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
+            Game.State.StateEntryProcedure();
         }
 
-        public override void StateEntryProcedure()
+        public void StateEntryProcedure()
         {
-            roomStatePreserved.GetPlayer(0).StartDeathAnimation();
         }
 
-        public override void StateExitProcedure()
-        {
-            // nothing fancy to do here
-        }
+        public void StateExitProcedure() { }
 
-        protected override void NormalStateUpdate()
+        public void Update()
         {
             if (phaseOne)
             {
                 phaseOneBuffer++;
-                spawnableManager.PlayerList[0].Update();
+                for (int i = 0; i < spawnableManager.PlayerList.Count; i++)
+                    if (!spawnableManager.PlayerList[i].SafeToDespawn) spawnableManager.PlayerList[i].Update();
+
                 if (phaseOneBuffer == 150)
                 {
                     phaseOne = false;
@@ -125,15 +130,18 @@ namespace LegendOfZelda.GameState.GameLoseState
             }
         }
 
-        protected override void SwitchingStateUpdate()
+        public void SetControllerOldInputState(InputStates inputFromOldState)
         {
-            readyToSwitchState = true; // nothing fancy to do here
+            foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
 
-        protected override void InitializingStateUpdate()
-        {
-            stateInitialized = true; // nothing fancy to do here
-        }
+        public void SwitchToPauseState() { }
+
+        public void SwitchToItemSelectionState(int playerNum) { }
+
+        public void SwitchToDeathState() { }
+
+        public void SwitchToWinState() { }
     }
 }
 

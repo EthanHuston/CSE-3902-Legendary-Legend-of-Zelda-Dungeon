@@ -9,7 +9,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {
             link.PickupItem(item.GetItemType());
-            item.Despawn();
+            item.SafeToDespawn = true;
         }
     }
 }

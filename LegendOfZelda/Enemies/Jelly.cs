@@ -16,6 +16,7 @@ namespace LegendOfZelda.Enemies
         private int leftRight = 0;
         private double health = .5 * Constants.HeartValue;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
@@ -29,7 +30,7 @@ namespace LegendOfZelda.Enemies
             sprite = EnemySpriteFactory.Instance.CreateJellySprite();
             spawnSprite = (SpawnSprite)EnemySpriteFactory.Instance.CreateSpawnSprite();
             this.spriteBatch = spriteBatch;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             Position = spawnPosition;
             healthyDateTime = DateTime.Now;
             damaged = false;
@@ -38,8 +39,8 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = safeToDespawn || health <= 0;
-            if (safeToDespawn)
+            SafeToDespawn = SafeToDespawn || health <= 0;
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
             }
@@ -67,8 +68,8 @@ namespace LegendOfZelda.Enemies
         public void ClockUpdate()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = safeToDespawn || health <= 0;
-            if (safeToDespawn)
+            SafeToDespawn = SafeToDespawn || health <= 0;
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
             }
@@ -130,20 +131,12 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             // cannot be knocked back

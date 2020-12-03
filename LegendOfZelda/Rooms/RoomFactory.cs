@@ -10,20 +10,20 @@ namespace LegendOfZelda.Rooms
         private const string startingRoomId = "startRoom";
         private const string roomDataDirectory = "Content\\RoomData\\";
 
-        public static IRoom BuildMapAndGetStartRoom(SpriteBatch spriteBatch, List<IPlayer> playerList)
+        public static IRoom BuildMapAndGetStartRoom(Game1 game, List<IPlayer> playerList)
         {
             Dictionary<string, IRoom> roomDictionary = new Dictionary<string, IRoom>();
-            InitRoomsDictionary(roomDictionary, spriteBatch, playerList);
+            InitRoomsDictionary(roomDictionary, game, playerList);
             ConnectRooms(roomDictionary);
             return roomDictionary[startingRoomId];
         }
 
-        private static void InitRoomsDictionary(Dictionary<string, IRoom> roomDictionary, SpriteBatch spriteBatch, List<IPlayer> playerList)
+        private static void InitRoomsDictionary(Dictionary<string, IRoom> roomDictionary, Game1 game, List<IPlayer> playerList)
         {
             string[] roomFiles = Directory.GetFiles(roomDataDirectory);
             foreach (string filename in roomFiles)
             {
-                IRoom newRoom = CSVReader.GetRoomFromFile(spriteBatch, filename, playerList);
+                IRoom newRoom = CSVReader.GetRoomFromFile(game, filename, playerList);
                 roomDictionary.Add(newRoom.RoomId, newRoom);
             }
         }

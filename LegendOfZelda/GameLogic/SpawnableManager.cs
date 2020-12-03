@@ -11,6 +11,8 @@ namespace LegendOfZelda.GameLogic
 {
     internal class SpawnableManager : ISpawnableManager
     {
+        private readonly ItemDrop itemDropper;
+        public Game1 Game { get; private set; }
         public List<IItem> ItemList { get; private set; }
         public List<IProjectile> ProjectileList { get; private set; }
         public List<INpc> NpcList { get; private set; }
@@ -18,10 +20,9 @@ namespace LegendOfZelda.GameLogic
         public List<IPlayer> PlayerList { get; private set; }
         public List<IBackground> BackgroundList { get; private set; }
 
-        private readonly ItemDrop itemDropper;
-
-        public SpawnableManager(List<IPlayer> playerList)
+        public SpawnableManager(List<IPlayer> playerList, Game1 game)
         {
+            Game = game;
             ItemList = new List<IItem>();
             ProjectileList = new List<IProjectile>();
             NpcList = new List<INpc>();
@@ -95,10 +96,13 @@ namespace LegendOfZelda.GameLogic
         private void DrawList(List<IItem> list)
         {
             for (int i = 0; i < list.Count; i++)
-            {
-                IItem spawnable = list[i];
-                spawnable.Draw();
-            }
+                list[i].Draw();
+        }
+
+        private void DrawList(List<IPlayer> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (!list[i].SafeToDespawn) list[i].Draw();
         }
 
         public void UpdateAll()
@@ -128,22 +132,17 @@ namespace LegendOfZelda.GameLogic
             {
                 ISpawnable item = (ISpawnable)list[i];
                 item.Update();
-                if (item.SafeToDespawn()) indicesToRemove.Add(i);
+                if (item.SafeToDespawn) indicesToRemove.Add(i);
             }
 
             for (int i = 0; i < indicesToRemove.Count; i++)
-            {
                 list.RemoveAt(indicesToRemove[i] - i);
-            }
         }
 
         private void UpdateList(List<IPlayer> list)
         {
             for (int i = 0; i < list.Count; i++)
-            {
-                ISpawnable item = list[i];
-                item.Update();
-            }
+                if (!list[i].SafeToDespawn) list[i].Update();
         }
 
         private void UpdateList(List<INpc> list)
@@ -153,20 +152,17 @@ namespace LegendOfZelda.GameLogic
             {
                 ISpawnable item = list[i];
                 item.Update();
-                if (item.SafeToDespawn())
+                if (item.SafeToDespawn)
                 {
                     if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
-                    {
                         itemDropper.DropItem(item.Position);
-                    }
+
                     indicesToRemove.Add(i);
                 }
             }
 
             for (int i = 0; i < indicesToRemove.Count; i++)
-            {
                 list.RemoveAt(indicesToRemove[i] - i);
-            }
         }
 
         private void ClockUpdateList(List<INpc> list)
@@ -176,20 +172,17 @@ namespace LegendOfZelda.GameLogic
             {
                 INpc item = list[i];
                 item.ClockUpdate();
-                if (item.SafeToDespawn())
+                if (item.SafeToDespawn)
                 {
                     if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
-                    {
                         itemDropper.DropItem(item.Position);
-                    }
+                    
                     indicesToRemove.Add(i);
                 }
             }
 
             for (int i = 0; i < indicesToRemove.Count; i++)
-            {
                 list.RemoveAt(indicesToRemove[i] - i);
-            }
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -200,9 +193,7 @@ namespace LegendOfZelda.GameLogic
         public void ResetClouds()
         {
             foreach (INpc Npc in NpcList)
-            {
                 Npc.ResetSpawnCloud();
-            }
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using LegendOfZelda.GameState.Rooms;
+﻿using LegendOfZelda.GameState.Controller;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.MainMenu
+namespace LegendOfZelda.GameState.MainMenuState
 {
     internal class MainMenuGameState : AbstractGameState
     {
@@ -20,10 +22,12 @@ namespace LegendOfZelda.GameState.MainMenu
 
         private void InitControllerList()
         {
+            IGameStateControllerMappings mappings = new MainMenuStateMappings(this);
             controllerList = new List<IController>()
             {
-                {new KeyboardController(this) },
-                {new MouseController(this) }
+                {new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys) },
+                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, new List<IButton>()) },
+                {new GamepadController(mappings.GamepadMappings, mappings.RepeatableGamepadButtons) }
             };
         }
 
@@ -34,7 +38,7 @@ namespace LegendOfZelda.GameState.MainMenu
 
         public override void SwitchToRoomState()
         {
-            StartStateSwitch(new RoomGameState(Game));
+            StartStateSwitch(new RoomGameState(Game, 2));
         }
 
         public override void StateEntryProcedure()

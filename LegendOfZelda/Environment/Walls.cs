@@ -10,28 +10,24 @@ namespace LegendOfZelda.Environment
     {
         private readonly ITextureAtlasSprite wallSprite;
         private readonly SpriteBatch sB;
-        private bool safeToDespawn;
         private int textureMapRow;
         private const int textureMapColumn = 0;
         private readonly Constants.Direction side;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public Walls(SpriteBatch spriteBatch, Point spawnPosition)
         {
             wallSprite = EnvironmentSpriteFactory.Instance.CreateWallSprite();
             sB = spriteBatch;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             side = RoomUtilities.GetDoorSide(spawnPosition);
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(side);
@@ -41,11 +37,6 @@ namespace LegendOfZelda.Environment
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, wallSprite.GetPositionRectangle().Width, wallSprite.GetPositionRectangle().Height);
-        }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
         }
 
         public void Update()

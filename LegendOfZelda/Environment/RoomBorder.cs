@@ -10,6 +10,7 @@ namespace LegendOfZelda.Environment
         private readonly ISprite roomSprite;
         private readonly SpriteBatch sb;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -19,14 +20,9 @@ namespace LegendOfZelda.Environment
             roomSprite = EnvironmentSpriteFactory.Instance.CreateRoomBorderSprite();
             sb = spriteBatch;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             roomSprite.Draw(sb, position, Constants.DrawLayer.Border);
@@ -36,15 +32,10 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, roomSprite.GetPositionRectangle().Width, roomSprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
-            safeToDespawn = safeToDespawn || false; // condition to despawn
+            SafeToDespawn = SafeToDespawn || false; // condition to despawn
             roomSprite.Update();
         }
     }

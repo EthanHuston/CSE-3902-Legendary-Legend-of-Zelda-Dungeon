@@ -8,7 +8,7 @@ namespace LegendOfZelda
         public const int FrameDelay = 6;
         public const double GameScaler = 4;
         public const int HeartValue = 10;
-        public const float MusicVolume = 0.3f; // TODO: turn sound back on
+        public const float MusicVolume = 0.1f; // TODO: turn sound back on
 
         // Game Screen
         public static Vector2 GameSize => new Vector2(MaxXPos, MaxYPos);
@@ -97,6 +97,7 @@ namespace LegendOfZelda
             public const float MapMenu = 7;
             public const float MenuButton = 7.1f;
             public const float MenuIcon = 7.1f;
+            public const float MenuButtonSelector = 7.2f;
             public const float Map = 7.2f;
             public const float MapIcon = 7.2f;
             public const float MapMarker = 7.3f;

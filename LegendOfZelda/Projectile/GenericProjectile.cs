@@ -9,7 +9,6 @@ namespace LegendOfZelda.Projectile
     internal abstract class GenericProjectile : IProjectile
     {
         protected IProjectileSprite sprite;
-        protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
         protected LinkConstants.ProjectileType projectileType;
 
@@ -20,6 +19,8 @@ namespace LegendOfZelda.Projectile
         public Point Position { get => Mover.Position; set => Mover.Position = value; }
 
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner)
         {
@@ -46,17 +47,7 @@ namespace LegendOfZelda.Projectile
         {
             Mover.MoveDistance(distance, velocity);
         }
-
-        public bool SafeToDespawn()
-        {
-            return itemIsExpired;
-        }
-
-        public void Despawn()
-        {
-            itemIsExpired = true;
-        }
-
+        
         public LinkConstants.ProjectileType GetProjectileType()
         {
             return projectileType;

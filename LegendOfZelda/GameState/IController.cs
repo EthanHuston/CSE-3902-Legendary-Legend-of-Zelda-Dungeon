@@ -1,10 +1,11 @@
-﻿namespace LegendOfZelda.GameState
+﻿using LegendOfZelda.GameState.Utilities;
+
+namespace LegendOfZelda.GameState
 {
     internal interface IController
     {
         void Update();
-        OldInputState GetOldInputState();
-        GameStateConstants.InputType GetInputType();
-        void SetOldInputState(OldInputState oldInputState);
+        InputStates OldInputState { get; set; }
+        InputType InputType { get; }
     }
 }

@@ -8,7 +8,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile
         public void HandleCollision(INpc enemy, IProjectile arrow, Constants.Direction side)
         {
             enemy.TakeDamage(arrow.DamageAmount());
-            arrow.Despawn();
+            arrow.SafeToDespawn = true;
         }
     }
 }

@@ -16,11 +16,6 @@ namespace LegendOfZelda.Item
             itemType = LinkConstants.ItemType.Fairy;
         }
 
-        protected override void CheckItemIsExpired()
-        {
-            itemIsExpired = itemIsExpired && true;
-        }
-
         public override void Update()
         {
             fairySprite.Update();

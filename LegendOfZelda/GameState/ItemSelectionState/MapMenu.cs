@@ -2,6 +2,7 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Menu;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         private readonly ISprite mapBackgroundSprite;
         private readonly RoomMap roomMap;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private Dictionary<LinkConstants.ItemType, IButton> buttonsDict;
 
         private Point position;
@@ -45,12 +47,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             Position = ItemSelectionStateConstants.MapPaneStartPosition;
             InitButtonsDictionary();
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             mapBackgroundSprite.Draw(link.Game.SpriteBatch, Position, Constants.DrawLayer.Menu);
@@ -65,12 +62,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             return new Rectangle(Position.X, Position.Y, mapBackgroundSprite.GetPositionRectangle().Width, mapBackgroundSprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
             mapBackgroundSprite.Update();

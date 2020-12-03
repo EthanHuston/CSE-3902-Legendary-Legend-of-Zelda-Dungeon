@@ -12,10 +12,5 @@ namespace LegendOfZelda.Item
             sprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
             itemType = LinkConstants.ItemType.HeartContainer;
         }
-
-        protected override void CheckItemIsExpired()
-        {
-            itemIsExpired = itemIsExpired && true;
-        }
     }
 }

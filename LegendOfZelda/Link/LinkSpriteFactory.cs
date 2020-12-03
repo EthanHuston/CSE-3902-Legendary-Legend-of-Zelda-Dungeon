@@ -16,16 +16,11 @@ namespace LegendOfZelda.Link
         private Texture2D strikingUpLinkSprite;
         private Texture2D strikingLeftLinkSprite;
         private Texture2D strikingRightLinkSprite;
-        private Texture2D pickingUpItemLinkSprite;
-        private Texture2D usingItemDownLinkSprite;
-        private Texture2D usingItemUpLinkSprite;
-        private Texture2D usingItemRightLinkSprite;
-        private Texture2D usingItemLeftLinkSprite;
+        
         private Texture2D walkingDownLinkSprite;
         private Texture2D walkingUpLinkSprite;
         private Texture2D walkingLeftLinkSprite;
         private Texture2D walkingRightLinkSprite;
-        private Texture2D linkPickingUpSwordSprite;
         private Texture2D linkPickingUpHeartSprite;
         private Texture2D linkPickingUpTriforceSprite;
         private Texture2D linkPickingUpBowSprite;
@@ -36,28 +31,36 @@ namespace LegendOfZelda.Link
         public void LoadAllTextures(ContentManager content)
         {
             // Load Link sprites
-            idleLinkDownSprite = content.Load<Texture2D>("Link/IdleLinkDown");
-            idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
-            idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
-            idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
+            //idleLinkDownSprite = content.Load<Texture2D>("Link/IdleLinkDown");
+            idleLinkDownSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleDown");
+            //idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
+            idleLinkRightSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleRight");
+            //idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
+            idleLinkLeftSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleLeft");
+            //idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
+            idleLinkUpSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleUp");
             strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkSwordDown");
             strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkSwordLeft");
             strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkSwordRight");
             strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkSwordUp");
-            pickingUpItemLinkSprite = content.Load<Texture2D>("Link/LinkPickingUpItem");
-            usingItemDownLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemDown");
-            usingItemUpLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemUp");
-            usingItemRightLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemRight");
-            usingItemLeftLinkSprite = content.Load<Texture2D>("Link/LinkUsingItemLeft");
-            walkingDownLinkSprite = content.Load<Texture2D>("Link/WalkingDownLink");
-            walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
-            walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
-            walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
-            linkPickingUpSwordSprite = content.Load<Texture2D>("Link/LinkPickingUpSword");
-            linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
-            linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
-            linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
-            linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
+           /* pickingUpItemLinkSprite = content.Load<Texture2D>("Link/LinkPickingUpItem");*/
+            //walkingDownLinkSprite = content.Load<Texture2D>("Link/WalkingDownLink");
+            walkingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingDown");
+            //walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
+            walkingLeftLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingLeft");
+            //walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
+            walkingRightLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingRight");
+            //walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
+            walkingUpLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingUp");
+
+            //linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
+            linkPickingUpHeartSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpHeart");
+            //linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
+            linkPickingUpTriforceSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpTriforce");
+            //linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
+            linkPickingUpBowSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpBow");
+            //linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
+            linkPickingUpBoomerangSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickupBoomerang");
         }
 
         public ILinkSprite CreateIdleLinkDownSprite()
@@ -92,10 +95,7 @@ namespace LegendOfZelda.Link
         {
             return new StrikingLinkSprite(strikingUpLinkSprite);
         }
-        public ILinkSprite CreatePickingUpItemLinkSprite()
-        {
-            return new PickingUpItemLinkSprite(pickingUpItemLinkSprite);
-        }
+
         public ILinkSprite CreateWalkingDownLinkSprite()
         {
             return new WalkingLinkSprite(walkingDownLinkSprite);
@@ -111,10 +111,6 @@ namespace LegendOfZelda.Link
         public ILinkSprite CreateWalkingUpLinkSprite()
         {
             return new WalkingLinkSprite(walkingUpLinkSprite);
-        }
-        public ILinkSprite CreateLinkPickingUpSwordSprite()
-        {
-            return new PickingUpItemLinkSprite(linkPickingUpSwordSprite);
         }
         public ILinkSprite CreateLinkPickingUpHeartContainerSprite()
         {
