@@ -1417,6 +1417,18 @@
 /processorParam:TextureFormat=Color
 /build:Pokemon/Trainer/TrainerIdleUp.png
 
+#begin Pokemon/Trainer/TrainerPickupBoomerang.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pokemon/Trainer/TrainerPickupBoomerang.png
+
 #begin Pokemon/Trainer/TrainerPickUpBow.png
 /importer:TextureImporter
 /processor:TextureProcessor
