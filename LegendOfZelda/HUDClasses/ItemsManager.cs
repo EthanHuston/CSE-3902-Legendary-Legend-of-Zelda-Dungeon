@@ -17,13 +17,13 @@ namespace LegendOfZelda.HUDClasses
         private LinkConstants.ItemType secondaryItem;
         private readonly IButton primaryButton;
         private IButton secondaryButton;
-        private int numPlayers;
+        private int playerNumber;
 
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
-        private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionaryPlayer2;
 
         public ItemsManager(HUD hud, IPlayer player)
         {
+            playerNumber = 1;
             this.hud = hud;
             this.player = player;
             spriteBatch = hud.roomGameState.Game.SpriteBatch;
@@ -32,11 +32,11 @@ namespace LegendOfZelda.HUDClasses
             fillSecondaryItemDictionaries();
             primaryButton = new SwordInventoryButton(hud.roomGameState.Game.SpriteBatch, hud, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
-            numPlayers = 1;
         }
 
-        public ItemsManager(MultiplayerHUD hud, IPlayer player)
+        public ItemsManager(MultiplayerHUD hud, IPlayer player, int playerNumber)
         {
+            this.playerNumber = playerNumber;
             this.hud = hud;
             this.player = player;
             spriteBatch = hud.roomGameState.Game.SpriteBatch;
@@ -45,7 +45,6 @@ namespace LegendOfZelda.HUDClasses
             fillSecondaryItemDictionaries();
             primaryButton = new SwordInventoryButton(hud.roomGameState.Game.SpriteBatch, hud, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
-            numPlayers = 2;
         }
 
         public void Draw()
@@ -63,38 +62,39 @@ namespace LegendOfZelda.HUDClasses
         private void UpdateSecondaryItem()
         {
             secondaryItem = player.SecondaryItem;
-            if(numPlayers == 1)
-                secondaryButton = secondaryItemDictionary[secondaryItem];
-            else
-                secondaryButton = secondaryItemDictionaryPlayer2[secondaryItem];
+            secondaryButton = secondaryItemDictionary[secondaryItem];
         }
 
         public void fillSecondaryItemDictionaries()
         {
-            secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
+            if(playerNumber == 1)
             {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
-                { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
-                { LinkConstants.ItemType.None, GetEmptyButton() }
-            };
-
-            secondaryItemDictionaryPlayer2 = new Dictionary<LinkConstants.ItemType, IButton>
+                secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
+                {
+                    { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
+                    { LinkConstants.ItemType.Bomb, new BombInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
+                    { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
+                    { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
+                    { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocation)},
+                    { LinkConstants.ItemType.None, GetEmptyButton() }
+                };
+            } else
             {
-                { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
-                { LinkConstants.ItemType.Bomb, new BombInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
-                { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
-                { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
-                { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
-                { LinkConstants.ItemType.None, GetEmptyButton() }
-            };
+                secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
+                {
+                    { LinkConstants.ItemType.Boomerang, new BoomerangWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
+                    { LinkConstants.ItemType.Bomb, new BombInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
+                    { LinkConstants.ItemType.Rupee, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
+                    { LinkConstants.ItemType.Bow, new ArrowWoodInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
+                    { LinkConstants.ItemType.Candle, new CandleBlueInventoryButton(spriteBatch, hud, HUDConstants.SecondaryItemLocationPlayer2)},
+                    { LinkConstants.ItemType.None, GetEmptyButton() }
+                };
+            }  
         }
 
         private IButton GetEmptyButton()
         {
-            if(numPlayers == 1)
+            if(playerNumber == 1)
                 return new EmptyButton(hud, new Rectangle(HUDConstants.SecondaryItemLocation.X, HUDConstants.SecondaryItemLocation.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
 
             return new EmptyButton(hud, new Rectangle(HUDConstants.SecondaryItemLocationPlayer2.X, HUDConstants.SecondaryItemLocationPlayer2.Y, (int)GameStateConstants.StandardItemSpriteSize.X, (int)GameStateConstants.StandardItemSpriteSize.Y));
