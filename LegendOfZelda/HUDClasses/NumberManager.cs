@@ -40,11 +40,11 @@ namespace LegendOfZelda.HUDClasses
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point hudPosition)
+        public void Draw(SpriteBatch spriteBatch, Point startPosition)
         {
-            DrawNumRupees(spriteBatch, hudPosition);
-            DrawNumKeys(spriteBatch, hudPosition);
-            DrawNumBombs(spriteBatch, hudPosition);
+            DrawNumRupees(spriteBatch, startPosition);
+            DrawNumKeys(spriteBatch, startPosition);
+            DrawNumBombs(spriteBatch, startPosition);
         }
 
         public void Update()
@@ -58,28 +58,34 @@ namespace LegendOfZelda.HUDClasses
                 UpdateNumBombs();
         }
 
-        private void DrawNumRupees(SpriteBatch spriteBatch, Point hudPosition)
+        private void DrawNumRupees(SpriteBatch spriteBatch, Point startPosition)
         {
+            //Point position = new Point(HUDConstants.RupeeNumberX + i * HUDConstants.NumberWidth, HUDConstants.RupeeNumberY);
+            Point position = Point.Zero;
             for (int i = 0; i < numRupees.Length; i++)
             {
-                Point position = new Point(HUDConstants.RupeeNumberX + i * HUDConstants.NumberWidth, HUDConstants.RupeeNumberY);
-                numRupees[i].Draw(spriteBatch, hudPosition + position, Constants.DrawLayer.MenuIcon);
+                position = new Point(i * HUDConstants.NumberWidth, 0);
+                numRupees[i].Draw(spriteBatch, startPosition + position, Constants.DrawLayer.MenuIcon);
             }
         }
-        private void DrawNumKeys(SpriteBatch spriteBatch, Point hudPosition)
+        private void DrawNumKeys(SpriteBatch spriteBatch, Point startPosition)
         {
+            Point position = Point.Zero;
             for (int i = 0; i < numKeys.Length; i++)
             {
-                Point position = new Point(HUDConstants.KeyNumberX + i * HUDConstants.NumberWidth, HUDConstants.KeyNumberY);
-                numKeys[i].Draw(spriteBatch, hudPosition + position, Constants.DrawLayer.MenuIcon);
+                //Point position = new Point(HUDConstants.KeyNumberX + i * HUDConstants.NumberWidth, HUDConstants.KeyNumberY);
+                position = new Point(i * HUDConstants.NumberWidth, HUDConstants.KeyNumberY - HUDConstants.RupeeNumberY);
+                numKeys[i].Draw(spriteBatch, startPosition + position, Constants.DrawLayer.MenuIcon);
             }
         }
-        private void DrawNumBombs(SpriteBatch spriteBatch, Point hudPosition)
+        private void DrawNumBombs(SpriteBatch spriteBatch, Point startPosition)
         {
+            Point position = Point.Zero;
             for (int i = 0; i < numBombs.Length; i++)
             {
-                Point position = new Point(HUDConstants.BombNumberX + i * HUDConstants.NumberWidth, HUDConstants.BombNumberY);
-                numBombs[i].Draw(spriteBatch, hudPosition + position, Constants.DrawLayer.MenuIcon);
+                //Point position = new Point(HUDConstants.BombNumberX + i * HUDConstants.NumberWidth, HUDConstants.BombNumberY);
+                position = new Point(i * HUDConstants.NumberWidth, HUDConstants.BombNumberY - HUDConstants.RupeeNumberY);
+                numBombs[i].Draw(spriteBatch, startPosition + position, Constants.DrawLayer.MenuIcon);
             }
         }
 

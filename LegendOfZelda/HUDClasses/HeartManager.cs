@@ -19,12 +19,13 @@ namespace LegendOfZelda.HUDClasses
             UpdateTotalHeartList();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Point hudPosition)
+        public void Draw(SpriteBatch spriteBatch, Point startPosition)
         {
+            Point heartPosition = startPosition;
             for (int i = 0; i < hearts.Count; i++)
             {
-                Point heartPosition = new Point(HUDConstants.HeartX + i * HUDConstants.NumberWidth, HUDConstants.HeartY);
-                hearts[i].Draw(spriteBatch, hudPosition + heartPosition);
+                heartPosition = new Point(i * HUDConstants.NumberWidth, 0);
+                hearts[i].Draw(spriteBatch, startPosition + heartPosition);
             }
 
         }

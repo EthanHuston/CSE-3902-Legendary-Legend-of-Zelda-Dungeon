@@ -45,10 +45,10 @@ namespace LegendOfZelda.HUDClasses
         {
             hudSprite.Draw(spriteBatch, position, Constants.DrawLayer.HUD);
             levelNum.Draw(spriteBatch, position + HUDConstants.LevelNumberLocation, Constants.DrawLayer.HUDMinimap);
-            numberManager.Draw(spriteBatch, position);
-            heartManager.Draw(spriteBatch, position);
+            numberManager.Draw(spriteBatch, position + HUDConstants.RupeePos);
+            heartManager.Draw(spriteBatch, position + HUDConstants.HeartPos);
             minimapManager.Draw(position);
-            itemsManager.Draw(position);
+            itemsManager.Draw();
         }
 
         public Rectangle GetRectangle()

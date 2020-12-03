@@ -55,9 +55,12 @@ namespace LegendOfZelda.HUDClasses
             hudSprite.Draw(spriteBatch, position, Constants.DrawLayer.HUD);
             levelNum.Draw(spriteBatch, position + HUDConstants.LevelNumberLocation, Constants.DrawLayer.HUDMinimap);
             minimapManager.Draw(position);
-            player1NumberManager.Draw(spriteBatch, position);
-            player1HeartManager.Draw(spriteBatch, position);
-            player1ItemsManager.Draw(position);
+            player1NumberManager.Draw(spriteBatch, position + HUDConstants.RupeePos);
+            player1HeartManager.Draw(spriteBatch, position + HUDConstants.HeartPos);
+            player1ItemsManager.Draw();
+            player2NumberManager.Draw(spriteBatch, position + HUDConstants.RupeePosPlayer2);
+            player2HeartManager.Draw(spriteBatch, position + HUDConstants.HeartPosPlayer2);
+            player2ItemsManager.Draw();
         }
 
         public Rectangle GetRectangle()
