@@ -53,7 +53,7 @@ namespace LegendOfZelda.Projectile
 
         protected void CheckItemIsExpired()
         {
-            itemIsExpired = sprite.FinishedAnimation();
+            SafeToDespawn = sprite.FinishedAnimation();
         }
 
         public void ExplodeSword()

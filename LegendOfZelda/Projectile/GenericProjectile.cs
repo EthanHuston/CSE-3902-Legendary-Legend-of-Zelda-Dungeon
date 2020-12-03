@@ -51,7 +51,7 @@ namespace LegendOfZelda.Projectile
 
         public void Despawn()
         {
-            itemIsExpired = true;
+            SafeToDespawn = true;
         }
 
         public LinkConstants.ProjectileType GetProjectileType()
