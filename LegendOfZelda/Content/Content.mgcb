@@ -1537,6 +1537,42 @@
 /processorParam:TextureFormat=Color
 /build:Pokemon/Trainer/TrainerStrikingDown.png
 
+#begin Pokemon/Trainer/TrainerStrikingLeft.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pokemon/Trainer/TrainerStrikingLeft.png
+
+#begin Pokemon/Trainer/TrainerStrikingRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pokemon/Trainer/TrainerStrikingRight.png
+
+#begin Pokemon/Trainer/TrainerStrikingUp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pokemon/Trainer/TrainerStrikingUp.png
+
 #begin Pokemon/Trainer/TrainerWalkingDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
