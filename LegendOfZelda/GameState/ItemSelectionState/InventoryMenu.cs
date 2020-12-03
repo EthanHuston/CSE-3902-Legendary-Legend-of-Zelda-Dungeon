@@ -31,7 +31,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             this.link = link;
             itemButtonsTupleList = GetItemButtonsTupleList();
             Buttons = GetButtonsList(itemButtonsTupleList);
-            ButtonSelector = new ButtonSelector(link.Game.SpriteBatch, this, Buttons, numRows, numColumns);
+            ButtonSelector = new ButtonSelector(link.Game.SpriteBatch, this, Buttons, numColumns);
             secondaryItem = itemButtonsTupleList[itemButtonsTupleList.Count - 1];
         }
 
