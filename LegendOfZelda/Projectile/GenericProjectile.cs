@@ -9,7 +9,6 @@ namespace LegendOfZelda.Projectile
     internal abstract class GenericProjectile : IProjectile
     {
         protected IProjectileSprite sprite;
-        protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
         protected LinkConstants.ProjectileType projectileType;
 

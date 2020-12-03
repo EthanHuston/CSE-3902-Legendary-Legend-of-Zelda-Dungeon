@@ -53,7 +53,7 @@ namespace LegendOfZelda.Projectile
         private void CheckItemIsExpired()
         {
             Point ownerPosition = itemToTrack.Position;
-            itemIsExpired = itemIsExpired || returningToOwner &&
+            SafeToDespawn = SafeToDespawn || returningToOwner &&
                 Position.X <= ownerPosition.X + despawnMaxXFromOwner &&
                 Position.X >= ownerPosition.X + despawnMinXFromOwner &&
                 Position.Y <= ownerPosition.Y + despawnMaxYFromOwner &&
