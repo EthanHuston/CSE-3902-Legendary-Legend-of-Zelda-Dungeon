@@ -472,6 +472,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Content\Sounds\Baka_Mitai.mp3" />
     <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Drop.wav" />
