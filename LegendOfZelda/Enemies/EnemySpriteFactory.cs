@@ -49,7 +49,8 @@ namespace LegendOfZelda.Enemies
             skeletonSprite = content.Load<Texture2D>("Pokemon/Enemies/Hitmonchan");
             //spikeTrapSprite = content.Load<Texture2D>("Enemies/SpikeTrap");
             spikeTrapSprite = content.Load<Texture2D>("Pokemon/Enemies/Decoy");
-            oldManSprite = content.Load<Texture2D>("NPC/OldMan");
+            //oldManSprite = content.Load<Texture2D>("NPC/OldMan");
+            oldManSprite = content.Load<Texture2D>("Pokemon/Professor Oak");
             spawnSprite = content.Load<Texture2D>("Enemies/EnemySpawn");
         }
 

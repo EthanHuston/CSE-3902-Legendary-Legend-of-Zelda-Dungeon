@@ -1357,6 +1357,18 @@
 /processorParam:TextureFormat=Color
 /build:Pokemon/Enemies/Zubat.png
 
+#begin Pokemon/Professor Oak.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pokemon/Professor Oak.png
+
 #begin Sounds/LOZ_Arrow_Boomerang.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
