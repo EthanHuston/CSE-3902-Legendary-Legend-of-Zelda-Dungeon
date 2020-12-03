@@ -41,7 +41,7 @@ namespace LegendOfZelda.GameState.RoomsState
                 { Buttons.A, new UsePrimaryItemCommand(player) },
                 { Buttons.B, new UseSecondaryItemCommand(player) },
                 { Buttons.Start, new PauseGameCommand(gameState) },
-                { Buttons.X, new ItemSelectCommand(gameState) }
+                { Buttons.X, new ItemSelectCommand(gameState, player.PlayerNumber) }
             };
         }
 

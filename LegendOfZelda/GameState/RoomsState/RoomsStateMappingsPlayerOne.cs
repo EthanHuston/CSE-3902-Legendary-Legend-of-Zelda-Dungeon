@@ -37,7 +37,7 @@ namespace LegendOfZelda.GameState.RoomsState
             return new Dictionary<Keys, ICommand>
             {
                 { Keys.Escape, new PauseGameCommand(gameState) },
-                { Keys.Tab, new ItemSelectCommand(gameState) },
+                { Keys.Tab, new ItemSelectCommand(gameState, player.PlayerNumber) },
 
                 // Register Player 1 Commands
                 { Keys.D1, new UsePrimaryItemCommand(player) },

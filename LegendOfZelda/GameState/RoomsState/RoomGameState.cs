@@ -88,8 +88,8 @@ namespace LegendOfZelda.GameState.RoomsState
         private void InitItemSelectionGameStates()
         {
             itemSelectionGameStates = new List<ItemSelectionGameState>();
-            foreach (IPlayer player in PlayerList)
-                itemSelectionGameStates.Add(new ItemSelectionGameState(player, this));
+            for (int i = 0; i < PlayerList.Count; i++)
+                itemSelectionGameStates.Add(new ItemSelectionGameState(PlayerList[i], this));
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -157,10 +157,10 @@ namespace LegendOfZelda.GameState.RoomsState
             StartStateSwitch(new PauseGameState(Game, this));
         }
 
-        public override void SwitchToItemSelectionState()
+        public override void SwitchToItemSelectionState(int playerNum)
         {
             // player 0 inventory for now - in case we add multiplayer later
-            StartStateSwitch(itemSelectionGameStates[0]);
+            StartStateSwitch(itemSelectionGameStates[playerNum]);
         }
 
         public override void SwitchToDeathState()

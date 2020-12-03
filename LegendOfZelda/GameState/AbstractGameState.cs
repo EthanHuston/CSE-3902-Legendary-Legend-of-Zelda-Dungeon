@@ -60,7 +60,7 @@ namespace LegendOfZelda.GameState
             Game.State.StateEntryProcedure();
         }
 
-        public virtual void SwitchToItemSelectionState() { }
+        public virtual void SwitchToItemSelectionState(int playerNum) { }
         public virtual void SwitchToMainMenuState() { }
         public virtual void SwitchToPauseState() { }
         public virtual void SwitchToRoomState() { }
