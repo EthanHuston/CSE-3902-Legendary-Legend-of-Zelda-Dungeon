@@ -1,5 +1,5 @@
 using LegendOfZelda.Enemies.Sprite;
-using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;

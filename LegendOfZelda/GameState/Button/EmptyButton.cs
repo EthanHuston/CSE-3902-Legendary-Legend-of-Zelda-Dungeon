@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Menu;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameState.Button
 {
@@ -11,7 +12,7 @@ namespace LegendOfZelda.GameState.Button
         public bool IsActive { get; private set; }
 
         private Point position;
-        public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+        public Point Position { get => owningMenu.Position + position; set => position = new Point(value.X, value.Y); }
 
         public EmptyButton(IMenu owner, Rectangle location)
         {

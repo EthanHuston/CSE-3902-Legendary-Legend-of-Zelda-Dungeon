@@ -47,7 +47,7 @@ namespace LegendOfZelda.Link.State
             }
         }
 
-        public void Update()
+        public virtual void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
             link.Mover.Update();

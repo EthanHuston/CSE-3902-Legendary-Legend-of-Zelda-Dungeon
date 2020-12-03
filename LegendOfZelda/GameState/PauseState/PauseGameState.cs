@@ -1,81 +1,87 @@
-﻿using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.MainMenu;
-using LegendOfZelda.Interface;
+﻿using LegendOfZelda.GameState.Controller;
+using LegendOfZelda.GameState.MainMenuState;
+using LegendOfZelda.GameState.Utilities;
+using LegendOfZelda.Menu;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Pause
+namespace LegendOfZelda.GameState.PauseState
 {
-    internal class PauseGameState : AbstractGameState
+    internal class PauseGameState : IGameState
     {
+        private readonly List<IController> controllerList;
         private readonly IGameState roomStatePreserved;
-        private List<ISpawnable> buttons;
+
+        public Game1 Game { get; private set; }
+        public IButtonMenu PauseGameMenu { get; private set; }
 
         public PauseGameState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
             roomStatePreserved = oldRoomState;
-            InitButtonsList();
-            InitControllerList();
+            PauseGameMenu = new PauseGameMenu(Game);
+            controllerList = GetControllerList();
         }
 
-        private void InitButtonsList()
+        private List<IController> GetControllerList()
         {
-            buttons = new List<ISpawnable>()
+            IGameStateControllerMappings mappings = new PauseStateMappings(this);
+            return new List<IController>()
             {
-                {new ResumeButton(Game.SpriteBatch, GameStateConstants.PauseStateResumeButtonLocation) },
-                {new MainMenuButton(Game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) },
-                {new ExitButton(Game.SpriteBatch, GameStateConstants.PauseStateExitButtonLocation) }
+                {new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys) },
+                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, PauseGameMenu.Buttons) },
+                {new GamepadController(mappings.GamepadMappings, mappings.RepeatableGamepadButtons) }
             };
         }
 
-        private void InitControllerList()
-        {
-            controllerList = new List<IController>()
-            {
-                {new KeyboardController(this) },
-                {new MouseController(this, buttons) }
-            };
-        }
-
-        public override void Draw()
+        public void Draw()
         {
             roomStatePreserved.Draw(); // continue to draw the old room in the background
-            foreach (ISpawnable button in buttons) button.Draw();
+            PauseGameMenu.Draw();
         }
 
-        public override void SwitchToRoomState()
+        public void SwitchToRoomState()
         {
-            StartStateSwitch(roomStatePreserved);
+            StateExitProcedure();
+            Game.State = roomStatePreserved;
+            Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
+            Game.State.StateEntryProcedure();
         }
 
-        public override void SwitchToMainMenuState()
+        public void SwitchToMainMenuState()
         {
-            StartStateSwitch(new MainMenuGameState(Game));
+            StateExitProcedure();
+            Game.State = new MainMenuGameState(Game);
+            Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
+            Game.State.StateEntryProcedure();
         }
 
-        public override void StateEntryProcedure()
+        public void StateEntryProcedure()
         {
             // nothing fancy to do here
         }
 
-        public override void StateExitProcedure()
+        public void StateExitProcedure()
         {
             // nothing fancy to do here
         }
 
-        protected override void NormalStateUpdate()
+        public void Update()
         {
             foreach (IController controller in controllerList) controller.Update();
+            PauseGameMenu.Update();
         }
 
-        protected override void SwitchingStateUpdate()
-        {
-            readyToSwitchState = true; // nothing fancy to do here
-        }
+        public void SwitchToPauseState() { }
 
-        protected override void InitializingStateUpdate()
+        public void SwitchToItemSelectionState() { }
+
+        public void SwitchToDeathState() { }
+
+        public void SwitchToWinState() { }
+
+        public void SetControllerOldInputState(InputStates inputFromOldState)
         {
-            stateInitialized = true; // nothing fancy to do here
+            foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
     }
 }

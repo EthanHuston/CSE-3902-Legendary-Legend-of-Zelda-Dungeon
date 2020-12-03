@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using static LegendOfZelda.GameState.GameStateConstants;
+﻿using LegendOfZelda.GameState.Utilities;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
@@ -37,9 +37,9 @@ namespace LegendOfZelda.GameState
             }
         }
 
-        public virtual void SetControllerOldInputState(OldInputState inputFromOldState)
+        public virtual void SetControllerOldInputState(InputStates inputFromOldState)
         {
-            foreach (IController controller in controllerList) controller.SetOldInputState(inputFromOldState);
+            foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
 
         protected void StartStateSwitch(IGameState gameState)
@@ -55,7 +55,7 @@ namespace LegendOfZelda.GameState
             readyToSwitchState = false;
             changingStates = false;
             stateInitialized = false;
-            pendingGameState.SetControllerOldInputState(GetOldInputState());
+            pendingGameState.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
             Game.State = pendingGameState;
             Game.State.StateEntryProcedure();
         }
@@ -72,26 +72,5 @@ namespace LegendOfZelda.GameState
         protected abstract void SwitchingStateUpdate();
         protected abstract void InitializingStateUpdate();
         public abstract void Draw();
-
-        private OldInputState GetOldInputState()
-        {
-            OldInputState oldInputState = new OldInputState();
-
-            foreach (IController controller in controllerList)
-            {
-                switch (controller.GetInputType())
-                {
-                    case InputType.Keyboard:
-                        oldInputState.oldKeyboardState = controller.GetOldInputState().oldKeyboardState;
-                        break;
-
-                    case InputType.Mouse:
-                        oldInputState.oldMouseState = controller.GetOldInputState().oldMouseState;
-                        break;
-                }
-            }
-
-            return oldInputState;
-        }
     }
 }

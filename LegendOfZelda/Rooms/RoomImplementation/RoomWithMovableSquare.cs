@@ -8,7 +8,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         protected MovableSquare movableSquare;
 
-        public RoomWithMovableSquare(List<IPlayer> playerList) : base(playerList)
+        public RoomWithMovableSquare(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
 
         }

@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
-using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Item;
 using LegendOfZelda.Link.Interface;
 

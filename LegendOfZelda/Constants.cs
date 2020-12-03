@@ -97,6 +97,7 @@ namespace LegendOfZelda
             public const float MapMenu = 7;
             public const float MenuButton = 7.1f;
             public const float MenuIcon = 7.1f;
+            public const float MenuButtonSelector = 7.2f;
             public const float Map = 7.2f;
             public const float MapIcon = 7.2f;
             public const float MapMarker = 7.3f;

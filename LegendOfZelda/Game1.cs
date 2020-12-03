@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameState;
-using LegendOfZelda.GameState.MainMenu;
+using LegendOfZelda.GameState.MainMenuState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

@@ -11,6 +11,8 @@ namespace LegendOfZelda.GameLogic
 {
     internal class SpawnableManager : ISpawnableManager
     {
+        private readonly ItemDrop itemDropper;
+        public Game1 Game { get; private set; }
         public List<IItem> ItemList { get; private set; }
         public List<IProjectile> ProjectileList { get; private set; }
         public List<INpc> NpcList { get; private set; }
@@ -18,10 +20,9 @@ namespace LegendOfZelda.GameLogic
         public List<IPlayer> PlayerList { get; private set; }
         public List<IBackground> BackgroundList { get; private set; }
 
-        private readonly ItemDrop itemDropper;
-
-        public SpawnableManager(List<IPlayer> playerList)
+        public SpawnableManager(List<IPlayer> playerList, Game1 game)
         {
+            Game = game;
             ItemList = new List<IItem>();
             ProjectileList = new List<IProjectile>();
             NpcList = new List<INpc>();

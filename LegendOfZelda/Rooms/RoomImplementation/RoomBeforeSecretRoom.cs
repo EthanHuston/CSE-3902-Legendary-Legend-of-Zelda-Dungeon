@@ -6,7 +6,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 {
     internal class RoomBeforeSecretRoom : RoomWithMovableSquare
     {
-        public RoomBeforeSecretRoom(List<IPlayer> playerList) : base(playerList) { }
+        public RoomBeforeSecretRoom(List<IPlayer> playerList, Game1 game) : base(playerList, game) { }
 
         public override IRoom GetRoom(Constants.Direction direction)
         {

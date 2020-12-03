@@ -8,6 +8,7 @@ namespace LegendOfZelda.Rooms
 {
     internal interface IRoom
     {
+        Game1 Game { get; }
         string RoomId { get; set; }
         bool Visiting { get; set; }
         int RoomType { get; }

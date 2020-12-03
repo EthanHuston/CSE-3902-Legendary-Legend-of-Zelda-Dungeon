@@ -6,6 +6,7 @@ namespace LegendOfZelda.Link.State
     internal class LinkWalkingState : LinkGenericAbstractState
     {
         private const int stepDistance = (int)(1 * Constants.GameScaler);
+        private bool stillMoving;
 
         public LinkWalkingState(LinkPlayer link, Constants.Direction direction, bool damaged, DateTime healthyDateTime)
         {
@@ -14,6 +15,7 @@ namespace LegendOfZelda.Link.State
             this.damaged = damaged;
             spawnOffset = Point.Zero;
             link.FacingDirection = direction;
+            stillMoving = true;
             InitClass();
         }
 
@@ -40,14 +42,18 @@ namespace LegendOfZelda.Link.State
             }
         }
 
-        protected override void UpdateState()
+        public override void Update()
         {
+            if (!stillMoving) StopMoving();
+            base.Update();
+            stillMoving = false;
         }
+
+        protected override void UpdateState() { }
 
         public override void Move(Constants.Direction direction)
         {
-            if (direction == link.FacingDirection) return;
-            base.Move(direction);
+            if (direction == link.FacingDirection) stillMoving = true;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         private bool doorHasBeenClosed;
         private bool doorHasBeenOpened;
-        public RoomKillAllEnemies(List<IPlayer> playerList) : base(playerList)
+        public RoomKillAllEnemies(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
             doorHasBeenClosed = false;
             doorHasBeenOpened = false;

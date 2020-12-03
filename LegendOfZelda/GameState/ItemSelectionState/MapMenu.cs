@@ -2,6 +2,7 @@
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
+using LegendOfZelda.Menu;
 using LegendOfZelda.Rooms;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;

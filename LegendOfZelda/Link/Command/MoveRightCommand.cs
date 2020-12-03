@@ -3,10 +3,10 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {
-    internal class WalkingRightCommand : ICommand
+    internal class MoveRightCommand : ICommand
     {
         private readonly IPlayer link;
-        public WalkingRightCommand(IPlayer player)
+        public MoveRightCommand(IPlayer player)
         {
             link = player;
         }
