@@ -1,7 +1,7 @@
-﻿using LegendOfZelda.GameState;
-using LegendOfZelda.GameState.Rooms;
+﻿using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -27,7 +27,7 @@ namespace LegendOfZelda.HUDClasses
         {
             roomGameState = gameState;
             spriteBatch = gameState.Game.SpriteBatch;
-            minimapManager = new MinimapManager(gameState);
+            minimapManager = new MinimapManager(gameState, 2);
             player1HeartManager = new HeartManager((LinkPlayer)gameState.PlayerList[0]);
             player1NumberManager = new NumberManager((LinkPlayer)gameState.PlayerList[0]);
             player1ItemsManager = new ItemsManager(this, gameState.PlayerList[0], 1);

@@ -26,7 +26,7 @@ namespace LegendOfZelda.HUDClasses
             spriteBatch = gameState.Game.SpriteBatch;
             heartManager = new HeartManager((LinkPlayer)gameState.PlayerList[0]);
             numberManager = new NumberManager((LinkPlayer)gameState.PlayerList[0]);
-            minimapManager = new MinimapManager(gameState);
+            minimapManager = new MinimapManager(gameState, 1);
             itemsManager = new ItemsManager(this, gameState.PlayerList[0]);
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             levelNum = new HUDNumber(1);
