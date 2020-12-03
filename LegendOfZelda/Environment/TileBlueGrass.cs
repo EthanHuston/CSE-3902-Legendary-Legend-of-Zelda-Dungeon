@@ -10,6 +10,7 @@ namespace LegendOfZelda.Environment
         private readonly ISprite sprite;
         private readonly SpriteBatch sb;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -19,12 +20,12 @@ namespace LegendOfZelda.Environment
             sprite = EnvironmentSpriteFactory.Instance.CreateTileBlueGrassSprite();
             sb = spriteBatch;
             Position = position;
-            safeToDespawn = false;
+            SafeToDespawn = false;
         }
 
         public void Despawn()
         {
-            safeToDespawn = true;
+            SafeToDespawn = true;
         }
 
         public void Draw()
@@ -37,10 +38,7 @@ namespace LegendOfZelda.Environment
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
 
         public void Update()
         {

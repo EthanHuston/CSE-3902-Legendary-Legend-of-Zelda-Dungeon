@@ -96,10 +96,13 @@ namespace LegendOfZelda.GameLogic
         private void DrawList(List<IItem> list)
         {
             for (int i = 0; i < list.Count; i++)
-            {
-                IItem spawnable = list[i];
-                spawnable.Draw();
-            }
+                list[i].Draw();
+        }
+
+        private void DrawList(List<IPlayer> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (!list[i].SafeToDespawn) list[i].Draw();
         }
 
         public void UpdateAll()
@@ -129,22 +132,17 @@ namespace LegendOfZelda.GameLogic
             {
                 ISpawnable item = (ISpawnable)list[i];
                 item.Update();
-                if (item.SafeToDespawn()) indicesToRemove.Add(i);
+                if (item.SafeToDespawn) indicesToRemove.Add(i);
             }
 
             for (int i = 0; i < indicesToRemove.Count; i++)
-            {
                 list.RemoveAt(indicesToRemove[i] - i);
-            }
         }
 
         private void UpdateList(List<IPlayer> list)
         {
             for (int i = 0; i < list.Count; i++)
-            {
-                ISpawnable item = list[i];
-                item.Update();
-            }
+                if (!list[i].SafeToDespawn) list[i].Update();
         }
 
         private void UpdateList(List<INpc> list)
@@ -154,20 +152,17 @@ namespace LegendOfZelda.GameLogic
             {
                 ISpawnable item = list[i];
                 item.Update();
-                if (item.SafeToDespawn())
+                if (item.SafeToDespawn)
                 {
                     if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
-                    {
                         itemDropper.DropItem(item.Position);
-                    }
+
                     indicesToRemove.Add(i);
                 }
             }
 
             for (int i = 0; i < indicesToRemove.Count; i++)
-            {
                 list.RemoveAt(indicesToRemove[i] - i);
-            }
         }
 
         private void ClockUpdateList(List<INpc> list)
@@ -177,20 +172,17 @@ namespace LegendOfZelda.GameLogic
             {
                 INpc item = list[i];
                 item.ClockUpdate();
-                if (item.SafeToDespawn())
+                if (item.SafeToDespawn)
                 {
                     if (item.GetType() == typeof(Aquamentus) || item.GetType() == typeof(Skeleton) || item.GetType() == typeof(Goriya) || item.GetType() == typeof(Hand))
-                    {
                         itemDropper.DropItem(item.Position);
-                    }
+                    
                     indicesToRemove.Add(i);
                 }
             }
 
             for (int i = 0; i < indicesToRemove.Count; i++)
-            {
                 list.RemoveAt(indicesToRemove[i] - i);
-            }
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -201,9 +193,7 @@ namespace LegendOfZelda.GameLogic
         public void ResetClouds()
         {
             foreach (INpc Npc in NpcList)
-            {
                 Npc.ResetSpawnCloud();
-            }
         }
     }
 }

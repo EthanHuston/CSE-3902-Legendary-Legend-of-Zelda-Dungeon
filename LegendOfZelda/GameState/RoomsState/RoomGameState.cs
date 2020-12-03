@@ -66,16 +66,16 @@ namespace LegendOfZelda.GameState.RoomsState
         private void InitControllerList(List<IPlayer> playerList)
         {
             controllerList = new List<IController>();
-            foreach (IPlayer player in playerList)
+            for(int i = 0; i < PlayerList.Count; i++)
             {
                 IGameStateControllerMappings mappings = null;
-                switch (player.PlayerNumber)
+                switch (PlayerList[i].PlayerNumber)
                 {
                     case 0:
-                        mappings = new RoomsStateMappingsPlayerOne(this, player);
+                        mappings = new RoomsStateMappingsPlayerOne(this, PlayerList[i]);
                         break;
                     case 1:
-                        mappings = new RoomsStateMappingsPlayerTwo(this, player);
+                        mappings = new RoomsStateMappingsPlayerTwo(this, PlayerList[i]);
                         break;
                 }
 
@@ -184,7 +184,11 @@ namespace LegendOfZelda.GameState.RoomsState
 
         protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.Update();
+            for (int i = 0; i < controllerList.Count; i++)
+            {
+                if (PlayerList[i / (controllerList.Count / PlayerList.Count)].SafeToDespawn) continue;
+                controllerList[i].Update();
+            }
 
             if (clockModeOn)
             {
@@ -194,7 +198,13 @@ namespace LegendOfZelda.GameState.RoomsState
             }
             else CurrentRoom.Update();
 
-            if (PlayerList[0].SafeToDespawn()) SwitchToDeathState();
+            bool allPlayersDead = true;
+            foreach(IPlayer player in PlayerList)
+            {
+                allPlayersDead = allPlayersDead && player.SafeToDespawn;
+            }
+
+            if (allPlayersDead) SwitchToDeathState();
 
             Hud.Update();
         }

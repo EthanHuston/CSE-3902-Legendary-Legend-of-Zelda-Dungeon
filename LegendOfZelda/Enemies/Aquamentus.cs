@@ -24,6 +24,7 @@ namespace LegendOfZelda.Enemies
         private const int xVelocity = -6;
         private readonly ISpawnableManager itemSpawner;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get => safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
@@ -41,7 +42,7 @@ namespace LegendOfZelda.Enemies
             this.spriteBatch = spriteBatch;
             this.itemSpawner = itemSpawner;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             healthyDateTime = DateTime.Now;
             damaged = false;
             spawning = true;
@@ -77,7 +78,7 @@ namespace LegendOfZelda.Enemies
                 CheckSafeToDespawn();
 
             }
-            if (safeToDespawn)
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateBossScreamSound().Play();
             }
@@ -92,7 +93,7 @@ namespace LegendOfZelda.Enemies
                 spawnSprite.Update();
                 spawning = !spawnSprite.AnimationDone();
             }
-            if (safeToDespawn)
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateBossScreamSound().Play();
             }
@@ -121,14 +122,11 @@ namespace LegendOfZelda.Enemies
             position.Y += (int)distance.Y;
         }
 
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
 
         private void CheckSafeToDespawn()
         {
-            safeToDespawn = safeToDespawn || health <= 0;
+            SafeToDespawn = SafeToDespawn || health <= 0;
         }
 
         private void UpdateAttackAngle()
@@ -201,7 +199,7 @@ namespace LegendOfZelda.Enemies
 
         public void Despawn()
         {
-            safeToDespawn = true;
+            SafeToDespawn = true;
         }
 
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)

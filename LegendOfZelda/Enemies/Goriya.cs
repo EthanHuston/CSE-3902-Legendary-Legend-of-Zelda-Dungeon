@@ -28,7 +28,6 @@ namespace LegendOfZelda.Enemies
         private double health = 3 * Constants.HeartValue;
         private bool inKnockback = false;
         private int knockbackDist = 0;
-        private bool safeToDespawn = false;
         private DateTime healthyDateTime;
         private bool damaged;
         private bool spawning;
@@ -37,6 +36,8 @@ namespace LegendOfZelda.Enemies
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public Goriya(SpriteBatch spriteBatch, Point spawnPosition, ISpawnableManager itemSpawner)
         {
@@ -54,8 +55,8 @@ namespace LegendOfZelda.Enemies
         public void Update()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = safeToDespawn || health <= 0;
-            if (safeToDespawn)
+            SafeToDespawn = SafeToDespawn || health <= 0;
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
                 if (boomerangActive)
@@ -84,7 +85,7 @@ namespace LegendOfZelda.Enemies
                     if (updateCount % attackWaitTime == 0 && !boomerangActive)
                         Attack();
 
-                    boomerangActive = boomer != null && !boomer.SafeToDespawn();
+                    boomerangActive = boomer != null && !boomer.SafeToDespawn;
                 }
                 else
                 {
@@ -107,8 +108,8 @@ namespace LegendOfZelda.Enemies
         public void ClockUpdate()
         {
             damaged = damaged && DateTime.Compare(DateTime.Now, healthyDateTime) < 0; // only compare if we're damaged
-            safeToDespawn = safeToDespawn || health <= 0;
-            if (safeToDespawn)
+            SafeToDespawn = SafeToDespawn || health <= 0;
+            if (SafeToDespawn)
             {
                 SoundFactory.Instance.CreateEnemyDieSound().Play();
                 if (boomerangActive)
@@ -317,10 +318,7 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
@@ -339,7 +337,7 @@ namespace LegendOfZelda.Enemies
 
         public void Despawn()
         {
-            safeToDespawn = true;
+            SafeToDespawn = true;
         }
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {

@@ -14,6 +14,8 @@ namespace LegendOfZelda.Item
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public GenericItem(SpriteBatch spriteBatch, Point spawnPosition)
         {
@@ -37,11 +39,6 @@ namespace LegendOfZelda.Item
         public Rectangle GetRectangle()
         {
             return new Rectangle(position.X, position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
-        }
-
-        public bool SafeToDespawn()
-        {
-            return itemIsExpired;
         }
 
         public void Despawn()

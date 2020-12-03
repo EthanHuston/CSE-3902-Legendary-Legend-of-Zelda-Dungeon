@@ -6,6 +6,7 @@ namespace LegendOfZelda.GameState.Button
     internal class EmptyButton : IButton
     {
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private Rectangle size;
         private readonly IMenu owningMenu;
 
@@ -18,14 +19,14 @@ namespace LegendOfZelda.GameState.Button
         {
             owningMenu = owner;
             Position = new Point(location.X, location.Y);
-            safeToDespawn = false;
+            SafeToDespawn = false;
             IsActive = true;
             size = location;
         }
 
         public void Despawn()
         {
-            safeToDespawn = true;
+            SafeToDespawn = true;
         }
 
         public void Draw()
@@ -39,10 +40,7 @@ namespace LegendOfZelda.GameState.Button
                 new Rectangle(owningMenu.Position.X + Position.X, owningMenu.Position.Y + Position.Y, size.Width, size.Height);
         }
 
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
 
         public void Update()
         {

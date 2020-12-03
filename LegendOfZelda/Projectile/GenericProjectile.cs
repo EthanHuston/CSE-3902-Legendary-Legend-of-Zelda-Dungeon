@@ -20,6 +20,8 @@ namespace LegendOfZelda.Projectile
         public Point Position { get => Mover.Position; set => Mover.Position = value; }
 
         public Vector2 Velocity { get => Mover.Velocity; set => Mover.Velocity = value; }
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public GenericProjectile(SpriteBatch spriteBatch, Point spawnPosition, Constants.ProjectileOwner owner)
         {
@@ -45,11 +47,6 @@ namespace LegendOfZelda.Projectile
         public void Move(int distance, Vector2 velocity)
         {
             Mover.MoveDistance(distance, velocity);
-        }
-
-        public bool SafeToDespawn()
-        {
-            return itemIsExpired;
         }
 
         public void Despawn()

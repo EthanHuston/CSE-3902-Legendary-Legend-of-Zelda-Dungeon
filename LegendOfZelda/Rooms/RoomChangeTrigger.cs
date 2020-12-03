@@ -7,6 +7,7 @@ namespace LegendOfZelda.Rooms
     {
         private Rectangle positionRectangle;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public Constants.Direction Side { get; private set; }
         public Point Position { get; set; }
@@ -39,7 +40,7 @@ namespace LegendOfZelda.Rooms
 
         public void Despawn()
         {
-            safeToDespawn = true;
+            SafeToDespawn = true;
         }
 
         public void Draw()
@@ -52,10 +53,7 @@ namespace LegendOfZelda.Rooms
             return positionRectangle;
         }
 
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
 
         public void Update()
         {

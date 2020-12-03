@@ -96,7 +96,6 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         public void StateEntryProcedure()
         {
-            roomStatePreserved.GetPlayer(0).StartDeathAnimation();
         }
 
         public void StateExitProcedure() { }
