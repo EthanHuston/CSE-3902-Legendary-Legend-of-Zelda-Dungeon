@@ -161,12 +161,7 @@ namespace LegendOfZelda.Link
             inventory[itemType]++;
             state.PickUpItem(itemType);
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void PickupTriforce()
         {
             state.PickUpItem(LinkConstants.ItemType.Triforce);

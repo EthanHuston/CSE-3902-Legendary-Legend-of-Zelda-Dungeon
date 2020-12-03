@@ -27,12 +27,7 @@ namespace LegendOfZelda.Environment
             SafeToDespawn = false;
             side = RoomUtilities.GetDoorSide(spawnPosition);
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(side);

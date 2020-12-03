@@ -21,12 +21,7 @@ namespace LegendOfZelda.Environment
             Position = spawnPosition;
             SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             fireSprite.Draw(sB, Position, Constants.DrawLayer.Block);
@@ -36,9 +31,7 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, fireSprite.GetPositionRectangle().Width, fireSprite.GetPositionRectangle().Height);
         }
-
         
-
         public void Update()
         {
             fireSprite.Update();

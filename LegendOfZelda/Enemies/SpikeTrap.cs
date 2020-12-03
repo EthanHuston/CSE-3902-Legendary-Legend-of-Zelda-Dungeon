@@ -235,12 +235,7 @@ namespace LegendOfZelda.Enemies
         {
             // spike trap is invincible
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             // cannot be knocketh backeth

@@ -53,19 +53,12 @@ namespace LegendOfZelda.Enemies
         }
 
         public void ClockUpdate() { }
-
         
-
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void TakeDamage(double damage)
         {
             // old man knoweth not the concept of damage

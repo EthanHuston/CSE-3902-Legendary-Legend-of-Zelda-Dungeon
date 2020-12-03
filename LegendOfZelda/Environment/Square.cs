@@ -37,12 +37,7 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, blockSprite.GetPositionRectangle().Width, blockSprite.GetPositionRectangle().Height);
         }
-
         
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
+        
     }
 }

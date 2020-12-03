@@ -159,9 +159,7 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-
         
-
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
@@ -177,12 +175,7 @@ namespace LegendOfZelda.Enemies
                 SoundFactory.Instance.CreateEnemyHitSound().Play();
             }
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             // hand does not have knockback

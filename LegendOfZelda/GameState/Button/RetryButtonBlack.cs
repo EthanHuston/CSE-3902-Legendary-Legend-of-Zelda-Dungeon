@@ -23,12 +23,7 @@ namespace LegendOfZelda.GameState.Button
             SafeToDespawn = false;
             IsActive = true;
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             sprite.Draw(spriteBatch, Position, Constants.DrawLayer.MenuButton);
@@ -40,9 +35,7 @@ namespace LegendOfZelda.GameState.Button
                 Rectangle.Empty :
                 new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
         
-
         public void Update()
         {
             sprite.Update();

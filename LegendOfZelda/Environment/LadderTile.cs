@@ -22,12 +22,7 @@ namespace LegendOfZelda.Environment
             Position = position;
             SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             ladderSprite.Draw(sB, Position, Constants.DrawLayer.FloorTile);
@@ -37,9 +32,7 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, ladderSprite.GetPositionRectangle().Width, ladderSprite.GetPositionRectangle().Height);
         }
-
         
-
         public void Update()
         {
             SafeToDespawn = SafeToDespawn || false; // condition here to despawn

@@ -62,7 +62,7 @@ namespace LegendOfZelda.Enemies
                 if (boomerangActive)
                     itemSpawner.Spawn(new BoomerangItem(spriteBatch, boomer.Position));
                 if (boomer != null)
-                    boomer.Despawn();
+                    boomer.SafeToDespawn = true;
             }
             if (spawning)
             {
@@ -115,7 +115,7 @@ namespace LegendOfZelda.Enemies
                 if (boomerangActive)
                     itemSpawner.Spawn(new BoomerangItem(spriteBatch, boomer.Position));
                 if (boomer != null)
-                    boomer.Despawn();
+                    boomer.SafeToDespawn = true;
             }
             if (spawning)
             {
@@ -335,10 +335,7 @@ namespace LegendOfZelda.Enemies
             }
         }
 
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             inKnockback = changeKnockback;

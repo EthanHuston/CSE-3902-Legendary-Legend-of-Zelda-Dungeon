@@ -22,12 +22,7 @@ namespace LegendOfZelda.Environment
             Position = position;
             SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             sprite.Draw(sb, position, Constants.DrawLayer.Background);
@@ -43,9 +38,7 @@ namespace LegendOfZelda.Environment
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-
         
-
         public void Update()
         {
             sprite.Update();

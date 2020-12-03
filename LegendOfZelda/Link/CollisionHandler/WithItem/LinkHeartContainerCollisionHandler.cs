@@ -9,7 +9,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {
             link.IncreaseMaxHealth(Constants.HeartValue);
-            item.Despawn();
+            item.SafeToDespawn = true;
             SoundFactory.Instance.CreateFanfareSound().Play();
         }
     }

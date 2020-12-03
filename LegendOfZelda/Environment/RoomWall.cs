@@ -22,12 +22,7 @@ namespace LegendOfZelda.Environment
         {
             positionRectangle = positionSize;
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             // does not need to draw
@@ -37,9 +32,7 @@ namespace LegendOfZelda.Environment
         {
             return positionRectangle;
         }
-
         
-
         public void Update()
         {
             // does not need to update

@@ -121,9 +121,7 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-
         
-
         private void CheckSafeToDespawn()
         {
             SafeToDespawn = SafeToDespawn || health <= 0;
@@ -196,12 +194,7 @@ namespace LegendOfZelda.Enemies
                 SoundFactory.Instance.CreateBossHitSound().Play();
             }
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             // no knockback

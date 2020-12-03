@@ -49,19 +49,12 @@ namespace LegendOfZelda.Environment
         {
             SafeToDespawn = !SafeToDespawn && false; // put condition here for when door can be despawned
         }
-
         
-
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, doorSprite.GetPositionRectangle().Width, doorSprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void OpenDoor()
         {
             if (IsOpen) return;

@@ -9,6 +9,5 @@ namespace LegendOfZelda.Interface
         void Update();
         void Draw();
         Rectangle GetRectangle();
-        void Despawn();
     }
 }

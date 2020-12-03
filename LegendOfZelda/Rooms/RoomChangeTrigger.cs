@@ -37,12 +37,7 @@ namespace LegendOfZelda.Rooms
                     break;
             }
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             // does not need to draw
@@ -52,9 +47,7 @@ namespace LegendOfZelda.Rooms
         {
             return positionRectangle;
         }
-
         
-
         public void Update()
         {
             // does not need to update

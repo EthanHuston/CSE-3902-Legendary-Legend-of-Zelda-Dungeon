@@ -47,19 +47,12 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, doorSprite.GetPositionRectangle().Width, doorSprite.GetPositionRectangle().Height);
         }
-
         
-
         public void Update()
         {
             doorSprite.Update();
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void OpenDoor()
         {
             if (IsOpen) return;

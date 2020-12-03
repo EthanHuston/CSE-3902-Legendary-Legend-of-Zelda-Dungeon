@@ -21,12 +21,7 @@ namespace LegendOfZelda.Environment
             Position = position;
             SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             sprite.Draw(sb, position, Constants.DrawLayer.FloorTile);

@@ -22,12 +22,7 @@ namespace LegendOfZelda.Environment
             SafeToDespawn = false;
         }
 
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             brickTileSprite.Draw(sB, Position, Constants.DrawLayer.FloorTile);
@@ -42,9 +37,7 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, brickTileSprite.GetPositionRectangle().Width, brickTileSprite.GetPositionRectangle().Height);
         }
-
         
-
         public void SetPosition(Point position)
         {
             this.position = new Point(position.X, position.Y);

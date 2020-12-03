@@ -47,12 +47,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             Position = ItemSelectionStateConstants.MapPaneStartPosition;
             InitButtonsDictionary();
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             mapBackgroundSprite.Draw(link.Game.SpriteBatch, Position, Constants.DrawLayer.Menu);
@@ -67,9 +62,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         {
             return new Rectangle(Position.X, Position.Y, mapBackgroundSprite.GetPositionRectangle().Width, mapBackgroundSprite.GetPositionRectangle().Height);
         }
-
         
-
         public void Update()
         {
             mapBackgroundSprite.Update();

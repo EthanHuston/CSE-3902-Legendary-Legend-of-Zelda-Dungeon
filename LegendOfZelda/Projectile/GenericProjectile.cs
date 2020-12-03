@@ -48,12 +48,7 @@ namespace LegendOfZelda.Projectile
         {
             Mover.MoveDistance(distance, velocity);
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public LinkConstants.ProjectileType GetProjectileType()
         {
             return projectileType;

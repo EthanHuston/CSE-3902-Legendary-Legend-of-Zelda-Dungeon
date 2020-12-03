@@ -22,12 +22,7 @@ namespace LegendOfZelda.Environment
             Position = new Point(position.X, position.Y);
             SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             stairSprite.Draw(sB, Position, Constants.DrawLayer.Stair);
@@ -37,9 +32,7 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, stairSprite.GetPositionRectangle().Width, stairSprite.GetPositionRectangle().Height);
         }
-
         
-
         public void Update()
         {
             stairSprite.Update();

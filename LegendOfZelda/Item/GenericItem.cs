@@ -36,12 +36,7 @@ namespace LegendOfZelda.Item
         {
             return new Rectangle(position.X, position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public LinkConstants.ItemType GetItemType()
         {
             return itemType;

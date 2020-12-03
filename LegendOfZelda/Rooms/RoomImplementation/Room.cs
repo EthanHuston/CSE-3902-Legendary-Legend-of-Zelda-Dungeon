@@ -150,7 +150,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public virtual void RunRoomExitProcedure()
         {
-            foreach (IProjectile projectile in AllObjects.ProjectileList) projectile.Despawn();
+            foreach (IProjectile projectile in AllObjects.ProjectileList) projectile.SafeToDespawn = true;
             AllObjects.ProjectileList.Clear();
         }
     }

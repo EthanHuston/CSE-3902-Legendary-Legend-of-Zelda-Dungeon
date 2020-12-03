@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies.CollisionHandlers.WithProjectile
         public void HandleCollision(IPlayer link, IProjectile fireball, Constants.Direction side)
         {
             link.BeDamaged(fireball.DamageAmount());
-            fireball.Despawn();
+            fireball.SafeToDespawn = true;
         }
     }
 }

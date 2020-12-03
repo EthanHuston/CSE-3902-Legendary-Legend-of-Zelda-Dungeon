@@ -145,12 +145,7 @@ namespace LegendOfZelda.Enemies
 
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            SafeToDespawn = true;
-        }
-
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             // bat has no knockback
