@@ -1369,6 +1369,12 @@
 /processorParam:TextureFormat=Color
 /build:Pokemon/Professor Oak.png
 
+#begin Sounds/Baka_Mitai.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Baka_Mitai.mp3
+
 #begin Sounds/LOZ_Arrow_Boomerang.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
