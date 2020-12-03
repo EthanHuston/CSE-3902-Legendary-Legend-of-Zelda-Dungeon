@@ -51,7 +51,8 @@ namespace LegendOfZelda.Projectile
             swordBeamExplodingUpLeft = content.Load<Texture2D>("Items/SwordBeamExplosionUpLeft");
             swordBeamExplodingUpRight = content.Load<Texture2D>("Items/SwordBeamExplosionUpRight");
             swordAttackUp = content.Load<Texture2D>("Link/LinkSwordUp");
-            swordAttackDown = content.Load<Texture2D>("Link/LinkSwordDown");
+            //swordAttackDown = content.Load<Texture2D>("Link/LinkSwordDown");
+            swordAttackDown = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
             swordAttackLeft = content.Load<Texture2D>("Link/LinkSwordLeft");
             swordAttackRight = content.Load<Texture2D>("Link/LinkSwordRight");
         }

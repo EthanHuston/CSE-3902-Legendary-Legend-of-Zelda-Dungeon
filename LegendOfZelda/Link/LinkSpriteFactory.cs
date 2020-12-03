@@ -39,7 +39,8 @@ namespace LegendOfZelda.Link
             idleLinkLeftSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleLeft");
             //idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
             idleLinkUpSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleUp");
-            strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkSwordDown");
+            //strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkSwordDown");
+            strikingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
             strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkSwordLeft");
             strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkSwordRight");
             strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkSwordUp");
@@ -56,7 +57,7 @@ namespace LegendOfZelda.Link
             //linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
             linkPickingUpHeartSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpHeart");
             //linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
-            linkPickingUpTriforceSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickgUpTriforce");
+            linkPickingUpTriforceSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpTriforce");
             //linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
             linkPickingUpBowSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpBow");
             //linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");

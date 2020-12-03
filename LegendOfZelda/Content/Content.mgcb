@@ -1465,6 +1465,18 @@
 /processorParam:TextureFormat=Color
 /build:Pokemon/Trainer/TrainerPickUpTriforce.png
 
+#begin Pokemon/Trainer/TrainerStrikingDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pokemon/Trainer/TrainerStrikingDown.png
+
 #begin Pokemon/Trainer/TrainerWalkingDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
