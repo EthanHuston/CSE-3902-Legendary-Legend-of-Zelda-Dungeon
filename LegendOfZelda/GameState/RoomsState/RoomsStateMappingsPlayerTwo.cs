@@ -23,9 +23,9 @@ namespace LegendOfZelda.GameState.RoomsState
         public RoomsStateMappingsPlayerTwo(IGameState gameState, IPlayer player)
         {
             GamepadMappings = GetGamepadMappings(gameState, player);
-            KeyboardMappings = GetKeyboardMappings(gameState, player);
-            MouseMappings = GetMouseMappings(gameState, player);
-            ButtonMappings = GetButtonMappings(gameState);
+            KeyboardMappings = GetKeyboardMappings();
+            MouseMappings = GetMouseMappings();
+            ButtonMappings = GetButtonMappings();
             RepeatableKeyboardKeys = GetRepeatableKeyboardKeys();
             RepeatableGamepadButtons = GetRepeatableGamepadButtons();
         }
@@ -45,57 +45,13 @@ namespace LegendOfZelda.GameState.RoomsState
             };
         }
 
-        public Dictionary<Keys, ICommand> GetKeyboardMappings(IGameState gameState, IPlayer player)
-        {
-            return new Dictionary<Keys, ICommand>
-            {
-                { Keys.Escape, new PauseGameCommand(gameState) },
-                { Keys.Tab, new ItemSelectCommand(gameState) },
+        public Dictionary<Keys, ICommand> GetKeyboardMappings() { return new Dictionary<Keys, ICommand>(); }
 
-                // Register Player 1 Commands
-                { Keys.D1, new UsePrimaryItemCommand(player) },
-                { Keys.D2, new UseSecondaryItemCommand(player) },
-                { Keys.Q, new UsePrimaryItemCommand(player) },
-                { Keys.E, new UseSecondaryItemCommand(player) },
-                { Keys.W, new MoveUpCommand(player) },
-                { Keys.D, new MoveRightCommand(player) },
-                { Keys.S, new MoveDownCommand(player) },
-                { Keys.A, new MoveLeftCommand(player) },
+        private Dictionary<Type, ICommand> GetButtonMappings() { return new Dictionary<Type, ICommand>(); }
 
-                /* Keys to change rooms for debugging 
-                { Keys.NumPad8, new ChangeRoomUpCommand((RoomGameState)gameState) },
-                { Keys.NumPad6, new ChangeRoomRightCommand((RoomGameState)gameState) },
-                { Keys.NumPad2, new ChangeRoomDownCommand((RoomGameState)gameState) },
-                { Keys.NumPad4, new ChangeRoomLeftCommand((RoomGameState)gameState) },
-                { Keys.I, new ChangeRoomUpCommand((RoomGameState)gameState) },
-                { Keys.L, new ChangeRoomRightCommand((RoomGameState)gameState) },
-                { Keys.K, new ChangeRoomDownCommand((RoomGameState)gameState) },
-                { Keys.J, new ChangeRoomLeftCommand((RoomGameState)gameState) }
-                /**/
-            };
-        }
+        private Dictionary<MouseButton, ICommand> GetMouseMappings() { return new Dictionary<MouseButton, ICommand>(); }
 
-        private Dictionary<Type, ICommand> GetButtonMappings(IGameState gameState) { return new Dictionary<Type, ICommand>(); }
-
-        private Dictionary<MouseButton, ICommand> GetMouseMappings(IGameState gameState, IPlayer player)
-        {
-            return new Dictionary<MouseButton, ICommand>
-            {
-                {MouseButton.LeftButton, new UsePrimaryItemCommand(player) },
-                {MouseButton.RightButton, new UseSecondaryItemCommand(player) }
-            };
-        }
-
-        private List<Keys> GetRepeatableKeyboardKeys()
-        {
-            return new List<Keys>()
-            {
-                Keys.W,
-                Keys.D,
-                Keys.S,
-                Keys.A
-            };
-        }
+        private List<Keys> GetRepeatableKeyboardKeys() { return new List<Keys>(); }
 
         private List<Buttons> GetRepeatableGamepadButtons() {
             return new List<Buttons>()

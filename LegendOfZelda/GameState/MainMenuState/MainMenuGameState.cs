@@ -38,7 +38,7 @@ namespace LegendOfZelda.GameState.MainMenuState
 
         public override void SwitchToRoomState()
         {
-            StartStateSwitch(new RoomGameState(Game, 1));
+            StartStateSwitch(new RoomGameState(Game, 2));
         }
 
         public override void StateEntryProcedure()
