@@ -12,10 +12,5 @@ namespace LegendOfZelda.Item
             sprite = ItemSpriteFactory.Instance.CreateTriforceSprite();
             itemType = LinkConstants.ItemType.Triforce;
         }
-
-        protected override void CheckItemIsExpired()
-        {
-            itemIsExpired = itemIsExpired && true;
-        }
     }
 }

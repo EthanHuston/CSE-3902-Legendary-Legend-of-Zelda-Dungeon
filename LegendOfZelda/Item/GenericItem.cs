@@ -8,7 +8,6 @@ namespace LegendOfZelda.Item
     internal abstract class GenericItem : IItem
     {
         protected ISprite sprite;
-        protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
         protected LinkConstants.ItemType itemType;
 
@@ -23,12 +22,9 @@ namespace LegendOfZelda.Item
             Position = spawnPosition;
         }
 
-        protected abstract void CheckItemIsExpired();
-
         public virtual void Update()
         {
             sprite.Update();
-            CheckItemIsExpired();
         }
 
         public virtual void Draw()
@@ -43,7 +39,7 @@ namespace LegendOfZelda.Item
 
         public void Despawn()
         {
-            itemIsExpired = true;
+            SafeToDespawn = true;
         }
 
         public LinkConstants.ItemType GetItemType()

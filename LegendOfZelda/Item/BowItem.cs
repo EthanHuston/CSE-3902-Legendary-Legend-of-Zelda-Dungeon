@@ -12,12 +12,5 @@ namespace LegendOfZelda.Item
             sprite = ItemSpriteFactory.Instance.CreateBowSprite();
             itemType = LinkConstants.ItemType.Bow;
         }
-
-        protected override void CheckItemIsExpired()
-        {
-            // put a condition here if we want item to despawn after something happens (i.e. some time passes)
-            // eventually, we'll probably want it to despawn when Link runs through it
-            itemIsExpired = itemIsExpired && true;
-        }
     }
 }
