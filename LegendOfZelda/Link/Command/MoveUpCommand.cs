@@ -3,16 +3,16 @@ using LegendOfZelda.Link.Interface;
 
 namespace LegendOfZelda.Link.Command
 {
-    internal class WalkingDownCommand : ICommand
+    internal class MoveUpCommand : ICommand
     {
         private readonly IPlayer link;
-        public WalkingDownCommand(IPlayer player)
+        public MoveUpCommand(IPlayer player)
         {
             link = player;
         }
         public void Execute()
         {
-            link.MoveDown();
+            link.MoveUp();
         }
     }
 }

@@ -93,7 +93,7 @@ namespace LegendOfZelda
         public const string TileBackground = "tealBack";
         public const string BlackBackground = "blackBack";
         public const string OldBackground = "oldBack";
-        public const string MemeBackground = "oldBack";
+        public const string MemeBackground = "memeBack";
         public const string WallPiece = "wall";
         public const string OpenDoor = "open";
         public const string LockedDoor = "locked";

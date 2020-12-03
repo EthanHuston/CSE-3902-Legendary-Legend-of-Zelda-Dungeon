@@ -8,7 +8,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private const string bossRoomName = "room14";
         private IRoom bossRoom;
 
-        public RoomBeforeBoss(List<IPlayer> playerList) : base(playerList)
+        public RoomBeforeBoss(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
         }
 

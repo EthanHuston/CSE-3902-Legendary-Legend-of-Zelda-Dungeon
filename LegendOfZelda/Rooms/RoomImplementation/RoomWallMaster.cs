@@ -19,9 +19,9 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         private readonly Random rand;
         private const int up = 0, right = 1, down = 2;
 
-        public RoomWallMaster(SpriteBatch spriteBatch, List<IPlayer> playerList) : base(playerList)
+        public RoomWallMaster(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
-            this.spriteBatch = spriteBatch;
+            this.spriteBatch = game.SpriteBatch;
             rand = RoomConstants.RandomGenerator;
             wallMasterCounter = 3;
         }

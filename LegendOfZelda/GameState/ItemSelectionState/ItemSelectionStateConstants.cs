@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.GameState.Utilities;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.GameState.ItemSelectionState
 {

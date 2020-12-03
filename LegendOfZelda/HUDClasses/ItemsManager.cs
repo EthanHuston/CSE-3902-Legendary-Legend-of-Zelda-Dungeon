@@ -1,6 +1,8 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Link;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -11,7 +13,6 @@ namespace LegendOfZelda.HUDClasses
     {
         private readonly HUD hud;
         private readonly SpriteBatch spriteBatch;
-        private readonly LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
         private readonly IButton primaryButton;
         private IButton secondaryButton;
@@ -22,14 +23,13 @@ namespace LegendOfZelda.HUDClasses
         {
             this.hud = hud;
             spriteBatch = hud.roomGameState.Game.SpriteBatch;
-            primaryItem = hud.roomGameState.PlayerList[0].PrimaryItem;
             secondaryItem = hud.roomGameState.PlayerList[0].SecondaryItem;
-            fillSecondaryItemDictionary();
+            FillSecondaryItemDictionary();
             primaryButton = new SwordInventoryButton(hud.roomGameState.Game.SpriteBatch, hud, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
         }
 
-        public void Draw(Point hudPosition)
+        public void Draw()
         {
             primaryButton.Draw();
             secondaryButton.Draw();
@@ -48,7 +48,7 @@ namespace LegendOfZelda.HUDClasses
             secondaryButton = secondaryItemDictionary[secondaryItem];
         }
 
-        public void fillSecondaryItemDictionary()
+        private void FillSecondaryItemDictionary()
         {
             secondaryItemDictionary = new Dictionary<LinkConstants.ItemType, IButton>
             {

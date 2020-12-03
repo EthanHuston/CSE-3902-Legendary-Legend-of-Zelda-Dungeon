@@ -1,4 +1,4 @@
-using LegendOfZelda.GameState.Rooms;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Link.State;
 using LegendOfZelda.Projectile;
@@ -30,9 +30,11 @@ namespace LegendOfZelda.Link
         public double MaxHealth { get; private set; }
         public double CurrentHealth { get; private set; }
         public bool BeingDragged { get; set; }
+        public int PlayerNumber { get; private set; }
 
-        public LinkPlayer(Game1 game, Point spawnPosition)
+        public LinkPlayer(Game1 game, Point spawnPosition, int playerNumber)
         {
+            PlayerNumber = playerNumber;
             CurrentHealth = LinkConstants.StartingHearts;
             MaxHealth = LinkConstants.StartingHearts;
             lowHealth = SoundFactory.Instance.CreateLowHealthSound();

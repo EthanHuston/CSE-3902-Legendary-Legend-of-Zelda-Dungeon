@@ -1,7 +1,9 @@
 ﻿using LegendOfZelda.HUDClasses;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState
+namespace LegendOfZelda.GameState.Utilities
 {
     internal static class GameStateConstants
     {
@@ -49,14 +51,54 @@ namespace LegendOfZelda.GameState
         public static Rectangle CompassTextureAtlasSource => new Rectangle(93, 48, 16, 16);
         public static Rectangle SwordWoodTextureAtlasSource => new Rectangle(36, 29, 8, 16);
         public static Rectangle RoomMarkerTextureAtlasSource => new Rectangle(9, 18, 3, 3);
+    }
 
-        public enum InputType
+    enum InputType
+    {
+        Keyboard,
+        Mouse,
+        Gamepad
+    }
+
+    struct InputStates
+    {
+        public MouseState MouseState;
+        public KeyboardState KeyboardState;
+        public GamePadState GamePadState;
+    }
+
+    enum MouseButton
+    {
+        LeftButton,
+        MiddleButton,
+        RightButton
+    }
+
+    static class GameStateMethods
+    {
+        public static InputStates GetOldInputState(List<IController> controllerList)
         {
-            Keyboard,
-            Mouse,
-            Gamepad
+            InputStates oldInputState = new InputStates();
+
+            foreach (IController controller in controllerList)
+            {
+                switch (controller.InputType)
+                {
+                    case InputType.Keyboard:
+                        oldInputState.KeyboardState = controller.OldInputState.KeyboardState;
+                        break;
+
+                    case InputType.Mouse:
+                        oldInputState.MouseState = controller.OldInputState.MouseState;
+                        break;
+
+                    case InputType.Gamepad:
+                        oldInputState.GamePadState = controller.OldInputState.GamePadState;
+                        break;
+                }
+            }
+
+            return oldInputState;
         }
-
-
     }
 }

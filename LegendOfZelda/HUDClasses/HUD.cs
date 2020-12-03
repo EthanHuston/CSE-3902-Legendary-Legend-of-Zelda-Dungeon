@@ -1,7 +1,7 @@
-﻿using LegendOfZelda.GameState;
-using LegendOfZelda.GameState.Rooms;
+﻿using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
+using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -48,7 +48,7 @@ namespace LegendOfZelda.HUDClasses
             numberManager.Draw(spriteBatch, position);
             heartManager.Draw(spriteBatch, position);
             minimapManager.Draw(position);
-            itemsManager.Draw(position);
+            itemsManager.Draw();
         }
 
         public Rectangle GetRectangle()

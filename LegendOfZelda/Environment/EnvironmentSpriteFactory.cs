@@ -43,7 +43,7 @@ namespace LegendOfZelda.Environment
             //Load Tile Sprites
             blackBackgroundSprite = content.Load<Texture2D>("Environment/BlackBackground");
             oldBackgroundSprite = content.Load<Texture2D>("Environment/OldManBackground");
-            memeBackgroundSprite = content.Load<Texture2D>("Environment/OldManBackground");
+            memeBackgroundSprite = content.Load<Texture2D>("Environment/MemeBackground");
             tileBackgroundSprite = content.Load<Texture2D>("Environment/TileBackground");
             tileBlackSprite = content.Load<Texture2D>("Environment/BlackTile");
             tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");

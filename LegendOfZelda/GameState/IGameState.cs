@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda.GameState
+﻿using LegendOfZelda.GameState.Utilities;
+
+namespace LegendOfZelda.GameState
 {
     internal interface IGameState
     {
@@ -11,7 +13,7 @@
         void SwitchToItemSelectionState();
         void SwitchToDeathState();
         void SwitchToWinState();
-        void SetControllerOldInputState(OldInputState inputFromOldState);
+        void SetControllerOldInputState(InputStates inputFromOldState);
         void StateEntryProcedure();
         void StateExitProcedure();
     }
