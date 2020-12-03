@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.GameLoseState
+namespace LegendOfZelda.GameState.Controller
 {
     internal class MouseController : IController
     {
@@ -24,28 +24,12 @@ namespace LegendOfZelda.GameState.GameLoseState
             set => oldMouseState = value.MouseState;
         }
 
-        public MouseController(IGameState gameState, List<IButton> buttons)
+        public MouseController(Dictionary<MouseButton, ICommand> mouseMappings, Dictionary<Type, ICommand> buttonMappings, List<IButton> buttons)
         {
             oldMouseState = new MouseState();
             this.buttons = buttons;
-            buttonMappings = GetButtonMappings(gameState);
-            mouseButtonMappings = GetMouseButtonsMappings(gameState);
-        }
-
-        private Dictionary<Type, ICommand> GetButtonMappings(IGameState gameState)
-        {
-            return new Dictionary<Type, ICommand>
-            {
-                {typeof(RetryButtonBlack), new MainMenuCommand(gameState) },
-                {typeof(ExitButtonBlack), new ExitGameCommand(gameState) }
-            };
-        }
-
-        private Dictionary<MouseButton, ICommand> GetMouseButtonsMappings(IGameState gameState)
-        {
-            return new Dictionary<MouseButton, ICommand>
-            {
-            };
+            this.buttonMappings = buttonMappings;
+            mouseButtonMappings = mouseMappings;
         }
 
         public void Update()
@@ -63,7 +47,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (newMouseState.LeftButton == ButtonState.Pressed && localOldMouseState.LeftButton != ButtonState.Pressed)
             {
                 Point mousePosition = newMouseState.Position;
-                foreach (ISpawnable button in buttons)
+                foreach (IButton button in buttons)
                 {
                     Rectangle buttonRectangle = button.GetRectangle();
                     if (mousePosition.X > buttonRectangle.Left &&
