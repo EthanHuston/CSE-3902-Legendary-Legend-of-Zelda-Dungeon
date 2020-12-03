@@ -27,17 +27,28 @@ namespace LegendOfZelda.Enemies
         public void LoadAllTextures(ContentManager content)
         {
             //Load Enemy Sprites
-            batSprite = content.Load<Texture2D>("Enemies/Bat");
-            goriyaUpSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingUp");
-            goriyaDownSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingDown");
-            goriyaRightSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingRight");
-            goriyaLeftSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingLeft");
-            aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
-            aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
-            handSprite = content.Load<Texture2D>("Enemies/Hand");
-            jellySprite = content.Load<Texture2D>("Enemies/Jelly");
-            skeletonSprite = content.Load<Texture2D>("Enemies/Skeleton");
-            spikeTrapSprite = content.Load<Texture2D>("Enemies/SpikeTrap");
+            //batSprite = content.Load<Texture2D>("Enemies/Bat");
+            batSprite = content.Load<Texture2D>("Pokemon/Enemies/Zubat");
+            //goriyaUpSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingUp");
+            goriyaUpSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Up");
+            //goriyaDownSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingDown");
+            goriyaDownSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Down");
+            //goriyaRightSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingRight");
+            goriyaRightSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Right");
+            //goriyaLeftSprite = content.Load<Texture2D>("Enemies/DogLikeMonsterWalkingLeft");
+            goriyaLeftSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Left");
+            //aquamentusBreathingSprite = content.Load<Texture2D>("Enemies/DragonBreathing");
+            aquamentusBreathingSprite = content.Load<Texture2D>("Pokemon/Enemies/HoOh");
+            //aquamentusWalkingSprite = content.Load<Texture2D>("Enemies/DragonWalking");
+            aquamentusWalkingSprite = content.Load<Texture2D>("Pokemon/Enemies/HoOh");
+            //handSprite = content.Load<Texture2D>("Enemies/Hand");
+            handSprite = content.Load<Texture2D>("Pokemon/Enemies/Haunter");
+            //jellySprite = content.Load<Texture2D>("Enemies/Jelly");
+            jellySprite = content.Load<Texture2D>("Pokemon/Enemies/Ditto");
+            //skeletonSprite = content.Load<Texture2D>("Enemies/Skeleton");
+            skeletonSprite = content.Load<Texture2D>("Pokemon/Enemies/Hitmonchan");
+            //spikeTrapSprite = content.Load<Texture2D>("Enemies/SpikeTrap");
+            spikeTrapSprite = content.Load<Texture2D>("Pokemon/Enemies/Decoy");
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
             spawnSprite = content.Load<Texture2D>("Enemies/EnemySpawn");
         }
