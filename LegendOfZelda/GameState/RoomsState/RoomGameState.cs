@@ -48,7 +48,14 @@ namespace LegendOfZelda.GameState.RoomsState
 
             UpdatePlayersPositions(Constants.Direction.Down);
 
+            /* 
             dungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
+            dungeonMusic.IsLooped = true;
+            dungeonMusic.Volume = Constants.MusicVolume;
+            dungeonMusic.Play();
+            */
+
+            dungeonMusic = SoundFactory.Instance.CreateBakaMitaiSound();
             dungeonMusic.IsLooped = true;
             dungeonMusic.Volume = Constants.MusicVolume;
             dungeonMusic.Play();

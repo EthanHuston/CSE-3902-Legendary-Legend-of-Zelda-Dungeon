@@ -240,6 +240,10 @@ namespace LegendOfZelda.Rooms
                     backgroundType = new OldBackground(spriteBatch, position);
                     room.AllObjects.Spawn(backgroundType);
                     break;
+                case RoomConstants.MemeBackground:
+                    backgroundType = new MemeBackground(spriteBatch, position);
+                    room.AllObjects.Spawn(backgroundType);
+                    break;
                 default:
                     break;
 

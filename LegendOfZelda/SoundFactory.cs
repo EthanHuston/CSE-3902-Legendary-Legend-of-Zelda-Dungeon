@@ -5,6 +5,7 @@ namespace LegendOfZelda
 {
     internal class SoundFactory
     {
+        private SoundEffect baka_mitai;
         private SoundEffect arrow_boomerang;
         private SoundEffect bomb_blow;
         private SoundEffect bomb_drop;
@@ -40,6 +41,7 @@ namespace LegendOfZelda
 
         public void LoadAllSounds(ContentManager content)
         {
+            baka_mitai = content.Load<SoundEffect>("Sounds/Baka_Mitai");
             arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang");
             bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow");
             bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop");
@@ -72,6 +74,10 @@ namespace LegendOfZelda
             win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
+        public SoundEffectInstance CreateBakaMitaiSound()
+        {
+            return baka_mitai.CreateInstance();
+        }
         public SoundEffectInstance CreateArrowBoomerangSound()
         {
             return arrow_boomerang.CreateInstance();

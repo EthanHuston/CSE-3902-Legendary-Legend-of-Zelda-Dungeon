@@ -17,6 +17,7 @@ namespace LegendOfZelda.Environment
         private Texture2D brickTileSprite;
         private Texture2D blackBackgroundSprite;
         private Texture2D oldBackgroundSprite;
+        private Texture2D memeBackgroundSprite;
         private Texture2D tileBackgroundSprite;
         private Texture2D tileBlackSprite;
         private Texture2D tileWaterSprite;
@@ -42,6 +43,7 @@ namespace LegendOfZelda.Environment
             //Load Tile Sprites
             blackBackgroundSprite = content.Load<Texture2D>("Environment/BlackBackground");
             oldBackgroundSprite = content.Load<Texture2D>("Environment/OldManBackground");
+            memeBackgroundSprite = content.Load<Texture2D>("Environment/MemeBackground");
             tileBackgroundSprite = content.Load<Texture2D>("Environment/TileBackground");
             tileBlackSprite = content.Load<Texture2D>("Environment/BlackTile");
             tileBlueGrassSprite = content.Load<Texture2D>("Environment/BlueGrassTile");
@@ -89,6 +91,11 @@ namespace LegendOfZelda.Environment
         public ISprite CreateOldBackgroundSprite()
         {
             return new OldBackgroundSprite(oldBackgroundSprite);
+        }
+
+        public ISprite CreateMemeBackgroundSprite()
+        {
+            return new MemeBackgroundSprite(memeBackgroundSprite);
         }
         public ISprite CreateTileBackgroundSprite()
         {

@@ -38,7 +38,7 @@ namespace LegendOfZelda.Link.State
                     SoundFactory.Instance.CreateFanfareSound().Play();
                     break;
                 case LinkConstants.ItemType.Sword:
-                    link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpSwordSprite();
+                   // link.CurrentSprite = LinkSpriteFactory.Instance.CreateLinkPickingUpSwordSprite();
                     spawnOffset = LinkConstants.PickingUpSwordSpawnOffset;
                     SoundFactory.Instance.CreateFanfareSound().Play();
                     break;
