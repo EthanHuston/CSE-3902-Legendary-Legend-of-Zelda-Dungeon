@@ -105,7 +105,9 @@ namespace LegendOfZelda.GameState.GameLoseState
             if (phaseOne)
             {
                 phaseOneBuffer++;
-                spawnableManager.PlayerList[0].Update();
+                for (int i = 0; i < spawnableManager.PlayerList.Count; i++)
+                    if (!spawnableManager.PlayerList[i].SafeToDespawn) spawnableManager.PlayerList[i].Update();
+
                 if (phaseOneBuffer == 150)
                 {
                     phaseOne = false;

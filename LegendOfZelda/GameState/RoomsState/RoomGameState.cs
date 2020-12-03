@@ -201,7 +201,7 @@ namespace LegendOfZelda.GameState.RoomsState
             bool allPlayersDead = true;
             foreach(IPlayer player in PlayerList)
             {
-                allPlayersDead = allPlayersDead && player.SafeToDespawn;
+                allPlayersDead = allPlayersDead && player.IsDead;
             }
 
             if (allPlayersDead) SwitchToDeathState();

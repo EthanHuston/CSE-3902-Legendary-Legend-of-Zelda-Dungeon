@@ -10,6 +10,7 @@ namespace LegendOfZelda.Link.Interface
         LinkConstants.ItemType PrimaryItem { get; }
         LinkConstants.ItemType SecondaryItem { get; set; }
         bool BeingDragged { get; set; }
+        bool IsDead { get; }
         double MaxHealth { get; }
         double CurrentHealth { get; }
         int PlayerNumber { get; }
