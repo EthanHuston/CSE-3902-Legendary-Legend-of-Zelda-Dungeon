@@ -153,6 +153,7 @@
     <Compile Include="GameState\Sprite\RedOverlaySprite.cs" />
     <Compile Include="HUDClasses\ItemsManager.cs" />
     <Compile Include="HUDClasses\MinimapManager.cs" />
+    <Compile Include="HUDClasses\MultiplayerHUD.cs" />
     <Compile Include="HUDClasses\NumberManager.cs" />
     <Compile Include="HUDClasses\HeartManager.cs" />
     <Compile Include="HUDClasses\HUDHeart.cs" />

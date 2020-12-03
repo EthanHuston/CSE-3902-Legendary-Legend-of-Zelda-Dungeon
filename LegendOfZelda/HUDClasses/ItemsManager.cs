@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.Button;
 using LegendOfZelda.Link;
+using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -9,7 +10,8 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class ItemsManager
     {
-        private readonly HUD hud;
+        private readonly IMenu hud;
+        private IPlayer player;
         private readonly SpriteBatch spriteBatch;
         private readonly LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
@@ -18,15 +20,33 @@ namespace LegendOfZelda.HUDClasses
 
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
 
-        public ItemsManager(HUD hud)
+        public ItemsManager(HUD hud, IPlayer player)
         {
             this.hud = hud;
+            this.player = player;
             spriteBatch = hud.roomGameState.Game.SpriteBatch;
-            primaryItem = hud.roomGameState.PlayerList[0].PrimaryItem;
-            secondaryItem = hud.roomGameState.PlayerList[0].SecondaryItem;
+            primaryItem = player.PrimaryItem;
+            secondaryItem = player.SecondaryItem;
             fillSecondaryItemDictionary();
             primaryButton = new SwordInventoryButton(hud.roomGameState.Game.SpriteBatch, hud, HUDConstants.PrimaryItemLocation);
             secondaryButton = secondaryItemDictionary[secondaryItem];
+        }
+
+        public ItemsManager(MultiplayerHUD hud, IPlayer player)
+        {
+            this.hud = hud;
+            this.player = player;
+            spriteBatch = hud.roomGameState.Game.SpriteBatch;
+            primaryItem = player.PrimaryItem;
+            secondaryItem = player.SecondaryItem;
+            fillSecondaryItemDictionary();
+            primaryButton = new SwordInventoryButton(hud.roomGameState.Game.SpriteBatch, hud, HUDConstants.PrimaryItemLocation);
+            secondaryButton = secondaryItemDictionary[secondaryItem];
+        }
+
+        public ItemsManager(MultiplayerHUD hudMenu)
+        {
+
         }
 
         public void Draw(Point hudPosition)
@@ -38,13 +58,13 @@ namespace LegendOfZelda.HUDClasses
 
         public void Update()
         {
-            if (hud.roomGameState.PlayerList[0].SecondaryItem != secondaryItem)
+            if (player.SecondaryItem != secondaryItem)
                 UpdateSecondaryItem();
         }
 
         private void UpdateSecondaryItem()
         {
-            secondaryItem = hud.roomGameState.PlayerList[0].SecondaryItem;
+            secondaryItem = player.SecondaryItem;
             secondaryButton = secondaryItemDictionary[secondaryItem];
         }
 
