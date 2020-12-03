@@ -13,7 +13,6 @@ namespace LegendOfZelda.Link
     {
         private Dictionary<LinkConstants.ItemType, int> inventory;
         private readonly Dictionary<LinkConstants.ProjectileType, IProjectile> currentProjectiles;
-        private bool safeToDespawn;
         private ILinkState state;
         private readonly SoundEffectInstance lowHealth;
 
@@ -31,6 +30,9 @@ namespace LegendOfZelda.Link
         public double CurrentHealth { get; private set; }
         public bool BeingDragged { get; set; }
         public int PlayerNumber { get; private set; }
+        public bool IsDead { get; private set; }
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public LinkPlayer(Game1 game, Point spawnPosition, int playerNumber)
         {
@@ -42,7 +44,7 @@ namespace LegendOfZelda.Link
             Mover = new SpawnableMover(spawnPosition, Vector2.Zero);
             FacingDirection = Constants.Direction.Up;
             State = new LinkStandingStillState(this);
-            safeToDespawn = false;
+            SafeToDespawn = false;
             BlockStateChange = false;
             currentProjectiles = new Dictionary<LinkConstants.ProjectileType, IProjectile>();
             SecondaryItem = LinkConstants.ItemType.None;
@@ -53,18 +55,21 @@ namespace LegendOfZelda.Link
         public void Draw()
         {
             State.Draw();
+            State.Draw();
         }
 
         public void Update()
         {
-            safeToDespawn = safeToDespawn || CurrentHealth <= 0;
+            IsDead = CurrentHealth <= 0;
+            if (IsDead && !BlockStateChange) StartDeathAnimation();
+
             State.Update();
             if (inventory[SecondaryItem] <= 0) SecondaryItem = LinkConstants.ItemType.None;
             if (CurrentHealth <= Constants.HeartValue && CurrentHealth > 0)
             {
                 lowHealth.Play();
             }
-            if (safeToDespawn || CurrentHealth > Constants.HeartValue)
+            if (IsDead || CurrentHealth > Constants.HeartValue)
             {
                 lowHealth.Stop();
             }
@@ -138,6 +143,7 @@ namespace LegendOfZelda.Link
 
         public void Move(int distance, Vector2 velocity)
         {
+            if (IsDead) return;
             Mover.MoveDistance(distance, velocity);
         }
 
@@ -150,11 +156,6 @@ namespace LegendOfZelda.Link
                 CurrentSprite.GetPositionRectangle().Height - LinkConstants.CollisionHelper * 2);
         }
 
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
         public void PickupItem(LinkConstants.ItemType itemType)
         {
             inventory[itemType]++;
@@ -163,7 +164,7 @@ namespace LegendOfZelda.Link
 
         public void Despawn()
         {
-            safeToDespawn = true;
+            SafeToDespawn = true;
         }
 
         public void PickupTriforce()
@@ -287,7 +288,7 @@ namespace LegendOfZelda.Link
                 currentProjectiles.Add(projectileType, null);
             }
 
-            return currentProjectile == null || currentProjectile.SafeToDespawn();
+            return currentProjectile == null || currentProjectile.SafeToDespawn;
         }
 
         public void ConsumeKey()
