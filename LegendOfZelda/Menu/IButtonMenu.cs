@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.Menu
 {
@@ -7,5 +8,6 @@ namespace LegendOfZelda.Menu
         ButtonSelector ButtonSelector { get; }
         List<IButton> Buttons { get; }
         void MoveSelection(Constants.Direction direction);
+        void ToggleButton(Type buttonType);
     }
 }

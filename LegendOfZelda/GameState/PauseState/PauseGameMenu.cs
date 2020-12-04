@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 
@@ -50,6 +49,10 @@ namespace LegendOfZelda.GameState.PauseState
         public void Update()
         {
             ButtonSelector.Update();
+        }
+
+        public void ToggleButton(Type buttonType)
+        {
         }
     }
 }

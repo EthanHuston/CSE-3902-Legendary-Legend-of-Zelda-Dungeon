@@ -53,8 +53,8 @@ namespace LegendOfZelda.Link
         public static Point ShootingBoomerangSpawnOffset => new Point((int)(4 * SpriteScaler), (int)(8 * SpriteScaler));
 
         // Spawn Offsets : Using Sword
-        public static Point UsingSwordRightSpawnOffset => new Point((int)(16 * SpriteScaler), (int)(0 * SpriteScaler));
-        public static Point UsingSwordLeftSpawnOffset => new Point((int)(-16 * SpriteScaler), (int)(0 * SpriteScaler));
+        public static Point UsingSwordRightSpawnOffset => new Point((int)(14 * SpriteScaler), (int)(0 * SpriteScaler));
+        public static Point UsingSwordLeftSpawnOffset => new Point((int)(-14 * SpriteScaler), (int)(0 * SpriteScaler));
         public static Point UsingSwordUpSpawnOffset => new Point((int)(0 * SpriteScaler), (int)(-16 * SpriteScaler));
         public static Point UsingSwordDownSpawnOffset => new Point((int)(0 * SpriteScaler), (int)(16 * SpriteScaler));
 

@@ -15,8 +15,9 @@ namespace LegendOfZelda.Projectile.Sprite
         private readonly int totalFrames;
         private readonly int width;
         private readonly int height;
+        private bool pokemonOn;
 
-        public FireballSprite(Texture2D sprite)
+        public FireballSprite(Texture2D sprite, bool pokemonOn)
         {
             this.sprite = sprite;
             currentFrame = 0;
@@ -24,6 +25,7 @@ namespace LegendOfZelda.Projectile.Sprite
             totalFrames = numRows * numColumns;
             width = sprite.Width / numColumns;
             height = sprite.Height / numRows;
+            this.pokemonOn = pokemonOn;
         }
 
         public void Update()
@@ -49,6 +51,10 @@ namespace LegendOfZelda.Projectile.Sprite
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
+            if (pokemonOn)
+            {
+                destinationRectangle = new Rectangle(position.X, position.Y + 5 * sprite.Height, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
+            }
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }

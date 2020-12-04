@@ -19,8 +19,9 @@ namespace LegendOfZelda.Link.Sprite
         private const int numRows = 1;
         private const int numColumns = 2;
         private const int walkingFrameDelay = 10;
+        private bool pokemonOn;
 
-        public WalkingLinkSprite(Texture2D sprite)
+        public WalkingLinkSprite(Texture2D sprite, bool pokemonOn)
         {
             this.sprite = sprite;
             flashRed = false;
@@ -29,6 +30,7 @@ namespace LegendOfZelda.Link.Sprite
             currentFrame = 0;
             frameWidth = sprite.Width / numColumns;
             frameHeight = sprite.Height / numRows;
+            this.pokemonOn = pokemonOn;
         }
 
         public void Update()
@@ -61,6 +63,10 @@ namespace LegendOfZelda.Link.Sprite
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.TrainerScaler), (int)(frameHeight * Constants.TrainerScaler));
+            }
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White, layer);
         }
@@ -72,7 +78,12 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle returning = new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                returning = new Rectangle(0, 0, (int)(frameWidth * Constants.TrainerScaler), (int)(frameHeight * Constants.TrainerScaler));
+            }
+            return returning;
         }
     }
 }

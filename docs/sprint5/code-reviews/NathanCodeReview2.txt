@@ -1,0 +1,13 @@
+Nathan Murphy
+12/04/2020
+Sprint 5
+RoomOfTheDisco.cs
+Saumyah Patel
+8 Minutes
+Readability
+The class itself is very short and to the point. Each method and variable name conveys its purpose to the reader; understanding where everythinbg is at and its
+place in the class. In tandem with its length, it helps the reader by making the logic easy to understand. Overall, this class has high readability.
+Maintainability
+Aspects of this room could easily be changed if an error was found. The same could be said if an addition was to be made in the future of this project. Everything
+has a low dependency from each other, making the class' maintainability quite high. This is due to its length as well; naturally a mostly empty room is open for
+more possibilities.

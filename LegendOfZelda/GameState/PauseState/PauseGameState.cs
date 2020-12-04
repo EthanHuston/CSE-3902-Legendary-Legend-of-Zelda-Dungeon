@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Menu;
 using System.Collections.Generic;
 
@@ -83,5 +82,7 @@ namespace LegendOfZelda.GameState.PauseState
         {
             foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
+
+        public void SwitchToOptionState() { }
     }
 }

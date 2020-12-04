@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.GameState.Utilities;
+﻿
 
 namespace LegendOfZelda.GameState
 {
@@ -13,6 +13,7 @@ namespace LegendOfZelda.GameState
         void SwitchToItemSelectionState(int playerNum);
         void SwitchToDeathState();
         void SwitchToWinState();
+        void SwitchToOptionState();
         void SetControllerOldInputState(InputStates inputFromOldState);
         void StateEntryProcedure();
         void StateExitProcedure();

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameState.Controller;
+using LegendOfZelda.GameState.OptionState;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
@@ -36,10 +37,7 @@ namespace LegendOfZelda.GameState.MainMenuState
             backgroundSprite.Draw(Game.SpriteBatch, Point.Zero, Constants.DrawLayer.Menu);
         }
 
-        public override void SwitchToRoomState()
-        {
-            StartStateSwitch(new RoomGameState(Game, 2));
-        }
+        public override void SwitchToRoomState() { }
 
         public override void StateEntryProcedure()
         {
@@ -68,6 +66,11 @@ namespace LegendOfZelda.GameState.MainMenuState
         protected override void InitializingStateUpdate()
         {
             stateInitialized = true;
+        }
+
+        public override void SwitchToOptionState()
+        {
+            StartStateSwitch(new OptionGameState(Game));
         }
     }
 }

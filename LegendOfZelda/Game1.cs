@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.MainMenuState;
+using LegendOfZelda.GameState.OptionState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -26,9 +27,9 @@ namespace LegendOfZelda
             IsMouseVisible = true;
 
             NumPlayers = 1;
-
-            SpriteFactory.Instance.LoadAllTextures(Content);
-            SoundFactory.Instance.LoadAllSounds(Content);
+            
+            SpriteFactory.Instance.LoadGameStateTextures(Content);
+            SoundFactory.Instance.LoadTitleSound(Content);
         }
 
         protected override void Initialize()

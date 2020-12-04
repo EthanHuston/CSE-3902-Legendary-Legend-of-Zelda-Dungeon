@@ -12,14 +12,16 @@ namespace LegendOfZelda.Link.Sprite
         private bool flashRed;
         private int damageColorCounter;
         private int delayCounter;
+        private bool pokemonOn;
 
-        public PickingUpItemLinkSprite(Texture2D sprite)
+        public PickingUpItemLinkSprite(Texture2D sprite, bool pokemonOn)
         {
             this.sprite = sprite;
             animationIsDone = false;
             flashRed = false;
             damageColorCounter = 0;
             delayCounter = 0;
+            this.pokemonOn = pokemonOn;
         }
 
         public void Update()
@@ -43,6 +45,10 @@ namespace LegendOfZelda.Link.Sprite
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage, float layer)
         {
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                destinationRectangle = new Rectangle(position.X, position.Y, (int)(sprite.Width * Constants.TrainerScaler), (int)(sprite.Height * Constants.TrainerScaler));
+            }
             Rectangle sourceRectangle = sprite.Bounds;
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && drawWithDamage ? Color.Red : Color.White, layer);
         }
@@ -54,7 +60,12 @@ namespace LegendOfZelda.Link.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
+            Rectangle returning = new Rectangle(0, 0, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                returning = new Rectangle(0, 0, (int)(sprite.Width * Constants.TrainerScaler), (int)(sprite.Height * Constants.TrainerScaler));
+            }
+            return returning;
         }
     }
 }

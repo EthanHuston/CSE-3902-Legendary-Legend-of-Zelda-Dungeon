@@ -3,7 +3,6 @@ using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.GameState.RoomsState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
@@ -142,6 +141,8 @@ namespace LegendOfZelda.GameState.GameLoseState
         public void SwitchToDeathState() { }
 
         public void SwitchToWinState() { }
+
+        public void SwitchToOptionState() { }
     }
 }
 

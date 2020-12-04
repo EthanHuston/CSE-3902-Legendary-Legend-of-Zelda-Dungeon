@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameLogic;
 using LegendOfZelda.GameState.RoomsState;
-using LegendOfZelda.GameState.Utilities;
 using Microsoft.Xna.Framework.Audio;
 
 namespace LegendOfZelda.GameState.GameWinState
@@ -109,6 +108,8 @@ namespace LegendOfZelda.GameState.GameWinState
         public void SwitchToRoomState() { }
 
         public void SwitchToMainMenuState() { }
+
+        public void SwitchToOptionState() { }
     }
 }
 

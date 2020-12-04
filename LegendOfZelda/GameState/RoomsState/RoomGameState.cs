@@ -5,7 +5,6 @@ using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.PauseState;
 using LegendOfZelda.GameState.RoomTransitionState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -20,22 +19,22 @@ namespace LegendOfZelda.GameState.RoomsState
 {
     internal class RoomGameState : AbstractGameState
     {
-        private readonly SoundEffectInstance dungeonMusic;
-        public List<ItemSelectionGameState> itemSelectionGameStates;
+        private List<ItemSelectionGameState> itemSelectionGameStates;
         private bool clockModeOn;
         private DateTime clockModeOffTime;
 
+        public SoundEffectInstance DungeonMusic { get; private set; }
         public IRoom CurrentRoom { get; set; }
         public List<IPlayer> PlayerList { get; private set; }
         public ISpawnableManager SpawnableManager { get => CurrentRoom.AllObjects; }
         public IMenu Hud { get; private set; }
         public RoomMap RoomMap { get; private set; }
 
-        public RoomGameState(Game1 game, int numPlayers)
+        public RoomGameState(Game1 game)
         {
             Game = game;
 
-            InitPlayersForGame(numPlayers);
+            InitPlayersForGame(Game.NumPlayers);
 
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game, PlayerList);
             CurrentRoom.Visiting = true;
@@ -51,17 +50,10 @@ namespace LegendOfZelda.GameState.RoomsState
 
             UpdatePlayersPositions(Constants.Direction.Down);
 
-            /* 
-            dungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
-            dungeonMusic.IsLooped = true;
-            dungeonMusic.Volume = Constants.MusicVolume;
-            dungeonMusic.Play();
-            */
-
-            dungeonMusic = SoundFactory.Instance.CreateBakaMitaiSound();
-            dungeonMusic.IsLooped = true;
-            dungeonMusic.Volume = Constants.MusicVolume;
-            dungeonMusic.Play();
+            DungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
+            DungeonMusic.IsLooped = true;
+            DungeonMusic.Volume = Constants.MusicVolume;
+            DungeonMusic.Play();
 
             clockModeOn = false;
         }
@@ -156,7 +148,7 @@ namespace LegendOfZelda.GameState.RoomsState
 
         public override void SwitchToPauseState()
         {
-            dungeonMusic.Pause();
+            DungeonMusic.Pause();
             StartStateSwitch(new PauseGameState(Game, this));
         }
 
@@ -167,19 +159,19 @@ namespace LegendOfZelda.GameState.RoomsState
 
         public override void SwitchToDeathState()
         {
-            dungeonMusic.Stop();
+            DungeonMusic.Stop();
             StartStateSwitch(new GameLoseGameState(Game, this));
         }
 
         public override void SwitchToWinState()
         {
-            dungeonMusic.Stop();
+            DungeonMusic.Stop();
             StartStateSwitch(new GameWinGameState(Game, this));
         }
 
         public override void StateEntryProcedure()
         {
-            if (dungeonMusic.State != SoundState.Playing) dungeonMusic.Resume();
+            if (DungeonMusic.State != SoundState.Playing) DungeonMusic.Resume();
         }
 
         public override void StateExitProcedure() { }

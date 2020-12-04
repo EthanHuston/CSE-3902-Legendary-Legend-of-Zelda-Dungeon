@@ -4,6 +4,7 @@ using LegendOfZelda.Menu;
 using LegendOfZelda.Menu.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.GameState
 {
@@ -26,6 +27,19 @@ namespace LegendOfZelda.GameState
         private Texture2D buttonSelectorTopRightSprite;
         private Texture2D buttonSelectorBottomRightSprite;
         private Texture2D buttonSelectorBottomLeftSprite;
+        private Texture2D acceptButtonSprite;
+        private Texture2D onePlayerButtonSprite;
+        private Texture2D twoPlayerButtonSprite;
+        private Texture2D jojoButtonSprite;
+        private Texture2D yakuzaButtonSprite;
+        private Texture2D pokemonButtonSprite;
+        private Texture2D normalButtonSprite;
+        private Texture2D onePlayerButtonSelectedSprite;
+        private Texture2D twoPlayerButtonSelectedSprite;
+        private Texture2D jojoButtonSelectedSprite;
+        private Texture2D yakuzaButtonSelectedSprite;
+        private Texture2D pokemonButtonSelectedSprite;
+        private Texture2D normalButtonSelectedSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -48,6 +62,19 @@ namespace LegendOfZelda.GameState
             buttonSelectorTopRightSprite = content.Load<Texture2D>("Menu/ButtonSelectorTopRight");
             buttonSelectorBottomRightSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomRight");
             buttonSelectorBottomLeftSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomLeft");
+            acceptButtonSprite = content.Load<Texture2D>("Menu/AcceptButton");
+            onePlayerButtonSprite = content.Load<Texture2D>("Menu/OnePlayerButton");
+            twoPlayerButtonSprite = content.Load<Texture2D>("Menu/TwoPlayerButton");
+            jojoButtonSprite = content.Load<Texture2D>("Menu/JojoButton");
+            yakuzaButtonSprite = content.Load<Texture2D>("Menu/YakuzaButton");
+            pokemonButtonSprite = content.Load<Texture2D>("Menu/PokemonButton");
+            normalButtonSprite = content.Load<Texture2D>("Menu/NormalButton");
+            onePlayerButtonSelectedSprite = content.Load<Texture2D>("Menu/OnePlayerButtonSelected");
+            twoPlayerButtonSelectedSprite = content.Load<Texture2D>("Menu/TwoPlayerButtonSelected");
+            jojoButtonSelectedSprite = content.Load<Texture2D>("Menu/JojoButtonSelected");
+            yakuzaButtonSelectedSprite = content.Load<Texture2D>("Menu/YakuzaButtonSelected");
+            pokemonButtonSelectedSprite = content.Load<Texture2D>("Menu/PokemonButtonSelected");
+            normalButtonSelectedSprite = content.Load<Texture2D>("Menu/NormalButtonSelected");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -113,6 +140,62 @@ namespace LegendOfZelda.GameState
         public ISprite CreateBottomLeftButtonSelectorSprite()
         {
             return new BottomLeftSelectorSprite(buttonSelectorBottomLeftSprite);
+        }
+        public ISprite CreateAcceptButtonSprite()
+        {
+            return new GameStateSprite(acceptButtonSprite);
+        }
+
+        public ISprite CreateOnePlayerButtonSprite()
+        {
+            return new GameStateSprite(onePlayerButtonSprite);
+        }
+        public ISprite CreateTwoPlayerButtonSprite()
+        {
+            return new GameStateSprite(twoPlayerButtonSprite);
+        }
+        public ISprite CreateJojoButtonSprite()
+        {
+            return new GameStateSprite(jojoButtonSprite);
+        }
+        public ISprite CreateYakuzaButtonSprite()
+        {
+            return new GameStateSprite(yakuzaButtonSprite);
+        }
+        public ISprite CreatePokemonButtonSprite()
+        {
+            return new GameStateSprite(pokemonButtonSprite);
+        }
+
+        internal ISprite CreateNormalButtonSprite()
+        {
+            return new GameStateSprite(normalButtonSprite);
+        }
+
+        public ISprite CreateOnePlayerButtonSelectedSprite()
+        {
+            return new GameStateSprite(onePlayerButtonSelectedSprite);
+        }
+        public ISprite CreateTwoPlayerButtonSelectedSprite()
+        {
+            return new GameStateSprite(twoPlayerButtonSelectedSprite);
+        }
+        public ISprite CreateJojoButtonSelectedSprite()
+        {
+            return new GameStateSprite(jojoButtonSelectedSprite);
+        }
+        public ISprite CreateYakuzaButtonSelectedSprite()
+        {
+            return new GameStateSprite(yakuzaButtonSelectedSprite);
+        }
+        public ISprite CreatePokemonButtonSelectedSprite()
+        {
+            return new GameStateSprite(pokemonButtonSelectedSprite);
+        }
+
+        internal ISprite CreateNormalButtonSelectedSprite()
+        {
+            return new GameStateSprite(normalButtonSelectedSprite);
         }
     }
 }

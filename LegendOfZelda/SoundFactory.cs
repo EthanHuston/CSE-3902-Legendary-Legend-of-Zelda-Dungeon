@@ -5,7 +5,7 @@ namespace LegendOfZelda
 {
     internal class SoundFactory
     {
-        private SoundEffect baka_mitai;
+        private SoundEffect friday_night;
         private SoundEffect arrow_boomerang;
         private SoundEffect bomb_blow;
         private SoundEffect bomb_drop;
@@ -37,22 +37,23 @@ namespace LegendOfZelda
         private SoundEffect title;
         private SoundEffect win;
 
+        private ContentManager contentManager;
         public static SoundFactory Instance { get; } = new SoundFactory();
 
         public void LoadAllSounds(ContentManager content)
         {
-            baka_mitai = content.Load<SoundEffect>("Sounds/Baka_Mitai");
+            contentManager = content;
             arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang");
             bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow");
             bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop");
             boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit");
             boss_scream = content.Load<SoundEffect>("Sounds/LOZ_Boss_Scream1");
-            clock_pickup = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows2");
             door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock");
             dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon");
             enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die");
             enemy_hit = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Hit");
             fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare");
+            friday_night = content.Load<SoundEffect>("Sounds/Friday_Night");
             game_over = content.Load<SoundEffect>("Sounds/LOZ_GameOver");
             get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart");
             get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item");
@@ -69,14 +70,28 @@ namespace LegendOfZelda
             sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot");
             sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash");
             text = content.Load<SoundEffect>("Sounds/LOZ_Text");
-            time_flows = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
-            title = content.Load<SoundEffect>("Sounds/LOZ_Title");
             win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
-        public SoundEffectInstance CreateBakaMitaiSound()
+        public void LoadTitleSound(ContentManager content)
         {
-            return baka_mitai.CreateInstance();
+            title = content.Load<SoundEffect>("Sounds/LOZ_Title");
+        }
+
+        public void LoadJojoSounds()
+        {
+            clock_pickup = contentManager.Load<SoundEffect>("Sounds/LOZ_TimeFlows2");
+            time_flows = contentManager.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
+        }
+
+        public void LoadYakuzaSounds()
+        {
+            dungeon_music = contentManager.Load<SoundEffect>("Sounds/Baka_Mitai");
+        }
+
+        public SoundEffectInstance CreateFridayNightSound()
+        {
+            return friday_night.CreateInstance();
         }
         public SoundEffectInstance CreateArrowBoomerangSound()
         {

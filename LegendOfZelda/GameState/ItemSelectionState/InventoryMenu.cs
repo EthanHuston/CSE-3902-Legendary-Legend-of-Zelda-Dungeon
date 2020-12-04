@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -133,6 +132,11 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             ButtonSelector.MoveSelector(direction);
             secondaryItem = itemButtonsTupleList[ButtonSelector.SelectedCurrentIndex];
             link.SecondaryItem = secondaryItem.Item1;
+        }
+
+        public void ToggleButton(Type buttonType)
+        {
+            throw new NotImplementedException();
         }
     }
 }

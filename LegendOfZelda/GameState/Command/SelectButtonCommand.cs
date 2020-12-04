@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using LegendOfZelda.Interface;
+﻿using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
+using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Command
 {

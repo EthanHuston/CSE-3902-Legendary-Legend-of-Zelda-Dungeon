@@ -8,10 +8,12 @@ namespace LegendOfZelda.Enemies.Sprite
     internal class SpikeTrapSprite : IDamageableSprite
     {
         private readonly Texture2D sprite;
+        private bool pokemonOn;
 
-        public SpikeTrapSprite(Texture2D sprite)
+        public SpikeTrapSprite(Texture2D sprite, bool pokemonOn)
         {
             this.sprite = sprite;
+            this.pokemonOn = pokemonOn;
         }
         public void Update()
         {
@@ -22,6 +24,10 @@ namespace LegendOfZelda.Enemies.Sprite
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Height));
+            if (pokemonOn)
+            {
+                destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.PokemonScaler * sprite.Width), (int)(Constants.PokemonScaler * sprite.Height));
+            }
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
@@ -33,7 +39,12 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
+            Rectangle returning = new Rectangle(0, 0, (int)(sprite.Width * Constants.GameScaler), (int)(sprite.Height * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                returning = new Rectangle(0, 0, (int)(sprite.Width * Constants.PokemonScaler), (int)(sprite.Height * Constants.PokemonScaler));
+            }
+            return returning;
         }
     }
 }
