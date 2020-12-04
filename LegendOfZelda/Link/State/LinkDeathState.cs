@@ -17,6 +17,13 @@ namespace LegendOfZelda.Link.State
             link.Velocity = Vector2.Zero;
         }
 
+        public override void Draw()
+        {
+            int posX = link.Position.X + spawnOffset.X;
+            int posY = link.Position.Y + spawnOffset.Y;
+            link.CurrentSprite.Draw(link.Game.SpriteBatch, new Point(posX, posY), false, Constants.DrawLayer.LinkDead);
+        }
+
         protected override void UpdateState()
         {
             if (totalSpins < 3)
@@ -44,7 +51,7 @@ namespace LegendOfZelda.Link.State
             }
             else
             {
-                link.BlockStateChange = false;
+                link.SafeToDespawn = true;
             }
         }
     }

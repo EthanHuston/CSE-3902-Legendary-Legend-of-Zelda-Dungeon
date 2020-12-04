@@ -6,6 +6,7 @@ namespace LegendOfZelda.Environment
     {
         private Rectangle positionRectangle;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public Point Position
         {
@@ -21,12 +22,7 @@ namespace LegendOfZelda.Environment
         {
             positionRectangle = positionSize;
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             // does not need to draw
@@ -36,12 +32,7 @@ namespace LegendOfZelda.Environment
         {
             return positionRectangle;
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
             // does not need to update

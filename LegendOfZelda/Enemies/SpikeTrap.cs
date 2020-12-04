@@ -23,6 +23,7 @@ namespace LegendOfZelda.Enemies
         private Rectangle TrapPosition;
         private Constants.Direction currentDirection;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private bool spawning;
 
         private Point position;
@@ -35,7 +36,7 @@ namespace LegendOfZelda.Enemies
             this.spriteBatch = spriteBatch;
             this.link = link;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             spawning = true;
         }
 
@@ -224,10 +225,7 @@ namespace LegendOfZelda.Enemies
             position.X += (int)distance.X;
             position.Y += (int)distance.Y;
         }
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+        
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
@@ -237,12 +235,7 @@ namespace LegendOfZelda.Enemies
         {
             // spike trap is invincible
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void SetKnockBack(bool changeKnockback, Constants.Direction knockDirection)
         {
             // cannot be knocketh backeth

@@ -9,6 +9,7 @@ namespace LegendOfZelda.Environment
         private readonly ISprite fireSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
@@ -18,14 +19,9 @@ namespace LegendOfZelda.Environment
             fireSprite = EnvironmentSpriteFactory.Instance.CreateFireSprite();
             sB = spriteBatch;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             fireSprite.Draw(sB, Position, Constants.DrawLayer.Block);
@@ -35,12 +31,7 @@ namespace LegendOfZelda.Environment
         {
             return new Rectangle(Position.X, Position.Y, fireSprite.GetPositionRectangle().Width, fireSprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
             fireSprite.Update();

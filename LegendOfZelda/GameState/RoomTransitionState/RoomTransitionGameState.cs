@@ -198,7 +198,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
 
         public void SwitchToDeathState() { }
 
-        public void SwitchToItemSelectionState() { }
+        public void SwitchToItemSelectionState(int playerNum) { }
 
         public void SwitchToMainMenuState() { }
 

@@ -8,12 +8,13 @@ namespace LegendOfZelda.Item
     internal abstract class GenericItem : IItem
     {
         protected ISprite sprite;
-        protected bool itemIsExpired;
         protected SpriteBatch spriteBatch;
         protected LinkConstants.ItemType itemType;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
 
         public GenericItem(SpriteBatch spriteBatch, Point spawnPosition)
         {
@@ -21,12 +22,9 @@ namespace LegendOfZelda.Item
             Position = spawnPosition;
         }
 
-        protected abstract void CheckItemIsExpired();
-
         public virtual void Update()
         {
             sprite.Update();
-            CheckItemIsExpired();
         }
 
         public virtual void Draw()
@@ -38,17 +36,7 @@ namespace LegendOfZelda.Item
         {
             return new Rectangle(position.X, position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return itemIsExpired;
-        }
-
-        public void Despawn()
-        {
-            itemIsExpired = true;
-        }
-
+        
         public LinkConstants.ItemType GetItemType()
         {
             return itemType;

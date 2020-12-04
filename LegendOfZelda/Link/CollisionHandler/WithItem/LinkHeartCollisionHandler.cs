@@ -10,7 +10,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
         {
             SoundFactory.Instance.CreateGetHeartSound().Play();
             link.BeHealthy(LinkConstants.HeartItemHealAmount);
-            item.Despawn();
+            item.SafeToDespawn = true;
         }
     }
 }

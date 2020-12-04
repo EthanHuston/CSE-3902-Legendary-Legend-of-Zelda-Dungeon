@@ -13,6 +13,7 @@ namespace LegendOfZelda.Environment
         private readonly ITextureAtlasSprite doorFloorSprite;
         private readonly SpriteBatch sB;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private readonly int textureMapRow;
         private int textureMapColumn;
         private const int doorFloorTextureMapColumn = 5;
@@ -29,7 +30,7 @@ namespace LegendOfZelda.Environment
             doorFloorSprite = EnvironmentSpriteFactory.Instance.CreateDoorSprite();
             sB = spriteBatch;
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             IsOpen = false;
             Side = RoomUtilities.GetDoorSide(spawnPosition);
             textureMapRow = RoomUtilities.GetDirectionalTextureAtlasRow(Side);
@@ -46,24 +47,14 @@ namespace LegendOfZelda.Environment
 
         public void Update()
         {
-            safeToDespawn = !safeToDespawn && false; // put condition here for when door can be despawned
+            SafeToDespawn = !SafeToDespawn && false; // put condition here for when door can be despawned
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public Rectangle GetRectangle()
         {
             return new Rectangle(Position.X, Position.Y, doorSprite.GetPositionRectangle().Width, doorSprite.GetPositionRectangle().Height);
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void OpenDoor()
         {
             if (IsOpen) return;

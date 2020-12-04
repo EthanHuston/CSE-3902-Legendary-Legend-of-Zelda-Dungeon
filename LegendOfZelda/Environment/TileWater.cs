@@ -9,24 +9,19 @@ namespace LegendOfZelda.Environment
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch sb;
-        private bool safeToDespawn;
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
-
+        private bool safeToDespawn;
+        public bool SafeToDespawn { get => safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         public TileWater(SpriteBatch spriteBatch, Point position)
         {
             sprite = EnvironmentSpriteFactory.Instance.CreateTileWaterSprite();
             sb = spriteBatch;
             Position = position;
-            safeToDespawn = false;
+            SafeToDespawn = false;
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             sprite.Draw(sb, position, Constants.DrawLayer.FloorTile);
@@ -37,10 +32,7 @@ namespace LegendOfZelda.Environment
             return new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
 
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
+
 
         public void Update()
         {

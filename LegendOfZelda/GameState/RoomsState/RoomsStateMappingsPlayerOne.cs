@@ -21,7 +21,7 @@ namespace LegendOfZelda.GameState.RoomsState
 
         public RoomsStateMappingsPlayerOne(IGameState gameState, IPlayer player)
         {
-            GamepadMappings = GetGamepadMappings(gameState, player);
+            GamepadMappings = GetGamepadMappings();
             KeyboardMappings = GetKeyboardMappings(gameState, player);
             MouseMappings = GetMouseMappings(gameState, player);
             ButtonMappings = GetButtonMappings(gameState);
@@ -29,27 +29,14 @@ namespace LegendOfZelda.GameState.RoomsState
             RepeatableGamepadButtons = GetRepeatableGamepadButtons();
         }
 
-        private Dictionary<Buttons, ICommand> GetGamepadMappings(IGameState gameState, IPlayer player)
-        {
-            return new Dictionary<Buttons, ICommand>
-            {
-                { Buttons.LeftThumbstickDown, new MoveDownCommand(player) },
-                { Buttons.LeftThumbstickRight, new MoveRightCommand(player) },
-                { Buttons.LeftThumbstickLeft, new MoveLeftCommand(player) },
-                { Buttons.LeftThumbstickUp, new MoveUpCommand(player) },
-                { Buttons.A, new UsePrimaryItemCommand(player) },
-                { Buttons.B, new UseSecondaryItemCommand(player) },
-                { Buttons.Start, new PauseGameCommand(gameState) },
-                { Buttons.X, new ItemSelectCommand(gameState) }
-            };
-        }
+        private Dictionary<Buttons, ICommand> GetGamepadMappings() { return new Dictionary<Buttons, ICommand>(); }
 
         public Dictionary<Keys, ICommand> GetKeyboardMappings(IGameState gameState, IPlayer player)
         {
             return new Dictionary<Keys, ICommand>
             {
                 { Keys.Escape, new PauseGameCommand(gameState) },
-                { Keys.Tab, new ItemSelectCommand(gameState) },
+                { Keys.Tab, new ItemSelectCommand(gameState, player.PlayerNumber) },
 
                 // Register Player 1 Commands
                 { Keys.D1, new UsePrimaryItemCommand(player) },
@@ -96,14 +83,6 @@ namespace LegendOfZelda.GameState.RoomsState
             };
         }
 
-        private List<Buttons> GetRepeatableGamepadButtons() {
-            return new List<Buttons>()
-            {
-                Buttons.LeftThumbstickDown,
-                Buttons.LeftThumbstickLeft,
-                Buttons.LeftThumbstickUp,
-                Buttons.LeftThumbstickRight
-            };
-        }
+        private List<Buttons> GetRepeatableGamepadButtons() { return new List<Buttons>(); }
     }
 }

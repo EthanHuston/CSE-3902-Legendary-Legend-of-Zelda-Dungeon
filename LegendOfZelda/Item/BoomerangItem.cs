@@ -12,11 +12,5 @@ namespace LegendOfZelda.Item
             sprite = ItemSpriteFactory.Instance.CreateBoomerangSprite();
             itemType = LinkConstants.ItemType.Boomerang;
         }
-
-        protected override void CheckItemIsExpired()
-        {
-            // change to true when we want item to despawn (after link picks up, after certain time, etc.)
-            itemIsExpired = itemIsExpired && true;
-        }
     }
 }

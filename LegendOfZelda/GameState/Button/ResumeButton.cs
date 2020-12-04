@@ -10,6 +10,7 @@ namespace LegendOfZelda.GameState.Button
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         public bool IsActive { get; private set; }
 
         private Point position;
@@ -20,15 +21,10 @@ namespace LegendOfZelda.GameState.Button
             this.spriteBatch = spriteBatch;
             sprite = GameStateSpriteFactory.Instance.CreateResumeButtonSprite();
             Position = spawnPosition;
-            safeToDespawn = false;
+            SafeToDespawn = false;
             IsActive = true;
         }
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             sprite.Draw(spriteBatch, Position, Constants.DrawLayer.MenuButton);
@@ -40,12 +36,7 @@ namespace LegendOfZelda.GameState.Button
                 Rectangle.Empty :
                 new Rectangle(Position.X, Position.Y, sprite.GetPositionRectangle().Width, sprite.GetPositionRectangle().Height);
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
             sprite.Update();

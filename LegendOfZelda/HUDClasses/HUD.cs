@@ -15,10 +15,12 @@ namespace LegendOfZelda.HUDClasses
         private readonly HeartManager heartManager;
         private readonly NumberManager numberManager;
         private readonly MinimapManager minimapManager;
-        private readonly ItemsManager itemsManager;
+        private readonly ItemsManagerSingleplayer itemsManager;
         private readonly HUDNumber levelNum;
         private Point position;
         public Point Position { get => position; set => position = new Point(value.X, value.Y); }
+
+        private Banner banner;
 
         public HUD(RoomGameState gameState)
         {
@@ -26,11 +28,13 @@ namespace LegendOfZelda.HUDClasses
             spriteBatch = gameState.Game.SpriteBatch;
             heartManager = new HeartManager((LinkPlayer)gameState.PlayerList[0]);
             numberManager = new NumberManager((LinkPlayer)gameState.PlayerList[0]);
-            minimapManager = new MinimapManager(gameState);
-            itemsManager = new ItemsManager(this);
+            minimapManager = new MinimapManager(gameState, 1);
+            itemsManager = new ItemsManagerSingleplayer(this);
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             levelNum = new HUDNumber(1);
             Position = new Point(HUDConstants.hudx, HUDConstants.hudy);
+
+            banner = new Banner(gameState.Game.SpriteBatch);
         }
 
         public void Update()
@@ -39,16 +43,18 @@ namespace LegendOfZelda.HUDClasses
             heartManager.Update();
             minimapManager.Update();
             itemsManager.Update();
+            banner.Update();
         }
 
         public void Draw()
         {
             hudSprite.Draw(spriteBatch, position, Constants.DrawLayer.HUD);
-            levelNum.Draw(spriteBatch, position + HUDConstants.LevelNumberLocation, Constants.DrawLayer.HUDMinimap);
-            numberManager.Draw(spriteBatch, position);
-            heartManager.Draw(spriteBatch, position);
-            minimapManager.Draw(position);
+            levelNum.Draw(spriteBatch, position + HUDConstants.LevelNumberLocation + HUDConstants.hudOffset, Constants.DrawLayer.HUDMinimap);
+            numberManager.Draw(spriteBatch, position + HUDConstants.RupeePos + HUDConstants.hudOffset);
+            heartManager.Draw(spriteBatch, position + HUDConstants.HeartPos + HUDConstants.hudOffset);
+            minimapManager.Draw(position + HUDConstants.hudOffset);
             itemsManager.Draw();
+            banner.Draw();
         }
 
         public Rectangle GetRectangle()

@@ -11,7 +11,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
         {
             SoundFactory.Instance.CreateGetItemSound().Play();
             ((RoomGameState)link.Game.State).ActivateClockMode();
-            item.Despawn();
+            item.SafeToDespawn = true;
         }
     }
 }

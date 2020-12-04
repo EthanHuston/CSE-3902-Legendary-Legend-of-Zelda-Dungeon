@@ -10,7 +10,7 @@ namespace LegendOfZelda.GameState
         void SwitchToRoomState();
         void SwitchToPauseState();
         void SwitchToMainMenuState();
-        void SwitchToItemSelectionState();
+        void SwitchToItemSelectionState(int playerNum);
         void SwitchToDeathState();
         void SwitchToWinState();
         void SwitchToOptionState();

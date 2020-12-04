@@ -99,7 +99,7 @@ namespace LegendOfZelda.GameState.GameWinState
 
         public void SwitchToPauseState() { }
 
-        public void SwitchToItemSelectionState() { }
+        public void SwitchToItemSelectionState(int playerNum) { }
 
         public void SwitchToDeathState() { }
 

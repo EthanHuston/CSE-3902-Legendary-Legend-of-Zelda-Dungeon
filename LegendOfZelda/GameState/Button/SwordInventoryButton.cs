@@ -11,6 +11,7 @@ namespace LegendOfZelda.GameState.Button
         private readonly ITextureAtlasSprite sprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
+        public bool SafeToDespawn { get =>safeToDespawn; set => safeToDespawn = safeToDespawn || value; }
         private readonly IMenu owningMenu;
         public bool IsActive { get; private set; }
 
@@ -25,16 +26,11 @@ namespace LegendOfZelda.GameState.Button
             owningMenu = owner;
             Position = relativePosition;
             sprite = GameStateSpriteFactory.Instance.CreateHudItemsSprite();
-            safeToDespawn = false;
+            SafeToDespawn = false;
             IsActive = false;
         }
 
-
-        public void Despawn()
-        {
-            safeToDespawn = true;
-        }
-
+        
         public void Draw()
         {
             sprite.Draw(spriteBatch, owningMenu.Position + Position, GameStateConstants.SwordWoodTextureAtlasSource, Constants.DrawLayer.MenuButton);
@@ -46,12 +42,7 @@ namespace LegendOfZelda.GameState.Button
                 Rectangle.Empty :
                 new Rectangle(Position.X, Position.Y, (int)(Size.X * Constants.GameScaler), (int)(Size.Y * Constants.GameScaler));
         }
-
-        public bool SafeToDespawn()
-        {
-            return safeToDespawn;
-        }
-
+        
         public void Update()
         {
             sprite.Update();

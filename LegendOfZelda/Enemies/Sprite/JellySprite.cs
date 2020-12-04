@@ -78,7 +78,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Draw(spriteBatch, position, false, Constants.DrawLayer.Enemy);
+            Draw(spriteBatch, position, false, layer);
         }
     }
 }

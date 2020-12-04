@@ -40,7 +40,10 @@ namespace LegendOfZelda.GameState.RoomsState
             CurrentRoom.Visiting = true;
             RoomMap = new RoomMap(game.SpriteBatch, ItemSelectionStateConstants.MapPieceTextureAtlasSource, ItemSelectionStateConstants.MapPieceTextureSize, Point.Zero);
             RoomMap.AddRoomToMap(CurrentRoom);
-            Hud = new HUD(this);
+            if (game.NumPlayers == 1)
+                Hud = new HUD(this);
+            else
+                Hud = new MultiplayerHUD(this);
 
             InitControllerList(PlayerList);
             InitItemSelectionGameStates();
@@ -58,16 +61,16 @@ namespace LegendOfZelda.GameState.RoomsState
         private void InitControllerList(List<IPlayer> playerList)
         {
             controllerList = new List<IController>();
-            foreach (IPlayer player in playerList)
+            for(int i = 0; i < PlayerList.Count; i++)
             {
                 IGameStateControllerMappings mappings = null;
-                switch (player.PlayerNumber)
+                switch (PlayerList[i].PlayerNumber)
                 {
                     case 0:
-                        mappings = new RoomsStateMappingsPlayerOne(this, player);
+                        mappings = new RoomsStateMappingsPlayerOne(this, PlayerList[i]);
                         break;
                     case 1:
-                        mappings = new RoomsStateMappingsPlayerTwo(this, player);
+                        mappings = new RoomsStateMappingsPlayerTwo(this, PlayerList[i]);
                         break;
                 }
 
@@ -80,8 +83,8 @@ namespace LegendOfZelda.GameState.RoomsState
         private void InitItemSelectionGameStates()
         {
             itemSelectionGameStates = new List<ItemSelectionGameState>();
-            foreach (IPlayer player in PlayerList)
-                itemSelectionGameStates.Add(new ItemSelectionGameState(player, this));
+            for (int i = 0; i < PlayerList.Count; i++)
+                itemSelectionGameStates.Add(new ItemSelectionGameState(PlayerList[i], this));
         }
 
         public IPlayer GetPlayer(int playerNumber)
@@ -149,10 +152,9 @@ namespace LegendOfZelda.GameState.RoomsState
             StartStateSwitch(new PauseGameState(Game, this));
         }
 
-        public override void SwitchToItemSelectionState()
+        public override void SwitchToItemSelectionState(int playerNum)
         {
-            // player 0 inventory for now - in case we add multiplayer later
-            StartStateSwitch(itemSelectionGameStates[0]);
+            StartStateSwitch(itemSelectionGameStates[playerNum]);
         }
 
         public override void SwitchToDeathState()
@@ -176,7 +178,11 @@ namespace LegendOfZelda.GameState.RoomsState
 
         protected override void NormalStateUpdate()
         {
-            foreach (IController controller in controllerList) controller.Update();
+            for (int i = 0; i < controllerList.Count; i++)
+            {
+                if (PlayerList[i / (controllerList.Count / PlayerList.Count)].SafeToDespawn) continue;
+                controllerList[i].Update();
+            }
 
             if (clockModeOn)
             {
@@ -186,7 +192,13 @@ namespace LegendOfZelda.GameState.RoomsState
             }
             else CurrentRoom.Update();
 
-            if (PlayerList[0].SafeToDespawn()) SwitchToDeathState();
+            bool allPlayersDead = true;
+            foreach(IPlayer player in PlayerList)
+            {
+                allPlayersDead = allPlayersDead && player.IsDead;
+            }
+
+            if (allPlayersDead) SwitchToDeathState();
 
             Hud.Update();
         }

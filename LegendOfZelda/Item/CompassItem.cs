@@ -12,10 +12,5 @@ namespace LegendOfZelda.Item
             sprite = ItemSpriteFactory.Instance.CreateCompassSprite();
             itemType = LinkConstants.ItemType.Compass;
         }
-
-        protected override void CheckItemIsExpired()
-        {
-            itemIsExpired = itemIsExpired && true;
-        }
     }
 }

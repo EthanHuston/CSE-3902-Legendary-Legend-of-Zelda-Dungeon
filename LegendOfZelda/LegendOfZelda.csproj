@@ -125,6 +125,10 @@
     <Compile Include="GameState\RoomsState\IItemDropper.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerOne.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerTwo.cs" />
+    <Compile Include="HUDClasses\BannerEnemy.cs" />
+    <Compile Include="HUDClasses\BannerLink.cs" />
+    <Compile Include="HUDClasses\Banner.cs" />
+    <Compile Include="HUDClasses\ItemsManagerSingleplayer.cs" />
     <Compile Include="Menu\ButtonSelector.cs" />
     <Compile Include="Menu\IOnOffButton.cs" />
     <Compile Include="Menu\IButtonMenu.cs" />
@@ -169,8 +173,9 @@
     <Compile Include="GameState\Button\ResumeButton.cs" />
     <Compile Include="GameState\Sprite\MainMenuSprite.cs" />
     <Compile Include="GameState\Sprite\RedOverlaySprite.cs" />
-    <Compile Include="HUDClasses\ItemsManager.cs" />
+    <Compile Include="HUDClasses\ItemsManagerMultiplayer.cs" />
     <Compile Include="HUDClasses\MinimapManager.cs" />
+    <Compile Include="HUDClasses\MultiplayerHUD.cs" />
     <Compile Include="HUDClasses\NumberManager.cs" />
     <Compile Include="HUDClasses\HeartManager.cs" />
     <Compile Include="HUDClasses\HUDHeart.cs" />

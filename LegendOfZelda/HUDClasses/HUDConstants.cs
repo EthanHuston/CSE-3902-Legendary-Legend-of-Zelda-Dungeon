@@ -6,21 +6,39 @@ namespace LegendOfZelda.HUDClasses
     public static class HUDConstants
     {
         public const int hudx = 0, hudy = 0;
+        public static Point hudOffset = new Point(0, (int)(44 * Constants.GameScaler));
         public const int hudWidth = (int)(256 * Constants.GameScaler);
-        public const int hudHeight = (int)(56 * Constants.GameScaler);
+        public const int hudHeight = (int)(100 * Constants.GameScaler);
 
         //Locations on HUD
         public const int RupeeNumberX = (int)(96 * Constants.GameScaler);
         public const int RupeeNumberY = (int)(16 * Constants.GameScaler);
+        public static Point RupeePos = new Point(RupeeNumberX, RupeeNumberY);
         public const int KeyNumberX = (int)(96 * Constants.GameScaler);
         public const int KeyNumberY = (int)(32 * Constants.GameScaler);
         public const int BombNumberX = (int)(96 * Constants.GameScaler);
         public const int BombNumberY = (int)(40 * Constants.GameScaler);
         public const int HeartX = (int)(184 * Constants.GameScaler);
         public const int HeartY = (int)(32 * Constants.GameScaler);
+        public static Point HeartPos = new Point(HeartX, HeartY);
         public const int NumberWidth = (int)(8 * Constants.GameScaler);
         public static Point SecondaryItemLocation = new Point((int)(Constants.GameScaler * 128), (int)(Constants.GameScaler * 24));
         public static Point PrimaryItemLocation = new Point((int)(Constants.GameScaler * 152), (int)(Constants.GameScaler * 24));
+
+        //Player 2 locations
+        public const int hudHeightMultiplayer = (int)(100 * Constants.GameScaler);
+        public const int RupeeNumberXPlayer2 = (int)(96 * Constants.GameScaler);
+        public const int RupeeNumberYPlayer2 = (int)(62 * Constants.GameScaler);
+        public static Point RupeePosPlayer2 = new Point(RupeeNumberXPlayer2, RupeeNumberYPlayer2);
+        public const int KeyNumberXPlayer2 = (int)(96 * Constants.GameScaler);
+        public const int KeyNumberYPlayer2 = (int)(78 * Constants.GameScaler);
+        public const int BombNumberXPlayer2 = (int)(96 * Constants.GameScaler);
+        public const int BombNumberYPlayer2 = (int)(86 * Constants.GameScaler);
+        public const int HeartXPlayer2 = (int)(184 * Constants.GameScaler);
+        public const int HeartYPlayer2 = (int)(78 * Constants.GameScaler);
+        public static Point HeartPosPlayer2 = new Point(HeartXPlayer2, HeartYPlayer2);
+        public static Point SecondaryItemLocationPlayer2 = new Point((int)(Constants.GameScaler * 128), (int)(Constants.GameScaler * 70));
+        public static Point PrimaryItemLocationPlayer2 = new Point((int)(Constants.GameScaler * 152), (int)(Constants.GameScaler * 70));
 
         //Minimap Square Locations
         public static Dictionary<Point, Point> MinimapSquarePositions = new Dictionary<Point, Point>
