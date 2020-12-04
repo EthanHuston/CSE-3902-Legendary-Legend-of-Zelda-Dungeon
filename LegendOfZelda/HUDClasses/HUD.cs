@@ -20,6 +20,8 @@ namespace LegendOfZelda.HUDClasses
         private Point position;
         public Point Position { get => position; set => position = new Point(value.X, value.Y); }
 
+        private Banner banner;
+
         public HUD(RoomGameState gameState)
         {
             roomGameState = gameState;
@@ -31,6 +33,8 @@ namespace LegendOfZelda.HUDClasses
             hudSprite = HUDSpriteFactory.Instance.CreateHUDSprite();
             levelNum = new HUDNumber(1);
             Position = new Point(HUDConstants.hudx, HUDConstants.hudy);
+
+            banner = new Banner(gameState.Game.SpriteBatch);
         }
 
         public void Update()
@@ -39,6 +43,7 @@ namespace LegendOfZelda.HUDClasses
             heartManager.Update();
             minimapManager.Update();
             itemsManager.Update();
+            banner.Update();
         }
 
         public void Draw()
@@ -49,6 +54,7 @@ namespace LegendOfZelda.HUDClasses
             heartManager.Draw(spriteBatch, position + HUDConstants.HeartPos + HUDConstants.hudOffset);
             minimapManager.Draw(position + HUDConstants.hudOffset);
             itemsManager.Draw();
+            banner.Draw();
         }
 
         public Rectangle GetRectangle()

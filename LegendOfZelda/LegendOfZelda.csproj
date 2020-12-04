@@ -113,6 +113,9 @@
     <Compile Include="GameState\RoomsState\IItemDropper.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerOne.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerTwo.cs" />
+    <Compile Include="HUDClasses\BannerEnemy.cs" />
+    <Compile Include="HUDClasses\BannerLink.cs" />
+    <Compile Include="HUDClasses\Banner.cs" />
     <Compile Include="HUDClasses\ItemsManagerSingleplayer.cs" />
     <Compile Include="Menu\ButtonSelector.cs" />
     <Compile Include="Menu\IButtonMenu.cs" />

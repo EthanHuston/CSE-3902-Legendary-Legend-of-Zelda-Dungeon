@@ -25,7 +25,7 @@ namespace LegendOfZelda
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            NumPlayers = 2;
+            NumPlayers = 1;
 
             SpriteFactory.Instance.LoadAllTextures(Content);
             SoundFactory.Instance.LoadAllSounds(Content);
