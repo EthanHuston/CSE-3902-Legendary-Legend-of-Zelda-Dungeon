@@ -117,6 +117,9 @@
     <Compile Include="GameState\Command\SetJojoReferencesOnCommand.cs" />
     <Compile Include="GameState\Command\SetYakuzaReferencesOffCommand.cs" />
     <Compile Include="GameState\Command\SetYakuzaReferencesOnCommand.cs" />
+    <Compile Include="GameState\Command\TurnButtonOffCommand.cs" />
+    <Compile Include="GameState\Command\ToggleButtonCommand.cs" />
+    <Compile Include="GameState\Command\TurnButtonOnCommand.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseStateMappings.cs" />
     <Compile Include="GameState\GameWinState\Curtain.cs" />
     <Compile Include="GameState\IGameStateControllerMappings.cs" />

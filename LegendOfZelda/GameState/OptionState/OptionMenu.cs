@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameState.Button;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.OptionState
@@ -52,6 +53,14 @@ namespace LegendOfZelda.GameState.OptionState
         public void Update()
         {
             ButtonSelector.Update();
+        }
+
+        public void ToggleButton(Type buttonType)
+        {
+            foreach (IOnOffButton button in Buttons)
+            {
+                if (button.GetType() == buttonType) button.IsOn = !button.IsOn;
+            }
         }
     }
 }

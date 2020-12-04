@@ -68,7 +68,7 @@ namespace LegendOfZelda.GameState
             jojoButtonSprite = content.Load<Texture2D>("Menu/JojoButton");
             yakuzaButtonSprite = content.Load<Texture2D>("Menu/YakuzaButton");
             pokemonButtonSprite = content.Load<Texture2D>("Menu/PokemonButton");
-            normalButtonSprite = content.Load<Texture2D>("Menu/NormalButtonSelected");
+            normalButtonSprite = content.Load<Texture2D>("Menu/NormalButton");
             onePlayerButtonSelectedSprite = content.Load<Texture2D>("Menu/OnePlayerButtonSelected");
             twoPlayerButtonSelectedSprite = content.Load<Texture2D>("Menu/TwoPlayerButtonSelected");
             jojoButtonSelectedSprite = content.Load<Texture2D>("Menu/JojoButtonSelected");

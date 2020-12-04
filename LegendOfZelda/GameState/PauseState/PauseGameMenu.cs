@@ -50,5 +50,9 @@ namespace LegendOfZelda.GameState.PauseState
         {
             ButtonSelector.Update();
         }
+
+        public void ToggleButton(Type buttonType)
+        {
+        }
     }
 }

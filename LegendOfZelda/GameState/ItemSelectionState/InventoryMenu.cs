@@ -133,5 +133,10 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             secondaryItem = itemButtonsTupleList[ButtonSelector.SelectedCurrentIndex];
             link.SecondaryItem = secondaryItem.Item1;
         }
+
+        public void ToggleButton(Type buttonType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

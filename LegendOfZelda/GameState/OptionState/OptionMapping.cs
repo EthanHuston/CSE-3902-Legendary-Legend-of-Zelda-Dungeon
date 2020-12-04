@@ -32,8 +32,6 @@ namespace LegendOfZelda.GameState.OptionState
             ICommand resumeGameCommand = new ResumeGameCommand(gameState);
             return new Dictionary<Buttons, ICommand>
             {
-                { Buttons.Start, resumeGameCommand },
-                { Buttons.B, resumeGameCommand },
                 { Buttons.LeftThumbstickUp, new MoveSelectorCommand(gameStateCast.OptionMenu, Constants.Direction.Up) },
                 { Buttons.LeftThumbstickRight, new MoveSelectorCommand(gameStateCast.OptionMenu, Constants.Direction.Right) },
                 { Buttons.LeftThumbstickDown, new MoveSelectorCommand(gameStateCast.OptionMenu, Constants.Direction.Down) },
@@ -58,9 +56,16 @@ namespace LegendOfZelda.GameState.OptionState
 
         private Dictionary<Type, ICommand> GetButtonMappings(IGameState gameState)
         {
+            OptionGameState gameStateCast = (OptionGameState)gameState;
             return new Dictionary<Type, ICommand>
             {
-                {typeof(AcceptButton), new MainMenuCommand(gameState) }
+                {typeof(AcceptButton), new MainMenuCommand(gameState) },
+                {typeof(SinglePlayerButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(SinglePlayerButton)) },
+                {typeof(TwoPlayerButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(TwoPlayerButton)) },
+                {typeof(JojoButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(JojoButton)) },
+                {typeof(YakuzaButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(YakuzaButton)) },
+                {typeof(PokemonButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(PokemonButton)) },
+                {typeof(NormalButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(NormalButton)) }
             };
         }
 
@@ -68,7 +73,6 @@ namespace LegendOfZelda.GameState.OptionState
         {
             return new Dictionary<MouseButton, ICommand>
             {
-                {MouseButton.LeftButton, new StartGameCommand(gameState) }
             };
         }
 

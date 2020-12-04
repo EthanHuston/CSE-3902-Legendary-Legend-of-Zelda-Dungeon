@@ -33,7 +33,6 @@ namespace LegendOfZelda.GameState.Button
             this.spriteBatch = spriteBatch;
             buttonSprite = GameStateSpriteFactory.Instance.CreateNormalButtonSprite();
             buttonSelectedSprite = GameStateSpriteFactory.Instance.CreateNormalButtonSelectedSprite();
-
             IsOn = true;
 
             Position = spawnPosition;
