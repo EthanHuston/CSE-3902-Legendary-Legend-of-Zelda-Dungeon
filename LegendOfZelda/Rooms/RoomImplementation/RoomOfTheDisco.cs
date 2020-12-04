@@ -27,7 +27,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             // TODO: PATEL STOP YOUR MUSIC HERE
             // discoMusic.Stop();
-            ((RoomGameState)Game.State).DungeonMusic.Pause();
+            ((RoomGameState)Game.State).DungeonMusic.Resume();
             base.RunRoomExitProcedure();
         }
     }
