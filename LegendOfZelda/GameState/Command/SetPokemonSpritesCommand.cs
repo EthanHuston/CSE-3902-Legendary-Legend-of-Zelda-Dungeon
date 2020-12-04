@@ -2,11 +2,11 @@
 
 namespace LegendOfZelda.GameState.Command
 {
-    class ChangeToPokemonSpritesCommand : ICommand
+    class SetPokemonSpritesCommand : ICommand
     {
         private readonly IGameState gameState;
 
-        public ChangeToPokemonSpritesCommand(IGameState gameState)
+        public SetPokemonSpritesCommand(IGameState gameState)
         {
             this.gameState = gameState;
         }
