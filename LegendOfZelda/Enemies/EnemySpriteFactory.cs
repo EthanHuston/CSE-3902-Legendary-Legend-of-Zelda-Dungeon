@@ -22,6 +22,8 @@ namespace LegendOfZelda.Enemies
         private Texture2D oldManSprite;
         private Texture2D spawnSprite;
 
+        private bool PokemonOn;
+
         public static EnemySpriteFactory Instance { get; } = new EnemySpriteFactory();
 
         public void LoadAllTextures(ContentManager content)
@@ -52,6 +54,8 @@ namespace LegendOfZelda.Enemies
             oldManSprite = content.Load<Texture2D>("NPC/OldMan");
             
             spawnSprite = content.Load<Texture2D>("Enemies/EnemySpawn");
+
+            PokemonOn = false;
         }
         public void LoadPokemonTextures(ContentManager content)
         {
@@ -64,53 +68,56 @@ namespace LegendOfZelda.Enemies
             aquamentusWalkingSprite = content.Load<Texture2D>("Pokemon/Enemies/HoOh");
             jellySprite = content.Load<Texture2D>("Pokemon/Enemies/Ditto");
             skeletonSprite = content.Load<Texture2D>("Pokemon/Enemies/Hitmonchan");
+            handSprite = content.Load<Texture2D>("Pokemon/Enemies/Haunter");
             spikeTrapSprite = content.Load<Texture2D>("Pokemon/Enemies/Decoy");
             oldManSprite = content.Load<Texture2D>("Pokemon/Professor Oak");
+
+            PokemonOn = true;
         }
 
         public IDamageableSprite CreateBatSprite()
         {
-            return new BatSprite(batSprite);
+            return new BatSprite(batSprite, PokemonOn);
         }
         public IDamageableSprite CreateGoriyaUpSprite()
         {
-            return new GoriyaSprite(goriyaUpSprite);
+            return new GoriyaSprite(goriyaUpSprite, PokemonOn);
         }
         public IDamageableSprite CreateGoriyaDownSprite()
         {
-            return new GoriyaSprite(goriyaDownSprite);
+            return new GoriyaSprite(goriyaDownSprite, PokemonOn);
         }
         public IDamageableSprite CreateGoriyaRightSprite()
         {
-            return new GoriyaSprite(goriyaRightSprite);
+            return new GoriyaSprite(goriyaRightSprite, PokemonOn);
         }
         public IDamageableSprite CreateGoriyaLeftSprite()
         {
-            return new GoriyaSprite(goriyaLeftSprite);
+            return new GoriyaSprite(goriyaLeftSprite, PokemonOn);
         }
         public IDamageableSprite CreateAquamentusBreathingSprite()
         {
-            return new AquamentusBreathingSprite(aquamentusBreathingSprite);
+            return new AquamentusBreathingSprite(aquamentusBreathingSprite, PokemonOn);
         }
         public IDamageableSprite CreateAquamentusWalkingSprite()
         {
-            return new AquamentusWalkingSprite(aquamentusWalkingSprite);
+            return new AquamentusWalkingSprite(aquamentusWalkingSprite, PokemonOn);
         }
         public IDamageableSprite CreateHandSprite()
         {
-            return new HandSprite(handSprite);
+            return new HandSprite(handSprite, PokemonOn);
         }
         public IDamageableSprite CreateJellySprite()
         {
-            return new JellySprite(jellySprite);
+            return new JellySprite(jellySprite, PokemonOn);
         }
         public IDamageableSprite CreateSkeletonSprite()
         {
-            return new SkeletonSprite(skeletonSprite);
+            return new SkeletonSprite(skeletonSprite, PokemonOn);
         }
         public IDamageableSprite CreateSpikeTrapSprite()
         {
-            return new SpikeTrapSprite(spikeTrapSprite);
+            return new SpikeTrapSprite(spikeTrapSprite, PokemonOn);
         }
         public ISprite CreateOldManSprite()
         {

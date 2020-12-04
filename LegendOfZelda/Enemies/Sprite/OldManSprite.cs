@@ -20,6 +20,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
+            //o need to change scalar as sprite is already a good size.
             Rectangle sourceRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * sprite.Width), (int)(Constants.GameScaler * sprite.Width));
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
