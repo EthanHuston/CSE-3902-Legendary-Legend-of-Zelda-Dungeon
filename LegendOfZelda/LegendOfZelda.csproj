@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
@@ -203,6 +203,7 @@
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
     <Compile Include="GameState\RoomTransitionState\RoomTransitionGameState.cs" />
+    <Compile Include="Rooms\RoomImplementation\DiscoRoom.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomWallMaster.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />
@@ -375,7 +376,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\RoomData\Room69.csv">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\RoomData\Room7.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -484,6 +485,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Content\Sounds\Baka_Mitai.mp3" />
+    <Content Include="Content\Sounds\Friday_Night.mp3" />
     <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Drop.wav" />
