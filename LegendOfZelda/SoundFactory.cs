@@ -84,10 +84,6 @@ namespace LegendOfZelda
             baka_mitai = content.Load<SoundEffect>("Sounds/Baka_Mitai");
         }
 
-        public SoundEffectInstance CreateBakaMitaiSound()
-        {
-            return baka_mitai.CreateInstance();
-        }
         public SoundEffectInstance CreateFridayNightSound()
         {
             return friday_night.CreateInstance();
