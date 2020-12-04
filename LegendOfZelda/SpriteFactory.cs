@@ -26,6 +26,8 @@ namespace LegendOfZelda
             HUDSpriteFactory.Instance.LoadAllTextures(content);
 
             EnemySpriteFactory.Instance.LoadPokemonTextures(content);
+            LinkSpriteFactory.Instance.LoadPokemonTextures(content);
+            ProjectileSpriteFactory.Instance.LoadPokemonTextures(content);
         }
     }
 }
