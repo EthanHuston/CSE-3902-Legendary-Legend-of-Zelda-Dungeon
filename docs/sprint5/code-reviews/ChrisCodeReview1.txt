@@ -1,0 +1,12 @@
+Chris Lenart
+12/04/2020
+Sprint 5
+MemeBackground.cs
+Saumyah Patel
+9 Minutes
+Readability
+This class is pretty simple as it just represents the background object so readability is very good for this class. 
+Also, the variable names are specific which helps with readability.
+Maintainability
+Since this class is simple and does not rely too much on other sections of code, maintaining and changing this class in the future would be easy to do.
+Thus, maintainability for this class is good.
