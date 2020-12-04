@@ -6,8 +6,9 @@ namespace LegendOfZelda.HUDClasses
     public static class HUDConstants
     {
         public const int hudx = 0, hudy = 0;
+        public static Point hudOffset = new Point(0, (int)(44 * Constants.GameScaler));
         public const int hudWidth = (int)(256 * Constants.GameScaler);
-        public const int hudHeight = (int)(2 * 56 * Constants.GameScaler);
+        public const int hudHeight = (int)(100 * Constants.GameScaler);
 
         //Locations on HUD
         public const int RupeeNumberX = (int)(96 * Constants.GameScaler);

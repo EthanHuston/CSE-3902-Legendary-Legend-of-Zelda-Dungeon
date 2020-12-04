@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.HUDClasses
 {
-    internal class ItemsManager
+    internal class ItemsManagerMultiplayer
     {
         private readonly IMenu hud;
         private IPlayer player;
@@ -23,20 +23,7 @@ namespace LegendOfZelda.HUDClasses
 
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
 
-        public ItemsManager(HUD hud, IPlayer player)
-        {
-            playerNumber = 1;
-            this.hud = hud;
-            this.player = player;
-            spriteBatch = hud.roomGameState.Game.SpriteBatch;
-            primaryItem = player.PrimaryItem;
-            secondaryItem = player.SecondaryItem;
-            fillSecondaryItemDictionaries();
-            primaryButton = new SwordInventoryButton(hud.roomGameState.Game.SpriteBatch, hud, HUDConstants.PrimaryItemLocation);
-            secondaryButton = secondaryItemDictionary[secondaryItem];
-        }
-
-        public ItemsManager(MultiplayerHUD hud, IPlayer player, int playerNumber)
+        public ItemsManagerMultiplayer(MultiplayerHUD hud, IPlayer player, int playerNumber)
         {
             this.playerNumber = playerNumber;
             this.hud = hud;

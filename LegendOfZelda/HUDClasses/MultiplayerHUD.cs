@@ -15,10 +15,10 @@ namespace LegendOfZelda.HUDClasses
         private readonly MinimapManager minimapManager;
         private readonly HeartManager player1HeartManager;
         private readonly NumberManager player1NumberManager;
-        private readonly ItemsManager player1ItemsManager;
+        private readonly ItemsManagerMultiplayer player1ItemsManager;
         private readonly HeartManager player2HeartManager;
         private readonly NumberManager player2NumberManager;
-        private readonly ItemsManager player2ItemsManager;
+        private readonly ItemsManagerMultiplayer player2ItemsManager;
         private readonly HUDNumber levelNum;
         private Point position;
         public Point Position { get => position; set => position = new Point(value.X, value.Y); }
@@ -30,10 +30,10 @@ namespace LegendOfZelda.HUDClasses
             minimapManager = new MinimapManager(gameState, 2);
             player1HeartManager = new HeartManager((LinkPlayer)gameState.PlayerList[0]);
             player1NumberManager = new NumberManager((LinkPlayer)gameState.PlayerList[0]);
-            player1ItemsManager = new ItemsManager(this, gameState.PlayerList[0], 1);
+            player1ItemsManager = new ItemsManagerMultiplayer(this, gameState.PlayerList[0], 1);
             player2HeartManager = new HeartManager((LinkPlayer)gameState.PlayerList[1]);
             player2NumberManager = new NumberManager((LinkPlayer)gameState.PlayerList[1]);
-            player2ItemsManager = new ItemsManager(this, gameState.PlayerList[1], 2);
+            player2ItemsManager = new ItemsManagerMultiplayer(this, gameState.PlayerList[1], 2);
             hudSprite = HUDSpriteFactory.Instance.CreateMultiplayerHUDSprite();
             levelNum = new HUDNumber(1);
             Position = new Point(HUDConstants.hudx, HUDConstants.hudy);
