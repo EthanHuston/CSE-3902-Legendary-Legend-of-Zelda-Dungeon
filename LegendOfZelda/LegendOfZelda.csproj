@@ -101,6 +101,7 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\Button\JojoButton.cs" />
     <Compile Include="GameState\Command\MoveSelectorCommand.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseStateMappings.cs" />
     <Compile Include="GameState\GameWinState\Curtain.cs" />
