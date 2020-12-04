@@ -7,7 +7,7 @@ namespace LegendOfZelda.Rooms
 {
     internal static class RoomFactory
     {
-        private const string startingRoomId = "startRoom";
+        private const string startingRoomId = "room15";
         private const string roomDataDirectory = "Content\\RoomData\\";
 
         public static IRoom BuildMapAndGetStartRoom(Game1 game, List<IPlayer> playerList)

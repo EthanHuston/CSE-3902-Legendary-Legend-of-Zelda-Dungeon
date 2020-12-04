@@ -5,7 +5,6 @@ namespace LegendOfZelda
 {
     internal class SoundFactory
     {
-        private SoundEffect baka_mitai;
         private SoundEffect friday_night;
         private SoundEffect arrow_boomerang;
         private SoundEffect bomb_blow;
@@ -81,7 +80,7 @@ namespace LegendOfZelda
 
         public void LoadYakuzaSounds(ContentManager content)
         {
-            baka_mitai = content.Load<SoundEffect>("Sounds/Baka_Mitai");
+            dungeon_music = content.Load<SoundEffect>("Sounds/Baka_Mitai");
         }
 
         public SoundEffectInstance CreateFridayNightSound()
