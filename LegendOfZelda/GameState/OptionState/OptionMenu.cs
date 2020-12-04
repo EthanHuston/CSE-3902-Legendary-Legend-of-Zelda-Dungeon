@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using LegendOfZelda.GameState.Button;
+﻿using LegendOfZelda.GameState.Button;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.OptionState
 {

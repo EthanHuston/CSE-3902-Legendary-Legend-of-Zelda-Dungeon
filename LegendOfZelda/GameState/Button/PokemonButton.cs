@@ -5,9 +5,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class PokemonButton : IButton
+    class PokemonButton : IOnOffButton
     {
-        private readonly ISprite sprite;
+        private ISprite sprite;
+        private readonly ISprite buttonSelectedSprite;
+        private readonly ISprite buttonSprite;
         private readonly SpriteBatch spriteBatch;
         private bool safeToDespawn;
         public bool IsActive { get; private set; }
@@ -15,10 +17,24 @@ namespace LegendOfZelda.GameState.Button
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
 
+        private bool isOn;
+        public bool IsOn
+        {
+            get => isOn;
+            set
+            {
+                isOn = value;
+                sprite = isOn ? buttonSelectedSprite : buttonSprite;
+            }
+        }
+
         public PokemonButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreatePokemonButtonSprite();
+            buttonSprite = GameStateSpriteFactory.Instance.CreatePokemonButtonSprite();
+            buttonSelectedSprite = GameStateSpriteFactory.Instance.CreatePokemonButtonSelectedSprite();
+            IsOn = false;
+
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;

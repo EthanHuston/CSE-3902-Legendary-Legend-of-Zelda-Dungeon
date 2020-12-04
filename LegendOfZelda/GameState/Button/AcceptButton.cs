@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    internal class AcceptButton : IButton
+    internal class AcceptButton : IOnOffButton
     {
         private readonly ISprite sprite;
         private readonly SpriteBatch spriteBatch;
@@ -14,6 +14,8 @@ namespace LegendOfZelda.GameState.Button
 
         private Point position;
         public Point Position { get => new Point(position.X, position.Y); set => position = new Point(value.X, value.Y); }
+
+        public bool IsOn { get; set; }
 
         public AcceptButton(SpriteBatch spriteBatch, Point spawnPosition)
         {

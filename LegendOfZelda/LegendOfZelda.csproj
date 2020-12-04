@@ -130,6 +130,7 @@
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerOne.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerTwo.cs" />
     <Compile Include="Menu\ButtonSelector.cs" />
+    <Compile Include="Menu\IOnOffButton.cs" />
     <Compile Include="Menu\IButtonMenu.cs" />
     <Compile Include="GameState\Button\ExitButtonBlack.cs" />
     <Compile Include="GameState\Button\RetryButtonBlack.cs" />
