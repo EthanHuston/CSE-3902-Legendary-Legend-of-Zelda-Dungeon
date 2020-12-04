@@ -32,7 +32,7 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            State = new OptionState(this);
+            State = new OptionGameState(this);
             State.StateEntryProcedure();
             base.Initialize();
         }
