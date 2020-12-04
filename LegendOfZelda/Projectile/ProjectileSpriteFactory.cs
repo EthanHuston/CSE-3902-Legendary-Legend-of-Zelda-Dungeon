@@ -28,6 +28,7 @@ namespace LegendOfZelda.Projectile
         private Texture2D swordAttackDown;
         private Texture2D swordAttackLeft;
         private Texture2D swordAttackRight;
+        private bool pokemonOn;
 
         public static ProjectileSpriteFactory Instance { get; } = new ProjectileSpriteFactory();
 
@@ -54,6 +55,8 @@ namespace LegendOfZelda.Projectile
             swordAttackDown = content.Load<Texture2D>("Link/LinkSwordDown");            
             swordAttackLeft = content.Load<Texture2D>("Link/LinkSwordLeft");       
             swordAttackRight = content.Load<Texture2D>("Link/LinkSwordRight");
+
+            pokemonOn = false;
             
         }
 
@@ -71,6 +74,7 @@ namespace LegendOfZelda.Projectile
             swordAttackDown = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
             swordAttackLeft = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingLeft");
             swordAttackRight = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingRight");
+            pokemonOn = true;
         }
 
         public IProjectileSprite CreateFireballSprite()
@@ -107,19 +111,19 @@ namespace LegendOfZelda.Projectile
         }
         public IProjectileSprite CreateSwordBeamDownSprite()
         {
-            return new SwordBeamFlyingSprite(swordBeamDown);
+            return new SwordBeamFlyingSprite(swordBeamDown, pokemonOn);
         }
         public IProjectileSprite CreateSwordBeamUpSprite()
         {
-            return new SwordBeamFlyingSprite(swordBeamUp);
+            return new SwordBeamFlyingSprite(swordBeamUp, pokemonOn);
         }
         public IProjectileSprite CreateSwordBeamRightSprite()
         {
-            return new SwordBeamFlyingSprite(swordBeamRight);
+            return new SwordBeamFlyingSprite(swordBeamRight, pokemonOn);
         }
         public IProjectileSprite CreateSwordBeamLeftSprite()
         {
-            return new SwordBeamFlyingSprite(swordBeamLeft);
+            return new SwordBeamFlyingSprite(swordBeamLeft, pokemonOn);
         }
         public IProjectileSprite CreateSwordBeamExplodingSprite()
         {
@@ -128,19 +132,19 @@ namespace LegendOfZelda.Projectile
 
         public IProjectileSprite CreateSwordAttackingUpSprite()
         {
-            return new SwordAttackingSprite(swordAttackUp);
+            return new SwordAttackingSprite(swordAttackUp, pokemonOn);
         }
         public IProjectileSprite CreateSwordAttackingDownSprite()
         {
-            return new SwordAttackingSprite(swordAttackDown);
+            return new SwordAttackingSprite(swordAttackDown, pokemonOn);
         }
         public IProjectileSprite CreateSwordAttackingLeftSprite()
         {
-            return new SwordAttackingSprite(swordAttackLeft);
+            return new SwordAttackingSprite(swordAttackLeft, pokemonOn);
         }
         public IProjectileSprite CreateSwordAttackingRightSprite()
         {
-            return new SwordAttackingSprite(swordAttackRight);
+            return new SwordAttackingSprite(swordAttackRight, pokemonOn);
         }
     }
 }

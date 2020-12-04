@@ -15,8 +15,9 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int frameDelay = 10;
+        private bool pokemonOn;
 
-        public SwordBeamFlyingSprite(Texture2D sprite)
+        public SwordBeamFlyingSprite(Texture2D sprite, bool pokemonOn)
         {
             this.sprite = sprite;
             bufferFrame = 0;
@@ -24,6 +25,7 @@ namespace LegendOfZelda.Projectile.Sprite
             totalFrames = numColumns * numRows;
             frameWidth = sprite.Width / numColumns;
             frameHeight = sprite.Height / numRows;
+            this.pokemonOn = pokemonOn;
         }
 
         public void Update()
@@ -42,6 +44,10 @@ namespace LegendOfZelda.Projectile.Sprite
 
             Rectangle sourceRectangle = new Rectangle(frameWidth * currentColumn, frameHeight * currentRow, frameWidth, frameHeight);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                destinationRectangle = new Rectangle(position.X, position.Y, (int)(frameWidth * Constants.TrainerScaler), (int)(frameHeight * Constants.TrainerScaler));
+            }
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, Color.White, layer);
         }
@@ -53,7 +59,12 @@ namespace LegendOfZelda.Projectile.Sprite
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            Rectangle returning = new Rectangle(0, 0, (int)(frameWidth * Constants.GameScaler), (int)(frameHeight * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                returning = new Rectangle(0, 0, (int)(frameWidth * Constants.TrainerScaler), (int)(frameHeight * Constants.TrainerScaler));
+            }
+            return returning;
         }
     }
 }
