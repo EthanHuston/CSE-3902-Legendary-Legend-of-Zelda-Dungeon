@@ -107,6 +107,9 @@
     <Compile Include="GameState\IGameStateControllerMappings.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionStateMappings.cs" />
     <Compile Include="GameState\MainMenuState\MainMenuStateMappings.cs" />
+    <Compile Include="GameState\OptionState\OptionMapping.cs" />
+    <Compile Include="GameState\OptionState\OptionMenu.cs" />
+    <Compile Include="GameState\OptionState\OptionState.cs" />
     <Compile Include="GameState\PauseState\PauseStateMappings.cs" />
     <Compile Include="GameState\RoomsState\IItemDropper.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerOne.cs" />
