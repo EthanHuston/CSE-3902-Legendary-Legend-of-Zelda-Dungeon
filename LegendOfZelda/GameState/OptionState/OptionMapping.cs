@@ -64,7 +64,8 @@ namespace LegendOfZelda.GameState.OptionState
                 {typeof(JojoButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(JojoButton)) },
                 {typeof(YakuzaButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(YakuzaButton)) },
                 {typeof(PokemonButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(PokemonButton)) },
-                {typeof(NormalButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(NormalButton)) }
+                {typeof(NormalButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(NormalButton)) },
+                {typeof(BackButton), new MainMenuCommand(gameState) }
             };
         }
 

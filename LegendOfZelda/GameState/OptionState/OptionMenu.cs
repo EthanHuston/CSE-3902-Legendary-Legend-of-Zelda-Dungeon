@@ -33,6 +33,7 @@ namespace LegendOfZelda.GameState.OptionState
             AddToDictionaryAndList(new PokemonButton(game.SpriteBatch, GameStateConstants.PokemonButtonLocation));
             AddToDictionaryAndList(new NormalButton(game.SpriteBatch, GameStateConstants.NormalButtonLocation));
             AddToDictionaryAndList(new AcceptButton(game.SpriteBatch, GameStateConstants.AcceptButtonLocation));
+            AddToDictionaryAndList(new BackButton(game.SpriteBatch, GameStateConstants.BackButtonLocation));
         }
 
         public void Draw()
