@@ -61,9 +61,7 @@ namespace LegendOfZelda.GameState.OptionState
         {
             return new Dictionary<Type, ICommand>
             {
-                {typeof(ResumeButton), new ResumeGameCommand(gameState) },
-                {typeof(MainMenuButton), new MainMenuCommand(gameState) },
-                {typeof(ExitButton), new ExitGameCommand(gameState) }
+                {typeof(AcceptButton), new MainMenuCommand(gameState) }
             };
         }
 
