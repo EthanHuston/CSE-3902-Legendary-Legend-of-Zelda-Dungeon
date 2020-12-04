@@ -62,7 +62,7 @@ namespace LegendOfZelda.GameState.RoomsState
                 { Keys.S, new MoveDownCommand(player) },
                 { Keys.A, new MoveLeftCommand(player) },
 
-                /* Keys to change rooms for debugging 
+                /* Keys to change rooms for debugging */
                 { Keys.NumPad8, new ChangeRoomUpCommand((RoomGameState)gameState) },
                 { Keys.NumPad6, new ChangeRoomRightCommand((RoomGameState)gameState) },
                 { Keys.NumPad2, new ChangeRoomDownCommand((RoomGameState)gameState) },
