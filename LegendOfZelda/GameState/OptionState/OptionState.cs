@@ -9,15 +9,13 @@ namespace LegendOfZelda.GameState.OptionState
     class OptionState : IGameState
     {
         private readonly List<IController> controllerList;
-        private readonly IGameState roomStatePreserved;
 
         public Game1 Game { get; private set; }
         public IButtonMenu OptionMenu { get; private set; }
 
-        public OptionState(Game1 game, IGameState oldRoomState)
+        public OptionState(Game1 game)
         {
             Game = game;
-            roomStatePreserved = oldRoomState;
             OptionMenu = new OptionMenu(Game);
             controllerList = GetControllerList();
         }
@@ -35,14 +33,12 @@ namespace LegendOfZelda.GameState.OptionState
 
         public void Draw()
         {
-            roomStatePreserved.Draw(); // continue to draw the old room in the background
             OptionMenu.Draw();
         }
 
         public void SwitchToRoomState()
         {
             StateExitProcedure();
-            Game.State = roomStatePreserved;
             Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
             Game.State.StateEntryProcedure();
         }
