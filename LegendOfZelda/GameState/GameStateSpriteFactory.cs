@@ -26,6 +26,7 @@ namespace LegendOfZelda.GameState
         private Texture2D buttonSelectorTopRightSprite;
         private Texture2D buttonSelectorBottomRightSprite;
         private Texture2D buttonSelectorBottomLeftSprite;
+        private Texture2D acceptButtonSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -48,6 +49,7 @@ namespace LegendOfZelda.GameState
             buttonSelectorTopRightSprite = content.Load<Texture2D>("Menu/ButtonSelectorTopRight");
             buttonSelectorBottomRightSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomRight");
             buttonSelectorBottomLeftSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomLeft");
+            acceptButtonSprite = content.Load<Texture2D>("Menu/AcceptButton");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -113,6 +115,10 @@ namespace LegendOfZelda.GameState
         public ISprite CreateBottomLeftButtonSelectorSprite()
         {
             return new BottomLeftSelectorSprite(buttonSelectorBottomLeftSprite);
+        }
+        public ISprite CreateAcceptButtonSprite()
+        {
+            return new GameStateSprite(acceptButtonSprite);
         }
     }
 }

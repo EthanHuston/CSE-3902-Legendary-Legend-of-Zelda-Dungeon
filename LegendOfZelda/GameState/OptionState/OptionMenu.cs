@@ -25,7 +25,7 @@ namespace LegendOfZelda.GameState.OptionState
         {
             return new List<IButton>()
             {
-                {new MainMenuButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) }
+                {new AcceptButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) }
             };
         }
 

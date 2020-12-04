@@ -102,6 +102,7 @@
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\Button\JojoButton.cs" />
+    <Compile Include="GameState\Button\AcceptButton.cs" />
     <Compile Include="GameState\Button\NormalButton.cs" />
     <Compile Include="GameState\Button\PokemonButton.cs" />
     <Compile Include="GameState\Button\SinglePlayerButton.cs" />
