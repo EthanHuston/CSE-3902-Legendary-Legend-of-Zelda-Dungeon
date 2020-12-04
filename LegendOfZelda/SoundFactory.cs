@@ -42,19 +42,17 @@ namespace LegendOfZelda
 
         public void LoadAllSounds(ContentManager content)
         {     
-            baka_mitai = content.Load<SoundEffect>("Sounds/Baka_Mitai");
-            friday_night = content.Load<SoundEffect>("Sounds/Friday_Night");
             arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang");
             bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow");
             bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop");
             boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit");
             boss_scream = content.Load<SoundEffect>("Sounds/LOZ_Boss_Scream1");
-            clock_pickup = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows2");
             door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock");
             dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon");
             enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die");
             enemy_hit = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Hit");
             fanfare = content.Load<SoundEffect>("Sounds/LOZ_Fanfare");
+            friday_night = content.Load<SoundEffect>("Sounds/Friday_Night");
             game_over = content.Load<SoundEffect>("Sounds/LOZ_GameOver");
             get_heart = content.Load<SoundEffect>("Sounds/LOZ_Get_Heart");
             get_item = content.Load<SoundEffect>("Sounds/LOZ_Get_Item");
@@ -71,19 +69,19 @@ namespace LegendOfZelda
             sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot");
             sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash");
             text = content.Load<SoundEffect>("Sounds/LOZ_Text");
-            time_flows = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
             title = content.Load<SoundEffect>("Sounds/LOZ_Title");
             win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
         public void LoadJojoSounds(ContentManager content)
         {
-            // TODO: Load jojo sound
+            clock_pickup = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows2");
+            time_flows = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
         }
 
         public void LoadYakuzaSounds(ContentManager content)
         {
-            // TODO: Load Yakuza Sounds
+            baka_mitai = content.Load<SoundEffect>("Sounds/Baka_Mitai");
         }
 
         public SoundEffectInstance CreateBakaMitaiSound()
