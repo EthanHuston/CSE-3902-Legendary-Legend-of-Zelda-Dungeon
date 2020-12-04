@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.Command;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -29,7 +28,7 @@ namespace LegendOfZelda.GameState.OptionState
 
         private Dictionary<Buttons, ICommand> GetGamepadMappings(IGameState gameState)
         {
-            OptionState gameStateCast = (OptionState)gameState;
+            OptionGameState gameStateCast = (OptionGameState)gameState;
             ICommand resumeGameCommand = new ResumeGameCommand(gameState);
             return new Dictionary<Buttons, ICommand>
             {
@@ -45,7 +44,7 @@ namespace LegendOfZelda.GameState.OptionState
 
         public Dictionary<Keys, ICommand> GetKeyboardMappings(IGameState gameState)
         {
-            OptionState gameStateCast = (OptionState)gameState;
+            OptionGameState gameStateCast = (OptionGameState)gameState;
             return new Dictionary<Keys, ICommand>
             {
                 { Keys.Escape, new ResumeGameCommand(gameState) },

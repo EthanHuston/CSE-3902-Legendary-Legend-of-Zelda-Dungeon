@@ -5,7 +5,6 @@ using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.PauseState;
 using LegendOfZelda.GameState.RoomTransitionState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
@@ -48,14 +47,7 @@ namespace LegendOfZelda.GameState.RoomsState
 
             UpdatePlayersPositions(Constants.Direction.Down);
 
-            /* 
-            dungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
-            dungeonMusic.IsLooped = true;
-            dungeonMusic.Volume = Constants.MusicVolume;
-            dungeonMusic.Play();
-            */
-
-            DungeonMusic = SoundFactory.Instance.CreateBakaMitaiSound();
+            DungeonMusic = SoundFactory.Instance.CreateDungeonMusicSound();
             DungeonMusic.IsLooped = true;
             DungeonMusic.Volume = Constants.MusicVolume;
             DungeonMusic.Play();

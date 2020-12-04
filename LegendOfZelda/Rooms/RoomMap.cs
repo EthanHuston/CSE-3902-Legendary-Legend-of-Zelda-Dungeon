@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameState;
 using LegendOfZelda.GameState.ItemSelectionState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;

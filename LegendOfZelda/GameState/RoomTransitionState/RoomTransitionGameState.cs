@@ -1,18 +1,17 @@
 ﻿using LegendOfZelda.Environment;
 using LegendOfZelda.GameState.RoomsState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace LegendOfZelda.GameState.RoomTransitionState
 {
     internal class RoomTransitionGameState : IGameState
     {
         private const int velocityScalar = 10;
-        private readonly RoomGameState roomGameState;
         private readonly IRoom currentRoom;
         private readonly IRoom nextRoom;
         private readonly int distanceToMove;
@@ -21,12 +20,13 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         private Vector2 velocity;
         private int distanceMoved;
 
+        public RoomGameState RoomGameState { get; private set; }
         public Game1 Game { get; private set; }
 
         public RoomTransitionGameState(RoomGameState roomGameState, Constants.Direction direction)
         {
-            this.roomGameState = roomGameState;
-            Game = this.roomGameState.Game;
+            this.RoomGameState = roomGameState;
+            Game = this.RoomGameState.Game;
             this.direction = direction;
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);
@@ -96,7 +96,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
 
         public void Draw()
         {
-            roomGameState.Hud.Draw();
+            RoomGameState.Hud.Draw();
             foreach (IBlock block in currentRoom.AllObjects.BlockList)
             {
                 block.Draw();
@@ -123,9 +123,8 @@ namespace LegendOfZelda.GameState.RoomTransitionState
             currentRoom.RunRoomExitProcedure();
             nextRoom.RunRoomEntryProcedure();
 
-            roomGameState.CurrentRoom = nextRoom;
-            Game.State = roomGameState;
-            roomGameState.CurrentRoom.RunRoomEntryProcedure();
+            RoomGameState.CurrentRoom = nextRoom;
+            Game.State = RoomGameState;
         }
 
         public void Update()
@@ -170,7 +169,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         private void UpdatePlayersPositions(Constants.Direction doorLocation)
         {
 
-            foreach (IPlayer player in roomGameState.PlayerList)
+            foreach (IPlayer player in RoomGameState.PlayerList)
             {
                 player.StopMoving();
                 switch (doorLocation)

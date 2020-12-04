@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.GameState.Utilities
+namespace LegendOfZelda.GameState
 {
     internal static class GameStateConstants
     {

@@ -1,19 +1,43 @@
 ﻿using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Menu;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.OptionState
 {
-    class OptionState : IGameState
+    class OptionGameState : IGameState
     {
         private readonly List<IController> controllerList;
+
+
+        private bool usePokemonSprites;
+        public bool UsePokemonSprites { get => usePokemonSprites; set => usePokemonSprites = value; }
+
+        private bool useJojoReferences;
+        public bool UseJojoReferences {
+            get => useJojoReferences;
+            set
+            {
+                useJojoReferences = true; // invert these because you can only use one at a time
+                useYakuzaReferences = false;
+            }
+        }
+
+        private bool useYakuzaReferences;
+        public bool UseYakuzaReferences
+        {
+            get => useYakuzaReferences;
+            set
+            {
+                useYakuzaReferences = true; // invert these because you can only use one at a time
+                useJojoReferences = false;
+            }
+        }
 
         public Game1 Game { get; private set; }
         public IButtonMenu OptionMenu { get; private set; }
 
-        public OptionState(Game1 game)
+        public OptionGameState(Game1 game)
         {
             Game = game;
             OptionMenu = new OptionMenu(Game);

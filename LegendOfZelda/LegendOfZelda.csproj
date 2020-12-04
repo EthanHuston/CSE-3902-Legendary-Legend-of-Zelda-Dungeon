@@ -108,7 +108,15 @@
     <Compile Include="GameState\Button\SinglePlayerButton.cs" />
     <Compile Include="GameState\Button\TwoPlayerButton.cs" />
     <Compile Include="GameState\Button\YakuzaButton.cs" />
+    <Compile Include="GameState\Command\SetJojoReferencesOffCommand.cs" />
+    <Compile Include="GameState\Command\SetPokemonSpritesOffCommand.cs" />
+    <Compile Include="GameState\Command\SetPokemonSpritesOnCommand.cs" />
     <Compile Include="GameState\Command\MoveSelectorCommand.cs" />
+    <Compile Include="GameState\Command\SetTwoPlayerCommand.cs" />
+    <Compile Include="GameState\Command\SetOnePlayerCommand.cs" />
+    <Compile Include="GameState\Command\SetJojoReferencesOnCommand.cs" />
+    <Compile Include="GameState\Command\SetYakuzaReferencesOffCommand.cs" />
+    <Compile Include="GameState\Command\SetYakuzaReferencesOnCommand.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseStateMappings.cs" />
     <Compile Include="GameState\GameWinState\Curtain.cs" />
     <Compile Include="GameState\IGameStateControllerMappings.cs" />
@@ -116,7 +124,7 @@
     <Compile Include="GameState\MainMenuState\MainMenuStateMappings.cs" />
     <Compile Include="GameState\OptionState\OptionMapping.cs" />
     <Compile Include="GameState\OptionState\OptionMenu.cs" />
-    <Compile Include="GameState\OptionState\OptionState.cs" />
+    <Compile Include="GameState\OptionState\OptionGameState.cs" />
     <Compile Include="GameState\PauseState\PauseStateMappings.cs" />
     <Compile Include="GameState\RoomsState\IItemDropper.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerOne.cs" />
@@ -143,7 +151,7 @@
     <Compile Include="GameState\Command\MainMenuCommand.cs" />
     <Compile Include="GameState\Command\QuitGameCommand.cs" />
     <Compile Include="GameState\Command\ResumeGameCommand.cs" />
-    <Compile Include="GameState\Utilities.cs" />
+    <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionStateCamera.cs" />

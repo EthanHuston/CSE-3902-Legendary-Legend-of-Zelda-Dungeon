@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 
@@ -25,7 +24,12 @@ namespace LegendOfZelda.GameState.OptionState
         {
             return new List<IButton>()
             {
-                {new AcceptButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation) }
+                {new AcceptButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
+                {new SinglePlayerButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
+                {new TwoPlayerButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
+                {new JojoButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
+                {new YakuzaButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
+                {new PokemonButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)}
             };
         }
 

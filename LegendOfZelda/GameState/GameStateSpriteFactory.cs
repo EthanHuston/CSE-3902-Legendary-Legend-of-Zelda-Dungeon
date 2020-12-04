@@ -27,6 +27,11 @@ namespace LegendOfZelda.GameState
         private Texture2D buttonSelectorBottomRightSprite;
         private Texture2D buttonSelectorBottomLeftSprite;
         private Texture2D acceptButtonSprite;
+        private Texture2D onePlayerButtonSprite;
+        private Texture2D twoPlayerButtonSprite;
+        private Texture2D jojoButtonSprite;
+        private Texture2D yakuzaButtonSprite;
+        private Texture2D pokemonButtonSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -50,6 +55,12 @@ namespace LegendOfZelda.GameState
             buttonSelectorBottomRightSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomRight");
             buttonSelectorBottomLeftSprite = content.Load<Texture2D>("Menu/ButtonSelectorBottomLeft");
             acceptButtonSprite = content.Load<Texture2D>("Menu/AcceptButton");
+            onePlayerButtonSprite = content.Load<Texture2D>("Menu/OnePlayerButton");
+            twoPlayerButtonSprite = content.Load<Texture2D>("Menu/TwoPlayerButton");
+            jojoButtonSprite = content.Load<Texture2D>("Menu/JojoButton");
+            yakuzaButtonSprite = content.Load<Texture2D>("Menu/YakuzaButton");
+            pokemonButtonSprite = content.Load<Texture2D>("Menu/PokemonButton");
+
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -119,6 +130,27 @@ namespace LegendOfZelda.GameState
         public ISprite CreateAcceptButtonSprite()
         {
             return new GameStateSprite(acceptButtonSprite);
+        }
+
+        public ISprite CreateOnePlayerButtonSprite()
+        {
+            return new GameStateSprite(onePlayerButtonSprite);
+        }
+        public ISprite CreateTwoPlayerButtonSprite()
+        {
+            return new GameStateSprite(twoPlayerButtonSprite);
+        }
+        public ISprite CreateJojoButtonSprite()
+        {
+            return new GameStateSprite(jojoButtonSprite);
+        }
+        public ISprite CreateYakuzaButtonSprite()
+        {
+            return new GameStateSprite(yakuzaButtonSprite);
+        }
+        public ISprite CreatePokemonButtonSprite()
+        {
+            return new GameStateSprite(pokemonButtonSprite);
         }
     }
 }

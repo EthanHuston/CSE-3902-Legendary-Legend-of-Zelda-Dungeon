@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.GameState.Utilities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
