@@ -9,7 +9,7 @@ namespace LegendOfZelda
     {
         private readonly GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch;
-
+        public int NumPlayers { get; set; }
         public IGameState State { get; set; }
 
         public Game1()
