@@ -319,6 +319,8 @@ namespace LegendOfZelda.Rooms
                     return new RoomWallMaster(playerList, game);
                 case RoomConstants.RoomWithKey:
                     return new RoomWithKey(playerList, game);
+                case RoomConstants.RoomWithDisco:
+                    return new RoomOfTheDisco(playerList, game);
                 default:
                     return null;
             }

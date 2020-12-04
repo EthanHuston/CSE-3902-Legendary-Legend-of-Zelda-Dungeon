@@ -1,16 +1,34 @@
-﻿using LegendOfZelda.Link.Interface;
+﻿using LegendOfZelda.GameState.RoomsState;
+using LegendOfZelda.Link.Interface;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
     class RoomOfTheDisco : Room
     {
-        public RoomOfTheDisco(List<IPlayer> playerList, Game1 game) : base(playerList, game)
-        { }
+        private SoundEffectInstance discoMusic;
 
-        public override void Update()
+        public RoomOfTheDisco(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
-            base.Update();
+            // TODO: PATEL ADD YOUR MUSIC HERE
+            // discoMusic = SoundFactory.Instance.Create...()
+        }
+
+        public override void RunRoomEntryProcedure()
+        {
+            ((RoomGameState)Game.State).DungeonMusic.Pause();
+            // TODO: PATEL PLAY YOUR MUSIC HERE
+            // discoMusic.Play();
+            base.RunRoomEntryProcedure();
+        }
+
+        public override void RunRoomExitProcedure()
+        {
+            // TODO: PATEL STOP YOUR MUSIC HERE
+            // discoMusic.Stop();
+            ((RoomGameState)Game.State).DungeonMusic.Pause();
+            base.RunRoomExitProcedure();
         }
     }
 }
