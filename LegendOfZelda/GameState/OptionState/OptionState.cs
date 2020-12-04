@@ -12,13 +12,13 @@ namespace LegendOfZelda.GameState.OptionState
         private readonly IGameState roomStatePreserved;
 
         public Game1 Game { get; private set; }
-        public IButtonMenu PauseGameMenu { get; private set; }
+        public IButtonMenu OptionMenu { get; private set; }
 
         public OptionState(Game1 game, IGameState oldRoomState)
         {
             Game = game;
             roomStatePreserved = oldRoomState;
-            PauseGameMenu = new PauseGameMenu(Game);
+            OptionMenu = new OptionMenu(Game);
             controllerList = GetControllerList();
         }
 
@@ -28,7 +28,7 @@ namespace LegendOfZelda.GameState.OptionState
             return new List<IController>()
             {
                 {new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys) },
-                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, PauseGameMenu.Buttons) },
+                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, OptionMenu.Buttons) },
                 {new GamepadController(mappings.GamepadMappings, mappings.RepeatableGamepadButtons) }
             };
         }
@@ -36,7 +36,7 @@ namespace LegendOfZelda.GameState.OptionState
         public void Draw()
         {
             roomStatePreserved.Draw(); // continue to draw the old room in the background
-            PauseGameMenu.Draw();
+            OptionMenu.Draw();
         }
 
         public void SwitchToRoomState()
@@ -68,7 +68,7 @@ namespace LegendOfZelda.GameState.OptionState
         public void Update()
         {
             foreach (IController controller in controllerList) controller.Update();
-            PauseGameMenu.Update();
+            OptionMenu.Update();
         }
 
         public void SwitchToPauseState() { }

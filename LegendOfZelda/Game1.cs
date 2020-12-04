@@ -1,5 +1,5 @@
 ﻿using LegendOfZelda.GameState;
-using LegendOfZelda.GameState.MainMenuState;
+using LegendOfZelda.GameState.OptionState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -31,7 +31,7 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            State = new MainMenuGameState(this);
+            State = new OptionState(this);
             State.StateEntryProcedure();
             base.Initialize();
         }
