@@ -42,7 +42,8 @@ namespace LegendOfZelda.Projectile
             arrowLeftSprite = content.Load<Texture2D>("Items/ArrowLeft");
             bombExplodingSprite = content.Load<Texture2D>("Items/BombExploding");
             boomerangFlyingSprite = content.Load<Texture2D>("Items/BoomerangFlying");
-            swordBeamDown = content.Load<Texture2D>("Items/SwordBeamDown");
+            //swordBeamDown = content.Load<Texture2D>("Items/SwordBeamDown");
+            swordBeamDown = content.Load<Texture2D>("Pokemon/Items/Pokeball");
             swordBeamUp = content.Load<Texture2D>("Items/SwordBeamUp");
             swordBeamRight = content.Load<Texture2D>("Items/SwordBeamRight");
             swordBeamLeft = content.Load<Texture2D>("Items/SwordBeamLeft");
