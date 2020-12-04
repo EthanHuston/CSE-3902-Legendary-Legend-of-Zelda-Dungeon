@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;

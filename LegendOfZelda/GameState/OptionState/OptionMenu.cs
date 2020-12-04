@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 

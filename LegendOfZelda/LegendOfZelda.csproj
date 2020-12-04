@@ -151,7 +151,7 @@
     <Compile Include="GameState\Command\MainMenuCommand.cs" />
     <Compile Include="GameState\Command\QuitGameCommand.cs" />
     <Compile Include="GameState\Command\ResumeGameCommand.cs" />
-    <Compile Include="GameState\Utilities.cs" />
+    <Compile Include="GameState\GameStateConstants.cs" />
     <Compile Include="GameState\GameStateSpriteFactory.cs" />
     <Compile Include="GameState\Command\StartGameCommand.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionStateCamera.cs" />

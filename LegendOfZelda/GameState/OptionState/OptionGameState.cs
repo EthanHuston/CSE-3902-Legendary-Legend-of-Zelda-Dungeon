@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Menu;
 using System.Collections.Generic;
 

@@ -1,7 +1,6 @@
 ﻿using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.Command;
 using LegendOfZelda.GameState.PauseState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using LegendOfZelda.Link.Interface;

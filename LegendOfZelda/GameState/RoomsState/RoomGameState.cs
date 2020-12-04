@@ -5,7 +5,6 @@ using LegendOfZelda.GameState.GameWinState;
 using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.GameState.PauseState;
 using LegendOfZelda.GameState.RoomTransitionState;
-using LegendOfZelda.GameState.Utilities;
 using LegendOfZelda.HUDClasses;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;

@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.GameState.Utilities;
+﻿
 
 namespace LegendOfZelda.GameState
 {

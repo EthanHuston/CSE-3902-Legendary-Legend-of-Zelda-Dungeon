@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.GameState.Utilities;
+﻿
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
