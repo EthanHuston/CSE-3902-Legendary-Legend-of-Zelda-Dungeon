@@ -18,8 +18,7 @@ namespace LegendOfZelda.GameState.Button
         public PokemonButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateAcceptButtonSprite();
-            //sprite = GameStateSpriteFactory.Instance.CreatePokemonButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreatePokemonButtonSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;

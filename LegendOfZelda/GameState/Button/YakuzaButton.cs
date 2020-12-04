@@ -18,8 +18,7 @@ namespace LegendOfZelda.GameState.Button
         public YakuzaButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            // sprite = GameStateSpriteFactory.Instance.CreateYakuzaButtonSprite();
-            sprite = GameStateSpriteFactory.Instance.CreateAcceptButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateYakuzaButtonSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;

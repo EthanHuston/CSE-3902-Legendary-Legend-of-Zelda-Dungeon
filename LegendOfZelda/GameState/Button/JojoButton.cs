@@ -18,8 +18,7 @@ namespace LegendOfZelda.GameState.Button
         public JojoButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateAcceptButtonSprite();
-            //sprite = GameStateSpriteFactory.Instance.CreateJojoButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateJojoButtonSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;

@@ -18,8 +18,7 @@ namespace LegendOfZelda.GameState.Button
         public TwoPlayerButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateAcceptButtonSprite();
-            //sprite = GameStateSpriteFactory.Instance.CreateTwoPlayerButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateTwoPlayerButtonSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;
