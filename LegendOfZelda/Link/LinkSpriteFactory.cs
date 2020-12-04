@@ -31,39 +31,58 @@ namespace LegendOfZelda.Link
         public void LoadAllTextures(ContentManager content)
         {
             // Load Link sprites
-            //idleLinkDownSprite = content.Load<Texture2D>("Link/IdleLinkDown");
-            idleLinkDownSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleDown");
-            //idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
-            idleLinkRightSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleRight");
-            //idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
-            idleLinkLeftSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleLeft");
-            //idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
-            idleLinkUpSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleUp");
-            //strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkSwordDown");
-            strikingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
-            //strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkSwordLeft");
-            strikingLeftLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingLeft");
-            //strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkSwordRight");
-            strikingRightLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingRight");
-            //strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkSwordUp");
-            strikingUpLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingUp");
-            /* pickingUpItemLinkSprite = content.Load<Texture2D>("Link/LinkPickingUpItem");*/
-            //walkingDownLinkSprite = content.Load<Texture2D>("Link/WalkingDownLink");
-            walkingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingDown");
-            //walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
-            walkingLeftLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingLeft");
-            //walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
-            walkingRightLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingRight");
-            //walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
-            walkingUpLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingUp");
+            idleLinkDownSprite = content.Load<Texture2D>("Link/IdleLinkDown");
+            
+            idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");
+           
+            idleLinkLeftSprite = content.Load<Texture2D>("Link/IdleLinkLeft");
+            
+            idleLinkUpSprite = content.Load<Texture2D>("Link/IdleLinkUp");
+            
+            strikingDownLinkSprite = content.Load<Texture2D>("Link/LinkSwordDown");
+            
+            strikingLeftLinkSprite = content.Load<Texture2D>("Link/LinkSwordLeft");
+            
+            strikingRightLinkSprite = content.Load<Texture2D>("Link/LinkSwordRight");
+            
+            strikingUpLinkSprite = content.Load<Texture2D>("Link/LinkSwordUp");
+            
+            
+            walkingDownLinkSprite = content.Load<Texture2D>("Link/WalkingDownLink");
+            
+            walkingLeftLinkSprite = content.Load<Texture2D>("Link/WalkingLeftLink");
+            
+            walkingRightLinkSprite = content.Load<Texture2D>("Link/WalkingRightLink");
+            
+            walkingUpLinkSprite = content.Load<Texture2D>("Link/WalkingUpLink");
+            
 
-            //linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
+            linkPickingUpHeartSprite = content.Load<Texture2D>("Link/LinkPickingUpHeart");
+            
+            linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
+            
+            linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
+           
+            linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
+            
+        }
+        public void LoadPokemonTextures(ContentManager content)
+        {
+            idleLinkDownSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleDown");
+            idleLinkRightSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleRight");
+            idleLinkLeftSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleLeft");
+            idleLinkUpSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleUp");
+            strikingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
+            strikingLeftLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingLeft");
+            strikingRightLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingRight");
+            strikingUpLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingUp");
+            walkingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingDown");
+            walkingLeftLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingLeft");
+            walkingRightLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingRight");
+            walkingUpLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingUp");
             linkPickingUpHeartSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpHeart");
-            //linkPickingUpTriforceSprite = content.Load<Texture2D>("Link/LinkPickingUpTriforce");
             linkPickingUpTriforceSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpTriforce");
-            //linkPickingUpBowSprite = content.Load<Texture2D>("Link/LinkPickingUpBow");
             linkPickingUpBowSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpBow");
-            //linkPickingUpBoomerangSprite = content.Load<Texture2D>("Link/LinkPickingUpBoomerang");
             linkPickingUpBoomerangSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickupBoomerang");
         }
 
