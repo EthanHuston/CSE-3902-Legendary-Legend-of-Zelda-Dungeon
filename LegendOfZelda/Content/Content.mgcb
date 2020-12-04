@@ -1957,3 +1957,9 @@
 /processorParam:Quality=Best
 /build:Sounds/LOZ_Win.mp3
 
+#begin Sounds/Yakuza 0 OST - 79 Friday Night (128 kbps).mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/Yakuza 0 OST - 79 Friday Night (128 kbps).mp3;Sounds/Friday_Night.mp3
+
