@@ -213,7 +213,6 @@
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
     <Compile Include="GameState\RoomTransitionState\RoomTransitionGameState.cs" />
-    <Compile Include="Rooms\RoomImplementation\RoomOfTheDisco.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomWallMaster.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />
@@ -495,6 +494,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Content\Sounds\Baka_Mitai.mp3" />
+    <Content Include="Content\Sounds\Friday_Night.mp3" />
     <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Drop.wav" />
