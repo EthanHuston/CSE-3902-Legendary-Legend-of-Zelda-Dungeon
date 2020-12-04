@@ -30,11 +30,11 @@ namespace LegendOfZelda.GameState.RoomsState
         public IMenu Hud { get; private set; }
         public RoomMap RoomMap { get; private set; }
 
-        public RoomGameState(Game1 game, int numPlayers)
+        public RoomGameState(Game1 game)
         {
             Game = game;
 
-            InitPlayersForGame(numPlayers);
+            InitPlayersForGame(Game.NumPlayers);
 
             CurrentRoom = RoomFactory.BuildMapAndGetStartRoom(game, PlayerList);
             CurrentRoom.Visiting = true;

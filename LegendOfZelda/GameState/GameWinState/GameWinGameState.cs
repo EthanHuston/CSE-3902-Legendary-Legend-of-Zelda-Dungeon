@@ -108,6 +108,8 @@ namespace LegendOfZelda.GameState.GameWinState
         public void SwitchToRoomState() { }
 
         public void SwitchToMainMenuState() { }
+
+        public void SwitchToOptionState() { }
     }
 }
 

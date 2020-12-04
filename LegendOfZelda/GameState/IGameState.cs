@@ -13,6 +13,7 @@ namespace LegendOfZelda.GameState
         void SwitchToItemSelectionState();
         void SwitchToDeathState();
         void SwitchToWinState();
+        void SwitchToOptionState();
         void SetControllerOldInputState(InputStates inputFromOldState);
         void StateEntryProcedure();
         void StateExitProcedure();

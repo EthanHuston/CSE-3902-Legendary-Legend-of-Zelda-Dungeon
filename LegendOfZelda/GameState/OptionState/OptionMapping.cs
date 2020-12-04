@@ -29,7 +29,6 @@ namespace LegendOfZelda.GameState.OptionState
         private Dictionary<Buttons, ICommand> GetGamepadMappings(IGameState gameState)
         {
             OptionGameState gameStateCast = (OptionGameState)gameState;
-            ICommand resumeGameCommand = new ResumeGameCommand(gameState);
             return new Dictionary<Buttons, ICommand>
             {
                 { Buttons.LeftThumbstickUp, new MoveSelectorCommand(gameStateCast.OptionMenu, Constants.Direction.Up) },
@@ -45,7 +44,7 @@ namespace LegendOfZelda.GameState.OptionState
             OptionGameState gameStateCast = (OptionGameState)gameState;
             return new Dictionary<Keys, ICommand>
             {
-                { Keys.Escape, new ResumeGameCommand(gameState) },
+                { Keys.Escape, new MainMenuCommand(gameState) },
                 { Keys.W, new MoveSelectorCommand(gameStateCast.OptionMenu, Constants.Direction.Up) },
                 { Keys.D, new MoveSelectorCommand(gameStateCast.OptionMenu, Constants.Direction.Right) },
                 { Keys.S, new MoveSelectorCommand(gameStateCast.OptionMenu, Constants.Direction.Down) },
@@ -59,7 +58,7 @@ namespace LegendOfZelda.GameState.OptionState
             OptionGameState gameStateCast = (OptionGameState)gameState;
             return new Dictionary<Type, ICommand>
             {
-                {typeof(AcceptButton), new MainMenuCommand(gameState) },
+                {typeof(AcceptButton), new StartGameCommand(gameState) },
                 {typeof(SinglePlayerButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(SinglePlayerButton)) },
                 {typeof(TwoPlayerButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(TwoPlayerButton)) },
                 {typeof(JojoButton), new ToggleButtonCommand(gameStateCast.OptionMenu, typeof(JojoButton)) },

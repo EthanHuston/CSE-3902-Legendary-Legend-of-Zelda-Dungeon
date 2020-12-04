@@ -140,6 +140,8 @@ namespace LegendOfZelda.GameState.GameLoseState
         public void SwitchToDeathState() { }
 
         public void SwitchToWinState() { }
+
+        public void SwitchToOptionState() { }
     }
 }
 

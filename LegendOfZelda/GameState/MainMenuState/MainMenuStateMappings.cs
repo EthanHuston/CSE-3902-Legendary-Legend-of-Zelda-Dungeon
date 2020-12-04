@@ -28,11 +28,11 @@ namespace LegendOfZelda.GameState.MainMenuState
 
         private Dictionary<Buttons, ICommand> GetGamepadMappings(IGameState gameState)
         {
-            ICommand startGameCommand = new StartGameCommand(gameState);
+            ICommand optionCommand = new OptionCommand(gameState);
             return new Dictionary<Buttons, ICommand>
             {
-                { Buttons.A, startGameCommand },
-                { Buttons.Start, startGameCommand },
+                { Buttons.A, optionCommand },
+                { Buttons.Start, optionCommand },
                 { Buttons.B, new ExitGameCommand(gameState) }
             };
         }
@@ -42,7 +42,7 @@ namespace LegendOfZelda.GameState.MainMenuState
             return new Dictionary<Keys, ICommand>
             {
                 {Keys.Escape, new ExitGameCommand(gameState) },
-                {Keys.Space, new StartGameCommand(gameState) }
+                {Keys.Space, new OptionCommand(gameState) }
             };
         }
 
@@ -52,7 +52,7 @@ namespace LegendOfZelda.GameState.MainMenuState
         {
             return new Dictionary<MouseButton, ICommand>
             {
-                {MouseButton.LeftButton, new StartGameCommand(gameState) }
+                {MouseButton.LeftButton, new OptionCommand(gameState) }
             };
         }
 

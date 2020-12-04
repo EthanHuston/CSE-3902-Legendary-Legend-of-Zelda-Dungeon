@@ -82,5 +82,7 @@ namespace LegendOfZelda.GameState.PauseState
         {
             foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
         }
+
+        public void SwitchToOptionState() { }
     }
 }

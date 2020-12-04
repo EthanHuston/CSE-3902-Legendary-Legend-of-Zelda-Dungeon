@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameState.Button;
 using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
+using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Menu;
 using System;
 using System.Collections.Generic;
@@ -10,31 +11,6 @@ namespace LegendOfZelda.GameState.OptionState
     class OptionGameState : IGameState
     {
         private readonly List<IController> controllerList;
-
-
-        private bool usePokemonSprites;
-        public bool UsePokemonSprites { get => usePokemonSprites; set => usePokemonSprites = value; }
-
-        private bool useJojoReferences;
-        public bool UseJojoReferences {
-            get => useJojoReferences;
-            set
-            {
-                useJojoReferences = true; // invert these because you can only use one at a time
-                useYakuzaReferences = false;
-            }
-        }
-
-        private bool useYakuzaReferences;
-        public bool UseYakuzaReferences
-        {
-            get => useYakuzaReferences;
-            set
-            {
-                useYakuzaReferences = true; // invert these because you can only use one at a time
-                useJojoReferences = false;
-            }
-        }
 
         public Game1 Game { get; private set; }
         public IButtonMenu OptionMenu { get; private set; }
@@ -65,6 +41,7 @@ namespace LegendOfZelda.GameState.OptionState
         public void SwitchToRoomState()
         {
             StateExitProcedure();
+            Game.State = new RoomGameState(Game);
             Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
             Game.State.StateEntryProcedure();
         }
@@ -77,14 +54,14 @@ namespace LegendOfZelda.GameState.OptionState
             Game.State.StateEntryProcedure();
         }
 
-        public void StateEntryProcedure()
-        {
-            // nothing fancy to do here
-        }
+        public void StateEntryProcedure() { }
 
         public void StateExitProcedure()
         {
-            foreach(IOnOffButton button in OptionMenu.Buttons)
+            SpriteFactory.Instance.LoadAllTextures(Game.Content);
+            SoundFactory.Instance.LoadAllSounds(Game.Content);
+
+            foreach (IOnOffButton button in OptionMenu.Buttons)
                 if (button.IsOn) UpdateGameFromButtonStatus(button.GetType());
         }
 
@@ -133,5 +110,7 @@ namespace LegendOfZelda.GameState.OptionState
             {
             }
         }
+
+        public void SwitchToOptionState() { }
     }
 }

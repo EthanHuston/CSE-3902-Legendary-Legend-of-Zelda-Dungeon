@@ -70,8 +70,12 @@ namespace LegendOfZelda
             sword_shoot = content.Load<SoundEffect>("Sounds/LOZ_Sword_Shoot");
             sword_slash = content.Load<SoundEffect>("Sounds/LOZ_Sword_Slash");
             text = content.Load<SoundEffect>("Sounds/LOZ_Text");
-            title = content.Load<SoundEffect>("Sounds/LOZ_Title");
             win = content.Load<SoundEffect>("Sounds/LOZ_Win");
+        }
+
+        public void LoadTitleSound(ContentManager content)
+        {
+            title = content.Load<SoundEffect>("Sounds/LOZ_Title");
         }
 
         public void LoadJojoSounds()

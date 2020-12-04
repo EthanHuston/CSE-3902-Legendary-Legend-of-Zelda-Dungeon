@@ -108,15 +108,8 @@
     <Compile Include="GameState\Button\SinglePlayerButton.cs" />
     <Compile Include="GameState\Button\TwoPlayerButton.cs" />
     <Compile Include="GameState\Button\YakuzaButton.cs" />
-    <Compile Include="GameState\Command\SetJojoReferencesOffCommand.cs" />
-    <Compile Include="GameState\Command\SetPokemonSpritesOffCommand.cs" />
-    <Compile Include="GameState\Command\SetPokemonSpritesOnCommand.cs" />
+    <Compile Include="GameState\Command\OptionCommand.cs" />
     <Compile Include="GameState\Command\MoveSelectorCommand.cs" />
-    <Compile Include="GameState\Command\SetTwoPlayerCommand.cs" />
-    <Compile Include="GameState\Command\SetOnePlayerCommand.cs" />
-    <Compile Include="GameState\Command\SetJojoReferencesOnCommand.cs" />
-    <Compile Include="GameState\Command\SetYakuzaReferencesOffCommand.cs" />
-    <Compile Include="GameState\Command\SetYakuzaReferencesOnCommand.cs" />
     <Compile Include="GameState\Command\TurnButtonOffCommand.cs" />
     <Compile Include="GameState\Command\ToggleButtonCommand.cs" />
     <Compile Include="GameState\Command\TurnButtonOnCommand.cs" />

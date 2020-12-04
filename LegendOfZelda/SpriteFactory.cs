@@ -22,7 +22,6 @@ namespace LegendOfZelda
             ItemSpriteFactory.Instance.LoadAllTextures(content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(content);
             EnvironmentSpriteFactory.Instance.LoadAllTextures(content);
-            GameStateSpriteFactory.Instance.LoadAllTextures(content);
             HUDSpriteFactory.Instance.LoadAllTextures(content);
         }
 
@@ -31,7 +30,11 @@ namespace LegendOfZelda
             EnemySpriteFactory.Instance.LoadPokemonTextures();
             LinkSpriteFactory.Instance.LoadPokemonTextures();
             ProjectileSpriteFactory.Instance.LoadPokemonTextures();
+        }
 
+        public void LoadGameStateTextures(ContentManager content)
+        {
+            GameStateSpriteFactory.Instance.LoadAllTextures(content);
         }
     }
 }

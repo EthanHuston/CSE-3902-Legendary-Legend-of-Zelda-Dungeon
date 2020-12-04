@@ -205,5 +205,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         public void SwitchToPauseState() { }
 
         public void SwitchToWinState() { }
+
+        public void SwitchToOptionState() { }
     }
 }

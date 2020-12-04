@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameState;
+using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.GameState.OptionState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -25,14 +26,14 @@ namespace LegendOfZelda
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            SpriteFactory.Instance.LoadAllTextures(Content);
+            SpriteFactory.Instance.LoadGameStateTextures(Content);
 
-            SoundFactory.Instance.LoadAllSounds(Content);
+            SoundFactory.Instance.LoadTitleSound(Content);
         }
 
         protected override void Initialize()
         {
-            State = new OptionGameState(this);
+            State = new MainMenuGameState(this);
             State.StateEntryProcedure();
             base.Initialize();
         }
