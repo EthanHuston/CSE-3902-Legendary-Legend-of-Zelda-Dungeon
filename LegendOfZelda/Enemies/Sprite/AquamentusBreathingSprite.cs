@@ -19,8 +19,9 @@ namespace LegendOfZelda.Enemies.Sprite
         private int column;
         private bool flashRed;
         private int damageColorCounter;
+        private bool pokemonOn;
 
-        public AquamentusBreathingSprite(Texture2D sprite)
+        public AquamentusBreathingSprite(Texture2D sprite, bool pokemonOn)
         {
             this.sprite = sprite;
             currentFrame = 0;
@@ -34,6 +35,7 @@ namespace LegendOfZelda.Enemies.Sprite
 
             flashRed = false;
             damageColorCounter = 0;
+            this.pokemonOn = pokemonOn;
         }
         public void Update()
         {
@@ -67,13 +69,22 @@ namespace LegendOfZelda.Enemies.Sprite
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
+            if (pokemonOn)
+            {
+                destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.PokemonScaler * width), (int)(Constants.PokemonScaler * height));
+            }
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White, layer);
         }
 
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
+            Rectangle returning = new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                returning = new Rectangle(0, 0, (int)(width * Constants.PokemonScaler), (int)(height * Constants.PokemonScaler));
+            }
+            return returning;
         }
     }
 }

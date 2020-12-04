@@ -101,12 +101,22 @@
     <Compile Include="Environment\TileBackground.cs" />
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
+    <Compile Include="GameState\Button\JojoButton.cs" />
+    <Compile Include="GameState\Button\AcceptButton.cs" />
+    <Compile Include="GameState\Button\NormalButton.cs" />
+    <Compile Include="GameState\Button\PokemonButton.cs" />
+    <Compile Include="GameState\Button\SinglePlayerButton.cs" />
+    <Compile Include="GameState\Button\TwoPlayerButton.cs" />
+    <Compile Include="GameState\Button\YakuzaButton.cs" />
     <Compile Include="GameState\Command\MoveSelectorCommand.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseStateMappings.cs" />
     <Compile Include="GameState\GameWinState\Curtain.cs" />
     <Compile Include="GameState\IGameStateControllerMappings.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionStateMappings.cs" />
     <Compile Include="GameState\MainMenuState\MainMenuStateMappings.cs" />
+    <Compile Include="GameState\OptionState\OptionMapping.cs" />
+    <Compile Include="GameState\OptionState\OptionMenu.cs" />
+    <Compile Include="GameState\OptionState\OptionState.cs" />
     <Compile Include="GameState\PauseState\PauseStateMappings.cs" />
     <Compile Include="GameState\RoomsState\IItemDropper.cs" />
     <Compile Include="GameState\RoomsState\RoomsStateMappingsPlayerOne.cs" />
@@ -203,7 +213,7 @@
     <Compile Include="Projectile\CollisionHandler\ArrowBlockCollisionHandler.cs" />
     <Compile Include="Projectile\Sprite\SwordAttackingSprite.cs" />
     <Compile Include="GameState\RoomTransitionState\RoomTransitionGameState.cs" />
-    <Compile Include="Rooms\RoomImplementation\DiscoRoom.cs" />
+    <Compile Include="Rooms\RoomImplementation\RoomOfTheDisco.cs" />
     <Compile Include="Rooms\RoomImplementation\RoomWallMaster.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomDownCommand.cs" />
     <Compile Include="Rooms\Commands\ChangeRoomLeftCommand.cs" />
@@ -485,7 +495,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Content\Sounds\Baka_Mitai.mp3" />
-    <Content Include="Content\Sounds\Friday_Night.mp3" />
     <Content Include="Content\Sounds\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Blow.wav" />
     <Content Include="Content\Sounds\LOZ_Bomb_Drop.wav" />

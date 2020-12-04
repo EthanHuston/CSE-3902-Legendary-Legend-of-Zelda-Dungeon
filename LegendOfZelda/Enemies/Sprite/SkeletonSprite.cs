@@ -17,8 +17,9 @@ namespace LegendOfZelda.Enemies.Sprite
         private int damageColorCounter;
         private readonly int width;
         private readonly int height;
+        private bool pokemonOn;
 
-        public SkeletonSprite(Texture2D sprite)
+        public SkeletonSprite(Texture2D sprite, bool pokemonOn)
         {
             this.sprite = sprite;
             currentFrame = 0;
@@ -30,6 +31,7 @@ namespace LegendOfZelda.Enemies.Sprite
             damageColorCounter = 0;
             width = sprite.Width / columns;
             height = sprite.Height / rows;
+            this.pokemonOn = pokemonOn;
         }
         public void Update()
         {
@@ -62,12 +64,21 @@ namespace LegendOfZelda.Enemies.Sprite
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.GameScaler * width), (int)(Constants.GameScaler * height));
+            if (pokemonOn)
+            {
+                destinationRectangle = new Rectangle(position.X, position.Y, (int)(Constants.PokemonScaler * width), (int)(Constants.PokemonScaler * height));
+            }
 
             SimpleDraw.Draw(spriteBatch, sprite, destinationRectangle, sourceRectangle, flashRed && damaged ? Color.Red : Color.White, layer);
         }
         public Rectangle GetPositionRectangle()
         {
-            return new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
+            Rectangle returning = new Rectangle(0, 0, (int)(width * Constants.GameScaler), (int)(height * Constants.GameScaler));
+            if (pokemonOn)
+            {
+                returning = new Rectangle(0, 0, (int)(width * Constants.PokemonScaler), (int)(height * Constants.PokemonScaler));
+            }
+            return returning;
         }
     }
 }
