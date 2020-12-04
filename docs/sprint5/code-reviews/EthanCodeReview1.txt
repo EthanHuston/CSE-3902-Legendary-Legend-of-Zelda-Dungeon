@@ -1,0 +1,12 @@
+Ethan Huston
+12/4/2020
+Sprint 5
+MultiplayerHUD.cs
+Chris Lenart
+15 Minutes
+Readability
+The readability for this class is very goodf as the class contains ony 3 methods and all fields within the class are well named to describe their purpose.
+Furthermore there is limited logic found in this class so understanding what is happening is very easy as well.
+Maintainability
+This class is also very maintainable, even though this is the final sprint and the chance of changes occuring to the project are slim, this class 
+doesn't rely heavily on any other classes and as said before is very simple so any possible changes in the future would be rather simple to implement on this class.
