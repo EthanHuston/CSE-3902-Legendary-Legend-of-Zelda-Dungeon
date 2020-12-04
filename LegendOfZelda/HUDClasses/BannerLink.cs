@@ -13,6 +13,7 @@ namespace LegendOfZelda.HUDClasses
         private ILinkSprite sprite;
         private Point pos;
         private Point velocity = new Point(-3, 0);
+        private int largestSpriteWidth = (int)(24 * Constants.GameScaler);
 
         public BannerLink(Banner banner, Point startingPos)
         {
@@ -29,7 +30,7 @@ namespace LegendOfZelda.HUDClasses
         public void Update()
         {
             pos += velocity;
-            if (pos.X <= 0 - sprite.GetPositionRectangle().Width)
+            if (pos.X <= 0 - largestSpriteWidth)
             {
                 pos = new Point(HUDConstants.hudWidth, pos.Y);
                 banner.loopCount = banner.loopCount + 1;

@@ -46,7 +46,7 @@ namespace LegendOfZelda.HUDClasses
         private void initEnemyList()
         {
             enemyList = new List<BannerEnemy>();
-            Point pos = new Point(HUDConstants.hudWidth + xGap, posy);
+            Point pos = new Point(HUDConstants.hudWidth + 2*xGap, posy);
             enemyList.Add(new BannerEnemy(EnemySpriteFactory.Instance.CreateBatSprite(), pos));
             pos = new Point(pos.X + xGap, pos.Y);
             enemyList.Add(new BannerEnemy(EnemySpriteFactory.Instance.CreateSkeletonSprite(), pos));
