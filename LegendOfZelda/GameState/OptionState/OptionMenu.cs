@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
 using System;
@@ -10,15 +11,19 @@ namespace LegendOfZelda.GameState.OptionState
     {
         private const int numColumns = 2;
         private Dictionary<Type, IOnOffButton> buttonsDictionary;
+        private ISprite modsTitleSprite;
 
         public ButtonSelector ButtonSelector { get; private set; }
         public List<IButton> Buttons { get; private set; }
         public Point Position { get; set; }
+        public Game1 Game { get; private set; }
 
         public OptionMenu(Game1 game)
         {
+            Game = game;
             InitButtonsList(game);
             ButtonSelector = new ButtonSelector(game.SpriteBatch, this, Buttons, numColumns);
+            modsTitleSprite = GameStateSpriteFactory.Instance.CreateModsTitleSprite();
         }
 
         private void InitButtonsList(Game1 game)
@@ -40,6 +45,7 @@ namespace LegendOfZelda.GameState.OptionState
         {
             foreach (IButton button in Buttons) button.Draw();
             ButtonSelector.Draw();
+            modsTitleSprite.Draw(Game.SpriteBatch, GameStateConstants.ModsTitleLocation, Constants.DrawLayer.Menu);
         }
 
         public Rectangle GetRectangle()

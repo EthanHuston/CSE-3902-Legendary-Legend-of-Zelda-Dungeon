@@ -41,6 +41,7 @@ namespace LegendOfZelda.GameState
         private Texture2D yakuzaButtonSelectedSprite;
         private Texture2D pokemonButtonSelectedSprite;
         private Texture2D normalButtonSelectedSprite;
+        private Texture2D modsTitleSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -77,6 +78,7 @@ namespace LegendOfZelda.GameState
             pokemonButtonSelectedSprite = content.Load<Texture2D>("Menu/PokemonButtonSelected");
             normalButtonSelectedSprite = content.Load<Texture2D>("Menu/NormalButtonSelected");
             backButtonSprite = content.Load<Texture2D>("Menu/BackButton");
+            modsTitleSprite = content.Load<Texture2D>("Menu/ModsTitle");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -201,6 +203,10 @@ namespace LegendOfZelda.GameState
         public ISprite CreateBackButtonSprite()
         {
             return new GameStateSprite(backButtonSprite);
+        }
+        public ISprite CreateModsTitleSprite()
+        {
+            return new GameStateSprite(modsTitleSprite);
         }
     }
 }

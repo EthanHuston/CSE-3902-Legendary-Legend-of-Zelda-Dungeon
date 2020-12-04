@@ -26,12 +26,13 @@ namespace LegendOfZelda.GameState
         // Buttons Positions : Option State
         public static Point OnePlayerButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 40));
         public static Point TwoPlayerButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 40));
-        public static Point JojoButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 85));
-        public static Point YakuzaButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 85));
-        public static Point PokemonButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 130));
-        public static Point NormalButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 130));
-        public static Point AcceptButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 175));
-        public static Point BackButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 175));
+        public static Point ModsTitleLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 85));
+        public static Point JojoButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 105));
+        public static Point YakuzaButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 105));
+        public static Point PokemonButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 125));
+        public static Point NormalButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 125));
+        public static Point AcceptButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 170));
+        public static Point BackButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 170));
 
         // Black Overlay for Win State
         public static Point WinStateSpriteLocationLeft => new Point((int)(gameScaler * -1 * Constants.MaxXPos), HUDConstants.hudHeight);
