@@ -14,10 +14,10 @@ namespace LegendOfZelda.GameState
         public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 232);
 
         // Button Positions : Pause Menu
-        public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
-        public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
-        public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 64));
-        
+        public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 160));
+        public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 192));
+        public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 160));
+
         // Button Positions : Lose State
         public static Point LoseStateRetryButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 64));
         public static Point LoseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));

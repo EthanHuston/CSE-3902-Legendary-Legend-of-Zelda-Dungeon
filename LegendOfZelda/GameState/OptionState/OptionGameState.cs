@@ -112,5 +112,7 @@ namespace LegendOfZelda.GameState.OptionState
         }
 
         public void SwitchToOptionState() { }
+
+        public void SwitchToItemSelectionState(int playerNum) { }
     }
 }
