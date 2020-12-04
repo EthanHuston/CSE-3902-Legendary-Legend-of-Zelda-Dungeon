@@ -30,10 +30,13 @@ namespace LegendOfZelda.Projectile
         private Texture2D swordAttackRight;
         private bool pokemonOn;
 
+        private ContentManager contentManager;
         public static ProjectileSpriteFactory Instance { get; } = new ProjectileSpriteFactory();
 
         public void LoadAllTextures(ContentManager content)
         {
+            contentManager = content;
+
             //Load Item Sprites
             fireballSprite = content.Load<Texture2D>("Items/FireBall");
             explodingBombSprite = content.Load<Texture2D>("Items/BombExploding");
@@ -60,20 +63,20 @@ namespace LegendOfZelda.Projectile
             
         }
 
-        public void LoadPokemonTextures(ContentManager content)
+        public void LoadPokemonTextures()
         {
-            swordBeamDown = content.Load<Texture2D>("Pokemon/Items/Pokeball");
-            swordBeamUp = content.Load<Texture2D>("Pokemon/Items/Pokeball");
-            swordBeamRight = content.Load<Texture2D>("Pokemon/Items/Pokeball");
-            swordBeamLeft = content.Load<Texture2D>("Pokemon/Items/Pokeball");
-            swordBeamExplodingDownLeft = content.Load<Texture2D>("Pokemon/Blank");
-            swordBeamExplodingDownRight = content.Load<Texture2D>("Pokemon/Blank");
-            swordBeamExplodingUpLeft = content.Load<Texture2D>("Pokemon/Blank");
-            swordBeamExplodingUpRight = content.Load<Texture2D>("Pokemon/Blank");
-            swordAttackUp = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingUp");
-            swordAttackDown = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
-            swordAttackLeft = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingLeft");
-            swordAttackRight = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingRight");
+            swordBeamDown = contentManager.Load<Texture2D>("Pokemon/Items/Pokeball");
+            swordBeamUp = contentManager.Load<Texture2D>("Pokemon/Items/Pokeball");
+            swordBeamRight = contentManager.Load<Texture2D>("Pokemon/Items/Pokeball");
+            swordBeamLeft = contentManager.Load<Texture2D>("Pokemon/Items/Pokeball");
+            swordBeamExplodingDownLeft = contentManager.Load<Texture2D>("Pokemon/Blank");
+            swordBeamExplodingDownRight = contentManager.Load<Texture2D>("Pokemon/Blank");
+            swordBeamExplodingUpLeft = contentManager.Load<Texture2D>("Pokemon/Blank");
+            swordBeamExplodingUpRight = contentManager.Load<Texture2D>("Pokemon/Blank");
+            swordAttackUp = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingUp");
+            swordAttackDown = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
+            swordAttackLeft = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingLeft");
+            swordAttackRight = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingRight");
             pokemonOn = true;
         }
 

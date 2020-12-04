@@ -24,10 +24,13 @@ namespace LegendOfZelda.Enemies
 
         private bool PokemonOn;
 
+        private ContentManager contentManager;
         public static EnemySpriteFactory Instance { get; } = new EnemySpriteFactory();
 
         public void LoadAllTextures(ContentManager content)
         {
+            contentManager = content;
+
             //Load Enemy Sprites
             batSprite = content.Load<Texture2D>("Enemies/Bat");
             
@@ -57,20 +60,20 @@ namespace LegendOfZelda.Enemies
 
             PokemonOn = false;
         }
-        public void LoadPokemonTextures(ContentManager content)
+        public void LoadPokemonTextures()
         {
-            batSprite = content.Load<Texture2D>("Pokemon/Enemies/Zubat");
-            goriyaUpSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Up");
-            goriyaDownSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Down");
-            goriyaRightSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Right");
-            goriyaLeftSprite = content.Load<Texture2D>("Pokemon/Enemies/Cubone Left");
-            aquamentusBreathingSprite = content.Load<Texture2D>("Pokemon/Enemies/HoOh");
-            aquamentusWalkingSprite = content.Load<Texture2D>("Pokemon/Enemies/HoOh");
-            jellySprite = content.Load<Texture2D>("Pokemon/Enemies/Ditto");
-            skeletonSprite = content.Load<Texture2D>("Pokemon/Enemies/Hitmonchan");
-            handSprite = content.Load<Texture2D>("Pokemon/Enemies/Haunter");
-            spikeTrapSprite = content.Load<Texture2D>("Pokemon/Enemies/Decoy");
-            oldManSprite = content.Load<Texture2D>("Pokemon/Professor Oak");
+            batSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Zubat");
+            goriyaUpSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Cubone Up");
+            goriyaDownSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Cubone Down");
+            goriyaRightSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Cubone Right");
+            goriyaLeftSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Cubone Left");
+            aquamentusBreathingSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/HoOh");
+            aquamentusWalkingSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/HoOh");
+            jellySprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Ditto");
+            skeletonSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Hitmonchan");
+            handSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Haunter");
+            spikeTrapSprite = contentManager.Load<Texture2D>("Pokemon/Enemies/Decoy");
+            oldManSprite = contentManager.Load<Texture2D>("Pokemon/Professor Oak");
 
             PokemonOn = true;
         }

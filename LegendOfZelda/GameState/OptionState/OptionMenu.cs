@@ -58,7 +58,7 @@ namespace LegendOfZelda.GameState.OptionState
 
         public void ToggleButton(Type buttonType)
         {
-            buttonsDictionary[buttonType].IsOn = !buttonsDictionary[buttonType].IsOn;
+            buttonsDictionary[buttonType].IsOn = true;
             ToggleOtherButtons(buttonType);
         }
 

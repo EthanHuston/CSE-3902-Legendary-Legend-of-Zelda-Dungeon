@@ -1,6 +1,8 @@
-﻿using LegendOfZelda.GameState.Controller;
+﻿using LegendOfZelda.GameState.Button;
+using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.Menu;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.OptionState
@@ -82,7 +84,8 @@ namespace LegendOfZelda.GameState.OptionState
 
         public void StateExitProcedure()
         {
-            // nothing fancy to do here
+            foreach(IOnOffButton button in OptionMenu.Buttons)
+                if (button.IsOn) UpdateGameFromButtonStatus(button.GetType());
         }
 
         public void Update()
@@ -102,6 +105,33 @@ namespace LegendOfZelda.GameState.OptionState
         public void SetControllerOldInputState(InputStates inputFromOldState)
         {
             foreach (IController controller in controllerList) controller.OldInputState = inputFromOldState;
+        }
+
+        private void UpdateGameFromButtonStatus(Type buttonType)
+        {
+            if (buttonType == typeof(SinglePlayerButton))
+            {
+                Game.NumPlayers = 1;
+            }
+            else if (buttonType == typeof(TwoPlayerButton))
+            {
+                Game.NumPlayers = 2;
+            }
+            else if (buttonType == typeof(JojoButton))
+            {
+                SoundFactory.Instance.LoadJojoSounds();
+            }
+            else if (buttonType == typeof(YakuzaButton))
+            {
+                SoundFactory.Instance.LoadYakuzaSounds();
+            }
+            else if (buttonType == typeof(PokemonButton))
+            {
+                SpriteFactory.Instance.LoadPokemonTextures();
+            }
+            else if (buttonType == typeof(NormalButton))
+            {
+            }
         }
     }
 }

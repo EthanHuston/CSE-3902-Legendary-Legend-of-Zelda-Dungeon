@@ -27,10 +27,13 @@ namespace LegendOfZelda.Link
         private Texture2D linkPickingUpBoomerangSprite;
         private bool pokemonOn;
 
+        private ContentManager contentManager;
         public static LinkSpriteFactory Instance { get; } = new LinkSpriteFactory();
 
         public void LoadAllTextures(ContentManager content)
         {
+            contentManager = content;
+
             // Load Link sprites
             idleLinkDownSprite = content.Load<Texture2D>("Link/IdleLinkDown");            
             idleLinkRightSprite = content.Load<Texture2D>("Link/IdleLinkRight");           
@@ -54,27 +57,27 @@ namespace LegendOfZelda.Link
             pokemonOn = false;
             
         }
-        public void LoadPokemonTextures(ContentManager content)
+        public void LoadPokemonTextures()
         {
-            idleLinkDownSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleDown");
-            idleLinkRightSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleRight");
-            idleLinkLeftSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleLeft");
-            idleLinkUpSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerIdleUp");
+            idleLinkDownSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerIdleDown");
+            idleLinkRightSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerIdleRight");
+            idleLinkLeftSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerIdleLeft");
+            idleLinkUpSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerIdleUp");
 
-            strikingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
-            strikingLeftLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingLeft");
-            strikingRightLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingRight");
-            strikingUpLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingUp");
+            strikingDownLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingDown");
+            strikingLeftLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingLeft");
+            strikingRightLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingRight");
+            strikingUpLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerStrikingUp");
 
-            walkingDownLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingDown");
-            walkingLeftLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingLeft");
-            walkingRightLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingRight");
-            walkingUpLinkSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingUp");
+            walkingDownLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingDown");
+            walkingLeftLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingLeft");
+            walkingRightLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingRight");
+            walkingUpLinkSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerWalkingUp");
 
-            linkPickingUpHeartSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpHeart");
-            linkPickingUpTriforceSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpTriforce");
-            linkPickingUpBowSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpBow");
-            linkPickingUpBoomerangSprite = content.Load<Texture2D>("Pokemon/Trainer/TrainerPickupBoomerang");
+            linkPickingUpHeartSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpHeart");
+            linkPickingUpTriforceSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpTriforce");
+            linkPickingUpBowSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerPickUpBow");
+            linkPickingUpBoomerangSprite = contentManager.Load<Texture2D>("Pokemon/Trainer/TrainerPickupBoomerang");
             pokemonOn = true;
         }
 

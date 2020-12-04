@@ -37,10 +37,12 @@ namespace LegendOfZelda
         private SoundEffect title;
         private SoundEffect win;
 
+        private ContentManager contentManager;
         public static SoundFactory Instance { get; } = new SoundFactory();
 
         public void LoadAllSounds(ContentManager content)
-        {     
+        {
+            contentManager = content;
             arrow_boomerang = content.Load<SoundEffect>("Sounds/LOZ_Arrow_Boomerang");
             bomb_blow = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Blow");
             bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop");
@@ -72,15 +74,15 @@ namespace LegendOfZelda
             win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
-        public void LoadJojoSounds(ContentManager content)
+        public void LoadJojoSounds()
         {
-            clock_pickup = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows2");
-            time_flows = content.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
+            clock_pickup = contentManager.Load<SoundEffect>("Sounds/LOZ_TimeFlows2");
+            time_flows = contentManager.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
         }
 
-        public void LoadYakuzaSounds(ContentManager content)
+        public void LoadYakuzaSounds()
         {
-            dungeon_music = content.Load<SoundEffect>("Sounds/Baka_Mitai");
+            dungeon_music = contentManager.Load<SoundEffect>("Sounds/Baka_Mitai");
         }
 
         public SoundEffectInstance CreateFridayNightSound()
