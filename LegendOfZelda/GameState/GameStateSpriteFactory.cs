@@ -34,6 +34,7 @@ namespace LegendOfZelda.GameState
         private Texture2D yakuzaButtonSprite;
         private Texture2D pokemonButtonSprite;
         private Texture2D normalButtonSprite;
+        private Texture2D backButtonSprite;
         private Texture2D onePlayerButtonSelectedSprite;
         private Texture2D twoPlayerButtonSelectedSprite;
         private Texture2D jojoButtonSelectedSprite;
@@ -75,6 +76,7 @@ namespace LegendOfZelda.GameState
             yakuzaButtonSelectedSprite = content.Load<Texture2D>("Menu/YakuzaButtonSelected");
             pokemonButtonSelectedSprite = content.Load<Texture2D>("Menu/PokemonButtonSelected");
             normalButtonSelectedSprite = content.Load<Texture2D>("Menu/NormalButtonSelected");
+            backButtonSprite = content.Load<Texture2D>("Menu/BackButton");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -192,10 +194,13 @@ namespace LegendOfZelda.GameState
         {
             return new GameStateSprite(pokemonButtonSelectedSprite);
         }
-
-        internal ISprite CreateNormalButtonSelectedSprite()
+        public ISprite CreateNormalButtonSelectedSprite()
         {
             return new GameStateSprite(normalButtonSelectedSprite);
+        }
+        public ISprite CreateBackButtonSprite()
+        {
+            return new GameStateSprite(backButtonSprite);
         }
     }
 }

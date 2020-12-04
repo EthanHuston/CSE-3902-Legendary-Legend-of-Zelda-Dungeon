@@ -105,6 +105,7 @@
     <Compile Include="GameState\Button\AcceptButton.cs" />
     <Compile Include="GameState\Button\NormalButton.cs" />
     <Compile Include="GameState\Button\PokemonButton.cs" />
+    <Compile Include="GameState\Button\BackButton.cs" />
     <Compile Include="GameState\Button\SinglePlayerButton.cs" />
     <Compile Include="GameState\Button\TwoPlayerButton.cs" />
     <Compile Include="GameState\Button\YakuzaButton.cs" />
