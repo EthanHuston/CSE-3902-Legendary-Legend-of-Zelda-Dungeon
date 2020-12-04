@@ -79,7 +79,7 @@ namespace LegendOfZelda.Projectile
 
         public IProjectileSprite CreateFireballSprite()
         {
-            return new FireballSprite(fireballSprite);
+            return new FireballSprite(fireballSprite, pokemonOn);
         }
         public IProjectileSprite CreateExplodingBombSprite()
         {
