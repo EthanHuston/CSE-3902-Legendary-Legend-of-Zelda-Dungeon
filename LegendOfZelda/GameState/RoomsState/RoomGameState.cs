@@ -160,7 +160,6 @@ namespace LegendOfZelda.GameState.RoomsState
 
         public override void SwitchToItemSelectionState(int playerNum)
         {
-            // player 0 inventory for now - in case we add multiplayer later
             StartStateSwitch(itemSelectionGameStates[playerNum]);
         }
 
