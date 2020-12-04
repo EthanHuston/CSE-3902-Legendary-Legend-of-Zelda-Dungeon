@@ -18,7 +18,8 @@ namespace LegendOfZelda.GameState.Button
         public NormalButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateNormalButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateAcceptButtonSprite();
+            //sprite = GameStateSpriteFactory.Instance.CreateNormalButtonSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;

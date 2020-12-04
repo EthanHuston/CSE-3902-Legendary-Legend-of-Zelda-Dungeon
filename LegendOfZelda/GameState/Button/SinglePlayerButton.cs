@@ -18,7 +18,8 @@ namespace LegendOfZelda.GameState.Button
         public SinglePlayerButton(SpriteBatch spriteBatch, Point spawnPosition)
         {
             this.spriteBatch = spriteBatch;
-            sprite = GameStateSpriteFactory.Instance.CreateSinglePlayerButtonSprite();
+            sprite = GameStateSpriteFactory.Instance.CreateAcceptButtonSprite();
+            //sprite = GameStateSpriteFactory.Instance.CreateSinglePlayerButtonSprite();
             Position = spawnPosition;
             safeToDespawn = false;
             IsActive = true;
