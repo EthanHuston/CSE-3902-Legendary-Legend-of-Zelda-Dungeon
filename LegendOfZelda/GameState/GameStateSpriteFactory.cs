@@ -4,6 +4,7 @@ using LegendOfZelda.Menu;
 using LegendOfZelda.Menu.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LegendOfZelda.GameState
 {
@@ -32,6 +33,7 @@ namespace LegendOfZelda.GameState
         private Texture2D jojoButtonSprite;
         private Texture2D yakuzaButtonSprite;
         private Texture2D pokemonButtonSprite;
+        private Texture2D normalButtonSprite;
 
         public static GameStateSpriteFactory Instance { get; } = new GameStateSpriteFactory();
 
@@ -60,7 +62,7 @@ namespace LegendOfZelda.GameState
             jojoButtonSprite = content.Load<Texture2D>("Menu/JojoButton");
             yakuzaButtonSprite = content.Load<Texture2D>("Menu/YakuzaButton");
             pokemonButtonSprite = content.Load<Texture2D>("Menu/PokemonButton");
-
+            normalButtonSprite = content.Load<Texture2D>("Menu/NormalButton");
         }
 
         public ISprite CreateResumeButtonSprite()
@@ -151,6 +153,11 @@ namespace LegendOfZelda.GameState
         public ISprite CreatePokemonButtonSprite()
         {
             return new GameStateSprite(pokemonButtonSprite);
+        }
+
+        internal ISprite CreateNormalButtonSprite()
+        {
+            return new GameStateSprite(normalButtonSprite);
         }
     }
 }
