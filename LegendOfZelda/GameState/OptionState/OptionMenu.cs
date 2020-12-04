@@ -9,6 +9,7 @@ namespace LegendOfZelda.GameState.OptionState
     class OptionMenu : IButtonMenu
     {
         private const int numColumns = 2;
+        private Dictionary<Type, IOnOffButton> buttonsDictionary;
 
         public ButtonSelector ButtonSelector { get; private set; }
         public List<IButton> Buttons { get; private set; }
@@ -16,22 +17,22 @@ namespace LegendOfZelda.GameState.OptionState
 
         public OptionMenu(Game1 game)
         {
-            Buttons = GetButtonsList(game);
+            InitButtonsList(game);
             ButtonSelector = new ButtonSelector(game.SpriteBatch, this, Buttons, numColumns);
         }
 
-        private List<IButton> GetButtonsList(Game1 game)
+        private void InitButtonsList(Game1 game)
         {
-            return new List<IButton>()
-            {
-                {new SinglePlayerButton(game.SpriteBatch, GameStateConstants.OnePlayerButtonLocation)},
-                {new TwoPlayerButton(game.SpriteBatch, GameStateConstants.TwoPlayerButtonLocation)},
-                {new JojoButton(game.SpriteBatch, GameStateConstants.JojoButtonLocation)},
-                {new YakuzaButton(game.SpriteBatch, GameStateConstants.YakuzaButtonLocation)},
-                {new PokemonButton(game.SpriteBatch, GameStateConstants.PokemonButtonLocation)},
-                {new NormalButton(game.SpriteBatch, GameStateConstants.NormalButtonLocation)},
-                {new AcceptButton(game.SpriteBatch, GameStateConstants.AcceptButtonLocation)}
-            };
+            buttonsDictionary = new Dictionary<Type, IOnOffButton>();
+            Buttons = new List<IButton>();
+
+            AddToDictionaryAndList(new SinglePlayerButton(game.SpriteBatch, GameStateConstants.OnePlayerButtonLocation));
+            AddToDictionaryAndList(new TwoPlayerButton(game.SpriteBatch, GameStateConstants.TwoPlayerButtonLocation));
+            AddToDictionaryAndList(new JojoButton(game.SpriteBatch, GameStateConstants.JojoButtonLocation));
+            AddToDictionaryAndList(new YakuzaButton(game.SpriteBatch, GameStateConstants.YakuzaButtonLocation));
+            AddToDictionaryAndList(new PokemonButton(game.SpriteBatch, GameStateConstants.PokemonButtonLocation));
+            AddToDictionaryAndList(new NormalButton(game.SpriteBatch, GameStateConstants.NormalButtonLocation));
+            AddToDictionaryAndList(new AcceptButton(game.SpriteBatch, GameStateConstants.AcceptButtonLocation));
         }
 
         public void Draw()
@@ -57,9 +58,49 @@ namespace LegendOfZelda.GameState.OptionState
 
         public void ToggleButton(Type buttonType)
         {
-            foreach (IOnOffButton button in Buttons)
+            buttonsDictionary[buttonType].IsOn = !buttonsDictionary[buttonType].IsOn;
+            ToggleOtherButtons(buttonType);
+        }
+
+        private void AddToDictionaryAndList(IOnOffButton button)
+        {
+            buttonsDictionary.Add(button.GetType(), button);
+            Buttons.Add(button);
+        }
+
+        private void ToggleOtherButtons(Type buttonType)
+        {
+            if (buttonType == typeof(SinglePlayerButton))
             {
-                if (button.GetType() == buttonType) button.IsOn = !button.IsOn;
+                buttonsDictionary[typeof(TwoPlayerButton)].IsOn = false;
+            }
+            else if (buttonType == typeof(TwoPlayerButton))
+            {
+                buttonsDictionary[typeof(SinglePlayerButton)].IsOn = false;
+            }
+            else if (buttonType == typeof(JojoButton))
+            {
+                buttonsDictionary[typeof(YakuzaButton)].IsOn = false;
+                buttonsDictionary[typeof(NormalButton)].IsOn = false;
+                buttonsDictionary[typeof(PokemonButton)].IsOn = false;
+            }
+            else if (buttonType == typeof(YakuzaButton))
+            {
+                buttonsDictionary[typeof(JojoButton)].IsOn = false;
+                buttonsDictionary[typeof(NormalButton)].IsOn = false;
+                buttonsDictionary[typeof(PokemonButton)].IsOn = false;
+            }
+            else if (buttonType == typeof(PokemonButton))
+            {
+                buttonsDictionary[typeof(YakuzaButton)].IsOn = false;
+                buttonsDictionary[typeof(NormalButton)].IsOn = false;
+                buttonsDictionary[typeof(JojoButton)].IsOn = false;
+            }
+            else if (buttonType == typeof(NormalButton))
+            {
+                buttonsDictionary[typeof(YakuzaButton)].IsOn = false;
+                buttonsDictionary[typeof(PokemonButton)].IsOn = false;
+                buttonsDictionary[typeof(JojoButton)].IsOn = false;
             }
         }
     }
