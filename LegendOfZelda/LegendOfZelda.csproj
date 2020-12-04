@@ -108,6 +108,7 @@
     <Compile Include="GameState\Button\SinglePlayerButton.cs" />
     <Compile Include="GameState\Button\TwoPlayerButton.cs" />
     <Compile Include="GameState\Button\YakuzaButton.cs" />
+    <Compile Include="GameState\Command\ChangeToPokemonSpritesCommand.cs" />
     <Compile Include="GameState\Command\MoveSelectorCommand.cs" />
     <Compile Include="GameState\Command\SetTwoPlayerCommand.cs" />
     <Compile Include="GameState\Command\SetOnePlayerCommand.cs" />
