@@ -24,12 +24,13 @@ namespace LegendOfZelda.GameState.OptionState
         {
             return new List<IButton>()
             {
-                {new AcceptButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
-                {new SinglePlayerButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
-                {new TwoPlayerButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
-                {new JojoButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
-                {new YakuzaButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)},
-                {new PokemonButton(game.SpriteBatch, GameStateConstants.PauseStateMainMenuButtonLocation)}
+                {new SinglePlayerButton(game.SpriteBatch, GameStateConstants.OnePlayerButtonLocation)},
+                {new TwoPlayerButton(game.SpriteBatch, GameStateConstants.TwoPlayerButtonLocation)},
+                {new JojoButton(game.SpriteBatch, GameStateConstants.JojoButtonLocation)},
+                {new YakuzaButton(game.SpriteBatch, GameStateConstants.YakuzaButtonLocation)},
+                {new PokemonButton(game.SpriteBatch, GameStateConstants.PokemonButtonLocation)},
+                {new NormalButton(game.SpriteBatch, GameStateConstants.NormalButtonLocation)},
+                {new AcceptButton(game.SpriteBatch, GameStateConstants.AcceptButtonLocation)}
             };
         }
 

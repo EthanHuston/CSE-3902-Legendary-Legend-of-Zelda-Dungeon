@@ -13,13 +13,24 @@ namespace LegendOfZelda.GameState
 
         public static Rectangle MainMenuTextureMapSource => new Rectangle(0, 0, 260, 232);
 
-        // Button Positions
+        // Button Positions : Pause Menu
         public static Point PauseStateResumeButtonLocation => new Point((int)(gameScaler * 48), (int)(gameScaler * 64));
         public static Point PauseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
         public static Point PauseStateMainMenuButtonLocation => new Point((int)(gameScaler * 144), (int)(gameScaler * 64));
+        
+        // Button Positions : Lose State
         public static Point LoseStateRetryButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 64));
         public static Point LoseStateExitButtonLocation => new Point((int)(gameScaler * 96), (int)(gameScaler * 96));
         public static Point LoseStateGameOverSpriteLocation => new Point((int)(gameScaler * 65), (int)(gameScaler * 96));
+
+        // Buttons Positions : Option State
+        public static Point OnePlayerButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 40));
+        public static Point TwoPlayerButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 40));
+        public static Point JojoButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 85));
+        public static Point YakuzaButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 85));
+        public static Point PokemonButtonLocation => new Point((int)(gameScaler * 30),(int)(gameScaler * 130));
+        public static Point NormalButtonLocation => new Point((int)(gameScaler * 138),(int)(gameScaler * 130));
+        public static Point AcceptButtonLocation => new Point((int)(gameScaler * 84),(int)(gameScaler * 175));
 
         // Black Overlay for Win State
         public static Point WinStateSpriteLocationLeft => new Point((int)(gameScaler * -1 * Constants.MaxXPos), HUDConstants.hudHeight);
