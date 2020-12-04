@@ -102,6 +102,11 @@
     <Compile Include="GameLogic\ICamera.cs" />
     <Compile Include="GameState\AbstractGameState.cs" />
     <Compile Include="GameState\Button\JojoButton.cs" />
+    <Compile Include="GameState\Button\NormalButton.cs" />
+    <Compile Include="GameState\Button\PokemonButton.cs" />
+    <Compile Include="GameState\Button\SinglePlayerButton.cs" />
+    <Compile Include="GameState\Button\TwoPlayerButton.cs" />
+    <Compile Include="GameState\Button\YakuzaButton.cs" />
     <Compile Include="GameState\Command\MoveSelectorCommand.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseStateMappings.cs" />
     <Compile Include="GameState\GameWinState\Curtain.cs" />
