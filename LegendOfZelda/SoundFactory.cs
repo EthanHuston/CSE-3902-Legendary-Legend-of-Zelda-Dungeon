@@ -76,6 +76,16 @@ namespace LegendOfZelda
             win = content.Load<SoundEffect>("Sounds/LOZ_Win");
         }
 
+        public void LoadJojoSounds(ContentManager content)
+        {
+            // TODO: Load jojo sound
+        }
+
+        public void LoadYakuzaSounds(ContentManager content)
+        {
+            // TODO: Load Yakuza Sounds
+        }
+
         public SoundEffectInstance CreateBakaMitaiSound()
         {
             return baka_mitai.CreateInstance();
