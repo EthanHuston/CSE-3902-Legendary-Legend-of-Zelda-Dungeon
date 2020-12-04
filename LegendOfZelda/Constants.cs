@@ -8,6 +8,7 @@ namespace LegendOfZelda
         public const int FrameDelay = 6;
         public const double GameScaler = 4;
         public const double PokemonScaler = 2.7;
+        public const double TrainerScaler = 3.5;
         public const int HeartValue = 10;
         public const float MusicVolume = 0.3f; // TODO: turn sound back on
 
