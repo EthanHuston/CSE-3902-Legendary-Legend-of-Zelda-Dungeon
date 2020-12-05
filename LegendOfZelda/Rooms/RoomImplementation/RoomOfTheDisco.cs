@@ -11,23 +11,20 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public RoomOfTheDisco(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
-            // TODO: PATEL ADD YOUR MUSIC HERE
-            // discoMusic = SoundFactory.Instance.Create...()
+            discoMusic = SoundFactory.Instance.CreateFridayNightSound();
         }
 
         public override void RunRoomEntryProcedure()
         {
-            ((RoomGameState)Game.State).DungeonMusic.Pause();
-            // TODO: PATEL PLAY YOUR MUSIC HERE
-            // discoMusic.Play();
+            ((RoomTransitionGameState)Game.State).RoomGameState.DungeonMusic.Pause();
+            discoMusic.Play();
             base.RunRoomEntryProcedure();
         }
 
         public override void RunRoomExitProcedure()
         {
-            // TODO: PATEL STOP YOUR MUSIC HERE
-            // discoMusic.Stop();
-            ((RoomGameState)Game.State).DungeonMusic.Resume();
+            discoMusic.Stop();
+            ((RoomTransitionGameState)Game.State).RoomGameState.DungeonMusic.Resume();
             base.RunRoomExitProcedure();
         }
     }
