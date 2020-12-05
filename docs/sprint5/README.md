@@ -1,6 +1,6 @@
 # docs/sprint5
 ## General Notes
-Overall this sprint went about the same as sprint 4. We were all busy and did not work on the video game much over Thanksgiving, so we rushed towards the end to debug and add new features. However, we still finished in a reasonable amount of time and were content with the work we did.
+Overall this sprint went about the same as sprint 4. We were all busy and did not work on the video game much over Thanksgiving, so we rushed towards the end to debug and add new features. However, we still finished in a reasonable amount of time and were proud of the work we did.
 
 ---
 ## Contents
