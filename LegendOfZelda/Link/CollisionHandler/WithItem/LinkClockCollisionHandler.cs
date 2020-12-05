@@ -9,7 +9,7 @@ namespace LegendOfZelda.Link.CollisionHandler.WithItem
     {
         public void HandleCollision(IPlayer link, IItem item, Constants.Direction side)
         {
-            SoundFactory.Instance.CreateGetItemSound().Play();
+            SoundFactory.Instance.CreateClockPickUpSound().Play();
             ((RoomGameState)link.Game.State).ActivateClockMode();
             item.SafeToDespawn = true;
         }

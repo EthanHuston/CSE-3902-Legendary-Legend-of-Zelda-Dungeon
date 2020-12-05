@@ -47,7 +47,6 @@ namespace LegendOfZelda.Link.State
                     spawnOffset = LinkConstants.PickingUpTriforceSpawnOffset;
                     break;
                 case LinkConstants.ItemType.Clock:
-                    SoundFactory.Instance.CreateClockPickUpSound().Play();
                     StopMovingLocal();
                     break;
                 case LinkConstants.ItemType.Compass:
