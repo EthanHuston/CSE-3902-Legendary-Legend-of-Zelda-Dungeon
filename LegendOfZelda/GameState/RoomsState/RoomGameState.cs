@@ -61,16 +61,16 @@ namespace LegendOfZelda.GameState.RoomsState
         private void InitControllerList(List<IPlayer> playerList)
         {
             controllerList = new List<IController>();
-            for(int i = 0; i < PlayerList.Count; i++)
+            for(int i = 0; i < playerList.Count; i++)
             {
                 IGameStateControllerMappings mappings = null;
-                switch (PlayerList[i].PlayerNumber)
+                switch (playerList[i].PlayerNumber)
                 {
                     case 0:
-                        mappings = new RoomsStateMappingsPlayerOne(this, PlayerList[i]);
+                        mappings = new RoomsStateMappingsPlayerOne(this, playerList[i]);
                         break;
                     case 1:
-                        mappings = new RoomsStateMappingsPlayerTwo(this, PlayerList[i]);
+                        mappings = new RoomsStateMappingsPlayerTwo(this, playerList[i]);
                         break;
                 }
 

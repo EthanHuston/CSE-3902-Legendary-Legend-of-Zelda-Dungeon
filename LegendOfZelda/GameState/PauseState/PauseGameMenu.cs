@@ -8,7 +8,7 @@ namespace LegendOfZelda.GameState.PauseState
 {
     internal class PauseGameMenu : IButtonMenu
     {
-        private const int numRows = 2, numColumns = 2;
+        private const int numColumns = 2;
 
         public ButtonSelector ButtonSelector { get; private set; }
         public List<IButton> Buttons { get; private set; }
