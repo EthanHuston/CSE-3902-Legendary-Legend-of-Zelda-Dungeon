@@ -10,6 +10,7 @@ namespace LegendOfZelda.HUDClasses
         public SpriteBatch spriteBatch;
         private readonly BannerLink link;
         private List<BannerEnemy> enemyList;
+        private int enemyListLen = 6;
         public int loopCount;
         private readonly int posy = (int)(4 * Constants.GameScaler);
         private readonly int xGap = (int)(24 * Constants.GameScaler);
@@ -17,16 +18,16 @@ namespace LegendOfZelda.HUDClasses
         public Banner(SpriteBatch spriteBatch)
         {
             this.spriteBatch = spriteBatch;
-            link = new BannerLink(this, new Point(HUDConstants.hudWidth, posy));
-            initEnemyList();
+            link = new BannerLink(this, new Point(0, posy));
+            InitEnemyList();
             loopCount = 0;
         }
 
         public void Update()
         {
             link.Update();
-            if (loopCount > 5)
-                loopCount = 5;
+            if (loopCount > enemyListLen)
+                loopCount = enemyListLen;
             for(int i = 0; i < loopCount; i++)
             {
                 enemyList[i].Update();
@@ -36,13 +37,13 @@ namespace LegendOfZelda.HUDClasses
         public void Draw()
         {
             link.Draw();
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < enemyListLen; i++)
             {
                 enemyList[i].Draw(spriteBatch);
             }
         }
 
-        private void initEnemyList()
+        private void InitEnemyList()
         {
             enemyList = new List<BannerEnemy>();
             Point pos = new Point(HUDConstants.hudWidth + 2*xGap, posy);
@@ -54,8 +55,9 @@ namespace LegendOfZelda.HUDClasses
             pos = new Point(pos.X + xGap, pos.Y);
             enemyList.Add(new BannerEnemy(EnemySpriteFactory.Instance.CreateGoriyaLeftSprite(), pos));
             pos = new Point(pos.X + xGap, pos.Y);
+            enemyList.Add(new BannerEnemy(EnemySpriteFactory.Instance.CreateHandSprite(), pos));
+            pos = new Point(pos.X + xGap, pos.Y);
             enemyList.Add(new BannerEnemy(EnemySpriteFactory.Instance.CreateAquamentusWalkingSprite(), pos));
-
         }
     }
 }

@@ -61,7 +61,7 @@ namespace LegendOfZelda.GameState.RoomsState
         private void InitControllerList(List<IPlayer> playerList)
         {
             controllerList = new List<IController>();
-            for(int i = 0; i < playerList.Count; i++)
+            for (int i = 0; i < playerList.Count; i++)
             {
                 IGameStateControllerMappings mappings = null;
                 switch (playerList[i].PlayerNumber)
@@ -188,12 +188,16 @@ namespace LegendOfZelda.GameState.RoomsState
             {
                 clockModeOn = DateTime.Compare(DateTime.Now, clockModeOffTime) < 0;
                 CurrentRoom.ClockUpdate();
-                if(!clockModeOn) SoundFactory.Instance.CreateTimeFlowsSound().Play();
+                if (!clockModeOn)
+                {
+                    SoundEffectInstance sound = SoundFactory.Instance.CreateTimeFlowsSound();
+                    if (sound != null) sound.Play();
+                }
             }
             else CurrentRoom.Update();
 
             bool allPlayersDead = true;
-            foreach(IPlayer player in PlayerList)
+            foreach (IPlayer player in PlayerList)
             {
                 allPlayersDead = allPlayersDead && player.IsDead;
             }
