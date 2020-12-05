@@ -48,6 +48,7 @@ namespace LegendOfZelda
             bomb_drop = content.Load<SoundEffect>("Sounds/LOZ_Bomb_Drop");
             boss_hit = content.Load<SoundEffect>("Sounds/LOZ_Boss_Hit");
             boss_scream = content.Load<SoundEffect>("Sounds/LOZ_Boss_Scream1");
+            clock_pickup = content.Load<SoundEffect>("Sounds/LOZ_Get_Item");
             door_unlock = content.Load<SoundEffect>("Sounds/LOZ_Door_Unlock");
             dungeon_music = content.Load<SoundEffect>("Sounds/LOZ_Dungeon");
             enemy_die = content.Load<SoundEffect>("Sounds/LOZ_Enemy_Die");
