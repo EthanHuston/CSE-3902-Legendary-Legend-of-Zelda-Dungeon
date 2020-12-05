@@ -4,7 +4,7 @@ using System;
 
 namespace LegendOfZelda.GameState.Command
 {
-    class ToggleButtonCommand : ICommand
+    internal class ToggleButtonCommand : ICommand
     {
         private readonly IButtonMenu menu;
         private readonly Type buttonType;

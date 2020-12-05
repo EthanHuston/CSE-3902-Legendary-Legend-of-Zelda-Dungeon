@@ -10,7 +10,7 @@ namespace LegendOfZelda.Link.Sprite
         private readonly Texture2D sprite;
         private bool flashRed;
         private int damageColorCounter;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public IdleLinkSprite(Texture2D sprite, bool pokemonOn)
         {

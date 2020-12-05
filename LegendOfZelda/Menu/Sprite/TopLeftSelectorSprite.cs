@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.Menu.Sprite
 {
-    class TopLeftSelectorSprite : ISprite
+    internal class TopLeftSelectorSprite : ISprite
     {
         private const int numRows = 1;
         private const int numColumns = 2;

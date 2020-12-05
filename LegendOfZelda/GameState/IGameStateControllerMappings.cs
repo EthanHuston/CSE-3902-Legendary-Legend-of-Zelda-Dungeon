@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState
 {
-    interface IGameStateControllerMappings
+    internal interface IGameStateControllerMappings
     {
         Dictionary<Keys, ICommand> KeyboardMappings { get; }
         Dictionary<MouseButton, ICommand> MouseMappings { get; }

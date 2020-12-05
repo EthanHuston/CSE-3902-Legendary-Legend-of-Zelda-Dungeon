@@ -1,5 +1,4 @@
-﻿using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Command;
+﻿using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.MainMenuState
 {
-    class MainMenuStateMappings : IGameStateControllerMappings
+    internal class MainMenuStateMappings : IGameStateControllerMappings
     {
         public Dictionary<Keys, ICommand> KeyboardMappings { get; private set; }
         public Dictionary<MouseButton, ICommand> MouseMappings { get; private set; }

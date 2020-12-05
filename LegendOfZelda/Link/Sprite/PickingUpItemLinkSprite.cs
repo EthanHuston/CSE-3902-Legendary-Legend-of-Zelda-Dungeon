@@ -12,7 +12,7 @@ namespace LegendOfZelda.Link.Sprite
         private bool flashRed;
         private int damageColorCounter;
         private int delayCounter;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public PickingUpItemLinkSprite(Texture2D sprite, bool pokemonOn)
         {

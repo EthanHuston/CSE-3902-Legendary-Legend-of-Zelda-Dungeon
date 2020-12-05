@@ -1,10 +1,8 @@
 ﻿using LegendOfZelda.GameState.Sprite;
 using LegendOfZelda.Interface;
-using LegendOfZelda.Menu;
 using LegendOfZelda.Menu.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace LegendOfZelda.GameState
 {

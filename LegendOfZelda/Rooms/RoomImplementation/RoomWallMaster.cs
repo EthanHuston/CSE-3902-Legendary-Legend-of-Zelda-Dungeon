@@ -21,7 +21,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
 
         public RoomWallMaster(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
-            this.spriteBatch = game.SpriteBatch;
+            spriteBatch = game.SpriteBatch;
             rand = RoomConstants.RandomGenerator;
             wallMasterCounter = 3;
         }

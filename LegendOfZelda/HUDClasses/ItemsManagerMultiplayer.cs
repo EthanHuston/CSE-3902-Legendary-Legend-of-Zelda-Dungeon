@@ -12,13 +12,13 @@ namespace LegendOfZelda.HUDClasses
     internal class ItemsManagerMultiplayer
     {
         private readonly IMenu hud;
-        private IPlayer player;
+        private readonly IPlayer player;
         private readonly SpriteBatch spriteBatch;
         private readonly LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;
         private readonly IButton primaryButton;
         private IButton secondaryButton;
-        private int playerNumber;
+        private readonly int playerNumber;
 
         private Dictionary<LinkConstants.ItemType, IButton> secondaryItemDictionary;
 

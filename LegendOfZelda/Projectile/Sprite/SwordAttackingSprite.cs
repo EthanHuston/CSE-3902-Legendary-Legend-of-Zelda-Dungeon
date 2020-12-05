@@ -17,7 +17,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int numColumns = 4;
         private readonly int frameWidth;
         private readonly int frameHeight;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public SwordAttackingSprite(Texture2D sprite, bool pokemonOn)
         {

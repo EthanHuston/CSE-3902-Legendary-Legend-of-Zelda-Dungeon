@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.OptionState;
-using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;

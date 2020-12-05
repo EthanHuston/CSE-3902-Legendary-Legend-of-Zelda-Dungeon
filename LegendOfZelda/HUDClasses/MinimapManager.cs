@@ -15,7 +15,7 @@ namespace LegendOfZelda.HUDClasses
         private Point triforceRoomLocation = new Point(5, 4);
         private bool hasCompass;
         private Point secretRoomLocation = new Point(-1, -1);
-        private int numPlayers;
+        private readonly int numPlayers;
 
         public MinimapManager(RoomGameState roomGameState, int numPlayers)
         {

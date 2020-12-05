@@ -19,7 +19,7 @@ namespace LegendOfZelda.Link.Sprite
         private readonly int totalFrames;
         private const int numRows = 2;
         private const int numColumns = 4;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public StrikingLinkSprite(Texture2D sprite, bool pokemonOn)
         {

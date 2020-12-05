@@ -8,7 +8,7 @@ namespace LegendOfZelda.Enemies.Sprite
     internal class SpikeTrapSprite : IDamageableSprite
     {
         private readonly Texture2D sprite;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public SpikeTrapSprite(Texture2D sprite, bool pokemonOn)
         {

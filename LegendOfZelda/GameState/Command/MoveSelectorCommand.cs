@@ -3,7 +3,7 @@ using LegendOfZelda.Menu;
 
 namespace LegendOfZelda.GameState.Command
 {
-    class MoveSelectorCommand : ICommand
+    internal class MoveSelectorCommand : ICommand
     {
         private readonly IButtonMenu menu;
         private readonly Constants.Direction direction;

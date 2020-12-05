@@ -1,6 +1,4 @@
 ﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Link;
-using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -8,10 +6,10 @@ namespace LegendOfZelda.HUDClasses
 {
     internal class BannerEnemy
     {
-        private ISprite sprite;
+        private readonly ISprite sprite;
         private Point pos;
         private Point velocity = new Point(-3, 0);
-        private int largestSpriteWidth = (int)(24 * Constants.GameScaler);
+        private readonly int largestSpriteWidth = (int)(24 * Constants.GameScaler);
 
         public BannerEnemy(ISprite enemySprite, Point startingPos)
         {

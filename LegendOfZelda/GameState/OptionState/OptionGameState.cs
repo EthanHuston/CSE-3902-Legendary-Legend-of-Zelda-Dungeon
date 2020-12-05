@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.OptionState
 {
-    class OptionGameState : IGameState
+    internal class OptionGameState : IGameState
     {
         private readonly List<IController> controllerList;
 

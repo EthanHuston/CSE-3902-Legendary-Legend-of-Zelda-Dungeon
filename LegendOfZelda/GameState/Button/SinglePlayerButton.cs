@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.GameState.Button
 {
-    class SinglePlayerButton : IOnOffButton
+    internal class SinglePlayerButton : IOnOffButton
     {
         private ISprite sprite;
         private readonly ISprite buttonSelectedSprite;

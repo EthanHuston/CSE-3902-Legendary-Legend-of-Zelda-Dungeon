@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace LegendOfZelda.Menu
+﻿namespace LegendOfZelda.Menu
 {
     internal interface IOnOffButton : IButton
     {

@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.OptionState
 {
-    class OptionMenu : IButtonMenu
+    internal class OptionMenu : IButtonMenu
     {
         private const int numColumns = 2;
         private Dictionary<Type, IOnOffButton> buttonsDictionary;
-        private ISprite modsTitleSprite;
+        private readonly ISprite modsTitleSprite;
 
         public ButtonSelector ButtonSelector { get; private set; }
         public List<IButton> Buttons { get; private set; }

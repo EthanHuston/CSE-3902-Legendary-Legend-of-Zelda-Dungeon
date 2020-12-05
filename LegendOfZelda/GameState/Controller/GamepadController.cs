@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Controller
 {
-    class GamepadController : IController
+    internal class GamepadController : IController
     {
         private readonly Dictionary<Buttons, ICommand> buttonMappings;
         private GamePadState oldGamepadState;

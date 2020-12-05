@@ -66,28 +66,28 @@ namespace LegendOfZelda.GameState
         public static Rectangle RoomMarkerTextureAtlasSource => new Rectangle(9, 18, 3, 3);
     }
 
-    enum InputType
+    internal enum InputType
     {
         Keyboard,
         Mouse,
         Gamepad
     }
 
-    struct InputStates
+    internal struct InputStates
     {
         public MouseState MouseState;
         public KeyboardState KeyboardState;
         public GamePadState GamePadState;
     }
 
-    enum MouseButton
+    internal enum MouseButton
     {
         LeftButton,
         MiddleButton,
         RightButton
     }
 
-    static class GameStateMethods
+    internal static class GameStateMethods
     {
         public static InputStates GetOldInputState(List<IController> controllerList)
         {

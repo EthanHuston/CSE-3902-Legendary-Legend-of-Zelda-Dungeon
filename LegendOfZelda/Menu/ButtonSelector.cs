@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using LegendOfZelda.GameState;
+﻿using LegendOfZelda.GameState;
 using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.Menu
 {
-    class ButtonSelector
+    internal class ButtonSelector
     {
         private readonly IMenu owningMenu;
         private readonly SpriteBatch spriteBatch;

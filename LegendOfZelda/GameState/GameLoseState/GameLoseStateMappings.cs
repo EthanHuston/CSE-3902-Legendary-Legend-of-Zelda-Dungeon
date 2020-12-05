@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.GameLoseState
 {
-    class GameLoseStateMappings : IGameStateControllerMappings
+    internal class GameLoseStateMappings : IGameStateControllerMappings
     {
         public Dictionary<Keys, ICommand> KeyboardMappings { get; private set; }
         public Dictionary<MouseButton, ICommand> MouseMappings { get; private set; }
