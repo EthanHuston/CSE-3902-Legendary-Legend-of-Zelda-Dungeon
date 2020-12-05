@@ -11,5 +11,5 @@ performance when writing the sprint's qualities and aspects. The team also conti
 of this sprint was accuratly predicted (which was an issue our team had in Sprint 4). Without the timing issue on the board, I'd say our team kept the group
 mistakes to an alltime minimum.
 
-In the end, through the naturally occuring highs and lows of any team project cycle, we believe that our end product speaks for itself as one of the best Legend
-of Zelda implementations in the class. Without a solid team foundation during its development, it would have never ended up the way it did.
+In the end, through the naturally occuring highs and lows of any team project cycle, we believe that our end product speaks for itself as a solid re-creation of the NES Legend
+of Zelda game. Without a solid team foundation during its development, it would have never ended up the way it did.
