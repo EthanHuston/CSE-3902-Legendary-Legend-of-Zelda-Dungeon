@@ -149,7 +149,7 @@ namespace LegendOfZelda.GameState.RoomsState
         public override void SwitchToPauseState()
         {
             DungeonMusic.Pause();
-            StartStateSwitch(new PauseGameState(Game, this));
+            StartStateSwitch(new PauseGameState(Game, this, DungeonMusic));
         }
 
         public override void SwitchToItemSelectionState(int playerNum)
