@@ -5,7 +5,7 @@ OptionGameState.cs
 Nathan Murphy
 10 Minutes
 Readability
-This class is similar to many of the other game states but is actually functionally simpler as it doesnt have to wory about changing to multip[le different states.
-Because the state is far simpler the readability is very good, thye methods are extremely short and the variabl;e names are equally descriptive of their purpose.
+This class is similar to many of the other game states but is actually functionally simpler as it doesn't have to worry about changing to multiple different states.
+Because the state is far simpler the readability is very good, the methods are extremely short and the variable names are equally descriptive of their purpose.
 Maintainability
-This class is very maintainable as well as it follows the basic structure of the other game states structure of this class is highly maintainable and easy to adapt to future changes even if there arent many changes coming up for the project. Many of the changes made for this sprint revolved around swift and adaptable changes at runtime and this class is no different.
+This class is very maintainable as well as it follows the basic structure of the other game states structure of this class is highly maintainable and easy to adapt to future changes even if there aren't many changes coming up for the project. Many of the changes made for this sprint revolved around swift and adaptable changes at runtime and this class is no different.

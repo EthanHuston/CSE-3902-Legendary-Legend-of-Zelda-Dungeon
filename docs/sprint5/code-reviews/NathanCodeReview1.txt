@@ -2,12 +2,12 @@ Nathan Murphy
 12/04/2020
 Sprint 5
 RoomStateMappingsPlayerOne.cs
-Ryan Stucky
+Ryan Stuckey
 10 Minutes
 Readability
 This class, while lengthy in some methods, is quite good in terms of its readability. Variable and method names give clear indication on what their designated role
-is for the class. Also, repitiion of certain actions help guide the reader towards some of the logic for implementation. Readers can then note that collections are
-written in a context to clearly see each componenet clearly. Overall, this code has high readability.
+is for the class. Also, repetition of certain actions help guide the reader towards some of the logic for implementation. Readers can then note that collections are
+written in a context to clearly see each component clearly. Overall, this code has high readability.
 Maintainability
 In terms of future additions to the class as a whole, it clearly shows good maintainability. Additions in each of the mapping collections can easily be added with
-minimal interference. This can also be said for maintenance on existing code. Evereything is clear cut, so a removal of one feature does not effect the other.
+minimal interference. This can also be said for maintenance on existing code. Everything is clear cut, so a removal of one feature does not effect the other.

@@ -3,5 +3,5 @@ Saumyah Patel
 Sprint 5
 OptionMenu.cs
 Nathan Murphy
-The class looks very clean and neat. The get set variables are a good thing to use, for lessconfusion later.
+The class looks very clean and neat. The get set variables are a good thing to use, for less confusion later.
 Each function is very clean and the huge dictionary is not even that jarring. Overall good work, and keep having clean classes.
