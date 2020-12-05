@@ -186,8 +186,8 @@ namespace LegendOfZelda.GameLogic
         }
 
         private void InitializeItemCollisionDictionaries() 
-        { 
-            itemBlockDictionary = new Dictionary<Type, ICollisionHandler<IItem, IBlock>>()
+        {
+            itemBlockDictionary = new Dictionary<Type, ICollisionHandler<IItem, IBlock>>();
         }
     }
 }
