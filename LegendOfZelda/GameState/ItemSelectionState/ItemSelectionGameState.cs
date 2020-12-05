@@ -72,6 +72,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         protected override void InitializingStateUpdate()
         {
             camera.Update();
+            hud.Update();
             stateInitialized = !camera.IsPanning;
         }
 
