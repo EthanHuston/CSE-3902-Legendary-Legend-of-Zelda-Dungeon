@@ -6,8 +6,7 @@ chart](https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dungeon
 drastic nature of the chart itself could have been lessened to a more suitable degree (but hindsight is 20/20).
 
 In a better light, the team has finely tuned its communication issues with the documentation. Planning was well organized which, in turn, led to a better
-performance when writing the sprint's qualities and aspects. The team also continued to have a good distribution of tasks (which can be seen on the story boards
-[LINK THE STORY BOARDS]) between each member, meetings were held with 100% attendance always, and debugging was met with high group involvement. Even the workload
+performance when writing the sprint's qualities and aspects. The team also continued to have a good distribution of tasks (which can be seen on the [story boards](https://github.com/EthanHuston/CSE-3902-Legendary-Legend-of-Zelda-Dungeon/tree/master/docs/sprint5/azure-board-stories) between each member, meetings were held with 100% attendance always, and debugging was met with high group involvement. Even the workload
 of this sprint was accurately predicted (which was an issue our team had in Sprint 4). Without the timing issue on the board, I'd say our team kept the group
 mistakes to an all time minimum.
 
