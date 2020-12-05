@@ -108,7 +108,6 @@ namespace LegendOfZelda.GameLogic
 
             playerItemDictionary = new Dictionary<Type, ICollisionHandler<IPlayer, IItem>>()
             {
-                // TODO: fix me
                 {typeof(BombItem), new LinkItemCollisionHandler() },
                 {typeof(BoomerangItem), new LinkItemCollisionHandler() },
                 {typeof(BowItem), new LinkItemCollisionHandler() },
