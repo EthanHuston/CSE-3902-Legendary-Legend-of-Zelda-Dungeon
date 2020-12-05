@@ -53,7 +53,7 @@ namespace LegendOfZelda.Link.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Point position, float layer)
         {
-            Draw(spriteBatch, position, false, Constants.DrawLayer.Player);
+            Draw(spriteBatch, position, false, layer);
         }
 
         public void Draw(SpriteBatch spriteBatch, Point position, bool drawWithDamage, float layer)
