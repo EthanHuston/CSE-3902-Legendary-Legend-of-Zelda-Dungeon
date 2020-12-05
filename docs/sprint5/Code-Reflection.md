@@ -1,5 +1,5 @@
 # Code Maintainability, Readability, and Analysis
-Throughout this sprint, we remained happy with our code's current state, including its current maintainability and readability. We found that adding the extra features we wanted was relatively easy as we had planned ahead when building our code in previous sprints.
+Throughout this sprint, we remained happy with our code's current state, including its current maintainability and readability. We found that adding the extra features we wanted was relatively easy, as we had planned ahead when building our code in previous sprints.
 
 ### Warnings and Errors
 Overall, we kept our warnings and errors to a minimum during this sprint. Initially, we had several errors and some tough bugs due to changing members of the sprite factory dynamically during runtime, like when switching to specific sprites or sounds. In some instances, we were trying to create sounds that never got initialized, so we kept getting null values. However, after adding in some null checks and changing the organization of SoundFactory, we were able to resolve the issues.
