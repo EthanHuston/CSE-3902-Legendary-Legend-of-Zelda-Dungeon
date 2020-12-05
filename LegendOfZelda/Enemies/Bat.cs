@@ -8,6 +8,7 @@ namespace LegendOfZelda.Enemies
 {
     internal class Bat : INpc
     {
+        private const int changeDirectionDistanceBuffer = 16;
         private const int directionChangeDelay = 75;
         private const int velocityScalar = (int)(0.75 * Constants.GameScaler);
         private readonly IDamageableSprite sprite;
@@ -105,20 +106,19 @@ namespace LegendOfZelda.Enemies
         }
         private void CheckBounds()
         {
-            // TODO: use constant
-            if (position.X + 16 > Constants.MaxXPos)
+            if (position.X + changeDirectionDistanceBuffer > Constants.MaxXPos)
             {
                 ChooseDirection();
             }
-            else if (position.X - 16 < Constants.MinXPos)
+            else if (position.X - changeDirectionDistanceBuffer < Constants.MinXPos)
             {
                 ChooseDirection();
             }
-            if (position.Y + 16 > Constants.MaxYPos)
+            if (position.Y + changeDirectionDistanceBuffer > Constants.MaxYPos)
             {
                 ChooseDirection();
             }
-            else if (position.Y - 16 < Constants.MinYPos)
+            else if (position.Y - changeDirectionDistanceBuffer < Constants.MinYPos)
             {
                 ChooseDirection();
             }

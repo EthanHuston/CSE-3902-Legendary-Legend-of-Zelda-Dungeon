@@ -27,7 +27,7 @@ namespace LegendOfZelda
         public const double BoomerangDamage = .5 * HeartValue;
         public const double SwordBeamDamage = 1.0 * HeartValue;
         public const double FireballDamage = 0.5 * HeartValue;
-        public const double SwordDamage = 1 * HeartValue; // TODO lookup damage
+        public const double SwordDamage = 1 * HeartValue;
         public const double FireTileDamage = 0.5 * HeartValue;
 
         // Damage from Enemies
