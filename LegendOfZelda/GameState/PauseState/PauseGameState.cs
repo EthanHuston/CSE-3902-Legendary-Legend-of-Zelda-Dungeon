@@ -10,7 +10,7 @@ namespace LegendOfZelda.GameState.PauseState
     {
         private readonly List<IController> controllerList;
         private readonly IGameState roomStatePreserved;
-        private SoundEffectInstance DungeonMusic;
+        private readonly SoundEffectInstance DungeonMusic;
 
         public Game1 Game { get; private set; }
         public IButtonMenu PauseGameMenu { get; private set; }

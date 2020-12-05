@@ -10,7 +10,7 @@ namespace LegendOfZelda.HUDClasses
         public SpriteBatch spriteBatch;
         private readonly BannerLink link;
         private List<BannerEnemy> enemyList;
-        private int enemyListLen = 6;
+        private readonly int enemyListLen = 6;
         public int loopCount;
         private readonly int posy = (int)(4 * Constants.GameScaler);
         private readonly int xGap = (int)(24 * Constants.GameScaler);
