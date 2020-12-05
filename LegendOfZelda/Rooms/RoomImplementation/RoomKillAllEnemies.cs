@@ -8,28 +8,33 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         private bool doorHasBeenClosed;
         private bool doorHasBeenOpened;
+        private Dictionary<Constants.Direction, IDoor> openDoorsDictionary;
+
         public RoomKillAllEnemies(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {
             doorHasBeenClosed = false;
             doorHasBeenOpened = false;
+            openDoorsDictionary = new Dictionary<Constants.Direction, IDoor>();
         }
 
         public override void Update()
         {
             if (!doorHasBeenClosed && SafeToCloseDoor())
             {
-                foreach (KeyValuePair<Constants.Direction, IDoor> keyValuePair in roomDoors) GetDoor(keyValuePair.Key).CloseDoor();
+                foreach (KeyValuePair<Constants.Direction, IDoor> keyValuePair in roomDoors) { 
+                    if(keyValuePair.Value.IsOpen)
+                    {
+                        openDoorsDictionary.Add(keyValuePair.Key, keyValuePair.Value);
+                        keyValuePair.Value.CloseDoor();
+                    }
+                }
                 doorHasBeenClosed = true;
             }
             if (doorHasBeenClosed && !doorHasBeenOpened && AllObjects.NpcList.Count <= 0)
             {
-                foreach (KeyValuePair<Constants.Direction, IDoor> keyValuePair in roomDoors)
+                foreach (KeyValuePair<Constants.Direction, IDoor> keyValuePair in openDoorsDictionary)
                 {
-                    if ((keyValuePair.Value.GetType() == typeof(LockedDoor) ||
-                           keyValuePair.Value.GetType() == typeof(BombableOpening)) &&
-                        !keyValuePair.Value.IsOpen
-                        ) continue;
-                    GetDoor(keyValuePair.Key).OpenDoor();
+                    keyValuePair.Value.OpenDoor();
                 }
                 doorHasBeenOpened = true;
             }
@@ -40,7 +45,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
         {
             foreach (IPlayer player in PlayerList)
             {
-                if (player.Position.X >= RoomConstants.RightDoorX - player.GetRectangle().Width)
+                if (player.Position.X >= RoomConstants.RightDoorX - player.GetRectangle().Width || player.Position.Y < RoomConstants.TopDoorY + RoomConstants.WallWidth)
                 {
                     return false;
                 }
