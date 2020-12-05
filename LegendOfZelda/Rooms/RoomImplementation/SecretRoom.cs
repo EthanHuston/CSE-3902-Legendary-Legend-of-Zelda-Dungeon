@@ -2,7 +2,6 @@
 using LegendOfZelda.GameLogic;
 using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation

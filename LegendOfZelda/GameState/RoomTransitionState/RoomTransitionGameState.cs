@@ -5,7 +5,6 @@ using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Rooms;
 using LegendOfZelda.Utility;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 
 namespace LegendOfZelda.GameState.RoomTransitionState
 {
@@ -25,8 +24,8 @@ namespace LegendOfZelda.GameState.RoomTransitionState
 
         public RoomTransitionGameState(RoomGameState roomGameState, Constants.Direction direction)
         {
-            this.RoomGameState = roomGameState;
-            Game = this.RoomGameState.Game;
+            RoomGameState = roomGameState;
+            Game = RoomGameState.Game;
             this.direction = direction;
             currentRoom = roomGameState.CurrentRoom;
             nextRoom = currentRoom.GetRoom(direction);
@@ -130,6 +129,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         public void Update()
         {
             distanceMoved += (int)velocity.Length();
+            RoomGameState.Hud.Update();
             if (distanceMoved >= distanceToMove)
             {
                 Vector2 fixVector = new Vector2(velocity.X, velocity.Y);

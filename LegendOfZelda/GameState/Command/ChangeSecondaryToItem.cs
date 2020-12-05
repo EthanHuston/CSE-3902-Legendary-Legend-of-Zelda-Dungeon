@@ -1,7 +1,6 @@
 ﻿using LegendOfZelda.GameState.ItemSelectionState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link;
-using LegendOfZelda.Link.Interface;
 using LegendOfZelda.Menu;
 
 namespace LegendOfZelda.GameState.Command

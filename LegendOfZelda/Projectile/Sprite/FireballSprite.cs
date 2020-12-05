@@ -15,7 +15,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private readonly int totalFrames;
         private readonly int width;
         private readonly int height;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public FireballSprite(Texture2D sprite, bool pokemonOn)
         {

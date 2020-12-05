@@ -19,7 +19,7 @@ namespace LegendOfZelda.Enemies.Sprite
         private int column;
         private bool flashRed;
         private int damageColorCounter;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public AquamentusBreathingSprite(Texture2D sprite, bool pokemonOn)
         {

@@ -1,0 +1,7 @@
+Saumyah Patel
+12/4/2020
+Sprint 5
+OptionMenu.cs
+Nathan Murphy
+The class looks very clean and neat. The get set variables are a good thing to use, for lessconfusion later.
+Each function is very clean and the huge dictionary is not even that jarring. Overall good work, and keep having clean classes.

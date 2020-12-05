@@ -20,7 +20,7 @@ namespace LegendOfZelda.HUDClasses
         private Point position;
         public Point Position { get => position; set => position = new Point(value.X, value.Y); }
 
-        private Banner banner;
+        private readonly Banner banner;
 
         public HUD(RoomGameState gameState)
         {

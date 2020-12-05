@@ -1,19 +1,17 @@
-﻿using LegendOfZelda.Interface;
-using LegendOfZelda.Link;
+﻿using LegendOfZelda.Link;
 using LegendOfZelda.Link.Interface;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda.HUDClasses
 {
     internal class BannerLink
     {
 
-        private Banner banner;
-        private ILinkSprite sprite;
+        private readonly Banner banner;
+        private readonly ILinkSprite sprite;
         private Point pos;
         private Point velocity = new Point(-3, 0);
-        private int largestSpriteWidth = (int)(24 * Constants.GameScaler);
+        private readonly int largestSpriteWidth = (int)(24 * Constants.GameScaler);
 
         public BannerLink(Banner banner, Point startingPos)
         {

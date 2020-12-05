@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.OptionState
 {
-    class OptionMapping : IGameStateControllerMappings
+    internal class OptionMapping : IGameStateControllerMappings
     {
         public Dictionary<Keys, ICommand> KeyboardMappings { get; private set; }
         public Dictionary<MouseButton, ICommand> MouseMappings { get; private set; }

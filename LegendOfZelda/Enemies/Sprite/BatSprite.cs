@@ -18,7 +18,7 @@ namespace LegendOfZelda.Enemies.Sprite
         private int damageColorCounter;
         private readonly int width;
         private readonly int height;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public BatSprite(Texture2D sprite, bool pokemonOn)
         {

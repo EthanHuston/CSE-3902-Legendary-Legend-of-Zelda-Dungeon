@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using LegendOfZelda.GameState.Button;
+﻿using LegendOfZelda.GameState.Button;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.PauseState
 {
-    class PauseGameMenu : IButtonMenu
+    internal class PauseGameMenu : IButtonMenu
     {
         private const int numRows = 2, numColumns = 2;
 

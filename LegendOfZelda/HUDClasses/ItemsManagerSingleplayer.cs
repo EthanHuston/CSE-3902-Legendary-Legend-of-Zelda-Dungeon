@@ -12,7 +12,7 @@ namespace LegendOfZelda.HUDClasses
     internal class ItemsManagerSingleplayer
     {
         private readonly IMenu hud;
-        private IPlayer player;
+        private readonly IPlayer player;
         private readonly SpriteBatch spriteBatch;
         private readonly LinkConstants.ItemType primaryItem;
         private LinkConstants.ItemType secondaryItem;

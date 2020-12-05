@@ -19,7 +19,7 @@ namespace LegendOfZelda.Link.Sprite
         private const int numRows = 1;
         private const int numColumns = 2;
         private const int walkingFrameDelay = 10;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public WalkingLinkSprite(Texture2D sprite, bool pokemonOn)
         {

@@ -19,7 +19,7 @@ namespace LegendOfZelda.Link.Sprite
         private readonly int frameHeight;
         private const int numRows = 1;
         private const int numColumns = 2;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public PickingUpTriforceLinkSprite(Texture2D sprite, bool pokemonOn)
         {

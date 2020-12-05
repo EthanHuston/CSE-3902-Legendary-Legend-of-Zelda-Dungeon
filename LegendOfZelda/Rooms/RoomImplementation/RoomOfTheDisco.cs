@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.Rooms.RoomImplementation
 {
-    class RoomOfTheDisco : Room
+    internal class RoomOfTheDisco : Room
     {
         private readonly SoundEffectInstance discoMusic;
 

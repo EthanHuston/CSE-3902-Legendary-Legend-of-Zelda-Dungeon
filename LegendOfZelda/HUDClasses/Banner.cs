@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.Enemies;
-using LegendOfZelda.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -9,11 +8,11 @@ namespace LegendOfZelda.HUDClasses
     internal class Banner
     {
         public SpriteBatch spriteBatch;
-        private BannerLink link;
+        private readonly BannerLink link;
         private List<BannerEnemy> enemyList;
         public int loopCount;
-        private int posy = (int)(4 * Constants.GameScaler);
-        private int xGap = (int)(24 * Constants.GameScaler);
+        private readonly int posy = (int)(4 * Constants.GameScaler);
+        private readonly int xGap = (int)(24 * Constants.GameScaler);
 
         public Banner(SpriteBatch spriteBatch)
         {

@@ -1,6 +1,5 @@
 ﻿using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.OptionState;
-using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Menu;
 using Microsoft.Xna.Framework;
@@ -49,7 +48,6 @@ namespace LegendOfZelda.GameState.MainMenuState
 
         public override void StateExitProcedure()
         {
-            titleSound.Stop();
         }
 
         protected override void NormalStateUpdate()
@@ -70,7 +68,7 @@ namespace LegendOfZelda.GameState.MainMenuState
 
         public override void SwitchToOptionState()
         {
-            StartStateSwitch(new OptionGameState(Game));
+            StartStateSwitch(new OptionGameState(Game, titleSound));
         }
     }
 }

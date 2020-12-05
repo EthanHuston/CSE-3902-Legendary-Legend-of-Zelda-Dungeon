@@ -1,6 +1,4 @@
-﻿using LegendOfZelda.GameState.Button;
-using LegendOfZelda.GameState.Command;
-using LegendOfZelda.GameState.PauseState;
+﻿using LegendOfZelda.GameState.Command;
 using LegendOfZelda.Interface;
 using LegendOfZelda.Link.Command;
 using LegendOfZelda.Link.Interface;
@@ -10,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.RoomsState
 {
-    class RoomsStateMappingsPlayerTwo : IGameStateControllerMappings
+    internal class RoomsStateMappingsPlayerTwo : IGameStateControllerMappings
     {
         public Dictionary<Keys, ICommand> KeyboardMappings { get; private set; }
         public Dictionary<MouseButton, ICommand> MouseMappings { get; private set; }

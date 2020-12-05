@@ -1,3 +1,6 @@
 Saumyah Patel
 12/4/2020
 Sprint 5
+ItemManagerMultiplayer.cs
+Chris Lenart
+The class looks very neat at first glance. The use of internal class is smart in this context. A lot of private variables but that is warranted due to the number of things that must be kept track of. Each method is very clean, and the dictionary only keeps track of the necessary objects, nothing more. Good job.

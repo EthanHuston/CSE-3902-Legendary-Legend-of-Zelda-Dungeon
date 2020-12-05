@@ -3,7 +3,7 @@ using LegendOfZelda.Menu;
 
 namespace LegendOfZelda.GameState.Command
 {
-    class TurnButtonOnCommand : ICommand
+    internal class TurnButtonOnCommand : ICommand
     {
         private readonly IOnOffButton button;
 

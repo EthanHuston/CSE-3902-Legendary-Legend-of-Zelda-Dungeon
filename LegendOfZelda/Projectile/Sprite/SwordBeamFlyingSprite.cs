@@ -15,7 +15,7 @@ namespace LegendOfZelda.Projectile.Sprite
         private const int numRows = 1;
         private const int numColumns = 4;
         private const int frameDelay = 10;
-        private bool pokemonOn;
+        private readonly bool pokemonOn;
 
         public SwordBeamFlyingSprite(Texture2D sprite, bool pokemonOn)
         {

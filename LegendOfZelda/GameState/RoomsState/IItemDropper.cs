@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda.GameState.RoomsState
 {
-    interface IItemDropper
+    internal interface IItemDropper
     {
         void DropItem(Point position);
     }

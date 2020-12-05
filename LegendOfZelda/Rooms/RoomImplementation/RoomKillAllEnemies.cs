@@ -8,7 +8,7 @@ namespace LegendOfZelda.Rooms.RoomImplementation
     {
         private bool doorHasBeenClosed;
         private bool doorHasBeenOpened;
-        private Dictionary<Constants.Direction, IDoor> openDoorsDictionary;
+        private readonly Dictionary<Constants.Direction, IDoor> openDoorsDictionary;
 
         public RoomKillAllEnemies(List<IPlayer> playerList, Game1 game) : base(playerList, game)
         {

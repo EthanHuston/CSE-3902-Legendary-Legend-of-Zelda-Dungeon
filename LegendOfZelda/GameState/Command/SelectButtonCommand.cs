@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.Command
 {
-    class SelectButtonCommand : ICommand
+    internal class SelectButtonCommand : ICommand
     {
         private readonly ButtonSelector buttonSelector;
         private readonly Dictionary<Type, ICommand> buttonCommands;
