@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.Menu;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace LegendOfZelda.GameState.PauseState
@@ -9,16 +10,18 @@ namespace LegendOfZelda.GameState.PauseState
     {
         private readonly List<IController> controllerList;
         private readonly IGameState roomStatePreserved;
+        private SoundEffectInstance DungeonMusic;
 
         public Game1 Game { get; private set; }
         public IButtonMenu PauseGameMenu { get; private set; }
 
-        public PauseGameState(Game1 game, IGameState oldRoomState)
+        public PauseGameState(Game1 game, IGameState oldRoomState, SoundEffectInstance dungeonMusic)
         {
             Game = game;
             roomStatePreserved = oldRoomState;
             PauseGameMenu = new PauseGameMenu(Game);
             controllerList = GetControllerList();
+            DungeonMusic = dungeonMusic;
         }
 
         private List<IController> GetControllerList()
@@ -49,6 +52,7 @@ namespace LegendOfZelda.GameState.PauseState
         public void SwitchToMainMenuState()
         {
             StateExitProcedure();
+            DungeonMusic.Stop();
             Game.State = new MainMenuGameState(Game);
             Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
             Game.State.StateEntryProcedure();
