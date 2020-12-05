@@ -48,7 +48,6 @@ namespace LegendOfZelda.GameState.MainMenuState
 
         public override void StateExitProcedure()
         {
-            titleSound.Stop();
         }
 
         protected override void NormalStateUpdate()
@@ -69,7 +68,7 @@ namespace LegendOfZelda.GameState.MainMenuState
 
         public override void SwitchToOptionState()
         {
-            StartStateSwitch(new OptionGameState(Game));
+            StartStateSwitch(new OptionGameState(Game, titleSound));
         }
     }
 }

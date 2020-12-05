@@ -3,6 +3,7 @@ using LegendOfZelda.GameState.Controller;
 using LegendOfZelda.GameState.MainMenuState;
 using LegendOfZelda.GameState.RoomsState;
 using LegendOfZelda.Menu;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 
@@ -11,15 +12,17 @@ namespace LegendOfZelda.GameState.OptionState
     internal class OptionGameState : IGameState
     {
         private readonly List<IController> controllerList;
+        private readonly SoundEffectInstance titleScreenMusic;
 
         public Game1 Game { get; private set; }
         public IButtonMenu OptionMenu { get; private set; }
 
-        public OptionGameState(Game1 game)
+        public OptionGameState(Game1 game, SoundEffectInstance titleScreenMusic)
         {
             Game = game;
             OptionMenu = new OptionMenu(Game);
             controllerList = GetControllerList();
+            this.titleScreenMusic = titleScreenMusic;
         }
 
         private List<IController> GetControllerList()
@@ -41,6 +44,13 @@ namespace LegendOfZelda.GameState.OptionState
         public void SwitchToRoomState()
         {
             StateExitProcedure();
+
+            SpriteFactory.Instance.LoadAllTextures(Game.Content);
+            SoundFactory.Instance.LoadAllSounds(Game.Content);
+
+            foreach (IOnOffButton button in OptionMenu.Buttons)
+                if (button.IsOn) UpdateGameFromButtonStatus(button.GetType());
+
             Game.State = new RoomGameState(Game);
             Game.State.SetControllerOldInputState(GameStateMethods.GetOldInputState(controllerList));
             Game.State.StateEntryProcedure();
@@ -58,11 +68,7 @@ namespace LegendOfZelda.GameState.OptionState
 
         public void StateExitProcedure()
         {
-            SpriteFactory.Instance.LoadAllTextures(Game.Content);
-            SoundFactory.Instance.LoadAllSounds(Game.Content);
-
-            foreach (IOnOffButton button in OptionMenu.Buttons)
-                if (button.IsOn) UpdateGameFromButtonStatus(button.GetType());
+            titleScreenMusic.Stop();
         }
 
         public void Update()
