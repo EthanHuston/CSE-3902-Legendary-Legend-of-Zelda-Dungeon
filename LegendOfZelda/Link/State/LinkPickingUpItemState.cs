@@ -48,7 +48,6 @@ namespace LegendOfZelda.Link.State
                     break;
                 case LinkConstants.ItemType.Clock:
                     SoundFactory.Instance.CreateClockPickUpSound().Play();
-                    // For Sprint 5: SoundFactory.Instance.CreateClockPickUpSound().Play();
                     StopMovingLocal();
                     break;
                 case LinkConstants.ItemType.Compass:
