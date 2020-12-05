@@ -8,15 +8,15 @@ namespace LegendOfZelda.HUDClasses
     {
 
         private readonly Banner banner;
-        private readonly ILinkSprite sprite;
+        private ILinkSprite sprite;
         private Point pos;
-        private Point velocity = new Point(-3, 0);
+        private Point velocity = new Point(3, 0);
         private readonly int largestSpriteWidth = (int)(24 * Constants.GameScaler);
 
         public BannerLink(Banner banner, Point startingPos)
         {
             this.banner = banner;
-            sprite = LinkSpriteFactory.Instance.CreateWalkingLeftLinkSprite();
+            sprite = LinkSpriteFactory.Instance.CreateWalkingRightLinkSprite();
             pos = startingPos;
         }
 
@@ -31,7 +31,14 @@ namespace LegendOfZelda.HUDClasses
             if (pos.X <= 0 - largestSpriteWidth)
             {
                 pos = new Point(HUDConstants.hudWidth, pos.Y);
-                banner.loopCount = banner.loopCount + 1;
+                banner.loopCount++;
+            }
+            if (pos.X >= HUDConstants.hudWidth + 10)
+            {
+                pos = new Point(HUDConstants.hudWidth, pos.Y);
+                sprite = LinkSpriteFactory.Instance.CreateWalkingLeftLinkSprite();
+                velocity = new Point(-3, 0);
+                banner.loopCount++;
             }
             sprite.Update();
         }

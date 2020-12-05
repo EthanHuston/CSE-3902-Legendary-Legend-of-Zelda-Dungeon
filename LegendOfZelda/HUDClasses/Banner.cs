@@ -17,7 +17,7 @@ namespace LegendOfZelda.HUDClasses
         public Banner(SpriteBatch spriteBatch)
         {
             this.spriteBatch = spriteBatch;
-            link = new BannerLink(this, new Point(HUDConstants.hudWidth, posy));
+            link = new BannerLink(this, new Point(0, posy));
             initEnemyList();
             loopCount = 0;
         }
