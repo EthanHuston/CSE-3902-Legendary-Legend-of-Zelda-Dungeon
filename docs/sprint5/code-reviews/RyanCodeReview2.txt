@@ -1,0 +1,10 @@
+Ryan Stuckey
+12/4/2020
+Sprint 5
+Banner.cs
+Chris Lenart
+7 minutes
+Readability
+Very good. All the methods are simple and straight forward. If any method gets too complicated, it is split off into helper methods, like in InitEnemyList.
+Maintainability
+Maintainability is also pretty good. Banner makes use of a few outside classes, but not too many. Maintainability could be improved by using a constant on lines 28 and 29, but this is nothing too major.

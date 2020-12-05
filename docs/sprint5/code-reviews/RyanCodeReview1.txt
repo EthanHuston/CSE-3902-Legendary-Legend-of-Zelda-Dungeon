@@ -1,0 +1,10 @@
+Ryan Stuckey
+12/4/2020
+Sprint 5
+OptionMapping.cs
+Nathan Murphy
+7 minutes
+Readability
+Readability is great. No problems here. Method and field names are appropriate for what they do while also staying concise and meaningful. None of the methods are too long, meaning the methods here do not try to do too much.
+Maintainability
+Maintainability is also good. The class makes use of an interface, meaning it can easily be swapped out for another implementation later. Additionally, the class makes use of interfaces wherever possible in the mapping dictionaries, meaning we can swap out mappings later for different implementation.

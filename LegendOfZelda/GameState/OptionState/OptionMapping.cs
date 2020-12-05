@@ -20,7 +20,7 @@ namespace LegendOfZelda.GameState.OptionState
         {
             GamepadMappings = GetGamepadMappings(gameState);
             KeyboardMappings = GetKeyboardMappings(gameState);
-            MouseMappings = GetMouseMappings(gameState);
+            MouseMappings = GetMouseMappings();
             ButtonMappings = GetButtonMappings(gameState);
             RepeatableKeyboardKeys = GetRepeatableKeyboardKeys();
             RepeatableGamepadButtons = GetRepeatableGamepadButtons();
@@ -69,7 +69,7 @@ namespace LegendOfZelda.GameState.OptionState
             };
         }
 
-        private Dictionary<MouseButton, ICommand> GetMouseMappings(IGameState gameState)
+        private Dictionary<MouseButton, ICommand> GetMouseMappings()
         {
             return new Dictionary<MouseButton, ICommand>
             {
