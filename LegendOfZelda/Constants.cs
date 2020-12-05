@@ -108,6 +108,5 @@ namespace LegendOfZelda
             public const float LinkDead = 8.1f;
             public const float TopLayer = 10;
         }
-
     }
 }
