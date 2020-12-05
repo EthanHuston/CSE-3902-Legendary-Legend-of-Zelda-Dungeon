@@ -130,6 +130,7 @@ namespace LegendOfZelda.GameState.RoomTransitionState
         public void Update()
         {
             distanceMoved += (int)velocity.Length();
+            RoomGameState.Hud.Update();
             if (distanceMoved >= distanceToMove)
             {
                 Vector2 fixVector = new Vector2(velocity.X, velocity.Y);
