@@ -38,6 +38,10 @@ namespace LegendOfZelda.GameState.PauseState
                 { Buttons.LeftThumbstickRight, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Right) },
                 { Buttons.LeftThumbstickDown, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Down) },
                 { Buttons.LeftThumbstickLeft, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Left) },
+                { Buttons.DPadUp, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Up) },
+                { Buttons.DPadRight, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Right) },
+                { Buttons.DPadDown, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Down) },
+                { Buttons.DPadLeft, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Left) },
                 { Buttons.A, new SelectButtonCommand(gameStateCast.PauseGameMenu.ButtonSelector, GetButtonMappings(gameState)) }
             };
         }
@@ -52,7 +56,12 @@ namespace LegendOfZelda.GameState.PauseState
                 { Keys.D, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Right) },
                 { Keys.S, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Down) },
                 { Keys.A, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Left) },
-                { Keys.Enter, new SelectButtonCommand(gameStateCast.PauseGameMenu.ButtonSelector, GetButtonMappings(gameState)) }
+                { Keys.Enter, new SelectButtonCommand(gameStateCast.PauseGameMenu.ButtonSelector, GetButtonMappings(gameState)) },
+                { Keys.Space, new SelectButtonCommand(gameStateCast.PauseGameMenu.ButtonSelector, GetButtonMappings(gameState)) },
+                {Keys.I, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Up) },
+                {Keys.L, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Right) },
+                {Keys.K, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Down) },
+                {Keys.J, new MoveSelectorCommand(gameStateCast.PauseGameMenu, Constants.Direction.Left) },
             };
         }
 

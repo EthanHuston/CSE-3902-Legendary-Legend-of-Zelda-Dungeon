@@ -38,6 +38,10 @@ namespace LegendOfZelda.GameState.ItemSelectionState
                 { Buttons.LeftThumbstickRight, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Right) },
                 { Buttons.LeftThumbstickDown, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Down) },
                 { Buttons.LeftThumbstickLeft, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Left) },
+                { Buttons.DPadUp, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Up) },
+                { Buttons.DPadRight, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Right) },
+                { Buttons.DPadDown, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Down) },
+                { Buttons.DPadLeft, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Left) }
             };
         }
 
@@ -47,10 +51,15 @@ namespace LegendOfZelda.GameState.ItemSelectionState
             return new Dictionary<Keys, ICommand>
             {
                 {Keys.Tab, new ResumeGameCommand(gameState) },
+                {Keys.D0, new ResumeGameCommand(gameState) },
                 {Keys.W, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Up) },
                 {Keys.D, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Right) },
                 {Keys.S, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Down) },
-                {Keys.A, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Left) }
+                {Keys.A, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Left) },
+                {Keys.I, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Up) },
+                {Keys.L, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Right) },
+                {Keys.K, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Down) },
+                {Keys.J, new MoveSelectorCommand(gameStateCast.InventoryMenu, Constants.Direction.Left) }
             };
         }
 
