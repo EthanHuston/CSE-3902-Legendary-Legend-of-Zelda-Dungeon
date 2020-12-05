@@ -1,7 +1,7 @@
 # Moving Forward
 ### Refractoring
 We feel that our team ended up with a very well refined project. Our code follows many of the software design practices we learned in class so our code overall 
-has good readability and maintainability and displays high coheason and low coupling. 
+has good readability and maintainability and displays high cohesion and low coupling. 
 Although most of our code is solid, there is one major problem we ran into during this sprint; our code requires that the multiplayer and single player HUDs must be the same size.
 While implementing multiplayer, we decided to make the HUD taller to make room for both player's stats. However, our constants are created based off the HUD height and there is
 no way to change the constants during runtime. As our team moves forward beyond this class, this is an area we could come back to and refractor.
