@@ -66,6 +66,7 @@ namespace LegendOfZelda.GameState.ItemSelectionState
         protected override void SwitchingStateUpdate()
         {
             camera.Update();
+            hud.Update();
             readyToSwitchState = !camera.IsPanning;
         }
 
