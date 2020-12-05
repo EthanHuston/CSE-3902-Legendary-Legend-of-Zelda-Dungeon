@@ -58,3 +58,11 @@ Player 2
 |Open Inventory | 0 | X |
 |Change Secondary (in inventory) | IJKL/Enter/Space | Left Joystick or D-Pad |
 |Pause | Esc | Start |
+
+### Game Mods
+|Mod  | Effect |
+|:-|:-:|
+|Multiplayer  | Choose between 1 and 2 Players|
+|JOJO | Swap out clock sound effect for iconic sound byte from the anime|
+|Yakuza | Exchange the regular dungeon music with Baka Mitai from the Yakuza Series|
+|Pokemon  | Exchange sprites of the player and enemies with sprites from Pokemon| 
