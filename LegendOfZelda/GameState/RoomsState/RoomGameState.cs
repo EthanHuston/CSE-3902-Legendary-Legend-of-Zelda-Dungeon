@@ -191,7 +191,7 @@ namespace LegendOfZelda.GameState.RoomsState
                 if (!clockModeOn)
                 {
                     SoundEffectInstance sound = SoundFactory.Instance.CreateTimeFlowsSound();
-                    if (sound != null) sound.Play();
+                    
                 }
             }
             else CurrentRoom.Update();

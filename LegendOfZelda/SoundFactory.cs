@@ -231,7 +231,7 @@ namespace LegendOfZelda
 
         public SoundEffectInstance CreateTimeFlowsSound()
         {
-            return time_flows.CreateInstance();
+            return time_flows == null ? null : time_flows.CreateInstance();
         }
 
         public SoundEffectInstance CreateTitleSound()
