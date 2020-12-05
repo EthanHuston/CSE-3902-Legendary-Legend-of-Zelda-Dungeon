@@ -48,7 +48,6 @@ namespace LegendOfZelda.GameState.RoomsState
                 spawnableManager.Spawn(new FairyItem(spawnableManager.Game.SpriteBatch, position));
                 //Drop a Fairy
             }
-            spawnableManager.Spawn(new ClockItem(spawnableManager.Game.SpriteBatch, position));
         }
     }
 }
