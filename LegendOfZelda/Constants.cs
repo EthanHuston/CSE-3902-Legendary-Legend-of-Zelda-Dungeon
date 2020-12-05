@@ -10,7 +10,7 @@ namespace LegendOfZelda
         public const double PokemonScaler = 2.025;
         public const double TrainerScaler = 2.625;
         public const int HeartValue = 10;
-        public const float MusicVolume = 0.1f; // TODO: turn sound back on
+        public const float MusicVolume = 0.1f;
 
         // Game Screen
         public static Vector2 GameSize => new Vector2(MaxXPos, MaxYPos);
