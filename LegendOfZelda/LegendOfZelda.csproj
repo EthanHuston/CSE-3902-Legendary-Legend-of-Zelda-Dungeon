@@ -115,6 +115,7 @@
     <Compile Include="GameState\Command\ToggleButtonCommand.cs" />
     <Compile Include="GameState\Command\TurnButtonOnCommand.cs" />
     <Compile Include="GameState\GameLoseState\GameLoseStateMappings.cs" />
+    <Compile Include="GameState\GameLoseState\GameLoseMenu.cs" />
     <Compile Include="GameState\GameWinState\Curtain.cs" />
     <Compile Include="GameState\IGameStateControllerMappings.cs" />
     <Compile Include="GameState\ItemSelectionState\ItemSelectionStateMappings.cs" />

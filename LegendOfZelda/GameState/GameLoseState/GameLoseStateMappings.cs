@@ -28,17 +28,37 @@ namespace LegendOfZelda.GameState.GameLoseState
 
         private Dictionary<Buttons, ICommand> GetGamepadMappings(IGameState gameState)
         {
+            GameLoseGameState gameStateCast = (GameLoseGameState)gameState;
             return new Dictionary<Buttons, ICommand>
             {
-                /* TODO: add select/moves button commands here */
+                { Buttons.LeftThumbstickUp, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Up) },
+                { Buttons.LeftThumbstickRight, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Right) },
+                { Buttons.LeftThumbstickDown, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Down) },
+                { Buttons.LeftThumbstickLeft, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Left) },
+                { Buttons.DPadUp, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Up) },
+                { Buttons.DPadRight, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Right) },
+                { Buttons.DPadDown, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Down) },
+                { Buttons.DPadLeft, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Left) },
+                { Buttons.A, new SelectButtonCommand(gameStateCast.GameLoseMenu.ButtonSelector, GetButtonMappings(gameState)) }
             };
         }
 
         public Dictionary<Keys, ICommand> GetKeyboardMappings(IGameState gameState)
         {
+            GameLoseGameState gameStateCast = (GameLoseGameState)gameState;
             return new Dictionary<Keys, ICommand>
             {
-                {Keys.Escape, new ExitGameCommand(gameState) }
+                {Keys.Escape, new ExitGameCommand(gameState) },
+                { Keys.W, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Up) },
+                { Keys.D, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Right) },
+                { Keys.S, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Down) },
+                { Keys.A, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Left) },
+                { Keys.Enter, new SelectButtonCommand(gameStateCast.GameLoseMenu.ButtonSelector, GetButtonMappings(gameState)) },
+                { Keys.Space, new SelectButtonCommand(gameStateCast.GameLoseMenu.ButtonSelector, GetButtonMappings(gameState)) },
+                {Keys.I, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Up) },
+                {Keys.L, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Right) },
+                {Keys.K, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Down) },
+                {Keys.J, new MoveSelectorCommand(gameStateCast.GameLoseMenu, Constants.Direction.Left) },
             };
         }
 

@@ -20,12 +20,12 @@ namespace LegendOfZelda.GameState.GameLoseState
         private readonly ISprite redOverlaySprite;
         private readonly SoundEffectInstance game_over;
         private readonly SoundEffectInstance link_die;
-        private readonly List<IButton> buttons;
         private bool phaseOne = true;
         private bool phaseTwo = false;
         private bool phaseThree = false;
         private int phaseOneBuffer = 0;
         private int phaseTwoBuffer = 0;
+        public IButtonMenu GameLoseMenu { get; private set; }
 
         public GameLoseGameState(Game1 game, IGameState oldRoomState)
         {
@@ -36,20 +36,13 @@ namespace LegendOfZelda.GameState.GameLoseState
             game_over = SoundFactory.Instance.CreateGameOverSound();
             gameOverSprite = GameStateSpriteFactory.Instance.CreateGameOverSprite();
             redOverlaySprite = GameStateSpriteFactory.Instance.CreateRedOverlaySprite();
-            buttons = GetButtonsList(game);
-            controllerList = GetControllerList(buttons);
+
+            GameLoseMenu = new GameLoseMenu(Game);
+
+            controllerList = GetControllerList(GameLoseMenu.Buttons);
         }
 
         public Game1 Game { get; protected set; }
-
-        private List<IButton> GetButtonsList(Game1 game)
-        {
-            return new List<IButton>()
-            {
-                {new RetryButtonBlack(game.SpriteBatch, GameStateConstants.LoseStateRetryButtonLocation) },
-                {new ExitButtonBlack(game.SpriteBatch, GameStateConstants.LoseStateExitButtonLocation) }
-            };
-        }
 
         private List<IController> GetControllerList(List<IButton> buttons)
         {
@@ -57,7 +50,8 @@ namespace LegendOfZelda.GameState.GameLoseState
             return new List<IController>()
             {
                 {new KeyboardController(mappings.KeyboardMappings, mappings.RepeatableKeyboardKeys) },
-                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, buttons) }
+                {new MouseController(mappings.MouseMappings, mappings.ButtonMappings, buttons) },
+                {new GamepadController(mappings.GamepadMappings, mappings.RepeatableGamepadButtons) }
             };
         }
 
@@ -78,7 +72,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             }
             else if (phaseThree)
             {
-                foreach (IButton button in buttons) button.Draw();
+                GameLoseMenu.Draw();
             }
         }
 
@@ -126,6 +120,7 @@ namespace LegendOfZelda.GameState.GameLoseState
             else if (phaseThree)
             {
                 foreach (IController controller in controllerList) controller.Update();
+                GameLoseMenu.Update();
             }
         }
 
