@@ -188,7 +188,7 @@ namespace LegendOfZelda.GameState.RoomsState
             {
                 clockModeOn = DateTime.Compare(DateTime.Now, clockModeOffTime) < 0;
                 CurrentRoom.ClockUpdate();
-                // For Sprint 5: if(!clockModeOn) SoundFactory.Instance.CreateTimeFlowsSound().Play();
+                if(!clockModeOn) SoundFactory.Instance.CreateTimeFlowsSound().Play();
             }
             else CurrentRoom.Update();
 
