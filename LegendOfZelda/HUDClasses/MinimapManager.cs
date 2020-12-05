@@ -15,6 +15,7 @@ namespace LegendOfZelda.HUDClasses
         private Point triforceRoomLocation = new Point(5, 4);
         private bool hasCompass;
         private Point secretRoomLocation = new Point(-1, -1);
+        private Point discoRoomLocation = new Point(5, 5);
         private readonly int numPlayers;
 
         public MinimapManager(RoomGameState roomGameState, int numPlayers)
@@ -36,7 +37,7 @@ namespace LegendOfZelda.HUDClasses
                 if (hasCompass)
                     triforceMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[triforceRoomLocation], Constants.DrawLayer.HUDMinimapItem);
                 Point currentRoomLocation = roomGameState.CurrentRoom.LocationOnMap;
-                if (!currentRoomLocation.Equals(secretRoomLocation))
+                if (!currentRoomLocation.Equals(secretRoomLocation) && !currentRoomLocation.Equals(discoRoomLocation))
                     linkMinimapSquare.Draw(roomGameState.Game.SpriteBatch, hudPosition + HUDConstants.MinimapSquarePositions[roomGameState.CurrentRoom.LocationOnMap], Constants.DrawLayer.HUDMinimapItem);
             }
 

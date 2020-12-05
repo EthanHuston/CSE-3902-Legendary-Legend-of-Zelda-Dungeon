@@ -185,12 +185,9 @@ namespace LegendOfZelda.GameLogic
             };
         }
 
-        private void InitializeItemCollisionDictionaries()
+        private void InitializeItemCollisionDictionaries() 
         {
-            itemBlockDictionary = new Dictionary<Type, ICollisionHandler<IItem, IBlock>>()
-            {
-                // TODO: initialize me here
-            };
+            itemBlockDictionary = new Dictionary<Type, ICollisionHandler<IItem, IBlock>>();
         }
     }
 }
