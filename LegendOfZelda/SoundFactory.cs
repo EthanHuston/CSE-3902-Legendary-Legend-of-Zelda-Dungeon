@@ -80,7 +80,7 @@ namespace LegendOfZelda
 
         public void LoadJojoSounds()
         {
-            clock_pickup = contentManager.Load<SoundEffect>("Sounds/LOZ_TimeFlows2");
+            clock_pickup = contentManager.Load<SoundEffect>("Sounds/LOZ_ClockPickUp");
             time_flows = contentManager.Load<SoundEffect>("Sounds/LOZ_TimeFlows");
         }
 
