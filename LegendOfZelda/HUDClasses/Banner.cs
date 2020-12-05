@@ -18,7 +18,7 @@ namespace LegendOfZelda.HUDClasses
         {
             this.spriteBatch = spriteBatch;
             link = new BannerLink(this, new Point(0, posy));
-            initEnemyList();
+            InitEnemyList();
             loopCount = 0;
         }
 
@@ -42,7 +42,7 @@ namespace LegendOfZelda.HUDClasses
             }
         }
 
-        private void initEnemyList()
+        private void InitEnemyList()
         {
             enemyList = new List<BannerEnemy>();
             Point pos = new Point(HUDConstants.hudWidth + 2*xGap, posy);
