@@ -1,0 +1,12 @@
+  
+Chris Lenart
+12/04/2020
+Sprint 5
+Ethan's Changes for Link and Enemy Sprites
+Ethan Hudson
+10 Minutes
+Readability and Maintainability
+For the sprite changes Ethan made during this sprint, he didn't have to make any new classes. Instead, he had to change the sprite classes for link and the enemies
+to allow them to switch sprite images based on user input. This involved re-assigning the sprite variables in the sprite classes and using a different scalar constant,
+as the new sprites were different sizes from the the Legend of Zelda sprites. This added some slightly more complex logic to the sprite classes, which effects
+readability and maintainability. However, these classes are still easy to read and maintain.
